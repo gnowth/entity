@@ -1,6 +1,13 @@
 {
+  "author": "Thierry Wong",
+  "name": "gnowth",
+  "license": "GPL-3.0-or-later",
   "private": true,
-  "workspaces": ["packages/*"],
+  "repository": "https://github.com/gnowth/gnowth.git",
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "0.0.1",
   "scripts": {
     "compile": "lerna run compile",
     "clean": "lerna run clean",
@@ -8,9 +15,11 @@
     "test": "lerna run test",
     "update-version": "lerna publish --skip-git --skip-npm --force-publish '*'",
     "check-packages": "yarn clean && yarn compile && yarn test && yarn lint",
-    "publish-packages": "./scripts/publish"
+    "publish-packages": "./scripts/publish",
+    "yarn": "yarn"
   },
   "devDependencies": {
-    "lerna": "2.11.0"
+    "lerna": "3.2.1",
+    "yarn": "1.9.4"
   }
 }
