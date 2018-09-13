@@ -1,0 +1,6 @@
+assets/**/*
+definition/**/*
+dist/**/*
+docs/**/*
+node_modules/**/*
+!**/.*/

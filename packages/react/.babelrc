@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-stage-0",
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-flow-props-to-prop-types",
+        "@babel/plugin-transform-react-jsx"
+      ]
+    },
+    "test": {},
+    "production": {
+      "plugins": [
+        "babel-plugin-styled-components",
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
+}
