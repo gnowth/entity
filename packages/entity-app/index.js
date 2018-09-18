@@ -1,1 +1,7 @@
-export * from './src/index';
+'use strict';
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./dist/entity-app.development.js');
+} else {
+  module.exports = require('./dist/entity-app.production.min.js');
+}

@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
 
 export default {
   input: 'src/index.jsx',
@@ -9,5 +10,8 @@ export default {
 
   plugins: [
     babel({}),
+    resolve({
+      extensions: ['.mjs', '.js', '.jsx', '.json'],
+    }),
   ],
 };
