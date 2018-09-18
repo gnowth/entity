@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import PropTypesPlus from 'lib/prop-types/Plus';
+import PropTypesPlus from '../Plus';
 
 export default PropTypesPlus.allOfType([
   PropTypesPlus.notNull,

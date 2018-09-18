@@ -1,6 +1,6 @@
-import Duck from 'lib/entity-duck/duck';
-import PropTypesEntity from 'lib/prop-types/Entity';
-import PropTypesPlus from 'lib/prop-types/Plus';
+import Duck from '../../../entity-duck/src/duck';
+import PropTypesEntity from '../Entity';
+import PropTypesPlus from '../Plus';
 
 const hasDuck = (props, propName, componentName) => (
   !props[propName].duck
