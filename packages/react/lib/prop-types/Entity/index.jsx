@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Entity, Fields } from 'lib/entity';
+import { Entity, Fields } from '@gnowth/entity';
 import PropTypesPlus from 'lib/prop-types/Plus';
 
 const isEntity = (props, propName, componentName) => !Entity.isEntity(props[propName])

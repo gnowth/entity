@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { Entity, Fields, Validators } from 'lib/entity';
+import { Entity, Fields, Validators } from '@gnowth/entity';
 
 export default class Activity extends Entity {
   static paginated = true;

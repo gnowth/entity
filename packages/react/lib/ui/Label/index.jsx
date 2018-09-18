@@ -5,8 +5,10 @@ import PropTypesPlus from 'lib/prop-types/Plus';
 import PropTypesLocale from 'lib/prop-types/Locale';
 import UITypeSet from 'lib/ui/TypeSet';
 
+import { Label } from './style';
+
 const UILabel = props => (
-  <label className={props.className}>
+  <Label className={props.className}>
     { props.label }
 
     { !props.label && props.labelLocale && (
@@ -18,7 +20,7 @@ const UILabel = props => (
     )}
 
     { props.children }
-  </label>
+  </Label>
 );
 
 UILabel.propTypes = {

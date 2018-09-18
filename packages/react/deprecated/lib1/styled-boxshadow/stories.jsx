@@ -26,55 +26,55 @@ const Component = styled.div`
   height: 200px;
 `;
 
-const Effect1 = Component.extend`
+const Effect1 = styled(Component)`
   ${boxshadow.effect1}
 `;
 
-const Effect2 = Component.extend`
+const Effect2 = styled(Component)`
   ${boxshadow.effect2}
 `;
 
-const Effect3 = Component.extend`
+const Effect3 = styled(Component)`
   ${boxshadow.effect3}
 `;
 
-const Effect4 = Component.extend`
+const Effect4 = styled(Component)`
   ${boxshadow.effect4}
 `;
 
-const Effect5 = Component.extend`
+const Effect5 = styled(Component)`
   ${boxshadow.effect5}
 `;
 
-const Effect6 = Component.extend`
+const Effect6 = styled(Component)`
   ${boxshadow.effect6}
 `;
 
-const Effect7 = Component.extend`
+const Effect7 = styled(Component)`
   ${boxshadow.effect7}
 `;
 
-const Effect8 = Component.extend`
+const Effect8 = styled(Component)`
   ${boxshadow.effect8}
 `;
 
-const Material1 = Component.extend`
+const Material1 = styled(Component)`
   ${boxshadow.material1}
 `;
 
-const Material2 = Component.extend`
+const Material2 = styled(Component)`
   ${boxshadow.material2}
 `;
 
-const Material3 = Component.extend`
+const Material3 = styled(Component)`
   ${boxshadow.material3}
 `;
 
-const Material4 = Component.extend`
+const Material4 = styled(Component)`
   ${boxshadow.material4}
 `;
 
-const Material5 = Component.extend`
+const Material5 = styled(Component)`
   ${boxshadow.material5}
 `;
 

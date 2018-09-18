@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Form } from 'lib/entity-form';
 import EntityScreenLocal from 'apps/snippets/entities/ScreenLocal';
-import withPropsValidation from 'lib/higher-order-component/withPropsValidation';
+import withPropTypes from 'lib/higher-order-component/withPropTypes';
 
 const ScreenWithQueryDuck = props => (
   <Form {...props}>
@@ -52,7 +52,9 @@ ScreenWithQueryDuck.propTypes = exact({
 });
 
 export default _compose(
-  withPropsValidation({
+  withPropTypes({
+    displayName: 'ScreenWithQueryDuck',
+
     propTypes: exact({
       entity: PropTypesDuck.entity,
     }),

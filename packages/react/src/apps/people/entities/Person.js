@@ -1,5 +1,5 @@
-import { Entity, Fields } from 'lib/entity';
-import { DuckEntity } from 'lib/entity-duck';
+import { Entity, Fields } from '@gnowth/entity';
+import DuckRest from 'lib/entity-duck-rest';
 import settings from 'settings';
 
 class Person extends Entity {
@@ -27,6 +27,6 @@ class Person extends Entity {
   }
 }
 
-Person.duck = new DuckEntity({ app: 'People', entity: Person });
+Person.duck = new DuckRest({ app: 'People', entity: Person });
 
 export default Person;

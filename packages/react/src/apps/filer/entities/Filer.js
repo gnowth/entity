@@ -1,5 +1,5 @@
-import { Entity, Fields } from 'lib/entity';
-import { DuckEntity } from 'lib/entity-duck';
+import { Entity, Fields } from '@gnowth/entity';
+import DuckRest from 'lib/entity-duck-rest';
 
 class Filer extends Entity {
   static apiBase = '/filer/'; // TODO add apibase
@@ -11,6 +11,6 @@ class Filer extends Entity {
   };
 }
 
-Filer.duck = new DuckEntity({ app: 'Filer', entity: Filer });
+Filer.duck = new DuckRest({ app: 'Filer', entity: Filer });
 
 export default Filer;

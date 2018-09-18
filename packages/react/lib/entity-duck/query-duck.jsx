@@ -107,9 +107,10 @@ class QueryDuck extends React.Component {
           && this.props.value !== undefined
           && (
             <this.props.recordsCountComponent
-              value={this.props.entity.paginated
-                ? this.props.pagination.get('count')
-                : this.props.value.size
+              value={
+                this.props.entity.paginated && this.props.pagination
+                  ? this.props.pagination.get('count')
+                  : this.props.value.size
               }
               {...(this.props.recordsCountComponentProps || {})}
             />
@@ -202,7 +203,7 @@ QueryDuck.propTypes = {
   many: PropTypes.bool, // TODO add: PropTypesPlus.notRequiredIf(({ id }) => id !== undefined)
   name: PropTypes.string,
   onInputChange: PropTypes.func.isRequired,
-  pagination: PropTypesPlus.isRequiredIf(({ entity }) => entity?.paginated, PropTypesImmutable.map), // TODO add shape?
+  pagination: PropTypesImmutable.map, // PropTypesPlus.isRequiredIf(({ entity }) => entity?.paginated, PropTypesImmutable.map), // TODO add shape? innitialValue?
   params: PropTypesImmutable.map.isRequired,
   persist: PropTypes.bool,
   persistDirty: PropTypes.bool, // TODO add: PropTypesPlus.notRequiredIf(({ persist }) => !persist)

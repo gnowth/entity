@@ -1,11 +1,12 @@
 import React from 'react';
 
 // eslint-disable-next-line react/forbid-foreign-prop-types
-export default ({ propTypes, defaultProps } = {}) => (Component) => {
-  const withPropsValidation = props => <Component {...props} />;
+export default ({ displayName, propTypes, defaultProps } = {}) => (Component) => {
+  const withPropTypes = props => <Component {...props} />;
 
-  withPropsValidation.propTypes = propTypes;
-  withPropsValidation.defaultProps = defaultProps;
+  withPropTypes.propTypes = propTypes;
+  withPropTypes.defaultProps = defaultProps;
+  withPropTypes.displayName = `withPropTypes-${displayName}`;
 
-  return withPropsValidation;
+  return withPropTypes;
 };

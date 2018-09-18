@@ -9,9 +9,9 @@ import { HashRouter as Router } from 'react-router-dom';
 import theme from 'styles';
 import store, { history } from 'store';
 
-import { AppRoot } from 'lib/entity-app';
-import { DuckProvider } from 'lib/entity-duck';
-import { FormProvider } from 'lib/entity-form';
+import { AppRoot } from '@gnowth/entity-app';
+import { DuckProvider, QueryDuck } from 'lib/entity-duck';
+import { FormDefaultProvider } from 'lib/entity-form';
 import UIButton from 'lib/ui/Button';
 import UILabel from 'lib/ui/Label';
 import UIProgressCircle from 'lib/ui/ProgressCircle';
@@ -38,10 +38,11 @@ function render() {
         recordsCountComponent: ({ value }) => `${value} Record(s) Found`,
         recordsCountNoneComponent: () => 'No Records Found',
       }}
-      formProvider={FormProvider}
+      formProvider={FormDefaultProvider}
       formProviderProps={{
         defaultComponents: {
           control: UIButton,
+          query: QueryDuck,
           wrapper: UILabel,
         },
         defaultWidgets: {

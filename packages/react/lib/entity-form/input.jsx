@@ -1,282 +1,140 @@
+import _compose from 'lodash/fp/compose';
 import _isFunction from 'lodash/fp/isFunction';
 import _isString from 'lodash/fp/isString';
-import _omit from 'lodash/fp/omit';
-import React from 'react';
+import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import { List } from 'immutable';
+import React from 'react';
 
-import { ArrayProvider, FormConsumer } from './components/base';
-import Label from './components/Label';
-import WrapperInput from './components/WrapperInput';
-import Context from './components/context';
-import withNameMapper from './components/withNameMapper';
+import PropTypesForm from 'lib/prop-types/Form';
+import PropTypesPlus from 'lib/prop-types/Plus';
+import withPropMapper from 'lib/higher-order-component/withPropMapper';
+import withPropTypes from 'lib/higher-order-component/withPropTypes';
+
+import { withFormDefault } from './context';
+import withInput from './withInput';
 
 class Input extends React.Component {
-  getLabelProps(context, LabelComponent) {
+  getProps() {
     return Object.assign(
       {
-        disabled: this.props.disabled === undefined
-          ? context.disabled
-          : this.props.disabled,
-
-        readOnly: this.props.readOnly === undefined
-          ? context.readOnly
-          : this.props.readOnly,
+        name: this.props.name,
+        onChange: this.props.onChange,
+        value: this.props.value,
       },
-
-      !_isString(LabelComponent) && {
-        inline: this.props.labelInline,
-        reverse: this.props.labelReverse,
-        required: this.props.labelRequired === undefined
-          ? !context.field.blank
-          : this.props.labelRequired,
+      !_isString(this.props.component) && {
+        errors: this.props.errors,
+        field: this.props.field,
+        initialValue: this.props.initialValue,
+        onInputChange: this.props.onInputChange,
+        options: this.props.options,
+        processing: this.props.processing,
+        processingDidFail: this.props.processing,
       },
-
-      this.props.labelComponentProps,
-    );
-  }
-
-  getArrayProps(context, value, index, Component) {
-    return Object.assign(
-      {},
-      _isString(Component)
-        ? _omit([
-          'defaultValue',
-          'record',
-          'field',
-          'options',
-          'errors',
-          'processing',
-          'processDidFail',
-          'onInputChange',
-        ])(context)
-        : context,
-
-      {
-        value,
-        onChange: this.handleManyChangeFactory(context, index),
-      },
-
-      !_isString(Component) && {
-        index,
-        defaultValue: context.defaultValue && context.defaultValue.get(index),
-        onArrayChange: this.handleManyArrayChangeFactory(context),
-        records: context.value,
-        errors: context.errors
-          .filter(error => error.get('listError'))
-          .flatMap(error => error.getIn(['errors', index])),
-      },
-
       _isFunction(this.props.componentProps)
-        ? this.props.componentProps(Object.assign({}, context, {
-          index,
-          value,
-          records: context.value,
-        }))
+        ? this.props.componentProps(this.props)
         : this.props.componentProps,
     );
   }
 
-  // TODO implement handleChangeFactory for useValueChange
-  // TODO check that name is a string if many is true
-  handleManyChangeFactory = (context, index) => ({ target: { value } }) => (
-    context.onChange({
-      target: {
-        name: this.props.name,
-        value: context.value.set(index, value),
-      },
-    })
-  );
+  renderAsComponent(props) {
+    const WrapperComponent = this.props.wrapperComponent || React.Fragment;
 
-  handleManyArrayChangeFactory = context => ({ target: { value, name } }) => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!List.isList(value) && value !== null) throw new Error(`The value of onArrayChange must either be a "List" or "null". Refer to form named "${this.props.name}"`);
-      if (name !== this.props.name) throw new Error(`entity-form input(handleManyArrayChangeFactory): name "${name}" from target must be the same as props.name "${this.props.name}"`);
-    }
+    return (
+      <WrapperComponent {...(this.props.wrapperComponentProps || {})}>
+        { this.props.many
+          ? this.renderComponentArray(props)
+          : this.renderComponent(props)
+        }
+      </WrapperComponent>
+    );
+  }
 
-    return context.onChange({
-      target: {
-        value,
-        name: this.props.name,
-      },
-    });
-  };
+  renderComponent(props) {
+    return (
+      <this.props.component {...props} />
+    );
+  }
 
-  renderComponentArray = (context, defaults) => {
-    const Component = this.props.component || defaults[context.field.constructor.type];
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!Component) throw new Error(`"component" is required for InputArray with name(s) ${this.props.name}`);
-    }
-
-    return context.value.map((value, index) => (
-      <ArrayProvider
-        key={context.field.entity.getId(value) || index}
-        value={this.getArrayProps(context, value, index, Component)}
-      >
-        <Component {...this.getArrayProps(context, value, index, Component)} />
-      </ArrayProvider>
+  renderComponentArray(props) {
+    return props.value.map((val, index) => (
+      <this.props.component
+        {...props}
+        index={index}
+        key={index}
+        value={val}
+      />
     ));
   }
 
-  renderComponent = (context, defaults) => {
-    const Component = this.props.component || defaults[context.field.constructor.type];
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!Component) throw new Error(`"component" is required for Input with name(s) ${this.props.name}`);
-    }
-
-    const props = Object.assign(
-      {},
-
-      _isString(Component)
-        ? _omit([
-          'defaultValue',
-          'record',
-          'field',
-          'options',
-          'errors',
-          'mapProps',
-          'processing',
-          'processDidFail',
-          'onInputChange',
-        ])(context)
-        : context,
-
-      _isFunction(this.props.componentProps)
-        ? this.props.componentProps(context)
-        : this.props.componentProps,
-    );
-
-    return <Component {...props} />;
-  }
-
-  renderAsChildren(context) {
-    return this.props.children(context);
-  }
-
-  // TODO add process same as ContainerApi
-  // TODO check if many is set, then field must be many and name must be string
-  renderAsComponent(context) {
-    const LabelComponent = this.props.labelComponent;
-    const InputComponent = this.props.inputComponent;
-    const renderComponent = this.props.many
-      ? this.renderComponentArray
-      : this.renderComponent;
-
-    return (
-      <InputComponent
-        className={this.props.className}
-        inline={this.props.labelInline}
-        reverse={this.props.labelReverse}
-      >
-        { this.props.label && !this.props.labelHidden && (
-          <LabelComponent {...this.getLabelProps(context, LabelComponent)}>
-            {this.props.label}
-          </LabelComponent>
-        )}
-
-        <FormConsumer>
-          { defaults => renderComponent(context, defaults.defaultWidgets) }
-        </FormConsumer>
-      </InputComponent>
-    );
-  }
-
   render() {
-    return (
-      <Context {...this.props}>
-        {(context) => {
-          const hidden = _isFunction(this.props.hidden)
-            ? this.props.hidden(context)
-            : this.props.hidden;
-
-          if (hidden) return null;
-
-          return this.props.children
-            ? this.renderAsChildren(context)
-            : this.renderAsComponent(context);
-        }}
-      </Context>
-    );
+    return this.props.children
+      ? this.props.children(this.getProps())
+      : this.renderAsComponent(this.getProps());
   }
 }
 
 Input.propTypes = {
-  name: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.arrayOf(PropTypes.string.isRequired),
-  ]),
   children: PropTypes.func,
-
-  // value
-  useValueChange: PropTypes.bool,
-
-  // status
-  disabled: PropTypes.bool,
-  hidden: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.func,
-  ]),
-  readOnly: PropTypes.bool,
-
-  // component
-  component: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
+  component: PropTypesPlus.isRequiredIfNot('children', PropTypesPlus.component),
   componentProps: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.func,
   ]),
-
-  // label
-  label: PropTypes.string,
-  labelHidden: PropTypes.bool,
-  labelComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
-  labelComponentProps: PropTypes.shape({}),
-  labelInline: PropTypes.bool,
-  labelReverse: PropTypes.bool,
-  labelRequired: PropTypes.bool,
-
-  // input
-  inputComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
-
-  many: PropTypes.bool,
+  many: PropTypesPlus.notRequiredIf('children', PropTypes.bool), // TODO check that field is many
+  wrapperComponent: PropTypesPlus.isRequiredIf('wrapperComponentProps', PropTypesPlus.component),
+  wrapperComponentProps: PropTypes.shape({}),
 };
 
 Input.defaultProps = {
-  name: undefined,
   children: undefined,
   component: undefined,
   componentProps: {},
-
-  // feature trigger
-  useValueChange: false,
-  many: false,
-
-  // status
-  hidden: false,
-  disabled: undefined,
-  readOnly: undefined,
-
-  // label
-  label: undefined,
-  labelHidden: false,
-  labelComponent: Label,
-  labelComponentProps: {},
-  labelInline: undefined,
-  labelReverse: undefined,
-  labelRequired: undefined,
-
-  // input
-  inputComponent: WrapperInput,
+  many: undefined,
+  wrapperComponent: undefined,
+  wrapperComponentProps: undefined,
 };
 
-export default withNameMapper(Input);
+// TODO check withPropTypes
+export default _compose(
+  withPropTypes({
+    displayName: 'Input',
+
+    propTypes: exact({
+      apiOptions: PropTypes.bool,
+      apiValue: PropTypes.bool,
+      children: PropTypes.func,
+      component: PropTypesPlus.component,
+      componentProps: PropTypes.oneOfType([
+        PropTypes.shape({}),
+        PropTypes.func,
+      ]),
+      many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
+      name: PropTypesForm.name,
+      type: PropTypes.string,
+      willChangeRecord: PropTypes.func,
+      wrapperComponent: PropTypesPlus.component,
+      wrapperComponentProps: PropTypes.shape({}),
+    }),
+
+    defaultProps: {
+      apiOptions: false,
+      apiValue: false,
+      children: undefined,
+      component: undefined,
+      componentProps: {},
+      many: undefined,
+      name: undefined,
+      type: undefined,
+      willChangeRecord: ({ nextRecord }) => nextRecord,
+      wrapperComponentProps: undefined,
+    },
+  }),
+
+  withInput,
+  withFormDefault,
+
+  withPropMapper(props => ({
+    component: props.component || props.defaultWidgets[props.type || props.field.constructor.type],
+    wrapperComponent: props.wrapperComponent || props.defaultComponents.wrapper,
+  })),
+)(Input);

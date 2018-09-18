@@ -1,3 +1,4 @@
+import _endsWith from 'lodash/fp/endsWith';
 import _isFunction from 'lodash/fp/isFunction';
 import axios from 'axios';
 
@@ -31,6 +32,8 @@ const handleError = (action, dispatch) => (error) => {
 
 export default store => next => (action) => {
   const shouldSkipMiddleware = !action.meta?.useEntityMiddleware
+    || _endsWith('_RESOLVED')(action.type)
+    || _endsWith('_REJECTED')(action.type)
     || !(action.meta?.entity?.duck instanceof Duck);
 
   if (shouldSkipMiddleware) {

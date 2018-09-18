@@ -39,6 +39,8 @@ module.exports = {
     // disable camelcase TODO restore once it can be ignored in style.js
     camelcase: 0,
 
+    'class-methods-use-this': 0,
+
     // use consistent for every element in array
     'function-paren-newline': ['error', 'consistent'],
 

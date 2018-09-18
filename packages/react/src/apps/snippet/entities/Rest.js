@@ -1,5 +1,5 @@
-import { Entity, Fields } from 'lib/entity';
-import { DuckEntity } from 'lib/entity-duck';
+import { Entity, Fields } from '@gnowth/entity';
+import DuckRest from 'lib/entity-duck-rest';
 import settings from 'settings';
 
 import EntityPerson from 'apps/people/entities/Person';
@@ -15,6 +15,6 @@ class Rest extends Entity {
   };
 }
 
-Rest.duck = new DuckEntity({ app: 'Snippet', entity: Rest });
+Rest.duck = new DuckRest({ app: 'Snippet', entity: Rest });
 
 export default Rest;

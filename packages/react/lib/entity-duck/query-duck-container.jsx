@@ -7,7 +7,7 @@ import { Map } from 'immutable';
 import { connect } from 'react-redux';
 
 import PropTypesPlus from 'lib/prop-types/Plus';
-import withPropsValidation from 'lib/higher-order-component/withPropsValidation';
+import withPropTypes from 'lib/higher-order-component/withPropTypes';
 import withState from 'lib/higher-order-component/withState';
 
 import { withDuck } from './context';
@@ -30,14 +30,8 @@ const createDuckRef = action => ({
 });
 
 const mapStateToProps = (state, props) => {
-  const params = props.filterParams.update(
-    'search',
-    search => search || props.withQueryDuckContainer_state.search,
-  );
-
   const action = props.withQueryDuckContainer_state.action || props.action({
-    params,
-    id: props.id,
+    search: props.withQueryDuckContainer_state.search,
   });
 
   const duckRef = createDuckRef(action);
@@ -46,14 +40,12 @@ const mapStateToProps = (state, props) => {
     {
       action,
       duckRef,
-      params,
+      params: action.meta.params,
       entity: action.meta.entity,
       initialValue: duckRef.record(state, action.meta),
       inputValue: props.withQueryDuckContainer_state.search,
       isProcessing: s => duckRef.status(s, {
-        params,
-        id: props.id,
-        method: action.meta.method,
+        ...action.meta,
         status: action.meta.keyProcessing,
       }),
       processing: duckRef.status(state, {
@@ -62,13 +54,13 @@ const mapStateToProps = (state, props) => {
       }),
       processingDidFail: duckRef.status(state, {
         ...action.meta,
-        status: action.meta.keyProcessingFail,
+        status: action.meta.keyProcessingDidFail,
       }),
       value: duckRef.record(state, { ...action.meta, dirty: true }),
     },
 
     action.meta.id === undefined && action.meta.entity.paginated && {
-      pagination: duckRef.pagination(state, { params }),
+      pagination: duckRef.pagination(state, action.meta),
     },
   );
 };
@@ -83,10 +75,12 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
       dispatchProps.dispatch,
       { ...stateProps.action.meta, ...options },
     ),
-    onInputChange: search => ownProps.withContainer_setState({ search }),
+    onInputChange: search => ownProps.withQueryDuckContainer_setState({ search }),
     process: () => !stateProps.processing
       && !stateProps.processingDidFail
-      && ownProps.action(),
+      && dispatchProps.dispatch(ownProps.action({
+        search: ownProps.withQueryDuckContainer_state.search,
+      })),
     save: value => stateProps.duckRef.save(
       dispatchProps.dispatch,
       value,
@@ -95,17 +89,22 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
   },
 );
 
+// TODO remove exact or withPropTypes
 export default _compose(
-  withPropsValidation({
+  withPropTypes({
+    displayName: 'QueryDuckContainer',
+
     propTypes: exact({
       action: PropTypes.func.isRequired,
+      children: PropTypes.func, // TODO check with component
       component: PropTypesPlus.component,
       componentProps: PropTypes.shape({}),
       filterParams: PropTypesImmutable.map,
     }),
 
     defaultProps: {
-      componentProps: {},
+      children: undefined,
+      componentProps: undefined,
       filterParams: Map(),
     },
   }),

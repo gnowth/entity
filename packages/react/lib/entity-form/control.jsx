@@ -1,123 +1,72 @@
-import _isObjectLike from 'lodash/fp/isObjectLike';
-import _isString from 'lodash/fp/isString';
 import _compose from 'lodash/fp/compose';
-import React from 'react';
+import _isFunction from 'lodash/fp/isFunction';
+import _isObjectLike from 'lodash/fp/isObjectLike';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import PropTypesDuck from 'lib/prop-types/Duck';
+import PropTypesPlus from 'lib/prop-types/Plus';
+import withPropMapper from 'lib/higher-order-component/withPropMapper';
+import withPropTypes from 'lib/higher-order-component/withPropTypes';
 import withState from 'lib/higher-order-component/withState';
 
-import { ArrayConsumer } from './components/base';
-import withNameMapper from './components/withNameMapper';
-import Context from './components/context';
+import { withFormDefault } from './context';
+import withInput from './withInput';
 
-// TODO check that name is undefined if array is true
 class Control extends React.Component {
-  handleEventFactory = context => (event) => {
-    const action = this.props.action({ event, ...context });
-    const handleChange = this.props.array ? context.onArrayChange : context.onChange;
+  // TODO add more props
+  getPropsContext() {
+    return {
+      errors: this.props.errors,
+      field: this.props.field,
+      initialValue: this.props.initialValue,
+      processing: this.props.processing,
+      processingDidFail: this.props.processingDidFail,
+      value: this.props.value,
+    };
+  }
 
-    if (_isObjectLike(action) && 'meta' in action && 'type' in action) {
-      this.props.setState({ action });
-
-      return this.props.dispatch(action);
-    }
-
-    return handleChange({
-      target: {
-        value: action,
-        name: context.name,
-      },
-    });
-  };
-
-  renderFromContext(context) {
-    const Component = this.props.component;
-
-    const props = Object.assign(
+  getProps() {
+    return Object.assign(
       {
-        [this.props.event]: this.handleEventFactory(context),
-        disabled: this.props.processing || context.disabled,
-        readOnly: context.readOnly,
+        [this.props.event]: this.handleEvent,
+        disabled: this.props.disabled || this.props.readOnly,
       },
-
-      !_isString(Component) && {
-        processing: this.props.processing,
-        processDidFail: this.props.processDidFail,
-      },
-
-      this.props.componentProps,
+      _isFunction(this.props.componentProps)
+        ? this.props.componentProps(this.getPropsContext())
+        : this.props.componentProps,
     );
+  }
 
-    return <Component {...props} />;
+  // TODO add index
+  handleEvent = (event) => {
+    const action = this.props.action({ event, ...this.getPropsContext() });
+
+    return _isObjectLike(action) && 'meta' in action && 'type' in action
+      ? this.props.setState({ action: this.props.dispatch(action) })
+      : this.props.onChange({
+        target: {
+          name: this.props.name,
+          value: action,
+        },
+      });
   }
 
   render() {
-    if (this.props.hidden) return null;
-
-    const ContextComponent = this.props.array ? ArrayConsumer : Context;
-
     return (
-      <ContextComponent {...this.props}>
-        {this.renderFromContext.bind(this)}
-      </ContextComponent>
+      <this.props.component {...this.getProps()} />
     );
   }
 }
 
 Control.propTypes = {
-  name: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.arrayOf(PropTypes.string.isRequired),
-  ]),
-  array: PropTypes.bool,
-
-  // action
   action: PropTypes.func.isRequired,
+  component: PropTypesPlus.component.isRequired,
   event: PropTypes.string,
-  dispatch: PropTypes.func.isRequired,
-
-  // component
-  component: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]).isRequired,
-  componentProps: PropTypes.shape({
-    className: PropTypes.string,
-  }),
-
-  // state
-  state: PropTypes.shape({
-    action: PropTypes.shape({
-      payload: PropTypes.any,
-      meta: PropTypes.shape({
-        entity: PropTypesDuck.entity.isRequired,
-      }),
-    }),
-  }).isRequired,
-  setState: PropTypes.func.isRequired,
-
-  // status
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  hidden: PropTypes.bool,
-
-  // status action
-  processing: PropTypes.bool.isRequired,
-  processDidFail: PropTypes.bool.isRequired,
 };
 
 Control.defaultProps = {
-  name: undefined,
-  array: false,
   event: 'onClick',
-  componentProps: {},
-
-  // status
-  disabled: undefined,
-  readOnly: undefined,
-  hidden: undefined,
 };
 
 const mapStateToProps = (state, props) => ({
@@ -135,7 +84,21 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default _compose(
-  withNameMapper,
+  withPropTypes({
+    displayName: 'Control',
+
+    propTypes: {
+
+    },
+  }),
+
+  withInput,
+  withFormDefault,
+
+  withPropMapper(props => ({
+    component: props.component || props.defaultComponents.control,
+  })),
+
   withState({ initialState: { action: undefined } }),
   connect(mapStateToProps),
 )(Control);

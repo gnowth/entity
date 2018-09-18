@@ -29,7 +29,7 @@ export const Root = styled(Select)`
   }
 `;
 
-export const Icon = UIIcon.extend`
+export const Icon = styled(UIIcon)`
   ${props => !props.field.many && css`
     box-sizing: border-box;
     width: 34px;

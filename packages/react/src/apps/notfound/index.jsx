@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { App } from 'lib/entity-app';
+import { App } from '@gnowth/entity-app';
 
 const AppNotFound = () => (
   <App>

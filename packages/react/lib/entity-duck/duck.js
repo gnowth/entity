@@ -2,7 +2,7 @@ import _compose from 'lodash/fp/compose';
 import _isFunction from 'lodash/fp/isFunction';
 import _mapValues from 'lodash/fp/mapValues';
 import { handleActions } from 'redux-actions'; // TODO remove dependency
-import { Entity } from 'lib/entity';
+import { Entity } from '@gnowth/entity';
 
 export default class Duck {
   static createAction({
@@ -57,13 +57,5 @@ export default class Duck {
       types => duck.getReducers(types, initialState),
       _mapValues.convert({ cap: false })((_, keyAction) => duck.toKey(this.app, this.entity)(keyAction)),
     )(duck.actions);
-  }
-
-  getMode(mode) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!this.constructor.modes[mode]) throw new Error(`Duck: ${mode} mode is invalid`);
-    }
-
-    return this.constructor.modes[mode];
   }
 }
