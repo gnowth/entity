@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import { Map } from 'immutable';
 
 export const allowBlank = () => false;

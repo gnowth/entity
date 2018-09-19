@@ -3,13 +3,12 @@ import _omit from 'lodash/fp/omit';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 
-import PropTypesPlus from 'lib/prop-types/Plus';
-import withPropTypes from 'lib/higher-order-component/withPropTypes';
-import withState from 'lib/higher-order-component/withState';
-
+import withPropTypes from '../../higher-order-component/withPropTypes';
+import withState from '../../higher-order-component/withState';
 import { withDuck } from './context';
 
 const createDuckRef = action => ({

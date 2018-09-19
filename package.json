@@ -9,7 +9,7 @@
   ],
   "version": "0.0.1",
   "scripts": {
-    "build": "lerna run build1",
+    "build": "lerna run build",
     "compile": "lerna run compile",
     "clean": "lerna run clean",
     "lint": "lerna run lint",
@@ -24,5 +24,8 @@
     "lerna": "3.2.1",
     "rollup": "0.66.0",
     "yarn": "1.9.4"
+  },
+  "peerDependencies": {
+    "react": "16.5.1"
   }
 }

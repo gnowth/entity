@@ -53,3 +53,14 @@ stylelint is temporarily disabled as it is causing errors
 ```
 "lint": "npm run lint:js && npm run lint:css && npm run flow",
 ```
+
+
+    // "@gnowth/entity-app": "0.0.1",
+    // "@gnowth/entity-duck": "0.0.1",
+    // "@gnowth/entity-duck-rest": "0.0.1",
+    // "@gnowth/entity-duck-screen": "0.0.1",
+    // "@gnowth/entity-form": "0.0.1",
+    // "@gnowth/entity-widget": "0.0.1",
+    // "@gnowth/higher-order-component": "0.0.1",
+    // "@gnowth/prop-types": "0.0.1",
+    // "@gnowth/ui": "0.0.1",

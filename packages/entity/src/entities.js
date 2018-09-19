@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import _mapValues from 'lodash/fp/mapValues';
 import _omitBy from 'lodash/fp/omitBy';
 import _omit from 'lodash/fp/omit';

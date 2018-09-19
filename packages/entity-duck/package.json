@@ -1,7 +1,7 @@
 {
-  "name": "@gnowth/entity-app",
+  "name": "@gnowth/entity-duck",
   "version": "0.0.1",
-  "description": "",
+  "description": "entity-duck",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c=configs/rollup.config.js",
@@ -10,10 +10,16 @@
   "author": "Thierry Wong",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@gnowth/entity": "0.0.1",
     "@gnowth/prop-types-plus": "0.0.1",
+    "axios": "0.18.0",
+    "immutable": "4.0.0-rc.9",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
-    "prop-types-exact": "1.2.0"
+    "prop-types-exact": "1.2.0",
+    "react-immutable-proptypes": "2.1.0",
+    "react-redux": "5.0.7",
+    "redux-actions": "2.6.1"
   },
   "devDependencies": {
     "@babel/core": "7.1.0",

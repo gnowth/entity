@@ -1,23 +1,17 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-require('core-js/modules/es6.regexp.flags');
-var _isFunction = _interopDefault(require('lodash/fp/isFunction'));
-var immutable = require('immutable');
-require('core-js/modules/es6.regexp.to-string');
-var _isString = _interopDefault(require('lodash/fp/isString'));
-var moment = _interopDefault(require('moment'));
-require('core-js/modules/web.dom.iterable');
-var _mapValues = _interopDefault(require('lodash/fp/mapValues'));
-var _omitBy = _interopDefault(require('lodash/fp/omitBy'));
-var _omit = _interopDefault(require('lodash/fp/omit'));
-var _pick = _interopDefault(require('lodash/fp/pick'));
-var _compose = _interopDefault(require('lodash/fp/compose'));
-var qs = _interopDefault(require('query-string'));
-var settings = _interopDefault(require('settings'));
+import 'core-js/modules/es6.regexp.flags';
+import _isFunction from 'lodash/isFunction';
+import { Map as Map$1, List, fromJS } from 'immutable';
+import 'core-js/modules/es6.regexp.to-string';
+import _isString from 'lodash/isString';
+import moment from 'moment';
+import 'core-js/modules/web.dom.iterable';
+import _mapValues from 'lodash/fp/mapValues';
+import _omitBy from 'lodash/fp/omitBy';
+import _omit from 'lodash/fp/omit';
+import _pick from 'lodash/fp/pick';
+import _compose from 'lodash/fp/compose';
+import qs from 'query-string';
+import settings from 'settings';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -99,7 +93,7 @@ const isRequired = (value, options = {}) => {
 };
 const entityValid = (value, options = {}) => {
   const errors = options.field.entity.validate(value, options);
-  return !!errors && errors.size > 0 && immutable.Map({
+  return !!errors && errors.size > 0 && Map$1({
     errors,
     message: options.field.errorMessage,
     entityError: true
@@ -160,7 +154,7 @@ class Field {
 
   asParams(value = null, options) {
     if (value === null) return undefined;
-    const values = this.many ? value : immutable.List([value]);
+    const values = this.many ? value : List([value]);
     return values.filterNot((v = null) => v === null).map(v => this.valueToParam(v, options)).join(',');
   }
 
@@ -172,11 +166,11 @@ class Field {
   }
 
   dataToRecord(data = null) {
-    if (immutable.List.isList(data)) {
+    if (List.isList(data)) {
       return data.map(this.dataToValue.bind(this));
     }
 
-    return Array.isArray(data) ? immutable.List(data.map(this.dataToValue.bind(this))) : this.dataToValue(data);
+    return Array.isArray(data) ? List(data.map(this.dataToValue.bind(this))) : this.dataToValue(data);
   }
 
   dataToValue(data) {
@@ -185,7 +179,7 @@ class Field {
   }
 
   default() {
-    return this.many ? immutable.List() : null;
+    return this.many ? List() : null;
   }
 
   getField({
@@ -199,7 +193,7 @@ class Field {
   }
 
   getOptions() {
-    return this.options || immutable.List();
+    return this.options || List();
   }
 
   getValue(value, {
@@ -227,7 +221,7 @@ class Field {
 
   recordToData(record) {
     if (this.local) return undefined;
-    return immutable.List.isList(record) ? record.map(this.valueToData.bind(this)).toArray() : this.valueToData(record);
+    return List.isList(record) ? record.map(this.valueToData.bind(this)).toArray() : this.valueToData(record);
   }
 
   toString(value = null) {
@@ -237,24 +231,24 @@ class Field {
 
   validate(value, options) {
     if (process.env.NODE_ENV !== 'production') {
-      if (this.many && !immutable.List.isList(value)) throw new Error('Entity(validate): "value" must be an "Immutable List" with field option "many"');
+      if (this.many && !List.isList(value)) throw new Error('Entity(validate): "value" must be an "Immutable List" with field option "many"');
     }
 
-    const validateValue = (val, validators) => immutable.List(validators).flatMap(validator => {
+    const validateValue = (val, validators) => List(validators).flatMap(validator => {
       const errors = validator(val, Object.assign({}, options, {
         field: this
       }));
-      const errorList = immutable.List.isList(errors) ? errors : immutable.List([errors]);
+      const errorList = List.isList(errors) ? errors : List([errors]);
       return errorList.filter(error => error).map(error => {
-        if (_isString(error)) return immutable.Map({
+        if (_isString(error)) return Map$1({
           message: error
         });
-        if (error === true) return immutable.Map({
+        if (error === true) return Map$1({
           message: 'Unidentified Error'
         });
 
         if (process.env.NODE_ENV !== 'production') {
-          if (!immutable.Map.isMap(error)) throw new Error(`entity: Received error which is neither a "boolean" nor a "string" nor a "Map". Check the validators used in field with entity ${this.name}`);
+          if (!Map$1.isMap(error)) throw new Error(`entity: Received error which is neither a "boolean" nor a "string" nor a "Map". Check the validators used in field with entity ${this.name}`);
         }
 
         return error;
@@ -265,7 +259,7 @@ class Field {
 
     if (this.many) {
       const nestedErrors = value && value.map(v => validateValue(v, this.validators));
-      return nestedErrors && nestedErrors.every(err => err.size === 0) ? errors : errors.push(immutable.Map({
+      return nestedErrors && nestedErrors.every(err => err.size === 0) ? errors : errors.push(Map$1({
         listError: true,
         message: this.errorListMessage,
         errors: nestedErrors
@@ -289,12 +283,12 @@ class Field {
 class AnyField extends Field {
   dataToValue(data = null) {
     // eslint-disable-line class-methods-use-this
-    return immutable.fromJS(data);
+    return fromJS(data);
   }
 
   valueToData(value) {
     // eslint-disable-line class-methods-use-this
-    return immutable.List.isList(value) || immutable.Map.isMap(value) ? value.toJS() : value;
+    return List.isList(value) || Map$1.isMap(value) ? value.toJS() : value;
   }
 
 }
@@ -315,7 +309,7 @@ class IdField extends AnyField {
 }
 class TextField extends AnyField {
   default() {
-    return this.many ? immutable.List() : '';
+    return this.many ? List() : '';
   }
 
 }
@@ -392,7 +386,7 @@ class EntityField extends AnyField {
   }
 
   default() {
-    if (this.many) return immutable.List();
+    if (this.many) return List();
     return this.blank ? null : this.entity.dataToRecord({});
   } // TODO remove name as being an array?
 
@@ -415,7 +409,7 @@ class EntityField extends AnyField {
 
 
   getFilterParams() {
-    return immutable.Map();
+    return Map$1();
   }
 
   getValue(record = null, {
@@ -440,7 +434,7 @@ class EntityField extends AnyField {
   }
 
   getOptions() {
-    return this.options || this.entity.options || immutable.List();
+    return this.options || this.entity.options || List();
   }
 
   toString(value = null) {
@@ -476,7 +470,7 @@ class EntityIdField extends EntityField {
 
   dataToValue(data = null) {
     // eslint-disable-line class-methods-use-this
-    return immutable.fromJS(data);
+    return fromJS(data);
   }
 
   default() {
@@ -486,7 +480,7 @@ class EntityIdField extends EntityField {
 
 
   getFilterParamsId() {
-    return immutable.Map();
+    return Map$1();
   }
 
   valueToData(value) {
@@ -528,7 +522,7 @@ class Entity {
 
 
   static dataToRecord(data = null) {
-    if (immutable.Map.isMap(data)) return data;
+    if (Map$1.isMap(data)) return data;
 
     const getDefaultFromField = field => _isFunction(field.default) ? field.default({
       data,
@@ -543,7 +537,7 @@ class Entity {
       data
     })), _pick(Object.keys(filteredData)))(this.fields);
 
-    return data && _compose(immutable.fromJS, addDefaults, dataToValue, _omitBy(value => value === undefined), _pick(Object.keys(this.fields)))(data);
+    return data && _compose(fromJS, addDefaults, dataToValue, _omitBy(value => value === undefined), _pick(Object.keys(this.fields)))(data);
   }
 
   static getId(record, {
@@ -557,7 +551,7 @@ class Entity {
   }
 
   static getExportUrl(params) {
-    const paramMap = params.remove('page').remove('page_size').filter(p => p) || immutable.Map();
+    const paramMap = params.remove('page').remove('page_size').filter(p => p) || Map$1();
     return `${settings.BASE_API_URL}${this.apiBase}?${qs.stringify(paramMap.toJS())}&format=xlsx`;
   }
 
@@ -619,11 +613,11 @@ class Entity {
   }
 
   static optionToString(option) {
-    return this.toString(immutable.fromJS(option));
+    return this.toString(fromJS(option));
   }
 
   static recordToData(record) {
-    if (!immutable.Map.isMap(record)) return record;
+    if (!Map$1.isMap(record)) return record;
     return record.filter((_, key) => key in this.fields).map((value, key) => this.fields[key].recordToData(value)).toObject();
   } // will be deprecated ?
 
@@ -653,7 +647,7 @@ class Entity {
   }
 
   static toString(record) {
-    return (record || immutable.Map()).get(this.idField, '');
+    return (record || Map$1()).get(this.idField, '');
   }
 
   static toStringOrdered(record) {
@@ -665,7 +659,7 @@ class Entity {
   }
 
   static validate(record, options = {}) {
-    return record && immutable.Map(options.fields ? _pick(options.fields)(this.fields) : this.fields).map((field, name) => field.validate(record.get(name), Object.assign({}, _omit(['fields'])(options), {
+    return record && Map$1(options.fields ? _pick(options.fields)(this.fields) : this.fields).map((field, name) => field.validate(record.get(name), Object.assign({}, _omit(['fields'])(options), {
       record,
       field,
       name,
@@ -777,7 +771,7 @@ _defineProperty(BaseEntity, "name", 'BaseEntity');
 
 class FilterEntity extends BaseEntity {
   static asParams(record, options) {
-    return (record || immutable.Map()).filter((value, key) => key in this.fields).filterNot((value, key) => this.fields[key].local).map((value, key) => this.fields[key].asParams(value, options)).flatten();
+    return (record || Map$1()).filter((value, key) => key in this.fields).filterNot((value, key) => this.fields[key].local).map((value, key) => this.fields[key].asParams(value, options)).flatten();
   }
 
 }
@@ -795,7 +789,7 @@ _defineProperty(FilterEntity, "fields", {
 
 class TitleEntity extends BaseEntity {
   static toString(record) {
-    return (record || immutable.Map()).get('title', '');
+    return (record || Map$1()).get('title', '');
   }
 
 }
@@ -841,7 +835,7 @@ class EnumField extends EntityField {
   }
 
   default() {
-    return this.many ? immutable.List() : null;
+    return this.many ? List() : null;
   }
 
   isEnumActive(value, {
@@ -865,10 +859,4 @@ const Fields = Object.assign({
 }, AllFields);
 const Validators = AllValidators;
 
-exports.Fields = Fields;
-exports.Validators = Validators;
-exports.Entity = Entity;
-exports.BaseEntity = BaseEntity;
-exports.FilterEntity = FilterEntity;
-exports.TitleEntity = TitleEntity;
-exports.EnumEntity = EnumEntity;
+export { Fields, Validators, Entity, BaseEntity, FilterEntity, TitleEntity, EnumEntity };

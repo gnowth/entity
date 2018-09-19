@@ -1,4 +1,4 @@
-import _isString from 'lodash/fp/isString';
+import _isString from 'lodash/isString';
 
 export const removeMultiSpace = (value) => {
   if (process.env.NODE_ENV !== 'production') {

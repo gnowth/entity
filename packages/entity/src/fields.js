@@ -1,4 +1,4 @@
-import _isString from 'lodash/fp/isString';
+import _isString from 'lodash/isString';
 import moment from 'moment';
 import { List, Map, fromJS } from 'immutable';
 

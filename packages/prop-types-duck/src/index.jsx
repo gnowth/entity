@@ -1,5 +1,5 @@
 import Duck from '../../../entity-duck/src/duck';
-import PropTypesEntity from '../Entity';
+import PropTypesEntity from '@gnowth/Entity';
 import PropTypesPlus from '../Plus';
 
 const hasDuck = (props, propName, componentName) => (

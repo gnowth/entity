@@ -1,8 +1,7 @@
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-
-import PropTypesPlus from 'lib/prop-types/Plus';
 
 import { AppProvider } from './context';
 

@@ -1,19 +1,17 @@
 {
-  "name": "@gnowth/entity-app",
-  "version": "0.0.1",
+  "author": "Thierry Wong",
   "description": "",
+  "license": "GPL-3.0-or-later",
   "main": "index.js",
+  "name": "@gnowth/prop-types-plus",
+  "version": "0.0.1",
   "scripts": {
     "build": "rollup -c=configs/rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Thierry Wong",
-  "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@gnowth/prop-types-plus": "0.0.1",
     "lodash": "4.17.11",
-    "prop-types": "15.6.2",
-    "prop-types-exact": "1.2.0"
+    "prop-types": "15.6.2"
   },
   "devDependencies": {
     "@babel/core": "7.1.0",
@@ -24,11 +22,6 @@
     "rollup": "0.66.0",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "9.1.8",
-    "rollup-plugin-node-resolve": "3.4.0",
-    "rollup-plugin-replace": "2.0.0",
-    "rollup-plugin-terser": "3.0.0"
-  },
-  "peerDependencies": {
-    "react": "16.5.1"
+    "rollup-plugin-node-resolve": "3.4.0"
   }
 }

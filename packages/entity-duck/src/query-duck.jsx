@@ -2,11 +2,11 @@ import _debounce from 'lodash/fp/debounce';
 import _isFunction from 'lodash/fp/isFunction';
 import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { Entity } from '@gnowth/entity';
 
-import PropTypesDuck from 'lib/prop-types/Duck';
-import PropTypesPlus from 'lib/prop-types/Plus';
-
+import Duck from './duck';
 import withQueryDuckContainer from './query-duck-container';
 
 class QueryDuck extends React.Component {
@@ -190,7 +190,10 @@ QueryDuck.propTypes = {
   cached: PropTypes.bool,
   children: PropTypesPlus.isRequiredIfNot('component', PropTypes.func),
   clear: PropTypes.func.isRequired,
-  entity: PropTypesDuck.entity.isRequired,
+  entity: PropTypes.shape({
+    duck: PropTypes.instanceOf(Duck),
+    prototype: PropTypes.instanceOf(Entity),
+  }).isRequired,
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
   id: PropTypes.string,
