@@ -10,6 +10,7 @@
   "author": "Thierry Wong",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@gnowth/entity": "0.0.1",
     "@gnowth/prop-types-plus": "0.0.1",
     "axios": "0.18.0",
@@ -19,7 +20,8 @@
     "prop-types-exact": "1.2.0",
     "react-immutable-proptypes": "2.1.0",
     "react-redux": "5.0.7",
-    "redux-actions": "2.6.1"
+    "redux-actions": "2.6.1",
+    "rollup-plugin-includepaths": "^0.2.3"
   },
   "devDependencies": {
     "@babel/core": "7.1.0",

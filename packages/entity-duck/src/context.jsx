@@ -1,6 +1,6 @@
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-lus';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
 export const { Provider, Consumer: DuckConsumer } = React.createContext({});
