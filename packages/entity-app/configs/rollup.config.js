@@ -5,7 +5,9 @@ import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 
 const dependencies = Object.keys(require('../package.json').dependencies)
-  .concat(Object.keys(require('../package.json').devDependencies))
+  .concat(Object.keys(require('../package.json').peerDependencies))
+
+// TODO check why react is included in bundle
 
 export default [
   {

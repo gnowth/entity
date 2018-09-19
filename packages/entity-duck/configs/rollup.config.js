@@ -28,7 +28,10 @@ export default [
         // ],
       }),
       resolve({ extensions: ['.jsx'] }),
-      commonjs(),
+      commonjs({
+        main: false,
+        module: true
+      }),
     ],
   },
   {
@@ -48,3 +51,5 @@ export default [
     ],
   },
 ];
+
+// "build": "lerna exec -- rollup -c=../../rollup.config.js",

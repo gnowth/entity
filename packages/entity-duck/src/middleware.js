@@ -2,7 +2,7 @@ import _endsWith from 'lodash/fp/endsWith';
 import _isFunction from 'lodash/fp/isFunction';
 import axios from 'axios';
 
-import Duck from 'lib/entity-duck/duck';
+import Duck from './duck';
 
 const handleResponse = (action, dispatch) => (response) => {
   dispatch(action.meta.entity.duck[`${action.meta.keyAction}_resolved`](

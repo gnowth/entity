@@ -4,7 +4,7 @@ import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 
-const dependencies = Object.keys(require('../package.json').dependencies)
+const dependencies = Object.keys(require('../package.json').dependencies);
 
 export default [
   {
