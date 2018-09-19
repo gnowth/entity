@@ -53,3 +53,4 @@ export default [
 ];
 
 // "build": "lerna exec -- rollup -c=../../rollup.config.js",
+// higher order component is not being imported
