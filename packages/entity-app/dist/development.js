@@ -109,3 +109,4 @@ AppRoot.defaultProps = {
 };
 
 export { App, AppRoot, AppProvider, AppConsumer };
+//# sourceMappingURL=development.js.map

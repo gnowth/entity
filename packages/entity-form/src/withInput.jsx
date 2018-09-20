@@ -1,15 +1,14 @@
 import _compose from 'lodash/fp/compose';
 import _getOr from 'lodash/fp/getOr';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { List, Map } from 'immutable';
 
-import PropTypesEntity from 'lib/prop-types/Entity';
-import PropTypesPlus from 'lib/prop-types/Plus';
-import withPropMapper from 'lib/higher-order-component/withPropMapper';
-
 import { withForm, withFormDefault } from './context';
+import withPropMapper from '../../higher-order-component/withPropMapper';
 
 export default function (ComposedComponent) {
   class withInput extends React.Component {

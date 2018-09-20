@@ -6,6 +6,7 @@ export const getIdentifier = ({ id = '', tag = '', params, method, action, useId
     return id === null ? 'id_null' : id;
   }
 
+  // TODO add check for params
   const paramsString = stringify(params && params.filter(p => p).toJS());
 
   const paramsFrag = paramsString && `.${paramsString}`;

@@ -1,6 +1,5 @@
+import { Duck } from '@gnowth/entity-duck';
 import { Map } from 'immutable';
-
-import { Duck } from 'lib/entity-duck';
 
 export default class ScreenDuck extends Duck {
   static namespace = 'screens';

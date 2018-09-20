@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
-
-import { Entity } from '../../../entity/src/entities';
-import { Field, EntityField } from '../../../entity/src/fields';
-import PropTypesPlus from '../Plus';
+import PropTypesPlus from '@gnowth/prop-types-plus';
+import { Entity, EntityField, Field } from '@gnowth/entity';
 
 const isEntity = (props, propName, componentName) => !Entity.isEntity(props[propName])
   && new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`);

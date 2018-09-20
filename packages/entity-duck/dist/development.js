@@ -569,3 +569,4 @@ var middleware = (store => next => action => {
 });
 
 export { Duck, queryDuck as QueryDuck, middleware as duckMiddleware, Provider, DuckConsumer, DuckProvider, withDuck };
+//# sourceMappingURL=development.js.map

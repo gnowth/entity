@@ -1,16 +1,14 @@
 import _compose from 'lodash/fp/compose';
-import _isFunction from 'lodash/fp/isFunction';
-import _isString from 'lodash/fp/isString';
+import _isFunction from 'lodash/isFunction';
+import _isString from 'lodash/isString';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
-import PropTypesForm from 'lib/prop-types/Form';
-import PropTypesPlus from 'lib/prop-types/Plus';
-import withPropMapper from 'lib/higher-order-component/withPropMapper';
-import withPropTypes from 'lib/higher-order-component/withPropTypes';
-
 import { withFormDefault } from './context';
+import withPropMapper from '../../higher-order-component/withPropMapper';
+import withPropTypes from '../../higher-order-component/withPropTypes';
 import withInput from './withInput';
 
 class Input extends React.Component {
@@ -109,7 +107,7 @@ export default _compose(
         PropTypes.func,
       ]),
       many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
-      name: PropTypesForm.name,
+      name: PropTypesPlus.string,
       type: PropTypes.string,
       willChangeRecord: PropTypes.func,
       wrapperComponent: PropTypesPlus.component,

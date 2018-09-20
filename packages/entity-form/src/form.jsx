@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Map } from 'immutable';
-
-import PropTypesEntity from 'lib/prop-types/Entity';
-import PropTypesPlus from 'lib/prop-types/Plus';
 
 import { FormProvider } from './context';
 

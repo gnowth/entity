@@ -1,11 +1,9 @@
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-
-import PropTypesEntity from 'lib/prop-types/Entity';
-import PropTypesForm from 'lib/prop-types/Form';
-import PropTypesPlus from 'lib/prop-types/Plus';
 
 const { Provider, Consumer } = React.createContext({});
 
@@ -51,7 +49,7 @@ FormProvider.propTypes = exact({
   formField: PropTypesEntity.field.isRequired,
   formIndex: PropTypes.number,
   formInitialValue: PropTypesImmutable.map,
-  formName: PropTypesForm.name,
+  formName: PropTypesPlus.string,
   formNameMapper: PropTypes.shape({}),
   formOnChange: PropTypes.func.isRequired,
   formReadOnly: PropTypes.bool,

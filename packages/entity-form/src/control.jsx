@@ -2,15 +2,14 @@ import _compose from 'lodash/fp/compose';
 import _isFunction from 'lodash/fp/isFunction';
 import _isObjectLike from 'lodash/fp/isObjectLike';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PropTypesPlus from 'lib/prop-types/Plus';
-import withPropMapper from 'lib/higher-order-component/withPropMapper';
-import withPropTypes from 'lib/higher-order-component/withPropTypes';
-import withState from 'lib/higher-order-component/withState';
-
 import { withFormDefault } from './context';
+import withPropMapper from '../../higher-order-component/withPropMapper';
+import withPropTypes from '../../higher-order-component/withPropTypes';
+import withState from '../../higher-order-component/withState';
 import withInput from './withInput';
 
 class Control extends React.Component {
