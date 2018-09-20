@@ -4,7 +4,7 @@ import _flatMap from 'lodash/fp/flatMap';
 import _groupBy from 'lodash/fp/groupBy';
 import _mapValues from 'lodash/fp/mapValues';
 import { combineReducers } from 'redux-immutable';
-import Duck from '@gnowth/entity-duck';
+import { Duck } from '@gnowth/entity-duck';
 
 const reqs = [
   require.context('apps', true, /\.\/[^/]*\/entities\/[^/]*\.js$/),
