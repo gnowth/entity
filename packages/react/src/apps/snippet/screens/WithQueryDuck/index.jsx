@@ -1,8 +1,8 @@
 import _compose from 'lodash/fp/compose';
 import exact from 'prop-types-exact';
 import React from 'react';
+import { Form } from '@gnowth/entity-form';
 
-import { Form } from 'lib/entity-form';
 import EntityScreenLocal from 'apps/snippets/entities/ScreenLocal';
 import withPropTypes from 'lib/higher-order-component/withPropTypes';
 

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Control, Form, Input } from 'lib/entity-form';
+import { Control, Form, Input } from '@gnowth/entity-form';
 
 const FormMain = props => (
   <Form {...props}>

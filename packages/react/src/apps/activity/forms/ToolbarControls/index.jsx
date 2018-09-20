@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
+import { Control, Form } from '@gnowth/entity-form';
 import { FormattedMessage } from 'react-intl';
 
-import { Control, Form } from 'lib/entity-form';
-import PropTypesEntity from 'lib/prop-types/Entity';
 import UIButton from 'lib/ui/Button';
 import UIIcon from 'lib/ui/Icon';
 import UISpacer from 'lib/ui/Spacer';

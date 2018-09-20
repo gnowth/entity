@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesLocale from '@gnowth/prop-types-locale';
 import React from 'react';
+import { Control, Form, Input } from '@gnowth/entity-form';
 
-import { Control, Form, Input } from 'lib/entity-form';
-import PropTypesEntity from 'lib/prop-types/Entity';
-import PropTypesLocale from 'lib/prop-types/Locale';
 import UIIcon from 'lib/ui/Icon';
 import UITypeSet from 'lib/ui/TypeSet';
 

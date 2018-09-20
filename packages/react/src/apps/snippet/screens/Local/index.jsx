@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
+import PropTypesDuck from '@gnowth/prop-types-duck';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { QueryDuck } from '@gnowth/entity-duck';
 
 import EntityScreenLocal from 'apps/snippet/entities/ScreenLocal';
 import FormMain from 'apps/snippet/forms/Main';
-import PropTypesDuck from 'lib/prop-types/Duck';
-import PropTypesPlus from 'lib/prop-types/Plus';
 
 const ScreenLocal = props => (
   <QueryDuck
