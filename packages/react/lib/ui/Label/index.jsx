@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
+import PropTypesLocale from '@gnowth/prop-types-locale';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
-import PropTypesPlus from 'lib/prop-types/Plus';
-import PropTypesLocale from 'lib/prop-types/Locale';
 import UITypeSet from 'lib/ui/TypeSet';
 
 import { Label } from './style';

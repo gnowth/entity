@@ -7,7 +7,7 @@ import { createEpicMiddleware } from 'redux-observable';
 
 import rootReducer from 'store/reducers';
 import rootEpic from 'store/epics';
-import duckMiddleware from 'lib/entity-duck/middleware';
+import { middleware as duckMiddleware } from '@gnowth/entity-duck';
 
 const composeEnhancers = (
   process.env.NODE_ENV === 'development'

@@ -1,9 +1,8 @@
 import _debounce from 'lodash/fp/debounce';
 import React from 'react';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import { is } from 'immutable';
-
-import PropTypesPlus from 'lib/prop-types/Plus';
 
 export default function ({ delay = 300 } = {}) {
   return Component => class DebouncedComponent extends React.Component {
