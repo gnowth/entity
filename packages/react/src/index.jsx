@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AppRoot } from '@gnowth/entity-app';
+import { DuckProvider, QueryDuck } from '@gnowth/entity-duck';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
@@ -9,8 +11,6 @@ import { HashRouter as Router } from 'react-router-dom';
 import theme from 'styles';
 import store, { history } from 'store';
 
-import { AppRoot } from '@gnowth/entity-app';
-import { DuckProvider, QueryDuck } from 'lib/entity-duck';
 import { FormDefaultProvider } from 'lib/entity-form';
 import UIButton from 'lib/ui/Button';
 import UILabel from 'lib/ui/Label';

@@ -1,7 +1,7 @@
-import { List } from 'immutable';
-
 import { Entity, Fields } from '@gnowth/entity';
-import DuckScreen from 'lib/entity-duck-screen';
+import { List } from 'immutable';
+import DuckScreen from '@gnowth/entity-duck-screen';
+
 import EntityPerson from 'apps/people/entities/Person';
 
 class Local extends Entity {

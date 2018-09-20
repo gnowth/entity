@@ -1,5 +1,6 @@
 import { Entity, Fields } from '@gnowth/entity';
-import DuckRest from 'lib/entity-duck-rest';
+import DuckRest from '@gnowth/entity-duck-rest';
+
 import settings from 'settings';
 
 class Person extends Entity {

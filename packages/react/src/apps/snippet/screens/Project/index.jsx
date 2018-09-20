@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { QueryDuck } from '@gnowth/entity-duck';
 
-import { QueryDuck } from 'lib/entity-duck';
 import EntityProject from 'apps/people/entities/Project';
 import FormProject from 'apps/snippet/forms/Project';
 import PropTypesDuck from 'lib/prop-types/Duck';
