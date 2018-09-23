@@ -1,14 +1,14 @@
 {
-  "name": "@gnowth/entity-duck-screen",
-  "version": "0.0.1",
-  "description": "entity-duck-screen",
-  "main": "index.js",
-  "scripts": {
-    "build": "rollup -c=../../configs/rollup.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Thierry Wong",
+  "description": "entity-duck-screen",
   "license": "GPL-3.0-or-later",
+  "main": "index.js",
+  "name": "@gnowth/entity-duck-screen",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js"
+  },
   "dependencies": {
     "@gnowth/entity-duck": "0.0.1",
     "immutable": "4.0.0-rc.9"
