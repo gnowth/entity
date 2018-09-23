@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@gnowth/entity": "0.0.1",
+    "@gnowth/entity-app": "0.0.1",
     "@gnowth/entity-duck": "0.0.1",
     "@gnowth/entity-duck-rest": "0.0.1",
     "@gnowth/entity-duck-screen": "0.0.1",
