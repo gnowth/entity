@@ -26,7 +26,7 @@ export default [
     plugins: [
       babel({
         configFile: '../../babel.config.js',
-        exclude: 'node_modules/**',
+        exclude: 'node_modules',
       }),
       resolve({
         extensions: ['.jsx'],
@@ -50,7 +50,7 @@ export default [
     plugins: [
       babel({
         configFile: '../../babel.config.js',
-        exclude: 'node_modules/**',
+        exclude: 'node_modules',
       }),
       resolve({
         extensions: ['.jsx'],

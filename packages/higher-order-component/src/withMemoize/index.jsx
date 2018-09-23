@@ -1,3 +1,11 @@
+import React from 'react';
+
+export default ComposedComponent => function withMemoize(props) {
+  return (
+    <ComposedComponent {...props} />
+  );
+};
+
 // import React from 'react';
 // import { createSelector } from 'reselect';
 

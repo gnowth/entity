@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import Select from 'react-select';
 import { UIIcon } from '@gnowth/ui';
 
-import 'react-select/dist/react-select.css';
+// TODO chech what to do with css
+// import 'react-select/dist/react-select.css';
 
 export const Root = styled(Select)`
   text-align: left;

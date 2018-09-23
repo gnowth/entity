@@ -64,3 +64,6 @@ typings/
 .vscode
 
 .history
+
+# build
+dist/

@@ -3,8 +3,9 @@ import cn from 'classnames';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import 'material-design-icons/iconfont/material-icons.css';
-import 'font-awesome/css/font-awesome.css';
+// TODO check what to do with css
+// import 'material-design-icons/iconfont/material-icons.css';
+// import 'font-awesome/css/font-awesome.css';
 
 const UIIcon = styled.i.attrs({
   className: props => cn({
