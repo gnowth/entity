@@ -1,0 +1,24 @@
+{
+  "author": "Thierry Wong",
+  "description": "",
+  "license": "GPL-3.0-or-later",
+  "main": "index.js",
+  "name": "@gnowth/ui",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js"
+  },
+  "dependencies": {
+    "@gnowth/prop-types-locale": "0.0.1",
+    "@gnowth/prop-types-plus": "0.0.1",
+    "classnames": "",
+    "lodash": "4.17.11",
+    "prop-types": "15.6.2",
+    "react-intl": "",
+    "styled-components": ""
+  },
+  "peerDependencies": {
+    "react": "",
+    "react-router-dom": ""
+  }
+}
