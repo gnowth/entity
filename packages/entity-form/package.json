@@ -2,12 +2,14 @@
   "author": "Thierry Wong",
   "description": "entity-form",
   "license": "GPL-3.0-or-later",
-  "main": "index.js",
+  "main": "src/index.js",
   "name": "@gnowth/entity-form",
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "build": "rollup -c=../../configs/rollup.config.js"
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'"
   },
   "dependencies": {
     "@gnowth/prop-types-entity": "0.0.1",
