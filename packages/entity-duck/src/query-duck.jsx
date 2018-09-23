@@ -190,10 +190,7 @@ QueryDuck.propTypes = {
   cached: PropTypes.bool,
   children: PropTypesPlus.isRequiredIfNot('component', PropTypes.func),
   clear: PropTypes.func.isRequired,
-  entity: PropTypes.shape({
-    duck: PropTypes.instanceOf(Duck),
-    prototype: PropTypes.instanceOf(Entity),
-  }).isRequired,
+  entity: PropTypes.func.isRequired, // TODO add proper propTypes
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
   id: PropTypes.string,

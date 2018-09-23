@@ -6,6 +6,7 @@ import isUndefined from './is-undefined';
 import notNull from './not-null';
 import notRequiredIf from './not-required-if';
 import provider from './provider';
+import string from './string';
 import withRequired from './with-required';
 
 export default {
@@ -17,7 +18,6 @@ export default {
   notNull,
   notRequiredIf,
   provider,
+  string,
   withRequired,
 };
-
-// TODO: string

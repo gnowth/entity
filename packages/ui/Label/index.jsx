@@ -27,7 +27,7 @@ UILabel.propTypes = {
   children: PropTypes.node,
 
   label: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
+    PropTypes.string,
   ]),
 
   labelLocale: PropTypesPlus.isRequiredIfNot(
