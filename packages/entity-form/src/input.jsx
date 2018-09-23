@@ -5,10 +5,9 @@ import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { withPropMapper, withPropTypes } from '@gnowth/higher-order-component';
 
 import { withFormDefault } from './context';
-import withPropMapper from '../../higher-order-component/withPropMapper';
-import withPropTypes from '../../higher-order-component/withPropTypes';
 import withInput from './withInput';
 
 class Input extends React.Component {

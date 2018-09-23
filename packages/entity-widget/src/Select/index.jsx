@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import { List, fromJS } from 'immutable';
-
-import PropTypesEntity from 'lib/prop-types/Entity';
 
 import * as SC from './style';
 

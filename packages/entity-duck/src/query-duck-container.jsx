@@ -6,9 +6,8 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
+import { withPropTypes, withState } from '@gnowth/higher-order-component';
 
-import withPropTypes from '../../higher-order-component/withPropTypes';
-import withState from '../../higher-order-component/withState';
 import { withDuck } from './context';
 
 const createDuckRef = action => ({

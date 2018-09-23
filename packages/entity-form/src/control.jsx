@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { connect } from 'react-redux';
+import { withPropMapper, withPropTypes, withState } from '@gnowth/higher-order-component';
 
 import { withFormDefault } from './context';
-import withPropMapper from '../../higher-order-component/withPropMapper';
-import withPropTypes from '../../higher-order-component/withPropTypes';
-import withState from '../../higher-order-component/withState';
 import withInput from './withInput';
 
 class Control extends React.Component {

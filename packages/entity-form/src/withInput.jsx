@@ -5,10 +5,10 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { withPropMapper } from '@gnowth/higher-order-component';
 import { List, Map } from 'immutable';
 
 import { withForm, withFormDefault } from './context';
-import withPropMapper from '../../higher-order-component/withPropMapper';
 
 export default function (ComposedComponent) {
   class withInput extends React.Component {

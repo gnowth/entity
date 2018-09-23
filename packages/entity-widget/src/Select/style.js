@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import Select from 'react-select';
-
-import UIIcon from 'lib/ui/Icon';
+import { UIIcon } from '@gnowth/ui';
 
 import 'react-select/dist/react-select.css';
 

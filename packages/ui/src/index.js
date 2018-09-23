@@ -1,15 +1,15 @@
-export { default as Button } from './Button';
+export { default as UIButton } from './Button';
 
-export { default as Icon } from './Icon';
+export { default as UIIcon } from './Icon';
 
-export { default as Label } from './Label';
+export { default as UILabel } from './Label';
 
-export { default as Portal } from './Portal';
+export { default as UIPortal } from './Portal';
 
-export { default as ProgressCircle } from './ProgressCircle';
+export { default as UIProgressCircle } from './ProgressCircle';
 
-export { default as ProgressLine } from './ProgressLine';
+export { default as UIProgressLine } from './ProgressLine';
 
-export { default as Spacer } from './Spacer';
+export { default as UISpacer } from './Spacer';
 
-export { default as TypeSet } from './TypeSet';
+export { default as UITypeSet } from './TypeSet';
