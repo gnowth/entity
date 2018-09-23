@@ -24,7 +24,6 @@ export default (types, initialState) => ({
     const idIdentifier = getIdentifier({ ...action.meta, useId: true });
 
     const record = action.meta.entity.dataToRecord(action.payload);
-    console.log('idIdentifier', idIdentifier, action);
 
     return state.withMutations(
       s => s

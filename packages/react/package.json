@@ -119,6 +119,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:gnowth/bp-react.git"
+    "url": "git@bitbucket.org:gnowth/react.git"
   }
 }

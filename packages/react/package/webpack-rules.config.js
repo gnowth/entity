@@ -1,5 +1,5 @@
-const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const babelConfig = require('../../../babel.config');
 
 const isBuild = process.env.npm_lifecycle_event === 'build'
   || process.env.npm_lifecycle_event === 'deploy';
@@ -13,9 +13,12 @@ const extract = loaders => (
 module.exports = [
   {
     test: /\.(js|jsx)$/,
-    exclude: '/node_modules/',
+    // exclude: '/node_modules/',
+    exclude: /node_modules\/(?!(@gnowth)\/).*/,
     loader: 'babel-loader',
-    include: [path.resolve(__dirname, '../')],
+    options: babelConfig,
+    // include: [path.resolve(__dirname, '../')],
+    // configFile: '../../babel.config.js',
   },
 
   {
