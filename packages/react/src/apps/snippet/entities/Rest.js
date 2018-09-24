@@ -1,8 +1,7 @@
-import { Entity, Fields } from '@gnowth/entity';
 import DuckRest from '@gnowth/entity-duck-rest';
+import { Entity, Fields } from '@gnowth/entity';
 
 import settings from 'settings';
-
 import EntityPerson from 'apps/people/entities/Person';
 
 class Rest extends Entity {

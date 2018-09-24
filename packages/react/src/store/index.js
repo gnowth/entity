@@ -1,13 +1,13 @@
+import { duckMiddleware } from '@gnowth/entity-duck';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
-import { Map } from 'immutable';
 import { createBrowserHistory } from 'history';
+import { Map } from 'immutable';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import { createEpicMiddleware } from 'redux-observable';
 
 import rootReducer from 'store/reducers';
 import rootEpic from 'store/epics';
-import { duckMiddleware } from '@gnowth/entity-duck';
 
 const composeEnhancers = (
   process.env.NODE_ENV === 'development'

@@ -1,10 +1,11 @@
-import { BaseEntity, Fields } from '@gnowth/entity';
 import DuckRest from '@gnowth/entity-duck-rest';
+import { BaseEntity, Fields } from '@gnowth/entity';
 
 import settings from 'settings';
 
 class Location extends BaseEntity {
   static apiBase = `/${settings.PROJECT_NAME}_tz/v1/locations/`;
+
   static paginated = true;
 
   static fields = {

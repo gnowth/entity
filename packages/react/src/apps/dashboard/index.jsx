@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { App } from '@gnowth/entity-app';
+
 import ScreenDashboard from 'apps/dashboard/screens/Dashboard';
 import theme from 'apps/dashboard/styles';
 

@@ -1,5 +1,5 @@
-import { Entity, Fields } from '@gnowth/entity';
 import DuckRest from '@gnowth/entity-duck-rest';
+import { Entity, Fields } from '@gnowth/entity';
 
 import settings from 'settings';
 

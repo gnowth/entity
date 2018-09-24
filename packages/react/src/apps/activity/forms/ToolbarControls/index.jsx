@@ -3,11 +3,8 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import { Control, Form } from '@gnowth/entity-form';
+import { UIButton, UIIcon, UISpacer } from '@gnowth/ui';
 import { FormattedMessage } from 'react-intl';
-
-import UIButton from 'lib/ui/Button';
-import UIIcon from 'lib/ui/Icon';
-import UISpacer from 'lib/ui/Spacer';
 
 import locale from './locale';
 

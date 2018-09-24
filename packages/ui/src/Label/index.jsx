@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
+import PropTypesLocale from '@gnowth/prop-types-locale';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
-import PropTypesPlus from 'lib/prop-types/Plus';
-import PropTypesLocale from 'lib/prop-types/Locale';
-import UITypeSet from 'lib/ui/TypeSet';
-
+import UITypeSet from '../TypeSet';
 import { Label } from './style';
 
 const UILabel = props => (
@@ -25,15 +24,8 @@ const UILabel = props => (
 
 UILabel.propTypes = {
   children: PropTypes.node,
-
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-  ]),
-
-  labelLocale: PropTypesPlus.isRequiredIfNot(
-    'label',
-    PropTypesLocale.locale,
-  ),
+  label: PropTypes.string,
+  labelLocale: PropTypesLocale.locale,
 };
 
 UILabel.defaultProps = {

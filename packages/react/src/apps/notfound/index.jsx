@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { App } from '@gnowth/entity-app';
 
 const AppNotFound = () => (
