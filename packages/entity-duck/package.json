@@ -8,8 +8,10 @@
   "version": "0.0.1",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
+    "clean": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
-    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'"
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "prebuild": "npm run clean"
   },
   "dependencies": {
     "@gnowth/entity": "0.0.1",

@@ -1,7 +1,9 @@
 // TODO use closure for minification
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import copy from 'rollup-plugin-copy';
 import path from 'path';
+import postcss from 'rollup-plugin-postcss';
 import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
@@ -15,34 +17,32 @@ const dependencies = []
 
 export default [
   {
-    amd: { id: process.env.LERNA_PACKAGE_NAME },
     external: dependencies,
     input: path.join(rootPath, 'src/index.js'),
-    name: process.env.LERNA_PACKAGE_NAME,
     output: {
       file: path.join(rootPath, 'dist/development.js'),
       format: 'es',
+      sourcemap: true,
     },
     plugins: [
       babel({
         configFile: '../../babel.config.js',
-        exclude: 'node_modules',
+        exclude: ['node_modules', '*.css'],
       }),
+      postcss({ extract: true }),
       resolve({
         extensions: ['.jsx'],
         main: false,
         module: true,
       }),
       commonjs(),
+      copy({ '../../assets/index.js': 'dist/index.js' }),
     ],
-    sourcemap: true,
   },
 
   {
-    amd: { id: process.env.LERNA_PACKAGE_NAME },
     external: dependencies,
     input: path.join(rootPath, 'src/index.js'),
-    name: process.env.LERNA_PACKAGE_NAME,
     output: {
       file: path.join(rootPath, 'dist/production.min.js'),
       format: 'es',
@@ -62,27 +62,4 @@ export default [
       terser(),
     ],
   },
-]
-
-// export default formats.map(format => ({
-//   plugins: [
-//     resolve({
-//       main: false,
-//       module: true,
-//     }),
-//     commonjs(),
-//   ],
-//   input: inputFile,
-//   external: moduleNames,
-//   name: LERNA_PACKAGE_NAME,
-//   output: {
-//     file: path.join(rootPath, 'dist', `index.${format}.js`),
-//     format: 'es',
-//   },
-//   amd: {
-//     id: LERNA_PACKAGE_NAME,
-//   },
-//   sourcemap: true,
-// }));
-
-// "build": "lerna exec -- rollup -c=../../rollup.config.js",
+];
