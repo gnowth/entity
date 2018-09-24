@@ -25,11 +25,15 @@ export default [
       sourcemap: true,
     },
     plugins: [
+      postcss({
+        modules: {
+          globalModulePaths: ['node_modules'],
+        },
+      }),
       babel({
         configFile: '../../babel.config.js',
-        exclude: ['node_modules', '*.css'],
+        exclude: 'node_modules',
       }),
-      postcss({ extract: true }),
       resolve({
         extensions: ['.jsx'],
         main: false,
@@ -48,6 +52,11 @@ export default [
       format: 'es',
     },
     plugins: [
+      postcss({
+        modules: {
+          globalModulePaths: ['node_modules'],
+        },
+      }),
       babel({
         configFile: '../../babel.config.js',
         exclude: 'node_modules',
