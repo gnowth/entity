@@ -3,13 +3,14 @@ import React from 'react';
 
 const filterProps = _omit([
   'defaultValue',
-  'willChangeRecord',
-
+  'field',
   'initialValue',
   'mapProps',
   'onInputChange',
+  'options',
   'processing',
   'processingDidFail',
+  'willChangeRecord',
 ]);
 
 export default ComposedComponent => function withPropsFiltered(props) {

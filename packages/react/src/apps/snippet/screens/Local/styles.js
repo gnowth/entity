@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from 'react-emotion';
 
 export const screen = css`
   background-color: white;

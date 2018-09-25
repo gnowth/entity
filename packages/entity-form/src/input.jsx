@@ -56,7 +56,6 @@ class Input extends React.Component {
     return props.value.map((val, index) => (
       <this.props.component
         {...props}
-        data-index={index}
         index={index}
         key={index}
         value={val}

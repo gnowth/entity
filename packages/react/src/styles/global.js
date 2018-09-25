@@ -1,6 +1,4 @@
-import { css } from 'emotion';
-
-export default css`
+export default `
   * {
     box-sizing: border-box;
     padding: 0;
