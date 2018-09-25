@@ -13,7 +13,9 @@
     "npm": "6.1.0"
   },
   "scripts": {
-    "build": "webpack --mode production --progress --config configs/webpack.config.js",
+    "build": "npm run build:src",
+    "build:src": "webpack --mode production --progress --config configs/webpack.config.js",
+    "build:storybook": "build-storybook -c configs/storybook -o dist/storybook",
     "deploy": "npm run build && npm run storybook:build",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint '{lib,src}/**/*.{js,jsx}' --config configs/stylelint.config.js",
@@ -30,7 +32,6 @@
     "test": "jest --config configs/jest.config.js",
     "serve-dist": "browser-sync start --server dist",
     "storybook": "start-storybook -c configs/storybook -p 6006",
-    "storybook:build": "build-storybook -c configs/storybook -o dist/storybook",
     "yarn": "yarn"
   },
   "dependencies": {
