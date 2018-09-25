@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npm run build:src",
     "build:src": "webpack --mode production --progress --config configs/webpack.config.js",
-    "build:storybook": "build-storybook -c configs/storybook -o dist/storybook",
+    "build:storybook": "build-storybook -c configs/storybook -o dist/styleguide",
     "deploy": "npm run build && npm run storybook:build",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint '{lib,src}/**/*.{js,jsx}' --config configs/stylelint.config.js",
