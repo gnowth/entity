@@ -12,6 +12,7 @@ export const filterProps = _omit([
   'processingDidFail',
 ]);
 
-export const withPropsFiltered = ComposedComponent => props => (
-  <ComposedComponent {...filterProps(props)} />
-);
+// TODO add name to component or find new name
+export const withPropsFiltered = ComposedComponent => function withPropsFiltered(props) {
+  return <ComposedComponent {...filterProps(props)} />;
+};

@@ -31,6 +31,7 @@ export default function (ComposedComponent) {
       const index = target.getAttribute
         ? target.getAttribute('index') || undefined
         : target.index;
+      console.log(target, target.value, target.name, index, target.dataset.index);
 
       const props = this.getProps();
 
