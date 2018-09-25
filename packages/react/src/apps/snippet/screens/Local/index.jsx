@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -7,16 +8,21 @@ import { QueryDuck } from '@gnowth/entity-duck';
 import EntityScreenLocal from 'apps/snippet/entities/ScreenLocal';
 import FormMain from 'apps/snippet/forms/Main';
 
-import * as styles from './styles';
+const Screen = styled.div`
+  background-color: white;
+  border-radius: 1rem;
+  margin: 3rem;
+  padding: 2rem;
+`;
 
 const ScreenLocal = props => (
-  <div className={styles.screen}>
+  <Screen>
     <QueryDuck
       action={props.entity.duck.get}
       component={props.formComponent}
       componentProps={props.formComponentProps}
     />
-  </div>
+  </Screen>
 );
 
 ScreenLocal.propTypes = {

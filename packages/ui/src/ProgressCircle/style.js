@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'react-emotion';
+import styled, { css, keyframes } from 'styled-components';
 
 const spinnerRotateLinear = keyframes`
   0% {

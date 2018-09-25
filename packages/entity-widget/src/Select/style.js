@@ -1,4 +1,4 @@
-import styled, { css } from 'react-emotion';
+import styled, { css } from 'styled-components';
 import Select from 'react-select';
 import { UIIcon } from '@gnowth/ui';
 
@@ -27,6 +27,8 @@ export const Root = styled(Select)`
     ${props => props.disabled && props.theme.mixins.disabled}
     ${props => props.readOnly && props.theme.mixins.readOnly}
   }
+
+  ${props => props.css}
 `;
 
 export const Icon = styled(UIIcon)`

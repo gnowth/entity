@@ -2,7 +2,7 @@
 import 'normalize.css/normalize.css';
 
 import React from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from 'styled-components';
 import { configure, addDecorator } from '@storybook/react';
 
 import theme from 'styles';

@@ -9,21 +9,20 @@ const FormMain = props => (
     <Input
       name="title"
       wrapperComponentProps={{
-        className: styles.inputs,
+        css: styles.inputs,
         labelLocale: locale.title,
       }}
     />
 
     <Input
-      componentProps={{ className: styles.inputs }}
+      componentProps={{ css: styles.inputs }}
       name="titles"
       many
     />
 
     <Input name="title">
       { context => (
-        <input
-          className={styles.inputs}
+        <styles.InputText
           name={context.name}
           onChange={context.onChange}
           value={context.value}
@@ -32,7 +31,7 @@ const FormMain = props => (
     </Input>
 
     <Input
-      componentProps={{ className: styles.inputs }}
+      componentProps={{ css: styles.inputs }}
       name="user"
       apiOptions
     />

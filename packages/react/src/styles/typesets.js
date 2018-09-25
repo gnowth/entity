@@ -1,61 +1,61 @@
-import { css } from 'react-emotion';
+import { css } from 'styled-components';
 import { lighten } from 'polished';
 
-export const text = props => css`
-  color: ${props.theme.vars.colorBlack};
+export const text = css`
+  color: ${props => props.theme.vars.colorBlack};
   margin: 0;
 
-  ${props.disabled && props.theme.mixins.disabled}
-  ${props.readOnly && props.theme.mixins.readOnly}
+  ${props => props.disabled && props.theme.mixins.disabled}
+  ${props => props.readOnly && props.theme.mixins.readOnly}
 `;
 
-export const text_primary = props => css`
-  ${text(props)}
-  color: ${props.theme.vars.colorPrimary};
+export const text_primary = css`
+  ${text}
+  color: ${props => props.theme.vars.colorPrimary};
 `;
 
-export const text_danger = props => css`
-  ${text(props)}
-  color: ${props.theme.vars.colorDanger};
+export const text_danger = css`
+  ${text}
+  color: ${props => props.theme.vars.colorDanger};
 `;
 
-export const text_inverted = props => css`
-  ${text(props)}
-  color: ${props.theme.vars.colorWhite};
+export const text_inverted = css`
+  ${text}
+  color: ${props => props.theme.vars.colorWhite};
 `;
 
-export const label = props => css`
-  ${text(props)}
+export const label = css`
+  ${text}
 `;
 
-export const label_portal = props => css`
-  ${text(props)}
+export const label_portal = css`
+  ${text}
   text-transform: uppercase;
-  color: ${props.theme.vars.colorGrey};
+  color: ${props => props.theme.vars.colorGrey};
 `;
 
-export const link = props => css`
-  ${text(props)}
-  color: ${props.theme.vars.colorPrimary};
+export const link = css`
+  ${text}
+  color: ${props => props.theme.vars.colorPrimary};
   text-decoration: underline;
 `;
 
-export const placeholder = props => css`
-  ${text(props)}
-  color: ${props.theme.vars.colorGrey};
+export const placeholder = css`
+  ${text}
+  color: ${props => props.theme.vars.colorGrey};
 `;
 
-export const list = props => css`
-  ${text(props)}
+export const list = css`
+  ${text}
   cursor: pointer;
   list-style-type: none;
   padding: 7px;
 
   &:hover {
-    color: ${lighten(0.2, props.theme.vars.colorBlack)};
+    color: ${props => lighten(0.2, props.theme.vars.colorBlack)};
   }
 
-  ${props.selected && css`
+  ${props => props.selected && css`
     color: ${props.theme.vars.colorWhite};
     background-color: ${props.theme.vars.colorPrimary};
 
@@ -66,11 +66,11 @@ export const list = props => css`
   `}
 `;
 
-export const section = props => css`
+export const section = css`
   margin: 0;
   padding: 20px 25px;
-  color: ${props.theme.vars.colorWhite};
-  background-color: ${(
+  color: ${props => props.theme.vars.colorWhite};
+  background-color: ${props => (
     props.disabled
       ? lighten(0.4, props.theme.vars.colorBlack)
       : props.theme.vars.colorPrimary
@@ -79,17 +79,17 @@ export const section = props => css`
   font-weight: bold;
   letter-spacing: 0.6px;
 
-  ${props.disabled && props.theme.mixins.disabled}
-  ${props.readOnly && props.theme.mixins.readOnly}
+  ${props => props.disabled && props.theme.mixins.disabled}
+  ${props => props.readOnly && props.theme.mixins.readOnly}
 
   @media (max-width: 539px) {
     padding: 20px 15px;
   }
 `;
 
-export const screen_heading = props => css`
+export const screen_heading = css`
   font-family: 'Montserrat', Arial, sans-serif;
-  color: ${props.theme.vars.colorSecondary};
+  color: ${props => props.theme.vars.colorSecondary};
   font-size: 36px;
   font-weight: 200;
   line-height: 30px;
@@ -105,42 +105,42 @@ export const screen_heading = props => css`
   }
 `;
 
-export const section_heading = props => css`
-  color: ${props.theme.vars.colorWhite};
+export const section_heading = css`
+  color: ${props => props.theme.vars.colorWhite};
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.6px;
   margin: 0;
 `;
 
-export const table_heading = props => css`
-  color: ${props.theme.vars.colorBlack};
+export const table_heading = css`
+  color: ${props => props.theme.vars.colorBlack};
   font-weight: bold;
   text-align: left;
   padding: 10px 5px;
   margin: 0;
 `;
 
-export const table_text = props => css`
-  ${text(props)}
+export const table_text = css`
+  ${text}
   padding: 10px 5px;
 `;
 
-export const inspection_heading = props => css`
-  color: ${props.theme.vars.colorWhite};
-  background-color: ${props.theme.vars.colorSecondary};
+export const inspection_heading = css`
+  color: ${props => props.theme.vars.colorWhite};
+  background-color: ${props => props.theme.vars.colorSecondary};
   text-transform: uppercase;
   padding: 20px 25px;
   font-size: 18px;
   margin: 0;
 `;
 
-export const header_action = props => css`
+export const header_action = css`
   font-size: 18px;
   font-weight: bold;
 
-  ${props.disabled && props.theme.mixins.disabled}
-  ${props.readOnly && props.theme.mixins.readOnly}
+  ${props => props.disabled && props.theme.mixins.disabled}
+  ${props => props.readOnly && props.theme.mixins.readOnly}
 `;
 
 export const header_inverted = css`
@@ -150,8 +150,8 @@ export const header_inverted = css`
   margin: 0;
 `;
 
-export const answers_heading = props => css`
-  color: ${props.theme.vars.colorBlack};
+export const answers_heading = css`
+  color: ${props => props.theme.vars.colorBlack};
   text-transform: uppercase;
   font-size: 16px;
   font-weight: bold;

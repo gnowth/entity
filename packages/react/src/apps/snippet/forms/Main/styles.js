@@ -1,6 +1,9 @@
-import { css } from 'react-emotion';
+import styled, { css } from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const inputs = css`
   margin-top: 20px;
+`;
+
+export const InputText = styled.input`
+  ${inputs}
 `;

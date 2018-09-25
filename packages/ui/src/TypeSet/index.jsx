@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import React from 'react';
 import { withProps } from '@gnowth/higher-order-component';
 import { FormattedMessage } from 'react-intl';

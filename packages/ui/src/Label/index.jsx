@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesLocale from '@gnowth/prop-types-locale';
 import React from 'react';
@@ -7,10 +7,11 @@ import UITypeSet from '../TypeSet';
 
 const Label = styled.label`
   display: block;
+  ${props => props.css}
 `;
 
 const UILabel = props => (
-  <Label className={props.className}>
+  <Label className={props.className} css={props.css}>
     { props.label }
 
     { !props.label && props.labelLocale && (

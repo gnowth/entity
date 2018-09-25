@@ -18,12 +18,11 @@
     "@gnowth/higher-order-component": "0.0.1",
     "@gnowth/prop-types-locale": "0.0.1",
     "classnames": "2.2.6",
-    "emotion": "9.2.10",
     "font-awesome": "4.7.0",
     "lodash": "4.17.11",
     "material-design-icons": "3.0.1",
     "prop-types": "15.6.2",
-    "react-emotion": "9.2.10",
+    "styled-components": "3.4.6",
     "react-intl": "2.6.0"
   },
   "peerDependencies": {

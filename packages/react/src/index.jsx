@@ -7,7 +7,7 @@ import { WidgetBoolean, WidgetDate, WidgetInput, WidgetSelect, WidgetTextarea } 
 import { UIButton, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { HashRouter as Router } from 'react-router-dom';
 

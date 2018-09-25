@@ -1,6 +1,6 @@
 import _isFunction from 'lodash/fp/isFunction';
 import cn from 'classnames';
-import styled, { css } from 'react-emotion';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { withProps } from '@gnowth/higher-order-component';
 
