@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+// TODO add ability to use raw text, id, and locale;
 export default styled.span.attrs({
   children: props => props.children || (
     <FormattedMessage

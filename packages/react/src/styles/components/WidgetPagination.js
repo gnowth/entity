@@ -1,8 +1,7 @@
 import { css } from 'styled-components';
 import { lighten } from 'polished';
 
-// eslint-disable-next-line import/prefer-default-export
-export const pagination = {
+export default {
   navigation: css`
     position: fixed;
     bottom: 0;

@@ -1,7 +1,7 @@
 import _omit from 'lodash/fp/omit';
+import React from 'react';
 
-// TODO remove defaultValue
-export const filterProps = props => _omit([
+export const filterProps = _omit([
   'defaultValue',
   'willChangeRecord',
 
@@ -10,4 +10,8 @@ export const filterProps = props => _omit([
   'onInputChange',
   'processing',
   'processingDidFail',
-])(props);
+]);
+
+export const withPropsFiltered = ComposedComponent => props => (
+  <ComposedComponent {...filterProps(props)} />
+);

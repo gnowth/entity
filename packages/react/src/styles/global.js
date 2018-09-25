@@ -6,4 +6,8 @@ export default css`
     padding: 0;
     margin: 0;
   }
+
+  body {
+    background-color: #eee;
+  }
 `;

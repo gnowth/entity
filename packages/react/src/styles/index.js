@@ -4,7 +4,7 @@ import * as mixins from './mixins';
 import * as vars from './vars';
 import * as components from './components';
 
-export { default as global } from 'global';
+export { default as global } from './global';
 
 export default {
   components,

@@ -1,13 +1,17 @@
 {
   "author": "Thierry Wong",
-  "name": "gnowth",
   "license": "GPL-3.0-or-later",
+  "name": "gnowth",
   "private": true,
   "repository": "https://github.com/gnowth/gnowth.git",
+  "version": "0.0.1",
   "workspaces": [
     "packages/*"
   ],
-  "version": "0.0.1",
+  "engines": {
+    "node": "10.7.0",
+    "npm": "6.1.0"
+  },
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna run clean",
