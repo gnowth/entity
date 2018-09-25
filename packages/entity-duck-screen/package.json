@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "name": "@gnowth/entity-duck-screen",
   "private": true,
+  "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",

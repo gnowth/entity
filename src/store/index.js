@@ -4,10 +4,8 @@ import { createBrowserHistory } from 'history';
 import { Map } from 'immutable';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { combineReducers } from 'redux-immutable';
-import { createEpicMiddleware } from 'redux-observable';
 
 import rootReducer from 'store/reducers';
-import rootEpic from 'store/epics';
 
 const composeEnhancers = (
   process.env.NODE_ENV === 'development'
@@ -20,8 +18,6 @@ const composeEnhancers = (
   })
 ) || compose;
 
-const epicMiddleware = createEpicMiddleware();
-
 export const history = createBrowserHistory();
 
 export default createStore(
@@ -30,10 +26,7 @@ export default createStore(
   composeEnhancers(
     applyMiddleware(
       duckMiddleware,
-      epicMiddleware,
       routerMiddleware(history),
     ),
   ),
 );
-
-epicMiddleware.run(rootEpic);
