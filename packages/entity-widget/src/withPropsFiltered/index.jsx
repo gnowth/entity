@@ -1,7 +1,7 @@
 import _omit from 'lodash/fp/omit';
 import React from 'react';
 
-export const filterProps = _omit([
+const filterProps = _omit([
   'defaultValue',
   'willChangeRecord',
 
@@ -12,7 +12,6 @@ export const filterProps = _omit([
   'processingDidFail',
 ]);
 
-// TODO add name to component or find new name
-export const withPropsFiltered = ComposedComponent => function withPropsFiltered(props) {
+export default ComposedComponent => function withPropsFiltered(props) {
   return <ComposedComponent {...filterProps(props)} />;
 };

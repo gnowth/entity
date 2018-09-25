@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 
-import { withPropsFiltered } from '../utils';
+import withPropsFiltered from '../withPropsFiltered';
 
 const WidgetInput = styled(withPropsFiltered('input'))`
   ${props => props.theme.components.widgetInput}

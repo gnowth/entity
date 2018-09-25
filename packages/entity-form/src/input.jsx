@@ -53,7 +53,6 @@ class Input extends React.Component {
   }
 
   renderComponentArray(props) {
-    console.log('component', this.props.component)
     return props.value.map((val, index) => (
       <this.props.component
         {...props}
