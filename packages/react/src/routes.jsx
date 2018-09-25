@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import AppAuth from 'apps/auth';
 import AppChangeLog from 'apps/changelog';
 import AppDashboard from 'apps/dashboard';
+import AppHeader from 'apps/header';
 import AppNotFound from 'apps/notfound';
 import AppSnippet from 'apps/snippet';
 
@@ -30,7 +31,9 @@ const Routes = () => (
     </Route>
 
     <Route path="/snippet">
-      <AppSnippet />
+      <AppHeader>
+        <AppSnippet />
+      </AppHeader>
     </Route>
 
     <Route render={() => (<Redirect to="/notfound" />)} />
