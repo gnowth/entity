@@ -46,6 +46,8 @@ const FormMain = props => (
 
     <Control
       action={({ value }) => value.push('New value')}
+      component="button"
+      componentProps={{ children: 'Testt' }}
       name="titles"
     />
   </Form>
