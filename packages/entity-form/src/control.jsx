@@ -4,8 +4,8 @@ import _isObjectLike from 'lodash/fp/isObjectLike';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { connect } from 'react-redux';
 import { withPropMapper, withPropTypes, withState } from '@gnowth/higher-order-component';
+import { connect } from 'react-redux';
 
 import { withFormDefault } from './context';
 import withInput from './withInput';

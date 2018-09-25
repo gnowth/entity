@@ -1,9 +1,9 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import { filterProps } from '../utils';
+import { withPropsFiltered } from '../utils';
 
-const WidgetInput = props => (
-  <input {...filterProps(props)} />
-);
+const WidgetInput = styled.input`
+  ${props => props.theme.components.widgetInput}
+`;
 
-export default WidgetInput;
+export default withPropsFiltered(WidgetInput);
