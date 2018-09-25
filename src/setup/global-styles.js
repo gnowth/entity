@@ -1,9 +1,7 @@
 import { injectGlobal } from 'styled-components';
 
-import { global } from 'styles';
-
-export default function () {
+export default function setupGlobalStyles(theme) {
   return injectGlobal`
-    ${global}
+    ${theme.global}
   `;
 }

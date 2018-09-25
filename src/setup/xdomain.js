@@ -1,8 +1,6 @@
 import { xdomain } from 'xdomain';
 
-import settings from 'settings';
-
-export default function () {
+export default function setupXDomain(settings) {
   xdomain.slaves({
     [settings.BASE_API_DOMAIN]: '/api/xdomain/v1/proxy',
   });

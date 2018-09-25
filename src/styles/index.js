@@ -3,12 +3,12 @@ import * as components from './components';
 import * as mixins from './mixins';
 import * as typesets from './typesets';
 import * as vars from './vars';
-
-export { default as global } from './global';
+import global from './global';
 
 export default {
   colors,
   components,
+  global,
   mixins,
   typesets,
   vars,

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-import settings from 'settings';
-
-export default function () {
+export default function setupAxios(settings) {
   axios.defaults.timeout = 30000;
   axios.defaults.baseURL = settings.BASE_API_URL;
 

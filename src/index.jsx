@@ -12,13 +12,14 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import { HashRouter as Router } from 'react-router-dom';
 
 import theme from 'styles';
+import settings from 'settings';
 import store, { history } from 'store';
 import WidgetAttachment from 'apps/filer/widgets/Attachment';
 
 import Routes from './routes';
 import setup from './setup';
 
-setup();
+setup({ settings, theme });
 
 function render() {
   ReactDOM.render(
