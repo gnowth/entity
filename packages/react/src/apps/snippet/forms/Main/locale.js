@@ -5,5 +5,5 @@ export default defineMessages({
     defaultMessage: 'Title',
     description: 'Title',
     id: 'app.snippet.title',
-  }
+  },
 });

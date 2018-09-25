@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { Entity } from '@gnowth/entity';
+// import { Entity } from '@gnowth/entity';
 
-import Duck from './duck';
+// import Duck from './duck';
 import withQueryDuckContainer from './query-duck-container';
 
 class QueryDuck extends React.Component {

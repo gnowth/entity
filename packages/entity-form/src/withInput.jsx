@@ -10,6 +10,7 @@ import { List, Map } from 'immutable';
 
 import { withForm, withFormDefault } from './context';
 
+// TODO use options input to load option?
 export default function (ComposedComponent) {
   class withInput extends React.Component {
     getProps() {

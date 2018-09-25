@@ -7,6 +7,7 @@ import EntityPerson from './Person';
 
 class Project extends BaseEntity {
   static apiBase = `/${settings.PROJECT_NAME}_tz/v1/projects/`;
+
   static paginated = true;
 
   static fields = {

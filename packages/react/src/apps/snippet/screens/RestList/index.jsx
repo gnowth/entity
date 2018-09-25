@@ -1,6 +1,8 @@
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
+import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { QueryDuck } from '@gnowth/entity-duck';
 import { Map } from 'immutable';

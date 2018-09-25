@@ -52,12 +52,13 @@ class Input extends React.Component {
     );
   }
 
+  // TODO check if there is an alternative to index as key
   renderComponentArray(props) {
     return props.value.map((val, index) => (
       <this.props.component
         {...props}
         index={index}
-        key={index}
+        key={index} // eslint-disable-line react/no-array-index-key
         value={val}
       />
     ));

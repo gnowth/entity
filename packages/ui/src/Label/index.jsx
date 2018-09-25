@@ -1,10 +1,13 @@
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import PropTypesLocale from '@gnowth/prop-types-locale';
-import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
 import UITypeSet from '../TypeSet';
-import { Label } from './style';
+
+const Label = styled.label`
+  display: block;
+`;
 
 const UILabel = props => (
   <Label className={props.className}>

@@ -7,7 +7,6 @@ import _compose from 'lodash/fp/compose';
 import qs from 'query-string';
 import moment from 'moment';
 import { Map, fromJS } from 'immutable';
-import settings from 'settings';
 
 import * as Fields from './fields';
 
@@ -71,7 +70,7 @@ export class Entity {
       : record?.get(this.idField);
   }
 
-  static getExportUrl(params) {
+  static getExportUrl(params, settings) {
     const paramMap = params.remove('page').remove('page_size').filter(p => p) || Map();
 
     return `${settings.BASE_API_URL}${this.apiBase}?${qs.stringify(paramMap.toJS())}&format=xlsx`;

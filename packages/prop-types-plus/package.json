@@ -10,6 +10,7 @@
     "clean": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "lint": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
     "prebuild": "npm run clean"
   },
   "dependencies": {

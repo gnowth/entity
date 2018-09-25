@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import PropTypesDuck from '@gnowth/prop-types-duck';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { QueryDuck } from '@gnowth/entity-duck';
 
@@ -21,7 +23,7 @@ ScreenRestDetail.propTypes = {
 
 ScreenRestDetail.defaultProps = {
   entity: EntityRest,
-  formComponent: FormDetail,
+  formComponent: FormMain,
   formComponentProps: {},
 };
 
