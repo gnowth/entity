@@ -5,7 +5,7 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withPropMapper } from '@gnowth/higher-order-component';
+import { withProps } from '@gnowth/higher-order-component';
 import { List, Map } from 'immutable';
 
 import { withForm, withFormDefault } from './context';
@@ -107,10 +107,10 @@ export default function (ComposedComponent) {
     withFormDefault, // TODO make function, so that props can be removed
     withForm,
 
-    withPropMapper(props => ({
+    withProps(props => ({
       queryComponent: _getOr(props.defaultComponents.query)('queryComponent')(props),
     })),
-    // withPropMapper(props => {
+    // withProps(props => {
     //   const field = _getOr(props.formField)('field')(props);
 
     //   return {

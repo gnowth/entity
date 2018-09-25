@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import React from 'react';
-import { withPropMapper } from '@gnowth/higher-order-component';
+import { withProps } from '@gnowth/higher-order-component';
 import { FormattedMessage } from 'react-intl';
 
 const TypeSet = styled.span`
@@ -14,7 +14,7 @@ const TypeSet = styled.span`
 `;
 
 // TODO add ability to use raw text, id, and locale;
-export default withPropMapper(props => ({
+export default withProps(props => ({
   children: props.children || (
     <FormattedMessage
       id={props.id}

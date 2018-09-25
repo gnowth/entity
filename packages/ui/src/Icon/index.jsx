@@ -2,7 +2,7 @@ import _isFunction from 'lodash/fp/isFunction';
 import cn from 'classnames';
 import styled, { css } from 'react-emotion';
 import PropTypes from 'prop-types';
-import { withPropMapper } from '@gnowth/higher-order-component';
+import { withProps } from '@gnowth/higher-order-component';
 
 // TODO check what to do with css
 import 'material-design-icons/iconfont/material-icons.css';
@@ -37,7 +37,7 @@ UIIcon.defaultProps = {
   iconColor: undefined,
 };
 
-export default withPropMapper(props => ({
+export default withProps(props => ({
   className: cn({
     'material-icons': !props.fontawesome,
     [`fa fa-${props.name}`]: props.fontawesome,

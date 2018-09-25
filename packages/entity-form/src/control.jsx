@@ -4,7 +4,7 @@ import _isObjectLike from 'lodash/fp/isObjectLike';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withPropMapper, withPropTypes, withState } from '@gnowth/higher-order-component';
+import { withProps, withPropTypes, withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
 import { withFormDefault } from './context';
@@ -92,7 +92,7 @@ export default _compose(
   withInput,
   withFormDefault,
 
-  withPropMapper(props => ({
+  withProps(props => ({
     component: props.component || props.defaultComponents.control,
   })),
 
