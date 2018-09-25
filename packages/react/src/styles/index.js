@@ -1,15 +1,15 @@
-import * as typesets from './typesets';
 import * as colors from './colors';
-import * as mixins from './mixins';
-import * as vars from './vars';
 import * as components from './components';
+import * as mixins from './mixins';
+import * as typesets from './typesets';
+import * as vars from './vars';
 
 export { default as global } from './global';
 
 export default {
-  components,
-  typesets,
   colors,
+  components,
   mixins,
+  typesets,
   vars,
 };

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'react-emotion';
 import Select from 'react-select';
 import { UIIcon } from '@gnowth/ui';
 

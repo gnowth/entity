@@ -16,8 +16,9 @@
     "@babel/preset-flow"
   ],
   "plugins": [
+    "babel-plugin-emotion",
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-optional-chaining"
+    "@babel/plugin-proposal-optional-chaining",
   ],
   "env": {
     "development": {
@@ -29,7 +30,6 @@
     "test": {},
     "production": {
       "plugins": [
-        "babel-plugin-styled-components",
         "transform-react-remove-prop-types"
       ]
     }

@@ -5,9 +5,9 @@ import 'assets/favicon/manifest.json';
 import 'assets/robots.txt';
 
 import settings from 'settings';
-import setupAxios from 'lib/app-setup/axios';
-import setupGlobalStyles from 'lib/app-setup/styled-components-global';
-import setupXDomain from 'lib/app-setup/xdomain';
+import setupAxios from './axios';
+import setupGlobalStyles from './global-styles';
+import setupXDomain from './xdomain';
 
 export default function () {
   setupAxios();
