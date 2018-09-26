@@ -2,7 +2,7 @@ import { greenNasty, pine } from './colors';
 
 export const colorPrimary = greenNasty;
 
-export const colorSecondary = pine;
+export const colorSecondary = 'hsl(0, 0%, 80%)';
 
 export const colorBlack = '#555';
 

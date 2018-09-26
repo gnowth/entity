@@ -36,6 +36,12 @@ const FormMain = props => (
       apiOptions
     />
 
+    <Input
+      componentProps={{ css: styles.inputs }}
+      name="users"
+      apiOptions
+    />
+
     <Control
       action={() => 'hhgg'}
       component="button"

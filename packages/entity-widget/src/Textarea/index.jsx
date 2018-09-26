@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import withPropsFiltered from './withPropsFiltered';
+import withPropsFiltered from '../withPropsFiltered';
 
 const WidgetTextarea = styled.textarea`
   ${props => props.theme.components?.widgetTextarea}

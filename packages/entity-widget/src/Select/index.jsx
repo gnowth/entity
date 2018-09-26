@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import React from 'react';
@@ -11,6 +12,15 @@ class WidgetSelect extends React.Component {
     options => (options ? options.toJS() : []),
   )
 
+  getValue = createSelector(
+    x => x,
+    value => (value && value.toJS ? value.toJS() : value),
+  )
+
+  getOptionLabel = option => this.props.field.entity.optionToString(option)
+
+  getOptionValue = option => this.props.field.entity.optionToString(option)
+
   handleChange = value => this.props.onChange({
     target: {
       index: this.props.index,
@@ -23,11 +33,14 @@ class WidgetSelect extends React.Component {
     return (
       <Select
         {...this.props}
+        getOptionLabel={this.props.getOptionLabel || this.getOptionLabel}
+        getOptionValue={this.props.getOptionValue || this.getOptionValue}
         isClearable={!this.props.field.blank}
         isLoading={this.props.processing}
         isMulti={this.props.field.many}
         onChange={this.handleChange}
         options={this.getOptions(this.props.options)}
+        value={this.getValue(this.props.value)}
       />
     );
   }
@@ -35,12 +48,16 @@ class WidgetSelect extends React.Component {
 
 WidgetSelect.propTypes = {
   field: PropTypesEntity.field.isRequired,
+  getOptionLabel: PropTypes.func,
+  getOptionValue: PropTypes.func,
   index: PropTypes.number,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
 WidgetSelect.defaultProps = {
+  getOptionLabel: undefined,
+  getOptionValue: undefined,
   index: undefined,
 };
 

@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 
-import * as SC from './style';
+import * as SC from './styles';
 
 const IconOption = ({ value, children, ...props }) => (
   <SC.IconRoot {...props}>
-    { value.get('icon_name') &&
+    { value.get('icon_name') && (
       <SC.IconWrapper>
         <SC.Icon name={value.get('icon_name')} />
       </SC.IconWrapper>
-    }
+    )}
 
     <SC.IconLabel>{ children }</SC.IconLabel>
   </SC.IconRoot>

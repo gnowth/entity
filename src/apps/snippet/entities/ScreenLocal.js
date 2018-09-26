@@ -16,6 +16,11 @@ class Local extends Entity {
     user: new Fields.EntityField({
       blank: true,
       entity: EntityPerson,
+    }),
+
+    users: new Fields.EntityField({
+      blank: true,
+      entity: EntityPerson,
       many: true,
     }),
   };

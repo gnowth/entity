@@ -1,8 +1,9 @@
+import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { filterProps } from '../withPropsFiltered';
 

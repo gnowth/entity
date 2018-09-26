@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import withPropsFiltered from '/withPropsFiltered';
+import withPropsFiltered from '../withPropsFiltered';
 
 const Input = styled.input`
   ${props => props.theme.components?.widgetCheckbox}
@@ -10,8 +10,6 @@ const Input = styled.input`
 `;
 
 class WidgetCheckbox extends React.Component {
-  ref = React.createRef()
-
   componentDidMount() {
     if (this.component) {
       this.ref.current.indeterminate = this.props.value === null;
@@ -24,12 +22,14 @@ class WidgetCheckbox extends React.Component {
     }
   }
 
+  ref = React.createRef()
+
   handleChange = () => this.props.onChange({
     target: {
       index: this.props.index,
       name: this.props.name,
       value: !this.props.value,
-    }
+    },
   })
 
   render() {

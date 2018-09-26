@@ -1,4 +1,4 @@
-import styled from 'styled-component';
+import styled, { css } from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
@@ -62,9 +62,19 @@ class WidgetOrdering extends React.Component {
     });
   };
 
+  handleKeyPress = () => {
+    // TODO implement
+  }
+
   render() {
     return (
-      <span className={this.props.className} onClick={this.handleClick}>
+      <span
+        className={this.props.className}
+        onClick={this.handleClick}
+        onKeyPress={this.handleKeyPress}
+        role="button"
+        tabIndex={0}
+      >
         { this.props.label }
         <UIIcon
           css={css`${props => props.theme.components?.widgetOrdering?.icon}`}

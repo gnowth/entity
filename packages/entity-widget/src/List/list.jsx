@@ -1,13 +1,12 @@
 import _isString from 'lodash/fp/isString';
 import React from 'react';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { List, is } from 'immutable';
+import { TypeSet } from '@gnowth/ui';
+import { is, List } from 'immutable';
 
-import { PropTypesEntity } from 'lib/entity';
-import TypeSet from 'lib/entity-component/TypeSet';
-
-import * as SC from './style';
+import * as SC from './styles';
 
 // TODO fix nested ternary
 // TODO check record equality by id
@@ -32,15 +31,15 @@ const WidgetEntityList = ({
 
   return (
     <React.Fragment>
-      { props.processing &&
+      { props.processing && (
         <ProcessingComponent {...props.processingComponentProps} />
-      }
+      )}
 
-      { !props.processing && props.options && props.options.size === 0 &&
+      { !props.processing && props.options && props.options.size === 0 && (
         <RecordsCountNoneComponent {...props.recordsCountNoneComponentProps} />
-      }
+      )}
 
-      { !props.processing && props.options && props.options.size > 0 &&
+      { !props.processing && props.options && props.options.size > 0 && (
         <ListComponent
           className={props.className}
           readOnly={props.readOnly}
@@ -76,7 +75,7 @@ const WidgetEntityList = ({
             </OptionComponent>
           ))}
         </ListComponent>
-      }
+      )}
     </React.Fragment>
   );
 };

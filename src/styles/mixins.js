@@ -48,15 +48,16 @@ export const buttonCancel = css`
 `;
 
 export const componentBox = css`
+  background-color: hsl(0, 0%, 98%);
   border: 1px solid ${props => props.theme.vars.colorSecondary};
-  border-radius: 5px;
-  box-sizing: border-box;
-  padding: 10px;
+  border-radius: 4px;
+  padding: 9px;
 
   &:focus {
-    border-color: ${props => props.theme.vars.colorSecondary};
+    background-color: white;
+    border-color: #2684ff;
     outline: none;
-    box-shadow: none;
+    box-shadow: 0 0 0 1px #2684ff;
   }
 `;
 
