@@ -28,6 +28,8 @@ class Control extends React.Component {
       {
         [this.props.event]: this.handleEvent,
         disabled: this.props.disabled || this.props.readOnly,
+        processing: this.props.processing,
+        processDidFail: this.props.processDidFail,
       },
       _isFunction(this.props.componentProps)
         ? this.props.componentProps(this.getPropsContext())
