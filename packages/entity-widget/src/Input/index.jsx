@@ -2,9 +2,19 @@ import styled from 'styled-components';
 
 import withPropsFiltered from '../withPropsFiltered';
 
-const WidgetInput = styled(withPropsFiltered('input'))`
-  ${props => props.theme.components.widgetInput}
+const WidgetInput = styled.input`
+  ${props => props.theme.components?.widgetInput}
   ${props => props.css}
 `;
 
-export default WidgetInput;
+WidgetInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+};
+
+WidgetInput.defaultProps = {
+  value: '',
+};
+
+export default withPropsFiltered(WidgetInput);

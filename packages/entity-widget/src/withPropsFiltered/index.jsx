@@ -1,7 +1,7 @@
 import _omit from 'lodash/fp/omit';
 import React from 'react';
 
-const filterProps = _omit([
+export const filterProps = _omit([
   'defaultValue',
   'field',
   'initialValue',

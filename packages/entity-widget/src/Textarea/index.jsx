@@ -1,7 +1,21 @@
-import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const WidgetTextarea = () => (
-  <div />
-);
+import withPropsFiltered from './withPropsFiltered';
 
-export default WidgetTextarea;
+const WidgetTextarea = styled.textarea`
+  ${props => props.theme.components?.widgetTextarea}
+  ${props => props.css}
+`;
+
+WidgetTextarea.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+};
+
+WidgetTextarea.defaultProps = {
+  value: '',
+};
+
+export default withPropsFiltered(WidgetTextarea);
