@@ -68,3 +68,20 @@ function render() {
 
 if (window.Intl) render();
 else require.ensure(['intl'], render);
+
+export default {
+  button: 'UIButton',
+  error: 'UIError',
+  formProvider: 'FormProvider',
+  label: 'UILabel',
+  processing: 'UIProcessing',
+  processingDidFail: () => 'Unable to load data. Try to refresh the page',
+  query: 'QueryDuck',
+  recordCount: ({ value }) => `${value} Record(s) Found`,
+  recordCountNone: () => 'No Records Found',
+  widget: {
+    char: 'WidgetInput',
+    date: 'WidgetDate',
+    text: 'WidgetTextarea',
+  },
+};
