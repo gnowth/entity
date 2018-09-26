@@ -6,7 +6,7 @@ export const contained = css`
 
 export const outlined = css`
   color: blue;
-`
+`;
 
 export const text = css`
   color: blue;
