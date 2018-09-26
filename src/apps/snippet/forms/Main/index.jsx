@@ -1,7 +1,7 @@
 import React from 'react';
 import { Control, Form, Input } from '@gnowth/entity-form';
 
-import * as styles from './styles';
+import styles, { InputText } from './styles';
 import locale from './locale';
 
 const FormMain = props => (
@@ -14,15 +14,9 @@ const FormMain = props => (
       }}
     />
 
-    <Input
-      componentProps={{ css: styles.inputs }}
-      name="titles"
-      many
-    />
-
     <Input name="title">
       { context => (
-        <styles.InputText
+        <InputText
           name={context.name}
           onChange={context.onChange}
           value={context.value}
@@ -32,20 +26,34 @@ const FormMain = props => (
 
     <Input
       componentProps={{ css: styles.inputs }}
+      name="titles"
+      wrapperComponentProps={{ label: 'Titles' }}
+      many
+    />
+
+    <Input
+      componentProps={{ css: styles.inputs }}
       name="user"
+      wrapperComponentProps={{ label: 'User' }}
       apiOptions
     />
 
     <Input
       componentProps={{ css: styles.inputs }}
       name="users"
+      wrapperComponentProps={{ label: 'Users' }}
       apiOptions
+    />
+
+    <Input
+      componentProps={{ css: styles.inputs }}
+      name="description"
+      wrapperComponentProps={{ label: 'Description' }}
     />
 
     <Control
       action={() => 'hhgg'}
-      component="button"
-      componentProps={{ children: 'test' }}
+      componentProps={{ label: 'test' }}
       name="title"
     />
 

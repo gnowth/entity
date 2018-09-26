@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  display: none;
+  display: inline-block;
 
-  ${props => props.theme}
-  ${props => props.media`
-    display: inline-block;
-  `}
+  ${props => props.theme.components?.uiButton?.[props.variant]}
+  ${props => props.css}
 `;
 
 export const ButtonResponsive = styled.button`
-  display: inline-block;
+  display: none;
 
-  ${props => props.theme}
-  ${props => props.media`
-    display: none;
-  `}
+  ${props => props.theme.components ?.uiButton ?.[props.variant]}
+  ${props => props.css}
 `;
 
 export const HyperLink = Button.withComponent('a');

@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import ProgressCircle from '../ProgressCircle';
 import * as S from './style';
 
-const UIButton = props => (
+const UIButton = ({ processing, ...props }) => (
   <>
     { props.to && /^https?:\/\//.exec(props.to) && (
       <>
@@ -27,7 +28,11 @@ const UIButton = props => (
     { !props.to && (
       <>
         <S.Button {...props}>
-          { props.label }
+          { processing && (
+            <ProgressCircle size="0.75rem" />
+          )}
+
+          { !processing && props.label }
         </S.Button>
 
         <S.ButtonResponsive {...props}>
@@ -39,13 +44,15 @@ const UIButton = props => (
 );
 
 UIButton.propTypes = {
+  processing: PropTypes.bool,
   to: PropTypes.string,
-  // urlRegex:
-  media: PropTypes.func,
+  variant: PropTypes.string,
 };
 
 UIButton.defaultProps = {
+  processing: false,
   to: '',
+  variant: 'outlined',
 };
 
 export default UIButton;

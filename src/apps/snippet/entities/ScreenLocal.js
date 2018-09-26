@@ -6,6 +6,8 @@ import EntityPerson from 'apps/people/entities/Person';
 
 class Local extends Entity {
   static fields = {
+    description: new Fields.TextField(),
+
     title: new Fields.CharField(),
 
     titles: new Fields.CharField({

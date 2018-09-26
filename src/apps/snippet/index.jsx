@@ -1,13 +1,18 @@
+import styled from 'styled-components';
 import React from 'react';
+import { App } from '@gnowth/entity-app';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import { App } from '@gnowth/entity-app';
 import ScreenLocal from 'apps/snippet/screens/Local';
 import ScreenProject from 'apps/snippet/screens/Project';
 
+const Header = styled.div`
+  margin-left: 10px;
+`;
+
 const AppSnippet = () => (
   <App>
-    App Snippet
+    <Header>App Snippet</Header>
 
     <Switch>
       <Route path="/snippet/local" component={ScreenLocal} />

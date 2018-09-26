@@ -2,13 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { App } from '@gnowth/entity-app';
 
+import { Content, Header } from './styles';
+
 const AppHeader = props => (
   <App>
-    <div>Header</div>
+    <Header>Header</Header>
 
-    <div>
+    <Content>
       { props.children }
-    </div>
+    </Content>
   </App>
 );
 

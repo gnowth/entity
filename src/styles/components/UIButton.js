@@ -5,7 +5,10 @@ export const contained = css`
 `;
 
 export const outlined = css`
-  color: blue;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  color: ${props => props.theme.vars.colorPrimary};
+  padding: 5px 30px;
 `;
 
 export const text = css`

@@ -52,6 +52,7 @@ export const componentBox = css`
   border: 1px solid ${props => props.theme.vars.colorSecondary};
   border-radius: 4px;
   padding: 9px;
+  width: 100%;
 
   &:focus {
     background-color: white;

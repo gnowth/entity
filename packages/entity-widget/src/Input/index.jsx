@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import withPropsFiltered from '../withPropsFiltered';
 
-const WidgetInput = styled.input`
+const WidgetInput = styled(withPropsFiltered('input'))`
   ${props => props.theme.components?.widgetInput}
   ${props => props.css}
 `;
@@ -18,4 +18,4 @@ WidgetInput.defaultProps = {
   value: '',
 };
 
-export default withPropsFiltered(WidgetInput);
+export default WidgetInput;

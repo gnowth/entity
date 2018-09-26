@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import withPropsFiltered from '../withPropsFiltered';
 
-const WidgetTextarea = styled.textarea`
+const WidgetTextarea = styled(withPropsFiltered('textarea'))`
   ${props => props.theme.components?.widgetTextarea}
   ${props => props.css}
 `;
@@ -18,4 +18,4 @@ WidgetTextarea.defaultProps = {
   value: '',
 };
 
-export default withPropsFiltered(WidgetTextarea);
+export default WidgetTextarea;

@@ -11,7 +11,7 @@ import FormMain from 'apps/snippet/forms/Main';
 const Screen = styled.div`
   background-color: white;
   border-radius: 1rem;
-  margin: 3rem;
+  margin-top: 0.5rem;
   padding: 2rem;
 `;
 
