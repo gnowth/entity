@@ -1,0 +1,44 @@
+{
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": false,
+	"editor.tabSize": 2,
+  "editor.rulers": [69],
+  "editor.formatOnPaste": true,
+  "workbench.editor.showTabs": false,
+  "files.autoSave": "onFocusChange",
+
+  "markdown.styles": [
+    "./node_modules/github-markdown-css/github-markdown.css"
+  ],
+
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "javascript.validate.enable": false,
+	"typescript.validate.enable": false,
+	"typescript.tsdk": "./node_modules/typescript/lib",
+
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.additionalDocumentSelectors": ["js"],
+  "stylelint.config": {
+    "extends": "./configs/stylelint.config.js"
+  },
+
+  "eslint.options": {
+    "configFile": "./configs/eslint.config.js",
+    "ignorePath": "./configs/eslint.ignore"
+  },
+
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+
+  "flow.useNPMPackagedFlow": true,
+
+  "code-runner.executorMap": {
+		"javascript": "node",
+		"python": "python",
+		"powershell": "powershell -ExecutionPolicy ByPass -File",
+		"shellscript": "bash",
+		"typescript": "./node_modules/.bin/ts-node",
+		"coffeescript": "coffee"
+	}
+}
