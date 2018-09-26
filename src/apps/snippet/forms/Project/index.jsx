@@ -1,7 +1,13 @@
 import React from 'react';
 import { Control, Form, Input } from '@gnowth/entity-form';
+import { UIError } from '@gnowth/ui';
 
 import styles, { Controls } from './styles';
+
+const Test = () => {
+  dsf.dfdf()
+  // throw new Error('New error test');
+}
 
 const FormProject = props => (
   <Form {...props}>
@@ -20,6 +26,9 @@ const FormProject = props => (
         label: 'ID from AD',
       }}
     />
+    <UIError>
+      <Test />
+    </UIError>
 
     <Input
       name="hse_reps"

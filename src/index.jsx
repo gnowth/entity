@@ -4,7 +4,7 @@ import { AppRoot } from '@gnowth/entity-app';
 import { DuckProvider, QueryDuck } from '@gnowth/entity-duck';
 import { FormDefaultProvider } from '@gnowth/entity-form';
 import { WidgetBoolean, WidgetDate, WidgetInput, WidgetSelect, WidgetTextarea } from '@gnowth/entity-widget';
-import { UIButton, UILabel, UIProgressCircle } from '@gnowth/ui';
+import { UIButton, UIError, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
@@ -36,6 +36,7 @@ function render() {
       formProviderProps={{
         defaultComponents: {
           control: UIButton,
+          error: UIError,
           query: QueryDuck,
           wrapper: UILabel,
         },

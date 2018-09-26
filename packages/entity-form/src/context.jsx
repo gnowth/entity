@@ -82,6 +82,8 @@ export const FormDefaultProvider = ({ children, ...props }) => (
 FormDefaultProvider.propTypes = exact({
   children: PropTypes.node.isRequired,
   defaultComponents: PropTypes.shape({
+    control: PropTypesPlus.component,
+    error: PropTypesPlus.component,
     label: PropTypesPlus.component,
     query: PropTypesPlus.component,
   }),
