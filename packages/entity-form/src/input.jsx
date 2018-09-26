@@ -25,7 +25,7 @@ class Input extends React.Component {
         onInputChange: this.props.onInputChange,
         options: this.props.options,
         processing: this.props.processing,
-        processingDidFail: this.props.processing,
+        processingDidFail: this.props.processingDidFail,
       },
       _isFunction(this.props.componentProps)
         ? this.props.componentProps(this.props)
