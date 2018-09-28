@@ -1,4 +1,4 @@
-import { Duck } from '@gnowth/entity-duck';
+import { Duck } from '@entity/duck';
 import { List, Map } from 'immutable';
 
 import reducerClear from './reducer-clear';

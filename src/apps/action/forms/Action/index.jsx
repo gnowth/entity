@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesLocale from '@gnowth/prop-types-locale';
 import React from 'react';
-import { Control, Form, Input } from '@gnowth/entity-form';
+import { Control, Form, Input } from '@entity/form';
 import { UIIcon, UITypeSet } from '@gnowth/ui';
 
 import locale from './locale';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Control, Form, Input } from '@gnowth/entity-form';
+import { Control, Form, Input } from '@entity/form';
 import { UIError } from '@gnowth/ui';
 
 import styles, { Controls } from './styles';

@@ -3,7 +3,7 @@ import _filter from 'lodash/fp/filter';
 import _flatMap from 'lodash/fp/flatMap';
 import _groupBy from 'lodash/fp/groupBy';
 import _mapValues from 'lodash/fp/mapValues';
-import { Duck } from '@gnowth/entity-duck';
+import { Duck } from '@entity/duck';
 import { combineReducers } from 'redux-immutable';
 
 const reqs = [

@@ -3,7 +3,7 @@
   "description": "entity-widget",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@gnowth/entity-widget",
+  "name": "@entity/widget",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",

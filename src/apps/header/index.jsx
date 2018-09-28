@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { App } from '@gnowth/entity-app';
+import { App } from '@gnowth/app';
 
 import { Content, Header } from './styles';
 

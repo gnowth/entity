@@ -19,6 +19,6 @@
     "prop-types": "15.6.2"
   },
   "peerDependencies": {
-    "@gnowth/entity": "0.0.1"
+    "@entity/core": "0.0.1"
   }
 }

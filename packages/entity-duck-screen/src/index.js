@@ -1,4 +1,4 @@
-import { Duck } from '@gnowth/entity-duck';
+import { Duck } from '@entity/duck';
 import { Map } from 'immutable';
 
 export default class ScreenDuck extends Duck {

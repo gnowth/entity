@@ -1,4 +1,4 @@
-import { duckMiddleware } from '@gnowth/entity-duck';
+import { duckMiddleware } from '@entity/duck';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
 import { Map } from 'immutable';

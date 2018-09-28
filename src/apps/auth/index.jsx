@@ -1,5 +1,5 @@
 import React from 'react';
-import { App } from '@gnowth/entity-app';
+import { App } from '@gnowth/app';
 
 const AppAuth = () => (
   <App>

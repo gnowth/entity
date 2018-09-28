@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppRoot } from '@gnowth/entity-app';
-import { DuckProvider, QueryDuck } from '@gnowth/entity-duck';
-import { FormDefaultProvider } from '@gnowth/entity-form';
-import { WidgetBoolean, WidgetDate, WidgetInput, WidgetSelect, WidgetTextarea } from '@gnowth/entity-widget';
+import { AppRoot } from '@gnowth/app';
+import { DuckProvider, QueryDuck } from '@entity/duck';
+import { FormDefaultProvider } from '@entity/form';
+import { WidgetBoolean, WidgetDate, WidgetInput, WidgetSelect, WidgetTextarea } from '@entity/widget';
 import { UIButton, UIError, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';

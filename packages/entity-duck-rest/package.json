@@ -3,7 +3,7 @@
   "description": "entity-duck-rest",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@gnowth/entity-duck-rest",
+  "name": "@entity/duck-rest",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
@@ -16,7 +16,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@gnowth/entity-duck": "0.0.1",
+    "@entity/duck": "0.0.1",
     "immutable": "4.0.0-rc.9",
     "query-string": "6.1.0"
   }

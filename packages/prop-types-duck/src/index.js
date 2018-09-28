@@ -1,4 +1,4 @@
-import { Duck } from '@gnowth/entity-duck';
+import { Duck } from '@entity/duck';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 

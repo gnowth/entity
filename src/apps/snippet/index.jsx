@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import { App } from '@gnowth/entity-app';
+import { App } from '@gnowth/app';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import ScreenLocal from 'apps/snippet/screens/Local';

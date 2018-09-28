@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-// import { Entity } from '@gnowth/entity';
+// import { Entity } from '@entity/core';
 
 // import Duck from './duck';
 import withQueryDuckContainer from './query-duck-container';

@@ -3,7 +3,7 @@
   "description": "entity-app",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@gnowth/entity-app",
+  "name": "@gnowth/app",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
