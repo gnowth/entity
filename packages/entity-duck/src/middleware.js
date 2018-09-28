@@ -1,5 +1,5 @@
 import _endsWith from 'lodash/fp/endsWith';
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import axios from 'axios';
 
 import Duck from './duck';

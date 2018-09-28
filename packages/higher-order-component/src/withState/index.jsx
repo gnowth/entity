@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import React from 'react';
 
 export default function ({ initialState = {}, mapProps: { state = 'state', setState = 'setState' } = {} }) {

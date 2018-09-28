@@ -1,4 +1,4 @@
-const _flatten = require('lodash/fp/flatten');
+const _flatten = require('lodash/flatten');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
