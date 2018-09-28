@@ -31,7 +31,7 @@ const App = props => (
           <FormProvider {...getProps('formProviderProps')}>
             <IntlProvider {...getProps('intlProviderProps')}>
               <ThemeProvider {...getProps('themeProviderProps')}>
-                {props.children}
+                { props.children }
               </ThemeProvider>
             </IntlProvider>
           </FormProvider>

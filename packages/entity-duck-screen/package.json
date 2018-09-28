@@ -3,7 +3,7 @@
   "description": "entity-duck-screen",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@entity/duck-screen",
+  "name": "@entity/duck-namespace-screen",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",

@@ -37,8 +37,8 @@
   "dependencies": {
     "@entity/core": "0.0.1",
     "@entity/duck": "0.0.1",
-    "@entity/duck-rest": "0.0.1",
-    "@entity/duck-screen": "0.0.1",
+    "@entity/duck-namespace-drf": "0.0.1",
+    "@entity/duck-namespace-screen": "0.0.1",
     "@entity/form": "0.0.1",
     "@entity/widget": "0.0.1",
     "@gnowth/app": "0.0.1",

@@ -9,7 +9,7 @@ import reducerDelete from './reducer-delete';
 import { getIdentifier } from './utils';
 
 export default class EntityDuck extends Duck {
-  static namespace = 'entities';
+  static namespace = 'dango_rest_framework';
 
   static actions = {
     clear: Duck.createAction(),

@@ -1,4 +1,4 @@
-import DuckScreen from '@entity/duck-screen';
+import DuckScreen from '@entity/duck-namespace-screen';
 import { Entity, Fields } from '@entity/core';
 import { List } from 'immutable';
 

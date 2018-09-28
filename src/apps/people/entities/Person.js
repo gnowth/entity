@@ -1,4 +1,4 @@
-import DuckRest from '@entity/duck-rest';
+import DuckRest from '@entity/duck-namespace-drf';
 import { Entity, Fields } from '@entity/core';
 
 import settings from 'settings';
