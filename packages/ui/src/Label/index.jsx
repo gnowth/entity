@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesLocale from '@gnowth/prop-types-locale';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
 import UITypeSet from '../TypeSet';
@@ -29,7 +29,7 @@ const UILabel = props => (
 UILabel.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
-  labelLocale: PropTypesLocale.locale,
+  labelLocale: PropTypesPlus.locale,
 };
 
 UILabel.defaultProps = {

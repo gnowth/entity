@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
 
-// TODO
-export default PropTypes.any;
+export default PropTypes.shape({
+  dispatch: PropTypes.func.isRequired,
+  getState: PropTypes.func.isRequired,
+  subscribe: PropTypes.func.isRequired,
+});

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { QueryDuck } from '@entity/duck';
+import { Query } from '@entity/duck-query';
 
 import EntityScreenLocal from 'apps/snippet/entities/ScreenLocal';
 import FormMain from 'apps/snippet/forms/Main';
@@ -17,7 +17,7 @@ const Screen = styled.div`
 
 const ScreenLocal = props => (
   <Screen>
-    <QueryDuck
+    <Query
       action={props.entity.duck.get}
       component={props.formComponent}
       componentProps={props.formComponentProps}
