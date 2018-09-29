@@ -1,3 +1,4 @@
+import _debounce from 'lodash/debounce';
 import _isFunction from 'lodash/isFunction';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
@@ -48,14 +49,14 @@ class Query extends React.Component {
       inputValue: this.props.inputValue,
       name: this.props.name, // TODO check about name?
       onChange: this.handleChange,
-      onInputChange: this.handleInputChange, // TODO use props?
+      onInputChange: this.handleInputChange,
       processing: this.props.processing,
       processingDidFail: this.props.processingDidFail,
       value: this.props.value,
     };
   }
 
-  getShouldShow() {
+  getShouldShow() { // TODO check all
     return {
       component: !this.props.shouldProcess || (
         !this.props.many
@@ -94,6 +95,23 @@ class Query extends React.Component {
         && this.props.value !== undefined,
     };
   }
+
+  handleChange = ({ target: { index, name, value } }) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (name !== this.props.name) throw new Error(`Query (onChange): Invalid name! Expecting "${this.props.name}" instead of ${name}.`);
+      if (index === null) throw new Error('Query (onChange): index cannot be null');
+      // TODO check that if there is an index, the props.value must be a list
+      // if (index !== undefined && this.props.value && 'size' in this.props.value) throw new Error('Query (onChange): index must be undefined as value is not a list');
+    }
+
+    return this.props.save(
+      index === undefined
+        ? value
+        : this.props.value.set(index, value),
+    );
+  }
+
+  handleInputChange = _debounce(this.props.onInputChange, 500);
 
   renderAsComponent(props) {
     const shouldShow = this.getShouldShow();
@@ -145,7 +163,7 @@ class Query extends React.Component {
   renderComponentArray(props) {
     return props.value && props.value.map((value, index) => (
       <this.props.component
-        key={this.props.field.entity.getId(value)} // TODO field.getEntityId
+        key={this.props.field.getEntityId(value)}
         {...props}
         index={index}
         initialValue={props.initialValue?.get(index)}
@@ -177,7 +195,7 @@ Query.propTypes = exact({
     PropTypesPlus.isRequiredIfNot('component', PropTypes.func),
     PropTypesPlus.notRequiredIf('component', PropTypes.func),
   ]),
-  clear: PropTypes.func.isRequired, // ---
+  clear: PropTypes.func.isRequired,
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
   field: PropTypesDuck.entityField.isRequired,
@@ -185,8 +203,8 @@ Query.propTypes = exact({
     PropTypesImmutable.list,
     PropTypesImmutable.map,
   ]),
+  name: PropTypes.string,
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool), // TODO not required if action will return a map
-  onChange: PropTypes.func.isRequired, // TODO think about onSubmit
   onInputChange: PropTypes.func.isRequired,
   persist: PropTypes.bool,
   persistDirty: PropTypesPlus.notRequiredIfNot('persist', PropTypes.bool), // TOOD implement notRequiredIfNot in prop-types-plus
@@ -202,6 +220,7 @@ Query.propTypes = exact({
   recordCountComponentProps: PropTypes.shape({}),
   recordCountNoneComponent: PropTypesPlus.isRequiredIf('recordCountNoneComponentProps', PropTypesPlus.component),
   recordCountNoneComponentProps: PropTypes.shape({}),
+  save: PropTypes.func.isRequired,
   shouldProcess: PropTypes.bool,
   store: PropTypesPlus.store.isRequired,
   value: PropTypes.oneOfType([
@@ -216,6 +235,7 @@ Query.defaultProps = {
   component: undefined,
   componentProps: undefined,
   initialValue: undefined,
+  name: 'entity-duck-query',
   many: undefined,
   persist: true,
   persistDirty: undefined,

@@ -309,6 +309,14 @@ export class EntityField extends AnyField {
     return this.blank ? null : this.entity.dataToRecord({});
   }
 
+  getEntity() {
+    return this.entity;
+  }
+
+  getEntityId(record, option) {
+    return this.entity.getId(record, option);
+  }
+
   // TODO remove name as being an array?
   getField({ name } = {}) {
     if (process.env.NODE_ENV !== 'production') {

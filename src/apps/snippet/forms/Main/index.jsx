@@ -15,13 +15,7 @@ const FormMain = props => (
     />
 
     <Input name="title">
-      { context => (
-        <InputText
-          name={context.name}
-          onChange={context.onChange}
-          value={context.value}
-        />
-      )}
+      { context => <InputText {...context} /> }
     </Input>
 
     <Input
