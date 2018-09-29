@@ -8,54 +8,55 @@ import { connect } from 'react-redux';
 // TODO need to make sure keyRecord is provided!
 const mapStateToProps = (state, props) => Object.assign(
   {
-    field: props.withQuery_action.meta.entity.toEntityField(),
+    field: props.queryContainer_action.meta.entity.toEntityField(),
 
-    initialValue: props.withQuery_record(state, props.withQuery_action.meta),
+    initialValue: props.queryContainer_record(state, props.queryContainer_action.meta),
 
-    inputValue: props.withQuery_state.search,
+    inputValue: props.queryContainer_state.search,
 
-    processing: !!props.withQuery_action.meta.keyProcessing
-      && props.withQuery_status(state, {
-        ...props.withQuery_action.meta,
-        status: props.withQuery_action.meta.keyProcessing,
+    processing: !!props.queryContainer_action.meta.keyProcessing
+      && props.queryContainer_status(state, {
+        ...props.queryContainer_action.meta,
+        status: props.queryContainer_action.meta.keyProcessing,
       }),
 
-    processingDidFail: !!props.withQuery_action.meta.keyProcessingDidFail
-      && props.withQuery_status(state, {
-        ...props.withQuery_action.meta,
-        status: props.withQuery_action.meta.keyProcessingDidFail,
+    processingDidFail: !!props.queryContainer_action.meta.keyProcessingDidFail
+      && props.queryContainer_status(state, {
+        ...props.queryContainer_action.meta,
+        status: props.queryContainer_action.meta.keyProcessingDidFail,
       }),
 
-    processingSelector: s => !!props.withQuery_action.meta.keyProcessing
-      && props.withQuery_status(s, {
-        ...props.withQuery_action.meta,
-        status: props.withQuery_action.meta.keyProcessing,
+    processingSelector: s => !!props.queryContainer_action.meta.keyProcessing
+      && props.queryContainer_status(s, {
+        ...props.queryContainer_action.meta,
+        status: props.queryContainer_action.meta.keyProcessing,
       }),
 
-    value: props.withQuery_record(state, {
-      ...props.withQuery_action.meta,
+    value: props.queryContainer_record(state, {
+      ...props.queryContainer_action.meta,
       dirty: true,
     }),
   },
 
-  props.withQuery_action.meta.id === undefined && props.withQuery_action.meta.entity.paginated && {
-    pagination: props.withQuery_pagination(state, props.withQuery_action.meta),
+  props.queryContainer_action.meta.id === undefined && props.queryContainer_action.meta.entity.paginated && {
+    pagination: props.queryContainer_pagination(state, props.queryContainer_action.meta),
   },
 );
 
 const mapDispatchToProps = (dispatch, props) => ({
-  clear: (options = {}) => dispatch(props.withQuery_clear({ ...props.withQuery_action.meta, ...options })),
-  process: () => dispatch(props.withQuery_action),
-  save: record => dispatch(props.withQuery_save_local(record, props.withQuery_action.meta)),
+  clear: (options = {}) => dispatch(props.queryContainer_clear({ ...props.queryContainer_action.meta, ...options })),
+  process: () => dispatch(props.queryContainer_action),
+  save: record => dispatch(props.queryContainer_save_local(record, props.queryContainer_action.meta)),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
   {},
-  _omitBy(ownProps, (_, key) => key.startsWith('withQuery_')),
+  _omitBy(ownProps, (_, key) => key.startsWith('queryContainer_')),
   stateProps,
   dispatchProps,
   {
-    onInputChange: search => ownProps.withQuery_setState({ search }),
+    queryContainer_action: ownProps.queryContainer_action,
+    onInputChange: search => ownProps.queryContainer_setState({ search }),
     process: () => !stateProps.processing
       && !stateProps.processingDidFail
       && dispatchProps.process(),
@@ -74,31 +75,31 @@ export default _flowRight(
     },
 
     mapProps: {
-      state: 'withQuery_state',
-      setState: 'withQuery_setState',
+      state: 'queryContainer_state',
+      setState: 'queryContainer_setState',
     },
   }),
 
   withProps((props) => {
-    const action = props.withQuery_state.action
-      || props.action({ search: props.withQuery_state.search });
+    const action = props.queryContainer_state.action
+      || props.action({ search: props.queryContainer_state.search });
 
     return {
-      withQuery_action: action,
+      queryContainer_action: action,
 
-      withQuery_clear: options => action.meta.keyClear
+      queryContainer_clear: options => action.meta.keyClear
         && action.meta.entity.duck[action.meta.keyClear]?.(options),
 
-      withQuery_pagination: (state, options) => action.meta.keyPagination
+      queryContainer_pagination: (state, options) => action.meta.keyPagination
         && action.meta.entity.duck[action.meta.keyPagination]?.(state, options),
 
-      withQuery_record: (state, options) => action.meta.keyRecord
+      queryContainer_record: (state, options) => action.meta.keyRecord
         && action.meta.entity.duck[action.meta.keyRecord]?.(state, options),
 
-      withQuery_save_local: (value, options) => action.meta.keySave
-        && action.meta.entity.duck[action.meta.keySave]?.(value, options),
+      queryContainer_save_local: (value, options) => action.meta.keySaveLocal
+        && action.meta.entity.duck[action.meta.keySaveLocal]?.(value, options),
 
-      withQuery_status: (state, options) => !!action.meta.keyStatus
+      queryContainer_status: (state, options) => !!action.meta.keyStatus
         && action.meta.entity.duck[action.meta.keyStatus]?.(state, options),
     };
   }),

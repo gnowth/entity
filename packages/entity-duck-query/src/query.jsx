@@ -57,6 +57,8 @@ class Query extends React.Component {
   }
 
   getShouldShow() { // TODO check all
+    // TODO when id is null, skip get?
+    // TODO check when id is undefined, then show records count
     return {
       component: !this.props.shouldProcess || (
         !this.props.many
@@ -84,15 +86,19 @@ class Query extends React.Component {
         && this.props.recordCountComponent
         && !this.props.processing
         && !this.props.processingDidFail
+        && this.props.queryContainer_action.meta.id === undefined
         && !this.props.recordCountHidden
-        && this.props.value !== undefined,
+        && this.props.value !== undefined
+        && this.props.value.size > 0,
 
       recordCountNoneComponent: this.props.shouldProcess
         && this.props.recordCountNoneComponent
         && !this.props.processing
         && !this.props.processingDidFail
+        && this.props.queryContainer_action.meta.id === undefined
         && !this.props.recordsCountHidden
-        && this.props.value !== undefined,
+        && this.props.value !== undefined
+        && this.props.value.size === 0,
     };
   }
 
@@ -208,7 +214,7 @@ Query.propTypes = exact({
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool), // TODO not required if action will return a map
   onInputChange: PropTypes.func.isRequired,
   persist: PropTypes.bool,
-  persistDirty: PropTypesPlus.notRequiredIfNot('persist', PropTypes.bool), // TOOD implement notRequiredIfNot in prop-types-plus
+  persistDirty: PropTypesPlus.notRequiredIfNot('persist', PropTypes.bool),
   process: PropTypes.func.isRequired,
   processing: PropTypes.bool.isRequired,
   processingComponent: PropTypesPlus.isRequiredIf('processingComponentProps', PropTypesPlus.component),
@@ -217,6 +223,7 @@ Query.propTypes = exact({
   processingDidFailComponent: PropTypesPlus.isRequiredIf('processingDidFailComponentProps', PropTypesPlus.component),
   processingDidFailComponentProps: PropTypes.shape({}),
   processingSelector: PropTypes.func.isRequired,
+  queryContainer_action: PropTypes.shape({}).isRequired,
   recordCountComponent: PropTypesPlus.isRequiredIf('recordCountComponentProps', PropTypesPlus.component),
   recordCountComponentProps: PropTypes.shape({}),
   recordCountNoneComponent: PropTypesPlus.isRequiredIf('recordCountNoneComponentProps', PropTypesPlus.component),

@@ -11,7 +11,7 @@ export default class ScreenDuck extends Duck {
         id: null,
         keyClear: 'clear',
         keyRecord: 'record',
-        keySave: 'save',
+        keySaveLocal: 'save',
         params: Map(),
       },
     }),

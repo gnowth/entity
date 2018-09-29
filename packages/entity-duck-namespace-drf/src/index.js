@@ -36,7 +36,7 @@ export default class EntityDuck extends Duck {
         keyProcessing: 'getting',
         keyProcessingDidFail: 'gettingDidFail',
         keyRecord: 'record',
-        keySave: 'save',
+        keySaveLocal: 'save_local',
         keyStatus: 'status',
         method: 'get',
         params: Map(),

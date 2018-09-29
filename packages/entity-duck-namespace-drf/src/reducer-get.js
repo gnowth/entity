@@ -27,7 +27,7 @@ export default types => ({
     return state.withMutations(
       s => s
         .setIn(['errors', identifier], undefined)
-        .setIn(['status', 'getting', identifier], true)
+        .setIn(['status', 'getting', identifier], action.meta.useDuckMiddleware)
         .setIn(['status', 'gettingDidFail', identifier], false),
     );
   },
