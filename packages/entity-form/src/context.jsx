@@ -7,11 +7,6 @@ import React from 'react';
 
 const { Provider, Consumer } = React.createContext({});
 
-const { Provider: DefaultProvider, Consumer: DefaultConsumer } = React.createContext({
-  defaultComponents: {},
-  defaultWidgets: {},
-});
-
 
 // TODO:REMOVE if not being used
 export const withForm = ComposedComponent => function withFormConsumer(props) {
@@ -56,31 +51,4 @@ FormProvider.defaultProps = {
   formName: undefined,
   formNameMapper: {},
   formReadOnly: false,
-};
-
-
-export const FormDefaultConsumer = DefaultConsumer;
-
-
-// TODO:OPTIMISE? props is being generated and it will rerender all the time when children changes
-export const FormDefaultProvider = ({ children, ...props }) => (
-  <DefaultProvider value={props}>
-    { children }
-  </DefaultProvider>
-);
-
-FormDefaultProvider.propTypes = exact({
-  children: PropTypes.node.isRequired,
-  defaultComponents: PropTypes.shape({
-    control: PropTypesPlus.component,
-    error: PropTypesPlus.component,
-    label: PropTypesPlus.component,
-    query: PropTypesPlus.component,
-  }),
-  defaultWidgets: PropTypes.objectOf(PropTypesPlus.component.isRequired),
-});
-
-FormDefaultProvider.defaultProps = {
-  defaultComponents: {},
-  defaultWidgets: {},
 };
