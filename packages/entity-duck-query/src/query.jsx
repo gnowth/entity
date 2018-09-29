@@ -171,6 +171,7 @@ class Query extends React.Component {
 }
 
 Query.propTypes = exact({
+  action: PropTypes.func.isRequired,
   cached: PropTypes.bool,
   children: PropTypesPlus.allOfType([
     PropTypesPlus.isRequiredIfNot('component', PropTypes.func),
