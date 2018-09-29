@@ -88,8 +88,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
 // TODO remove exact or withPropTypes
 export default _compose(
   withPropTypes({
-    displayName: 'QueryDuckContainer',
-
     propTypes: exact({
       action: PropTypes.func.isRequired,
       children: PropTypes.func, // TODO check with component

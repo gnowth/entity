@@ -1,7 +1,8 @@
 import _flowRight from 'lodash/flowRight';
-import _isFunction from 'lodash/isFunction';
 import _omitBy from 'lodash/omitBy';
-import { withProps, withState } from '@gnowth/higher-order-component';
+import PropTypes from 'prop-types';
+import { withDefault } from '@gnowth/default';
+import { withProps, withPropTypes, withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
 // TODO make sure withQuery_action is avaliable
@@ -49,6 +50,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
 );
 
 export default _flowRight(
+  withPropTypes({
+    propTypes: { action: PropTypes.func.isRequired },
+  }),
+
   withState({
     initialState: {
       action: undefined,
@@ -61,5 +66,17 @@ export default _flowRight(
     },
   }),
 
+  withProps(props => ({
+    withQuery_action: props.state.action || props.action(),
+  })),
+
   connect(mapStateToProps, mapDispatchToProps, mergeProps),
+
+  withDefault({
+    componentProcessing: 'processingComponent',
+    componentProcessingDidFail: 'processingDidFailComponent',
+    componentRecordCount: 'recordCountComponent',
+    componentRecordCountNone: 'recordCountNoneComponent',
+    store: 'store',
+  }),
 );

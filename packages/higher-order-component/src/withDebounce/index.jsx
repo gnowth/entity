@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { is } from 'immutable';
 
-export default function ({ delay = 300 } = {}) {
-  return Component => class DebouncedComponent extends React.Component {
+import getDisplayName from '../get-display-name';
+
+export default ({ delay = 300 } = {}) => (ComposedComponent) => {
+  class withDebounce extends React.Component {
     static propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
       onChange: PropTypesPlus.isRequiredIfNot('readOnly', PropTypes.func),
@@ -59,12 +61,16 @@ export default function ({ delay = 300 } = {}) {
 
     render() {
       return (
-        <Component
+        <ComposedComponent
           {...this.props}
           value={this.state.value}
           onChange={this.handleChange}
         />
       );
     }
-  };
-}
+  }
+
+  withDebounce.displayName = `withDebounce(${getDisplayName(ComposedComponent)})`;
+
+  return withDebounce;
+};

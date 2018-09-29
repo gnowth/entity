@@ -4,7 +4,7 @@ import _isObjectLike from 'lodash/isObjectLike';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withProps, withPropTypes, withState } from '@gnowth/higher-order-component';
+import { withProps, withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
 import { withFormDefault } from './context';
@@ -83,14 +83,6 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default _compose(
-  withPropTypes({
-    displayName: 'Control',
-
-    propTypes: {
-
-    },
-  }),
-
   withInput,
   withFormDefault,
 

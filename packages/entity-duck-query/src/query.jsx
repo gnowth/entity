@@ -1,4 +1,3 @@
-import _flowRight from 'lodash/flowRight';
 import _isFunction from 'lodash/isFunction';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
@@ -6,9 +5,8 @@ import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withDefault } from '@gnowth/default';
 
-import withQuery from './with-query';
+import queryContainer from './query-container';
 
 class Query extends React.Component {
   componentDidMount() {
@@ -173,7 +171,6 @@ class Query extends React.Component {
 }
 
 Query.propTypes = exact({
-  action: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
   cached: PropTypes.bool,
   children: PropTypesPlus.allOfType([
     PropTypesPlus.isRequiredIfNot('component', PropTypes.func),
@@ -233,16 +230,4 @@ Query.defaultProps = {
   value: undefined,
 };
 
-export default _flowRight(
-  withQuery({ withQuery_action: 'action' }), // TODO check for right arguments
-  withDefault({
-    filtered: true,
-    nameMapper: {
-      componentProcessing: 'processingComponent',
-      componentProcessingDidFail: 'processingDidFailComponent',
-      componentRecordCount: 'recordCountComponent',
-      componentRecordCountNone: 'recordCountNoneComponent',
-      store: 'store',
-    },
-  }),
-)(Query);
+export default queryContainer(Query);

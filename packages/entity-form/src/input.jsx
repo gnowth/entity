@@ -95,8 +95,6 @@ Input.defaultProps = {
 // TODO check withPropTypes
 export default _compose(
   withPropTypes({
-    displayName: 'Input',
-
     propTypes: exact({
       apiOptions: PropTypes.bool,
       apiValue: PropTypes.bool,

@@ -7,25 +7,21 @@ import React from 'react';
 
 import { Consumer } from './context';
 
-const getProps = (context, props, options = {}) => {
-  if (!options.nameMapper) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (options.filtered && !options.nameMapper) throw new Error('withDefault: option "filtered" cannot be set if "nameMapper" is not set');
-    }
-
+const getProps = (context, props, mapProps) => {
+  if (!mapProps) {
     return { default: context };
   }
 
-  const nameMap = _isFunction(options.nameMapper)
-    ? options.nameMapper(props)
-    : options.nameMapper;
+  const computedMapProps = _isFunction(mapProps)
+    ? mapProps(props)
+    : mapProps;
 
   return _flow(
-    // filter context as per nameMapper if 'filtered' is set
-    c => (options.filtered ? _pick(c, Object.keys(nameMap)) : c),
+    // filter context as per mapProps
+    c => _pick(c, Object.keys(computedMapProps)),
 
     // transform props name as per nameMap
-    c => _mapKeys(c, (value, key) => nameMap[key] || key),
+    c => _mapKeys(c, (_, key) => computedMapProps[key] || key),
   )(context);
 };
 
