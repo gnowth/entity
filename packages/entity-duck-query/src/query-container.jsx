@@ -45,7 +45,6 @@ const mapStateToProps = (state, props) => Object.assign(
 
 const mapDispatchToProps = (dispatch, props) => ({
   clear: (options = {}) => dispatch(props.withQuery_clear({ ...props.withQuery_action.meta, ...options })),
-  onInputChange: search => dispatch(props.withQuery_setState({ search })),
   process: () => dispatch(props.withQuery_action),
   save: record => dispatch(props.withQuery_save_local(record, props.withQuery_action.meta)),
 });
@@ -56,6 +55,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
   stateProps,
   dispatchProps,
   {
+    onInputChange: search => ownProps.withQuery_setState({ search }),
     process: () => !stateProps.processing
       && !stateProps.processingDidFail
       && dispatchProps.process(),

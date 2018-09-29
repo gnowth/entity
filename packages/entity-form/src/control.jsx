@@ -1,6 +1,7 @@
 import _compose from 'lodash/fp/compose';
 import _isFunction from 'lodash/isFunction';
 import _isObjectLike from 'lodash/isObjectLike';
+import _isString from 'lodash/isString';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
@@ -28,9 +29,13 @@ class Control extends React.Component {
       {
         [this.props.event]: this.handleEvent,
         disabled: this.props.disabled || this.props.readOnly,
+      },
+
+      !_isString(this.props.component) && {
         processing: this.props.processing,
         processDidFail: this.props.processDidFail,
       },
+
       _isFunction(this.props.componentProps)
         ? this.props.componentProps(this.getPropsContext())
         : this.props.componentProps,
