@@ -6,6 +6,6 @@ module.exports = {
   components: path.join(__dirname, '../src/components/'),
   settings: path.join(__dirname, './settings.config.js'),
   src: path.join(__dirname, '../src/'),
-  store: path.join(__dirname, '../src/store/'),
+  store: path.join(__dirname, '../src/store.js'),
   styles: path.join(__dirname, '../src/styles/'),
 };

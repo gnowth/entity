@@ -6,38 +6,42 @@ import { withProps, withPropTypes, withState } from '@gnowth/higher-order-compon
 import { connect } from 'react-redux';
 
 // TODO need to make sure keyRecord is provided!
-const mapStateToProps = (state, props) => ({
-  field: props.withQuery_action.meta.entity.toEntityField(),
+const mapStateToProps = (state, props) => Object.assign(
+  {
+    field: props.withQuery_action.meta.entity.toEntityField(),
 
-  initialValue: props.withQuery_record(state, props.withQuery_action.meta),
+    initialValue: props.withQuery_record(state, props.withQuery_action.meta),
 
-  inputValue: props.withQuery_state.search,
+    inputValue: props.withQuery_state.search,
 
-  processing: !!props.withQuery_action.meta.keyProcessing
-    && props.withQuery_status(state, {
+    processing: !!props.withQuery_action.meta.keyProcessing
+      && props.withQuery_status(state, {
+        ...props.withQuery_action.meta,
+        status: props.withQuery_action.meta.keyProcessing,
+      }),
+
+    processingDidFail: !!props.withQuery_action.meta.keyProcessingDidFail
+      && props.withQuery_status(state, {
+        ...props.withQuery_action.meta,
+        status: props.withQuery_action.meta.keyProcessingDidFail,
+      }),
+
+    processingSelector: s => !!props.withQuery_action.meta.keyProcessing
+      && props.withQuery_status(s, {
+        ...props.withQuery_action.meta,
+        status: props.withQuery_action.meta.keyProcessing,
+      }),
+
+    value: props.withQuery_record(state, {
       ...props.withQuery_action.meta,
-      status: props.withQuery_action.meta.keyProcessing,
+      dirty: true,
     }),
+  },
 
-  processingDidFail: !!props.withQuery_action.meta.keyProcessingDidFail
-    && props.withQuery_status(state, {
-      ...props.withQuery_action.meta,
-      status: props.withQuery_action.meta.keyProcessingDidFail,
-    }),
-
-  processingSelector: s => !!props.withQuery_action.meta.keyProcessing
-    && props.withQuery_status(s, {
-      ...props.withQuery_action.meta,
-      status: props.withQuery_action.meta.keyProcessing,
-    }),
-
-  value: props.withQuery_record(state, {
-    ...props.withQuery_action.meta,
-    dirty: true,
-  }),
-
-  // TODO add pagination
-});
+  props.withQuery_action.meta.id === undefined && props.withQuery_action.meta.entity.paginated && {
+    pagination: props.withQuery_pagination(state, props.withQuery_action.meta),
+  },
+);
 
 const mapDispatchToProps = (dispatch, props) => ({
   clear: (options = {}) => dispatch(props.withQuery_clear({ ...props.withQuery_action.meta, ...options })),
@@ -75,17 +79,37 @@ export default _flowRight(
     },
   }),
 
-  withProps(props => ({
-    withQuery_action: props.withQuery_state.action || props.action({ search: props.withQuery_state.search }),
-  })),
+  withProps((props) => {
+    const action = props.withQuery_state.action
+      || props.action({ search: props.withQuery_state.search });
+
+    return {
+      withQuery_action: action,
+
+      withQuery_clear: options => action.meta.keyClear
+        && action.meta.entity.duck[action.meta.keyClear]?.(options),
+
+      withQuery_pagination: (state, options) => action.meta.keyPagination
+        && action.meta.entity.duck[action.meta.keyPagination]?.(state, options),
+
+      withQuery_record: (state, options) => action.meta.keyRecord
+        && action.meta.entity.duck[action.meta.keyRecord]?.(state, options),
+
+      withQuery_save_local: (value, options) => action.meta.keySave
+        && action.meta.entity.duck[action.meta.keySave]?.(value, options),
+
+      withQuery_status: (state, options) => !!action.meta.keyStatus
+        && action.meta.entity.duck[action.meta.keyStatus]?.(state, options),
+    };
+  }),
 
   connect(mapStateToProps, mapDispatchToProps, mergeProps),
 
   withDefault({
-    componentProcessing: 'processingComponent',
-    componentProcessingDidFail: 'processingDidFailComponent',
-    componentRecordCount: 'recordCountComponent',
-    componentRecordCountNone: 'recordCountNoneComponent',
+    processing: 'processingComponent',
+    processingDidFail: 'processingDidFailComponent',
+    recordCount: 'recordCountComponent',
+    recordCountNone: 'recordCountNoneComponent',
     store: 'store',
   }),
 );

@@ -5,10 +5,11 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { withDefault } from '@gnowth/default';
 import { withProps } from '@gnowth/higher-order-component';
 import { List, Map } from 'immutable';
 
-import { withForm, withFormDefault } from './context';
+import { withForm } from './context';
 
 // TODO use options input to load option?
 export default function (ComposedComponent) {
@@ -105,11 +106,11 @@ export default function (ComposedComponent) {
   };
 
   return _compose(
-    withFormDefault, // TODO make function, so that props can be removed
+    withDefault(), // TODO make function, so that props can be removed
     withForm,
 
     withProps(props => ({
-      queryComponent: _getOr(props.defaultComponents.query)('queryComponent')(props),
+      queryComponent: props.queryComponent || props.defaults.query,
     })),
     // withProps(props => {
     //   const field = _getOr(props.formField)('field')(props);

@@ -2,6 +2,7 @@ import _isFunction from 'lodash/isFunction';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { DefaultProvider } from '@gnowth/default';
 
 import { AppConsumer } from './context';
 
@@ -9,14 +10,10 @@ const App = props => (
   <AppConsumer>
     { (context) => {
       if (process.env.NODE_ENV !== 'production') {
-        if (props.duckProviderProps && !context.duckProvider) throw new Error('entity-app (App): duckProvider is required in "AppRoot"');
-        if (props.formProviderProps && !context.formProvider) throw new Error('entity-app (App): duckProvider is required in "AppRoot"');
-        if (props.intlProviderProps && !context.intlProvider) throw new Error('entity-app (App): duckProvider is required in "AppRoot"');
-        if (props.themeProviderProps && !context.themeProvider) throw new Error('entity-app (App): duckProvider is required in "AppRoot"');
+        if (props.intlProviderProps && !context.intlProvider) throw new Error('entity-app (App): intlProvider is required in "AppRoot"');
+        if (props.themeProviderProps && !context.themeProvider) throw new Error('entity-app (App): themeProvider is required in "AppRoot"');
       }
 
-      const DuckProvider = (props.duckProviderProps && context.duckProvider) || React.Fragment;
-      const FormProvider = (props.formProviderProps && context.formProvider) || React.Fragment;
       const IntlProvider = (props.intlProviderProps && context.intlProvider) || React.Fragment;
       const ThemeProvider = (props.themeProviderProps && context.themeProvider) || React.Fragment;
 
@@ -26,16 +23,15 @@ const App = props => (
           : props[name]
       ) || {};
 
+      // TODO merge root props for theme and intl? and check for default
       return (
-        <DuckProvider {...getProps('duckProviderProps')}>
-          <FormProvider {...getProps('formProviderProps')}>
-            <IntlProvider {...getProps('intlProviderProps')}>
-              <ThemeProvider {...getProps('themeProviderProps')}>
-                { props.children }
-              </ThemeProvider>
-            </IntlProvider>
-          </FormProvider>
-        </DuckProvider>
+        <DefaultProvider {...Object.assign({}, context.defaults, props.defaults)}>
+          <IntlProvider {...getProps('intlProviderProps')}>
+            <ThemeProvider {...getProps('themeProviderProps')}>
+              { props.children }
+            </ThemeProvider>
+          </IntlProvider>
+        </DefaultProvider>
       );
     }}
   </AppConsumer>
@@ -44,18 +40,7 @@ const App = props => (
 App.propTypes = exact({
   children: PropTypes.node.isRequired,
 
-  duckProviderProps: PropTypes.exact({
-    store: PropTypes.shape({
-      dispatch: PropTypes.func.isRequired,
-      getState: PropTypes.func.isRequired,
-      subscribe: PropTypes.func.isRequired,
-    }).isRequired,
-  }),
-
-  formProviderProps: PropTypes.exact({
-    defaultComponents: PropTypes.object,
-    defaultWidgets: PropTypes.object,
-  }),
+  defaults: PropTypes.shape({}),
 
   intlProviderProps: PropTypes.exact({
     locale: PropTypes.string.isRequired,
@@ -68,8 +53,7 @@ App.propTypes = exact({
 });
 
 App.defaultProps = {
-  duckProviderProps: undefined,
-  formProviderProps: undefined,
+  defaults: undefined,
   intlProviderProps: undefined,
   themeProviderProps: undefined,
 };

@@ -127,9 +127,9 @@ class Query extends React.Component {
         )}
 
         { shouldShow.recordCountComponent && (
-          <this.props.recordsCountComponent
+          <this.props.recordCountComponent
             value={
-              this.props.entity.paginated && this.props.pagination
+              this.props.field.entity.paginated && this.props.pagination
                 ? this.props.pagination.get('count')
                 : this.props.value.size // TODO maybe refactor that bit
             }
@@ -138,7 +138,7 @@ class Query extends React.Component {
         )}
 
         { shouldShow.recordCountNoneComponent && (
-          <this.props.recordsCountNoneComponent {...(this.props.recordsCountNoneComponentProps || {})} />
+          <this.props.recordCountNoneComponent {...(this.props.recordsCountNoneComponentProps || {})} />
         )}
 
         { shouldShow.component && this.renderComponent(props) }
@@ -203,6 +203,7 @@ Query.propTypes = exact({
     PropTypesImmutable.list,
     PropTypesImmutable.map,
   ]),
+  inputValue: PropTypes.string,
   name: PropTypes.string,
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool), // TODO not required if action will return a map
   onInputChange: PropTypes.func.isRequired,
@@ -235,6 +236,7 @@ Query.defaultProps = {
   component: undefined,
   componentProps: undefined,
   initialValue: undefined,
+  inputValue: '',
   name: 'entity-duck-query',
   many: undefined,
   persist: true,

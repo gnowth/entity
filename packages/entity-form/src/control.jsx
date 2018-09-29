@@ -4,10 +4,10 @@ import _isObjectLike from 'lodash/isObjectLike';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { withDefault } from '@gnowth/default';
 import { withProps, withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
-import { withFormDefault } from './context';
 import withInput from './withInput';
 
 class Control extends React.Component {
@@ -84,10 +84,10 @@ const mapStateToProps = (state, props) => ({
 
 export default _compose(
   withInput,
-  withFormDefault,
+  withDefault(),
 
   withProps(props => ({
-    component: props.component || props.defaultComponents.control,
+    component: props.component || props.defaults.button,
   })),
 
   withState({ initialState: { action: undefined } }),

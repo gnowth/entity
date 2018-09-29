@@ -5,6 +5,7 @@ import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { withDefault } from '@gnowth/default';
 import { withProps, withPropTypes } from '@gnowth/higher-order-component';
 
 import { withFormDefault } from './context';
@@ -127,10 +128,10 @@ export default _compose(
   }),
 
   withInput,
-  withFormDefault,
+  withDefault(),
 
   withProps(props => ({
-    component: props.component || props.defaultWidgets[props.type || props.field.constructor.type],
-    wrapperComponent: props.wrapperComponent || props.defaultComponents.wrapper,
+    component: props.component || props.defaults.widgets[props.type || props.field.constructor.type],
+    wrapperComponent: props.wrapperComponent || props.defaults.label,
   })),
 )(Input);

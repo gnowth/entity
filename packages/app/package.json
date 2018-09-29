@@ -16,6 +16,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
+    "@gnowth/default": "0.0.1",
     "@gnowth/prop-types-plus": "0.0.1",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
