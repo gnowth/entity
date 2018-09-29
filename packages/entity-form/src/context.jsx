@@ -23,16 +23,6 @@ export const withForm = ComposedComponent => function withFormConsumer(props) {
 };
 
 
-// TODO:REMOVE if not being used
-export const withFormDefault = ComposedComponent => function withFormDefaultConsumer(props) {
-  return (
-    <FormDefaultConsumer>
-      { context => <ComposedComponent {...context} {...props} /> }
-    </FormDefaultConsumer>
-  );
-};
-
-
 export const FormConsumer = Consumer;
 
 

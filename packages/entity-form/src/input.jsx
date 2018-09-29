@@ -8,7 +8,6 @@ import React from 'react';
 import { withDefault } from '@gnowth/default';
 import { withProps, withPropTypes } from '@gnowth/higher-order-component';
 
-import { withFormDefault } from './context';
 import withInput from './withInput';
 
 class Input extends React.Component {
