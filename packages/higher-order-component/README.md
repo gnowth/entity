@@ -1,1 +1,1 @@
-# higher-order-component
+# @gnowth/higher-order-component

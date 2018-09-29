@@ -1,1 +1,1 @@
-# entity-duck-rest
+# @entity/duck-namespace-drf

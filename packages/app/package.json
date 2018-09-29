@@ -1,6 +1,6 @@
 {
   "author": "Thierry Wong",
-  "description": "entity-app",
+  "description": "app",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
   "name": "@gnowth/app",

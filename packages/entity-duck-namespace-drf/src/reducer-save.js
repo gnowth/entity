@@ -1,41 +1,37 @@
-import { getIdentifier, parseError } from './utils';
+import { getId, getIdentifier, parseError } from './utils';
 
-// TODO maybe have save_local instead of save with dirty params. so that it can be easily identified in redux devtool
 export default (types, initialState) => ({
   [types.save]: (state, action) => {
     const identifier = getIdentifier(action.meta);
-    const idIdentifier = getIdentifier({ ...action.meta, useId: true });
 
     return state.withMutations(
       s => s
-        .updateIn(['detail_dirty', idIdentifier], detail => (
-          action.meta.dirty
-            ? action.payload
-            : detail
-        ))
         .setIn(['status', 'saving', identifier], true)
         .setIn(['status', 'savingDidFail', identifier], false),
     );
   },
 
+  [types.save_local]: (state, action) => state
+    .setIn(['detail_dirty', getId(action.meta)], action.payload),
+
   // TODO also set record for new uuid if id was null
   [types.save_resolved]: (state, action) => {
     const identifier = getIdentifier(action.meta);
-    const idIdentifier = getIdentifier({ ...action.meta, useId: true });
+    const id = getId(action.meta);
 
     const record = action.meta.entity.dataToRecord(action.payload);
 
     return state.withMutations(
       s => s
-        .updateIn(['detail', idIdentifier], detail => (
+        .updateIn(['detail', id], detail => (
           action.meta.skipStore
             ? detail
             : record
         ))
         .setIn(
-          ['detail_dirty', idIdentifier],
+          ['detail_dirty', id],
           action.meta.skipStore
-            ? state.getIn(['detail', idIdentifier])
+            ? state.getIn(['detail', id])
             : record,
         )
         .setIn(['errors', identifier], null)

@@ -1,1 +1,1 @@
-# prop-types-plus
+# @gnowth/prop-types-plus

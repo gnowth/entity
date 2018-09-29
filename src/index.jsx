@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppRoot } from '@gnowth/app';
-import { DuckProvider, QueryDuck } from '@entity/duck';
-import { FormDefaultProvider } from '@entity/form';
-import { WidgetBoolean, WidgetDate, WidgetInput, WidgetSelect, WidgetTextarea } from '@entity/widget';
-import { UIButton, UIError, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
@@ -14,9 +10,9 @@ import { HashRouter as Router } from 'react-router-dom';
 import theme from 'styles';
 import settings from 'settings';
 import store, { history } from 'store';
-import WidgetAttachment from 'apps/filer/widgets/Attachment';
 
 import Routes from './routes';
+import defaults from './defaults';
 import setup from './setup';
 
 setup({ settings, theme });
@@ -24,31 +20,7 @@ setup({ settings, theme });
 function render() {
   ReactDOM.render(
     <AppRoot
-      duckProvider={DuckProvider}
-      duckProviderProps={{
-        store,
-        processingComponent: UIProgressCircle,
-        processingDidFailComponent: () => 'Unable to load data. Try to refresh the page',
-        recordsCountComponent: ({ value }) => `${value} Record(s) Found`,
-        recordsCountNoneComponent: () => 'No Records Found',
-      }}
-      formProvider={FormDefaultProvider}
-      formProviderProps={{
-        defaultComponents: {
-          control: UIButton,
-          error: UIError,
-          query: QueryDuck,
-          wrapper: UILabel,
-        },
-        defaultWidgets: {
-          attachment: WidgetAttachment,
-          boolean: WidgetBoolean,
-          char: WidgetInput,
-          date: WidgetDate,
-          entity: WidgetSelect,
-          text: WidgetTextarea,
-        },
-      }}
+      defaults={defaults}
       intlProvider={IntlProvider}
       intlProviderProps={{ locale: 'en', messages: {} }}
       themeProvider={ThemeProvider}
@@ -68,20 +40,3 @@ function render() {
 
 if (window.Intl) render();
 else require.ensure(['intl'], render);
-
-export default {
-  button: 'UIButton',
-  error: 'UIError',
-  formProvider: 'FormProvider',
-  label: 'UILabel',
-  processing: 'UIProcessing',
-  processingDidFail: () => 'Unable to load data. Try to refresh the page',
-  query: 'QueryDuck',
-  recordCount: ({ value }) => `${value} Record(s) Found`,
-  recordCountNone: () => 'No Records Found',
-  widget: {
-    char: 'WidgetInput',
-    date: 'WidgetDate',
-    text: 'WidgetTextarea',
-  },
-};

@@ -67,7 +67,7 @@ export class Entity {
 
     return name
       ? record && this.fields[name].entity.getId(record.get(name))
-      : record?.get(this.idField);
+      : (record?.get(this.idField) || null);
   }
 
   static getExportUrl(params, settings) {

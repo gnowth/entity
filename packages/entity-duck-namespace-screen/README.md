@@ -1,1 +1,1 @@
-# entity-duck-screen
+# @entity/duck-namespace-screen

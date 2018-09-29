@@ -31,7 +31,7 @@ const handleError = (action, dispatch) => (error) => {
 };
 
 export default store => next => (action) => {
-  const shouldSkipMiddleware = !action.meta?.useEntityMiddleware
+  const shouldSkipMiddleware = !action.meta?.useDuckMiddleware
     || _endsWith('_RESOLVED')(action.type)
     || _endsWith('_REJECTED')(action.type)
     || !(action.meta?.entity?.duck instanceof Duck);

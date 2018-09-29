@@ -1,1 +1,1 @@
-# entity-app
+# @gnowth/app

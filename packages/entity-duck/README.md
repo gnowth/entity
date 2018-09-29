@@ -1,3 +1,5 @@
+# @entity/duck
+
 ```javascript
   const action = {
     meta: {

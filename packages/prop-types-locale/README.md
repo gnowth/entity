@@ -1,1 +1,1 @@
-# prop-types-locale
+# @gnowth/prop-types-locale

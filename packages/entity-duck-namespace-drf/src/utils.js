@@ -1,18 +1,19 @@
 import { fromJS } from 'immutable';
 import { stringify } from 'query-string';
 
-export const getIdentifier = ({ id = '', tag = '', params, method, action, useId }) => {
-  if (useId && id !== '') {
-    return id === null ? 'id_null' : id;
-  }
+export const NULL_ID = 'id_null';
 
+// TODO check if id can be undefined?
+export const getId = ({ id = '' }) => (id === null ? NULL_ID : id);
+
+export const getIdentifier = ({ id = '', tag = '', params, method, action }) => {
   // TODO add check for params
   const paramsString = stringify(params && params.filter(p => p).toJS());
 
   const paramsFrag = paramsString && `.${paramsString}`;
   const actionFrag = action ? `.${action}` : '';
   const tagFrag = tag ? `.${tag}` : '';
-  const idFrag = id === null ? '.id_null' : `.${id}`;
+  const idFrag = id === null ? `.${NULL_ID}` : `.${id}`;
 
   return `${method}${actionFrag}${tagFrag}${idFrag}${paramsFrag}`;
 };

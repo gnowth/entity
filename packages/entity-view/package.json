@@ -1,9 +1,9 @@
 {
   "author": "Thierry Wong",
-  "description": "entity-duck-namespace-screen",
+  "description": "entity-view",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@entity/duck-namespace-screen",
+  "name": "@entity/view",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
@@ -16,7 +16,17 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@entity/duck": "0.0.1",
-    "immutable": "4.0.0-rc.9"
+    "@gnowth/higher-order-component": "0.0.1",
+    "@gnowth/prop-types-entity": "0.0.1",
+    "@gnowth/prop-types-plus": "0.0.1",
+    "immutable": "4.0.0-rc.9",
+    "lodash": "4.17.11",
+    "prop-types": "15.6.2",
+    "prop-types-exact": "1.2.0",
+    "react-immutable-proptypes": "2.1.0",
+    "react-redux": "5.0.7"
+  },
+  "peerDependencies": {
+    "react": "16.5.1"
   }
 }

@@ -6,7 +6,7 @@ import reducerGet from './reducer-get';
 import reducerOptions from './reducer-options';
 import reducerSave from './reducer-save';
 import reducerDelete from './reducer-delete';
-import { getIdentifier } from './utils';
+import { getId, getIdentifier, NULL_ID } from './utils';
 
 export default class EntityDuck extends Duck {
   static namespace = 'dango_rest_framework';
@@ -23,7 +23,7 @@ export default class EntityDuck extends Duck {
         keyProcessingDidFail: 'deletingDidFail',
         method: 'delete',
         params: Map(),
-        useEntityMiddleware: true,
+        useDuckMiddleware: true,
       }),
     }),
 
@@ -40,7 +40,7 @@ export default class EntityDuck extends Duck {
         keyStatus: 'status',
         method: 'get',
         params: Map(),
-        useEntityMiddleware: payload.id !== null,
+        useDuckMiddleware: payload.id !== null,
       }),
       meta: ({ payload }) => payload,
       payload: () => undefined,
@@ -52,23 +52,24 @@ export default class EntityDuck extends Duck {
       defaultMeta: {
         method: 'options',
         params: Map(),
-        useEntityMiddleware: true,
+        useDuckMiddleware: true,
       },
       meta: ({ payload }) => payload,
       payload: () => undefined,
     }),
 
     // TODO it does not allow creating multiple new
+    save_local: Duck.createAction(),
     save_rejected: Duck.createAction(),
     save_resolved: Duck.createAction(),
     save: Duck.createAction({
-      defaultMeta: ({ entity, payload, options = {} }) => ({
-        id: entity.getId(payload) || null, // TODO rethink. starting to get too hacky
+      defaultMeta: ({ entity, payload }) => ({
+        id: entity.getId(payload),
         keyProcessing: 'saving',
         keyProcessingDidFail: 'savingDidFail',
         method: entity.getId(payload) ? 'put' : 'post',
         params: Map(),
-        useEntityMiddleware: !options.dirty,
+        useDuckMiddleware: true,
       }),
     }),
   };
@@ -77,8 +78,8 @@ export default class EntityDuck extends Duck {
     const initialRecord = entity.dataToRecord({});
 
     return Map({
-      detail: Map({ [getIdentifier({ id: null, useId: true })]: initialRecord }),
-      detail_dirty: Map({ [getIdentifier({ id: null, useId: true })]: initialRecord }),
+      detail: Map({ [NULL_ID]: initialRecord }),
+      detail_dirty: Map({ [NULL_ID]: initialRecord }),
       errors: Map(),
       list: Map(),
       list_dirty: Map(),
@@ -132,7 +133,7 @@ export default class EntityDuck extends Duck {
       this.constructor.namespace,
       this.entity.name,
       `${options.id === undefined ? 'list' : 'detail'}${options.dirty ? '_dirty' : ''}`,
-      getIdentifier(Object.assign({ method: 'get', useId: true }, options)),
+      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options),
       ...(options.id === undefined && this.entity.paginated ? ['results'] : []),
     ]);
   }

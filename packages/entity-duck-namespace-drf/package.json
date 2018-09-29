@@ -1,6 +1,6 @@
 {
   "author": "Thierry Wong",
-  "description": "entity-duck-rest",
+  "description": "entity-duck-namespace-drf",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
   "name": "@entity/duck-namespace-drf",

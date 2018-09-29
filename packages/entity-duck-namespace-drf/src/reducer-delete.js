@@ -1,4 +1,4 @@
-import { getIdentifier, parseError } from './utils';
+import { getId, getIdentifier, parseError } from './utils';
 
 export default (types, initialState) => ({
   [types.delete]: (state, action) => {
@@ -13,12 +13,12 @@ export default (types, initialState) => ({
 
   [types.delete_resolved]: (state, action) => {
     const identifier = getIdentifier(action.meta);
-    const idIdentifier = getIdentifier({ ...action.meta, useId: true });
+    const id = getId(action.meta);
 
     return state.withMutations(
       s => s
-        .deleteIn(['detail', idIdentifier])
-        .deleteIn(['detail_dirty', idIdentifier])
+        .deleteIn(['detail', id])
+        .deleteIn(['detail_dirty', id])
         .setIn(['errors', identifier], null)
         .setIn(['status', 'deleting', identifier], false)
         .update('list', list => (action.meta.invalidateList ? initialState.get('list') : list))
