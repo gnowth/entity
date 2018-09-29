@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
-import { withProps, withState } from '@gnowth/higher-order-component';
+import { withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
 import withInput from './withInput';
@@ -89,12 +89,7 @@ const mapStateToProps = (state, props) => ({
 
 export default _compose(
   withInput,
-  withDefault(),
-
-  withProps(props => ({
-    component: props.component || props.defaults.button,
-  })),
-
+  withDefault({ button: 'component' }),
   withState({ initialState: { action: undefined } }),
   connect(mapStateToProps),
 )(Control);

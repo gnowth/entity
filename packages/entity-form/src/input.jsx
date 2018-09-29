@@ -127,7 +127,7 @@ export default _compose(
   }),
 
   withInput,
-  withDefault(),
+  withDefault(), // TODO find a way to access nested level
 
   withProps(props => ({
     component: props.component || props.defaults.widgets[props.type || props.field.constructor.type],
