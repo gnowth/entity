@@ -1,5 +1,4 @@
 import _compose from 'lodash/fp/compose';
-import _getOr from 'lodash/fp/getOr';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';

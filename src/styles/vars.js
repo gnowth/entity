@@ -1,4 +1,4 @@
-import { greenNasty, pine } from './colors';
+import { greenNasty } from './colors';
 
 export const colorPrimary = greenNasty;
 

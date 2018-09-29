@@ -6,7 +6,7 @@ class UIError extends React.Component {
     error: null,
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error) {
     console.log('errorhee', error.toString());
 
     this.setState({ error });
