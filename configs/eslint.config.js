@@ -32,7 +32,7 @@ module.exports = {
   ],
 
   rules: {
-    // disable camelcase TODO restore once it can be ignored in style.js
+    // disable camelcase
     camelcase: 0,
 
     'class-methods-use-this': 0,

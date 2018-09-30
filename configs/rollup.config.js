@@ -1,4 +1,3 @@
-// TODO use closure for minification
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
