@@ -13,18 +13,18 @@ jobs:
     # Download and cache dependencies
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
+        - node-dependencies-{{ checksum "package.json" }}
 
         # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+        - node-dependencies-
 
-    - run: yarn install
+    - run: yarn install --frozen-lockfile
 
     - save_cache:
         paths:
         - node_modules
 
-        key: v1-dependencies-{{ checksum "package.json" }}
+        key: node-dependencies-{{ checksum "package.json" }}
 
     - run:
         name: Linting
@@ -42,18 +42,18 @@ jobs:
     # Download and cache dependencies
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
+        - node-dependencies-{{ checksum "package.json" }}
 
         # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+        - node-dependencies-
 
-    - run: yarn install
+    - run: yarn install --frozen-lockfile
 
     - save_cache:
         paths:
         - node_modules
 
-        key: v1-dependencies-{{ checksum "package.json" }}
+        key: node-dependencies-{{ checksum "package.json" }}
 
     - run:
         name: Building
