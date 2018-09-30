@@ -3,7 +3,6 @@ import { stringify } from 'query-string';
 
 export const NULL_ID = 'id_null';
 
-// TODO check if id can be undefined?
 export const getId = ({ id = '' }) => (id === null ? NULL_ID : id);
 
 export const getIdentifier = ({ id = '', tag = '', params, method, action }) => {
