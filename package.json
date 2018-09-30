@@ -29,10 +29,11 @@
     "packages-test": "lerna run test",
     "packages-publish": "./scripts/publish",
     "packages-version-update": "lerna publish --skip-git --skip-npm --force-publish '*'",
-    "start": "webpack-dev-server --mode development --progress --inline --hot --content-base dist --config configs/webpack.config.js",
-    "test": "jest --config configs/jest.config.js",
     "serve-dist": "browser-sync start --server dist",
+    "start": "webpack-dev-server --mode development --progress --inline --hot --content-base dist --config configs/webpack.config.js",
     "storybook": "start-storybook -c configs/storybook -p 6006",
+    "test": "jest --config configs/jest.config.js",
+    "testing": "./scripts/testing",
     "yarn": "yarn"
   },
   "dependencies": {

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+REPO=$@
+
+targetVersion=$(cat lerna.json | grep version | head -n 1 | cut -d'"' -f 4)
+
+publish() {
+  (
+    cd $1
+    if [ -f "package.json" ]
+    then
+      local private=$(cat package.json | grep private | head -n 1 | cut -d':' -f 2 | tr -d ',' | tr -d '[:space:]')
+      if [ "$private" != "true" ]
+      then
+        npm version $targetVersion --allow-same-version
+        local name=$(cat package.json | grep name | head -n 1 | cut -d'"' -f 4)
+        local targetVersion1=$(cat package.json | grep version | head -n 1 | cut -d'"' -f 4)
+        local currentVersion=$(npm info $REPO | grep version: | cut -d"'" -f 2)
+        if [ -z "$currentVersion" ]; then currentVersion="0.0.0"; fi
+        echo $1 $name $targetVersion $currentVersion $private
+        echo "$name@$currentVersion -> $targetVersion"
+      fi
+    fi
+  )
+}
+
+for i in ./packages/*; do publish $i; done
