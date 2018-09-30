@@ -1,6 +1,5 @@
 import _endsWith from 'lodash/fp/endsWith';
-import _isFunction from 'lodash/fp/isFunction';
-import axios from 'axios';
+import _isFunction from 'lodash/isFunction';
 
 import Duck from './duck';
 
@@ -25,13 +24,14 @@ const handleError = (action, dispatch) => (error) => {
     Object.assign({ payload: action.payload }, action.meta),
   ));
 
+  // TODO use `?.` ?
   if (_isFunction(action.meta.catch)) {
     action.meta.catch({ ...action, error });
   }
 };
 
-export default store => next => (action) => {
-  const shouldSkipMiddleware = !action.meta?.useEntityMiddleware
+export default axios => store => next => (action) => {
+  const shouldSkipMiddleware = !action.meta?.useDuckMiddleware
     || _endsWith('_RESOLVED')(action.type)
     || _endsWith('_REJECTED')(action.type)
     || !(action.meta?.entity?.duck instanceof Duck);

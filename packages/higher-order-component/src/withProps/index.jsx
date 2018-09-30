@@ -1,10 +1,17 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import React from 'react';
 
-export default predicate => ComposedComponent => function withProps(props) {
-  if (process.env.NODE_ENV !== 'production') {
-    if (!_isFunction(predicate)) throw new Error('withProps: "predicate" must be a function');
-  }
+import getDisplayName from '../get-display-name';
 
-  return <ComposedComponent {...props} {...predicate(props)} />;
+export default (componentProps = {}) => (ComposedComponent) => {
+  const withProps = props => (
+    <ComposedComponent
+      {...props}
+      {...(_isFunction(componentProps) ? componentProps(props) : componentProps)}
+    />
+  );
+
+  withProps.displayName = `withProps(${getDisplayName(ComposedComponent)})`;
+
+  return withProps;
 };

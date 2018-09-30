@@ -3,7 +3,7 @@
   "description": "entity-widget",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@gnowth/entity-widget",
+  "name": "@entity/widget",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
@@ -27,7 +27,7 @@
     "styled-components": "3.4.9"
   },
   "peerDependencies": {
-    "react": "16.5.1",
+    "react": "16.5.2",
     "react-router-dom": "4.3.1"
   }
 }

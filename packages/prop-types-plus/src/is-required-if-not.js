@@ -1,5 +1,5 @@
-import _isFunction from 'lodash/fp/isFunction';
-import _isString from 'lodash/fp/isString';
+import _isFunction from 'lodash/isFunction';
+import _isString from 'lodash/isString';
 import withRequired from './with-required';
 
 const propTypeIsRequiredIfNot = (predicate, propType) => (props, ...rest) => {

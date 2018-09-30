@@ -1,5 +1,5 @@
 import React from 'react';
-import { Control, Form, Input } from '@gnowth/entity-form';
+import { Control, Form, Input } from '@entity/form';
 
 import styles, { InputText } from './styles';
 import locale from './locale';
@@ -15,13 +15,7 @@ const FormMain = props => (
     />
 
     <Input name="title">
-      { context => (
-        <InputText
-          name={context.name}
-          onChange={context.onChange}
-          value={context.value}
-        />
-      )}
+      { context => <InputText {...context} /> }
     </Input>
 
     <Input

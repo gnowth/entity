@@ -1,1 +1,1 @@
-# entity-widget
+# @entity/widget

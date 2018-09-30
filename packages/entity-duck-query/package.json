@@ -1,0 +1,32 @@
+{
+  "author": "Thierry Wong",
+  "description": "entity-duck-query",
+  "license": "GPL-3.0-or-later",
+  "main": "src/index.js",
+  "name": "@entity/duck-query",
+  "private": true,
+  "repository": "https://github.com/gnowth/react.git",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "clean": "rimraf dist",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "lint": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
+    "prebuild": "npm run clean"
+  },
+  "dependencies": {
+    "@gnowth/default": "0.0.1",
+    "@gnowth/higher-order-component": "0.0.1",
+    "@gnowth/prop-types-duck": "0.0.1",
+    "@gnowth/prop-types-plus": "0.0.1",
+    "lodash": "4.17.11",
+    "prop-types": "15.6.2",
+    "prop-types-exact": "1.2.0",
+    "react-immutable-proptypes": "2.1.0",
+    "react-redux": "5.0.7"
+  },
+  "peerDependencies": {
+    "react": "16.5.2"
+  }
+}

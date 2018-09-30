@@ -1,4 +1,4 @@
-import _isString from 'lodash/fp/isString';
+import _isString from 'lodash/isString';
 import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';

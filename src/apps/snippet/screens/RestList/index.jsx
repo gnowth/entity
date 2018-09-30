@@ -4,14 +4,14 @@ import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { QueryDuck } from '@gnowth/entity-duck';
+import { Query } from '@entity/duck-query';
 import { Map } from 'immutable';
 
 import EntityRest from 'apps/snippet/entities/Rest';
 import FormMain from 'apps/snippet/forms/Main';
 
 const ScreenRestList = props => (
-  <QueryDuck
+  <Query
     action={() => props.entity.get({ params: props.filterParams })}
     component={props.formComponent}
     componentProps={props.formComponentProps}

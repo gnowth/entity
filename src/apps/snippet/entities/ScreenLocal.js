@@ -1,5 +1,5 @@
-import DuckScreen from '@gnowth/entity-duck-screen';
-import { Entity, Fields } from '@gnowth/entity';
+import DuckScreen from '@entity/duck-namespace-screen';
+import { Entity, Fields } from '@entity/core';
 import { List } from 'immutable';
 
 import EntityPerson from 'apps/people/entities/Person';

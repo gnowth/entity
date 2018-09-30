@@ -1,1 +1,1 @@
-# entity-form
+# @entity/form

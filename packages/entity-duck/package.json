@@ -3,7 +3,7 @@
   "description": "entity-duck",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@gnowth/entity-duck",
+  "name": "@entity/duck",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
@@ -16,19 +16,8 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@gnowth/entity": "0.0.1",
-    "@gnowth/higher-order-component": "0.0.1",
-    "@gnowth/prop-types-plus": "0.0.1",
-    "axios": "0.18.0",
-    "immutable": "4.0.0-rc.9",
+    "@entity/core": "0.0.1",
     "lodash": "4.17.11",
-    "prop-types": "15.6.2",
-    "prop-types-exact": "1.2.0",
-    "react-immutable-proptypes": "2.1.0",
-    "react-redux": "5.0.7",
     "redux-actions": "2.6.1"
-  },
-  "peerDependencies": {
-    "react": "16.5.1"
   }
 }

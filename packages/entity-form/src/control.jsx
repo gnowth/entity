@@ -1,13 +1,14 @@
 import _compose from 'lodash/fp/compose';
-import _isFunction from 'lodash/fp/isFunction';
-import _isObjectLike from 'lodash/fp/isObjectLike';
+import _isFunction from 'lodash/isFunction';
+import _isObjectLike from 'lodash/isObjectLike';
+import _isString from 'lodash/isString';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withProps, withPropTypes, withState } from '@gnowth/higher-order-component';
+import { withDefault } from '@gnowth/default';
+import { withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
-import { withFormDefault } from './context';
 import withInput from './withInput';
 
 class Control extends React.Component {
@@ -28,9 +29,13 @@ class Control extends React.Component {
       {
         [this.props.event]: this.handleEvent,
         disabled: this.props.disabled || this.props.readOnly,
+      },
+
+      !_isString(this.props.component) && {
         processing: this.props.processing,
         processDidFail: this.props.processDidFail,
       },
+
       _isFunction(this.props.componentProps)
         ? this.props.componentProps(this.getPropsContext())
         : this.props.componentProps,
@@ -83,21 +88,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default _compose(
-  withPropTypes({
-    displayName: 'Control',
-
-    propTypes: {
-
-    },
-  }),
-
   withInput,
-  withFormDefault,
-
-  withProps(props => ({
-    component: props.component || props.defaultComponents.control,
-  })),
-
+  withDefault({ button: 'component' }),
   withState({ initialState: { action: undefined } }),
   connect(mapStateToProps),
 )(Control);

@@ -1,3 +1,5 @@
+# @entity/duck
+
 ```javascript
   const action = {
     meta: {
@@ -9,3 +11,6 @@
     type: '@@Person/entities/PEOPLE_GET',
   }
 ```
+
+## TODO
+1. Remove redux-actions dependency

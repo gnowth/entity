@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
-import { Control, Form } from '@gnowth/entity-form';
+import { Control, Form } from '@entity/form';
 import { UIButton, UIIcon, UISpacer } from '@gnowth/ui';
 import { FormattedMessage } from 'react-intl';
 

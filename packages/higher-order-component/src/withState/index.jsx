@@ -1,18 +1,10 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import React from 'react';
 
-export default function ({ initialState = {}, mapProps: { state = 'state', setState = 'setState' } = {} }) {
-  return ComposedComponent => class withState extends React.Component {
-    // TODO to remove after test
-    // constructor(props) {
-    //   super(props);
-    //   this.state = _isFunction(initialState)
-    //     ? initialState(props)
-    //     : initialState;
+import getDisplayName from '../get-display-name';
 
-    //   this.mounted = true;
-    // }
-
+export default ({ initialState = {}, mapProps = {} }) => (ComposedComponent) => {
+  class withState extends React.Component {
     state = _isFunction(initialState)
       ? initialState(this.props)
       : initialState;
@@ -29,12 +21,16 @@ export default function ({ initialState = {}, mapProps: { state = 'state', setSt
         {},
         this.props,
         {
-          [state]: this.state,
-          [setState]: (...args) => this.mounted && this.setState(...args),
+          [mapProps.state || 'state']: this.state,
+          [mapProps.setState || 'setState']: (...args) => this.mounted && this.setState(...args),
         },
       );
 
       return <ComposedComponent {...props} />;
     }
-  };
-}
+  }
+
+  withState.displayName = `withState(${getDisplayName(ComposedComponent)})`;
+
+  return withState;
+};

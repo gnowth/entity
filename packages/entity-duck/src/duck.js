@@ -1,8 +1,8 @@
 import _compose from 'lodash/fp/compose';
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import _mapValues from 'lodash/fp/mapValues';
+import { Entity } from '@entity/core';
 import { handleActions } from 'redux-actions'; // TODO remove dependency
-import { Entity } from '@gnowth/entity';
 
 export default class Duck {
   static createAction({

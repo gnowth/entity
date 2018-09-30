@@ -3,7 +3,7 @@
   "description": "entity-form",
   "license": "GPL-3.0-or-later",
   "main": "src/index.js",
-  "name": "@gnowth/entity-form",
+  "name": "@entity/form",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.0.1",
@@ -16,6 +16,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
+    "@gnowth/default": "0.0.1",
     "@gnowth/higher-order-component": "0.0.1",
     "@gnowth/prop-types-entity": "0.0.1",
     "@gnowth/prop-types-plus": "0.0.1",
@@ -27,6 +28,6 @@
     "react-redux": "5.0.7"
   },
   "peerDependencies": {
-    "react": "16.5.1"
+    "react": "16.5.2"
   }
 }

@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _isFunction from 'lodash/isFunction';
 import cn from 'classnames';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';

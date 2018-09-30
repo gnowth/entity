@@ -1,5 +1,5 @@
-import { Entity, Fields } from '@gnowth/entity';
-import DuckRest from '@gnowth/entity-duck-rest';
+import { Entity, Fields } from '@entity/core';
+import DuckRest from '@entity/duck-namespace-drf';
 
 class Filer extends Entity {
   static apiBase = '/filer/'; // TODO add apibase

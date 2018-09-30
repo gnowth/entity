@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
-import PropTypesLocale from '@gnowth/prop-types-locale';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { Control, Form, Input } from '@gnowth/entity-form';
+import { Control, Form, Input } from '@entity/form';
 import { UIIcon, UITypeSet } from '@gnowth/ui';
 
 import locale from './locale';
@@ -69,14 +69,14 @@ FormAction.propTypes = {
   }).isRequired,
 
   locale: PropTypes.shape({
-    cancel: PropTypesLocale.locale.isRequired,
-    complete: PropTypesLocale.locale.isRequired,
-    completed_by: PropTypesLocale.locale.isRequired,
-    completed_date: PropTypesLocale.locale.isRequired,
-    due_date: PropTypesLocale.locale.isRequired,
-    header_title: PropTypesLocale.locale.isRequired,
-    person_responsible: PropTypesLocale.locale.isRequired,
-    update: PropTypesLocale.locale.isRequired,
+    cancel: PropTypesPlus.locale.isRequired,
+    complete: PropTypesPlus.locale.isRequired,
+    completed_by: PropTypesPlus.locale.isRequired,
+    completed_date: PropTypesPlus.locale.isRequired,
+    due_date: PropTypesPlus.locale.isRequired,
+    header_title: PropTypesPlus.locale.isRequired,
+    person_responsible: PropTypesPlus.locale.isRequired,
+    update: PropTypesPlus.locale.isRequired,
   }),
 };
 

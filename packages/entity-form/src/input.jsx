@@ -5,9 +5,9 @@ import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { withDefault } from '@gnowth/default';
 import { withProps, withPropTypes } from '@gnowth/higher-order-component';
 
-import { withFormDefault } from './context';
 import withInput from './withInput';
 
 class Input extends React.Component {
@@ -95,8 +95,6 @@ Input.defaultProps = {
 // TODO check withPropTypes
 export default _compose(
   withPropTypes({
-    displayName: 'Input',
-
     propTypes: exact({
       apiOptions: PropTypes.bool,
       apiValue: PropTypes.bool,
@@ -129,10 +127,10 @@ export default _compose(
   }),
 
   withInput,
-  withFormDefault,
+  withDefault(), // TODO find a way to access nested level
 
   withProps(props => ({
-    component: props.component || props.defaultWidgets[props.type || props.field.constructor.type],
-    wrapperComponent: props.wrapperComponent || props.defaultComponents.wrapper,
+    component: props.component || props.defaults.widgets[props.type || props.field.constructor.type],
+    wrapperComponent: props.wrapperComponent || props.defaults.label,
   })),
 )(Input);

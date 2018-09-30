@@ -1,1 +1,1 @@
-# prop-types-entity
+# @gnowth/prop-types-entity
