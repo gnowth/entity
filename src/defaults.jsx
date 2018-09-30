@@ -23,5 +23,4 @@ export default {
     entity: WidgetSelect,
     text: WidgetTextarea,
   },
-  // error: 'UIError',
 };
