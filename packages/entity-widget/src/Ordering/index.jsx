@@ -77,7 +77,9 @@ class WidgetOrdering extends React.Component {
       >
         { this.props.label }
         <UIIcon
-          css={css`${props => props.theme.components?.widgetOrdering?.icon}`}
+          css={css`
+            ${props => props.theme.components?.widgetOrdering?.icon}
+          `}
           name={this.nameMap[this.getOrderingState()]}
           iconSize="16px"
         />

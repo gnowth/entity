@@ -9,10 +9,11 @@ import { terser } from 'rollup-plugin-terser';
 
 const rootPath = process.cwd();
 
+// eslint-disable-next-line import/no-dynamic-require
 const packageFile = require(path.join(rootPath, 'package.json'));
 const dependencies = []
   .concat(packageFile.dependencies ? Object.keys(packageFile.dependencies) : [])
-  .concat(packageFile.peerDependencies ? Object.keys(packageFile.peerDependencies) : [])
+  .concat(packageFile.peerDependencies ? Object.keys(packageFile.peerDependencies) : []);
 
 export default [
   {
