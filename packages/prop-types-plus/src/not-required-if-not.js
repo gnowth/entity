@@ -1,4 +1,8 @@
-import PropTypes from 'prop-types';
+import ifElse from './if-else';
+import isUndefined from './is-undefined';
 
-// TODO
-export default () => PropTypes.any;
+export default (predicate, propType) => ifElse(
+  predicate,
+  propType,
+  isUndefined,
+);

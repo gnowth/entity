@@ -28,13 +28,13 @@ AppRoot.propTypes = exact({
 
   defaults: PropTypes.shape({}),
 
-  intlProvider: PropTypesPlus.isRequiredIf('intlProviderProps', PropTypesPlus.provider),
+  intlProvider: PropTypesPlus.isRequiredIf('intlProviderProps', PropTypesPlus.component),
   intlProviderProps: PropTypes.exact({
     locale: PropTypes.string.isRequired,
     messages: PropTypes.object.isRequired,
   }),
 
-  themeProvider: PropTypesPlus.isRequiredIf('themeProviderProps', PropTypesPlus.provider),
+  themeProvider: PropTypesPlus.isRequiredIf('themeProviderProps', PropTypesPlus.component),
   themeProviderProps: PropTypes.exact({
     theme: PropTypes.shape({}).isRequired,
   }),

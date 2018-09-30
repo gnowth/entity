@@ -1,20 +1,9 @@
-import _isFunction from 'lodash/isFunction';
-import _isString from 'lodash/isString';
-import withRequired from './with-required';
+import PropTypes from 'prop-types';
 
-const propTypeIsRequiredIfNot = (predicate, propType) => (props, ...rest) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (!_isFunction(propType)) throw new Error('PropTypesPlus (isRequiredIfNot): propType argument must be a function');
-    if (!_isFunction(predicate) && !_isString(predicate)) throw new Error('PropTypes (isRequiredIfNot): predicate argument must be of type function or string');
-  }
+import ifElse from './if-else';
 
-  return (
-    _isString(predicate)
-      ? props[predicate]
-      : predicate(props)
-  )
-    ? propType(props, ...rest)
-    : propType.isRequired(props, ...rest);
-};
-
-export default withRequired(propTypeIsRequiredIfNot);
+export default (predicate, propType) => ifElse(
+  predicate,
+  PropTypes.any,
+  propType.isRequired,
+);
