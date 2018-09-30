@@ -87,7 +87,7 @@ jobs:
 workflows:
   version: 2
 
-  build-and-deploy:
+  lint-and-test:
     jobs:
       - lint-and-test:
           filters:
@@ -95,14 +95,18 @@ workflows:
               ignore:
               - gh-pages
 
-      - build:
-          requires:
-          - lint-and-test
+  build-and-deploy:
+    jobs:
+      - lint-and-test:
           filters:
             branches:
               only:
               - master
               - staging
+
+      - build:
+          requires:
+          - lint-and-test
 
       - deploy-staging:
           requires:
