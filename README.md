@@ -48,13 +48,6 @@ npm run serve-dist
 npm test
 ```
 
-### stylelint
-stylelint is temporarily disabled as it is causing errors
-```
-"lint": "npm run lint:js && npm run lint:css && npm run flow",
-```
-
-
 ## TODO
 1. packages: use closure for minification of packages
 2. eslint: restore camelcase rule once it can be ignored in style.js

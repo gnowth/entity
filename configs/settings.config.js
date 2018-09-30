@@ -1,7 +1,7 @@
 const settingsMap = {
   production: {
-    BASE_URL: 'http://www.gnowth.com/',
-    BASE_API_URL: 'http://www.gnowth.com/api',
+    BASE_URL: 'https://www.gnowth.com/',
+    BASE_API_URL: 'https://www.gnowth.com/api',
     ENVIRONMENT: 'production',
     VERSION: 'PROD-1.0.0',
     XDOMAIN_ENABLED: true,

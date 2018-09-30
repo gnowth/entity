@@ -13,7 +13,7 @@ const extract = loaders => (
 module.exports = [
   {
     test: /\.(js|jsx)$/,
-    exclude: /node_modules\/(?!(@gnowth)\/).*/,
+    exclude: /node_modules\/(?!(@gnowth|@entity)\/).*/,
     loader: 'babel-loader',
     options: babelConfig,
   },
