@@ -73,17 +73,17 @@ workflows:
 
   build_and_deploy:
     jobs:
-      - setup
+      - setup:
         filters:
           branches:
             ignore:
               - gh-pages
 
-      - lint_and_test
+      - lint_and_test:
         requires:
           - setup
 
-      - build
+      - build:
         requires:
           lint_and_test
         filters:
@@ -92,7 +92,7 @@ workflows:
               - master
               - staging
 
-      - deploy_staging
+      - deploy_staging:
         requires:
           - build
         filters:
@@ -100,7 +100,7 @@ workflows:
             only:
               - staging
 
-      - deploy_production
+      - deploy_production:
         requires:
           - build
         filters:
