@@ -1,7 +1,6 @@
 import _debounce from 'lodash/fp/debounce';
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
 import { is } from 'immutable';
 
 import getDisplayName from '../get-display-name';
@@ -10,14 +9,13 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
   class withDebounce extends React.Component {
     static propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-      onChange: PropTypesPlus.isRequiredIfNot('readOnly', PropTypes.func),
+      onChange: PropTypes.func.isRequired,
       readOnly: PropTypes.bool,
       withDebounceDisabled: PropTypes.bool,
     };
 
     static defaultProps = {
       value: undefined,
-      onChange: undefined,
       readOnly: false,
       withDebounceDisabled: false,
     };
