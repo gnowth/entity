@@ -8,6 +8,7 @@ import reducerSave from './reducer-save';
 import reducerDelete from './reducer-delete';
 import { getId, getIdentifier, NULL_ID } from './utils';
 
+// TODO check that entity has api base?
 export default class EntityDuck extends Duck {
   static namespace = 'dango_rest_framework';
 

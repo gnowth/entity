@@ -1,10 +1,10 @@
-import Fields from '../field';
+import IntegerField from '../field/field-integer';
 import EntityBase from './entity-base';
 
 export default class Filter extends EntityBase {
   static fields = {
-    page: new Fields.IntegerField({ default: 1 }),
-    page_size: new Fields.IntegerField({ default: 20 }),
+    page: new IntegerField({ default: 1 }),
+    page_size: new IntegerField({ default: 20 }),
   };
 
   static asParams(record, options) {

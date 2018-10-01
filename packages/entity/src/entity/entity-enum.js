@@ -1,12 +1,12 @@
-import Fields from '../field';
+import CharField from '../field/field-char';
 import EntityBase from './entity-base';
 
 export default class Enum extends EntityBase {
   static idField = 'value';
 
   static fields = {
-    value: new Fields.CharField(),
-    label: new Fields.CharField(),
+    value: new CharField(),
+    label: new CharField(),
   };
 
   static toString(record) {
