@@ -130,3 +130,49 @@ class Entity {
     return record?.get(this.idField) || '';
   }
 }
+
+class Base extends Entity {
+  static actionArrayDeleteAtIndex(records, { index = null } = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!records) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be set.`);
+      if (!List.isList(records)) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be an immutable list`);
+      if (index === null) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "index" option must be set`);
+    }
+
+    return records.delete(index);
+  }
+
+  static actionComplete(record, options) {
+    return this.duck.save(record, Object.assign(
+      { action: 'complete' },
+      options,
+    ));
+  }
+
+  static actionReset(record) { // TODO check if reset should be reset to initialValue
+    return this.dataToRecord({
+      [this.idField]: record.get(this.idField),
+    });
+  }
+
+  static actionSubmit(record, options) {
+    return this.duck.save(record, Object.assign(
+      { action: 'submit' },
+      options,
+    ));
+  }
+}
+
+class Title extends Base {
+  static fields = {
+    uuid: new IdField({ blank: true }),
+  }
+
+  static actionArchive(record, options) {
+    // TODO check that duck is available
+    return this.duck.save(record, Object.assign(
+      { action: 'archive' },
+      options,
+    ));
+  }
+}
