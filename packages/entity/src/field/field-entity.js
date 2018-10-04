@@ -1,23 +1,26 @@
-// TODO add default clean to remove fields not in entity
-export default class EntityField extends AnyField {
-  static type = 'entity';
+import _isString from 'lodash/isString';
+import { List } from 'immutable';
 
+import AnyField from './field-any';
+
+// TODO update to entityid
+// TODO add default clean to remove fields not in entity?
+export default class EntityField extends AnyField {
   constructor(options = {}) {
-    super(Object.assign(
-      {},
-      options,
-      !options.preventEntityValidators && {
-        defaultValidators: [entityValid].concat(options.defaultValidators || []),
-      },
-    ));
+    const defaults = {
+      nested: true,
+      type: 'entity',
+    };
+
+    super(Object.assign(defaults, options));
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity) throw new Error('\'entity\' option is required when extending EntityField');
+      if (!options.entity) throw new Error(`entity[${this.constructor.name}]: "entity" option is required`);
     }
   }
 
   dataToValue(data) {
-    return this.entity.dataToRecord(data);
+    return this.getEntity({ data }).dataToRecord(data);
   }
 
   default() {
@@ -30,77 +33,59 @@ export default class EntityField extends AnyField {
     return this.entity;
   }
 
-  getEntityId(record, option) {
-    return this.entity.getId(record, option);
-  }
-
-  // TODO remove name as being an array?
-  getField({ name } = {}) {
+  getField(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (Array.isArray(name)) {
-        if (name.length === 0) throw new Error('entity (field.getField): "name" option cannot be an empty array');
-        if (name.some(n => !this.entity.fields[n])) throw new Error(`entity (field.getField): "name" ${name} contains name not describe in entity`);
-      } else if (name !== undefined) {
-        if (!_isString(name)) throw new Error(`entity (field.getField): "name" ${name} option must be either a string or an array of string`);
-        if (!this.entity.fields[name]) throw new Error(`entity (field.getField): field "${name}" not found`);
-      }
+      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getField): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getField): field "${options.name}" not found`);
     }
 
-    return name && !Array.isArray(name)
-      ? this.entity.fields[name]
+    return options.name
+      ? this.getEntity(options).fields[options.name]
       : this;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  getFilterParams() {
-    return Map();
-  }
-
-  getValue(record = null, { name } = {}) {
+  getId(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (Array.isArray(name)) {
-        if (name.length === 0) throw new Error('entity (field.getField): "name" argument cannot be an empty array');
-        if (name.some(n => !this.entity.fields[n])) throw new Error(`entity (field.getField): "name" ${name} contains name not describe in entity`);
-      } else if (name !== undefined && name !== null) {
-        if (!_isString(name)) throw new Error(`entity (field.getField): "name" ${name} must be either a string or an array of string`);
-        if (!this.entity.fields[name]) throw new Error(`entity (field.getField): field "${name}" not found`);
-      }
+      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
     }
 
-    if (Array.isArray(name)) {
-      const fields = name.filter(n => n in this.entity.fields);
-
-      return record && record.filter((_, key) => fields.includes(key));
-    }
-
-    return name && record
-      ? record.get(name)
-      : record;
+    return this.getField({ value, ...options })
+      .getEntity({ value, ...options })
+      .getId(this.getValue(value, options));
   }
 
+  // TODO check if need to deprecate
   getOptions() {
     return this.options || this.entity.options || List();
   }
 
-  toString(value = null) {
-    return value === null
-      ? ''
-      : this.entity.toString(value);
+  getValue(value, options = {}) { // TODO add value as position and pass it in option
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
+    }
+
+    return options.name
+      ? value?.get(options.name)
+      : value;
   }
 
-  toStringOrdered(value = null) {
-    return value === null
-      ? ''
-      : this.entity.toStringOrdered(value);
-  }
-
-  valueToData(value) {
-    return this.entity.recordToData(value);
+  toData(value, options = {}) {
+    return this.getEntity({ value, ...options }).recordToData(value, options);
   }
 
   valueToParam(value = null) {
     return value === null
       ? undefined
       : value.get(this.entity.idField);
+  }
+
+  toParams(value, options) {
+    return this.getId(value, options);
+  }
+
+  toString(value, options = {}) {
+    return this.getEntity({ value, ...options }).toString(value, options);
   }
 }

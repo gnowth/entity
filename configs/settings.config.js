@@ -1,7 +1,8 @@
 const settingsMap = {
   production: {
-    BASE_URL: 'https://www.gnowth.com/',
+    BASE_API_DOMAIN: 'https://www.gnowth.com',
     BASE_API_URL: 'https://www.gnowth.com/api',
+    BASE_URL: 'https://www.gnowth.com/#',
     ENVIRONMENT: 'production',
     VERSION: 'PROD-1.0.0',
     XDOMAIN_ENABLED: true,
@@ -11,9 +12,9 @@ const settingsMap = {
 export default Object.assign(
   // default settings
   {
-    BASE_API_DOMAIN: 'http://localhost:8000',
+    BASE_API_DOMAIN: 'http://localhost:8000', // TODO check if port is right
     BASE_API_URL: 'http://localhost:8000/api',
-    BASE_URL: '/',
+    BASE_URL: 'http://localhost:9000/#',
     CSRF_COOKIE_NAME: 'csrftoken',
     ENVIRONMENT: 'development',
     LANG: ['en'],

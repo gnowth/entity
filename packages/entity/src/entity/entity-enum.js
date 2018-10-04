@@ -1,15 +1,15 @@
+import Entity from './entity';
 import CharField from '../field/field-char';
-import EntityBase from './entity-base';
 
-export default class Enum extends EntityBase {
-  static idField = 'value';
+export default class Enum extends Entity {
+  static idField = 'value'
 
   static fields = {
-    value: new CharField(),
     label: new CharField(),
-  };
+    value: new CharField(),
+  }
 
   static toString(record) {
-    return record.get('label');
+    return record?.get('label') || '';
   }
 }

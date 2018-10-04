@@ -1,7 +1,7 @@
-export default class TextField extends AnyField {
-  static type = 'text';
+import CharField from './field-char';
 
-  default() {
-    return this.many ? List() : '';
+export default class TextField extends CharField {
+  constructor(options) {
+    super(Object.assign({ type: 'text' }, options));
   }
 }

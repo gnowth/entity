@@ -1,11 +1,3 @@
-export default class AnyField extends Field {
-  dataToValue(data = null) { // eslint-disable-line class-methods-use-this
-    return fromJS(data);
-  }
+import Field from './field';
 
-  valueToData(value) { // eslint-disable-line class-methods-use-this
-    return (List.isList(value) || Map.isMap(value))
-      ? value.toJS()
-      : value;
-  }
-}
+export default class AnyField extends Field {}

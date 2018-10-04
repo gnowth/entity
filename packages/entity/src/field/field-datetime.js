@@ -1,13 +1,12 @@
+import DateField from './field-date';
+
 export default class DateTimeField extends DateField {
   constructor(options) {
-    const newOptions = Object.assign(
-      {
-        dateFormat: 'YYYY-MM-DD HH:mm',
-        allowTime: true,
-      },
-      options,
-    );
+    const defaults = {
+      dateFormat: 'YYYY-MM-DD HH:mm',
+      allowTime: true,
+    };
 
-    super(newOptions);
+    super(Object.assign(defaults, options));
   }
 }

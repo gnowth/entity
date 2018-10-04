@@ -1,29 +1,31 @@
+import moment from 'moment';
+
+import AnyField from './field-any';
+
 export default class DateField extends AnyField {
-  static type = 'date';
-
   constructor(options) {
-    const newOptions = Object.assign(
-      {
-        dateFormat: 'YYYY-MM-DD',
-        allowTime: false,
-      },
-      options,
-    );
+    const defaults = {
+      allowTime: false,
+      dateFormat: 'YYYY-MM-DD',
+      type: 'date',
+    };
 
-    super(newOptions);
+    super(Object.assign(defaults, options));
   }
 
-  dataToValue(data = null) { // eslint-disable-line class-methods-use-this
+  dataToValue(data) {
     return data && moment(data);
   }
 
-  toString(value = null) {
-    return value === null
-      ? ''
-      : value.format(this.dateFormat);
+  toData(value) {
+    return value?.format(this.dateFormat) || '';
   }
 
-  valueToData(data) {
-    return data && this.toString(data);
+  toParams(value) {
+    return value?.format(this.dateFormat) || '';
+  }
+
+  toString(value = null) {
+    return value?.format(this.dateFormat) || '';
   }
 }

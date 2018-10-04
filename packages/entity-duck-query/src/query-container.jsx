@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 // TODO need to make sure keyRecord is provided!
 const mapStateToProps = (state, props) => Object.assign(
   {
-    field: props.queryContainer_action.meta.entity.toEntityField(),
+    field: props.queryContainer_action.meta.entity.getEntityField(),
 
     initialValue: props.queryContainer_record(state, props.queryContainer_action.meta),
 

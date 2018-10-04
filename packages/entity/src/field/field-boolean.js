@@ -1,3 +1,7 @@
+import AnyField from './field-any';
+
 export default class BooleanField extends AnyField {
-  static type = 'boolean';
+  constructor(options) {
+    super(Object.assign({ type: 'boolean' }, options));
+  }
 }

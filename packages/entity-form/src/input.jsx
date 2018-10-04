@@ -130,7 +130,7 @@ export default _compose(
   withDefault(), // TODO find a way to access nested level
 
   withProps(props => ({
-    component: props.component || props.defaults.widgets[props.type || props.field.constructor.type],
+    component: props.component || props.defaults.widgets[props.type || props.field.type],
     wrapperComponent: props.wrapperComponent || props.defaults.label,
   })),
 )(Input);
