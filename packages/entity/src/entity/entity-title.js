@@ -2,15 +2,15 @@ import _isString from 'lodash/isString';
 import queryString from 'query-string';
 import { Map } from 'immutable';
 
-import EntityBase from './entity-base';
+import Entity from './entity';
 
 import BooleanField from '../field/field-boolean';
 import CharField from '../field/field-char';
 import IdField from '../field/field-id';
 import IntegerField from '../field/field-integer';
 
-export default class Title extends EntityBase {
-  static urlBase = ''; // TODO add check that url is properly constructed in constructor
+export default class Title extends Entity {
+  static urlBase = '';
 
   static fields = {
     is_archived: new BooleanField({ default: false }),
@@ -27,9 +27,15 @@ export default class Title extends EntityBase {
     ));
   }
 
-  static actionArrayDeleteAtIndexOrdered() {}
+  static actionArrayDeleteAtIndexOrdered(records, options) {
+    return this.actionArrayDeleteAtIndex(records, options)
+      .map((record, i) => record.set('order', i));
+  }
 
-  static actionArrayMoveAtIndexOrdered() {}
+  static actionArrayMoveAtIndexOrdered(records, options) {
+    return this.actionArrayMoveAtIndex(records, options)
+      .map((record, i) => record.set('order', i));
+  }
 
   static actionSave(record) {
     return this.duck?.save(record, { invalidateList: true });

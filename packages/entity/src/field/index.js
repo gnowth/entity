@@ -12,6 +12,8 @@ export { default as DateTimeField } from './field-datetime';
 
 export { default as EntityField } from './field-entity';
 
+export { default as EnumField } from './field-enum';
+
 export { default as IdField } from './field-id';
 
 export { default as IntegerField } from './field-integer';

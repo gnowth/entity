@@ -13,6 +13,33 @@ export default class Entity {
     uuid: new IdField({ blank: true }),
   }
 
+  static actionArrayDeleteAtIndex(records, { index = null } = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!records) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be set.`);
+      if (!List.isList(records)) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be an immutable list`);
+      if (index === null) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "index" option must be set`);
+    }
+
+    return records.delete(index);
+  }
+
+  static actionArrayMoveAtIndex(records, { index = null, indexTo = null } = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!records) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "records" must be set.`);
+      if (index === null) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "index" option must be set.`);
+      if (indexTo === null) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "indexTo" option must be set.`);
+    }
+
+    return records.delete(index).insert(indexTo, records.get(index));
+  }
+
+  // TODO check if reset should be reset to initialValue
+  static actionReset(record) {
+    return this.dataToRecord({
+      [this.idField]: record.get(this.idField),
+    });
+  }
+
   static clean(record, options) {
     const newOptions = Object.assign({ entity: this }, options);
 

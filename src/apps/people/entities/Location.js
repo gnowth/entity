@@ -1,9 +1,9 @@
 import DuckRest from '@entity/duck-namespace-drf';
-import { EntityBase, Fields } from '@entity/core';
+import { Entity, Fields } from '@entity/core';
 
 import settings from 'settings';
 
-class Location extends EntityBase {
+class Location extends Entity {
   static apiBase = `/${settings.PROJECT_NAME}_tz/v1/locations/`;
 
   static paginated = true;
