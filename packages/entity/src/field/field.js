@@ -3,7 +3,7 @@ import { fromJS, isImmutable, List } from 'immutable';
 export default class Field {
   constructor(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.validatorsList && !options.many) throw new Error(`entity[Field]: option "validatorsList" can only be set if "many" is set for ${this.constructor.name}`);
+      if (options.validatorsList && !options.many) throw new Error(`entity[${this.constructor.name}]: option "validatorsList" can only be set if "many" is set.`);
     }
 
     const defaults = {
@@ -44,13 +44,13 @@ export default class Field {
 
   getEntity() {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`entity[${this.constructor.name}] (getEntity): method is not supported for ${this.constructor.name}.`);
+      throw new Error(`entity[${this.constructor.name}] (getEntity): method is not supported.`);
     }
   }
 
   getField(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity[${this.constructor.name}] (getField): method with option name is not supported for ${this.constructor.name}.`);
+      if (options.name) throw new Error(`entity[${this.constructor.name}] (getField): method with option name is not supported.`);
     }
 
     return options.name ? null : this;
@@ -58,7 +58,7 @@ export default class Field {
 
   getId() {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`entity[Field] (getId): method is not supported for ${this.constructor.name}.`);
+      throw new Error(`entity[${this.constructor.name}] (getId): method is not supported.`);
     }
   }
 
@@ -69,16 +69,21 @@ export default class Field {
 
   getValue(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity[${this.constructor.name}] (getField): option "name" is not supported for ${this.constructor.name}.`);
+      if (options.name) throw new Error(`entity[${this.constructor.name}] (getField): option "name" is not supported.`);
     }
 
     return options.name ? null : value;
   }
 
-  // TODO allow options name. check about isBlankSome, isBlankEvery
-  isBlank(value = null) {
+  isBlank(value = null, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name) throw new Error(`entity[${this.constructor.name}] (isBlank): method with option name is not supported.`);
+    }
+
     return value === null || (
-      this.many && value.size === 0
+      this.many
+        ? value.size === 0
+        : value === ''
     );
   }
 

@@ -92,8 +92,8 @@ export default class Entity {
     return !!maybeDescendant && maybeDescendant.prototype instanceof this;
   }
 
-  static isValid(value, options) {
-    return this.validate(value, options).size === 0;
+  static isValid(record, options) {
+    return this.validate(record, options).size === 0;
   }
 
   // TODO check if need to deprecate
@@ -128,5 +128,109 @@ export default class Entity {
   }
 
   // TODO
-  static validate() {}
+  static validate(record, options) {
+    const fields = Map(this.fields)
+      .map((field, name) => {
+        field.validate(record.get(name), {})
+      })
+      .filterNot(errors => errors.size === 0)
+
+    const validatorMap = options.fields;
+  }
 }
+
+const entityValidate = (record, options = {}) => {
+  return record && Map(options.fields ? _pick(options.fields)(this.fields) : this.fields)
+    .map((field, name) => field.validate(
+      record.get(name),
+      Object.assign({}, _omit(['fields'])(options), { record, field, name, formEntity: this }),
+    ))
+    .filterNot(errors => errors.size === 0);
+}
+
+const newEntityValidate = () => {
+
+}
+
+
+const options = {
+  validators: []
+}
+
+const errors = {
+  er: {
+    actions: [
+      {},
+      {
+        date: ['eror', 'error'],
+        date2: ['dfdf'],
+      },
+    ],
+    df: ['effor'],
+  },
+  errors: {
+
+  },
+  nonFieldErrors: [],
+};
+
+// entity.validate(value, {
+//   nested: true,
+//   fields: {
+//     df: [],
+//     df1: [
+//       validators.isRequired,
+//       validators.entity({
+//         fields: {
+
+//         }
+//       }),
+//     ],
+//   }
+// })
+
+
+const fieldValidate = (value, options) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (this.many && !List.isList(value)) throw new Error('Entity(validate): "value" must be an "Immutable List" with field option "many"');
+  }
+
+  const validateValue = (val, validators) => List(validators)
+    .flatMap((validator) => {
+      const errors = validator(val, Object.assign({}, options, { field: this }));
+      const errorList = List.isList(errors) ? errors : List([errors]);
+
+      return errorList
+        .filter(error => error)
+        .map((error) => {
+          if (_isString(error)) return Map({ message: error });
+          if (error === true) return Map({ message: 'Unidentified Error' });
+
+          if (process.env.NODE_ENV !== 'production') {
+            if (!Map.isMap(error)) throw new Error(`entity: Received error which is neither a "boolean" nor a "string" nor a "Map". Check the validators used in field with entity ${this.name}`);
+          }
+
+          return error;
+        });
+    });
+
+  const errors = validateValue(value, this.many ? this.listValidators : this.validators);
+
+  if (this.many) {
+    const nestedErrors = value && value.map(v => validateValue(v, this.validators));
+
+    return nestedErrors && nestedErrors.every(err => err.size === 0)
+      ? errors
+      : errors.push(Map({
+        listError: true,
+        message: this.errorListMessage,
+        errors: nestedErrors,
+      }));
+  }
+
+  return errors;
+}
+
+const newFieldValidate = () => {
+
+};

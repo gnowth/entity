@@ -60,7 +60,7 @@ export default class EntityField extends AnyField {
     return this.options || this.entity.options || List();
   }
 
-  getValue(value, options = {}) { // TODO add value as position and pass it in option
+  getValue(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
       if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
@@ -69,6 +69,20 @@ export default class EntityField extends AnyField {
     return options.name
       ? value?.get(options.name)
       : value;
+  }
+
+  // TODO allow options name. check about isBlankSome, isBlankEvery allow name to be array?
+  isBlank(value = null, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
+    }
+
+    return value === null || (
+      this.many
+        ? value.size === 0
+        : value === ''
+    );
   }
 
   toData(value, options = {}) {
