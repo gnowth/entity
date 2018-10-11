@@ -107,5 +107,7 @@ export default class Field {
   }
 
   // TODO
-  validate() {}
+  validate(value, options) {
+    
+  }
 }
