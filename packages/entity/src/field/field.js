@@ -108,6 +108,20 @@ export default class Field {
 
   // TODO
   validate(value, options) {
-    
+    const maybeDetail = options.validators || this.validators;
+
+    const validators = Array.isArray(maybeDetail)
+      ? { detail: maybeDetail }
+      : maybeDetail;
+
+    return Map({
+      detail: validators?.detail.map(
+        validator => validator(value, options),
+      ),
+
+      list: validators.list && value.map(
+        val => validators.list.map(validator => validator(val, options)),
+      ),
+    });
   }
 }
