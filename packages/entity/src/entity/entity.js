@@ -248,6 +248,9 @@ export default class Entity {
 
 // const errors = {
 //   entityFields: {
+//     title: {
+//       detail: ['', ''],
+//     }
 //     title: ['', ''],
 //     entity: {
 //       field: {},
