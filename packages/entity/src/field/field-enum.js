@@ -6,10 +6,12 @@ import EntityEnum from '../entity/entity-enum';
 // TODO review
 export default class EnumField extends EntityField {
   constructor(options) {
-    super(Object.assign(
-      { entity: EntityEnum },
-      options,
-    ));
+    const defaults = {
+      entity: EntityEnum,
+      type: 'enum',
+    };
+
+    super(Object.assign(defaults, options));
   }
 
   dataToValue(data = null) {

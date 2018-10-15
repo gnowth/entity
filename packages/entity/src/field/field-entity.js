@@ -1,5 +1,5 @@
 import _isString from 'lodash/isString';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import AnyField from './field-any';
 
@@ -102,4 +102,24 @@ export default class EntityField extends AnyField {
   toString(value, options = {}) {
     return this.getEntity({ value, ...options }).toString(value, options);
   }
+
+  // // TODO
+  // validateDetail(errors = []) {
+  //   return errors.reduce(
+  //     (prev, current) => (
+  //       Map.isMap(current)
+  //         ? prev
+  //           .withMutations(
+  //             s => s
+  //               .update('entityNonFields', list => list.concat(current.get('entityNonFields')))
+  //               .update('entityFields', map => map),
+  //           )
+  //         : prev.update('entityNonFields', list => list.push(current))
+  //     ),
+  //     Map({
+  //       entityFields: Map(),
+  //       entityNonFields: List(),
+  //     }),
+  //   );
+  // }
 }

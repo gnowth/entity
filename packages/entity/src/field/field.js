@@ -1,3 +1,4 @@
+// import _isFunction from 'lodash/isFunction';
 import { fromJS, isImmutable, List } from 'immutable';
 
 export default class Field {
@@ -105,25 +106,38 @@ export default class Field {
     return value?.toString();
   }
 
-  validate(value, options) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (this.many && !List.isList(value)) throw new Error(`entity.fields[${this.constructor.name}] (validate): "value" must be an "Immutable List" with field option "many"`);
-    }
+  // // TODO filter errors === 0
+  // validate(value, options = {}) {
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     if (this.many && !List.isList(value)) throw new Error(`entity.fields[${this.constructor.name}] (validate): "value" must be an "Immutable List" with field option "many"`);
+  //   }
 
-    const maybeDetail = options.validators || this.validators;
+  //   const maybeDetail = _isFunction(options.validators)
+  //     ? options.validators(Array.isArray(this.validators) ? ({ detail: this.validators }) : this.validators)
+  //     : (options.validators || this.validators);
 
-    const validators = Array.isArray(maybeDetail)
-      ? { detail: maybeDetail }
-      : maybeDetail;
+  //   const validators = Array.isArray(maybeDetail)
+  //     ? { detail: maybeDetail }
+  //     : maybeDetail;
 
-    return Map({
-      detail: validators?.detail.map(
-        validator => validator(value, options),
-      ),
+  //   return Map({
+  //     detail: this.validateDetail(
+  //       validators?.detail.map(
+  //         validator => validator(value, options),
+  //       ),
+  //     ),
 
-      list: validators.list && value.map(
-        val => validators.list.map(validator => validator(val, options)),
-      ),
-    });
-  }
+  //     list: validators.list && value.map(
+  //       val => this.validateDetail(
+  //         validators.list.map(
+  //           validator => validator(val, options),
+  //         ),
+  //       ),
+  //     ),
+  //   }).filterNot(errors => errors?.size === 0);
+  // }
+
+  // validateDetail(errors) {
+  //   return List(errors);
+  // }
 }

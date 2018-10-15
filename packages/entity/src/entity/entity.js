@@ -1,5 +1,5 @@
 import _isFunction from 'lodash/isFunction';
-import { fromJS, List, Map } from 'immutable';
+import { List, Map } from 'immutable';
 
 import EntityField from '../field/field-entity';
 import IdField from '../field/field-id';
@@ -96,11 +96,6 @@ export default class Entity {
     return this.validate(record, options).size === 0;
   }
 
-  // TODO check if need to deprecate
-  static optionToString(option) {
-    return this.toString(fromJS(option));
-  }
-
   static toData(record) {
     if (process.env.NODE_ENV !== 'production') {
       if (record && !Map.isMap(record)) throw new Error(`entity[${this.name}] (toData): record must be either a Map or null or undefined`);
@@ -127,17 +122,18 @@ export default class Entity {
     return record?.get(this.idField) || '';
   }
 
-  static validate(record, options = {}) {
-    return record && Map({
-      entityFields: Map(this.fields)
-        .filter((field, key) => !options.fields || options.fields[key])
-        .map((field, key) => field.validate(
-          record.get(key),
-          { ...options, record, validators: options.fields && options.fields[key] },
-        )).filterNot(errors => errors.size === 0),
-      entityNonFields: List(options.nonFields || []).map(validator => validator(record, options)),
-    }).filterNot(errors => errors.size === 0);
-  }
+  // static validate(record, options = {}) {
+  //   return record && Map({
+  //     entityFields: Map(this.fields)
+  //       .filter((field, key) => !options.fields || options.fields[key])
+  //       .map((field, key) => field.validate(
+  //         record.get(key),
+  //         { ...options, record, validators: options.fields && options.fields[key] },
+  //       )).filterNot(errors => errors.size === 0),
+
+  //     entityNonFields: List(options.nonFields || []).map(validator => validator(record, options)),
+  //   }).filterNot(errors => errors.size === 0);
+  // }
   // TODO
   // static validate(record, options) {
   //   const fields = Map(this.fields)
@@ -246,58 +242,120 @@ export default class Entity {
 
 // };
 
+// const errors = validate(record, {
+//   validators: []
+// })
+// const errors = {
+//   entityFields: {
+//     title: ['error', { list: true, errors: [[], [], []]}],
+//     entity: ['error', { detail: true, errors: {}}, { list: true }]
+//   },
+//   entityNonFields: ['error'],
+// }
+
+// const errors = [
+//   'error',
+//   true,
+//   {
+//     messageId: 'df'
+//   },
+//   {
+//     detail: true,
+//     messageId: 'df',
+//     message: 'error',
+//     errors: {
+//       titles: [
+//         'error',
+//         true,
+//         {
+//           list: true,
+//           errors: [[], []],
+//         },
+//       ]
+//     },
+//   },
+// ];
+
 // const errors = {
 //   entityFields: {
 //     title: {
-//       detail: ['', ''],
-//     }
-//     title: ['', ''],
-//     entity: {
-//       field: {},
-//       nonField: ['', ''],
+//       detail: ['error1', 'error2'],
 //     },
 //     titles: {
-//       detail: ['', ''],
-//       list: [[], [], []],
+//       detail: ['error1', 'error2'],
+//       list: [['error1', 'error2'], ['error1']],
 //     },
-//     entities: {
-//       detail: ['', ''],
-//       list: [{}, {}, {}],
-//     },
-//   },
-//   apiFields: {
-//     title: ['', ''],
 //     entity: {
-//       fieldApi: {},
-//       nonFieldApi: ['', ''],
-//     },
-//     titles: {
-//       detail: ['', ''],
-//       list: [[''], [], []],
+//       detail: {
+//         entityFields: {},
+//         entityNonFields: ['error1', 'error2'],
+//       },
 //     },
 //     entities: {
-//       detail: [''],
-//       list: [{}, {}, {}],
+//       detail: ['error1', 'error2'],
+//       list: [
+//         {
+//           entityFields: {},
+//           entityNonFields: ['error1', 'error2'],
+//         },
+//       ],
 //     },
 //   },
-//   entityNonFields: [],
-//   apiNonFields: [],
-// };
+//   entityNonFields: ['error1', 'error2'],
+// },
 
-// entity.validate(record, {
-//   fields: {
+// // const errors = {
+// //   entityFields: {
+// //     title: {
+// //       detail: ['', ''],
+// //     }
+// //     title: ['', ''],
+// //     entity: {
+// //       field: {},
+// //       nonField: ['', ''],
+// //     },
+// //     titles: {
+// //       detail: ['', ''],
+// //       list: [[], [], []],
+// //     },
+// //     entities: {
+// //       detail: ['', ''],
+// //       list: [{}, {}, {}],
+// //     },
+// //   },
+// //   apiFields: {
+// //     title: ['', ''],
+// //     entity: {
+// //       fieldApi: {},
+// //       nonFieldApi: ['', ''],
+// //     },
+// //     titles: {
+// //       detail: ['', ''],
+// //       list: [[''], [], []],
+// //     },
+// //     entities: {
+// //       detail: [''],
+// //       list: [{}, {}, {}],
+// //     },
+// //   },
+// //   entityNonFields: [],
+// //   apiNonFields: [],
+// // };
 
-//   },
-//   nonFields: {
+// // entity.validate(record, {
+// //   fields: {
 
-//   },
-// });
+// //   },
+// //   nonFields: {
 
-// const validatorOutput = [
-//   'Error message',
-//   true,
-//   { intlMessage },
-// ]
+// //   },
+// // });
 
-// Map()
+// // const validatorOutput = [
+// //   'Error message',
+// //   true,
+// //   { intlMessage },
+// // ]
+
+// // Map()
 

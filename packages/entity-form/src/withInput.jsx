@@ -6,24 +6,26 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
 import { withProps } from '@gnowth/higher-order-component';
-import { List, Map } from 'immutable';
+import { Map } from 'immutable';
 
 import { withForm } from './context';
 
-// TODO use options input to load option?
+// TODO use options input to load option? or allow options to be a prop for the list
 export default function (ComposedComponent) {
   class withInput extends React.Component {
     getProps() {
+      const field = this.props.formField.getField({ name: this.props.name });
+
       return Object.assign({}, this.props, {
+        field,
         disabled: this.props.disabled,
         index: this.props.index,
         name: this.props.name || this.props.formName,
         onChange: this.handleChange,
         readOnly: this.props.readOnly,
-        value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
-        field: this.props.formField.getField({ name: this.props.name }),
         initialValue: this.props.formInitialValue,
-        options: List(),
+        options: field.getOptions(),
+        value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
       });
     }
 

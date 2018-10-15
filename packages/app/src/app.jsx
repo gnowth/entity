@@ -6,6 +6,8 @@ import { DefaultProvider } from '@gnowth/default';
 
 import { AppConsumer } from './context';
 
+// TODO to enable rerender for locale change, set key to locale.
+// TODO read more about intl, about addLocalData?
 const App = props => (
   <AppConsumer>
     { (context) => {
