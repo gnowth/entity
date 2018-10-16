@@ -1,28 +1,27 @@
-// import _isFunction from 'lodash/isFunction';
+import _isFunction from 'lodash/isFunction';
 import { fromJS, isImmutable, List } from 'immutable';
+
+import isRequired from '../validator/is-required';
 
 export default class Field {
   constructor(options = {}) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (options.validatorsList && !options.many) throw new Error(`entity[${this.constructor.name}]: option "validatorsList" can only be set if "many" is set.`);
-    }
-
     const defaults = {
       blank: false,
       cleaners: [],
       many: false,
-      validators: [],
+      validators: options.blank ? [] : [isRequired],
     };
 
-    Object.assign(this, defaults, options);
-  }
-
-  // TODO check if need to deprecate
-  asOptions() {
-    return this.options.map(option => ({
-      value: option,
-      label: this.messages[option],
-    }));
+    Object.assign(
+      this,
+      defaults,
+      options,
+      { // TODO check how this is affected by subclass
+        validators: _isFunction(options.validators)
+          ? options.validators(defaults.validators)
+          : (options.validators || defaults.validators),
+      },
+    );
   }
 
   clean(record, options) {
@@ -87,11 +86,6 @@ export default class Field {
     );
   }
 
-  // TODO check if need to deprecate
-  optionToString(option) {
-    return this.messages[option] || '';
-  }
-
   toData(value) {
     return isImmutable(value)
       ? value.toJS()
@@ -106,38 +100,17 @@ export default class Field {
     return value?.toString();
   }
 
-  // // TODO filter errors === 0
-  // validate(value, options = {}) {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     if (this.many && !List.isList(value)) throw new Error(`entity.fields[${this.constructor.name}] (validate): "value" must be an "Immutable List" with field option "many"`);
-  //   }
+  validate(value, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (this.many && !List.isList(value)) throw new Error(`entity.fields[${this.constructor.name}] (validate): "value" must be an "Immutable List" with field option "many"`);
+    }
 
-  //   const maybeDetail = _isFunction(options.validators)
-  //     ? options.validators(Array.isArray(this.validators) ? ({ detail: this.validators }) : this.validators)
-  //     : (options.validators || this.validators);
+    const validators = _isFunction(options.validators)
+      ? options.validators(this.validators)
+      : (options.validators || this.validators);
 
-  //   const validators = Array.isArray(maybeDetail)
-  //     ? { detail: maybeDetail }
-  //     : maybeDetail;
-
-  //   return Map({
-  //     detail: this.validateDetail(
-  //       validators?.detail.map(
-  //         validator => validator(value, options),
-  //       ),
-  //     ),
-
-  //     list: validators.list && value.map(
-  //       val => this.validateDetail(
-  //         validators.list.map(
-  //           validator => validator(val, options),
-  //         ),
-  //       ),
-  //     ),
-  //   }).filterNot(errors => errors?.size === 0);
-  // }
-
-  // validateDetail(errors) {
-  //   return List(errors);
-  // }
+    return List(validators)
+      .map(validator => validator(value, { field: this, ...options }))
+      .filter(error => error);
+  }
 }

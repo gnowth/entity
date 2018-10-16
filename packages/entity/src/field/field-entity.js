@@ -1,18 +1,35 @@
+import _isFunction from 'lodash/isFunction';
 import _isString from 'lodash/isString';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 
 import AnyField from './field-any';
+import entityValid from '../validator/entity-valid';
+import list from '../validator/list';
 
 // TODO update to entityid
 // TODO add default clean to remove fields not in entity?
 export default class EntityField extends AnyField {
   constructor(options = {}) {
     const defaults = {
-      nested: true,
+      nested: true, // FYI nested for whether field is an idField?
       type: 'entity',
     };
 
-    super(Object.assign(defaults, options));
+    const entityValidators = options.many
+      ? [list([entityValid])]
+      : [entityValid];
+
+    super(Object.assign(
+      defaults,
+      options,
+      {
+        validators: defaultValidators => (
+          _isFunction(options.validators)
+            ? options.validators(defaultValidators.concat(entityValidators))
+            : options.validators || defaultValidators.concat(entityValidators)
+        ),
+      },
+    ));
 
     if (process.env.NODE_ENV !== 'production') {
       if (!options.entity) throw new Error(`entity[${this.constructor.name}]: "entity" option is required`);
@@ -102,24 +119,4 @@ export default class EntityField extends AnyField {
   toString(value, options = {}) {
     return this.getEntity({ value, ...options }).toString(value, options);
   }
-
-  // // TODO
-  // validateDetail(errors = []) {
-  //   return errors.reduce(
-  //     (prev, current) => (
-  //       Map.isMap(current)
-  //         ? prev
-  //           .withMutations(
-  //             s => s
-  //               .update('entityNonFields', list => list.concat(current.get('entityNonFields')))
-  //               .update('entityFields', map => map),
-  //           )
-  //         : prev.update('entityNonFields', list => list.push(current))
-  //     ),
-  //     Map({
-  //       entityFields: Map(),
-  //       entityNonFields: List(),
-  //     }),
-  //   );
-  // }
 }

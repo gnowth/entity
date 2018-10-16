@@ -122,146 +122,62 @@ export default class Entity {
     return record?.get(this.idField) || '';
   }
 
-  // static validate(record, options = {}) {
-  //   return record && Map({
-  //     entityFields: Map(this.fields)
-  //       .filter((field, key) => !options.fields || options.fields[key])
-  //       .map((field, key) => field.validate(
-  //         record.get(key),
-  //         { ...options, record, validators: options.fields && options.fields[key] },
-  //       )).filterNot(errors => errors.size === 0),
+  // TODO FYI because entity-valid is calling this function, this should return only 1 error. unless we change entityvalid
+  // but if we remove nonField from here, we won't have non field errors?
+  static validate(record, options = {}) {
+    if (!record) return record;
 
-  //     entityNonFields: List(options.nonFields || []).map(validator => validator(record, options)),
-  //   }).filterNot(errors => errors.size === 0);
-  // }
-  // TODO
-  // static validate(record, options) {
-  //   const fields = Map(this.fields)
-  //     .map((field, name) => {
-  //       field.validate(record.get(name), {})
-  //     })
-  //     .filterNot(errors => errors.size === 0)
+    const detailErrors = Map(this.fields)
+      .filter((field, key) => !options.fields || options.fields[key])
+      .map((field, key) => field.validate(
+        record.get(key),
+        { ...options, record, validators: options.fields && options.fields[key] },
+      )).filterNot(errors => errors.size === 0);
 
-  //   const validatorMap = options.fields;
-  // }
+    const errors = detailErrors.size === 0
+      ? List()
+      : List([
+        Map({
+          detail: true,
+          message: 'Invalid Entity',
+          errors: detailErrors,
+        }),
+      ]);
+
+    return List(options.nonFields || [])
+      .map(validator => validator(record, options))
+      .filter(error => error)
+      .concat(errors);
+  }
 }
 
-// const entityValidate = (record, options = {}) => {
-//   return record && Map(options.fields ? _pick(options.fields)(this.fields) : this.fields)
-//     .map((field, name) => field.validate(
-//       record.get(name),
-//       Object.assign({}, _omit(['fields'])(options), { record, field, name, formEntity: this }),
-//     ))
-//     .filterNot(errors => errors.size === 0);
-// }
-
-// const newEntityValidate = () => {
-
-// }
-
-
-// const options = {
-//   validators: []
-// }
-
-// const errors = {
-//   er: {
-//     actions: [
-//       {},
-//       {
-//         date: ['eror', 'error'],
-//         date2: ['dfdf'],
-//       },
+// const validators = [];
+// const record = '';
+// const entity = '';
+// entity.validate(record, {
+//   fields: {
+//     field1: [
+//       validators.isRequired,
+//       validators.entity({ nested: false }),
+//       validators.entity(({ entity, record }) => entity.validate(record)),
 //     ],
-//     df: ['effor'],
 //   },
-//   errors: {
-
-//   },
-//   nonFieldErrors: [],
-// };
-
-// // entity.validate(value, {
-// //   nested: true,
-// //   fields: {
-// //     df: [],
-// //     df1: [
-// //       validators.isRequired,
-// //       validators.entity({
-// //         fields: {
-
-// //         }
-// //       }),
-// //     ],
-// //   }
-// // })
-
-
-// const fieldValidate = (value, options) => {
-//   if (process.env.NODE_ENV !== 'production') {
-//     if (this.many && !List.isList(value)) throw new Error('Entity(validate): "value" must be an "Immutable List" with field option "many"');
-//   }
-
-//   const validateValue = (val, validators) => List(validators)
-//     .flatMap((validator) => {
-//       const errors = validator(val, Object.assign({}, options, { field: this }));
-//       const errorList = List.isList(errors) ? errors : List([errors]);
-
-//       return errorList
-//         .filter(error => error)
-//         .map((error) => {
-//           if (_isString(error)) return Map({ message: error });
-//           if (error === true) return Map({ message: 'Unidentified Error' });
-
-//           if (process.env.NODE_ENV !== 'production') {
-//             if (!Map.isMap(error)) throw new Error(`entity: Received error which is neither a "boolean" nor a "string" nor a "Map". Check the validators used in field with entity ${this.name}`);
-//           }
-
-//           return error;
-//         });
-//     });
-
-//   const errors = validateValue(value, this.many ? this.listValidators : this.validators);
-
-//   if (this.many) {
-//     const nestedErrors = value && value.map(v => validateValue(v, this.validators));
-
-//     return nestedErrors && nestedErrors.every(err => err.size === 0)
-//       ? errors
-//       : errors.push(Map({
-//         listError: true,
-//         message: this.errorListMessage,
-//         errors: nestedErrors,
-//       }));
-//   }
-
-//   return errors;
-// }
-
-// const newFieldValidate = () => {
-
-// };
-
-// const errors = validate(record, {
-//   validators: []
-// })
-// const errors = {
-//   entityFields: {
-//     title: ['error', { list: true, errors: [[], [], []]}],
-//     entity: ['error', { detail: true, errors: {}}, { list: true }]
-//   },
-//   entityNonFields: ['error'],
-// }
+// });
 
 // const errors = [
 //   'error',
 //   true,
 //   {
-//     messageId: 'df'
+//     defaultMessage: 'dfhdf',
+//     id: 'df',
 //   },
 //   {
 //     detail: true,
 //     messageId: 'df',
+//     messageLocale: {
+//       defaultMessage: 'dfhdf',
+//       id: 'df',
+//     },
 //     message: 'error',
 //     errors: {
 //       titles: [
@@ -275,87 +191,3 @@ export default class Entity {
 //     },
 //   },
 // ];
-
-// const errors = {
-//   entityFields: {
-//     title: {
-//       detail: ['error1', 'error2'],
-//     },
-//     titles: {
-//       detail: ['error1', 'error2'],
-//       list: [['error1', 'error2'], ['error1']],
-//     },
-//     entity: {
-//       detail: {
-//         entityFields: {},
-//         entityNonFields: ['error1', 'error2'],
-//       },
-//     },
-//     entities: {
-//       detail: ['error1', 'error2'],
-//       list: [
-//         {
-//           entityFields: {},
-//           entityNonFields: ['error1', 'error2'],
-//         },
-//       ],
-//     },
-//   },
-//   entityNonFields: ['error1', 'error2'],
-// },
-
-// // const errors = {
-// //   entityFields: {
-// //     title: {
-// //       detail: ['', ''],
-// //     }
-// //     title: ['', ''],
-// //     entity: {
-// //       field: {},
-// //       nonField: ['', ''],
-// //     },
-// //     titles: {
-// //       detail: ['', ''],
-// //       list: [[], [], []],
-// //     },
-// //     entities: {
-// //       detail: ['', ''],
-// //       list: [{}, {}, {}],
-// //     },
-// //   },
-// //   apiFields: {
-// //     title: ['', ''],
-// //     entity: {
-// //       fieldApi: {},
-// //       nonFieldApi: ['', ''],
-// //     },
-// //     titles: {
-// //       detail: ['', ''],
-// //       list: [[''], [], []],
-// //     },
-// //     entities: {
-// //       detail: [''],
-// //       list: [{}, {}, {}],
-// //     },
-// //   },
-// //   entityNonFields: [],
-// //   apiNonFields: [],
-// // };
-
-// // entity.validate(record, {
-// //   fields: {
-
-// //   },
-// //   nonFields: {
-
-// //   },
-// // });
-
-// // const validatorOutput = [
-// //   'Error message',
-// //   true,
-// //   { intlMessage },
-// // ]
-
-// // Map()
-
