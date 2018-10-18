@@ -15,5 +15,6 @@ export default validators => (values, options) => {
     && Map({
       errors, // TODO maybe add an error message? message/messageLocale
       list: true,
+      message: 'Invalid list', // TODO add default message
     });
 };

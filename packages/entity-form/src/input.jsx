@@ -57,6 +57,7 @@ class Input extends React.Component {
     return props.value.map((val, index) => (
       <this.props.component
         {...props}
+        errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
         key={index} // eslint-disable-line react/no-array-index-key
         value={val}

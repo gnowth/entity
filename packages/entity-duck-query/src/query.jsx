@@ -180,6 +180,7 @@ class Query extends React.Component {
       <this.props.component
         key={this.props.field.getEntityId(value)}
         {...props}
+        errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
         initialValue={props.initialValue?.get(index)}
         value={value}
@@ -187,6 +188,7 @@ class Query extends React.Component {
           ? this.props.componentProps(Object.assign({}, props, {
             index,
             value,
+            errors: props.field.getErrorsArray(props.errors, { index }),
             initialValue: props.initialValue?.get(index),
             records: props.value,
           }))

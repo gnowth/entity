@@ -1,5 +1,5 @@
 import DuckScreen from '@entity/duck-namespace-screen';
-import { Entity, Fields } from '@entity/core';
+import { validators, Entity, Fields } from '@entity/core';
 import { fromJS, List } from 'immutable';
 
 import EntityPerson from 'apps/people/entities/Person';
@@ -13,6 +13,9 @@ class Local extends Entity {
     titles: new Fields.CharField({
       default: List(['test', 'test2']),
       many: true,
+      validators: defaultValidators => defaultValidators.concat([
+        validators.list([validators.isRequired]),
+      ]),
     }),
 
     user: new Fields.EntityField({

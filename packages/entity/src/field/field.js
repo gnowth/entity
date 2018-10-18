@@ -1,5 +1,5 @@
 import _isFunction from 'lodash/isFunction';
-import { fromJS, isImmutable, List } from 'immutable';
+import { fromJS, isImmutable, List, Map } from 'immutable';
 
 import isRequired from '../validator/is-required';
 
@@ -48,6 +48,20 @@ export default class Field {
   }
 
   getErrors(errors, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      // TODO check that errors is a list
+      // TODO check that index is a number
+    }
+
+    return options.index === undefined
+      ? errors
+      : errors
+        .filter(error => Map.isMap(error) && error.get('list'))
+        .flatMap(error => error.getIn(['errors', options.index]))
+        .filter(error => error);
+  }
+
+  getErrorsArray(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getErrors): option "name" is not supported.`);
     }

@@ -138,7 +138,7 @@ export default class Entity {
       ? null
       : Map({
         detail: true,
-        message: 'Invalid Entity',
+        message: 'Invalid Entity', // TODO add proper message
         errors: detailErrors,
       });
   }
