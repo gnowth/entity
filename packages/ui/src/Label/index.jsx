@@ -27,8 +27,8 @@ const UILabel = props => (
 
     { props.errors && props.errors.size > 0 && (
       <UITooltip componentProps={{ name: 'error' }}>
-        { props.errors.map((error, index) => (
-          <UIError key={index}>{ error }</UIError>
+        { props.errors.map((error, index) => ( // TODO remove eslint disable
+          <UIError key={index}>{ error }</UIError> // eslint-disable-line
         ))}
       </UITooltip>
     )}
