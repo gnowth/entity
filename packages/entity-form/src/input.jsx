@@ -37,7 +37,7 @@ class Input extends React.Component {
     const WrapperComponent = this.props.wrapperComponent || React.Fragment;
 
     return (
-      <WrapperComponent {...(this.props.wrapperComponentProps || {})}>
+      <WrapperComponent {...props} {...(this.props.wrapperComponentProps || {})}>
         { this.props.many
           ? this.renderComponentArray(props)
           : this.renderComponent(props)

@@ -19,6 +19,7 @@ export default function (ComposedComponent) {
       return Object.assign({}, this.props, {
         field,
         disabled: this.props.disabled,
+        errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
         index: this.props.index,
         name: this.props.name || this.props.formName,
         onChange: this.handleChange,

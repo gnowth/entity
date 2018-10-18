@@ -1,6 +1,6 @@
 import _isFunction from 'lodash/isFunction';
 import _isString from 'lodash/isString';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import AnyField from './field-any';
 import entityValid from '../validator/entity-valid';
@@ -48,6 +48,22 @@ export default class EntityField extends AnyField {
 
   getEntity() {
     return this.entity;
+  }
+
+  // TODO recheck implementation
+  getErrors(errors, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      // TODO check that errors is a list
+      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getField): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getField): field "${options.name}" not found`);
+    }
+
+    return options.name
+      ? errors
+        .filter(error => Map.isMap(error) && error.get('detail'))
+        .flatMap(error => error.getIn(['errors', options.name]))
+        .filter(error => error)
+      : errors;
   }
 
   getField(options = {}) {

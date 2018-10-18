@@ -11,6 +11,7 @@ class Form extends React.Component {
   getProps() {
     return {
       formDisabled: this.props.disabled,
+      formErrors: this.props.errors,
       formField: this.props.field,
       formIndex: this.props.index,
       formInitialValue: this.props.initialValue,

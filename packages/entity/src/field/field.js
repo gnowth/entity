@@ -47,6 +47,14 @@ export default class Field {
     }
   }
 
+  getErrors(errors, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getErrors): option "name" is not supported.`);
+    }
+
+    return options.name ? List() : errors;
+  }
+
   getField(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getField): method with option name is not supported.`);
@@ -68,7 +76,7 @@ export default class Field {
 
   getValue(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getField): option "name" is not supported.`);
+      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getValue): option "name" is not supported.`);
     }
 
     return options.name ? null : value;

@@ -31,6 +31,7 @@ export const FormProvider = ({ children, ...props }) => (
 FormProvider.propTypes = exact({
   children: PropTypes.node.isRequired,
   formDisabled: PropTypes.bool,
+  formErrors: PropTypesImmutable.list.isRequired,
   formField: PropTypesEntity.field.isRequired,
   formIndex: PropTypes.number,
   formInitialValue: PropTypesImmutable.map,

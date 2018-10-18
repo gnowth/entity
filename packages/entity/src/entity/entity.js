@@ -134,20 +134,13 @@ export default class Entity {
         { ...options, record, validators: options.fields && options.fields[key] },
       )).filterNot(errors => errors.size === 0);
 
-    const errors = detailErrors.size === 0
-      ? List()
-      : List([
-        Map({
-          detail: true,
-          message: 'Invalid Entity',
-          errors: detailErrors,
-        }),
-      ]);
-
-    return List(options.nonFields || [])
-      .map(validator => validator(record, options))
-      .filter(error => error)
-      .concat(errors);
+    return detailErrors.size === 0
+      ? null
+      : Map({
+        detail: true,
+        message: 'Invalid Entity',
+        errors: detailErrors,
+      });
   }
 }
 
