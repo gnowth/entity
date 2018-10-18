@@ -1,5 +1,5 @@
 import _isFunction from 'lodash/isFunction';
-import { fromJS, List, Map } from 'immutable';
+import { List, Map } from 'immutable';
 
 import EntityField from '../field/field-entity';
 import IdField from '../field/field-id';
@@ -92,13 +92,8 @@ export default class Entity {
     return !!maybeDescendant && maybeDescendant.prototype instanceof this;
   }
 
-  static isValid(value, options) {
-    return this.validate(value, options).size === 0;
-  }
-
-  // TODO check if need to deprecate
-  static optionToString(option) {
-    return this.toString(fromJS(option));
+  static isValid(record, options) {
+    return this.validate(record, options).size === 0;
   }
 
   static toData(record) {
@@ -127,6 +122,65 @@ export default class Entity {
     return record?.get(this.idField) || '';
   }
 
-  // TODO
-  static validate() {}
+  // TODO FYI because entity-valid is calling this function, this should return only 1 error. unless we change entityvalid
+  // but if we remove nonField from here, we won't have non field errors?
+  static validate(record, options = {}) {
+    if (!record) return record;
+
+    const detailErrors = Map(this.fields)
+      .filter((field, key) => !options.fields || options.fields[key])
+      .map((field, key) => field.validate(
+        record.get(key),
+        { ...options, record, validators: options.fields && options.fields[key] },
+      )).filterNot(errors => errors.size === 0);
+
+    return detailErrors.size === 0
+      ? null
+      : Map({
+        detail: true,
+        message: 'Invalid Entity',
+        errors: detailErrors,
+      });
+  }
 }
+
+// const validators = [];
+// const record = '';
+// const entity = '';
+// entity.validate(record, {
+//   fields: {
+//     field1: [
+//       validators.isRequired,
+//       validators.entity({ nested: false }),
+//       validators.entity(({ entity, record }) => entity.validate(record)),
+//     ],
+//   },
+// });
+
+// const errors = [
+//   'error',
+//   true,
+//   {
+//     defaultMessage: 'dfhdf',
+//     id: 'df',
+//   },
+//   {
+//     detail: true,
+//     messageId: 'df',
+//     messageLocale: {
+//       defaultMessage: 'dfhdf',
+//       id: 'df',
+//     },
+//     message: 'error',
+//     errors: {
+//       titles: [
+//         'error',
+//         true,
+//         {
+//           list: true,
+//           errors: [[], []],
+//         },
+//       ]
+//     },
+//   },
+// ];

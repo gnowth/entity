@@ -21,6 +21,7 @@ export default {
     char: WidgetInput,
     date: WidgetDate,
     entity: WidgetSelect,
+    enum: WidgetSelect,
     text: WidgetTextarea,
   },
 };

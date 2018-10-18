@@ -24,3 +24,10 @@ export default withProps(props => ({
     />
   ),
 }))(TypeSet);
+
+
+// const t = (
+//   <TypeSet
+//     locale=""
+//   />
+// );

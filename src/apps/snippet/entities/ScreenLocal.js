@@ -1,6 +1,6 @@
 import DuckScreen from '@entity/duck-namespace-screen';
 import { Entity, Fields } from '@entity/core';
-import { List } from 'immutable';
+import { fromJS, List } from 'immutable';
 
 import EntityPerson from 'apps/people/entities/Person';
 
@@ -24,6 +24,14 @@ class Local extends Entity {
       blank: true,
       entity: EntityPerson,
       many: true,
+    }),
+
+    has_title: new Fields.EnumField({
+      blank: true,
+      options: fromJS([
+        { label: 'YES', value: 'yes' },
+        { label: 'NO', value: 'no' },
+      ]),
     }),
   };
 }

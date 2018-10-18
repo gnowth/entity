@@ -13,8 +13,6 @@ export default class Filter extends Entity {
   }
 
   // Note(thierry): returning a map from field.toParams will flatten the output
-  // TODO check that every output is a string/map/list
-  // TODO check implementation of fieldValueToParams
   static toParams(record, options) {
     const fieldValueToParams = (value, key) => (
       List.isList(value)

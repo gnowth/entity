@@ -3,9 +3,11 @@ import queryString from 'query-string';
 import { Map } from 'immutable';
 
 import Entity from './entity';
+import EntityLocale from './entity-locale';
 
 import BooleanField from '../field/field-boolean';
 import CharField from '../field/field-char';
+import EntityField from '../field/field-entity';
 import IdField from '../field/field-id';
 import IntegerField from '../field/field-integer';
 
@@ -14,6 +16,10 @@ export default class Title extends Entity {
 
   static fields = {
     is_archived: new BooleanField({ default: false }),
+    locale: new EntityField({
+      blank: true,
+      entity: EntityLocale,
+    }),
     order: new IntegerField(),
     title: new CharField(),
     title_short: new CharField({ blank: true }),
@@ -53,6 +59,11 @@ export default class Title extends Entity {
     }
 
     return `${this.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+  }
+
+  // TODO check if valid default
+  static toLocale(record) {
+    return record?.get('locale') || {};
   }
 
   static toString(record) {

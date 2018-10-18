@@ -22,11 +22,13 @@
     "@gnowth/higher-order-component": "0.0.1",
     "@gnowth/prop-types-duck": "0.0.1",
     "@gnowth/prop-types-plus": "0.0.1",
+    "immutable": "4.0.0-rc.9",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
     "prop-types-exact": "1.2.0",
     "react-immutable-proptypes": "2.1.0",
-    "react-redux": "5.0.7"
+    "react-redux": "5.0.7",
+    "reselect": "4.0.0"
   },
   "peerDependencies": {
     "react": "16.5.2"

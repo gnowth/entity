@@ -33,6 +33,7 @@ export default class EntityDuck extends Duck {
     get: Duck.createAction({
       defaultMeta: ({ payload }) => ({
         keyClear: 'clear',
+        keyErrors: 'errors',
         keyPagination: 'pagination',
         keyProcessing: 'getting',
         keyProcessingDidFail: 'gettingDidFail',

@@ -1,28 +1,27 @@
+import _isFunction from 'lodash/isFunction';
 import { fromJS, isImmutable, List } from 'immutable';
+
+import isRequired from '../validator/is-required';
 
 export default class Field {
   constructor(options = {}) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (options.validatorsList && !options.many) throw new Error(`entity[Field]: option "validatorsList" can only be set if "many" is set for ${this.constructor.name}`);
-    }
-
     const defaults = {
       blank: false,
       cleaners: [],
       many: false,
-      validators: [],
-      validatorsList: [],
+      validators: options.blank ? [] : [isRequired],
     };
 
-    Object.assign(this, defaults, options);
-  }
-
-  // TODO check if need to deprecate
-  asOptions() {
-    return this.options.map(option => ({
-      value: option,
-      label: this.messages[option],
-    }));
+    Object.assign(
+      this,
+      defaults,
+      options,
+      { // TODO check how this is affected by subclass
+        validators: _isFunction(options.validators)
+          ? options.validators(defaults.validators)
+          : (options.validators || defaults.validators),
+      },
+    );
   }
 
   clean(record, options) {
@@ -44,13 +43,21 @@ export default class Field {
 
   getEntity() {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`entity[${this.constructor.name}] (getEntity): method is not supported for ${this.constructor.name}.`);
+      throw new Error(`entity.fields[${this.constructor.name}] (getEntity): method is not supported.`);
     }
+  }
+
+  getErrors(errors, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getErrors): option "name" is not supported.`);
+    }
+
+    return options.name ? List() : errors;
   }
 
   getField(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity[${this.constructor.name}] (getField): method with option name is not supported for ${this.constructor.name}.`);
+      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getField): method with option name is not supported.`);
     }
 
     return options.name ? null : this;
@@ -58,7 +65,7 @@ export default class Field {
 
   getId() {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`entity[Field] (getId): method is not supported for ${this.constructor.name}.`);
+      throw new Error(`entity.fields[${this.constructor.name}] (getId): method is not supported.`);
     }
   }
 
@@ -69,22 +76,22 @@ export default class Field {
 
   getValue(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity[${this.constructor.name}] (getField): option "name" is not supported for ${this.constructor.name}.`);
+      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getValue): option "name" is not supported.`);
     }
 
     return options.name ? null : value;
   }
 
-  // TODO allow options name. check about isBlankSome, isBlankEvery
-  isBlank(value = null) {
-    return value === null || (
-      this.many && value.size === 0
-    );
-  }
+  isBlank(value = null, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (isBlank): method with option name is not supported.`);
+    }
 
-  // TODO check if need to deprecate
-  optionToString(option) {
-    return this.messages[option] || '';
+    return value === null || (
+      this.many
+        ? value.size === 0
+        : value === ''
+    );
   }
 
   toData(value) {
@@ -101,6 +108,17 @@ export default class Field {
     return value?.toString();
   }
 
-  // TODO
-  validate() {}
+  validate(value, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (this.many && !List.isList(value)) throw new Error(`entity.fields[${this.constructor.name}] (validate): "value" must be an "Immutable List" with field option "many"`);
+    }
+
+    const validators = _isFunction(options.validators)
+      ? options.validators(this.validators)
+      : (options.validators || this.validators);
+
+    return List(validators)
+      .map(validator => validator(value, { field: this, ...options }))
+      .filter(error => error);
+  }
 }

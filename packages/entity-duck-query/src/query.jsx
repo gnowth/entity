@@ -6,6 +6,8 @@ import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { List } from 'immutable';
+import { createSelector } from 'reselect';
 
 import queryContainer from './query-container';
 
@@ -44,6 +46,7 @@ class Query extends React.Component {
 
   getProps() {
     return {
+      errors: this.errorSelector(this.props.value).concat(this.props.errors),
       field: this.props.field,
       initialValue: this.props.initialValue,
       inputValue: this.props.inputValue,
@@ -101,6 +104,12 @@ class Query extends React.Component {
         && this.props.value.size === 0,
     };
   }
+
+  // TODO use memoize
+  errorSelector = createSelector(
+    x => x,
+    value => this.props.field.validate(value),
+  );
 
   handleChange = ({ target: { index, name, value } }) => {
     if (process.env.NODE_ENV !== 'production') {
@@ -204,6 +213,7 @@ Query.propTypes = exact({
   clear: PropTypes.func.isRequired,
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
+  errors: PropTypesImmutable.list,
   field: PropTypesDuck.entityField.isRequired,
   initialValue: PropTypes.oneOfType([
     PropTypesImmutable.list,
@@ -242,6 +252,7 @@ Query.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: undefined,
+  errors: List(),
   initialValue: undefined,
   inputValue: '',
   name: 'entity-duck-query',

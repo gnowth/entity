@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 // TODO need to make sure keyRecord is provided!
 const mapStateToProps = (state, props) => Object.assign(
   {
+    errors: props.queryContainer_errors(state, props.queryContainer_action.meta),
+
     field: props.queryContainer_action.meta.entity.getEntityField(),
 
     initialValue: props.queryContainer_record(state, props.queryContainer_action.meta),
@@ -89,6 +91,9 @@ export default _flowRight(
 
       queryContainer_clear: options => action.meta.keyClear
         && action.meta.entity.duck[action.meta.keyClear]?.(options),
+
+      queryContainer_errors: (state, options) => action.meta.keyErrors
+        && action.meta.entity.duck[action.meta.keyErrors]?.(state, options),
 
       queryContainer_pagination: (state, options) => action.meta.keyPagination
         && action.meta.entity.duck[action.meta.keyPagination]?.(state, options),
