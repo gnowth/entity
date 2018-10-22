@@ -53,12 +53,11 @@ FormToolbarControls.propTypes = {
   submitHidden: PropTypes.bool,
 
   // Forms
-  field: PropTypesEntity.entityField.isRequired,
-  // field: PropTypesEntity.entityFieldWithInterface({
-  //   actionReset: PropTypes.func.isRequired,
-  //   actionSave: PropTypes.func.isRequired,
-  //   actionSubmit: PropTypes.func.isRequired,
-  // }).isRequired,
+  field: PropTypesEntity.entityFieldWithInterface({
+    actionReset: PropTypes.func.isRequired,
+    actionSave: PropTypes.func.isRequired,
+    actionSubmit: PropTypes.func.isRequired,
+  }).isRequired,
   value: PropTypesImmutable.map.isRequired,
 };
 
