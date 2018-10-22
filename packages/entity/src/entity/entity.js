@@ -144,19 +144,6 @@ export default class Entity {
   }
 }
 
-// const validators = [];
-// const record = '';
-// const entity = '';
-// entity.validate(record, {
-//   fields: {
-//     field1: [
-//       validators.isRequired,
-//       validators.entity({ nested: false }),
-//       validators.entity(({ entity, record }) => entity.validate(record)),
-//     ],
-//   },
-// });
-
 // const errors = [
 //   'error',
 //   true,

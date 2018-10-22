@@ -6,6 +6,7 @@ import AppChangeLog from 'apps/changelog';
 import AppDashboard from 'apps/dashboard';
 import AppHeader from 'apps/header';
 import AppNotFound from 'apps/notfound';
+import AppObservation from 'apps/observation';
 import AppSnippet from 'apps/snippet';
 
 import Authenticated from 'apps/auth/components/Authenticated';
@@ -28,6 +29,12 @@ const Routes = () => (
 
     <Route path="/notfound">
       <AppNotFound />
+    </Route>
+
+    <Route path="/observation">
+      <AppHeader>
+        <AppObservation />
+      </AppHeader>
     </Route>
 
     <Route path="/snippet">
