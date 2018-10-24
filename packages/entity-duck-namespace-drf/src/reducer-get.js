@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 
 import { getIdentifier } from './utils';
 
@@ -26,7 +26,6 @@ export default types => ({
 
     return state.withMutations(
       s => s
-        .setIn(['errors', identifier], undefined)
         .setIn(['status', 'getting', identifier], action.meta.useDuckMiddleware)
         .setIn(['status', 'gettingDidFail', identifier], false),
     );
@@ -58,6 +57,12 @@ export default types => ({
               : fromJS(dataFactory(action.payload, action.meta.entity))
           ),
         )
+        .setIn(
+          action.meta.id
+            ? ['detail_errors', action.meta.id]
+            : ['list_errors', identifier],
+          List(),
+        )
         .setIn(['status', 'getting', identifier], false),
     );
   },
@@ -68,7 +73,12 @@ export default types => ({
     // TODO add option to flush on fail
     return state.withMutations(
       s => s
-        .setIn(['errors', identifier], action.payload)
+        .setIn(
+          action.meta.id
+            ? ['detail_errors', action.meta.id]
+            : ['list_errors', identifier],
+          action.payload,
+        )
         .setIn(['status', 'getting', identifier], false)
         .setIn(['status', 'gettingDidFail', identifier], true),
     );

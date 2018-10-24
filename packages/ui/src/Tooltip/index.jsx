@@ -3,7 +3,7 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
 import UIIcon from '../Icon';
-import { Popup, Wrapper } from './styles';
+import styles, { Popup, Wrapper } from './styles';
 
 class UITooltip extends React.Component {
   state = {
@@ -15,7 +15,11 @@ class UITooltip extends React.Component {
   render() {
     return (
       <Wrapper>
-        <this.props.component {...this.props.componentProps} onClick={this.handleClick} />
+        <this.props.component
+          css={styles.icon}
+          onClick={this.handleClick}
+          {...this.props.componentProps}
+        />
 
         <Popup hidden={this.state.hidden}>
           { this.props.children }

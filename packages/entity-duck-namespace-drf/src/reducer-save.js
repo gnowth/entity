@@ -1,3 +1,5 @@
+import { List } from 'immutable';
+
 import { getId, getIdentifier, parseError } from './utils';
 
 export default (types, initialState) => ({
@@ -34,7 +36,7 @@ export default (types, initialState) => ({
             ? state.getIn(['detail', id])
             : record,
         )
-        .setIn(['errors', identifier], null)
+        .setIn(['detail_errors', id], List())
         .setIn(['status', 'saving', identifier], false)
         .update('list', list => (action.meta.invalidateList ? initialState.get('list') : list))
         .update('list_dirty', list => (action.meta.invalidateList ? initialState.get('list_dirty') : list)),
@@ -43,10 +45,11 @@ export default (types, initialState) => ({
 
   [types.save_rejected]: (state, action) => {
     const identifier = getIdentifier(action.meta);
+    const id = getId(action.meta);
 
     return state.withMutations(
       s => s
-        .setIn(['errors', identifier], parseError(action.payload))
+        .setIn(['detail_errors', id], parseError(action.payload))
         .setIn(['status', 'saving', identifier], false)
         .setIn(['status', 'savingDidFail', identifier], true),
     );

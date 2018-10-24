@@ -46,8 +46,6 @@ export default class Title extends Entity {
   }
 
   static actionSave(record, options) {
-    console.log('save', record, options);
-
     return this.duck?.save(record, Object.assign(
       { invalidateList: true },
       options,

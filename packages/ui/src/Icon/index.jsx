@@ -18,6 +18,10 @@ const UIIcon = styled.i`
       font-size: ${_isFunction(props.iconSize) ? props.iconSize(props.theme) : props.iconSize};
     }
   `}
+
+  && {
+    ${props => props.css}
+  }
 `;
 
 UIIcon.propTypes = {

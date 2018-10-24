@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   display: inline-block;
@@ -15,3 +15,10 @@ export const Popup = styled.div`
   position: absolute;
   transform: translateY(-100%);
 `;
+
+export default {
+  icon: css`
+    color: ${props => props.theme.vars.colorDanger};
+    font-size: 16px;
+  `,
+};

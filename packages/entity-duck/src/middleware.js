@@ -53,8 +53,6 @@ export default axios => store => next => (action) => {
     },
   ];
 
-  console.log('args', args, action.meta.method);
-
   axios[action.meta.method]
     .apply(null, args)
     .then(handleResponse(action, store.dispatch))
