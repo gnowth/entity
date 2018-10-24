@@ -10,11 +10,13 @@ import CharField from '../field/field-char';
 import EntityField from '../field/field-entity';
 import IdField from '../field/field-id';
 import IntegerField from '../field/field-integer';
+import TextField from '../field/field-text';
 
 export default class Title extends Entity {
   static urlBase = '';
 
   static fields = {
+    description: new TextField(),
     is_archived: new BooleanField({ default: false }),
     locale: new EntityField({
       blank: true,
@@ -43,8 +45,13 @@ export default class Title extends Entity {
       .map((record, i) => record.set('order', i));
   }
 
-  static actionSave(record) {
-    return this.duck?.save(record, { invalidateList: true });
+  static actionSave(record, options) {
+    console.log('save', record, options);
+
+    return this.duck?.save(record, Object.assign(
+      { invalidateList: true },
+      options,
+    ));
   }
 
   // TODO check if it is ok to have '/?' in link

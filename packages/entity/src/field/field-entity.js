@@ -70,6 +70,7 @@ export default class EntityField extends AnyField {
     if (process.env.NODE_ENV !== 'production') {
       if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getField): "name" option must be either a string or undefined`);
       if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getField): field "${options.name}" not found`);
+      // TODO need to display entity
     }
 
     return options.name
@@ -119,7 +120,7 @@ export default class EntityField extends AnyField {
   }
 
   toData(value, options = {}) {
-    return this.getEntity({ value, ...options }).recordToData(value, options);
+    return this.getEntity({ value, ...options }).toData(value, options);
   }
 
   valueToParam(value = null) {

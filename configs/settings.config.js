@@ -20,7 +20,7 @@ export default Object.assign(
     LANG: ['en'],
     PROJECT_NAME: 'clough',
     VERSION: 'DEV-0.1.0',
-    XDOMAIN_ENABLED: true,
+    XDOMAIN_ENABLED: false,
   },
 
   // env settings

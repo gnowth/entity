@@ -46,12 +46,14 @@ export default axios => store => next => (action) => {
     action.meta.id
       ? `${action.meta.entity.apiBase}${action.meta.id}/${customAction}`
       : `${action.meta.entity.apiBase}${customAction}`,
-    ...(action.payload ? [action.meta.entity.recordToData(action.payload)] : []),
+    ...(action.payload ? [action.meta.entity.toData(action.payload)] : []),
     {
       params: action.meta.params
         && action.meta.params.filter(p => p).toJS(), // TODO check that it is a string
     },
   ];
+
+  console.log('args', args, action.meta.method);
 
   axios[action.meta.method]
     .apply(null, args)

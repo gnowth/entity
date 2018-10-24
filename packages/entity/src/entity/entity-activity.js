@@ -7,6 +7,7 @@ import CharField from '../field/field-char';
 import DateField from '../field/field-date';
 import IdField from '../field/field-id';
 import IntegerField from '../field/field-integer';
+import TextField from '../field/field-text';
 
 export default class Activity extends EntityTitle {
   static fields = {
@@ -14,6 +15,7 @@ export default class Activity extends EntityTitle {
     date_completed: new DateField(),
     date_due: new DateField(),
     date_submitted: new DateField(),
+    description: new TextField(),
     is_archived: new BooleanField({ default: false }),
     is_completed: new BooleanField({ default: false }),
     is_draft: new BooleanField({ default: true }),

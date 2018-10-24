@@ -17,6 +17,7 @@ export const getIdentifier = ({ id = '', tag = '', params, method, action }) => 
   return `${method}${actionFrag}${tagFrag}${idFrag}${paramsFrag}`;
 };
 
+// TODO response can be undefined?
 export const parseError = error => List([
   error.response.state === 0
     && 'Error 0: A fatal error occurred.',
