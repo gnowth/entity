@@ -18,7 +18,7 @@ export default class DateField extends AnyField {
   }
 
   toData(value) {
-    return value?.format(this.dateFormat) || '';
+    return value?.format(this.dateFormat);
   }
 
   toParams(value) {
