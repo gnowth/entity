@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input } from '@entity/form';
+import { UIErrorWell } from '@gnowth/ui';
 
 import FormToolbarControls from 'apps/activity/forms/ToolbarControls';
 
@@ -8,6 +9,8 @@ import styles from './styles';
 
 const FormObservation = props => (
   <Form {...props}>
+    <UIErrorWell errors={props.errors} />
+
     <Input
       name="date_activity"
       wrapperComponentProps={{

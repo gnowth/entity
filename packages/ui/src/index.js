@@ -1,5 +1,9 @@
 export { default as UIButton } from './Button';
 
+export { default as UIError } from './Error';
+
+export { default as UIErrorWell } from './ErrorWell';
+
 export { default as UIIcon } from './Icon';
 
 export { default as UILabel } from './Label';

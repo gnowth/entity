@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   display: inline-block;
   position: relative;
+
+  ${props => props.css}
 `;
 
 export const Popup = styled.div`

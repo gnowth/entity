@@ -41,6 +41,7 @@ export const parseError = error => List([
     && fromJS({
       api: true,
       detail: true,
+      message: 'Invalid Fields', // TODO check when implementing intl
       errors: error.response.data,
     }),
 ]).filter(e => e);

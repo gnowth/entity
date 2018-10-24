@@ -14,7 +14,10 @@ class UITooltip extends React.Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper
+        className={this.props.className}
+        css={this.props.css}
+      >
         <this.props.component
           css={styles.icon}
           onClick={this.handleClick}
