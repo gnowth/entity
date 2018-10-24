@@ -19,10 +19,12 @@
   },
   "dependencies": {
     "@gnowth/prop-types-entity": "0.0.1",
+    "@gnowth/prop-types-plus": "0.0.1",
     "@gnowth/ui": "0.0.1",
     "immutable": "4.0.0-rc.9",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
+    "react-datepicker": "1.7.0",
     "react-immutable-proptypes": "2.1.0",
     "react-select": "2.0.0",
     "reselect": "4.0.0",
