@@ -51,7 +51,10 @@ const FormObservation = props => (
       }}
     />
 
-    <Input component={FormToolbarControls} />
+    <Input
+      component={FormToolbarControls}
+      componentProps={{ css: styles.controls }}
+    />
   </Form>
 );
 

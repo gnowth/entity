@@ -37,7 +37,11 @@ class Form extends React.Component {
   render() {
     return (
       <FormProvider {...this.getProps()}>
-        <this.props.component {...this.props.componentProps}>
+        <this.props.component
+          className={this.props.className}
+          css={this.props.css}
+          {...this.props.componentProps}
+        >
           { this.props.children }
         </this.props.component>
       </FormProvider>
@@ -49,6 +53,7 @@ Form.propTypes = {
   children: PropTypes.node.isRequired,
   component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
+  css: PropTypes.any, // TODO find proper proptypes
   disabled: PropTypes.bool,
   field: PropTypesEntity.entityField.isRequired,
   initialValue: PropTypesImmutable.map,
@@ -65,6 +70,7 @@ Form.propTypes = {
 Form.defaultProps = {
   component: 'div',
   componentProps: {},
+  css: undefined,
   disabled: false,
   initialValue: undefined,
   name: undefined,

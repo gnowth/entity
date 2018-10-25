@@ -51,8 +51,8 @@ export default class Entity {
 
   static dataToRecord(data = null) {
     const fieldDataToValue = (value, key) => (
-      (List.isList(data) || Array.isArray(data))
-        ? List(data).map(val => this.fields[key].dataToValue(val, { data }))
+      (List.isList(value) || Array.isArray(value))
+        ? List(value).map(val => this.fields[key].dataToValue(val, { data }))
         : this.fields[key].dataToValue(value, { data })
     );
 

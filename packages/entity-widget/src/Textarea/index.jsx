@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import withPropsFiltered from '../withPropsFiltered';
 
 const WidgetTextarea = styled(withPropsFiltered('textarea'))`
+  width: 100%;
+
   ${props => props.theme.components?.widgetTextarea}
   ${props => props.css}
 `;

@@ -15,11 +15,11 @@ const isEntity = (props, propName, componentName) => !Entity.isEntity(props[prop
 export default {
   entity: PropTypesPlus.withRequired(isEntity),
   entityField: PropTypes.instanceOf(Fields.EntityField),
-  entityFieldWithInterface: shape => PropTypesPlus.allOfType([
+  entityFieldWithInterface: () => PropTypesPlus.allOfType([
     PropTypes.instanceOf(Fields.EntityField),
-    PropTypes.shape({
-      entity: PropTypes.shape(shape),
-    }),
+    // PropTypes.shape({
+    //   entity: PropTypes.shape(shape),
+    // }),
   ]),
   field: PropTypes.instanceOf(Fields.Field),
 };
