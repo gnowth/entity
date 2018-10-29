@@ -13,3 +13,7 @@ export const colorDanger = '#f96b6b';
 export const colorGrey = '#bbb';
 
 export const colorLink = '#3654ea';
+
+export const fontText = '';
+
+export const fontHeading = '';
