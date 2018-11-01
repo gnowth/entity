@@ -53,7 +53,7 @@ Form.propTypes = {
   children: PropTypes.node.isRequired,
   component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
-  css: PropTypes.any, // TODO find proper proptypes
+  css: PropTypesPlus.css,
   disabled: PropTypes.bool,
   field: PropTypesEntity.entityField.isRequired,
   initialValue: PropTypesImmutable.map,

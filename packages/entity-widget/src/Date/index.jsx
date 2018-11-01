@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
@@ -28,10 +29,10 @@ class WidgetDate extends React.Component {
 }
 
 WidgetDate.propTypes = {
-  css: PropTypes.any, // TODO find the right proptypes
+  css: PropTypesPlus.css,
   name: PropTypesPlus.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.shape(), // TODO find the right proptypes
+  value: PropTypes.instanceOf(moment),
 };
 
 WidgetDate.defaultProps = {

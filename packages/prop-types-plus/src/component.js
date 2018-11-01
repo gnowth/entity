@@ -1,7 +1,11 @@
-import PropTypes from 'prop-types';
+import { isValidElementType } from 'react-is';
 
-export default PropTypes.oneOfType([
-  PropTypes.func,
-  PropTypes.string,
-  PropTypes.symbol,
-]);
+import withRequired from './with-required';
+
+export default withRequired(
+  (props, propName, componentName) => (
+    !props[propName] || isValidElementType(props[propName])
+      ? undefined
+      : new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Must be a valid component.`)
+  ),
+);

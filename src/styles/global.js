@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-export default css`
+export default createGlobalStyle`
   * {
     box-sizing: border-box;
     padding: 0;

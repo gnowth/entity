@@ -15,7 +15,9 @@ const AppRoot = (props) => {
       <DefaultProvider {...props.defaults}>
         <IntlProvider {...(props.intlProviderProps || {})}>
           <ThemeProvider {...(props.themeProviderProps || {})}>
-            { props.children }
+            <>
+              { props.children }
+            </>
           </ThemeProvider>
         </IntlProvider>
       </DefaultProvider>

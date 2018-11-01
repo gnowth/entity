@@ -20,7 +20,7 @@ const FormToolbarControls = props => (
       />
     )}
 
-    <props.extraControls />
+    <props.extraControlsComponent />
 
     { !props.saveHidden && (
       <Control
@@ -42,9 +42,9 @@ const FormToolbarControls = props => (
 
 FormToolbarControls.propTypes = {
   // Controls
-  buttonComponent: PropTypes.func,
+  buttonComponent: PropTypesPlus.component,
   component: PropTypesPlus.component,
-  extraControls: PropTypes.func,
+  extraControlsComponent: PropTypesPlus.component,
 
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
@@ -70,7 +70,7 @@ FormToolbarControls.propTypes = {
 FormToolbarControls.defaultProps = {
   buttonComponent: UIButton,
   component: Controls,
-  extraControls: UISpacer,
+  extraControlsComponent: UISpacer,
 
   resetAction: ({ value, field, ...options }) => field.entity.actionReset(value, options),
   resetButtonComponentProps: {

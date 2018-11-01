@@ -1,5 +1,6 @@
 import allOfType from './all-of-type';
 import component from './component';
+import css from './css';
 import ifElse from './if-else';
 import isRequiredIf from './is-required-if';
 import isRequiredIfNot from './is-required-if-not';
@@ -15,6 +16,7 @@ import withRequired from './with-required';
 export default {
   allOfType,
   component,
+  css,
   ifElse,
   isRequiredIf,
   isRequiredIfNot,

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@entity/duck": "0.0.1",
-    "immutable": "4.0.0-rc.9",
-    "query-string": "6.1.0"
+    "immutable": "4.0.0-rc.12",
+    "query-string": "6.2.0"
   }
 }

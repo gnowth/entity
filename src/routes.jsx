@@ -8,9 +8,9 @@ import AppHeader from 'apps/header';
 import AppNotFound from 'apps/notfound';
 import AppObservation from 'apps/observation';
 import AppSnippet from 'apps/snippet';
-
 import Authenticated from 'apps/auth/components/Authenticated';
 
+// TODO need to rethink for nesting Authenticated as it is being mounted even if it is not going in the route
 const Routes = () => (
   <Switch>
     <Route path="/dashboard">
@@ -19,17 +19,11 @@ const Routes = () => (
       </Authenticated>
     </Route>
 
-    <Route path="/auth">
-      <AppAuth />
-    </Route>
+    <Route path="/auth" component={AppAuth} />
 
-    <Route path="/changelog">
-      <AppChangeLog />
-    </Route>
+    <Route path="/changelog" component={AppChangeLog} />
 
-    <Route path="/notfound">
-      <AppNotFound />
-    </Route>
+    <Route path="/notfound" component={AppNotFound} />
 
     <Route path="/observation">
       <AppHeader>
@@ -43,7 +37,7 @@ const Routes = () => (
       </AppHeader>
     </Route>
 
-    <Route render={() => (<Redirect to="/notfound" />)} />
+    <Redirect to="/notfound" />
   </Switch>
 );
 
