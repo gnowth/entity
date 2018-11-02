@@ -7,7 +7,6 @@ import EntityObservation from 'apps/observation/entities/Observation';
 import FormObservation from 'apps/observation/forms/Observation';
 import ViewObservations from 'apps/observation/views/Observations';
 
-// TODO save local as issue in saving id_null
 const AppObservation = () => (
   <App>
     <Switch>
@@ -28,7 +27,7 @@ const AppObservation = () => (
         render={routeProps => (
           <ViewScreen
             queryComponentProps={{
-              action: () => EntityObservation.duck.get({id: routeProps.match.params.uuid || null }),
+              action: () => EntityObservation.duck.get({ id: routeProps.match.params.uuid || null }),
               component: FormObservation,
             }}
           />
