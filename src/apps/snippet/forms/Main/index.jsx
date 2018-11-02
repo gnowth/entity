@@ -27,6 +27,12 @@ const FormMain = props => (
 
     <Input
       componentProps={{ css: styles.inputs }}
+      name="has_title"
+      wrapperComponentProps={{ label: 'Has Title' }}
+    />
+
+    <Input
+      componentProps={{ css: styles.inputs }}
       name="user"
       wrapperComponentProps={{ label: 'User' }}
       apiOptions

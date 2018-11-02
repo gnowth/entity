@@ -281,7 +281,6 @@ export class IntegerField extends NumberField {
   }
 }
 
-// TODO add default clean to remove fields not in entity
 export class EntityField extends AnyField {
   static type = 'entity';
 
@@ -317,7 +316,6 @@ export class EntityField extends AnyField {
     return this.entity.getId(record, option);
   }
 
-  // TODO remove name as being an array?
   getField({ name } = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (Array.isArray(name)) {

@@ -8,6 +8,7 @@ import reducerSave from './reducer-save';
 import reducerDelete from './reducer-delete';
 import { getId, getIdentifier, NULL_ID } from './utils';
 
+// TODO check that entity has api base?
 export default class EntityDuck extends Duck {
   static namespace = 'dango_rest_framework';
 
@@ -30,8 +31,9 @@ export default class EntityDuck extends Duck {
     get_rejected: Duck.createAction(),
     get_resolved: Duck.createAction(),
     get: Duck.createAction({
-      defaultMeta: ({ payload }) => ({
+      defaultMeta: ({ payload = {} }) => ({
         keyClear: 'clear',
+        keyErrors: 'errors',
         keyPagination: 'pagination',
         keyProcessing: 'getting',
         keyProcessingDidFail: 'gettingDidFail',
@@ -64,7 +66,8 @@ export default class EntityDuck extends Duck {
     save_resolved: Duck.createAction(),
     save: Duck.createAction({
       defaultMeta: ({ entity, payload }) => ({
-        id: entity.getId(payload),
+        id: entity.getId(payload) || null,
+        keyErrors: 'errors',
         keyProcessing: 'saving',
         keyProcessingDidFail: 'savingDidFail',
         method: entity.getId(payload) ? 'put' : 'post',
@@ -80,10 +83,12 @@ export default class EntityDuck extends Duck {
     return Map({
       detail: Map({ [NULL_ID]: initialRecord }),
       detail_dirty: Map({ [NULL_ID]: initialRecord }),
-      errors: Map(),
+      detail_errors: Map(),
       list: Map(),
       list_dirty: Map(),
+      list_errors: Map(),
       options: Map(),
+      options_errors: Map(),
       status: Map({
         deleting: Map(),
         deletingDidFail: Map(),
@@ -121,8 +126,8 @@ export default class EntityDuck extends Duck {
       this.app,
       this.constructor.namespace,
       this.entity.name,
-      'errors',
-      getIdentifier(options),
+      options.id === undefined ? 'list_errors' : 'detail_errors',
+      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options), // TODO move method default elsewhere
     ]);
   }
 
@@ -133,7 +138,7 @@ export default class EntityDuck extends Duck {
       this.constructor.namespace,
       this.entity.name,
       `${options.id === undefined ? 'list' : 'detail'}${options.dirty ? '_dirty' : ''}`,
-      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options),
+      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options), // TODO move method default elsewhere
       ...(options.id === undefined && this.entity.paginated ? ['results'] : []),
     ]);
   }

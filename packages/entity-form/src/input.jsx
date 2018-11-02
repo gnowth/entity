@@ -35,9 +35,12 @@ class Input extends React.Component {
 
   renderAsComponent(props) {
     const WrapperComponent = this.props.wrapperComponent || React.Fragment;
+    const wrapperProps = this.props.wrapperComponent
+      ? Object.assign({}, props, this.props.wrapperComponentProps)
+      : {};
 
     return (
-      <WrapperComponent {...(this.props.wrapperComponentProps || {})}>
+      <WrapperComponent {...wrapperProps}>
         { this.props.many
           ? this.renderComponentArray(props)
           : this.renderComponent(props)
@@ -57,6 +60,7 @@ class Input extends React.Component {
     return props.value.map((val, index) => (
       <this.props.component
         {...props}
+        errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
         key={index} // eslint-disable-line react/no-array-index-key
         value={val}
@@ -109,7 +113,7 @@ export default _compose(
       type: PropTypes.string,
       willChangeRecord: PropTypes.func,
       wrapperComponent: PropTypesPlus.component,
-      wrapperComponentProps: PropTypes.shape({}),
+      wrapperComponentProps: PropTypes.shape({}), // TODO check that wrapperComponent is present if Props is present
     }),
 
     defaultProps: {
@@ -129,8 +133,11 @@ export default _compose(
   withInput,
   withDefault(), // TODO find a way to access nested level
 
+  // TODO check for default components, allowing null to not add default?
   withProps(props => ({
-    component: props.component || props.defaults.widgets[props.type || props.field.constructor.type],
-    wrapperComponent: props.wrapperComponent || props.defaults.label,
+    component: props.component || props.defaults.widgets[props.type || props.field.type],
+    wrapperComponent: props.wrapperComponent === null
+      ? undefined
+      : (props.wrapperComponent || props.defaults.label),
   })),
 )(Input);

@@ -7,6 +7,8 @@ export { uiButton };
 
 export { default as widgetCheckbox } from './WidgetInput';
 
+export { default as widgetDate } from './WidgetDate';
+
 export { default as widgetInput } from './WidgetInput';
 
 export { default as widgetPagination } from './WidgetPagination';

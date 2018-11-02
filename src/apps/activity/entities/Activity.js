@@ -1,13 +1,13 @@
 import moment from 'moment';
 
-import { Entity, Fields, Validators } from '@entity/core';
+import { validators, Entity, Fields } from '@entity/core';
 
 export default class Activity extends Entity {
   static paginated = true;
 
   static fields = {
     activity_date: new Fields.DateField({
-      flags: { create: Validators.allowBlank },
+      flags: { create: validators.allowBlank },
     }),
     activity_due_date: new Fields.DateField(),
     activity_is_draft: new Fields.BooleanField({ default: false }),

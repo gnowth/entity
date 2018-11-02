@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import withPropsFiltered from '../withPropsFiltered';
 
 const WidgetInput = styled(withPropsFiltered('input'))`
+  width: 100%;
+
   ${props => props.theme.components?.widgetInput}
   ${props => props.css}
 `;

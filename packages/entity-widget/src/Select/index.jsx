@@ -17,9 +17,9 @@ class WidgetSelect extends React.Component {
     value => (value && value.toJS ? value.toJS() : value),
   )
 
-  getOptionLabel = option => this.props.field.entity.optionToString(option)
+  getOptionLabel = option => this.props.field.toString(fromJS(option))
 
-  getOptionValue = option => this.props.field.entity.optionToString(option)
+  getOptionValue = option => this.props.field.toString(fromJS(option))
 
   handleChange = value => this.props.onChange({
     target: {
@@ -40,6 +40,7 @@ class WidgetSelect extends React.Component {
         isMulti={this.props.field.many}
         onChange={this.handleChange}
         options={this.getOptions(this.props.options)}
+        styles={Object.assign({}, this.props.theme?.components?.widgetSelect?.styles, this.props.styles)} // TODO add withTheme
         value={this.getValue(this.props.value)}
       />
     );
@@ -62,6 +63,6 @@ WidgetSelect.defaultProps = {
 };
 
 export default styled(WidgetSelect)`
-  ${props => props.theme.components?.widgetSelect}
+  ${props => props.theme.components?.widgetSelect?.css}
   ${props => props.css}
 `;

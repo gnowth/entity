@@ -28,7 +28,6 @@ export class Entity {
     );
   }
 
-  // TODO go though map?
   static dataToRecord(data = null) {
     if (Map.isMap(data)) return data;
 
@@ -184,7 +183,6 @@ export class Entity {
   }
 }
 
-// TODO add temp uuid
 export class BaseEntity extends Entity {
   static name = 'BaseEntity';
 

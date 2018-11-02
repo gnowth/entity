@@ -6,6 +6,8 @@ import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { List } from 'immutable';
+import { createSelector } from 'reselect';
 
 import queryContainer from './query-container';
 
@@ -42,8 +44,12 @@ class Query extends React.Component {
     }
   }
 
+  // TODO check errors when 404 is returned. expect a list
   getProps() {
     return {
+      errors: this.props.processing || this.props.value === undefined
+        ? this.props.errors
+        : this.errorSelector(this.props.value).concat(this.props.errors),
       field: this.props.field,
       initialValue: this.props.initialValue,
       inputValue: this.props.inputValue,
@@ -82,6 +88,7 @@ class Query extends React.Component {
         && this.props.processingDidFail
         && this.props.processingDidFailComponent,
 
+      // TODO maybe shouldProcess should not involve recordCount
       recordCountComponent: this.props.shouldProcess // TODO check that process is a list?
         && this.props.recordCountComponent
         && !this.props.processing
@@ -101,6 +108,12 @@ class Query extends React.Component {
         && this.props.value.size === 0,
     };
   }
+
+  // TODO use memoize
+  errorSelector = createSelector(
+    x => x,
+    value => this.props.field.validate(value),
+  );
 
   handleChange = ({ target: { index, name, value } }) => {
     if (process.env.NODE_ENV !== 'production') {
@@ -171,6 +184,7 @@ class Query extends React.Component {
       <this.props.component
         key={this.props.field.getEntityId(value)}
         {...props}
+        errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
         initialValue={props.initialValue?.get(index)}
         value={value}
@@ -178,6 +192,7 @@ class Query extends React.Component {
           ? this.props.componentProps(Object.assign({}, props, {
             index,
             value,
+            errors: props.field.getErrorsArray(props.errors, { index }),
             initialValue: props.initialValue?.get(index),
             records: props.value,
           }))
@@ -204,6 +219,7 @@ Query.propTypes = exact({
   clear: PropTypes.func.isRequired,
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
+  errors: PropTypesImmutable.list,
   field: PropTypesDuck.entityField.isRequired,
   initialValue: PropTypes.oneOfType([
     PropTypesImmutable.list,
@@ -242,6 +258,7 @@ Query.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: undefined,
+  errors: List(),
   initialValue: undefined,
   inputValue: '',
   name: 'entity-duck-query',

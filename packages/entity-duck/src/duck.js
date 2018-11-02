@@ -36,6 +36,7 @@ export default class Duck {
       if (!Entity.isEntity(options.entity)) throw new Error('\'entity\' option must be child of \'Entity\' when creating a Duck');
       if (!options.app) throw new Error('\'app\' option is required when creating a Duck');
       // TODO check that app start with capital letter
+      // TODO add name of entity
     }
 
     const actions = _mapValues.convert({ cap: false })(

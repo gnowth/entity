@@ -1,44 +1,50 @@
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form } from '@entity/form';
-import { UIButton, UIIcon, UISpacer } from '@gnowth/ui';
+import { UIButton, UISpacer } from '@gnowth/ui';
 import { FormattedMessage } from 'react-intl';
 
 import locale from './locale';
+import styles, { Controls } from './styles';
 
 const FormToolbarControls = props => (
   <Form {...props}>
-    <Control
-      action={props.resetAction}
-      component={props.buttonComponent}
-      componentProps={props.resetButtonComponentProps}
-      hidden={props.resetHidden}
-    />
+    { !props.resetHidden && (
+      <Control
+        action={props.resetAction}
+        component={props.buttonComponent}
+        componentProps={props.resetButtonComponentProps}
+      />
+    )}
 
-    <props.extraControls />
+    <props.extraControlsComponent />
 
-    <Control
-      action={props.saveAction}
-      component={props.buttonComponent}
-      componentProps={props.saveButtonComponentProps}
-      hidden={props.saveHidden}
-    />
+    { !props.saveHidden && (
+      <Control
+        action={props.saveAction}
+        component={props.buttonComponent}
+        componentProps={props.saveButtonComponentProps}
+      />
+    )}
 
-    <Control
-      action={props.submitAction}
-      component={props.buttonComponent}
-      componentProps={props.submitButtonComponentProps}
-      hidden={props.submitHidden}
-    />
+    { !process.submitHidden && (
+      <Control
+        action={props.submitAction}
+        component={props.buttonComponent}
+        componentProps={props.submitButtonComponentProps}
+      />
+    )}
   </Form>
 );
 
 FormToolbarControls.propTypes = {
   // Controls
-  buttonComponent: PropTypes.func,
-  extraControls: PropTypes.func,
+  buttonComponent: PropTypesPlus.component,
+  component: PropTypesPlus.component,
+  extraControlsComponent: PropTypesPlus.component,
 
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
@@ -63,27 +69,25 @@ FormToolbarControls.propTypes = {
 
 FormToolbarControls.defaultProps = {
   buttonComponent: UIButton,
-  extraControls: UISpacer,
+  component: Controls,
+  extraControlsComponent: UISpacer,
 
   resetAction: ({ value, field, ...options }) => field.entity.actionReset(value, options),
   resetButtonComponentProps: {
     label: <FormattedMessage {...locale.reset} />,
-    labelResponsive: <UIIcon name="refresh" />,
-    media: theme => `(min-width: ${theme.vars.size.small}`,
-    theme: theme => theme.components.buttonSecondary,
   },
   resetHidden: false,
 
   saveAction: ({ value, field, ...options }) => field.entity.actionSave(value, options),
   saveButtonComponentProps: {
+    css: styles.buttons,
     label: <FormattedMessage {...locale.save} />,
-    labelResponsive: <UIIcon name="save" />,
-    media: theme => `(min-width: ${theme.vars.size.small}`,
   },
   saveHidden: false,
 
   submitAction: ({ value, field, ...options }) => field.entity.actionSubmit(value, options),
   submitButtonComponentProps: {
+    css: styles.buttons,
     label: <FormattedMessage {...locale.submit} />,
   },
   submitHidden: false,

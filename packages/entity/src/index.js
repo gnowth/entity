@@ -1,7 +1,11 @@
-import * as AllFields from './fields';
-import * as AllValidators from './validators';
-import EnumField from './fields-enum';
+import * as cleaners from './cleaner';
+import * as validators from './validator';
+import * as Fields from './field';
 
-export * from './entities';
-export const Fields = Object.assign({ EnumField }, AllFields);
-export const Validators = AllValidators;
+export * from './entity';
+
+export {
+  cleaners,
+  validators,
+  Fields,
+};

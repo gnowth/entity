@@ -1,3 +1,5 @@
+import { List } from 'immutable';
+
 import { getId, getIdentifier, parseError } from './utils';
 
 export default (types, initialState) => ({
@@ -20,6 +22,7 @@ export default (types, initialState) => ({
     const id = getId(action.meta);
 
     const record = action.meta.entity.dataToRecord(action.payload);
+    const newId = action.meta.entity.getId(record);
 
     return state.withMutations(
       s => s
@@ -28,13 +31,23 @@ export default (types, initialState) => ({
             ? detail
             : record
         ))
-        .setIn(
+        .setIn( // TODO review if it should be set to detail vlaue if skipStore
           ['detail_dirty', id],
           action.meta.skipStore
             ? state.getIn(['detail', id])
             : record,
         )
-        .setIn(['errors', identifier], null)
+        .updateIn(['detail', newId], detail => (
+          newId === id
+            ? detail
+            : record
+        ))
+        .updateIn(['detail_dirty', newId], detail => (
+          newId === id
+            ? detail
+            : record
+        ))
+        .setIn(['detail_errors', id], List())
         .setIn(['status', 'saving', identifier], false)
         .update('list', list => (action.meta.invalidateList ? initialState.get('list') : list))
         .update('list_dirty', list => (action.meta.invalidateList ? initialState.get('list_dirty') : list)),
@@ -43,10 +56,11 @@ export default (types, initialState) => ({
 
   [types.save_rejected]: (state, action) => {
     const identifier = getIdentifier(action.meta);
+    const id = getId(action.meta);
 
     return state.withMutations(
       s => s
-        .setIn(['errors', identifier], parseError(action.payload))
+        .setIn(['detail_errors', id], parseError(action.payload))
         .setIn(['status', 'saving', identifier], false)
         .setIn(['status', 'savingDidFail', identifier], true),
     );

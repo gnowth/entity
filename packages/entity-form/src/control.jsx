@@ -43,8 +43,9 @@ class Control extends React.Component {
   }
 
   // TODO add index
-  handleEvent = (event) => {
-    const action = this.props.action({ event, ...this.getPropsContext() });
+  // TODO check if event is required to be send when calling action
+  handleEvent = () => {
+    const action = this.props.action({ ...this.getPropsContext() });
 
     return _isObjectLike(action) && 'meta' in action && 'type' in action
       ? this.props.setState({ action: this.props.dispatch(action) })

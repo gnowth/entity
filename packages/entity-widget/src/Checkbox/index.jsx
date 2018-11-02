@@ -39,7 +39,7 @@ class WidgetCheckbox extends React.Component {
         type="checkbox"
         checked={!!this.props.value}
         onChange={this.handleChange}
-        innerRef={this.ref}
+        ref={this.ref}
       />
     );
   }
