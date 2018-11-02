@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input } from '@entity/form';
+import { ViewRedirectOnCreate } from '@entity/view';
 import { UIErrorWell } from '@gnowth/ui';
 
 import FormToolbarControls from 'apps/activity/forms/ToolbarControls';
@@ -9,7 +10,12 @@ import styles from './styles';
 
 const FormObservation = props => (
   <Form {...props}>
-    <UIErrorWell errors={props.errors} />
+    <Input component={UIErrorWell} />
+
+    <Input
+      component={ViewRedirectOnCreate}
+      componentProps={{ to: props.field.entity.toLink(props.value) }}
+    />
 
     <Input
       name="date_activity"
@@ -54,6 +60,7 @@ const FormObservation = props => (
     <Input
       component={FormToolbarControls}
       componentProps={{ css: styles.controls }}
+      wrapperComponent={null}
     />
   </Form>
 );

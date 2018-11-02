@@ -13,6 +13,7 @@ const Label = styled.label`
   ${props => props.css}
 `;
 
+// TODO maybe label should be around just label. check react for htmlFor?
 const UILabel = props => (
   <Label className={props.className} css={props.css}>
     { props.label }

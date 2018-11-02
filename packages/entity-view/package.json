@@ -18,6 +18,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
+    "@gnowth/default": "0.0.1",
     "@gnowth/higher-order-component": "0.0.1",
     "@gnowth/prop-types-entity": "0.0.1",
     "@gnowth/prop-types-plus": "0.0.1",
@@ -29,6 +30,7 @@
     "react-redux": "5.1.0"
   },
   "peerDependencies": {
-    "react": "16.6.0"
+    "react": "16.6.0",
+    "styled-components": "4.0.3"
   }
 }

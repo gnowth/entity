@@ -13,17 +13,17 @@ import Authenticated from 'apps/auth/components/Authenticated';
 // TODO need to rethink for nesting Authenticated as it is being mounted even if it is not going in the route
 const Routes = () => (
   <Switch>
-    <Route path="/dashboard">
-      <Authenticated>
-        <AppDashboard />
-      </Authenticated>
-    </Route>
-
     <Route path="/auth" component={AppAuth} />
 
     <Route path="/changelog" component={AppChangeLog} />
 
     <Route path="/notfound" component={AppNotFound} />
+
+    <Route path="/dashboard">
+      <Authenticated>
+        <AppDashboard />
+      </Authenticated>
+    </Route>
 
     <Route path="/observation">
       <AppHeader>

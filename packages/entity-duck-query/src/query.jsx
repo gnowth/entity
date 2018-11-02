@@ -44,9 +44,12 @@ class Query extends React.Component {
     }
   }
 
+  // TODO check errors when 404 is returned. expect a list
   getProps() {
     return {
-      errors: this.errorSelector(this.props.value).concat(this.props.errors),
+      errors: this.props.processing || this.props.value === undefined
+        ? this.props.errors
+        : this.errorSelector(this.props.value).concat(this.props.errors),
       field: this.props.field,
       initialValue: this.props.initialValue,
       inputValue: this.props.inputValue,
@@ -85,6 +88,7 @@ class Query extends React.Component {
         && this.props.processingDidFail
         && this.props.processingDidFailComponent,
 
+      // TODO maybe shouldProcess should not involve recordCount
       recordCountComponent: this.props.shouldProcess // TODO check that process is a list?
         && this.props.recordCountComponent
         && !this.props.processing

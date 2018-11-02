@@ -5,6 +5,7 @@ export const filterProps = _omit([
   'defaultValue',
   'field',
   'initialValue',
+  'inputValue',
   'mapProps',
   'onInputChange',
   'options',

@@ -80,8 +80,9 @@ export default class Entity {
     ));
   }
 
+  // TODO check if some code rely on id to be an empty string ''
   static getId(record) {
-    return record?.get(this.idField) || '';
+    return record?.get(this.idField);
   }
 
   static isEntity(maybeEntity) {

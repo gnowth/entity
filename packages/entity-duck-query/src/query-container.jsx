@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => Object.assign(
   {
     errors: props.queryContainer_errors(state, props.queryContainer_action.meta),
 
-    field: props.queryContainer_action.meta.entity.getEntityField(),
+    field: props.queryContainer_action.meta.entity.getEntityField({ many: props.queryContainer_action.meta.id === undefined }),
 
     initialValue: props.queryContainer_record(state, props.queryContainer_action.meta),
 
@@ -48,7 +48,7 @@ const mapStateToProps = (state, props) => Object.assign(
 const mapDispatchToProps = (dispatch, props) => ({
   clear: (options = {}) => dispatch(props.queryContainer_clear({ ...props.queryContainer_action.meta, ...options })),
   process: () => dispatch(props.queryContainer_action),
-  save: record => dispatch(props.queryContainer_save_local(record, props.queryContainer_action.meta)),
+  save: record => dispatch(props.queryContainer_save_local(record, { id: props.queryContainer_action.meta.id })),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
