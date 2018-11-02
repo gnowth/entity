@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import theme from 'styles';
+import * as theme from 'styles';
 import settings from 'settings';
 import store, { history } from 'store';
 import GlobalStyles from 'styles/global';

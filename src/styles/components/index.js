@@ -1,9 +1,4 @@
-// TODO add back when stylelint support exportNamespaceFrom
-// export * as uiButton from './UIButton';
-
-import * as uiButton from './UIButton';
-
-export { uiButton };
+export * as uiButton from './UIButton';
 
 export { default as widgetCheckbox } from './WidgetInput';
 

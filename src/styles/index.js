@@ -1,13 +1,9 @@
-import * as colors from './colors';
-import * as components from './components';
-import * as mixins from './mixins';
-import * as typesets from './typesets';
-import * as vars from './vars';
+export * as colors from './colors';
 
-export default {
-  colors,
-  components,
-  mixins,
-  typesets,
-  vars,
-};
+export * as components from './components';
+
+export * as mixins from './mixins';
+
+export * as typesets from './typesets';
+
+export * as vars from './vars';

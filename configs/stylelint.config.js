@@ -1,6 +1,24 @@
 module.exports = {
   processors: [
-    'stylelint-processor-styled-components',
+    [
+      'stylelint-processor-styled-components',
+      {
+        parserPlugins: [
+          'jsx',
+          'objectRestSpread',
+          ['decorators', { decoratorsBeforeExport: true }],
+          'classProperties',
+          'exportExtensions',
+          'asyncGenerators',
+          'functionBind',
+          'functionSent',
+          'dynamicImport',
+          'optionalCatchBinding',
+          'optionalChaining',
+          'exportNamespaceFrom',
+        ],
+      },
+    ],
   ],
 
   extends: [
