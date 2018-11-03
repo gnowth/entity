@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { TypeSet } from '@gnowth/ui';
+import { UITypeSet } from '@gnowth/ui';
 import { is, List } from 'immutable';
 
 import * as SC from './styles';
@@ -124,7 +124,7 @@ WidgetEntityList.defaultProps = {
   value: null,
   options: List(),
   classNameSelected: '',
-  optionComponent: props => <TypeSet component="li" {...props} name="list" />, // eslint-disable-line react/display-name
+  optionComponent: props => <UITypeSet component="li" {...props} name="list" />, // eslint-disable-line react/display-name
   optionComponentProps: {},
   processingComponentProps: {},
   processingComponent: () => (<div>Loading ...</div>), // eslint-disable-line react/display-name

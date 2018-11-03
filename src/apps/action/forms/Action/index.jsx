@@ -11,7 +11,7 @@ import S from './style';
 const FormAction = props => (
   <Form {...props}>
     <S.Header>
-      <UITypeSet name="header_title" {...props.locale.header_title} />
+      <UITypeSet name="header_title" locale={props.locale.header_title} />
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionDelete(value, options)}

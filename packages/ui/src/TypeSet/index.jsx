@@ -1,8 +1,9 @@
+import _flowRight from 'lodash/flowRight';
 import styled from 'styled-components';
-import React from 'react';
 import { withProps } from '@gnowth/higher-order-component';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
+// TODO remove check in there an move outside?
 const TypeSet = styled.span`
   ${(props) => {
     if (process.env.NODE_ENV !== 'production') {
@@ -13,21 +14,11 @@ const TypeSet = styled.span`
   }}
 `;
 
-// TODO add ability to use raw text, id, and locale;
-export default withProps(props => ({
-  children: props.children || (
-    <FormattedMessage
-      id={props.id}
-      description={props.description}
-      defaultMessage={props.defaultMessage}
-      values={props.values}
-    />
-  ),
-}))(TypeSet);
-
-
-// const t = (
-//   <TypeSet
-//     locale=""
-//   />
-// );
+export default _flowRight(
+  injectIntl,
+  withProps(props => ({
+    as: props.component,
+    children: props.children || props.intl.formatMessage(props.locale, props.values),
+    // themeVariant: props.theme.typesets[props.variant],
+  })),
+)(TypeSet);

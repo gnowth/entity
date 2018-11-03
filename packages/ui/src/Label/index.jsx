@@ -8,21 +8,20 @@ import UIError from '../Error';
 import UITooltip from '../Tooltip';
 import UITypeSet from '../TypeSet';
 
-const Label = styled.label`
-  display: block;
-  ${props => props.css}
-`;
+import { Label, UILabelRoot } from './styles';
 
-// TODO maybe label should be around just label. check react for htmlFor?
+// TODO error need to have a key?
 const UILabel = props => (
-  <Label className={props.className} css={props.css}>
-    { props.label }
+  <UILabelRoot className={props.className} css={props.css}>
+    { props.label && (
+      <Label>{ props.label }</Label>
+    )}
 
     { !props.label && props.labelLocale && (
       <UITypeSet
         name="label"
-        component="span"
-        {...props.labelLocale}
+        component={Label}
+        locale={props.labelLocale}
       />
     )}
 
@@ -35,7 +34,7 @@ const UILabel = props => (
     )}
 
     { props.children }
-  </Label>
+  </UILabelRoot>
 );
 
 UILabel.propTypes = {
