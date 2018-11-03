@@ -17,3 +17,5 @@ export const colorLink = '#3654ea';
 export const fontText = '';
 
 export const fontHeading = '';
+
+export const gridSize = '0.5rem';

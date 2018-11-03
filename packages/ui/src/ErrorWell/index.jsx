@@ -1,22 +1,16 @@
-import styled from 'styled-components';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 
 import UIError from '../Error';
-
-const Well = styled.div`
-  border: 1px solid ${props => props.theme.vars.colorDanger};
-  border-radius: 4px;
-  padding: 16px;
-`;
+import UIWell from '../Well';
 
 // TODO find relevant key for error
 const UIErrorWell = props => props.errors.size > 0 && (
-  <Well className={props.className}>
+  <UIWell className={props.className} variant="danger">
     { props.errors.map((error, index) => (
       <UIError key={index}>{ error }</UIError> // eslint-disable-line
     ))}
-  </Well>
+  </UIWell>
 );
 
 UIErrorWell.propTypes = {

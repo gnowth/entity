@@ -124,7 +124,7 @@ WidgetEntityList.defaultProps = {
   value: null,
   options: List(),
   classNameSelected: '',
-  optionComponent: props => <UITypeSet component="li" {...props} name="list" />, // eslint-disable-line react/display-name
+  optionComponent: props => <UITypeSet component="li" {...props} variant="list" />, // eslint-disable-line react/display-name
   optionComponentProps: {},
   processingComponentProps: {},
   processingComponent: () => (<div>Loading ...</div>), // eslint-disable-line react/display-name

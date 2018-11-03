@@ -19,9 +19,9 @@ const UILabel = props => (
 
     { !props.label && props.labelLocale && (
       <UITypeSet
-        name="label"
         component={Label}
         locale={props.labelLocale}
+        variant="label"
       />
     )}
 

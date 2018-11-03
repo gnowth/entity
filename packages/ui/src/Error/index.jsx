@@ -8,6 +8,7 @@ import UITypeSet from '../TypeSet';
 const UIError = props => (
   <UITypeSet
     name="text"
+    variant="text_danger"
     {...props}
   >
     { Map.isMap(props.children)

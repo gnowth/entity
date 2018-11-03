@@ -1,18 +1,24 @@
 import _flowRight from 'lodash/flowRight';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
 import { injectIntl } from 'react-intl';
 
-// TODO remove check in there an move outside?
 const TypeSet = styled.span`
-  ${(props) => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!props.theme.typesets[props.name]) throw new Error(`TypeSet: name "${props.name}" must be a value in props.theme.typesets`);
-    }
-
-    return props.theme.typesets[props.name];
-  }}
+  ${props => props.theme.typesets?.[props.variant]}
+  ${props => props.css}
 `;
+
+TypeSet.propTypes = {
+  css: PropTypesPlus.css,
+  variant: PropTypes.string,
+};
+
+TypeSet.defaultProps = {
+  css: undefined,
+  variant: 'text',
+};
 
 // TODO check if locale is an immutable and convert to JS
 // TODO check if locale contains translations and wrap component with an intlProvider
@@ -21,6 +27,5 @@ export default _flowRight(
   withProps(props => ({
     as: props.component,
     children: props.children || props.intl.formatMessage(props.locale, props.values),
-    // themeVariant: props.theme.typesets[props.variant],
   })),
 )(TypeSet);
