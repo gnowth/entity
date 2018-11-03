@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -40,6 +39,7 @@ const UILabel = props => (
 
 UILabel.propTypes = {
   children: PropTypes.node,
+  css: PropTypesPlus.css,
   errors: PropTypesImmutable.list,
   label: PropTypes.string,
   labelLocale: PropTypesPlus.locale,
@@ -47,6 +47,7 @@ UILabel.propTypes = {
 
 UILabel.defaultProps = {
   children: undefined,
+  css: undefined,
   errors: undefined,
   label: undefined,
   labelLocale: undefined,
