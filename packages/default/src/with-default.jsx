@@ -9,7 +9,7 @@ import { Consumer } from './context';
 
 const getProps = (context, props, mapProps) => {
   if (!mapProps) {
-    return { defaults: context }; // TODO check if need to refactor to 'default'
+    return { defaults: context };
   }
 
   const computedMapProps = _isFunction(mapProps)

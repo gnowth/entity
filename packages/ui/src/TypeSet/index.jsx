@@ -14,6 +14,8 @@ const TypeSet = styled.span`
   }}
 `;
 
+// TODO check if locale is an immutable and convert to JS
+// TODO check if locale contains translations and wrap component with an intlProvider
 export default _flowRight(
   injectIntl,
   withProps(props => ({

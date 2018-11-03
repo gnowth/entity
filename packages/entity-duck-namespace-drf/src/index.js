@@ -143,6 +143,7 @@ export default class EntityDuck extends Duck {
     ]);
   }
 
+  // TODO remove comment
   // records(state, options) {
   //   if (process.env.NODE_ENV !== 'production') {
   //     if (!this.entity.paginated) {
