@@ -25,7 +25,10 @@ const composeEnhancers = (
 export const history = createBrowserHistory();
 
 export default createStore(
-  connectRouter(history)(combineReducers(rootReducerMap)),
+  combineReducers({
+    router: connectRouter(history),
+    ...rootReducerMap,
+  }),
   Map(),
   composeEnhancers(
     applyMiddleware(
