@@ -1,7 +1,7 @@
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
-import { WidgetLink } from '@entity/widget';
+import { ViewLink } from '@entity/view';
 
 const ViewObservations = props => (
   <table>
@@ -14,7 +14,7 @@ const ViewObservations = props => (
           <td>{ props.field.getId(observation) }</td>
           <td>{ props.field.toString(observation) }</td>
           <td>
-            <WidgetLink
+            <ViewLink
               {...props}
               value={observation}
             />

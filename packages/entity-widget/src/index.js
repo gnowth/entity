@@ -6,8 +6,6 @@ export { default as WidgetDate } from './Date';
 
 export { default as WidgetInput } from './Input';
 
-export { default as WidgetLink } from './Link';
-
 export { default as WidgetNavigation } from './Navigation';
 
 export { default as WidgetOrdering } from './Ordering';

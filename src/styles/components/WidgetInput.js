@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
-export default css`
+// eslint-disable-next-line import/prefer-default-export
+export const main = css`
   ${props => props.theme.mixins.componentBox}
 
   ${props => props.disabled && props.theme.mixins.disabled};

@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     display: block;
   }
 
-  ${props => props.theme.components?.widgetDate?.css}
+  ${props => props.theme.components?.widgetDate?.[props.variant || 'main']?.root}
   ${props => props.css}
 `;
 
@@ -20,6 +20,6 @@ export const DatePicker = styled(ReactDatePicker)`
   display: block;
   width: 100%;
 
-  ${props => props.theme.components?.widgetDate?.input}
+  ${props => props.theme.components?.widgetDate?.[props.variant || 'main']?.input}
   ${props => props.css}
 `;

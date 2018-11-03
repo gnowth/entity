@@ -63,6 +63,6 @@ WidgetSelect.defaultProps = {
 };
 
 export default styled(WidgetSelect)`
-  ${props => props.theme.components?.widgetSelect?.css}
+  ${props => props.theme.components?.widgetSelect?.[props.variant || 'main']?.css}
   ${props => props.css}
 `;
