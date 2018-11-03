@@ -4,6 +4,7 @@ import React from 'react';
 import ProgressCircle from '../ProgressCircle';
 import { Button, LinkHyper, LinkRouter } from './styles';
 
+// TODO use locale and children
 const UIButton = ({ processing, ...props }) => (
   <>
     { props.to && /^https?:\/\//.exec(props.to) && (

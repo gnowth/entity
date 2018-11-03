@@ -10,6 +10,7 @@ import UITypeSet from '../TypeSet';
 
 import { Label, UILabelRoot } from './styles';
 
+// TODO use locale? but we are not using children here? reconsider for this one?
 // TODO error need to have a key?
 const UILabel = props => (
   <UILabelRoot className={props.className} css={props.css}>
