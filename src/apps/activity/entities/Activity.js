@@ -6,6 +6,7 @@ import EntityPerson from 'apps/people/entities/Person';
 export default class Activity extends EntityTitle {
   static fields = {
     completed_by: new Fields.EntityField({
+      blank: true,
       entity: EntityPerson,
     }),
     date_activity: new Fields.DateField(),
@@ -18,6 +19,7 @@ export default class Activity extends EntityTitle {
     is_draft: new Fields.BooleanField({ default: true }),
     order: new Fields.IntegerField(),
     person_responsible: new Fields.EntityField({
+      blank: true,
       entity: EntityPerson,
     }),
     title: new Fields.CharField(),
