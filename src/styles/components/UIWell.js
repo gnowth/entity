@@ -9,3 +9,7 @@ export const danger = css`
 export const primary = css`
   color: ${props => props.theme.vars.colorPrimary};
 `;
+
+export const page = css`
+  border: 0;
+`;

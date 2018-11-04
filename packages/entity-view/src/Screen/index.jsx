@@ -1,23 +1,13 @@
 import _flowRight from 'lodash/flowRight';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
 import { withProps } from '@gnowth/higher-order-component';
-
-const Screen = styled.div`
-  background-color: white;
-  border-radius: 1rem;
-  margin-top: 0.5rem;
-  padding: 2rem;
-
-  ${props => props.theme.components?.viewScreen?.[props.variant || 'default']}
-  ${props => props.css}
-`;
+import { UIWell } from '@gnowth/ui';
 
 const ViewScreen = ({ component: Component, ...props }) => (
-  <Component>
+  <Component ratio={props.ratio} variant={props.variant}>
     <props.viewScreen_QueryComponent {...props.queryComponentProps} />
   </Component>
 );
@@ -28,11 +18,15 @@ ViewScreen.propTypes = {
     action: PropTypes.func.isRequired,
     component: PropTypesPlus.component.isRequired,
   }).isRequired,
+  ratio: PropTypes.number,
+  variant: PropTypes.string,
   viewScreen_QueryComponent: PropTypesPlus.component.isRequired,
 };
 
 ViewScreen.defaultProps = {
-  component: Screen,
+  component: UIWell,
+  ratio: 2,
+  variant: 'page',
 };
 
 export default _flowRight(

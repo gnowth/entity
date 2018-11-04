@@ -17,3 +17,5 @@ export { default as UIProgressLine } from './ProgressLine';
 export { default as UISpacer } from './Spacer';
 
 export { default as UITypeSet } from './TypeSet';
+
+export { default as UIWell } from './Well';
