@@ -21,7 +21,7 @@ export default function (ComposedComponent) {
         disabled: this.props.disabled,
         errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
         index: this.props.index,
-        name: this.props.name || this.props.formName,
+        name: this.props.name, // TODO check if correct
         onChange: this.handleChange,
         readOnly: this.props.readOnly,
         initialValue: this.props.formInitialValue,

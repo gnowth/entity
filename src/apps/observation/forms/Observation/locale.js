@@ -13,16 +13,28 @@ export default defineMessages({
     id: 'app.observation.date_due',
   },
 
-  title: {
-    defaultMessage: 'Title',
-    description: 'Title',
-    id: 'app.observation.title',
-  },
-
   description: {
     defaultMessage: 'Description',
     description: 'Description',
     id: 'app.observation.description',
+  },
+
+  follow_up_actions: {
+    defaultMessage: 'Follow up actions',
+    description: 'Follow up actions',
+    id: 'app.observation.follow_up_actions',
+  },
+
+  follow_up_actions_add: {
+    defaultMessage: 'Add action',
+    description: 'Add action',
+    id: 'app.observation.follow_up_actions_add',
+  },
+
+  title: {
+    defaultMessage: 'Title',
+    description: 'Title',
+    id: 'app.observation.title',
   },
 
   title_short: {

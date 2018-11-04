@@ -9,14 +9,16 @@ import { UIButton, UISpacer } from '@gnowth/ui';
 import locale from './locale';
 import styles, { Controls } from './styles';
 
-// remove defaultComponentProps and put directly on component and merge with componentProps
-const FormToolbarControls = props => (
+const FormControls = props => (
   <Form {...props}>
     { !props.resetHidden && (
       <Control
         action={props.resetAction}
         component={props.buttonComponent}
-        componentProps={props.resetButtonComponentProps}
+        componentProps={Object.assign(
+          { locale: locale.reset },
+          props.resetButtonComponentProps,
+        )}
       />
     )}
 
@@ -26,7 +28,13 @@ const FormToolbarControls = props => (
       <Control
         action={props.saveAction}
         component={props.buttonComponent}
-        componentProps={props.saveButtonComponentProps}
+        componentProps={Object.assign(
+          {
+            css: styles.buttons,
+            locale: locale.save,
+          },
+          props.saveButtonComponentProps,
+        )}
       />
     )}
 
@@ -34,63 +42,52 @@ const FormToolbarControls = props => (
       <Control
         action={props.submitAction}
         component={props.buttonComponent}
-        componentProps={props.submitButtonComponentProps}
+        componentProps={Object.assign(
+          {
+            css: styles.buttons,
+            locale: locale.submit,
+          },
+          props.submitButtonComponentProps,
+        )}
       />
     )}
   </Form>
 );
 
-FormToolbarControls.propTypes = {
-  // Controls
+FormControls.propTypes = {
   buttonComponent: PropTypesPlus.component,
   component: PropTypesPlus.component,
   extraControlsComponent: PropTypesPlus.component,
-
-  resetAction: PropTypes.func,
-  resetButtonComponentProps: PropTypes.shape({}),
-  resetHidden: PropTypes.bool,
-
-  saveAction: PropTypes.func,
-  saveButtonComponentProps: PropTypes.shape({}),
-  saveHidden: PropTypes.bool,
-
-  submitAction: PropTypes.func,
-  submitButtonComponentProps: PropTypes.shape({}),
-  submitHidden: PropTypes.bool,
-
-  // Forms
   field: PropTypesEntity.entityFieldWithInterface({
     actionReset: PropTypes.func.isRequired,
     actionSave: PropTypes.func.isRequired,
     actionSubmit: PropTypes.func.isRequired,
   }).isRequired,
+  resetAction: PropTypes.func,
+  resetButtonComponentProps: PropTypes.shape({}),
+  resetHidden: PropTypes.bool,
+  saveAction: PropTypes.func,
+  saveButtonComponentProps: PropTypes.shape({}),
+  saveHidden: PropTypes.bool,
+  submitAction: PropTypes.func,
+  submitButtonComponentProps: PropTypes.shape({}),
+  submitHidden: PropTypes.bool,
   value: PropTypesImmutable.map.isRequired,
 };
 
-FormToolbarControls.defaultProps = {
+FormControls.defaultProps = {
   buttonComponent: UIButton,
   component: Controls,
   extraControlsComponent: UISpacer,
-
   resetAction: ({ value, field, ...options }) => field.entity.actionReset(value, options),
-  resetButtonComponentProps: {
-    locale: locale.reset,
-  },
+  resetButtonComponentProps: {},
   resetHidden: false,
-
   saveAction: ({ value, field, ...options }) => field.entity.actionSave(value, options),
-  saveButtonComponentProps: {
-    css: styles.buttons,
-    locale: locale.save,
-  },
+  saveButtonComponentProps: {},
   saveHidden: false,
-
   submitAction: ({ value, field, ...options }) => field.entity.actionSubmit(value, options),
-  submitButtonComponentProps: {
-    css: styles.buttons,
-    locale: locale.submit,
-  },
+  submitButtonComponentProps: {},
   submitHidden: false,
 };
 
-export default FormToolbarControls;
+export default FormControls;

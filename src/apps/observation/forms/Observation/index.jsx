@@ -1,9 +1,10 @@
 import React from 'react';
-import { Form, Input } from '@entity/form';
+import { Control, Form, Input } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
 import { UIErrorWell } from '@gnowth/ui';
 
-import FormToolbarControls from 'apps/activity/forms/ToolbarControls';
+import FormAction from 'apps/activity/forms/Action';
+import FormControls from 'apps/activity/forms/Controls';
 
 import locale from './locale';
 import styles from './styles';
@@ -58,7 +59,22 @@ const FormObservation = props => (
     />
 
     <Input
-      component={FormToolbarControls}
+      name="follow_up_actions"
+      component={FormAction}
+      wrapperComponentProps={{
+        css: styles.input,
+        labelLocale: locale.follow_up_actions,
+      }}
+      many
+    />
+
+    <Control
+      action={({ value, field, ...options }) => field.entity.actionActionsAdd(value, options)}
+      componentProps={{ locale: locale.follow_up_actions_add }}
+    />
+
+    <Input
+      component={FormControls}
       componentProps={{ css: styles.controls }}
     />
   </Form>

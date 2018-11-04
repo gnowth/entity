@@ -62,7 +62,7 @@ class Input extends React.Component {
         {...props}
         errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
-        key={index} // eslint-disable-line react/no-array-index-key
+        key={props.field.getId(val) || index}
         value={val}
       />
     ));

@@ -132,7 +132,12 @@ export default class Entity {
       .filter((field, key) => !options.fields || options.fields[key])
       .map((field, key) => field.validate(
         record.get(key),
-        { ...options, record, validators: options.fields && options.fields[key] },
+        {
+          ...options,
+          fieldName: key,
+          record,
+          validators: options.fields && options.fields[key],
+        },
       )).filterNot(errors => errors.size === 0);
 
     return detailErrors.size === 0

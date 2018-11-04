@@ -1,8 +1,13 @@
 import moment from 'moment';
 import { EntityTitle, Fields } from '@entity/core';
 
+import EntityPerson from 'apps/people/entities/Person';
+
 export default class Activity extends EntityTitle {
   static fields = {
+    completed_by: new Fields.EntityField({
+      entity: EntityPerson,
+    }),
     date_activity: new Fields.DateField(),
     date_completed: new Fields.DateField(),
     date_due: new Fields.DateField(),
@@ -12,6 +17,9 @@ export default class Activity extends EntityTitle {
     is_completed: new Fields.BooleanField({ default: false }),
     is_draft: new Fields.BooleanField({ default: true }),
     order: new Fields.IntegerField(),
+    person_responsible: new Fields.EntityField({
+      entity: EntityPerson,
+    }),
     title: new Fields.CharField(),
     title_short: new Fields.CharField({ blank: true }),
     uuid: new Fields.IdField({ blank: true }),

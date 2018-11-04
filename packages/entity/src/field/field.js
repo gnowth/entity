@@ -124,7 +124,7 @@ export default class Field {
 
   validate(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (this.many && !List.isList(value)) throw new Error(`entity.fields[${this.constructor.name}] (validate): "value" must be an "Immutable List" with field option "many"`);
+      if (this.many && !List.isList(value)) throw new Error(`entity.fields[${options.fieldName}] (validate): "value" must be an "Immutable List" with field option "many"`);
     }
 
     const validators = _isFunction(options.validators)
@@ -132,7 +132,7 @@ export default class Field {
       : (options.validators || this.validators);
 
     return List(validators)
-      .map(validator => validator(value, { field: this, ...options }))
+      .map(validator => validator(value, { ...options, field: this }))
       .filter(error => error);
   }
 }

@@ -21,6 +21,14 @@ class Observation extends EntityActivity {
     apiBase: '/observation/v1/observation/',
     urlBase: '/observation/',
   }
+
+  static actionActionsAdd(record) {
+    return record.update('follow_up_actions', actions => actions.push(
+      EntityAction.dataToRecord({
+        order: actions.size,
+      }),
+    ));
+  }
 }
 
 Observation.duck = new DuckRest({ app: 'Observation', entity: Observation });
