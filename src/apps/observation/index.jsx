@@ -1,7 +1,7 @@
 import React from 'react';
 import { ViewScreen } from '@entity/view';
 import { App } from '@gnowth/app';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import EntityObservation from 'apps/observation/entities/Observation';
 import FormObservation from 'apps/observation/forms/Observation';
@@ -32,7 +32,10 @@ const AppObservation = () => (
             }}
           />
         )}
+        exact
       />
+
+      <Redirect to="/notfound" />
     </Switch>
   </App>
 );

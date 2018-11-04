@@ -60,7 +60,6 @@ const FormObservation = props => (
     <Input
       component={FormToolbarControls}
       componentProps={{ css: styles.controls }}
-      wrapperComponent={null}
     />
   </Form>
 );
