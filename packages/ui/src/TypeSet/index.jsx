@@ -25,7 +25,9 @@ TypeSet.defaultProps = {
 export default _flowRight(
   injectIntl,
   withProps(props => ({
-    as: props.component,
+    as: props.component === null
+      ? ({ children }) => children
+      : props.component,
     children: props.children || props.intl.formatMessage(props.locale, props.values),
   })),
 )(TypeSet);

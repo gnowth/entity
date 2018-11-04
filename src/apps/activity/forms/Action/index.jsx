@@ -15,9 +15,7 @@ const FormAction = props => (
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionDelete(value, options)}
-        componentProps={{
-          labelResponsive: <UIIcon name="delete" />,
-        }}
+        componentProps={{ children: <UIIcon name="delete" /> }}
       />
     </S.Header>
 
@@ -44,17 +42,17 @@ const FormAction = props => (
     <S.Controls>
       <Control
         action={({ value, field, ...options }) => field.entity.actionCancel(value, options)}
-        componentProps={{ labelLocale: props.locale.cancel }}
+        componentProps={{ locale: props.locale.cancel }}
       />
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionUpdate(value, options)}
-        componentProps={{ labelLocale: props.locale.update }}
+        componentProps={{ locale: props.locale.update }}
       />
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionComplete(value, options)}
-        componentProps={{ labelLocale: props.locale.complete }}
+        componentProps={{ locale: props.locale.complete }}
       />
     </S.Controls>
   </Form>

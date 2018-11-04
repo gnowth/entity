@@ -74,21 +74,21 @@ FormToolbarControls.defaultProps = {
 
   resetAction: ({ value, field, ...options }) => field.entity.actionReset(value, options),
   resetButtonComponentProps: {
-    label: <FormattedMessage {...locale.reset} />,
+    locale: locale.reset,
   },
   resetHidden: false,
 
   saveAction: ({ value, field, ...options }) => field.entity.actionSave(value, options),
   saveButtonComponentProps: {
     css: styles.buttons,
-    label: <FormattedMessage {...locale.save} />,
+    locale: locale.save,
   },
   saveHidden: false,
 
   submitAction: ({ value, field, ...options }) => field.entity.actionSubmit(value, options),
   submitButtonComponentProps: {
     css: styles.buttons,
-    label: <FormattedMessage {...locale.submit} />,
+    locale: locale.submit,
   },
   submitHidden: false,
 };

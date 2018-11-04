@@ -35,7 +35,7 @@ const FormProject = props => (
         action={({ value, field }) => field.entity.actionReset(value)}
         componentProps={{
           css: styles.buttons,
-          label: 'RESET',
+          children: 'RESET',
         }}
       />
 
@@ -43,7 +43,7 @@ const FormProject = props => (
         action={({ value, field }) => field.entity.actionSave(value)}
         componentProps={{
           css: styles.buttons,
-          label: 'SAVE',
+          children: 'SAVE',
         }}
       />
     </Controls>

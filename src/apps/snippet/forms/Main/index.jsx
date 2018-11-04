@@ -53,7 +53,7 @@ const FormMain = props => (
 
     <Control
       action={() => 'hhgg'}
-      componentProps={{ label: 'test' }}
+      componentProps={{ children: 'test' }}
       name="title"
     />
 
