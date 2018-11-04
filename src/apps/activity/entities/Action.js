@@ -1,3 +1,7 @@
-import { Entity } from '@entity/core';
+import EntityActivity from './Activity';
 
-export default class Action extends Entity {}
+export default class Action extends EntityActivity {
+  static paths = {
+    apiBase: '/action/v1/action/',
+  }
+}

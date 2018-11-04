@@ -1,33 +1,61 @@
 import moment from 'moment';
+import { EntityTitle, Fields } from '@entity/core';
 
-import { validators, Entity, Fields } from '@entity/core';
-
-export default class Activity extends Entity {
-  static paginated = true;
-
+export default class Activity extends EntityTitle {
   static fields = {
-    activity_date: new Fields.DateField({
-      flags: { create: validators.allowBlank },
-    }),
-    activity_due_date: new Fields.DateField(),
-    activity_is_draft: new Fields.BooleanField({ default: false }),
+    date_activity: new Fields.DateField(),
+    date_completed: new Fields.DateField(),
+    date_due: new Fields.DateField(),
+    date_submitted: new Fields.DateField(),
+    description: new Fields.TextField(),
+    is_archived: new Fields.BooleanField({ default: false }),
+    is_completed: new Fields.BooleanField({ default: false }),
+    is_draft: new Fields.BooleanField({ default: true }),
+    order: new Fields.IntegerField(),
+    title: new Fields.CharField(),
+    title_short: new Fields.CharField({ blank: true }),
+    uuid: new Fields.IdField({ blank: true }),
   }
 
-  static actionReset(record, { defaultValue } = {}) {
-    return defaultValue || this.dataToRecord({
-      [this.idField]: record.get(this.idField),
-    });
+  static actionComplete(record, options) {
+    return this.duck?.save(record, Object.assign(
+      { action: 'complete', method: 'post' },
+      options,
+    ));
   }
 
-  static actionSave(record) {
-    return this.duck.save(record);
+  static actionSubmit(record, options) {
+    return this.duck?.save(record, Object.assign(
+      { action: 'submit', method: 'post' },
+      options,
+    ));
   }
 
-  static actionSubmit(record, { action = 'submit', resolve } = {}) {
-    return this.duck.save(record, { action, resolve });
+  static isCompleted(record) {
+    return !!record && record.get('is_completed');
   }
 
-  static metaIsOverdue(record) {
-    return record.get('activity_is_draft') && moment().isAfter(record.get('activity_due_date'), 'day');
+  static isDraft(record) {
+    return !record || record.get('is_draft');
+  }
+
+  static isLate(record) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!record) throw new Error(`entity[${this.name}] (isLate): "record" must be set.`);
+    }
+
+    return this.isOverdue(record) || (
+      this.isCompleted(record)
+      && record.get('due_date').isBefore(record.get('date_completed'), 'day')
+    );
+  }
+
+  static isOverdue(record) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!record) throw new Error(`entity[${this.name}] (isOverdue): "record" must be set.`);
+    }
+
+    return !this.isCompleted(record)
+      && record.get('due_date').isBefore(moment(), 'day');
   }
 }

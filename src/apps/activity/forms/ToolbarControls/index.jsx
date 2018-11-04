@@ -30,7 +30,7 @@ const FormToolbarControls = props => (
       />
     )}
 
-    { !process.submitHidden && (
+    { !props.submitHidden && (
       <Control
         action={props.submitAction}
         component={props.buttonComponent}

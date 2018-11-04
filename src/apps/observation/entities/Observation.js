@@ -1,7 +1,8 @@
 import DuckRest from '@entity/duck-namespace-drf';
-import { EntityActivity, Fields } from '@entity/core';
+import { Fields } from '@entity/core';
 
 import EntityAction from 'apps/activity/entities/Action';
+import EntityActivity from 'apps/activity/entities/Activity';
 
 class Observation extends EntityActivity {
   static apiBase = '/observation/v1/observation/'
