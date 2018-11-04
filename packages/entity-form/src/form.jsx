@@ -27,7 +27,7 @@ class Form extends React.Component {
     if (process.env.NODE_ENV !== 'production') {
       if (target.index === null) throw new Error('entity-form (onChange): index cannot be null');
       if (target.name !== this.props.name) throw new Error(`entity-form (onChange): Name cannot be different from Form name "${this.props.name}"`);
-      if (!Map.isMap(target.value) && target.value !== null) throw new Error(`entity-form (onChange): Value must either be a "Map" or "null". Refer to form named "${this.props.name}"`);
+      if (!target.array && !Map.isMap(target.value) && target.value !== null) throw new Error(`entity-form (onChange): Value must either be a "Map" or "null". Refer to form named "${this.props.name}"`);
     }
 
     // TODO value can be a list and null

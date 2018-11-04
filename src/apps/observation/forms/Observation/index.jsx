@@ -61,6 +61,7 @@ const FormObservation = props => (
     <Input
       name="follow_up_actions"
       component={FormAction}
+      componentProps={({ value }) => ({ records: value })}
       wrapperComponentProps={{
         css: styles.input,
         labelLocale: locale.follow_up_actions,

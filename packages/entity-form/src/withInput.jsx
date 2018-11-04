@@ -22,7 +22,9 @@ export default function (ComposedComponent) {
         errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
         index: this.props.index,
         name: this.props.name, // TODO check if correct
-        onChange: this.handleChange,
+        onChange: this.props.array
+          ? this.handleChangeArray
+          : this.handleChange,
         readOnly: this.props.readOnly,
         initialValue: this.props.formInitialValue,
         options: field.getOptions(),
@@ -60,6 +62,14 @@ export default function (ComposedComponent) {
       });
     }
 
+    handleChangeArray = ({ target }) => this.props.formOnChange({
+      target: {
+        array: true,
+        name: this.props.formName,
+        value: target.value,
+      },
+    })
+
     renderComponent(props) {
       return <ComposedComponent {...props} />;
     }
@@ -94,6 +104,7 @@ export default function (ComposedComponent) {
 
   withInput.propTypes = {
     apiOptions: PropTypes.bool,
+    array: PropTypes.bool,
     filterParams: PropTypesImmutable.map,
     formField: PropTypesEntity.entityField.isRequired,
     queryComponent: PropTypesPlus.isRequiredIf('apiOptions', PropTypesPlus.component),
@@ -102,6 +113,7 @@ export default function (ComposedComponent) {
 
   withInput.defaultProps = {
     apiOptions: false,
+    array: false,
     filterParams: Map(),
     queryComponent: undefined,
     willChangeRecord: ({ nextRecord }) => nextRecord,
