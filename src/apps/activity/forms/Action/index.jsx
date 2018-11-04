@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
@@ -14,9 +15,10 @@ const FormAction = props => (
       <UITypeSet locale={props.locale.header_title} variant="header_title" />
 
       <Control
-        action={({ value, field, ...options }) => field.entity.actionDelete(value, options)}
+        action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
         component={UIIcon}
         componentProps={{ name: 'delete' }}
+        array
       />
     </Header>
 
@@ -79,6 +81,8 @@ FormAction.propTypes = {
     actionUpdate: PropTypes.func.isRequired,
   }).isRequired,
 
+  index: PropTypes.number.isRequired,
+
   locale: PropTypes.shape({
     complete: PropTypesPlus.locale.isRequired,
     completed_by: PropTypesPlus.locale.isRequired,
@@ -88,6 +92,8 @@ FormAction.propTypes = {
     person_responsible: PropTypesPlus.locale.isRequired,
     update: PropTypesPlus.locale.isRequired,
   }),
+
+  records: PropTypesImmutable.list.isRequired,
 };
 
 FormAction.defaultProps = {
