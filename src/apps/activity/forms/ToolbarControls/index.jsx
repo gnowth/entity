@@ -5,11 +5,11 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form } from '@entity/form';
 import { UIButton, UISpacer } from '@gnowth/ui';
-import { FormattedMessage } from 'react-intl';
 
 import locale from './locale';
 import styles, { Controls } from './styles';
 
+// remove defaultComponentProps and put directly on component and merge with componentProps
 const FormToolbarControls = props => (
   <Form {...props}>
     { !props.resetHidden && (
