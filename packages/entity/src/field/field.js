@@ -47,13 +47,14 @@ export default class Field {
     }
   }
 
+  // TODO check
   getErrors(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
       // TODO check that errors is a list
       // TODO check that index is a number
     }
 
-    return options.index === undefined
+    return options.name === undefined
       ? errors
       : errors
         .filter(error => Map.isMap(error) && error.get('list'))
@@ -61,12 +62,15 @@ export default class Field {
         .filter(error => error);
   }
 
+  // TODO check
   getErrorsArray(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getErrors): option "name" is not supported.`);
+      if (options.index === undefined) throw new Error(`entity.fields[${this.constructor.name}] (getErrorsArray): option "index" is required.`);
     }
 
-    return options.name ? List() : errors;
+    return errors
+      .filter(error => Map.isMap(error) && error.get('list'))
+      .flatMap(error => error.getIn(['errors', options.index]));
   }
 
   getField(options = {}) {
