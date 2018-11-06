@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+import settings from 'settings';
 import AppAuth from 'apps/auth';
 import AppChangeLog from 'apps/changelog';
 import AppDashboard from 'apps/dashboard';
@@ -23,11 +24,13 @@ const Routes = () => (
       </Authenticated>
     </Route>
 
-    <Route path="/observation">
-      <AppHeader>
-        <AppObservation />
-      </AppHeader>
-    </Route>
+    { settings.ENABLE_FEATURE_OBSERVATION && (
+      <Route path="/observation">
+        <AppHeader>
+          <AppObservation />
+        </AppHeader>
+      </Route>
+    )}
 
     <Redirect to="/notfound" />
   </Switch>
