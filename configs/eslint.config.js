@@ -118,9 +118,6 @@ module.exports = {
     }],
   },
   settings: {
-    // add entities to core-modules so that it ignore import error for 'entities'
-    // 'import/core-modules': ['entities'],
-
     'import/resolver': {
       webpack: {
         config: path.join(__dirname, 'webpack.config.js'),
