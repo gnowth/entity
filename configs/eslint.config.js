@@ -45,12 +45,12 @@ module.exports = {
       'error',
       {
         devDependencies: [
-          'stories/**/*.jsx',
-          'package/storybook/**/*.js',
-          '**/*.test.js',
           '**/*.config.js',
+          '**/*.test.js',
           '**/*.test.jsx',
+          '**/*.stories.jsx',
           '**/stories.jsx',
+          '.storybook/**',
         ],
       },
     ],

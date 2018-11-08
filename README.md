@@ -2,9 +2,9 @@
 
 ## Getting started
 
-#### Project setup
+### Project setup
 
-Make sure to use node v8.2.1 and npm v5.3.0 or above
+Make sure to use node v10.13.0 and npm v6.4.1 or above
 
 Install project dependencies:
 
@@ -12,7 +12,7 @@ Install project dependencies:
 npm install
 ```
 
-Create your own local development settings by copying the production settings and editing the file to work with your local setup.
+Create your own local development settings by copying the production settings and editing the file to work ith your local setup.
 
 ```
 cp settings/production.js settings/development.js
@@ -47,6 +47,16 @@ npm run serve-dist
 ```
 npm test
 ```
+
+### Run storybook
+
+```
+npm run storybook
+```
+
+### Storybook
+
+An example of stories is found at `.storybook/stories.jsx`
 
 ## TODO
 1. packages: use closure for minification of packages

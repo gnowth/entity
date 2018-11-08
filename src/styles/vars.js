@@ -1,6 +1,6 @@
-import { greenNasty } from './colors';
+import { green_nasty } from './colors';
 
-export const colorPrimary = greenNasty;
+export const colorPrimary = green_nasty;
 
 export const colorSecondary = 'hsl(0, 0%, 80%)';
 

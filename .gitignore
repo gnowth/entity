@@ -64,3 +64,6 @@ typings/
 
 # build
 dist/
+
+# storybook
+.cache

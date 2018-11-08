@@ -1,18 +1,18 @@
 export const beige = '#fbe8e8';
 
-export const greenNasty = '#61ba46';
+export const green_nasty = '#61ba46';
 
 export const greyish = '#aaa';
 
-export const greyishTeal = '#72a188';
+export const greyish_teal = '#72a188';
 
 export const pine = '#385f4a';
 
-export const pineTwo = '#3c684a';
+export const pine_two = '#3c684a';
 
-export const redDeep = '#960000';
+export const red_deep = '#960000';
 
-export const sageLight = '#cbedda';
+export const sage_light = '#cbedda';
 
 export const salmon = '#f96b6b';
 

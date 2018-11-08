@@ -22,7 +22,7 @@ module.exports = {
   },
 
   entry: {
-    index: ['@babel/polyfill', './src/index.jsx'],
+    index: './src/index.jsx',
   },
 
   output: {
