@@ -6,7 +6,7 @@
   "name": "@entity/duck-namespace-drf",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "clean": "rimraf dist",
@@ -18,7 +18,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@entity/duck": "0.0.1",
+    "@entity/duck": "^0.1.0",
     "immutable": "4.0.0-rc.12",
     "query-string": "6.2.0"
   }

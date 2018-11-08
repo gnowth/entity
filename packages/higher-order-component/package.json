@@ -6,7 +6,7 @@
   "name": "@gnowth/higher-order-component",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "clean": "rimraf dist",

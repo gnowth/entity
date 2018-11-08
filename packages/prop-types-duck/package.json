@@ -6,7 +6,7 @@
   "name": "@gnowth/prop-types-duck",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "clean": "rimraf dist",
@@ -18,8 +18,8 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@gnowth/prop-types-entity": "0.0.1",
-    "@gnowth/prop-types-plus": "0.0.1"
+    "@gnowth/prop-types-entity": "^0.1.0",
+    "@gnowth/prop-types-plus": "^0.1.0"
   },
   "peerDependencies": {
     "@entity/duck": "0.0.1"

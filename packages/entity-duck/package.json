@@ -6,7 +6,7 @@
   "name": "@entity/duck",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "clean": "rimraf dist",
@@ -18,7 +18,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@entity/core": "0.0.1",
+    "@entity/core": "^0.1.0",
     "lodash": "4.17.11",
     "redux-actions": "2.6.4"
   }
