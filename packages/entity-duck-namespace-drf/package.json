@@ -1,0 +1,26 @@
+{
+  "author": "Thierry Wong",
+  "description": "entity-duck-namespace-drf",
+  "license": "GPL-3.0-or-later",
+  "main": "src/index.js",
+  "name": "@entity/duck-namespace-drf",
+  "private": false,
+  "repository": "https://github.com/gnowth/react.git",
+  "version": "0.1.1",
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "clean": "rimraf dist",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
+    "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
+    "postbuild": "npm run link-main:dist",
+    "prebuild": "npm run clean"
+  },
+  "dependencies": {
+    "@entity/duck": "0.1.1",
+    "immutable": "4.0.0-rc.12",
+    "query-string": "6.2.0"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "author": "Thierry Wong",
+  "description": "entity-widget",
+  "license": "GPL-3.0-or-later",
+  "main": "src/index.js",
+  "name": "@entity/widget",
+  "private": false,
+  "repository": "https://github.com/gnowth/react.git",
+  "version": "0.1.1",
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "clean": "rimraf dist",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
+    "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
+    "postbuild": "npm run link-main:dist",
+    "prebuild": "npm run clean"
+  },
+  "dependencies": {
+    "@gnowth/higher-order-component": "0.1.1",
+    "@gnowth/prop-types-entity": "0.1.1",
+    "@gnowth/prop-types-plus": "0.1.1",
+    "@gnowth/ui": "0.1.1",
+    "immutable": "4.0.0-rc.12",
+    "lodash": "4.17.11",
+    "moment": "2.22.2",
+    "prop-types": "15.6.2",
+    "react-datepicker": "1.8.0",
+    "react-immutable-proptypes": "2.1.0",
+    "react-select": "2.1.1",
+    "reselect": "4.0.0"
+  },
+  "peerDependencies": {
+    "react": "16.6.1",
+    "styled-components": "4.0.3"
+  }
+}

@@ -1,0 +1,1 @@
+# @gnowth/prop-types-duck
