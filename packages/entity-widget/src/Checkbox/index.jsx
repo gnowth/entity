@@ -6,8 +6,9 @@ import { withPropsFiltered } from '@gnowth/higher-order-component';
 const Input = styled.input`
   display: block;
   cursor: pointer;
+  width: 14px;
 
-  ${props => props.theme.components?.widgetCheckbox?.[props.variant || 'main']}
+  ${props => props.theme.components?.widgetCheckbox?.[props.variant]}
   ${props => props.css}
 `;
 
@@ -49,12 +50,14 @@ class WidgetCheckbox extends React.Component {
 
 WidgetCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.bool,
+  variant: PropTypes.string,
 };
 
 WidgetCheckbox.defaultProps = {
   value: false,
+  variant: 'main',
 };
 
 export default withPropsFiltered(WidgetCheckbox);
