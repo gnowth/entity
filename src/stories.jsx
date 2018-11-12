@@ -1,3 +1,5 @@
-import { createStories } from '@gnowth/ui';
+import { createStories as createWidgetStories } from '@entity/widget';
+import { createStories as createUIStories } from '@gnowth/ui';
 
-createStories(module);
+createUIStories(module);
+createWidgetStories(module);

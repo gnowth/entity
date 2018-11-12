@@ -35,7 +35,7 @@ export default mod => storiesOf('UI/Button', mod)
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.components ?.uiButton || {}).map(variant => (
+      { theme => Object.keys(theme.components?.uiButton || {}).map(variant => (
         <Wrapper key={variant}>
           <UIButton variant={variant}>
             {variant}

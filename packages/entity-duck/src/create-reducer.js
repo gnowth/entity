@@ -22,5 +22,5 @@ export default (reqs, combineReducers) => _compose(
   _mapValues(createAppReducersFromDucks(combineReducers)),
   _groupBy(duck => duck.app),
   _filter(duck => duck instanceof Duck),
-  _flatMap(req => req.keys().map(key => req(key).default ?.duck)),
+  _flatMap(req => req.keys().map(key => req(key).default?.duck)),
 )(reqs);

@@ -1,3 +1,5 @@
+export { default as createStories } from './stories';
+
 export { default as UIButton } from './Button';
 
 export { default as UIError } from './Error';
@@ -19,5 +21,3 @@ export { default as UISpacer } from './Spacer';
 export { default as UITypeSet } from './TypeSet';
 
 export { default as UIWell } from './Well';
-
-export { default as createStories } from './stories';

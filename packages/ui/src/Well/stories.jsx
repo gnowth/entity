@@ -24,7 +24,7 @@ export default mod => storiesOf('UI/Well', mod)
           ratio={select('ratio', [1, 2, 4, 8, 16], 1)}
           variant={select('variant', Object.keys(theme.components?.uiWell || {}), 'main')}
         >
-          { text('children', 'Hello Button') }
+          { text('children', 'Hello Well') }
         </UIWell>
       )}
     </ThemeConsumer>
