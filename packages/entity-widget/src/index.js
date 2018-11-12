@@ -1,4 +1,6 @@
-export { default as createStories } from './stories';export { default as WidgetBoolean } from './Boolean';
+export { default as createStories } from './stories';
+
+export { default as WidgetBoolean } from './Boolean';
 
 export { default as WidgetCheckbox } from './Checkbox';
 
