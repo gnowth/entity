@@ -11,7 +11,7 @@ import { IntlProvider } from 'react-intl';
 import * as theme from 'styles';
 import GlobalStyle from 'styles/global';
 
-const componentReq = require.context('..', true, /stories\.jsx$/);
+const componentReq = require.context('src', true, /stories\.jsx$/);
 
 addDecorator(withNotes);
 
@@ -20,7 +20,7 @@ addDecorator(withOptions({
 }));
 
 addDecorator(story => (
-  <IntlProvider >
+  <IntlProvider locale="en" messages={{}}>
     { story() }
   </IntlProvider>
 ));

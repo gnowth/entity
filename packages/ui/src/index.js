@@ -19,3 +19,5 @@ export { default as UISpacer } from './Spacer';
 export { default as UITypeSet } from './TypeSet';
 
 export { default as UIWell } from './Well';
+
+export { default as createStories } from './stories';
