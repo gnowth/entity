@@ -17,10 +17,7 @@ const getProps = (context, props, mapProps) => {
     : mapProps;
 
   return _flow(
-    // filter context as per mapProps
     c => _pick(c, Object.keys(computedMapProps)),
-
-    // transform props name as per nameMap
     c => _mapKeys(c, (_, key) => computedMapProps[key] || key),
   )(context);
 };
