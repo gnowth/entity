@@ -48,7 +48,7 @@ export default axios => store => next => (action) => {
     ...(action.payload ? [action.meta.entity.toData(action.payload)] : []),
     {
       params: action.meta.params
-        && action.meta.params.filter(p => p).toJS(), // TODO check that it is a string
+        && action.meta.params.filter(p => p).toJS(),
     },
   ];
 

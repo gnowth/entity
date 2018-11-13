@@ -140,35 +140,6 @@ export default class EntityDuck extends Duck {
     ]);
   }
 
-  // TODO remove comment
-  // records(state, options) {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     if (!this.entity.paginated) {
-  //       const results = state.getIn([
-  //         this.app,
-  //         this.constructor.namespace,
-  //         this.entity.name,
-  //         'list',
-  //         getIdentifier(Object.assign({ method: 'get' }, options)),
-  //         ...(this.entity.paginated ? ['results'] : []),
-  //       ]);
-
-  //       if (results && !List.isList(results)) {
-  //         throw new Error(`entities-duck: records for entity "${this.entity.name}" must be a List. Did you forget to set "paginated" static field to "true" in the entity`);
-  //       }
-  //     }
-  //   }
-
-  //   return state.getIn([
-  //     this.app,
-  //     this.constructor.namespace,
-  //     this.entity.name,
-  //     'list',
-  //     getIdentifier(Object.assign({ method: 'get' }, options)),
-  //     ...(this.entity.paginated ? ['results'] : []),
-  //   ]);
-  // }
-
   meta(state, options) {
     return state.getIn([
       this.app,

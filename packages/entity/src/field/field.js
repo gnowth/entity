@@ -16,7 +16,7 @@ export default class Field {
       this,
       defaults,
       options,
-      { // TODO check how this is affected by subclass
+      {
         validators: _isFunction(options.validators)
           ? options.validators(defaults.validators)
           : (options.validators || defaults.validators),
@@ -47,13 +47,7 @@ export default class Field {
     }
   }
 
-  // TODO check
   getErrors(errors, options = {}) {
-    if (process.env.NODE_ENV !== 'production') {
-      // TODO check that errors is a list
-      // TODO check that index is a number
-    }
-
     return options.name === undefined
       ? errors
       : errors
@@ -62,7 +56,6 @@ export default class Field {
         .filter(error => error);
   }
 
-  // TODO check
   getErrorsArray(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (options.index === undefined) throw new Error(`entity.fields[${this.constructor.name}] (getErrorsArray): option "index" is required.`);
@@ -87,7 +80,6 @@ export default class Field {
     }
   }
 
-  // TODO check if need to deprecate
   getOptions() {
     return this.options || List();
   }

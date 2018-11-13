@@ -8,8 +8,6 @@ import { is, List } from 'immutable';
 
 import * as SC from './styles';
 
-// TODO fix nested ternary
-// TODO check record equality by id
 const WidgetEntityList = ({
   processingComponent: ProcessingComponent,
   recordsCountNoneComponent: RecordsCountNoneComponent,

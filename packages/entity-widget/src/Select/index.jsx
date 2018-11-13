@@ -40,7 +40,7 @@ class WidgetSelect extends React.Component {
         isMulti={this.props.field.many}
         onChange={this.handleChange}
         options={this.getOptions(this.props.options)}
-        styles={Object.assign({}, this.props.theme?.components?.widgetSelect?.styles, this.props.styles)} // TODO add withTheme
+        styles={Object.assign({}, this.props.theme?.components?.widgetSelect?.styles, this.props.styles)}
         value={this.getValue(this.props.value)}
       />
     );

@@ -30,7 +30,6 @@ class Form extends React.Component {
       if (!target.array && !Map.isMap(target.value) && target.value !== null) throw new Error(`entity-form (onChange): Value must either be a "Map" or "null". Refer to form named "${this.props.name}"`);
     }
 
-    // TODO value can be a list and null
     return this.props.onChange({ target });
   };
 

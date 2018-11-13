@@ -13,8 +13,8 @@ export default validators => (values, options) => {
 
   return errors.some(error => error.size > 0)
     && Map({
-      errors, // TODO maybe add an error message? message/messageLocale
+      errors,
       list: true,
-      message: 'Invalid list', // TODO add default message
+      message: 'Invalid list',
     });
 };

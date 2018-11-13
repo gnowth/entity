@@ -9,7 +9,7 @@ export default class IdField extends AnyField {
     }
   }
 
-  dataToValue(data) { // TODO maybe check if data can be converted into a string;
+  dataToValue(data) {
     return data?.toString();
   }
 

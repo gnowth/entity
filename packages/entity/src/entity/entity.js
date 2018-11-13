@@ -33,7 +33,6 @@ export default class Entity {
     return records.delete(index).insert(indexTo, records.get(index));
   }
 
-  // TODO check if reset should be reset to initialValue
   static actionReset(record) {
     return this.dataToRecord({
       [this.idField]: record.get(this.idField),
@@ -80,7 +79,6 @@ export default class Entity {
     ));
   }
 
-  // TODO check if some code rely on id to be an empty string ''
   static getId(record) {
     return record?.get(this.idField);
   }
@@ -123,8 +121,6 @@ export default class Entity {
     return record?.get(this.idField) || '';
   }
 
-  // TODO FYI because entity-valid is calling this function, this should return only 1 error. unless we change entityvalid
-  // but if we remove nonField from here, we won't have non field errors?
   static validate(record, options = {}) {
     if (!record) return record;
 
@@ -144,36 +140,8 @@ export default class Entity {
       ? null
       : Map({
         detail: true,
-        message: 'Invalid Entity', // TODO add proper message
+        message: 'Invalid Entity',
         errors: detailErrors,
       });
   }
 }
-
-// const errors = [
-//   'error',
-//   true,
-//   {
-//     defaultMessage: 'dfhdf',
-//     id: 'df',
-//   },
-//   {
-//     detail: true,
-//     messageId: 'df',
-//     messageLocale: {
-//       defaultMessage: 'dfhdf',
-//       id: 'df',
-//     },
-//     message: 'error',
-//     errors: {
-//       titles: [
-//         'error',
-//         true,
-//         {
-//           list: true,
-//           errors: [[], []],
-//         },
-//       ]
-//     },
-//   },
-// ];

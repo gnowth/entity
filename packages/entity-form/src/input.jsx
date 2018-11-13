@@ -55,7 +55,6 @@ class Input extends React.Component {
     );
   }
 
-  // TODO check if there is an alternative to index as key
   renderComponentArray(props) {
     return props.value.map((val, index) => (
       <this.props.component
@@ -82,7 +81,7 @@ Input.propTypes = {
     PropTypes.shape({}),
     PropTypes.func,
   ]),
-  many: PropTypesPlus.notRequiredIf('children', PropTypes.bool), // TODO check that field is many
+  many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
   wrapperComponent: PropTypesPlus.isRequiredIf('wrapperComponentProps', PropTypesPlus.component),
   wrapperComponentProps: PropTypes.shape({}),
 };
@@ -96,7 +95,6 @@ Input.defaultProps = {
   wrapperComponentProps: undefined,
 };
 
-// TODO check withPropTypes
 export default _compose(
   withPropTypes({
     propTypes: exact({
@@ -113,7 +111,7 @@ export default _compose(
       type: PropTypes.string,
       willChangeRecord: PropTypes.func,
       wrapperComponent: PropTypesPlus.component,
-      wrapperComponentProps: PropTypes.shape({}), // TODO check that wrapperComponent is present if Props is present
+      wrapperComponentProps: PropTypes.shape({}),
     }),
 
     defaultProps: {
@@ -131,9 +129,8 @@ export default _compose(
   }),
 
   withInput,
-  withDefault(), // TODO find a way to access nested level
+  withDefault(),
 
-  // TODO check for default components, allowing null to not add default?
   withProps(props => ({
     component: props.component || props.defaults.widgets[props.type || props.field.type],
     wrapperComponent: props.wrapperComponent === null
