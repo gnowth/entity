@@ -1,6 +1,5 @@
 import { getIdentifier } from './utils';
 
-// TODO might need to use idIdenfier?
 export default (types, initialState) => ({
   [types.clear]: (state, action) => {
     const identifier = getIdentifier(action.meta);

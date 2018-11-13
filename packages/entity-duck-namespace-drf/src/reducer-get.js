@@ -19,7 +19,6 @@ const listDataFactory = (payload, entity) => {
     : payload.map(data => entity.dataToRecord(data));
 };
 
-// TODO remove list_dirty?
 export default types => ({
   [types.get]: (state, action) => {
     const identifier = getIdentifier(action.meta);
@@ -70,7 +69,6 @@ export default types => ({
   [types.get_rejected]: (state, action) => {
     const identifier = getIdentifier(action.meta);
 
-    // TODO add option to flush on fail
     return state.withMutations(
       s => s
         .setIn(
