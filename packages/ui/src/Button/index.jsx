@@ -37,6 +37,7 @@ const UIButton = ({ processing, ...props }) => (
 
 UIButton.propTypes = {
   children: PropTypes.node,
+  css: PropTypesPlus.css,
   locale: PropTypesPlus.locale,
   processing: PropTypes.bool,
   to: PropTypes.string,
@@ -45,6 +46,7 @@ UIButton.propTypes = {
 
 UIButton.defaultProps = {
   children: undefined,
+  css: undefined,
   locale: undefined,
   processing: false,
   to: '',

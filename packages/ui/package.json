@@ -22,10 +22,8 @@
     "@gnowth/higher-order-component": "0.1.1",
     "@gnowth/prop-types-plus": "0.1.1",
     "classnames": "2.2.6",
-    "font-awesome": "4.7.0",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
-    "material-design-icons": "3.0.1",
     "prop-types": "15.6.2",
     "react-immutable-proptypes": "2.1.0",
     "react-intl": "2.7.2"

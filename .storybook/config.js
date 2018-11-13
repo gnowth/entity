@@ -1,4 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
+import 'assets/fonts/icon-font.css';
+import 'font-awesome/css/font-awesome.css';
+import 'material-design-icons/iconfont/material-icons.css';
 import 'normalize.css/normalize.css';
 
 import React from 'react';

@@ -21,6 +21,5 @@ export const Popup = styled.div`
 export default {
   icon: css`
     color: ${props => props.theme.vars.colorDanger};
-    font-size: 16px;
   `,
 };
