@@ -1,51 +1,33 @@
-import _isFunction from 'lodash/isFunction';
-import cn from 'classnames';
-import styled, { css } from 'styled-components';
+import classnames from 'classnames';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
 
-// TODO check what to do with css
-import 'material-design-icons/iconfont/material-icons.css';
-import 'font-awesome/css/font-awesome.css';
-
 const UIIcon = styled.i`
-  ${props => props.iconColor && css`
-    color: ${_isFunction(props.iconColor) ? props.iconColor(props.theme) : props.iconColor};
-  `}
+  font-size: 1rem;
 
-  ${props => props.iconSize && css`
-    && {
-      font-size: ${_isFunction(props.iconSize) ? props.iconSize(props.theme) : props.iconSize};
-    }
-  `}
-
-  && {
-    ${props => props.css}
-  }
+  ${props => props.theme?.components?.uiIcon?.[props.variant]}
+  ${props => props.css}
 `;
 
 UIIcon.propTypes = {
+  css: PropTypesPlus.css,
   name: PropTypes.string.isRequired,
-  iconColor: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
-  iconSize: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
+  variant: PropTypes.string,
 };
 
 UIIcon.defaultProps = {
-  iconSize: undefined,
-  iconColor: undefined,
+  css: undefined,
+  variant: 'main',
 };
 
 export default withProps(props => ({
-  className: cn({
-    'material-icons': !props.fontawesome,
+  className: classnames({
+    'material-icons': props.material,
     [`fa fa-${props.name}`]: props.fontawesome,
+    [`icon icon-${props.name}`]: !props.fontawesome && !props.material,
     [props.className]: props.className,
   }),
-  children: props.fontawesome ? props.children : props.name,
+  children: props.material ? props.name : props.children,
 }))(UIIcon);
