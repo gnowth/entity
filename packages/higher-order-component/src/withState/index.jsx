@@ -9,7 +9,6 @@ export default ({ initialState = {}, mapProps = {} }) => (ComposedComponent) => 
       ? initialState(this.props)
       : initialState;
 
-    // TODO find better pattern or mute only errors coming from onInputChange
     componentWillUnmount() {
       this.mounted = false;
     }

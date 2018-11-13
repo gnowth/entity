@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom';
 
 import store from 'store';
 
-// TODO remove processing, processingDidFail, recordCount, recordCountNOne and check errors?
 export default {
   store,
   button: UIButton,

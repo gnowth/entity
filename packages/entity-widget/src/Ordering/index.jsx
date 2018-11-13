@@ -62,9 +62,7 @@ class WidgetOrdering extends React.Component {
     });
   };
 
-  handleKeyPress = () => {
-    // TODO implement
-  }
+  handleKeyPress = () => {}
 
   render() {
     return (

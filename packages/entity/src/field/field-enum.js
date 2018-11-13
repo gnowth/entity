@@ -3,7 +3,6 @@ import { List } from 'immutable';
 import EntityField from './field-entity';
 import EntityEnum from '../entity/entity-enum';
 
-// TODO review
 export default class EnumField extends EntityField {
   constructor(options) {
     const defaults = {

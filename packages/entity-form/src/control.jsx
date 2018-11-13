@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import withInput from './withInput';
 
 class Control extends React.Component {
-  // TODO add more props
   getPropsContext() {
     return {
       errors: this.props.errors,
@@ -42,8 +41,6 @@ class Control extends React.Component {
     );
   }
 
-  // TODO add index
-  // TODO check if event is required to be send when calling action
   handleEvent = () => {
     const action = this.props.action({ ...this.getPropsContext() });
 

@@ -24,7 +24,6 @@ const handleError = (action, dispatch) => (error) => {
     Object.assign({ payload: action.payload }, action.meta),
   ));
 
-  // TODO use `?.` ?
   if (_isFunction(action.meta.catch)) {
     action.meta.catch({ ...action, error });
   }
