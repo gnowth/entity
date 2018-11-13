@@ -8,6 +8,8 @@ export { default as UIErrorWell } from './ErrorWell';
 
 export { default as UIIcon } from './Icon';
 
+export { default as UIImage } from './Image';
+
 export { default as UILabel } from './Label';
 
 export { default as UIPortal } from './Portal';

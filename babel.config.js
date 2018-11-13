@@ -16,7 +16,8 @@ module.exports = {
   ],
   plugins: [
     '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-proposal-optional-chaining',
   ],
 };
