@@ -52,7 +52,6 @@ export default class Title extends Entity {
     ));
   }
 
-  // TODO check if it is ok to have '/?' in link
   static toLink(record, options = {}) {
     const computedParams = (options.params || Map())
       .filterNot(param => param === undefined);
@@ -66,7 +65,6 @@ export default class Title extends Entity {
     return `${this.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
-  // TODO check if valid default
   static toLocale(record) {
     return record?.get('locale') || {};
   }

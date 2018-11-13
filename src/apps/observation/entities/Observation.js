@@ -16,7 +16,6 @@ class Observation extends EntityActivity {
     }),
   })
 
-  // TODO refactor paths
   static paths = {
     apiBase: '/observation/v1/observation/',
     urlBase: '/observation/',

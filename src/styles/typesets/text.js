@@ -1,12 +1,5 @@
 import { css } from 'styled-components';
 
-// export const text = css`
-//   color: ${props => props.theme.vars.paletteBlack.color('500')};
-
-//   ${props => props.disabled && props.theme.mixins.disabled}
-//   ${props => props.readOnly && props.theme.mixins.readOnly}
-// `;
-
 export const text = css`
   color: ${props => props.theme.vars.colorBlack};
 

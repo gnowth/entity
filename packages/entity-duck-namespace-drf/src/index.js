@@ -8,7 +8,6 @@ import reducerSave from './reducer-save';
 import reducerDelete from './reducer-delete';
 import { getId, getIdentifier, NULL_ID } from './utils';
 
-// TODO check that entity has api base?
 export default class EntityDuck extends Duck {
   static namespace = 'dango_rest_framework';
 
@@ -60,7 +59,6 @@ export default class EntityDuck extends Duck {
       payload: () => undefined,
     }),
 
-    // TODO it does not allow creating multiple new
     save_local: Duck.createAction(),
     save_rejected: Duck.createAction(),
     save_resolved: Duck.createAction(),
@@ -127,50 +125,20 @@ export default class EntityDuck extends Duck {
       this.constructor.namespace,
       this.entity.name,
       options.id === undefined ? 'list_errors' : 'detail_errors',
-      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options), // TODO move method default elsewhere
+      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options),
     ]);
   }
 
-  // TODO check if result is a list if not paginated
   record(state, options = {}) {
     return state.getIn([
       this.app,
       this.constructor.namespace,
       this.entity.name,
       `${options.id === undefined ? 'list' : 'detail'}${options.dirty ? '_dirty' : ''}`,
-      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options), // TODO move method default elsewhere
+      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options),
       ...(options.id === undefined && this.entity.paginated ? ['results'] : []),
     ]);
   }
-
-  // TODO remove comment
-  // records(state, options) {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     if (!this.entity.paginated) {
-  //       const results = state.getIn([
-  //         this.app,
-  //         this.constructor.namespace,
-  //         this.entity.name,
-  //         'list',
-  //         getIdentifier(Object.assign({ method: 'get' }, options)),
-  //         ...(this.entity.paginated ? ['results'] : []),
-  //       ]);
-
-  //       if (results && !List.isList(results)) {
-  //         throw new Error(`entities-duck: records for entity "${this.entity.name}" must be a List. Did you forget to set "paginated" static field to "true" in the entity`);
-  //       }
-  //     }
-  //   }
-
-  //   return state.getIn([
-  //     this.app,
-  //     this.constructor.namespace,
-  //     this.entity.name,
-  //     'list',
-  //     getIdentifier(Object.assign({ method: 'get' }, options)),
-  //     ...(this.entity.paginated ? ['results'] : []),
-  //   ]);
-  // }
 
   meta(state, options) {
     return state.getIn([

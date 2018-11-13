@@ -5,7 +5,6 @@ import { withDefault } from '@gnowth/default';
 import { withProps, withPropTypes, withState } from '@gnowth/higher-order-component';
 import { connect } from 'react-redux';
 
-// TODO need to make sure keyRecord is provided!
 const mapStateToProps = (state, props) => Object.assign(
   {
     errors: props.queryContainer_errors(state, props.queryContainer_action.meta),

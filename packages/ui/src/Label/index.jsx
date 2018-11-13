@@ -9,8 +9,6 @@ import UITypeSet from '../TypeSet';
 
 import { Label, UILabelRoot } from './styles';
 
-// TODO use locale? but we are not using children here? reconsider for this one?
-// TODO error need to have a key?
 const UILabel = props => (
   <UILabelRoot className={props.className} css={props.css}>
     { props.label && (
@@ -27,7 +25,7 @@ const UILabel = props => (
 
     { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
       <UITooltip componentProps={{ name: 'error' }}>
-        { props.errors.map((error, index) => ( // TODO remove eslint disable
+        { props.errors.map((error, index) => (
           <UIError key={index}>{ error }</UIError> // eslint-disable-line
         ))}
       </UITooltip>

@@ -6,7 +6,6 @@ import UITypeSet from '../TypeSet';
 import UIProgressCircle from '../ProgressCircle';
 import { Button, LinkHyper, LinkRouter } from './styles';
 
-// TODO check that eslint for prop-types is running
 const UIButton = ({ processing, ...props }) => (
   <>
     { props.to && /^https?:\/\//.exec(props.to) && (
