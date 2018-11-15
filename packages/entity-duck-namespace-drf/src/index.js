@@ -114,8 +114,7 @@ export default class EntityDuck extends Duck {
     super(options);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity.paths?.apiBase) throw new Error('entities-duck: "entity" option must have an "apiBase"');
-      if (!/^\/.*\/$/.test(options.entity.paths?.apiBase)) throw new Error('entities-duck: "apiBase" of "entity" option must start with a "/" and end with a "/"');
+      if (!/^\/.*\/$/.test(options.entity.paths?.apiBase)) throw new Error(`Duck[${this.constructor.name}] (${options.entity.name}): "apiBase" of "entity" option must start with a "/" and end with a "/"`);
     }
   }
 
