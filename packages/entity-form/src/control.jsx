@@ -87,7 +87,9 @@ const mapStateToProps = (state, props) => ({
 
 export default _compose(
   withInput,
-  withDefault({ button: 'component' }),
+  withDefault({
+    component: ['entityForm_button', 'component_button'],
+  }),
   withState({ initialState: { action: undefined } }),
   connect(mapStateToProps),
 )(Control);

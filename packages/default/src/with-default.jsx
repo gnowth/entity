@@ -1,8 +1,6 @@
-import _flow from 'lodash/flow';
 import _isFunction from 'lodash/isFunction';
-import _mapKeys from 'lodash/mapKeys';
+import _mapValues from 'lodash/mapValues';
 import _omitBy from 'lodash/omitBy';
-import _pick from 'lodash/pick';
 import React from 'react';
 
 import { Consumer } from './context';
@@ -16,10 +14,15 @@ const getProps = (context, props, mapProps) => {
     ? mapProps(props)
     : mapProps;
 
-  return _flow(
-    c => _pick(c, Object.keys(computedMapProps)),
-    c => _mapKeys(c, (_, key) => computedMapProps[key] || key),
-  )(context);
+  return _mapValues(
+    computedMapProps,
+    (value) => {
+      const computedValues = Array.isArray(value) ? value : [value];
+      const computedValue = computedValues.find(val => context[val]);
+
+      return computedValue ? context[computedValue] : undefined;
+    },
+  );
 };
 
 const getDisplayName = ComposedComponent => ComposedComponent.displayName

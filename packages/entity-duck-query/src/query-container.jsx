@@ -111,10 +111,10 @@ export default _flowRight(
   connect(mapStateToProps, mapDispatchToProps, mergeProps),
 
   withDefault({
-    processing: 'processingComponent',
-    processingDidFail: 'processingDidFailComponent',
-    recordCount: 'recordCountComponent',
-    recordCountNone: 'recordCountNoneComponent',
+    processingComponent: ['entityDuckQuery_processing', 'component_processing'],
+    processingDidFailComponent: ['entityDuckQuery_processingDidFail', 'component_processingDidFail'],
+    recordCountComponent: ['entityDuckQuery_recordCount', 'component_recordCount'],
+    recordCountNoneComponent: ['entityDuckQuery_recordCountNone', 'component_recordCountNone'],
     store: 'store',
   }),
 );

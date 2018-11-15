@@ -5,7 +5,6 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
-import { withProps } from '@gnowth/higher-order-component';
 import { Map } from 'immutable';
 
 import { withForm } from './context';
@@ -115,11 +114,7 @@ export default function (ComposedComponent) {
   };
 
   return _compose(
-    withDefault(),
     withForm,
-
-    withProps(props => ({
-      queryComponent: props.queryComponent || props.defaults.query,
-    })),
+    withDefault({ queryComponent: ['entityForm_query', 'component_query'] }),
   )(withInput);
 }
