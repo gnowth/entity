@@ -4,8 +4,6 @@ import { Entity, Fields } from '@entity/core';
 import settings from 'settings';
 
 class Location extends Entity {
-  static apiBase = `/${settings.PROJECT_NAME}_tz/v1/locations/`;
-
   static paginated = true;
 
   static fields = {
@@ -13,6 +11,10 @@ class Location extends Entity {
     name: new Fields.CharField(),
     project: new Fields.AnyField(),
   };
+
+  static paths = {
+    apiBase: `/${settings.PROJECT_NAME}_tz/v1/locations/`,
+  }
 
   static toString(record) {
     return record.get('name');
