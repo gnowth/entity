@@ -1,40 +1,29 @@
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesPlus from '@gnowth/prop-types-plus';
+import React from 'react';
+import { UITypeSet } from '@gnowth/ui';
+import { css } from 'styled-components';
 
-// const attrs = {
-//   children: props => props.field.getEntity({ value: props.value }).toString(props.value),
-// };
+const textStyle = css`
+  cursor: ${props => (props.selected ? 'auto' : 'pointer')};
+`;
 
-// const OptionText = styled.div.attrs(attrs)`
-//   ${props => props.theme.components.widgetList?.optionText}
-// `;
+const OptionText = props => (
+  <UITypeSet
+    variant="list_option_text"
+    component="li"
+    {...props}
+    css={css`${props.css} ${textStyle}`}
+  >
+    { props.field.toString(props.value) }
+  </UITypeSet>
+);
 
-// OptionText.propTypes = {
-//   field: PropTypesEntity.entityField
-// }
+OptionText.propTypes = {
+  field: PropTypesEntity.field.isRequired,
+  selected: PropTypes.bool.isRequired,
+  value: PropTypesPlus.value.isRequired,
+};
 
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import PropTypesImmutable from 'react-immutable-proptypes';
-
-// import * as SC from './style';
-
-// const IconOption = ({ value, children, ...props }) => (
-//   <SC.IconRoot {...props}>
-//     { value.get('icon_name') &&
-//       <SC.IconWrapper>
-//         <SC.Icon name={value.get('icon_name')} />
-//       </SC.IconWrapper>
-//     }
-
-//     <SC.IconLabel>{ children }</SC.IconLabel>
-//   </SC.IconRoot>
-// );
-
-// IconOption.propTypes = {
-//   value: PropTypesImmutable.map.isRequired,
-//   disabled: PropTypes.bool.isRequired,
-//   readOnly: PropTypes.bool.isRequired,
-//   selected: PropTypes.bool.isRequired,
-// };
-
-// export default IconOption;
+export default OptionText;
