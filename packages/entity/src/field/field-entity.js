@@ -30,7 +30,7 @@ export default class EntityField extends AnyField {
     ));
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity) throw new Error(`entity[${this.constructor.name}]: "entity" option is required`);
+      if (!options.entity) throw new Error(`${this.constructor.name}.constructor: "entity" option is required`);
     }
   }
 
@@ -50,8 +50,8 @@ export default class EntityField extends AnyField {
 
   getErrors(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getField): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getField): field "${options.name}" not found`);
+      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getErrors (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getErrors (${this.entity.name}): field "${options.name}" not found`);
     }
 
     return options.name

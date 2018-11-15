@@ -15,9 +15,8 @@ export default class Entity {
 
   static actionArrayDeleteAtIndex(records, { index = null } = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!records) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be set.`);
-      if (!List.isList(records)) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be an immutable list`);
-      if (index === null) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "index" option must be set`);
+      if (!List.isList(records)) throw new Error(`Entity.actionArrayDeleteAt (${this.name}): "records" must be an immutable List.`);
+      if (index === null) throw new Error(`Entity.actionArrayDeleteAt (${this.name}): "index" option must be set.`);
     }
 
     return records.delete(index);
@@ -25,9 +24,9 @@ export default class Entity {
 
   static actionArrayMoveAtIndex(records, { index = null, indexTo = null } = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!records) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "records" must be set.`);
-      if (index === null) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "index" option must be set.`);
-      if (indexTo === null) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "indexTo" option must be set.`);
+      if (!List.isList(records)) throw new Error(`Entity.actionArrayMoveAtIndex (${this.name}): "records" must be an immutable List.`);
+      if (index === null) throw new Error(`Entity.actionArrayMoveAtIndex (${this.name}): "index" option must be set.`);
+      if (indexTo === null) throw new Error(`Entity.actionArrayMoveAtIndex (${this.name}): "indexTo" option must be set.`);
     }
 
     return records.delete(index).insert(indexTo, records.get(index));
@@ -94,7 +93,7 @@ export default class Entity {
 
   static toData(record) {
     if (process.env.NODE_ENV !== 'production') {
-      if (record && !Map.isMap(record)) throw new Error(`entity[${this.name}] (toData): record must be either a Map or null or undefined`);
+      if (record && !Map.isMap(record)) throw new Error(`Entity.toData (${this.name}): record must be either a Map or null or undefined`);
     }
 
     const fieldValueToData = (value, key) => (
@@ -112,7 +111,7 @@ export default class Entity {
 
   static toString(record) {
     if (process.env.NODE_ENV !== 'production') {
-      if (record && !Map.isMap(record)) throw new Error(`entity[${this.name}] (toString): record must be either a Map or null or undefined`);
+      if (record && !Map.isMap(record)) throw new Error(`Entity.toString (${this.name}): record must be either a Map or null or undefined`);
     }
 
     return record?.get(this.idField) || '';

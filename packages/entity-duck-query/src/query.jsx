@@ -112,8 +112,8 @@ class Query extends React.Component {
 
   handleChange = ({ target: { index, name, value } }) => {
     if (process.env.NODE_ENV !== 'production') {
-      if (name !== this.props.name) throw new Error(`Query (onChange): Invalid name! Expecting "${this.props.name}" instead of ${name}.`);
-      if (index === null) throw new Error('Query (onChange): index cannot be null');
+      if (name !== this.props.name) throw new Error(`Query.handleChange (${this.props.name}): Invalid name ${name}!`);
+      if (index === null) throw new Error(`Query.handleChange (${this.props.name}): index cannot be null`);
     }
 
     return this.props.save(

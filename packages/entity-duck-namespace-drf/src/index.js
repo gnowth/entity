@@ -8,7 +8,7 @@ import reducerSave from './reducer-save';
 import reducerDelete from './reducer-delete';
 import { getId, getIdentifier, NULL_ID } from './utils';
 
-export default class EntityDuck extends Duck {
+export default class RestDuck extends Duck {
   static namespace = 'dango_rest_framework';
 
   static actions = {
@@ -114,7 +114,7 @@ export default class EntityDuck extends Duck {
     super(options);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!/^\/.*\/$/.test(options.entity.paths?.apiBase)) throw new Error(`Duck[${this.constructor.name}] (${options.entity.name}): "apiBase" of "entity" option must start with a "/" and end with a "/"`);
+      if (!/^\/.*\/$/.test(options.entity.paths?.apiBase)) throw new Error(`RestDuck.constructor (${options.entity.name}): "apiBase" of "entity" option must start with a "/" and end with a "/"`);
     }
   }
 
@@ -129,7 +129,7 @@ export default class EntityDuck extends Duck {
   }
 
   record(state, options = {}) {
-    return state.getIn([
+    const record = state.getIn([
       this.app,
       this.constructor.namespace,
       this.entity.name,
@@ -137,6 +137,12 @@ export default class EntityDuck extends Duck {
       options.id === undefined ? getIdentifier(options) : getId(options),
       ...(options.id === undefined && this.entity.paginated ? ['results'] : []),
     ]);
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.id === undefined && !List.isList(record)) throw new Error(`RestDuck.record (${this.entity.name}): record must be a list. Did you forget to set "paginated"?`);
+    }
+
+    return record;
   }
 
   meta(state, options = {}) {
@@ -151,7 +157,7 @@ export default class EntityDuck extends Duck {
 
   pagination(state, options) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.entity.paginated) throw new Error(`entities-duck (paginated): paginated option must be set for entity "${this.entity.name}".`);
+      if (!this.entity.paginated) throw new Error(`RestDuck.pagination (${this.entity.name}): paginated option must be set.`);
     }
 
     const recordsMap = state.getIn([
@@ -167,8 +173,8 @@ export default class EntityDuck extends Duck {
 
   status(state, options) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.status) throw new Error("entities-duck: 'status' property is required for status selector");
-      if (!options.method) throw new Error("entities-duck: 'method' property is required for status selector");
+      if (!options.status) throw new Error(`RestDuck.status (${this.entity.name}): "status" option is required`);
+      if (!options.method) throw new Error(`RestDuck.status (${this.entity.name}): "method" option is required`);
     }
 
     return state.getIn(
@@ -186,13 +192,8 @@ export default class EntityDuck extends Duck {
 
   hasPermissions(state, options) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.permissions) {
-        throw new Error('entities-duck: \'permissions\' property is required for permission selector');
-      }
-
-      if (!options.method) {
-        throw new Error('entities-duck: \'method\' property is required for status selector');
-      }
+      if (!options.permissions) throw new Error(`RestDuck.hasPermissions (${this.entity.name}): "permissions" option is required`);
+      if (!options.method) throw new Error(`RestDuck.hasPermission (${this.entity.name}): "method" option is required`);
     }
 
     const permissions = state.getIn(

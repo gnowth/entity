@@ -31,8 +31,8 @@ export default class Duck {
 
   constructor(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity || !Entity.isEntity(options.entity)) throw new Error(`Duck[${this.constructor.name}]: "entity" option must be child of "Entity"`);
-      if (!options.app) throw new Error(`Duck[${this.constructor.name}] (${options.entity.name}): "app" option is required`);
+      if (!options.entity || !Entity.isEntity(options.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
+      if (!options.app) throw new Error(`${this.constructor.name}.constructor (${options.entity.name}): "app" option is required`);
     }
 
     const actions = _mapValues.convert({ cap: false })(
