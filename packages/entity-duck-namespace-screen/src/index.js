@@ -61,13 +61,3 @@ export default class ScreenDuck extends Duck {
     ]);
   }
 }
-
-/**
- * ability to create local
- * id === null for create local ?
- *
- * get action/selectors based on props in queryDuck?
- * errors from entity
- *
- * action to return promise?
- */

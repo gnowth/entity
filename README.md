@@ -12,12 +12,6 @@ Install project dependencies:
 npm install
 ```
 
-Create your own local development settings by copying the production settings and editing the file to work ith your local setup.
-
-```
-cp settings/production.js settings/development.js
-```
-
 #### Run development server
 
 ```
