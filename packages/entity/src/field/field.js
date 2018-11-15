@@ -80,6 +80,10 @@ export default class Field {
     }
   }
 
+  getKey(value) {
+    return this.toString(value);
+  }
+
   getOptions() {
     return this.options || List();
   }

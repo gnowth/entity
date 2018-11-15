@@ -84,6 +84,10 @@ export default class EntityField extends AnyField {
       .getId(this.getValue(value, options));
   }
 
+  getKey(value) {
+    return this.getId(value);
+  }
+
   getOptions() {
     return this.options || this.entity.options || List();
   }
