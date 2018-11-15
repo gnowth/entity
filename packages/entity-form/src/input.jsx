@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
-import { withProps, withPropTypes } from '@gnowth/higher-order-component';
+import { withPropTypes } from '@gnowth/higher-order-component';
 
 import withInput from './withInput';
 
@@ -129,12 +129,9 @@ export default _compose(
   }),
 
   withInput,
-  withDefault(),
 
-  withProps(props => ({
-    component: props.component || props.defaults.widgets[props.type || props.field.type],
-    wrapperComponent: props.wrapperComponent === null
-      ? undefined
-      : (props.wrapperComponent || props.defaults.label),
+  withDefault(props => ({
+    component: `widget_${props.type || props.field.type}`,
+    wrapperComponent: ['entityForm_label', 'component_label'],
   })),
 )(Input);
