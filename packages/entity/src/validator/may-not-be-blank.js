@@ -2,7 +2,7 @@ import isRequired from './is-required';
 
 export default (value, options = {}) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (!options.field) throw new Error('"field" option is required when calling "mayNotBeBlank"');
+    if (!options.field) throw new Error('validator.mayNotBeBlank: "field" option is required');
   }
 
   const validator = options.flag && options.field.flags[options.flag];

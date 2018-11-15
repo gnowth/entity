@@ -29,7 +29,7 @@ export default class Activity extends EntityTitle {
 
   static actionComplete(record, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityTitle[${this.name}] (actionComplete): "save" action is required in duck`);
+      if (!this.duck?.save) throw new Error(`EntityActivity.actionComplete (${this.name}): "save" action is required in duck`);
     }
 
     return this.duck.save(record, {
@@ -41,7 +41,7 @@ export default class Activity extends EntityTitle {
 
   static actionSubmit(record, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityTitle[${this.name}] (actionSubmit): "save" action is required in duck`);
+      if (!this.duck?.save) throw new Error(`EntityActivity.actionSubmit (${this.name}): "save" action is required in duck`);
     }
 
     return this.duck.save(record, {
@@ -61,7 +61,7 @@ export default class Activity extends EntityTitle {
 
   static isLate(record) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!record) throw new Error(`entity[${this.name}] (isLate): "record" must be set.`);
+      if (!record) throw new Error(`EntityActivity.isLate (${this.name}): "record" must be set.`);
     }
 
     return this.isOverdue(record) || (
@@ -72,7 +72,7 @@ export default class Activity extends EntityTitle {
 
   static isOverdue(record) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!record) throw new Error(`entity[${this.name}] (isOverdue): "record" must be set.`);
+      if (!record) throw new Error(`EntityActivity.isOverdue (${this.name}): "record" must be set.`);
     }
 
     return !this.isCompleted(record)
