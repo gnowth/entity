@@ -31,6 +31,6 @@
     "react-redux": "5.1.1"
   },
   "peerDependencies": {
-    "react": "16.6.1"
+    "react": "16.6.3"
   }
 }
