@@ -15,7 +15,7 @@
   "scripts": {
     "build": "webpack --mode production --progress --config configs/webpack.config.js",
     "clean": "lerna clean",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "jest --config configs/jest.config.js --coverage --collectCoverageFrom={src,packages}/**/*.{js,jsx} --collectCoverageFrom=!{src,packages}/**/*stories.{js,jsx} && cat ./coverage/lcov.info | coveralls",
     "deploy": "./scripts/deploy-ghpages.sh",
     "git-view": "git log --all --graph --decorate --pretty=oneline --abbrev-commit",
     "lerna": "lerna",
