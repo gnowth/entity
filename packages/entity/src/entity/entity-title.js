@@ -13,8 +13,6 @@ import IntegerField from '../field/field-integer';
 import TextField from '../field/field-text';
 
 export default class Title extends Entity {
-  static urlBase = '';
-
   static fields = {
     description: new TextField(),
     is_archived: new BooleanField({ default: false }),
@@ -26,6 +24,10 @@ export default class Title extends Entity {
     title: new CharField(),
     title_short: new CharField({ blank: true }),
     uuid: new IdField({ blank: true }),
+  }
+
+  static paths = {
+    urlBase: '',
   }
 
   static actionArchive(record, options) {
@@ -57,12 +59,12 @@ export default class Title extends Entity {
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.urlBase) throw new Error(`entity[${this.name}] (toLink): "urlBase" must be set.`);
-      if (!/^\/.*\/$/.test(this.urlBase)) throw new Error(`entity[${this.name}] (toLink): "urlBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(value => !_isString(value))) throw new Error(`entity[${this.name}] (toLink): every params must be a string or undefined`); if (!/^\/.*\/$/.test(this.urlBase)) throw new Error(`entity[${this.name}] (toLink): "urlBase" property must start with a "/" and end with a "/"`);
+      if (!this.paths?.urlBase) throw new Error(`entity[${this.name}] (toLink): "urlBase" must be set.`);
+      if (!/^\/.*\/$/.test(this.paths?.urlBase)) throw new Error(`entity[${this.name}] (toLink): "urlBase" property must start with a "/" and end with a "/"`);
+      if (computedParams.some(value => !_isString(value))) throw new Error(`entity[${this.name}] (toLink): every params must be a string or undefined`);
     }
 
-    return `${this.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+    return `${this.paths?.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
   static toLocale(record) {
@@ -86,14 +88,14 @@ export default class Title extends Entity {
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.urlBase) throw new Error(`entity[${this.name}] (toUrl): "urlBase" must be set.`);
-      if (!/^\/.*\/$/.test(this.urlBase)) throw new Error(`entity[${this.name}] (toUrl): "urlBase" property must start with a "/" and end with a "/"`);
+      if (!this.paths?.urlBase) throw new Error(`entity[${this.name}] (toUrl): "urlBase" must be set.`);
+      if (!/^\/.*\/$/.test(this.paths?.urlBase)) throw new Error(`entity[${this.name}] (toUrl): "urlBase" property must start with a "/" and end with a "/"`);
       if (computedParams.some(param => !_isString(param))) throw new Error(`entity[${this.name}] (toUrl): every params must be a string or undefined`);
       if (!options.settings) throw new Error(`entity[${this.name}] (toUrl): "settings" option must be set.`);
       if (!options.settings.BASE_URL) throw new Error(`entity[${this.name}] (toUrl): "settings.BASE_URL" must be set.`);
     }
 
-    return `${options.settings.BASE_URL}${this.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+    return `${options.settings.BASE_URL}${this.paths?.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
   static toUrlExport({ params = Map(), settings } = {}) {
@@ -103,13 +105,13 @@ export default class Title extends Entity {
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.apiBase) throw new Error(`entity[${this.name}] (toUrlExport): "apiBase" must be set.`);
-      if (!/^\/.*\/$/.test(this.apiBase)) throw new Error(`entity[${this.name}] (toUrlExport): "apiBase" property must start with a "/" and end with a "/"`);
+      if (!this.paths?.apiBase) throw new Error(`entity[${this.name}] (toUrlExport): "apiBase" must be set.`);
+      if (!/^\/.*\/$/.test(this.path?.apiBase)) throw new Error(`entity[${this.name}] (toUrlExport): "apiBase" property must start with a "/" and end with a "/"`);
       if (computedParams.some(param => !_isString(param))) throw new Error(`entity[${this.name}] (toUrlExport): every params must be a string or undefined`);
       if (!settings) throw new Error(`entity[${this.name}] (toUrlExport): "settings" option must be set.`);
       if (!settings.BASE_API_URL) throw new Error(`entity[${this.name}] (toUrlExport): "settings.BASE_API_URL" must be set.`);
     }
 
-    return `${settings.BASE_API_URL}${this.apiBase}?${queryString.stringify(computedParams.toJS())}&format=xlsx`;
+    return `${settings.BASE_API_URL}${this.paths?.apiBase}?${queryString.stringify(computedParams.toJS())}&format=xlsx`;
   }
 }

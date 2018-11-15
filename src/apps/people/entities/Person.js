@@ -4,8 +4,6 @@ import { Entity, Fields } from '@entity/core';
 import settings from 'settings';
 
 class Person extends Entity {
-  static apiBase = `/${settings.PROJECT_NAME}_map/v1/user/`;
-
   static idField = 'id';
 
   static paginated = true;
@@ -16,6 +14,10 @@ class Person extends Entity {
     first_name: new Fields.CharField(),
     last_name: new Fields.CharField(),
   };
+
+  static paths = {
+    apiBase: `/${settings.PROJECT_NAME}_map/v1/user/`,
+  }
 
   static toString(record) {
     if (!record) return '';
