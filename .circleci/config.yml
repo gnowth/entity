@@ -24,7 +24,25 @@ references:
     working_directory: ~/project
 
 jobs:
-  lint-and-test:
+  build-app:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run build
+
+  build-storybook:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run storybook:build
+
+  lint-code:
     <<: *container_config
     steps:
     - checkout
@@ -32,7 +50,24 @@ jobs:
     - run: yarn install
     - *save_cache
     - run: npm run lint
-    # - run: npm run test
+
+  test-code:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run test
+
+  cover-code:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run coveralls
 
   update-build-publish-packages_build-deploy-app:
     <<: *container_config
@@ -51,7 +86,28 @@ workflows:
 
   branches:
     jobs:
-      - lint-and-test:
+      - lint-code:
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - cover-code:
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - build-app:
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - build-storybook:
           filters:
             branches:
               ignore:
@@ -60,7 +116,13 @@ workflows:
 
   branch-master:
     jobs:
-      - lint-and-test:
+      - lint-code:
+          filters:
+            branches:
+              only:
+              - master
+
+      - cover-code:
           filters:
             branches:
               only:
@@ -68,7 +130,8 @@ workflows:
 
       - update-build-publish-packages_build-deploy-app:
           requires:
-          - lint-and-test
+          - lint-code
+          - cover-code
           filters:
             branches:
               only:

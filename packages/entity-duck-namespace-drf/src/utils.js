@@ -3,7 +3,7 @@ import { stringify } from 'query-string';
 
 export const NULL_ID = 'id_null';
 
-export const getId = ({ id = '' }) => (id === null ? NULL_ID : id);
+export const getId = ({ id = '' } = {}) => (id === null ? NULL_ID : id);
 
 export const getIdentifier = ({ id = '', tag = '', params, method = 'get', action }) => {
   const paramsString = stringify(params && params.filter(p => p).toJS());
