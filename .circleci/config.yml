@@ -87,7 +87,8 @@ jobs:
     - run: npm run build
     - run: npm run storybook:build
     - run: npm run deploy
-    - run: npm run packages-publish $NPM_TOKEN
+    - run: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ./.npmrc
+    - run: npm run packages-publish
 
 workflows:
   version: 2
