@@ -31,7 +31,11 @@ export default class Title extends Entity {
   }
 
   static actionArchive(record, options = {}) {
-    return this.duck?.save(record, {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!this.duck?.save) throw new Error(`EntityTitle[${this.name}] (actionArchive): "save" action is required in duck`);
+    }
+
+    return this.duck.save(record, {
       action: 'archive',
       method: 'post',
       ...options,
@@ -49,7 +53,11 @@ export default class Title extends Entity {
   }
 
   static actionSave(record, options = {}) {
-    return this.duck?.save(record, {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!this.duck ?.save) throw new Error(`EntityTitle[${this.name}] (actionSave): "save" action is required in duck`);
+    }
+
+    return this.duck.save(record, {
       invalidateList: true,
       ...options,
     });

@@ -28,7 +28,11 @@ export default class Activity extends EntityTitle {
   }
 
   static actionComplete(record, options = {}) {
-    return this.duck?.save(record, {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!this.duck ?.save) throw new Error(`EntityTitle[${this.name}] (actionComplete): "save" action is required in duck`);
+    }
+
+    return this.duck.save(record, {
       action: 'complete',
       method: 'post',
       ...options,
@@ -36,7 +40,11 @@ export default class Activity extends EntityTitle {
   }
 
   static actionSubmit(record, options = {}) {
-    return this.duck?.save(record, {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!this.duck ?.save) throw new Error(`EntityTitle[${this.name}] (actionSubmit): "save" action is required in duck`);
+    }
+
+    return this.duck.save(record, {
       action: 'submit',
       method: 'post',
       ...options,
