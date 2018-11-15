@@ -11,12 +11,12 @@ export default class ScreenDuck extends Duck {
         id: null,
         keyClear: 'clear',
         keyRecord: 'record',
-        keySaveLocal: 'save',
+        keySaveLocal: 'save_local',
         params: Map(),
       },
     }),
+    save_local: Duck.createAction(),
     save: Duck.createAction(),
-    submit: Duck.createAction(),
   };
 
   static getInitialState({ entity }) {
@@ -36,17 +36,17 @@ export default class ScreenDuck extends Duck {
           : initialState
       ),
 
-      [types.save]: (state, action) => {
+      [types.save_local]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action?.payload)) throw new Error('DuckScreen (save): payload must be an Immutable Map');
+          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save_local (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.set('detail_dirty', action.payload);
       },
 
-      [types.submit]: (state, action) => {
+      [types.save]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action ?.payload)) throw new Error('DuckScreen (save): payload must be an Immutable Map');
+          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.withMutations(
@@ -60,7 +60,7 @@ export default class ScreenDuck extends Duck {
 
   record(state, { dirty, id } = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (id !== null) throw new Error('DuckScreen (record): only support id === null');
+      if (id !== null) throw new Error(`ScreenDuck.record (${this.entity.name}): only support id === null`);
     }
 
     return state.getIn([

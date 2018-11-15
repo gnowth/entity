@@ -6,8 +6,8 @@ const getDataFactory = (payload, entity) => entity.dataToRecord(payload);
 
 const listDataFactory = (payload, entity) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (!entity.paginated && !Array.isArray(payload)) throw new Error(`entity-duck: list data received for entity "${entity.name}" is not an array. Could the endpoint be paginated?`);
-    if (entity.paginated && Array.isArray(payload)) throw new Error(`entity-duck: list data received for entity "${entity.name}" is an array. Could the endpoint not be paginated?`);
+    if (!entity.paginated && !Array.isArray(payload)) throw new Error(`RestDuck.listDataFactory (${entity.name}): data received is not an array. Could the endpoint be paginated?`);
+    if (entity.paginated && Array.isArray(payload)) throw new Error(`RestDuck.listDataFactory (${entity.name}): data received is an array. Could the endpoint not be paginated?`);
   }
 
   return entity.paginated

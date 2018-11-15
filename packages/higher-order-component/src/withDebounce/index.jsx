@@ -22,7 +22,7 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
 
     static getDerivedStateFromProps(nextProps, prevState) {
       if (process.env.NODE_ENV !== 'production') {
-        if (prevState.withDebounceDisabled !== nextProps.withDebounceDisabled) throw new Error('withDebounce: props "withDebounceDisabled" cannot be a dynamic props');
+        if (prevState.withDebounceDisabled !== nextProps.withDebounceDisabled) throw new Error('withDebounce.getDerivedStateFromProps: props "withDebounceDisabled" cannot be a dynamic props');
       }
 
       return {

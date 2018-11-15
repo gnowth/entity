@@ -4,13 +4,8 @@ import EntityField from './field-entity';
 import EntityEnum from '../entity/entity-enum';
 
 export default class EnumField extends EntityField {
-  constructor(options) {
-    const defaults = {
-      entity: EntityEnum,
-      type: 'enum',
-    };
-
-    super(Object.assign(defaults, options));
+  constructor(options = {}) {
+    super({ entity: EntityEnum, type: 'enum', ...options });
   }
 
   dataToValue(data = null) {

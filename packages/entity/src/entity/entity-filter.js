@@ -13,11 +13,11 @@ export default class Filter extends Entity {
   }
 
   // Note(thierry): returning a map from field.toParams will flatten the output
-  static toParams(record, options) {
+  static toParams(record, options = {}) {
     const fieldValueToParams = (value, key) => (
       List.isList(value)
         ? value
-          .map(val => this.fields[key].toParams(val, Object.assign({ record }, options)))
+          .map(val => this.fields[key].toParams(val, { record, ...options }))
           .reduce(
             (prev, param) => prev.mergeWith(
               (prevParam, nextParam) => (prevParam ? `${prevParam},${nextParam}` : nextParam),
@@ -25,7 +25,7 @@ export default class Filter extends Entity {
             ),
             Map(),
           )
-        : this.fields[key].toParams(value, Object.assign({ record }, options))
+        : this.fields[key].toParams(value, { record, ...options })
     );
 
     return record

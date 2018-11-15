@@ -2,7 +2,7 @@ import { List, Map } from 'immutable';
 
 export default validators => (values, options) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (!List.isList(values)) throw new Error('entity-validator (list): "values" must be a list');
+    if (!List.isList(values)) throw new Error('validators.list: "values" must be a list');
   }
 
   const errors = values.map(

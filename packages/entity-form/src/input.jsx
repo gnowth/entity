@@ -18,6 +18,7 @@ class Input extends React.Component {
         onChange: this.props.onChange,
         value: this.props.value,
       },
+
       !_isString(this.props.component) && {
         errors: this.props.errors,
         field: this.props.field,
@@ -27,6 +28,7 @@ class Input extends React.Component {
         processing: this.props.processing,
         processingDidFail: this.props.processingDidFail,
       },
+
       _isFunction(this.props.componentProps)
         ? this.props.componentProps(this.props)
         : this.props.componentProps,
