@@ -110,7 +110,7 @@ workflows:
               - gh-pages
               - master
 
-      - cover-code:
+      - test-code:
           requires:
           - setup
           filters:
