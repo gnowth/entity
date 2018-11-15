@@ -16,6 +16,7 @@ export default class ScreenDuck extends Duck {
       },
     }),
     save: Duck.createAction(),
+    submit: Duck.createAction(),
   };
 
   static getInitialState({ entity }) {
@@ -40,9 +41,17 @@ export default class ScreenDuck extends Duck {
           if (!Map.isMap(action?.payload)) throw new Error('DuckScreen (save): payload must be an Immutable Map');
         }
 
+        return state.set('detail_dirty', action.payload);
+      },
+
+      [types.submit]: (state, action) => {
+        if (process.env.NODE_ENV !== 'production') {
+          if (!Map.isMap(action ?.payload)) throw new Error('DuckScreen (save): payload must be an Immutable Map');
+        }
+
         return state.withMutations(
           s => s
-            .update('detail', detail => (action.meta.dirty ? detail : action.payload))
+            .set('detail', action.payload)
             .set('detail_dirty', action.payload),
         );
       },
