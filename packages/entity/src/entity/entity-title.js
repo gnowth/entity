@@ -54,7 +54,7 @@ export default class Title extends Entity {
 
   static actionSave(record, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck ?.save) throw new Error(`EntityTitle[${this.name}] (actionSave): "save" action is required in duck`);
+      if (!this.duck?.save) throw new Error(`EntityTitle[${this.name}] (actionSave): "save" action is required in duck`);
     }
 
     return this.duck.save(record, {
