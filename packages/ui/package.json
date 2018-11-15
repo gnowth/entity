@@ -29,13 +29,13 @@
     "react-intl": "2.7.2"
   },
   "peerDependencies": {
-    "@storybook/addon-a11y": "4.0.4",
-    "@storybook/addon-actions": "4.0.4",
-    "@storybook/addon-centered": "4.0.4",
-    "@storybook/addon-knobs": "4.0.4",
-    "@storybook/react": "4.0.4",
-    "react": "16.6.1",
+    "@storybook/addon-a11y": "4.0.6",
+    "@storybook/addon-actions": "4.0.6",
+    "@storybook/addon-centered": "4.0.6",
+    "@storybook/addon-knobs": "4.0.6",
+    "@storybook/react": "4.0.6",
+    "react": "16.6.3",
     "react-router-dom": "4.3.1",
-    "styled-components": "4.0.3"
+    "styled-components": "4.1.1"
   }
 }

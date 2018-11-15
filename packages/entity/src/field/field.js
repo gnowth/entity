@@ -5,6 +5,11 @@ import isRequired from '../validator/is-required';
 
 export default class Field {
   constructor(options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.options && !List.isList(options.options)) throw new Error(`entity.fields[${this.constructor.name}] (constructor): options.options must be a an immutable List`);
+      if (options.options && options.options.size !== options.options.toSet().size) throw new Error(`entity.fields[${this.constructor.name}] (constructor): options.options must have unique items.`);
+    }
+
     const defaults = {
       blank: false,
       cleaners: [],

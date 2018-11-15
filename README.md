@@ -9,7 +9,7 @@ Make sure to use node v10.13.0 and npm v6.4.1 or above
 Install project dependencies:
 
 ```
-npm install
+npx yarn install
 ```
 
 #### Run development server

@@ -32,6 +32,6 @@
     "reselect": "4.0.0"
   },
   "peerDependencies": {
-    "react": "16.6.1"
+    "react": "16.6.3"
   }
 }
