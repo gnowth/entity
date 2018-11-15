@@ -24,6 +24,14 @@ references:
     working_directory: ~/project
 
 jobs:
+  setup:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+
   build-app:
     <<: *container_config
     steps:
@@ -86,7 +94,16 @@ workflows:
 
   branches:
     jobs:
+      - setup:
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
       - lint-code:
+          requires:
+          - setup
           filters:
             branches:
               ignore:
@@ -94,6 +111,8 @@ workflows:
               - master
 
       - cover-code:
+          requires:
+          - setup
           filters:
             branches:
               ignore:
@@ -101,6 +120,8 @@ workflows:
               - master
 
       - build-app:
+          requires:
+          - setup
           filters:
             branches:
               ignore:
@@ -108,6 +129,8 @@ workflows:
               - master
 
       - build-storybook:
+          requires:
+          - setup
           filters:
             branches:
               ignore:
