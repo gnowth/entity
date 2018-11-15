@@ -30,11 +30,12 @@ export default class Title extends Entity {
     urlBase: '',
   }
 
-  static actionArchive(record, options) {
-    return this.duck?.save(record, Object.assign(
-      { action: 'archive', method: 'post' },
-      options,
-    ));
+  static actionArchive(record, options = {}) {
+    return this.duck?.save(record, {
+      action: 'archive',
+      method: 'post',
+      ...options,
+    });
   }
 
   static actionArrayDeleteAtIndexOrdered(records, options) {
@@ -47,11 +48,11 @@ export default class Title extends Entity {
       .map((record, i) => record.set('order', i));
   }
 
-  static actionSave(record, options) {
-    return this.duck?.save(record, Object.assign(
-      { invalidateList: true },
-      options,
-    ));
+  static actionSave(record, options = {}) {
+    return this.duck?.save(record, {
+      invalidateList: true,
+      ...options,
+    });
   }
 
   static toLink(record, options = {}) {

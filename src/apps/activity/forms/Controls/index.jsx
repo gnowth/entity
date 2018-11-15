@@ -15,10 +15,10 @@ const FormControls = props => (
       <Control
         action={props.resetAction}
         component={props.buttonComponent}
-        componentProps={Object.assign(
-          { locale: locale.reset },
-          props.resetButtonComponentProps,
-        )}
+        componentProps={{
+          locale: locale.reset,
+          ...props.resetButtonComponentProps,
+        }}
       />
     )}
 
@@ -28,13 +28,11 @@ const FormControls = props => (
       <Control
         action={props.saveAction}
         component={props.buttonComponent}
-        componentProps={Object.assign(
-          {
-            css: styles.buttons,
-            locale: locale.save,
-          },
-          props.saveButtonComponentProps,
-        )}
+        componentProps={{
+          css: styles.buttons,
+          locale: locale.save,
+          ...props.saveButtonComponentProps,
+        }}
       />
     )}
 
@@ -42,13 +40,11 @@ const FormControls = props => (
       <Control
         action={props.submitAction}
         component={props.buttonComponent}
-        componentProps={Object.assign(
-          {
-            css: styles.buttons,
-            locale: locale.submit,
-          },
-          props.submitButtonComponentProps,
-        )}
+        componentProps={{
+          css: styles.buttons,
+          locale: locale.submit,
+          ...props.submitButtonComponentProps,
+        }}
       />
     )}
   </Form>

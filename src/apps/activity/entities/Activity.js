@@ -27,18 +27,20 @@ export default class Activity extends EntityTitle {
     uuid: new Fields.IdField({ blank: true }),
   }
 
-  static actionComplete(record, options) {
-    return this.duck?.save(record, Object.assign(
-      { action: 'complete', method: 'post' },
-      options,
-    ));
+  static actionComplete(record, options = {}) {
+    return this.duck?.save(record, {
+      action: 'complete',
+      method: 'post',
+      ...options,
+    });
   }
 
-  static actionSubmit(record, options) {
-    return this.duck?.save(record, Object.assign(
-      { action: 'submit', method: 'post' },
-      options,
-    ));
+  static actionSubmit(record, options = {}) {
+    return this.duck?.save(record, {
+      action: 'submit',
+      method: 'post',
+      ...options,
+    });
   }
 
   static isCompleted(record) {

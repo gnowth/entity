@@ -124,7 +124,7 @@ export default class EntityDuck extends Duck {
       this.constructor.namespace,
       this.entity.name,
       options.id === undefined ? 'list_errors' : 'detail_errors',
-      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options),
+      options.id === undefined ? getIdentifier(options) : getId(options),
     ]);
   }
 
@@ -134,18 +134,18 @@ export default class EntityDuck extends Duck {
       this.constructor.namespace,
       this.entity.name,
       `${options.id === undefined ? 'list' : 'detail'}${options.dirty ? '_dirty' : ''}`,
-      options.id === undefined ? getIdentifier(Object.assign({ method: 'get' }, options)) : getId(options),
+      options.id === undefined ? getIdentifier(options) : getId(options),
       ...(options.id === undefined && this.entity.paginated ? ['results'] : []),
     ]);
   }
 
-  meta(state, options) {
+  meta(state, options = {}) {
     return state.getIn([
       this.app,
       this.constructor.namespace,
       this.entity.name,
       'options',
-      getIdentifier(Object.assign({ method: 'options' }, options)),
+      getIdentifier({ method: 'options', ...options }),
     ]);
   }
 
@@ -159,7 +159,7 @@ export default class EntityDuck extends Duck {
       this.constructor.namespace,
       this.entity.name,
       'list',
-      getIdentifier(Object.assign({ method: 'get' }, options)),
+      getIdentifier(options),
     ]);
 
     return recordsMap && recordsMap.remove('results');

@@ -39,8 +39,8 @@ export default class Entity {
     });
   }
 
-  static clean(record, options) {
-    const newOptions = Object.assign({ entity: this }, options);
+  static clean(record, options = {}) {
+    const newOptions = { ...options, entity: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -72,11 +72,8 @@ export default class Entity {
       .merge(values);
   }
 
-  static getEntityField(options) {
-    return new EntityField(Object.assign(
-      { entity: this },
-      options,
-    ));
+  static getEntityField(options = {}) {
+    return new EntityField({ entity: this, ...options });
   }
 
   static getId(record) {

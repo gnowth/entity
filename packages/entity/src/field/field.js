@@ -29,8 +29,8 @@ export default class Field {
     );
   }
 
-  clean(record, options) {
-    const newOptions = Object.assign({ field: this }, options);
+  clean(record, options = {}) {
+    const newOptions = { ...options, field: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
