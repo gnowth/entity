@@ -6,8 +6,6 @@ import settings from 'settings';
 import EntityPerson from './Person';
 
 class Project extends Entity {
-  static apiBase = `/${settings.PROJECT_NAME}_tz/v1/projects/`;
-
   static paginated = true;
 
   static fields = {
@@ -19,6 +17,10 @@ class Project extends Entity {
       many: true,
     }),
   };
+
+  static paths = {
+    apiBase: `/${settings.PROJECT_NAME}_tz/v1/projects/`,
+  }
 
   static toString(record) {
     return record.get('name');

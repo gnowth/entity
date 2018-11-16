@@ -16,7 +16,6 @@ export default (types, initialState) => ({
   [types.save_local]: (state, action) => state
     .setIn(['detail_dirty', getId(action.meta)], action.payload),
 
-  // TODO also set record for new uuid if id was null
   [types.save_resolved]: (state, action) => {
     const identifier = getIdentifier(action.meta);
     const id = getId(action.meta);
@@ -31,7 +30,7 @@ export default (types, initialState) => ({
             ? detail
             : record
         ))
-        .setIn( // TODO review if it should be set to detail vlaue if skipStore
+        .setIn(
           ['detail_dirty', id],
           action.meta.skipStore
             ? state.getIn(['detail', id])

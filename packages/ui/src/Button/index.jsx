@@ -6,7 +6,6 @@ import UITypeSet from '../TypeSet';
 import UIProgressCircle from '../ProgressCircle';
 import { Button, LinkHyper, LinkRouter } from './styles';
 
-// TODO check that eslint for prop-types is running
 const UIButton = ({ processing, ...props }) => (
   <>
     { props.to && /^https?:\/\//.exec(props.to) && (
@@ -37,6 +36,7 @@ const UIButton = ({ processing, ...props }) => (
 
 UIButton.propTypes = {
   children: PropTypes.node,
+  css: PropTypesPlus.css,
   locale: PropTypesPlus.locale,
   processing: PropTypes.bool,
   to: PropTypes.string,
@@ -45,6 +45,7 @@ UIButton.propTypes = {
 
 UIButton.defaultProps = {
   children: undefined,
+  css: undefined,
   locale: undefined,
   processing: false,
   to: '',

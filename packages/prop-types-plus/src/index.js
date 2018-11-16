@@ -1,5 +1,6 @@
 import allOfType from './all-of-type';
 import component from './component';
+import componentProps from './component-props';
 import css from './css';
 import ifElse from './if-else';
 import isRequiredIf from './is-required-if';
@@ -11,11 +12,13 @@ import notRequiredIf from './not-required-if';
 import notRequiredIfNot from './not-required-if-not';
 import store from './store';
 import string from './string';
+import value from './value';
 import withRequired from './with-required';
 
 export default {
   allOfType,
   component,
+  componentProps,
   css,
   ifElse,
   isRequiredIf,
@@ -27,5 +30,6 @@ export default {
   notRequiredIfNot,
   store,
   string,
+  value,
   withRequired,
 };

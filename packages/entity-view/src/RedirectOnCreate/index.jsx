@@ -1,11 +1,9 @@
-import _flowRight from 'lodash/flowRight';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-
 import { withDefault } from '@gnowth/default';
-import { withProps } from '@gnowth/higher-order-component';
 
 class RedirectOnCreate extends React.Component {
   static getDerivedStateFromProps(props, state) {
@@ -22,8 +20,10 @@ class RedirectOnCreate extends React.Component {
   };
 
   render() {
+    const RedirectComponent = this.props.redirectComponent;
+
     return this.state.shouldRedirect
-      ? <this.props.viewRedirectOnCreate_RedirectComponent to={this.props.to} />
+      ? <RedirectComponent to={this.props.to} />
       : null;
   }
 }
@@ -31,12 +31,10 @@ class RedirectOnCreate extends React.Component {
 RedirectOnCreate.propTypes = {
   field: PropTypesEntity.entityField.isRequired,
   to: PropTypes.string.isRequired,
+  redirectComponent: PropTypesPlus.component.isRequired,
   value: PropTypesImmutable.map.isRequired,
 };
 
-export default _flowRight(
-  withDefault(),
-  withProps(props => ({
-    viewRedirectOnCreate_RedirectComponent: props.redirectComponent || props.defaults.redirect,
-  })),
-)(RedirectOnCreate);
+export default withDefault({
+  redirectComponent: ['entityView_redirect', 'component_redirect'],
+})(RedirectOnCreate);

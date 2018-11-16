@@ -1,24 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as S from './style';
+import { Circle, Container, SVG } from './styles';
 
 const ProgressCircle = props => (
-  <S.Container {...props}>
-    <S.SVG
+  <Container {...props}>
+    <SVG
       focusable="false"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 100 100"
     >
-      <S.Circle
+      <Circle
+        color={props.color}
         cx="50%"
         cy="50%"
         r={(50 - props.thickness / 2).toString()}
-        value={props.value}
         thickness={props.thickness}
+        value={props.value}
       />
-    </S.SVG>
-  </S.Container>
+    </SVG>
+  </Container>
 );
 
 ProgressCircle.propTypes = {

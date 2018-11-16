@@ -36,11 +36,13 @@ UITooltip.propTypes = {
   children: PropTypes.node.isRequired,
   component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
+  css: PropTypesPlus.css,
 };
 
 UITooltip.defaultProps = {
   component: UIIcon,
   componentProps: {},
+  css: undefined,
 };
 
 export default UITooltip;

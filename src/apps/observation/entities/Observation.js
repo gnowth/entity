@@ -5,10 +5,6 @@ import EntityAction from 'apps/activity/entities/Action';
 import EntityActivity from 'apps/activity/entities/Activity';
 
 class Observation extends EntityActivity {
-  static apiBase = '/observation/v1/observation/'
-
-  static urlBase = '/observation/';
-
   static fields = Object.assign({}, EntityActivity.fields, {
     follow_up_actions: new Fields.EntityField({
       entity: EntityAction,
@@ -16,7 +12,6 @@ class Observation extends EntityActivity {
     }),
   })
 
-  // TODO refactor paths
   static paths = {
     apiBase: '/observation/v1/observation/',
     urlBase: '/observation/',

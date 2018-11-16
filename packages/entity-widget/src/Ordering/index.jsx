@@ -62,9 +62,7 @@ class WidgetOrdering extends React.Component {
     });
   };
 
-  handleKeyPress = () => {
-    // TODO implement
-  }
+  handleKeyPress = () => {}
 
   render() {
     return (
@@ -81,7 +79,6 @@ class WidgetOrdering extends React.Component {
             ${props => props.theme.components?.widgetOrdering?.icon}
           `}
           name={this.nameMap[this.getOrderingState()]}
-          iconSize="16px"
         />
       </span>
     );

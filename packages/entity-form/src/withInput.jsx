@@ -5,12 +5,10 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
-import { withProps } from '@gnowth/higher-order-component';
 import { Map } from 'immutable';
 
 import { withForm } from './context';
 
-// TODO use options input to load option? or allow options to be a prop for the list
 export default function (ComposedComponent) {
   class withInput extends React.Component {
     getProps() {
@@ -21,7 +19,7 @@ export default function (ComposedComponent) {
         disabled: this.props.disabled,
         errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
         index: this.props.index,
-        name: this.props.name, // TODO check if correct
+        name: this.props.name,
         onChange: this.props.array
           ? this.handleChangeArray
           : this.handleChange,
@@ -33,7 +31,6 @@ export default function (ComposedComponent) {
     }
 
     handleChange = ({ target }) => {
-      // TODO check that if name is not define, then index cannot be defined
       const index = target.getAttribute
         ? target.getAttribute('index') || undefined
         : target.index;
@@ -93,9 +90,6 @@ export default function (ComposedComponent) {
     }
 
     render() {
-      // if (process.env.NODE_ENV !== 'production') {
-      //   if (name !== this.props.name) throw new Error(`entity-form (onChange with useValueChange): updating another field "${name}" is not supported. Can only update "${this.props.name}"`);
-      // }
       return this.props.apiOptions
         ? this.renderQuery(this.getProps())
         : this.renderComponent(this.getProps());
@@ -120,21 +114,7 @@ export default function (ComposedComponent) {
   };
 
   return _compose(
-    withDefault(), // TODO make function, so that props can be removed
     withForm,
-
-    withProps(props => ({
-      queryComponent: props.queryComponent || props.defaults.query,
-    })),
-    // withProps(props => {
-    //   const field = _getOr(props.formField)('field')(props);
-
-    //   return {
-    //     disabled: _getOr(props.formDisabled)('disabled')(props),
-    //     initialValue: _getOr(field.getValue(props.formInitialValue, { name: props.name }))('initialValue')(props),
-    //     readOnly: _getOr(props.formReadOnly)('readOnly')(props),
-    //     value: _getOr(field.getValue(props.formValue, { name: props.name }))('value')(props),
-    //   };
-    // }),
+    withDefault({ queryComponent: ['entityForm_query', 'component_query'] }),
   )(withInput);
 }

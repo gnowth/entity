@@ -15,5 +15,3 @@ export * as widgetPagination from './WidgetPagination';
 export * as widgetSelect from './WidgetSelect';
 
 export * as widgetTextarea from './WidgetTextarea';
-
-// TODO create an app that would wrap around other app, and you would be able to change the primary colors

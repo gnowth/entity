@@ -13,8 +13,6 @@ import IntegerField from '../field/field-integer';
 import TextField from '../field/field-text';
 
 export default class Title extends Entity {
-  static urlBase = '';
-
   static fields = {
     description: new TextField(),
     is_archived: new BooleanField({ default: false }),
@@ -28,11 +26,20 @@ export default class Title extends Entity {
     uuid: new IdField({ blank: true }),
   }
 
-  static actionArchive(record, options) {
-    return this.duck?.save(record, Object.assign(
-      { action: 'archive', method: 'post' },
-      options,
-    ));
+  static paths = {
+    urlBase: '',
+  }
+
+  static actionArchive(record, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!this.duck?.save) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
+    }
+
+    return this.duck.save(record, {
+      action: 'archive',
+      method: 'post',
+      ...options,
+    });
   }
 
   static actionArrayDeleteAtIndexOrdered(records, options) {
@@ -45,28 +52,29 @@ export default class Title extends Entity {
       .map((record, i) => record.set('order', i));
   }
 
-  static actionSave(record, options) {
-    return this.duck?.save(record, Object.assign(
-      { invalidateList: true },
-      options,
-    ));
+  static actionSave(record, options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!this.duck?.save) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
+    }
+
+    return this.duck.save(record, {
+      invalidateList: true,
+      ...options,
+    });
   }
 
-  // TODO check if it is ok to have '/?' in link
   static toLink(record, options = {}) {
     const computedParams = (options.params || Map())
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.urlBase) throw new Error(`entity[${this.name}] (toLink): "urlBase" must be set.`);
-      if (!/^\/.*\/$/.test(this.urlBase)) throw new Error(`entity[${this.name}] (toLink): "urlBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(value => !_isString(value))) throw new Error(`entity[${this.name}] (toLink): every params must be a string or undefined`); if (!/^\/.*\/$/.test(this.urlBase)) throw new Error(`entity[${this.name}] (toLink): "urlBase" property must start with a "/" and end with a "/"`);
+      if (!/^\/.*\/$/.test(this.paths?.urlBase)) throw new Error(`EntityTitle.toLink (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
+      if (computedParams.some(value => !_isString(value))) throw new Error(`EntityTitle.toLink (${this.name}): every params must be a string or undefined`);
     }
 
-    return `${this.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+    return `${this.paths?.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
-  // TODO check if valid default
   static toLocale(record) {
     return record?.get('locale') || {};
   }
@@ -88,14 +96,12 @@ export default class Title extends Entity {
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.urlBase) throw new Error(`entity[${this.name}] (toUrl): "urlBase" must be set.`);
-      if (!/^\/.*\/$/.test(this.urlBase)) throw new Error(`entity[${this.name}] (toUrl): "urlBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(param => !_isString(param))) throw new Error(`entity[${this.name}] (toUrl): every params must be a string or undefined`);
-      if (!options.settings) throw new Error(`entity[${this.name}] (toUrl): "settings" option must be set.`);
-      if (!options.settings.BASE_URL) throw new Error(`entity[${this.name}] (toUrl): "settings.BASE_URL" must be set.`);
+      if (!/^\/.*\/$/.test(this.paths?.urlBase)) throw new Error(`EntityTitle.toUrl (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
+      if (computedParams.some(param => !_isString(param))) throw new Error(`EntityTitle.toUrl (${this.name}): every params must be a string or undefined`);
+      if (!options.settings?.BASE_URL) throw new Error(`EntityTitle.toUrl (${this.name}): "settings.BASE_URL" must be set.`);
     }
 
-    return `${options.settings.BASE_URL}${this.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+    return `${options.settings.BASE_URL}${this.paths?.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
   static toUrlExport({ params = Map(), settings } = {}) {
@@ -105,13 +111,11 @@ export default class Title extends Entity {
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.apiBase) throw new Error(`entity[${this.name}] (toUrlExport): "apiBase" must be set.`);
-      if (!/^\/.*\/$/.test(this.apiBase)) throw new Error(`entity[${this.name}] (toUrlExport): "apiBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(param => !_isString(param))) throw new Error(`entity[${this.name}] (toUrlExport): every params must be a string or undefined`);
-      if (!settings) throw new Error(`entity[${this.name}] (toUrlExport): "settings" option must be set.`);
-      if (!settings.BASE_API_URL) throw new Error(`entity[${this.name}] (toUrlExport): "settings.BASE_API_URL" must be set.`);
+      if (!/^\/.*\/$/.test(this.path?.apiBase)) throw new Error(`EntityTitle.toUrlExport (${this.name}): "apiBase" property must start with a "/" and end with a "/"`);
+      if (computedParams.some(param => !_isString(param))) throw new Error(`EntityTitle.toUrlExport (${this.name}): every params must be a string or undefined`);
+      if (!settings?.BASE_API_URL) throw new Error(`EntityTitle.toUrlExport (${this.name}): "settings.BASE_API_URL" must be set.`);
     }
 
-    return `${settings.BASE_API_URL}${this.apiBase}?${queryString.stringify(computedParams.toJS())}&format=xlsx`;
+    return `${settings.BASE_API_URL}${this.paths?.apiBase}?${queryString.stringify(computedParams.toJS())}&format=xlsx`;
   }
 }

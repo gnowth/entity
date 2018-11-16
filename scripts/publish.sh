@@ -29,11 +29,7 @@ git add -A
 git commit --amend -m "$version [skip ci]"
 git tag -a $version -m $version
 
-echo "//registry.npmjs.org/:_authToken=$1" > .npmrc
-
 lerna publish from-git --yes
-
-rm .npmrc
 
 npm run packages-link-main:src
 git tag -d $version

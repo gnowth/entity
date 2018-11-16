@@ -24,7 +24,6 @@ const handleError = (action, dispatch) => (error) => {
     Object.assign({ payload: action.payload }, action.meta),
   ));
 
-  // TODO use `?.` ?
   if (_isFunction(action.meta.catch)) {
     action.meta.catch({ ...action, error });
   }
@@ -44,12 +43,12 @@ export default axios => store => next => (action) => {
 
   const args = [
     action.meta.id
-      ? `${action.meta.entity.apiBase}${action.meta.id}/${customAction}`
-      : `${action.meta.entity.apiBase}${customAction}`,
+      ? `${action.meta.entity.paths?.apiBase}${action.meta.id}/${customAction}`
+      : `${action.meta.entity.paths?.apiBase}${customAction}`,
     ...(action.payload ? [action.meta.entity.toData(action.payload)] : []),
     {
       params: action.meta.params
-        && action.meta.params.filter(p => p).toJS(), // TODO check that it is a string
+        && action.meta.params.filter(p => p).toJS(),
     },
   ];
 

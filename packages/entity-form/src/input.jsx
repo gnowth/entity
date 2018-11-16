@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
-import { withProps, withPropTypes } from '@gnowth/higher-order-component';
+import { withPropTypes } from '@gnowth/higher-order-component';
 
 import withInput from './withInput';
 
@@ -18,6 +18,7 @@ class Input extends React.Component {
         onChange: this.props.onChange,
         value: this.props.value,
       },
+
       !_isString(this.props.component) && {
         errors: this.props.errors,
         field: this.props.field,
@@ -27,6 +28,7 @@ class Input extends React.Component {
         processing: this.props.processing,
         processingDidFail: this.props.processingDidFail,
       },
+
       _isFunction(this.props.componentProps)
         ? this.props.componentProps(this.props)
         : this.props.componentProps,
@@ -55,7 +57,6 @@ class Input extends React.Component {
     );
   }
 
-  // TODO check if there is an alternative to index as key
   renderComponentArray(props) {
     return props.value.map((val, index) => (
       <this.props.component
@@ -82,7 +83,7 @@ Input.propTypes = {
     PropTypes.shape({}),
     PropTypes.func,
   ]),
-  many: PropTypesPlus.notRequiredIf('children', PropTypes.bool), // TODO check that field is many
+  many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
   wrapperComponent: PropTypesPlus.isRequiredIf('wrapperComponentProps', PropTypesPlus.component),
   wrapperComponentProps: PropTypes.shape({}),
 };
@@ -96,7 +97,6 @@ Input.defaultProps = {
   wrapperComponentProps: undefined,
 };
 
-// TODO check withPropTypes
 export default _compose(
   withPropTypes({
     propTypes: exact({
@@ -113,7 +113,7 @@ export default _compose(
       type: PropTypes.string,
       willChangeRecord: PropTypes.func,
       wrapperComponent: PropTypesPlus.component,
-      wrapperComponentProps: PropTypes.shape({}), // TODO check that wrapperComponent is present if Props is present
+      wrapperComponentProps: PropTypes.shape({}),
     }),
 
     defaultProps: {
@@ -131,13 +131,9 @@ export default _compose(
   }),
 
   withInput,
-  withDefault(), // TODO find a way to access nested level
 
-  // TODO check for default components, allowing null to not add default?
-  withProps(props => ({
-    component: props.component || props.defaults.widgets[props.type || props.field.type],
-    wrapperComponent: props.wrapperComponent === null
-      ? undefined
-      : (props.wrapperComponent || props.defaults.label),
+  withDefault(props => ({
+    component: `widget_${props.type || props.field.type}`,
+    wrapperComponent: ['entityForm_label', 'component_label'],
   })),
 )(Input);

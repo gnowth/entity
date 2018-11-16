@@ -1,3 +1,4 @@
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { ViewScreen } from '@entity/view';
 import { App } from '@gnowth/app';
@@ -7,12 +8,12 @@ import EntityObservation from 'apps/observation/entities/Observation';
 import FormObservation from 'apps/observation/forms/Observation';
 import ViewObservations from 'apps/observation/views/Observations';
 
-const AppObservation = () => (
-  <App>
+const AppObservation = props => (
+  <App containerComponent={props.containerComponent}>
     <Switch>
       <Route
         path="/observation/list"
-        render={() => (
+        component={() => (
           <ViewScreen
             queryComponentProps={{
               action: () => EntityObservation.duck.get(),
@@ -24,7 +25,7 @@ const AppObservation = () => (
 
       <Route
         path="/observation/:uuid?"
-        render={routeProps => (
+        component={routeProps => (
           <ViewScreen
             queryComponentProps={{
               action: () => EntityObservation.duck.get({ id: routeProps.match.params.uuid || null }),
@@ -39,5 +40,13 @@ const AppObservation = () => (
     </Switch>
   </App>
 );
+
+AppObservation.propTypes = {
+  containerComponent: PropTypesPlus.component,
+};
+
+AppObservation.defaultProps = {
+  containerComponent: undefined,
+};
 
 export default AppObservation;

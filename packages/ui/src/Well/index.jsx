@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 
 const UIWell = styled.div`
   background-color: ${props => props.theme.vars.colorWhite};
@@ -13,11 +14,13 @@ const UIWell = styled.div`
 `;
 
 UIWell.propTypes = {
+  css: PropTypesPlus.css,
   ratio: PropTypes.number,
   variant: PropTypes.string,
 };
 
 UIWell.defaultProps = {
+  css: undefined,
   variant: 'main',
   ratio: 1,
 };

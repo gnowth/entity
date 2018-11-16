@@ -12,8 +12,8 @@ import { Button, Welcome } from '@storybook/react/demo';
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
-  .addDecorator(checkA11y)
   .addDecorator(centered)
+  .addDecorator(checkA11y)
   .addDecorator(withKnobs)
 
   .add('with text', () => (

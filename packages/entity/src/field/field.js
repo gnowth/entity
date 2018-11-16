@@ -5,6 +5,11 @@ import isRequired from '../validator/is-required';
 
 export default class Field {
   constructor(options = {}) {
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.options && !List.isList(options.options)) throw new Error(`Field.constructor (${this.constructor.name}): options.options must be a an immutable List`);
+      if (options.options && options.options.size !== options.options.toSet().size) throw new Error(`Field.constructor (${this.constructor.name}): options.options must have unique items.`);
+    }
+
     const defaults = {
       blank: false,
       cleaners: [],
@@ -16,7 +21,7 @@ export default class Field {
       this,
       defaults,
       options,
-      { // TODO check how this is affected by subclass
+      {
         validators: _isFunction(options.validators)
           ? options.validators(defaults.validators)
           : (options.validators || defaults.validators),
@@ -24,8 +29,8 @@ export default class Field {
     );
   }
 
-  clean(record, options) {
-    const newOptions = Object.assign({ field: this }, options);
+  clean(record, options = {}) {
+    const newOptions = { ...options, field: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -43,17 +48,11 @@ export default class Field {
 
   getEntity() {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`entity.fields[${this.constructor.name}] (getEntity): method is not supported.`);
+      throw new Error(`Field.getEntity (${this.constructor.name}): method is not supported.`);
     }
   }
 
-  // TODO check
   getErrors(errors, options = {}) {
-    if (process.env.NODE_ENV !== 'production') {
-      // TODO check that errors is a list
-      // TODO check that index is a number
-    }
-
     return options.name === undefined
       ? errors
       : errors
@@ -62,10 +61,9 @@ export default class Field {
         .filter(error => error);
   }
 
-  // TODO check
   getErrorsArray(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.index === undefined) throw new Error(`entity.fields[${this.constructor.name}] (getErrorsArray): option "index" is required.`);
+      if (options.index === undefined) throw new Error(`Field.getErrorsArray (${this.constructor.name}): option "index" is required.`);
     }
 
     return errors
@@ -75,7 +73,7 @@ export default class Field {
 
   getField(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getField): method with option name is not supported.`);
+      if (options.name) throw new Error(`Field.getField (${this.constructor.name}): method with option name is not supported.`);
     }
 
     return options.name ? null : this;
@@ -83,18 +81,21 @@ export default class Field {
 
   getId() {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`entity.fields[${this.constructor.name}] (getId): method is not supported.`);
+      throw new Error(`Field.getId (${this.constructor.name}): method is not supported.`);
     }
   }
 
-  // TODO check if need to deprecate
+  getKey(value) {
+    return this.toString(value);
+  }
+
   getOptions() {
     return this.options || List();
   }
 
   getValue(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (getValue): option "name" is not supported.`);
+      if (options.name) throw new Error(`Field.getValue (${this.constructor.name}): option "name" is not supported.`);
     }
 
     return options.name ? null : value;
@@ -102,7 +103,7 @@ export default class Field {
 
   isBlank(value = null, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`entity.fields[${this.constructor.name}] (isBlank): method with option name is not supported.`);
+      if (options.name) throw new Error(`Field.isBlank (${this.constructor.name}): method with option name is not supported.`);
     }
 
     return value === null || (
@@ -128,7 +129,7 @@ export default class Field {
 
   validate(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (this.many && !List.isList(value)) throw new Error(`entity.fields[${options.fieldName}] (validate): "value" must be an "Immutable List" with field option "many"`);
+      if (this.many && !List.isList(value)) throw new Error(`Field.validate (${this.constructor.name}-${options.fieldName}): "value" must be an "Immutable List" with field option "many"`);
     }
 
     const validators = _isFunction(options.validators)

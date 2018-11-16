@@ -25,11 +25,10 @@ const Routes = () => (
     </Route>
 
     { settings.ENABLE_FEATURE_OBSERVATION && (
-      <Route path="/observation">
-        <AppHeader>
-          <AppObservation />
-        </AppHeader>
-      </Route>
+      <Route
+        path="/observation"
+        component={() => (<AppObservation containerComponent={AppHeader} />)}
+      />
     )}
 
     <Redirect to="/notfound" />

@@ -1,13 +1,12 @@
 import _isFunction from 'lodash/isFunction';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { DefaultProvider } from '@gnowth/default';
 
 import { AppConsumer } from './context';
 
-// TODO to enable rerender for locale change, set key to locale.
-// TODO read more about intl, about addLocalData?
 const App = props => (
   <AppConsumer>
     { (context) => {
@@ -18,6 +17,7 @@ const App = props => (
 
       const IntlProvider = (props.intlProviderProps && context.intlProvider) || React.Fragment;
       const ThemeProvider = (props.themeProviderProps && context.themeProvider) || React.Fragment;
+      const Container = props.containerComponent || React.Fragment;
 
       const getProps = name => (
         _isFunction(props[name])
@@ -25,12 +25,13 @@ const App = props => (
           : props[name]
       ) || {};
 
-      // TODO merge root props for theme and intl? and check for default
       return (
         <DefaultProvider {...Object.assign({}, context.defaults, props.defaults)}>
           <IntlProvider {...getProps('intlProviderProps')}>
             <ThemeProvider {...getProps('themeProviderProps')}>
-              { props.children }
+              <Container {...(props.containerComponentProps || {})}>
+                { props.children }
+              </Container>
             </ThemeProvider>
           </IntlProvider>
         </DefaultProvider>
@@ -41,20 +42,21 @@ const App = props => (
 
 App.propTypes = exact({
   children: PropTypes.node.isRequired,
-
+  containerComponent: PropTypesPlus.isRequiredIf('containerComponentProps', PropTypesPlus.component),
+  containerComponentProps: PropTypes.shape({}),
   defaults: PropTypes.shape({}),
-
   intlProviderProps: PropTypes.exact({
     locale: PropTypes.string.isRequired,
     messages: PropTypes.object.isRequired,
   }),
-
   themeProviderProps: PropTypes.exact({
     theme: PropTypes.shape({}).isRequired,
   }),
 });
 
 App.defaultProps = {
+  containerComponent: undefined,
+  containerComponentProps: undefined,
   defaults: undefined,
   intlProviderProps: undefined,
   themeProviderProps: undefined,

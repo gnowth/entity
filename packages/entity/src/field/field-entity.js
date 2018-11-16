@@ -6,12 +6,10 @@ import AnyField from './field-any';
 import entityValid from '../validator/entity-valid';
 import list from '../validator/list';
 
-// TODO update to entityid
-// TODO add default clean to remove fields not in entity?
 export default class EntityField extends AnyField {
   constructor(options = {}) {
     const defaults = {
-      nested: true, // FYI nested for whether field is an idField?
+      nested: true,
       type: 'entity',
     };
 
@@ -32,7 +30,7 @@ export default class EntityField extends AnyField {
     ));
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity) throw new Error(`entity[${this.constructor.name}]: "entity" option is required`);
+      if (!options.entity) throw new Error(`${this.constructor.name}.constructor: "entity" option is required`);
     }
   }
 
@@ -50,12 +48,10 @@ export default class EntityField extends AnyField {
     return this.entity;
   }
 
-  // TODO recheck implementation
   getErrors(errors, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      // TODO check that errors is a list
-      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getField): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getField): field "${options.name}" not found`);
+      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getErrors (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getErrors (${this.entity.name}): field "${options.name}" not found`);
     }
 
     return options.name
@@ -68,9 +64,8 @@ export default class EntityField extends AnyField {
 
   getField(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getField): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getField): field "${options.name}" not found`);
-      // TODO need to display entity
+      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getField (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getField (${this.entity.name}): field "${options.name}" not found`);
     }
 
     return options.name
@@ -80,8 +75,8 @@ export default class EntityField extends AnyField {
 
   getId(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
+      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getId (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getId (${this.entity.name}): field "${options.name}" not found`);
     }
 
     return this.getField({ value, ...options })
@@ -89,15 +84,18 @@ export default class EntityField extends AnyField {
       .getId(this.getValue(value, options));
   }
 
-  // TODO check if need to deprecate
+  getKey(value) {
+    return this.getId(value);
+  }
+
   getOptions() {
     return this.options || this.entity.options || List();
   }
 
   getValue(value, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
+      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getValue (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getValue (${this.entity.name}): field "${options.name}" not found`);
     }
 
     return options.name
@@ -105,11 +103,10 @@ export default class EntityField extends AnyField {
       : value;
   }
 
-  // TODO allow options name. check about isBlankSome, isBlankEvery allow name to be array?
   isBlank(value = null, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`entity[${this.constructor.name}] (field.getId): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`entity[${this.constructor.name}] (field.getId): field "${options.name}" not found`);
+      if (options.name && !_isString(options.name)) throw new Error(`EntityField.isBlank (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.isBlank (${this.entity.name}): field "${options.name}" not found`);
     }
 
     return value === null || (

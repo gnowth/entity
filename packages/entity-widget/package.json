@@ -19,6 +19,7 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
+    "@gnowth/default": "0.1.1",
     "@gnowth/higher-order-component": "0.1.1",
     "@gnowth/prop-types-entity": "0.1.1",
     "@gnowth/prop-types-plus": "0.1.1",
@@ -33,7 +34,12 @@
     "reselect": "4.0.0"
   },
   "peerDependencies": {
-    "react": "16.6.1",
-    "styled-components": "4.0.3"
+    "@storybook/addon-a11y": "4.0.6",
+    "@storybook/addon-actions": "4.0.6",
+    "@storybook/addon-centered": "4.0.6",
+    "@storybook/addon-knobs": "4.0.6",
+    "@storybook/react": "4.0.6",
+    "react": "16.6.3",
+    "styled-components": "4.1.1"
   }
 }

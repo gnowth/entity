@@ -20,14 +20,14 @@ TypeSet.defaultProps = {
   variant: 'text',
 };
 
-// TODO check if locale is an immutable and convert to JS
-// TODO check if locale contains translations and wrap component with an intlProvider
 export default _flowRight(
   injectIntl,
   withProps(props => ({
     as: props.component === null
       ? ({ children }) => children
       : props.component,
-    children: props.children || props.intl.formatMessage(props.locale, props.values),
+    children: props.children === undefined
+      ? props.intl.formatMessage(props.locale, props.values)
+      : props.children,
   })),
 )(TypeSet);

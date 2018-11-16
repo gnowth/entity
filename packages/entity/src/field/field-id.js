@@ -5,11 +5,11 @@ export default class IdField extends AnyField {
     super(options);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (options.many) throw new Error('entity[IdField]: "many" option is not supported.');
+      if (options.many) throw new Error(`${this.constructor.name}.constructor: "many" option is not supported.`);
     }
   }
 
-  dataToValue(data) { // TODO maybe check if data can be converted into a string;
+  dataToValue(data) {
     return data?.toString();
   }
 

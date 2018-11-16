@@ -29,7 +29,7 @@ export default types => ({
 
     return state.withMutations(
       s => s
-        .setIn(['options_errors', identifier], parseError(action.payload)) // TODO move errors in detail_errors and list_errors?
+        .setIn(['options_errors', identifier], parseError(action.payload))
         .setIn(['status', 'optioning', identifier], false)
         .setIn(['status', 'optioningDidFail', identifier], true),
     );

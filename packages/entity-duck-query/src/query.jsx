@@ -44,7 +44,6 @@ class Query extends React.Component {
     }
   }
 
-  // TODO check errors when 404 is returned. expect a list
   getProps() {
     return {
       errors: this.props.processing || this.props.value === undefined
@@ -53,7 +52,7 @@ class Query extends React.Component {
       field: this.props.field,
       initialValue: this.props.initialValue,
       inputValue: this.props.inputValue,
-      name: this.props.name, // TODO check about name?
+      name: this.props.name,
       onChange: this.handleChange,
       onInputChange: this.handleInputChange,
       processing: this.props.processing,
@@ -62,9 +61,7 @@ class Query extends React.Component {
     };
   }
 
-  getShouldShow() { // TODO check all
-    // TODO when id is null, skip get?
-    // TODO check when id is undefined, then show records count
+  getShouldShow() {
     return {
       component: !this.props.shouldProcess || (
         !this.props.many
@@ -88,8 +85,7 @@ class Query extends React.Component {
         && this.props.processingDidFail
         && this.props.processingDidFailComponent,
 
-      // TODO maybe shouldProcess should not involve recordCount
-      recordCountComponent: this.props.shouldProcess // TODO check that process is a list?
+      recordCountComponent: this.props.shouldProcess
         && this.props.recordCountComponent
         && !this.props.processing
         && !this.props.processingDidFail
@@ -109,7 +105,6 @@ class Query extends React.Component {
     };
   }
 
-  // TODO use memoize
   errorSelector = createSelector(
     x => x,
     value => this.props.field.validate(value),
@@ -117,10 +112,8 @@ class Query extends React.Component {
 
   handleChange = ({ target: { index, name, value } }) => {
     if (process.env.NODE_ENV !== 'production') {
-      if (name !== this.props.name) throw new Error(`Query (onChange): Invalid name! Expecting "${this.props.name}" instead of ${name}.`);
-      if (index === null) throw new Error('Query (onChange): index cannot be null');
-      // TODO check that if there is an index, the props.value must be a list
-      // if (index !== undefined && this.props.value && 'size' in this.props.value) throw new Error('Query (onChange): index must be undefined as value is not a list');
+      if (name !== this.props.name) throw new Error(`Query.handleChange (${this.props.name}): Invalid name ${name}!`);
+      if (index === null) throw new Error(`Query.handleChange (${this.props.name}): index cannot be null`);
     }
 
     return this.props.save(
@@ -150,7 +143,7 @@ class Query extends React.Component {
             value={
               this.props.field.entity.paginated && this.props.pagination
                 ? this.props.pagination.get('count')
-                : this.props.value.size // TODO maybe refactor that bit
+                : this.props.value.size
             }
             {...(this.props.recordsCountComponentProps || {})}
           />
@@ -227,7 +220,7 @@ Query.propTypes = exact({
   ]),
   inputValue: PropTypes.string,
   name: PropTypes.string,
-  many: PropTypesPlus.notRequiredIf('action', PropTypes.bool), // TODO not required if action will return a map
+  many: PropTypesPlus.notRequiredIf('action', PropTypes.bool),
   onInputChange: PropTypes.func.isRequired,
   persist: PropTypes.bool,
   persistDirty: PropTypesPlus.notRequiredIfNot('persist', PropTypes.bool),

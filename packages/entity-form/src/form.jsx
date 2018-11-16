@@ -25,12 +25,11 @@ class Form extends React.Component {
 
   handleChange = ({ target }) => {
     if (process.env.NODE_ENV !== 'production') {
-      if (target.index === null) throw new Error('entity-form (onChange): index cannot be null');
-      if (target.name !== this.props.name) throw new Error(`entity-form (onChange): Name cannot be different from Form name "${this.props.name}"`);
-      if (!target.array && !Map.isMap(target.value) && target.value !== null) throw new Error(`entity-form (onChange): Value must either be a "Map" or "null". Refer to form named "${this.props.name}"`);
+      if (target.name !== this.props.name) throw new Error(`Form.handleChange (${this.props.name}): different name provided "${target.name}"`);
+      if (target.index === null) throw new Error(`Form.handleChange (${this.props.name}): index cannot be null`);
+      if (!target.array && !Map.isMap(target.value) && target.value !== null) throw new Error(`Form.handleChange (${this.props.name}): Value must either be a "Map" or "null".`);
     }
 
-    // TODO value can be a list and null
     return this.props.onChange({ target });
   };
 

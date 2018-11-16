@@ -15,9 +15,8 @@ export default class Entity {
 
   static actionArrayDeleteAtIndex(records, { index = null } = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!records) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be set.`);
-      if (!List.isList(records)) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "records" must be an immutable list`);
-      if (index === null) throw new Error(`entity[${this.name}] (actionArrayDeleteAtIndex): "index" option must be set`);
+      if (!List.isList(records)) throw new Error(`Entity.actionArrayDeleteAt (${this.name}): "records" must be an immutable List.`);
+      if (index === null) throw new Error(`Entity.actionArrayDeleteAt (${this.name}): "index" option must be set.`);
     }
 
     return records.delete(index);
@@ -25,23 +24,22 @@ export default class Entity {
 
   static actionArrayMoveAtIndex(records, { index = null, indexTo = null } = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!records) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "records" must be set.`);
-      if (index === null) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "index" option must be set.`);
-      if (indexTo === null) throw new Error(`entity[${this.name}] (actionArrayMoveAtIndex): "indexTo" option must be set.`);
+      if (!List.isList(records)) throw new Error(`Entity.actionArrayMoveAtIndex (${this.name}): "records" must be an immutable List.`);
+      if (index === null) throw new Error(`Entity.actionArrayMoveAtIndex (${this.name}): "index" option must be set.`);
+      if (indexTo === null) throw new Error(`Entity.actionArrayMoveAtIndex (${this.name}): "indexTo" option must be set.`);
     }
 
     return records.delete(index).insert(indexTo, records.get(index));
   }
 
-  // TODO check if reset should be reset to initialValue
   static actionReset(record) {
     return this.dataToRecord({
       [this.idField]: record.get(this.idField),
     });
   }
 
-  static clean(record, options) {
-    const newOptions = Object.assign({ entity: this }, options);
+  static clean(record, options = {}) {
+    const newOptions = { ...options, entity: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -73,14 +71,10 @@ export default class Entity {
       .merge(values);
   }
 
-  static getEntityField(options) {
-    return new EntityField(Object.assign(
-      { entity: this },
-      options,
-    ));
+  static getEntityField(options = {}) {
+    return new EntityField({ entity: this, ...options });
   }
 
-  // TODO check if some code rely on id to be an empty string ''
   static getId(record) {
     return record?.get(this.idField);
   }
@@ -99,7 +93,7 @@ export default class Entity {
 
   static toData(record) {
     if (process.env.NODE_ENV !== 'production') {
-      if (record && !Map.isMap(record)) throw new Error(`entity[${this.name}] (toData): record must be either a Map or null or undefined`);
+      if (record && !Map.isMap(record)) throw new Error(`Entity.toData (${this.name}): record must be either a Map or null or undefined`);
     }
 
     const fieldValueToData = (value, key) => (
@@ -117,14 +111,12 @@ export default class Entity {
 
   static toString(record) {
     if (process.env.NODE_ENV !== 'production') {
-      if (record && !Map.isMap(record)) throw new Error(`entity[${this.name}] (toString): record must be either a Map or null or undefined`);
+      if (record && !Map.isMap(record)) throw new Error(`Entity.toString (${this.name}): record must be either a Map or null or undefined`);
     }
 
     return record?.get(this.idField) || '';
   }
 
-  // TODO FYI because entity-valid is calling this function, this should return only 1 error. unless we change entityvalid
-  // but if we remove nonField from here, we won't have non field errors?
   static validate(record, options = {}) {
     if (!record) return record;
 
@@ -144,36 +136,8 @@ export default class Entity {
       ? null
       : Map({
         detail: true,
-        message: 'Invalid Entity', // TODO add proper message
+        message: 'Invalid Entity',
         errors: detailErrors,
       });
   }
 }
-
-// const errors = [
-//   'error',
-//   true,
-//   {
-//     defaultMessage: 'dfhdf',
-//     id: 'df',
-//   },
-//   {
-//     detail: true,
-//     messageId: 'df',
-//     messageLocale: {
-//       defaultMessage: 'dfhdf',
-//       id: 'df',
-//     },
-//     message: 'error',
-//     errors: {
-//       titles: [
-//         'error',
-//         true,
-//         {
-//           list: true,
-//           errors: [[], []],
-//         },
-//       ]
-//     },
-//   },
-// ];

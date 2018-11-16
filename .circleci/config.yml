@@ -24,7 +24,33 @@ references:
     working_directory: ~/project
 
 jobs:
-  lint-and-test:
+  setup:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+
+  build-app:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run build
+
+  build-storybook:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run storybook:build
+
+  lint-code:
     <<: *container_config
     steps:
     - checkout
@@ -32,7 +58,24 @@ jobs:
     - run: yarn install
     - *save_cache
     - run: npm run lint
-    # - run: npm run test
+
+  test-code:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run test
+
+  cover-code:
+    <<: *container_config
+    steps:
+    - checkout
+    - *restore_cache
+    - run: yarn install
+    - *save_cache
+    - run: npm run coveralls
 
   update-build-publish-packages_build-deploy-app:
     <<: *container_config
@@ -44,14 +87,51 @@ jobs:
     - run: npm run build
     - run: npm run storybook:build
     - run: npm run deploy
-    - run: npm run packages-publish $NPM_TOKEN
+    - run: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ./.npmrc
+    - run: npm run packages-publish
 
 workflows:
   version: 2
 
   branches:
     jobs:
-      - lint-and-test:
+      - setup:
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - lint-code:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - test-code:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - build-app:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - build-storybook:
+          requires:
+          - setup
           filters:
             branches:
               ignore:
@@ -60,7 +140,13 @@ workflows:
 
   branch-master:
     jobs:
-      - lint-and-test:
+      - lint-code:
+          filters:
+            branches:
+              only:
+              - master
+
+      - cover-code:
           filters:
             branches:
               only:
@@ -68,7 +154,8 @@ workflows:
 
       - update-build-publish-packages_build-deploy-app:
           requires:
-          - lint-and-test
+          - lint-code
+          - cover-code
           filters:
             branches:
               only:

@@ -6,7 +6,6 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import { Link } from 'react-router-dom';
 import { filterProps } from '@gnowth/higher-order-component';
 
-// TODO add check that entity has toLink
 const ViewLink = props => (
   <Link
     to={props.field.entity.toLink(props.value)}

@@ -5,16 +5,20 @@ export default class ScreenDuck extends Duck {
   static namespace = 'screens';
 
   static actions = {
-    clear: Duck.createAction(),
+    clear: Duck.createAction({
+      meta: ({ payload }) => payload,
+      payload: () => undefined,
+    }),
     get: Duck.createAction({
       defaultMeta: {
         id: null,
         keyClear: 'clear',
         keyRecord: 'record',
-        keySaveLocal: 'save',
+        keySaveLocal: 'save_local',
         params: Map(),
       },
     }),
+    save_local: Duck.createAction(),
     save: Duck.createAction(),
   };
 
@@ -35,14 +39,22 @@ export default class ScreenDuck extends Duck {
           : initialState
       ),
 
+      [types.save_local]: (state, action) => {
+        if (process.env.NODE_ENV !== 'production') {
+          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save_local (${this.entity.name}): payload must be an Immutable Map`);
+        }
+
+        return state.set('detail_dirty', action.payload);
+      },
+
       [types.save]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action?.payload)) throw new Error('DuckScreen (save): payload must be an Immutable Map');
+          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.withMutations(
           s => s
-            .update('detail', detail => (action.meta.dirty ? detail : action.payload))
+            .set('detail', action.payload)
             .set('detail_dirty', action.payload),
         );
       },
@@ -51,7 +63,7 @@ export default class ScreenDuck extends Duck {
 
   record(state, { dirty, id } = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (id !== null) throw new Error('DuckScreen (record): only support id === null');
+      if (id !== null) throw new Error(`ScreenDuck.record (${this.entity.name}): only support id === null`);
     }
 
     return state.getIn([
@@ -61,13 +73,3 @@ export default class ScreenDuck extends Duck {
     ]);
   }
 }
-
-/**
- * ability to create local
- * id === null for create local ?
- *
- * get action/selectors based on props in queryDuck?
- * errors from entity
- *
- * action to return promise?
- */

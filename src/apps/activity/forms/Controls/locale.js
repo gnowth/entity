@@ -2,20 +2,20 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   reset: {
-    id: 'app.activity.reset',
-    description: 'Reset Activity',
     defaultMessage: 'RESET',
+    description: 'Reset Activity',
+    id: 'app.activity.reset',
   },
 
   save: {
-    id: 'app.activity.save',
-    description: 'Save Activity',
     defaultMessage: 'SAVE',
+    description: 'Save Activity',
+    id: 'app.activity.save',
   },
 
   submit: {
-    id: 'app.activity.submit',
-    description: 'Submit Activity',
     defaultMessage: 'SUBMIT',
+    description: 'Submit Activity',
+    id: 'app.activity.submit',
   },
 });

@@ -1,16 +1,25 @@
-import { getIdentifier } from './utils';
+import { getId, getIdentifier } from './utils';
 
-// TODO might need to use idIdenfier?
 export default (types, initialState) => ({
   [types.clear]: (state, action) => {
     const identifier = getIdentifier(action.meta);
+    const id = getId(action.meta);
 
     return action.meta.dirty
-      ? state.setIn(['detail_dirty', identifier], state.getIn(['detail', identifier]))
+      ? state.setIn(
+        action.meta.id === undefined ? ['list_dirty', identifier] : ['detail_dirty', id],
+        state.getIn(action.meta.id === undefined ? ['list', identifier] : ['detail', id]),
+      )
       : state.withMutations(
         s => s
-          .setIn(['detail', identifier], initialState.getIn(['detail', identifier]))
-          .setIn(['detail_dirty', identifier], initialState.getIn(['detail', identifier])),
+          .setIn(
+            action.meta.id === undefined ? ['list', identifier] : ['detail', id],
+            initialState.getIn(action.meta.id === undefined ? ['list', identifier] : ['detail', id]),
+          )
+          .setIn(
+            action.meta.id === undefined ? ['list_dirty', identifier] : ['detail_dirty', id],
+            initialState.getIn(action.meta.id === undefined ? ['list', identifier] : ['detail', id]),
+          ),
       );
   },
 });

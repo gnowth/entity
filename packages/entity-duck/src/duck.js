@@ -2,7 +2,7 @@ import _compose from 'lodash/fp/compose';
 import _isFunction from 'lodash/isFunction';
 import _mapValues from 'lodash/fp/mapValues';
 import { Entity } from '@entity/core';
-import { handleActions } from 'redux-actions'; // TODO remove dependency
+import { handleActions } from 'redux-actions';
 
 export default class Duck {
   static createAction({
@@ -29,14 +29,10 @@ export default class Duck {
     return keyAction => `@@${app}/${this.namespace}/${entity.name.toUpperCase()}_${keyAction.toUpperCase()}`;
   }
 
-  constructor(options) {
+  constructor(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!options) throw new Error('\'options\' are required when creating a Duck');
-      if (!options.entity) throw new Error('\'entity\' option is required when creating a Duck');
-      if (!Entity.isEntity(options.entity)) throw new Error('\'entity\' option must be child of \'Entity\' when creating a Duck');
-      if (!options.app) throw new Error('\'app\' option is required when creating a Duck');
-      // TODO check that app start with capital letter
-      // TODO add name of entity
+      if (!options.entity || !Entity.isEntity(options.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
+      if (!options.app) throw new Error(`${this.constructor.name}.constructor (${options.entity.name}): "app" option is required`);
     }
 
     const actions = _mapValues.convert({ cap: false })(

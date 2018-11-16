@@ -3,10 +3,9 @@ import { stringify } from 'query-string';
 
 export const NULL_ID = 'id_null';
 
-export const getId = ({ id = '' }) => (id === null ? NULL_ID : id);
+export const getId = ({ id = '' } = {}) => (id === null ? NULL_ID : id);
 
-export const getIdentifier = ({ id = '', tag = '', params, method, action }) => {
-  // TODO add check for params
+export const getIdentifier = ({ id = '', tag = '', params, method = 'get', action }) => {
   const paramsString = stringify(params && params.filter(p => p).toJS());
 
   const paramsFrag = paramsString && `.${paramsString}`;
@@ -17,7 +16,6 @@ export const getIdentifier = ({ id = '', tag = '', params, method, action }) => 
   return `${method}${actionFrag}${tagFrag}${idFrag}${paramsFrag}`;
 };
 
-// TODO response can be undefined?
 export const parseError = error => List([
   error.response.state === 0
     && 'Error 0: A fatal error occurred.',
@@ -41,7 +39,7 @@ export const parseError = error => List([
     && fromJS({
       api: true,
       detail: true,
-      message: 'Invalid Fields', // TODO check when implementing intl
+      message: 'Invalid Fields',
       errors: error.response.data,
     }),
 ]).filter(e => e);

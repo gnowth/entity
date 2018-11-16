@@ -1,2 +1,1 @@
-// TODO
 export default () => false;
