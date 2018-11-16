@@ -12,7 +12,10 @@ export default class RestDuck extends Duck {
   static namespace = 'dango_rest_framework';
 
   static actions = {
-    clear: Duck.createAction(),
+    clear: Duck.createAction({
+      meta: ({ payload }) => payload,
+      payload: () => undefined,
+    }),
 
     delete_rejected: Duck.createAction(),
     delete_resolved: Duck.createAction(),
