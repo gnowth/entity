@@ -6,7 +6,7 @@
   "name": "@entity/duck-query",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "clean": "rimraf dist",
@@ -19,10 +19,10 @@
     "prebuild": "npm run clean"
   },
   "dependencies": {
-    "@gnowth/default": "0.1.1",
-    "@gnowth/higher-order-component": "0.1.1",
-    "@gnowth/prop-types-duck": "0.1.1",
-    "@gnowth/prop-types-plus": "0.1.1",
+    "@gnowth/default": "0.2.0",
+    "@gnowth/higher-order-component": "0.2.0",
+    "@gnowth/prop-types-duck": "0.2.0",
+    "@gnowth/prop-types-plus": "0.2.0",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
