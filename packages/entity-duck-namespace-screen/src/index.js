@@ -5,7 +5,10 @@ export default class ScreenDuck extends Duck {
   static namespace = 'screens';
 
   static actions = {
-    clear: Duck.createAction(),
+    clear: Duck.createAction({
+      meta: ({ payload }) => payload,
+      payload: () => undefined,
+    }),
     get: Duck.createAction({
       defaultMeta: {
         id: null,
