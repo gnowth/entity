@@ -26,6 +26,8 @@ export default _flowRight(
     as: props.component === null
       ? ({ children }) => children
       : props.component,
-    children: props.children || props.intl.formatMessage(props.locale, props.values),
+    children: props.children === undefined
+      ? props.intl.formatMessage(props.locale, props.values)
+      : props.children,
   })),
 )(TypeSet);

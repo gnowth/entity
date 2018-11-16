@@ -1,5 +1,7 @@
 export { default as createStories } from './stories';
 
+export { default as UIBox } from './Box';
+
 export { default as UIButton } from './Button';
 
 export { default as UIError } from './Error';
