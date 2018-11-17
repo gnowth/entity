@@ -1,4 +1,4 @@
-import _compose from 'lodash/fp/compose';
+import _flowRight from 'lodash/flowRight';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
@@ -113,7 +113,7 @@ export default function (ComposedComponent) {
     willChangeRecord: ({ nextRecord }) => nextRecord,
   };
 
-  return _compose(
+  return _flowRight(
     withForm,
     withDefault({ queryComponent: ['entityForm_query', 'component_query'] }),
   )(withInput);

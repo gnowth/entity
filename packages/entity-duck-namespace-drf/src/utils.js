@@ -1,16 +1,24 @@
-import { fromJS, List } from 'immutable';
+import _isString from 'lodash/isString';
+import { fromJS, List, Map } from 'immutable';
 import { stringify } from 'query-string';
 
 export const NULL_ID = 'id_null';
 
 export const getId = ({ id = '' } = {}) => (id === null ? NULL_ID : id);
 
-export const getIdentifier = ({ id = '', tag = '', params, method = 'get', action }) => {
-  const paramsString = stringify(params && params.filter(p => p).toJS());
+export const getIdentifier = ({ id = '', tag = '', params = Map(), method = 'get', action = '' }) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (!Map.isMap(params)) throw new Error('getIdentifier: "params" options must be an immutable map');
+
+    const invalidParams = params.filterNot((param = '') => _isString(param)).toKeyedSeq();
+    if (invalidParams.size > 0) throw new Error(`getIdentifier (${invalidParams.join(', ')}): params must be a string or undefined`);
+  }
+
+  const paramsString = stringify(params.filter(p => p).toJS());
 
   const paramsFrag = paramsString && `.${paramsString}`;
-  const actionFrag = action ? `.${action}` : '';
-  const tagFrag = tag ? `.${tag}` : '';
+  const actionFrag = action && `.${action}`;
+  const tagFrag = tag && `.${tag}`;
   const idFrag = id === null ? `.${NULL_ID}` : `.${id}`;
 
   return `${method}${actionFrag}${tagFrag}${idFrag}${paramsFrag}`;

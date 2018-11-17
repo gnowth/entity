@@ -1,4 +1,4 @@
-import _compose from 'lodash/fp/compose';
+import _flowRight from 'lodash/flowRight';
 import _isFunction from 'lodash/isFunction';
 import _isString from 'lodash/isString';
 import exact from 'prop-types-exact';
@@ -97,7 +97,7 @@ Input.defaultProps = {
   wrapperComponentProps: undefined,
 };
 
-export default _compose(
+export default _flowRight(
   withPropTypes({
     propTypes: exact({
       apiOptions: PropTypes.bool,

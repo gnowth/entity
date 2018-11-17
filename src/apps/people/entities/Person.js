@@ -1,8 +1,6 @@
 import DuckRest from '@entity/duck-namespace-drf';
 import { Entity, Fields } from '@entity/core';
 
-import settings from 'settings';
-
 class Person extends Entity {
   static idField = 'id';
 
@@ -16,7 +14,7 @@ class Person extends Entity {
   };
 
   static paths = {
-    apiBase: `/${settings.PROJECT_NAME}_map/v1/user/`,
+    apiBase: '/people/v1/person/',
   }
 
   static toString(record) {

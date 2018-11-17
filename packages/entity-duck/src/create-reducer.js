@@ -1,26 +1,26 @@
-import _compose from 'lodash/fp/compose';
-import _filter from 'lodash/fp/filter';
-import _flatMap from 'lodash/fp/flatMap';
-import _groupBy from 'lodash/fp/groupBy';
-import _mapValues from 'lodash/fp/mapValues';
+import _flowRight from 'lodash/flowRight';
+import _filter from 'lodash/filter';
+import _flatMap from 'lodash/flatMap';
+import _groupBy from 'lodash/groupBy';
+import _mapValues from 'lodash/mapValues';
 
 import Duck from './duck';
 
-const createReducersFromDucks = combineReducers => _compose(
+const createReducersFromDucks = combineReducers => _flowRight(
   combineReducers,
-  _mapValues(duck => duck[0].createReducer()),
-  _groupBy(duck => duck.entity.name),
+  ducks => _mapValues(ducks, duck => duck[0].createReducer()),
+  ducks => _groupBy(ducks, duck => duck.entity.name),
 );
 
-const createAppReducersFromDucks = combineReducers => _compose(
+const createAppReducersFromDucks = combineReducers => _flowRight(
   combineReducers,
-  _mapValues(createReducersFromDucks(combineReducers)),
-  _groupBy(duck => duck.constructor.namespace),
+  ducks => _mapValues(ducks, createReducersFromDucks(combineReducers)),
+  ducks => _groupBy(ducks, duck => duck.constructor.namespace),
 );
 
-export default (reqs, combineReducers) => _compose(
-  _mapValues(createAppReducersFromDucks(combineReducers)),
-  _groupBy(duck => duck.app),
-  _filter(duck => duck instanceof Duck),
-  _flatMap(req => req.keys().map(key => req(key).default?.duck)),
+export default (reqs, combineReducers) => _flowRight(
+  ducks => _mapValues(ducks, createAppReducersFromDucks(combineReducers)),
+  ducks => _groupBy(ducks, duck => duck.app),
+  ducks => _filter(ducks, duck => duck instanceof Duck),
+  requests => _flatMap(requests, req => req.keys().map(key => req(key).default?.duck)),
 )(reqs);
