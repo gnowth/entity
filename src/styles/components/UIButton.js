@@ -13,7 +13,8 @@ export const outlined = css`
 `;
 
 export const text = css`
-  color: blue;
+  color: ${props => props.theme.vars.colorBlack};
+  text-decoration: none;
 `;
 
 export const toggle = css`

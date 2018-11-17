@@ -9,7 +9,7 @@ import { Button, LinkHyper, LinkRouter } from './styles';
 const UIButton = ({ processing, ...props }) => (
   <>
     { props.to && /^https?:\/\//.exec(props.to) && (
-      <LinkHyper {...props}>
+      <LinkHyper {...props} href={props.to}>
         <UITypeSet locale={props.locale} component={null}>{ props.children }</UITypeSet>
       </LinkHyper>
     )}

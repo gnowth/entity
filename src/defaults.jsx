@@ -3,9 +3,11 @@ import { WidgetBoolean, WidgetDate, WidgetInput, WidgetList, WidgetSelect, Widge
 import { UIButton, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Redirect } from 'react-router-dom';
 
+import settings from 'settings';
 import store from 'store';
 
 export default {
+  settings,
   store,
   component_button: UIButton,
   component_label: UILabel,

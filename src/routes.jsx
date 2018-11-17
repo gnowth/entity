@@ -3,20 +3,25 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import settings from 'settings';
 import AppAuth from 'apps/auth';
-import AppChangeLog from 'apps/changelog';
 import AppDashboard from 'apps/dashboard';
-import AppHeader from 'apps/header';
-import AppNotFound from 'apps/notfound';
+import AppPages from 'apps/pages';
 import AppObservation from 'apps/observation';
 import Authenticated from 'apps/auth/components/Authenticated';
+import Header from 'components/Header';
 
 const Routes = () => (
   <Switch>
     <Route path="/auth" component={AppAuth} />
 
-    <Route path="/changelog" component={AppChangeLog} />
-
-    <Route path="/notfound" component={AppNotFound} />
+    <Route
+      path="/pages"
+      component={props => (
+        <div>
+          <Header />
+          <AppPages {...props} />
+        </div>
+      )}
+    />
 
     <Route path="/dashboard">
       <Authenticated>
@@ -27,11 +32,18 @@ const Routes = () => (
     { settings.ENABLE_FEATURE_OBSERVATION && (
       <Route
         path="/observation"
-        component={() => (<AppObservation containerComponent={AppHeader} />)}
+        component={() => (
+          <div>
+            <Header />
+            <AppObservation />
+          </div>
+        )}
       />
     )}
 
-    <Redirect to="/notfound" />
+    <Redirect from="/" to="/pages/readme" exact />
+
+    <Redirect to="/pages/notfound" />
   </Switch>
 );
 
