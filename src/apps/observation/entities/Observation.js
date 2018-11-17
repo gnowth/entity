@@ -1,6 +1,7 @@
 import DuckRest from '@entity/duck-namespace-drf';
 import { Fields } from '@entity/core';
 
+import settings from 'settings';
 import EntityAction from 'apps/activity/entities/Action';
 import EntityActivity from 'apps/activity/entities/Activity';
 
@@ -13,7 +14,7 @@ class Observation extends EntityActivity {
   })
 
   static paths = {
-    apiBase: '/observation/v1/observation/',
+    apiBase: `/${settings.NAMESPACE}-observation/v1/observation/`,
     urlBase: '/observation/',
   }
 

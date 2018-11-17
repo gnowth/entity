@@ -1,7 +1,7 @@
-import _omit from 'lodash/fp/omit';
+import _omit from 'lodash/omit';
 import React from 'react';
 
-export const filterProps = _omit([
+export const filterProps = props => _omit(props, [
   'defaultValue',
   'field',
   'initialValue',

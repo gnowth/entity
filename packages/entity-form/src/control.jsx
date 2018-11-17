@@ -1,4 +1,4 @@
-import _compose from 'lodash/fp/compose';
+import _flowRight from 'lodash/flowRight';
 import _isFunction from 'lodash/isFunction';
 import _isObjectLike from 'lodash/isObjectLike';
 import _isString from 'lodash/isString';
@@ -85,7 +85,7 @@ const mapStateToProps = (state, props) => ({
     }),
 });
 
-export default _compose(
+export default _flowRight(
   withInput,
   withDefault({
     component: ['entityForm_button', 'component_button'],

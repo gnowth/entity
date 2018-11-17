@@ -19,6 +19,7 @@ export default Object.assign(
     CSRF_COOKIE_NAME: 'csrftoken',
     ENVIRONMENT: 'development',
     ENABLE_FEATURE_OBSERVATION: true,
+    NAMESPACE: 'broker',
     LANG: ['en'],
     VERSION: 'DEV-0.1.0',
     XDOMAIN_ENABLED: false,

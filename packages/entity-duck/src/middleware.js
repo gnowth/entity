@@ -1,5 +1,6 @@
-import _endsWith from 'lodash/fp/endsWith';
+import _endsWith from 'lodash/endsWith';
 import _isFunction from 'lodash/isFunction';
+import _isString from 'lodash/isString';
 
 import Duck from './duck';
 
@@ -31,12 +32,19 @@ const handleError = (action, dispatch) => (error) => {
 
 export default axios => store => next => (action) => {
   const shouldSkipMiddleware = !action.meta?.useDuckMiddleware
-    || _endsWith('_RESOLVED')(action.type)
-    || _endsWith('_REJECTED')(action.type)
+    || _endsWith(action.type, '_RESOLVED')
+    || _endsWith(action.type, '_REJECTED')
     || !(action.meta?.entity?.duck instanceof Duck);
 
   if (shouldSkipMiddleware) {
     return next(action);
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (!Map.isMap(action.meta.params)) throw new Error('DuckMiddleware.action.meta: "params" options must be an immutable map');
+
+    const invalidParams = action.meta.params.filterNot((param = '') => _isString(param)).toKeyedSeq();
+    if (invalidParams.size > 0) throw new Error(`DuckMiddleware.action.meta (${invalidParams.join(', ')}): params must be a string or undefined`);
   }
 
   const customAction = action.meta.action ? `${action.meta.action}/` : '';
