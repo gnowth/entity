@@ -13,3 +13,8 @@ export const primary = css`
 export const page = css`
   border: 0;
 `;
+
+export const page_flat = css`
+  border: 0;
+  border-radius: 0;
+`;

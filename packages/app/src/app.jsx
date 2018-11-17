@@ -1,5 +1,4 @@
 import _isFunction from 'lodash/isFunction';
-import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
@@ -40,7 +39,7 @@ const App = props => (
   </AppConsumer>
 );
 
-App.propTypes = exact({
+App.propTypes = {
   children: PropTypes.node.isRequired,
   containerComponent: PropTypesPlus.isRequiredIf('containerComponentProps', PropTypesPlus.component),
   containerComponentProps: PropTypes.shape({}),
@@ -52,7 +51,7 @@ App.propTypes = exact({
   themeProviderProps: PropTypes.exact({
     theme: PropTypes.shape({}).isRequired,
   }),
-});
+};
 
 App.defaultProps = {
   containerComponent: undefined,

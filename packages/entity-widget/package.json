@@ -34,11 +34,11 @@
     "reselect": "4.0.0"
   },
   "peerDependencies": {
-    "@storybook/addon-a11y": "4.0.6",
-    "@storybook/addon-actions": "4.0.6",
-    "@storybook/addon-centered": "4.0.6",
-    "@storybook/addon-knobs": "4.0.6",
-    "@storybook/react": "4.0.6",
+    "@storybook/addon-a11y": "4.0.7",
+    "@storybook/addon-actions": "4.0.7",
+    "@storybook/addon-centered": "4.0.7",
+    "@storybook/addon-knobs": "4.0.7",
+    "@storybook/react": "4.0.7",
     "react": "16.6.3",
     "styled-components": "4.1.1"
   }

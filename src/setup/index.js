@@ -4,6 +4,7 @@ import 'assets/favicon/manifest.json';
 import 'assets/fonts/icon-font.css';
 import 'assets/robots.txt';
 import 'font-awesome/css/font-awesome.css';
+import 'github-markdown-css/github-markdown.css';
 import 'material-design-icons/iconfont/material-icons.css';
 import 'normalize.css/normalize.css';
 

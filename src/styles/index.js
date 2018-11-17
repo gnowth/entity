@@ -1,3 +1,5 @@
+export * as boxShadows from './box-shadows';
+
 export * as colors from './colors';
 
 export * as components from './components';
