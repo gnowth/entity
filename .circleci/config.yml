@@ -31,59 +31,50 @@ jobs:
     - *restore_cache
     - run: yarn install
     - *save_cache
+    - persist_to_workspace:
+        root: ~/project
+        paths: .
 
   build-app:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run build
 
   build-storybook:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run storybook:build
 
   lint-code:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run lint
 
   test-code:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run test
 
   cover-code:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run coveralls
 
   update-build-publish-packages_build-deploy-app:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run build
     - run: npm run storybook:build
     - run: npm run deploy
@@ -140,13 +131,23 @@ workflows:
 
   branch-master:
     jobs:
+      - setup:
+          filters:
+            branches:
+              only:
+              - master
+
       - lint-code:
+          requires:
+          - setup
           filters:
             branches:
               only:
               - master
 
       - cover-code:
+          requires:
+          - setup
           filters:
             branches:
               only:
