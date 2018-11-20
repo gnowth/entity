@@ -8,7 +8,7 @@ import { DatePicker, Wrapper } from './styles';
 class WidgetDate extends React.Component {
   handleChange = value => this.props.onChange({
     target: {
-      value,
+      value: value && moment(value),
       name: this.props.name,
     },
   })
@@ -21,7 +21,7 @@ class WidgetDate extends React.Component {
       >
         <DatePicker
           onChange={this.handleChange}
-          selected={this.props.value}
+          selected={this.props.value && this.props.value.toDate()}
         />
       </Wrapper>
     );

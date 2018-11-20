@@ -28,7 +28,6 @@
     "lodash": "4.17.11",
     "moment": "2.22.2",
     "prop-types": "15.6.2",
-    "react-datepicker": "1.8.0",
     "react-immutable-proptypes": "2.1.0",
     "react-select": "2.1.1",
     "reselect": "4.0.0"
@@ -40,6 +39,7 @@
     "@storybook/addon-knobs": "4.0.7",
     "@storybook/react": "4.0.7",
     "react": "16.6.3",
+    "react-datepicker": "2.0.0",
     "styled-components": "4.1.1"
   }
 }

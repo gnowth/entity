@@ -1,4 +1,5 @@
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypes from 'prop-types';
+import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
 import { ViewScreen } from '@entity/view';
 import { App } from '@gnowth/app';
@@ -9,10 +10,10 @@ import FormObservation from 'apps/observation/forms/Observation';
 import ViewObservations from 'apps/observation/views/Observations';
 
 const AppObservation = props => (
-  <App containerComponent={props.containerComponent}>
+  <App>
     <Switch>
       <Route
-        path="/observation/list"
+        path={`${props.match.url}/list`}
         component={() => (
           <ViewScreen
             queryComponentProps={{
@@ -24,7 +25,7 @@ const AppObservation = props => (
       />
 
       <Route
-        path="/observation/:uuid?"
+        path={`${props.match.url}/:uuid?`}
         component={routeProps => (
           <ViewScreen
             queryComponentProps={{
@@ -36,17 +37,14 @@ const AppObservation = props => (
         exact
       />
 
-      <Redirect to="/notfound" />
+      <Redirect to={props.routeNotFound} />
     </Switch>
   </App>
 );
 
 AppObservation.propTypes = {
-  containerComponent: PropTypesPlus.component,
-};
-
-AppObservation.defaultProps = {
-  containerComponent: undefined,
+  match: PropTypesRouter.match.isRequired,
+  routeNotFound: PropTypes.string.isRequired,
 };
 
 export default AppObservation;

@@ -11,7 +11,11 @@ const AppRoot = (props) => {
   const ThemeProvider = props.themeProvider || React.Fragment;
 
   return (
-    <AppProvider value={props}>
+    <AppProvider
+      {...props}
+      intlProviderProps={props.intlProviderProps || {}}
+      themeProviderProps={props.themeProviderProps || {}}
+    >
       <DefaultProvider {...props.defaults}>
         <IntlProvider {...(props.intlProviderProps || {})}>
           <ThemeProvider {...(props.themeProviderProps || {})}>
