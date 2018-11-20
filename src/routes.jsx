@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
@@ -6,14 +7,15 @@ import AppPages from 'apps/pages';
 import AppObservation from 'apps/observation';
 import Header from 'components/Header';
 
-const Routes = () => (
+const Routes = props => (
   <Switch>
     <Route
       path="/pages"
-      component={props => (
+      component={routerProps => (
         <div>
           <Header />
-          <AppPages {...props} />
+
+          <AppPages {...routerProps} />
         </div>
       )}
     />
@@ -21,10 +23,14 @@ const Routes = () => (
     { settings.ENABLE_FEATURE_OBSERVATION && (
       <Route
         path="/observation"
-        component={() => (
+        component={routerProps => (
           <div>
             <Header />
-            <AppObservation />
+
+            <AppObservation
+              {...routerProps}
+              routeNotFound={props.routeNotFound}
+            />
           </div>
         )}
       />
@@ -32,8 +38,16 @@ const Routes = () => (
 
     <Redirect from="/" to="/pages/readme" exact />
 
-    <Redirect to="/pages/notfound" />
+    <Redirect to={props.routeNotFound} />
   </Switch>
 );
+
+Routes.propTypes = {
+  routeNotFound: PropTypes.string,
+};
+
+Routes.defaultProps = {
+  routeNotFound: '/pages/notfound',
+};
 
 export default Routes;
