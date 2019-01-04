@@ -1,16 +1,26 @@
 import { css } from 'styled-components';
 
-import { text } from './text';
+import baseCss from './base';
 
-export const header = css`
-  ${text}
+const baseHeader = css`
+  ${baseCss}
 
-  font-weight: bold;
-  text-transform: uppercase;
+  font-family: Helvetica, Sans-Serif;
+  opacity: 0.87;
 `;
 
-export const header_primary = css`
-  ${header}
+export const header = {
+  component: 'h1',
+  css: css`
+    ${baseHeader}
+  `,
+};
 
-  color: ${props => props.theme.vars.colorPrimary};
-`;
+export const header_primary = {
+  component: 'h1',
+  css: css`
+    ${baseHeader}
+
+    color: ${props => props.theme.vars.colorPrimary};
+  `,
+};

@@ -1,12 +1,12 @@
 import _flowRight from 'lodash/flowRight';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
 import { injectIntl } from 'react-intl';
 
-const TypeSet = styled.span`
-  ${props => props.theme.typesets?.[props.variant]}
+const TypeSet = styled.pre`
+  ${props => props.theme.typesets?.[props.variant]?.css}
   ${props => props.css}
 `;
 
@@ -22,10 +22,11 @@ TypeSet.defaultProps = {
 
 export default _flowRight(
   injectIntl,
+  withTheme,
   withProps(props => ({
     as: props.component === null
       ? ({ children }) => children
-      : props.component,
+      : (props.component || props.theme.typesets?.[props.variant || 'text']?.component),
     children: props.children === undefined
       ? props.intl.formatMessage(props.locale, props.values)
       : props.children,

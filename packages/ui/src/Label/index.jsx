@@ -7,24 +7,30 @@ import UIError from '../Error';
 import UITooltip from '../Tooltip';
 import UITypeSet from '../TypeSet';
 
-import { Label, UILabelRoot } from './styles';
+import styles, { Label, UILabelRoot } from './styles';
 
 const UILabel = props => (
   <UILabelRoot className={props.className} css={props.css}>
-    { props.label && (
-      <Label>{ props.label }</Label>
-    )}
-
-    { !props.label && props.labelLocale && (
+    { (props.label || props.labelLocale) && (
       <UITypeSet
         component={Label}
         locale={props.labelLocale}
         variant="label"
-      />
+        {...props.labelComponentProps}
+      >
+        { props.label }
+      </UITypeSet>
     )}
 
     { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
-      <UITooltip componentProps={{ name: 'error' }}>
+      <UITooltip
+        componentProps={{
+          css: styles.icon,
+          name: 'error',
+          material: true,
+        }}
+        css={styles.tooltip}
+      >
         { props.errors.map((error, index) => (
           <UIError key={index}>{ error }</UIError> // eslint-disable-line
         ))}
@@ -40,6 +46,7 @@ UILabel.propTypes = {
   css: PropTypesPlus.css,
   errors: PropTypesImmutable.list,
   label: PropTypes.string,
+  labelComponentProps: PropTypes.shape({}),
   labelLocale: PropTypesPlus.locale,
 };
 
@@ -48,6 +55,7 @@ UILabel.defaultProps = {
   css: undefined,
   errors: undefined,
   label: undefined,
+  labelComponentProps: {},
   labelLocale: undefined,
 };
 
