@@ -13,14 +13,16 @@ class UITooltip extends React.Component {
   handleClick = () => this.setState(prevState => ({ hidden: !prevState.hidden }))
 
   render() {
+    const Component = this.props.component;
+
     return (
       <Wrapper
         className={this.props.className}
         css={this.props.css}
       >
-        <this.props.component
-          css={styles.icon}
+        <Component
           onClick={this.handleClick}
+          {...{ css: styles.icon }}
           {...this.props.componentProps}
         />
 

@@ -34,15 +34,16 @@ class Form extends React.Component {
   };
 
   render() {
+    const Component = this.props.component;
+
     return (
       <FormProvider {...this.getProps()}>
-        <this.props.component
+        <Component
           className={this.props.className}
-          css={this.props.css}
           {...this.props.componentProps}
         >
           { this.props.children }
-        </this.props.component>
+        </Component>
       </FormProvider>
     );
   }
