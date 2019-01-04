@@ -49,7 +49,7 @@ UIButton.defaultProps = {
   locale: undefined,
   processing: false,
   to: '',
-  variant: 'outlined',
+  variant: 'main',
 };
 
 export default UIButton;

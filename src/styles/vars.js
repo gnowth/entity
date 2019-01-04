@@ -4,7 +4,7 @@ export const colorPrimary = green_nasty;
 
 export const colorSecondary = 'hsl(0, 0%, 80%)';
 
-export const colorBlack = '#555';
+export const colorBlack = 'black';
 
 export const colorWhite = 'white';
 

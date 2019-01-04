@@ -5,7 +5,9 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
 
 const UIIcon = styled.i`
-  font-size: 1rem;
+  && {
+    font-size: 1rem;
+  }
 
   ${props => props.theme?.components?.uiIcon?.[props.variant]}
   ${props => props.css}
