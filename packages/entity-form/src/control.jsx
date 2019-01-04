@@ -55,8 +55,10 @@ class Control extends React.Component {
   }
 
   render() {
+    const Component = this.props.component;
+
     return (
-      <this.props.component {...this.getProps()} />
+      <Component {...this.getProps()} />
     );
   }
 }

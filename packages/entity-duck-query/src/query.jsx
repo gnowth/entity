@@ -161,8 +161,10 @@ class Query extends React.Component {
   }
 
   renderComponent(props) {
+    const Component = this.props.component;
+
     return (
-      <this.props.component
+      <Component
         {...props}
         {...(_isFunction(this.props.componentProps)
           ? this.props.componentProps(props)
@@ -173,8 +175,10 @@ class Query extends React.Component {
   }
 
   renderComponentArray(props) {
+    const Component = this.props.component;
+
     return props.value && props.value.map((value, index) => (
-      <this.props.component
+      <Component
         key={this.props.field.getEntityId(value)}
         {...props}
         errors={props.field.getErrorsArray(props.errors, { index })}

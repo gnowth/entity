@@ -81,9 +81,10 @@ class WidgetList extends React.Component {
 
   render() {
     const shouldShow = this.getShouldShow();
+    const Component = this.props.component;
 
     return (
-      <this.props.component {...this.props.componentProps}>
+      <Component {...this.props.componentProps}>
         { shouldShow.processingComponent && (
           <this.props.processingComponent {...(this.props.processingComponentProps || {})} />
         )}
@@ -102,7 +103,7 @@ class WidgetList extends React.Component {
             {...this.getPropsOption(option)}
           />
         ))}
-      </this.props.component>
+      </Component>
     );
   }
 }

@@ -52,14 +52,18 @@ class Input extends React.Component {
   }
 
   renderComponent(props) {
+    const Component = this.props.component;
+
     return (
-      <this.props.component {...props} />
+      <Component {...props} />
     );
   }
 
   renderComponentArray(props) {
+    const Component = this.props.component;
+
     return props.value.map((val, index) => (
-      <this.props.component
+      <Component
         {...props}
         errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
