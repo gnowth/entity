@@ -3,6 +3,8 @@ import _isFunction from 'lodash/isFunction';
 import _isObjectLike from 'lodash/isObjectLike';
 import _isString from 'lodash/isString';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
@@ -32,7 +34,7 @@ class Control extends React.Component {
 
       !_isString(this.props.component) && {
         processing: this.props.processing,
-        processDidFail: this.props.processDidFail,
+        processingDidFail: this.props.processingDidFail,
       },
 
       _isFunction(this.props.componentProps)
@@ -66,11 +68,30 @@ class Control extends React.Component {
 Control.propTypes = {
   action: PropTypes.func.isRequired,
   component: PropTypesPlus.component.isRequired,
+  componentProps: PropTypes.shape({}),
+  disabled: PropTypes.bool,
+  dispatch: PropTypes.func.isRequired,
+  errors: PropTypesImmutable.list.isRequired,
   event: PropTypes.string,
+  field: PropTypesEntity.entityField.isRequired,
+  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  name: PropTypesPlus.string,
+  onChange: PropTypes.func.isRequired,
+  processing: PropTypes.bool.isRequired,
+  processingDidFail: PropTypes.bool.isRequired,
+  readOnly: PropTypes.bool,
+  setState: PropTypes.func.isRequired,
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 
 Control.defaultProps = {
+  componentProps: {},
+  disabled: undefined,
   event: 'onClick',
+  initialValue: undefined,
+  name: undefined,
+  readOnly: undefined,
+  value: undefined,
 };
 
 const mapStateToProps = (state, props) => ({
@@ -80,7 +101,7 @@ const mapStateToProps = (state, props) => ({
       status: props.state.action.meta.keyProcessing,
     }),
 
-  processDidFail: !!props.state.action
+  processingDidFail: !!props.state.action
     && props.state.action.meta.entity.duck.status(state, {
       ...props.state.action.meta,
       status: props.state.action.meta.keyProcessingDidFail,

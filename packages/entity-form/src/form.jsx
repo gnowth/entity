@@ -55,7 +55,9 @@ Form.propTypes = {
   componentProps: PropTypes.shape({}),
   css: PropTypesPlus.css,
   disabled: PropTypes.bool,
+  errors: PropTypesImmutable.list.isRequired,
   field: PropTypesEntity.entityField.isRequired,
+  index: PropTypes.number,
   initialValue: PropTypesImmutable.map,
   name: PropTypes.oneOfType([
     PropTypes.string.isRequired,
@@ -72,6 +74,7 @@ Form.defaultProps = {
   componentProps: {},
   css: undefined,
   disabled: false,
+  index: undefined,
   initialValue: undefined,
   name: undefined,
   nameMapper: {},

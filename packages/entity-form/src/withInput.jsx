@@ -72,8 +72,10 @@ export default function (ComposedComponent) {
     }
 
     renderQuery(props) {
+      const QueryComponent = this.props.queryComponent;
+
       return (
-        <this.props.queryComponent
+        <QueryComponent
           action={({ search }) => props.field.entity.duck.get({
             params: Map({ search }).merge(this.props.filterParams),
           })}
@@ -85,7 +87,7 @@ export default function (ComposedComponent) {
             processingDidFail: query.processingDidFail,
             options: query.value,
           })}
-        </this.props.queryComponent>
+        </QueryComponent>
       );
     }
 
@@ -99,17 +101,34 @@ export default function (ComposedComponent) {
   withInput.propTypes = {
     apiOptions: PropTypes.bool,
     array: PropTypes.bool,
+    disabled: PropTypes.bool,
     filterParams: PropTypesImmutable.map,
+    formErrors: PropTypesImmutable.list.isRequired,
     formField: PropTypesEntity.entityField.isRequired,
+    formOnChange: PropTypes.func.isRequired,
+    formIndex: PropTypes.number,
+    formInitialValue: PropTypesImmutable.map,
+    formName: PropTypesPlus.string,
+    formValue: PropTypesImmutable.map.isRequired,
+    index: PropTypes.number,
+    name: PropTypesPlus.string,
     queryComponent: PropTypesPlus.isRequiredIf('apiOptions', PropTypesPlus.component),
+    readOnly: PropTypes.bool,
     willChangeRecord: PropTypes.func,
   };
 
   withInput.defaultProps = {
     apiOptions: false,
     array: false,
+    disabled: undefined,
     filterParams: Map(),
+    formIndex: undefined,
+    formInitialValue: undefined,
+    formName: undefined,
+    index: undefined,
+    name: undefined,
     queryComponent: undefined,
+    readOnly: undefined,
     willChangeRecord: ({ nextRecord }) => nextRecord,
   };
 

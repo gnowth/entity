@@ -3,6 +3,8 @@ import _isFunction from 'lodash/isFunction';
 import _isString from 'lodash/isString';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
@@ -87,7 +89,17 @@ Input.propTypes = {
     PropTypes.shape({}),
     PropTypes.func,
   ]),
+  errors: PropTypesImmutable.list.isRequired,
+  field: PropTypesEntity.field.isRequired,
+  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
+  name: PropTypesPlus.string,
+  onChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func,
+  options: PropTypesImmutable.list,
+  processing: PropTypes.bool,
+  processingDidFail: PropTypes.bool,
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   wrapperComponent: PropTypesPlus.isRequiredIf('wrapperComponentProps', PropTypesPlus.component),
   wrapperComponentProps: PropTypes.shape({}),
 };
@@ -96,7 +108,14 @@ Input.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: {},
+  initialValue: undefined,
   many: undefined,
+  name: undefined,
+  onInputChange: undefined,
+  options: undefined,
+  processing: false,
+  processingDidFail: false,
+  value: undefined,
   wrapperComponent: undefined,
   wrapperComponentProps: undefined,
 };

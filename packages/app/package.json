@@ -26,6 +26,6 @@
     "prop-types-exact": "1.2.0"
   },
   "peerDependencies": {
-    "react": "16.6.3"
+    "react": "16.7.0"
   }
 }

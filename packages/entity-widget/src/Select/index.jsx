@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import Select from 'react-select';
 import { fromJS } from 'immutable';
@@ -40,7 +41,7 @@ class WidgetSelect extends React.Component {
         isMulti={this.props.field.many}
         onChange={this.handleChange}
         options={this.getOptions(this.props.options)}
-        styles={Object.assign({}, this.props.theme?.components?.widgetSelect?.styles, this.props.styles)}
+        styles={Object.assign({}, this.props.theme.components?.widgetSelect?.styles, this.props.styles)}
         value={this.getValue(this.props.value)}
       />
     );
@@ -54,12 +55,28 @@ WidgetSelect.propTypes = {
   index: PropTypes.number,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  options: PropTypesImmutable.list,
+  processing: PropTypes.bool,
+  styles: PropTypes.shape({}),
+  theme: PropTypes.shape({
+    components: PropTypes.shape({
+      widgetSelect: PropTypes.shape({
+        styles: PropTypes.shape({}),
+      }),
+    }),
+  }),
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 
 WidgetSelect.defaultProps = {
   getOptionLabel: undefined,
   getOptionValue: undefined,
   index: undefined,
+  options: undefined,
+  processing: false,
+  styles: {},
+  theme: {},
+  value: undefined,
 };
 
 export default styled(WidgetSelect)`
