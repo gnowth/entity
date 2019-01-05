@@ -49,6 +49,7 @@ class WidgetCheckbox extends React.Component {
 }
 
 WidgetCheckbox.propTypes = {
+  index: PropTypes.number,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.bool,
@@ -56,6 +57,7 @@ WidgetCheckbox.propTypes = {
 };
 
 WidgetCheckbox.defaultProps = {
+  index: undefined,
   value: false,
   variant: 'main',
 };

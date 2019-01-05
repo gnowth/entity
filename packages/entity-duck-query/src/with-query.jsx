@@ -1,5 +1,6 @@
 import _isFunction from 'lodash/isFunction';
 import _mapKeys from 'lodash/mapKeys';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { getDisplayName } from '@gnowth/higher-order-component';
 
@@ -19,6 +20,10 @@ export default (options = {}) => (ComposedComponent) => {
         )}
       </Query>
     );
+  };
+
+  withQuery.propTypes = {
+    action: PropTypes.func.isRequired,
   };
 
   withQuery.displayName = `withQuery(${getDisplayName(ComposedComponent)})`;

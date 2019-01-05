@@ -26,21 +26,21 @@
     "@gnowth/ui": "0.2.0",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
-    "moment": "2.22.2",
     "prop-types": "15.6.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-select": "2.1.1",
+    "react-select": "2.2.0",
     "reselect": "4.0.0"
   },
   "peerDependencies": {
-    "@storybook/addon-a11y": "4.0.7",
-    "@storybook/addon-actions": "4.0.7",
-    "@storybook/addon-centered": "4.0.7",
-    "@storybook/addon-knobs": "4.0.7",
-    "@storybook/react": "4.0.7",
-    "react": "16.6.3",
+    "@storybook/addon-a11y": "4.1.4",
+    "@storybook/addon-actions": "4.1.4",
+    "@storybook/addon-centered": "4.1.4",
+    "@storybook/addon-knobs": "4.1.4",
+    "@storybook/react": "4.1.4",
+    "moment": "2.23.0",
+    "react": "16.7.0",
     "react-datepicker": "2.0.0",
     "react-intl": "2.7.2",
-    "styled-components": "4.1.1"
+    "styled-components": "4.1.3"
   }
 }

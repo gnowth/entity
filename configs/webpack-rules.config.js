@@ -21,10 +21,7 @@ module.exports = [
     test: /\.(css)(\?.*)?$/,
     use: extract([
       !isBuild && 'style-loader',
-      {
-        loader: 'css-loader',
-        options: { minimize: isBuild },
-      },
+      'css-loader',
     ]),
   },
 

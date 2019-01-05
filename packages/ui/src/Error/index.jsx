@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import { Map } from 'immutable';
 
@@ -15,5 +17,16 @@ const UIError = props => (
     }
   </UITypeSet>
 );
+
+UIError.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypesImmutable.map,
+  ]),
+};
+
+UIError.defaultProps = {
+  children: undefined,
+};
 
 export default UIError;

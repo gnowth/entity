@@ -27,10 +27,10 @@
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
     "prop-types-exact": "1.2.0",
-    "react-immutable-proptypes": "2.1.0",
-    "react-redux": "5.1.1"
+    "react-immutable-proptypes": "2.1.0"
   },
   "peerDependencies": {
-    "react": "16.6.3"
+    "react": "16.7.0",
+    "react-redux": "6.0.0"
   }
 }

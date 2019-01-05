@@ -1,9 +1,10 @@
 const _flatten = require('lodash/flatten');
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
 const rules = require('./webpack-rules.config');
 const alias = require('./alias.config');
@@ -36,11 +37,6 @@ module.exports = {
   },
 
   plugins: _flatten([
-    // Build plugins
-    isBuild && [
-      new webpack.optimize.AggressiveMergingPlugin(),
-    ],
-
     // Common plugins
     [
       new ExtractTextPlugin('[name].[hash].css'),
@@ -58,6 +54,18 @@ module.exports = {
         },
         { reload: false } // eslint-disable-line comma-dangle
       ),
+    ],
+
+    // Build plugins
+    isBuild && [
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new OptimizeCssnanoPlugin({
+        cssnanoOptions: {
+          preset: ['default', {
+            discardComments: { removeAll: true },
+          }],
+        },
+      }),
     ],
   ]).filter(p => p),
 };

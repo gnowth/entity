@@ -6,7 +6,7 @@ import PropTypesDuck from '@gnowth/prop-types-duck';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 import { createSelector } from 'reselect';
 
 import queryContainer from './query-container';
@@ -99,7 +99,7 @@ class Query extends React.Component {
         && !this.props.processing
         && !this.props.processingDidFail
         && this.props.queryContainer_action.meta.id === undefined
-        && !this.props.recordsCountHidden
+        && !this.props.recordCountHidden
         && this.props.value !== undefined
         && this.props.value.size === 0,
     };
@@ -127,30 +127,34 @@ class Query extends React.Component {
 
   renderAsComponent(props) {
     const shouldShow = this.getShouldShow();
+    const ProcessingComponent = this.props.processingComponent;
+    const ProcessingDidFailComponent = this.props.processingDidFailComponent;
+    const RecordCountComponent = this.props.recordCountComponent;
+    const RecordCountNoneComponent = this.props.recordCountNoneComponent;
 
     return (
       <>
         { shouldShow.processingComponent && (
-          <this.props.processingComponent {...(this.props.processingComponentProps || {})} />
+          <ProcessingComponent {...(this.props.processingComponentProps || {})} />
         )}
 
         { shouldShow.processingDidFailComponent && (
-          <this.props.processingDidFailComponent {...(this.props.processingDidFailComponentProps || {})} />
+          <ProcessingDidFailComponent {...(this.props.processingDidFailComponentProps || {})} />
         )}
 
         { shouldShow.recordCountComponent && (
-          <this.props.recordCountComponent
+          <RecordCountComponent
             value={
               this.props.field.entity.paginated && this.props.pagination
                 ? this.props.pagination.get('count')
                 : this.props.value.size
             }
-            {...(this.props.recordsCountComponentProps || {})}
+            {...(this.props.recordCountComponentProps || {})}
           />
         )}
 
         { shouldShow.recordCountNoneComponent && (
-          <this.props.recordCountNoneComponent {...(this.props.recordsCountNoneComponentProps || {})} />
+          <RecordCountNoneComponent {...(this.props.recordCountNoneComponentProps || {})} />
         )}
 
         { shouldShow.component && this.renderComponent(props) }
@@ -226,6 +230,7 @@ Query.propTypes = exact({
   name: PropTypes.string,
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool),
   onInputChange: PropTypes.func.isRequired,
+  pagination: PropTypesImmutable.map,
   persist: PropTypes.bool,
   persistDirty: PropTypesPlus.notRequiredIfNot('persist', PropTypes.bool),
   process: PropTypes.func.isRequired,
@@ -236,9 +241,14 @@ Query.propTypes = exact({
   processingDidFailComponent: PropTypesPlus.isRequiredIf('processingDidFailComponentProps', PropTypesPlus.component),
   processingDidFailComponentProps: PropTypes.shape({}),
   processingSelector: PropTypes.func.isRequired,
-  queryContainer_action: PropTypes.shape({}).isRequired,
+  queryContainer_action: PropTypes.shape({
+    meta: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
   recordCountComponent: PropTypesPlus.isRequiredIf('recordCountComponentProps', PropTypesPlus.component),
   recordCountComponentProps: PropTypes.shape({}),
+  recordCountHidden: PropTypes.bool,
   recordCountNoneComponent: PropTypesPlus.isRequiredIf('recordCountNoneComponentProps', PropTypesPlus.component),
   recordCountNoneComponentProps: PropTypes.shape({}),
   save: PropTypes.func.isRequired,
@@ -260,6 +270,7 @@ Query.defaultProps = {
   inputValue: '',
   name: 'entity-duck-query',
   many: undefined,
+  pagination: Map(),
   persist: true,
   persistDirty: undefined,
   processingComponent: undefined,
@@ -268,6 +279,7 @@ Query.defaultProps = {
   processingDidFailComponentProps: undefined,
   recordCountComponent: undefined,
   recordCountComponentProps: undefined,
+  recordCountHidden: false,
   recordCountNoneComponent: undefined,
   recordCountNoneComponentProps: undefined,
   shouldProcess: true,

@@ -1,3 +1,5 @@
+import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
@@ -80,5 +82,10 @@ const FormObservation = props => (
     />
   </Form>
 );
+
+FormObservation.propTypes = {
+  field: PropTypesEntity.entityField.isRequired,
+  value: PropTypesImmutable.map.isRequired,
+};
 
 export default FormObservation;

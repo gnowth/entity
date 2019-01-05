@@ -1,5 +1,4 @@
 import _isFunction from 'lodash/isFunction';
-import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { DefaultProvider } from '@gnowth/default';
@@ -58,7 +57,7 @@ class App extends React.PureComponent {
   }
 }
 
-App.propTypes = exact({
+App.propTypes = {
   children: PropTypes.node.isRequired,
   defaults: PropTypes.shape({}),
   intlProviderProps: PropTypes.exact({
@@ -68,7 +67,7 @@ App.propTypes = exact({
   themeProviderProps: PropTypes.exact({
     theme: PropTypes.shape({}).isRequired,
   }),
-});
+};
 
 App.defaultProps = {
   defaults: {},
