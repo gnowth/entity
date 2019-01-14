@@ -3,24 +3,24 @@
 exports[`renders correctly 1`] = `
 <div>
   <div
-    className="styles__Header-sc-14sqd7a-1 ljZgKF"
+    className="Actionstyles__Header-sc-1vggt73-1 gBNTiC"
   >
     <pre
-      className="TypeSet-sc-4js5ye-0 hvRjOD"
+      className="TypeSet-sc-2d00f5-0 gXqwhy"
     >
       Action
     </pre>
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX kdHIzy"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Person Responsible
     </label>
     <div
-      className="css-10nd86i Select-rumkkw-0 bfkbON"
+      className="css-10nd86i Select-z1bq9m-0 jHBZRe"
       onKeyDown={[Function]}
     >
       <div
@@ -128,15 +128,15 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX kdHIzy"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Due Date
     </label>
     <div
-      className="styles__Wrapper-sc-11ku8fc-0 sc-gzVnrw kVNhwm"
+      className="Datestyles__Wrapper-ety37l-0 sc-gzVnrw kVNhwm"
     >
       <div
         className="react-datepicker-wrapper"
@@ -145,7 +145,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="styles__DatePicker-sc-11ku8fc-1 hTbYlq"
+            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -161,15 +161,15 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX kdHIzy"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Completed by
     </label>
     <div
-      className="css-10nd86i Select-rumkkw-0 bfkbON"
+      className="css-10nd86i Select-z1bq9m-0 jHBZRe"
       onKeyDown={[Function]}
     >
       <div
@@ -277,15 +277,15 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX kdHIzy"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Completed Date
     </label>
     <div
-      className="styles__Wrapper-sc-11ku8fc-0 sc-gzVnrw kVNhwm"
+      className="Datestyles__Wrapper-ety37l-0 sc-gzVnrw kVNhwm"
     >
       <div
         className="react-datepicker-wrapper"
@@ -294,7 +294,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="styles__DatePicker-sc-11ku8fc-1 hTbYlq"
+            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -310,12 +310,12 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="styles__Controls-sc-14sqd7a-0 djUtoL"
+    className="Actionstyles__Controls-sc-1vggt73-0 eMcHEn"
   >
     
     
     <button
-      className="styles__Button-s8wl3z-0 jUaIjh"
+      className="Buttonstyles__Button-mk3f56-0 kvmrvA"
       onClick={[Function]}
       to=""
     >
@@ -324,7 +324,7 @@ exports[`renders correctly 1`] = `
     
     
     <button
-      className="styles__Button-s8wl3z-0 jUaIjh"
+      className="Buttonstyles__Button-mk3f56-0 kvmrvA"
       onClick={[Function]}
       to=""
     >

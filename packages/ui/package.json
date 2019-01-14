@@ -16,6 +16,7 @@
     "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
     "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
     "postbuild": "npm run link-main:dist",
+    "postclean": "npm run link-main:src",
     "prebuild": "npm run clean"
   },
   "dependencies": {

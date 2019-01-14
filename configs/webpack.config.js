@@ -2,6 +2,7 @@ const _flatten = require('lodash/flatten');
 const path = require('path');
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
@@ -19,6 +20,9 @@ module.exports = {
   resolve: {
     alias,
     extensions: ['.js', '.jsx'],
+    plugins: [
+      new DirectoryNamedPlugin(true),
+    ],
   },
 
   entry: {

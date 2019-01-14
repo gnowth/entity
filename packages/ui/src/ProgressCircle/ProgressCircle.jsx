@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Circle, Container, SVG } from './styles';
+import { Circle, Container, SVG } from './ProgressCircle.styles';
 
 const ProgressCircle = props => (
   <Container {...props}>

@@ -4,7 +4,7 @@ import React from 'react';
 
 import UITypeSet from '../TypeSet';
 import UIProgressCircle from '../ProgressCircle';
-import { Button, LinkHyper, LinkRouter } from './styles';
+import { Button, LinkHyper, LinkRouter } from './Button.styles';
 
 const UIButton = ({ processing, ...props }) => (
   <>

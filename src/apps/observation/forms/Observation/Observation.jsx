@@ -10,8 +10,8 @@ import { UIErrorWell } from '@gnowth/ui';
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
-import locales from './locales';
-import styles from './styles';
+import locales from './Observation.locales';
+import styles from './Observation.styles';
 
 const FormObservation = props => (
   <Form {...props}>

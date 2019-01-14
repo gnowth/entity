@@ -6,8 +6,8 @@ import React from 'react';
 import { Control, Form } from '@entity/form';
 import { UIButton, UISpacer } from '@gnowth/ui';
 
-import locales from './locales';
-import styles, { Controls } from './styles';
+import locales from './Controls.locales';
+import styles, { Controls } from './Controls.styles';
 
 const FormControls = (props) => {
   const ExtraControlsComponent = props.extraControlsComponent;

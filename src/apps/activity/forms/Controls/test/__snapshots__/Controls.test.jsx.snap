@@ -2,24 +2,24 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="styles__Controls-sc-1dx8192-0 giAAPM"
+  className="Controlsstyles__Controls-b8kzhl-0 fjcuwP"
 >
   
   
   <button
-    className="styles__Button-s8wl3z-0 ePJqpq"
+    className="Buttonstyles__Button-mk3f56-0 ljupdW"
     onClick={[Function]}
     to=""
   >
     RESET
   </button>
   <div
-    className="Spacer-rwkhcb-0 lpcHIp"
+    className="Spacer-sc-1kn0srl-0 lfRbbW"
   />
   
   
   <button
-    className="styles__Button-s8wl3z-0 dlXBVH"
+    className="Buttonstyles__Button-mk3f56-0 eISILG"
     onClick={[Function]}
     to=""
   >
@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
   
   
   <button
-    className="styles__Button-s8wl3z-0 dlXBVH"
+    className="Buttonstyles__Button-mk3f56-0 eISILG"
     onClick={[Function]}
     to=""
   >

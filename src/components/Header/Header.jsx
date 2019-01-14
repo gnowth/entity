@@ -3,8 +3,8 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { UIBox, UIButton } from '@gnowth/ui';
 
-import locales from './locales';
-import styles from './styles';
+import locales from './Header.locales';
+import styles from './Header.styles';
 
 const Header = props => (
   <UIBox css={props.styles.header} justifyContent="flex-start">

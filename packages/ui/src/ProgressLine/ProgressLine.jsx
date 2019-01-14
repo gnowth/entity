@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as S from './style';
+import * as S from './ProgressLine.styles';
 
 const UIProgressLine = props => (
   <S.Block className={props.className} height={props.height}>

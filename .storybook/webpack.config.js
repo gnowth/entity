@@ -1,9 +1,14 @@
+const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
+
 const alias = require('../configs/alias.config');
 
 module.exports = {
   resolve: {
     alias,
     extensions: ['.js', '.jsx'],
+    plugins: [
+      new DirectoryNamedPlugin(true),
+    ],
   },
 
   module: {
