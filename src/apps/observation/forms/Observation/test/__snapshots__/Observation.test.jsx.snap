@@ -3,21 +3,21 @@
 exports[`renders correctly 1`] = `
 <div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX cFlEyZ"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX cFlEyZ"
   />
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX cFlEyZ"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX cFlEyZ"
   />
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Observation Date
     </label>
     <div
-      className="styles__Wrapper-sc-11ku8fc-0 sc-gzVnrw kVNhwm"
+      className="Datestyles__Wrapper-ety37l-0 sc-gzVnrw kVNhwm"
     >
       <div
         className="react-datepicker-wrapper"
@@ -26,7 +26,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="styles__DatePicker-sc-11ku8fc-1 hTbYlq"
+            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -42,15 +42,15 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Title
     </label>
     <input
-      className="Input__WidgetInput-dyx48c-0 ilPAeW"
+      className="Input__WidgetInput-sc-2m50dl-0 ftREri"
       errors={Immutable.List []}
       intl={
         Object {
@@ -86,15 +86,15 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Short Title
     </label>
     <input
-      className="Input__WidgetInput-dyx48c-0 ilPAeW"
+      className="Input__WidgetInput-sc-2m50dl-0 ftREri"
       errors={Immutable.List []}
       intl={
         Object {
@@ -130,15 +130,15 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Description
     </label>
     <textarea
-      className="Textarea__WidgetTextarea-sc-1glnn3d-0 jUHqTd"
+      className="Textarea__WidgetTextarea-sc-11zi4lv-0 bROpBJ"
       errors={Immutable.List []}
       name="description"
       onChange={[Function]}
@@ -147,15 +147,15 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Due Date
     </label>
     <div
-      className="styles__Wrapper-sc-11ku8fc-0 sc-gzVnrw kVNhwm"
+      className="Datestyles__Wrapper-ety37l-0 sc-gzVnrw kVNhwm"
     >
       <div
         className="react-datepicker-wrapper"
@@ -164,7 +164,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="styles__DatePicker-sc-11ku8fc-1 hTbYlq"
+            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -180,10 +180,10 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Follow up actions
     </label>
@@ -191,34 +191,34 @@ exports[`renders correctly 1`] = `
   
   
   <button
-    className="styles__Button-s8wl3z-0 ePJqpq"
+    className="Buttonstyles__Button-mk3f56-0 ljupdW"
     onClick={[Function]}
     to=""
   >
     Add action
   </button>
   <div
-    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX eWMhR"
+    className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX eWMhR"
   >
     <div
-      className="styles__Controls-sc-1dx8192-0 giAAPM"
+      className="Controlsstyles__Controls-b8kzhl-0 fjcuwP"
     >
       
       
       <button
-        className="styles__Button-s8wl3z-0 ePJqpq"
+        className="Buttonstyles__Button-mk3f56-0 ljupdW"
         onClick={[Function]}
         to=""
       >
         RESET
       </button>
       <div
-        className="Spacer-rwkhcb-0 lpcHIp"
+        className="Spacer-sc-1kn0srl-0 lfRbbW"
       />
       
       
       <button
-        className="styles__Button-s8wl3z-0 dlXBVH"
+        className="Buttonstyles__Button-mk3f56-0 eISILG"
         onClick={[Function]}
         to=""
       >
@@ -227,7 +227,7 @@ exports[`renders correctly 1`] = `
       
       
       <button
-        className="styles__Button-s8wl3z-0 dlXBVH"
+        className="Buttonstyles__Button-mk3f56-0 eISILG"
         onClick={[Function]}
         to=""
       >

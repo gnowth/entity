@@ -6,8 +6,8 @@ import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { UIIcon, UITypeSet } from '@gnowth/ui';
 
-import locales from './locales';
-import styles, { Controls, Header } from './styles';
+import locales from './Action.locales';
+import styles, { Controls, Header } from './Action.styles';
 
 const FormAction = props => (
   <Form {...props}>

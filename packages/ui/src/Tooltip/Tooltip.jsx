@@ -3,7 +3,7 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
 import UIIcon from '../Icon';
-import styles, { Popup, Wrapper } from './styles';
+import styles, { Popup, Wrapper } from './Tooltip.styles';
 
 class UITooltip extends React.Component {
   state = {

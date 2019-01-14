@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
-import { DatePicker, Wrapper } from './styles';
+import { DatePicker, Wrapper } from './Date.styles';
 
 class WidgetDate extends React.Component {
   handleChange = value => this.props.onChange({

@@ -4,18 +4,20 @@ import { Fields } from '@entity/core';
 import { List } from 'immutable';
 
 import App from 'components/App';
-
 import EntityObservation from 'apps/observation/entities/Observation';
-import ViewObservations from '..';
+
+import FormObservation from '..';
 
 jest.mock('store');
 
 it('renders correctly', () => {
   const tree = renderer.create(
     <App>
-      <ViewObservations
+      <FormObservation
+        errors={List()}
         field={new Fields.EntityField({ entity: EntityObservation })}
-        value={List()}
+        onChange={() => undefined}
+        value={EntityObservation.dataToRecord({})}
       />
     </App>,
   ).toJSON();

@@ -7,7 +7,7 @@ import UIError from '../Error';
 import UITooltip from '../Tooltip';
 import UITypeSet from '../TypeSet';
 
-import styles, { Label, UILabelRoot } from './styles';
+import styles, { Label, UILabelRoot } from './Label.styles';
 
 const UILabel = props => (
   <UILabelRoot className={props.className} css={props.css}>
