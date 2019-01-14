@@ -1,7 +1,7 @@
 {
   "author": "Thierry Wong",
   "description": "prop-types-duck",
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0-only",
   "main": "src/index.js",
   "name": "@gnowth/prop-types-duck",
   "private": false,

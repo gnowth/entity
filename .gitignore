@@ -71,3 +71,6 @@ dist/
 
 #npm
 .npmrc
+
+#flow-typed
+flow-typed/npm

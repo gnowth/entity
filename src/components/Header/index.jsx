@@ -3,35 +3,35 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { UIBox, UIButton } from '@gnowth/ui';
 
-import locale from './locale';
+import locales from './locales';
 import styles from './styles';
 
 const Header = props => (
-  <UIBox css={styles.header} justifyContent="flex-start">
+  <UIBox css={props.styles.header} justifyContent="flex-start">
     <UIButton
-      css={styles.buttons}
-      locale={props.locale.github}
+      css={props.styles.buttons}
+      locale={props.locales.github}
       to="https://github.com/gnowth/react"
       variant="text"
     />
 
     <UIButton
-      css={styles.buttons}
-      locale={props.locale.style_guide}
+      css={props.styles.buttons}
+      locale={props.locales.style_guide}
       to="https://gnowth.github.io/react/style-guide"
       variant="text"
     />
 
     <UIButton
-      css={styles.buttons}
-      locale={props.locale.changelog}
+      css={props.styles.buttons}
+      locale={props.locales.changelog}
       to="/pages/changelog"
       variant="text"
     />
 
     <UIButton
-      css={styles.buttons}
-      locale={props.locale.readme}
+      css={props.styles.buttons}
+      locale={props.locales.readme}
       to="/pages/readme"
       variant="text"
     />
@@ -39,16 +39,21 @@ const Header = props => (
 );
 
 Header.propTypes = {
-  locale: PropTypes.exact({
+  locales: PropTypes.exact({
     changelog: PropTypesPlus.locale.isRequired,
     github: PropTypesPlus.locale.isRequired,
     readme: PropTypesPlus.locale.isRequired,
     style_guide: PropTypesPlus.locale.isRequired,
   }),
+  styles: PropTypes.exact({
+    buttons: PropTypesPlus.css,
+    header: PropTypesPlus.css,
+  }),
 };
 
 Header.defaultProps = {
-  locale,
+  locales,
+  styles,
 };
 
 export default Header;

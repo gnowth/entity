@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX cFlEyZ"
+  />
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX cFlEyZ"
+  />
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+  >
+    <label
+      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+    >
+      Observation Date
+    </label>
+    <div
+      className="styles__Wrapper-sc-11ku8fc-0 sc-gzVnrw kVNhwm"
+    >
+      <div
+        className="react-datepicker-wrapper"
+      >
+        <div
+          className="react-datepicker__input-container"
+        >
+          <input
+            className="styles__DatePicker-sc-11ku8fc-1 hTbYlq"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={false}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+  >
+    <label
+      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+    >
+      Title
+    </label>
+    <input
+      className="Input__WidgetInput-dyx48c-0 ilPAeW"
+      errors={Immutable.List []}
+      intl={
+        Object {
+          "defaultFormats": Object {},
+          "defaultLocale": "en",
+          "formatDate": [Function],
+          "formatHTMLMessage": [Function],
+          "formatMessage": [Function],
+          "formatNumber": [Function],
+          "formatPlural": [Function],
+          "formatRelative": [Function],
+          "formatTime": [Function],
+          "formats": Object {},
+          "formatters": Object {
+            "getDateTimeFormat": [Function],
+            "getMessageFormat": [Function],
+            "getNumberFormat": [Function],
+            "getPluralFormat": [Function],
+            "getRelativeFormat": [Function],
+          },
+          "locale": "en",
+          "messages": Object {},
+          "now": [Function],
+          "onError": [Function],
+          "textComponent": "span",
+          "timeZone": null,
+        }
+      }
+      name="title"
+      onChange={[Function]}
+      value=""
+      variant="main"
+    />
+  </div>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+  >
+    <label
+      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+    >
+      Short Title
+    </label>
+    <input
+      className="Input__WidgetInput-dyx48c-0 ilPAeW"
+      errors={Immutable.List []}
+      intl={
+        Object {
+          "defaultFormats": Object {},
+          "defaultLocale": "en",
+          "formatDate": [Function],
+          "formatHTMLMessage": [Function],
+          "formatMessage": [Function],
+          "formatNumber": [Function],
+          "formatPlural": [Function],
+          "formatRelative": [Function],
+          "formatTime": [Function],
+          "formats": Object {},
+          "formatters": Object {
+            "getDateTimeFormat": [Function],
+            "getMessageFormat": [Function],
+            "getNumberFormat": [Function],
+            "getPluralFormat": [Function],
+            "getRelativeFormat": [Function],
+          },
+          "locale": "en",
+          "messages": Object {},
+          "now": [Function],
+          "onError": [Function],
+          "textComponent": "span",
+          "timeZone": null,
+        }
+      }
+      name="title_short"
+      onChange={[Function]}
+      value=""
+      variant="main"
+    />
+  </div>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+  >
+    <label
+      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+    >
+      Description
+    </label>
+    <textarea
+      className="Textarea__WidgetTextarea-sc-1glnn3d-0 jUHqTd"
+      errors={Immutable.List []}
+      name="description"
+      onChange={[Function]}
+      value=""
+      variant="main"
+    />
+  </div>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+  >
+    <label
+      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+    >
+      Due Date
+    </label>
+    <div
+      className="styles__Wrapper-sc-11ku8fc-0 sc-gzVnrw kVNhwm"
+    >
+      <div
+        className="react-datepicker-wrapper"
+      >
+        <div
+          className="react-datepicker__input-container"
+        >
+          <input
+            className="styles__DatePicker-sc-11ku8fc-1 hTbYlq"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={false}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX WEtDF"
+  >
+    <label
+      className="TypeSet-sc-4js5ye-0 lcmCNw styles__Label-sc-18byogl-1 eYgmss"
+    >
+      Follow up actions
+    </label>
+  </div>
+  
+  
+  <button
+    className="styles__Button-s8wl3z-0 ePJqpq"
+    onClick={[Function]}
+    to=""
+  >
+    Add action
+  </button>
+  <div
+    className="styles__UILabelRoot-sc-18byogl-0 sc-ifAKCX eWMhR"
+  >
+    <div
+      className="styles__Controls-sc-1dx8192-0 giAAPM"
+    >
+      
+      
+      <button
+        className="styles__Button-s8wl3z-0 ePJqpq"
+        onClick={[Function]}
+        to=""
+      >
+        RESET
+      </button>
+      <div
+        className="Spacer-rwkhcb-0 lpcHIp"
+      />
+      
+      
+      <button
+        className="styles__Button-s8wl3z-0 dlXBVH"
+        onClick={[Function]}
+        to=""
+      >
+        SAVE
+      </button>
+      
+      
+      <button
+        className="styles__Button-s8wl3z-0 dlXBVH"
+        onClick={[Function]}
+        to=""
+      >
+        SUBMIT
+      </button>
+    </div>
+  </div>
+</div>
+`;

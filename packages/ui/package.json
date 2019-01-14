@@ -1,7 +1,7 @@
 {
   "author": "Thierry Wong",
   "description": "ui",
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0-only",
   "main": "src/index.js",
   "name": "@gnowth/ui",
   "private": false,
@@ -29,11 +29,11 @@
     "react-intl": "2.7.2"
   },
   "peerDependencies": {
-    "@storybook/addon-a11y": "4.1.4",
-    "@storybook/addon-actions": "4.1.4",
-    "@storybook/addon-centered": "4.1.4",
-    "@storybook/addon-knobs": "4.1.4",
-    "@storybook/react": "4.1.4",
+    "@storybook/addon-a11y": "4.1.6",
+    "@storybook/addon-actions": "4.1.6",
+    "@storybook/addon-centered": "4.1.6",
+    "@storybook/addon-knobs": "4.1.6",
+    "@storybook/react": "4.1.6",
     "react": "16.7.0",
     "react-router-dom": "4.3.1",
     "styled-components": "4.1.3"

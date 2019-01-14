@@ -1,4 +1,4 @@
-import { getId, NULL_ID } from './utils';
+import { getId, NULL_ID } from '../utils';
 
 describe('getId', () => {
   test('getId returns a string', () => {

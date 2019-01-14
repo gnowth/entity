@@ -22,7 +22,7 @@ class UITooltip extends React.Component {
       >
         <Component
           onClick={this.handleClick}
-          {...{ css: styles.icon }}
+          {...{ css: this.props.styles.icon }}
           {...this.props.componentProps}
         />
 
@@ -39,9 +39,13 @@ UITooltip.propTypes = {
   component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
   css: PropTypesPlus.css,
+  styles: PropTypes.exact({
+    icon: PropTypesPlus.css,
+  }),
 };
 
 UITooltip.defaultProps = {
+  styles,
   component: UIIcon,
   componentProps: {},
   css: undefined,

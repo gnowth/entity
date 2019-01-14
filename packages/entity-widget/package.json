@@ -1,7 +1,7 @@
 {
   "author": "Thierry Wong",
   "description": "entity-widget",
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0-only",
   "main": "src/index.js",
   "name": "@entity/widget",
   "private": false,
@@ -32,11 +32,11 @@
     "reselect": "4.0.0"
   },
   "peerDependencies": {
-    "@storybook/addon-a11y": "4.1.4",
-    "@storybook/addon-actions": "4.1.4",
-    "@storybook/addon-centered": "4.1.4",
-    "@storybook/addon-knobs": "4.1.4",
-    "@storybook/react": "4.1.4",
+    "@storybook/addon-a11y": "4.1.6",
+    "@storybook/addon-actions": "4.1.6",
+    "@storybook/addon-centered": "4.1.6",
+    "@storybook/addon-knobs": "4.1.6",
+    "@storybook/react": "4.1.6",
     "moment": "2.23.0",
     "react": "16.7.0",
     "react-datepicker": "2.0.0",

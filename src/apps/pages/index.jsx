@@ -11,7 +11,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import changelog from 'root/CHANGELOG.md';
 import readme from 'root/README.md';
 
-import locale from './locale';
+import locales from './locales';
 
 const Screen = styled.div`
   align-items: center;
@@ -45,7 +45,7 @@ const AppPage = props => (
         path={`${props.match.url}/notfound`}
         component={() => (
           <Screen>
-            <UITypeSet locale={locale.not_found} variant="header" />
+            <UITypeSet locale={locales.not_found} variant="header" />
           </Screen>
         )}
       />
@@ -56,14 +56,14 @@ const AppPage = props => (
 );
 
 AppPage.propTypes = {
-  locale: PropTypes.exact({
+  locales: PropTypes.exact({
     not_found: PropTypesPlus.locale.isRequired,
   }),
   match: PropTypesRouter.match.isRequired,
 };
 
 AppPage.defaultProps = {
-  locale,
+  locales,
 };
 
 export default AppPage;

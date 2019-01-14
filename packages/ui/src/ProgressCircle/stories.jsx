@@ -5,7 +5,7 @@ import { select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { ThemeConsumer } from 'styled-components';
 
-import UIProgressCircle from './index';
+import UIProgressCircle from '.';
 
 export default mod => storiesOf('UI/ProcessingCircle', mod)
   .addDecorator(centered)

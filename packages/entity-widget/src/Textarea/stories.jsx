@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import WidgetTextarea from './index';
+import WidgetTextarea from '.';
 
 const Wrapper = styled.div`
   text-align: center;

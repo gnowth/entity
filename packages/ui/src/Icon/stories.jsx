@@ -5,7 +5,7 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import UIIcon from './index';
+import UIIcon from '.';
 
 const iconCss = css`
   margin-right: 0.5rem;

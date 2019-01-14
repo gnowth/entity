@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
@@ -8,7 +10,7 @@ import { UIErrorWell } from '@gnowth/ui';
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
-import locale from './locale';
+import locales from './locales';
 import styles from './styles';
 
 const FormObservation = props => (
@@ -23,40 +25,40 @@ const FormObservation = props => (
     <Input
       name="date_activity"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: locale.date_activity,
+        css: props.styles.input,
+        labelLocale: props.locales.date_activity,
       }}
     />
 
     <Input
       name="title"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: locale.title,
+        css: props.styles.input,
+        labelLocale: props.locales.title,
       }}
     />
 
     <Input
       name="title_short"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: locale.title_short,
+        css: props.styles.input,
+        labelLocale: props.locales.title_short,
       }}
     />
 
     <Input
       name="description"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: locale.description,
+        css: props.styles.input,
+        labelLocale: props.locales.description,
       }}
     />
 
     <Input
       name="date_due"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: locale.date_due,
+        css: props.styles.input,
+        labelLocale: props.locales.date_due,
       }}
     />
 
@@ -65,27 +67,45 @@ const FormObservation = props => (
       component={FormAction}
       componentProps={({ value }) => ({ records: value })}
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: locale.follow_up_actions,
+        css: props.styles.input,
+        labelLocale: props.locales.follow_up_actions,
       }}
       many
     />
 
     <Control
       action={({ value, field, ...options }) => field.entity.actionActionsAdd(value, options)}
-      componentProps={{ locale: locale.follow_up_actions_add }}
+      componentProps={{ locale: props.locales.follow_up_actions_add }}
     />
 
     <Input
       component={FormControls}
-      componentProps={{ css: styles.controls }}
+      componentProps={{ css: props.styles.controls }}
     />
   </Form>
 );
 
 FormObservation.propTypes = {
   field: PropTypesEntity.entityField.isRequired,
+  locales: PropTypes.exact({
+    date_activity: PropTypesPlus.locale.isRequired,
+    date_due: PropTypesPlus.locale.isRequired,
+    description: PropTypesPlus.locale.isRequired,
+    follow_up_actions: PropTypesPlus.locale.isRequired,
+    follow_up_actions_add: PropTypesPlus.locale.isRequired,
+    title: PropTypesPlus.locale.isRequired,
+    title_short: PropTypesPlus.locale.isRequired,
+  }),
+  styles: PropTypes.exact({
+    input: PropTypesPlus.css,
+    controls: PropTypesPlus.css,
+  }),
   value: PropTypesImmutable.map.isRequired,
+};
+
+FormObservation.defaultProps = {
+  locales,
+  styles,
 };
 
 export default FormObservation;

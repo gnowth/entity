@@ -25,11 +25,11 @@ const UILabel = props => (
     { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
       <UITooltip
         componentProps={{
-          css: styles.icon,
+          css: props.styles.icon,
           name: 'error',
           material: true,
         }}
-        css={styles.tooltip}
+        css={props.styles.tooltip}
       >
         { props.errors.map((error, index) => (
           <UIError key={index}>{ error }</UIError> // eslint-disable-line
@@ -48,9 +48,14 @@ UILabel.propTypes = {
   label: PropTypes.string,
   labelComponentProps: PropTypes.shape({}),
   labelLocale: PropTypesPlus.locale,
+  styles: PropTypes.exact({
+    icon: PropTypesPlus.css,
+    tooltip: PropTypesPlus.css,
+  }),
 };
 
 UILabel.defaultProps = {
+  styles,
   children: undefined,
   css: undefined,
   errors: undefined,

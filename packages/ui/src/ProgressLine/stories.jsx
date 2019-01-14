@@ -5,7 +5,7 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import UIProgressLine from './index';
+import UIProgressLine from '.';
 
 const Block = styled.div`
   width: 300px;

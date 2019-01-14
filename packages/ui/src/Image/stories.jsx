@@ -5,7 +5,7 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import UIImage from './index';
+import UIImage from '.';
 
 const imageCss = css`
   margin-right: 0.5rem;
