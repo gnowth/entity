@@ -6,51 +6,53 @@ import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { UIIcon, UITypeSet } from '@gnowth/ui';
 
-import locale from './locale';
+import locales from './locales';
 import styles, { Controls, Header } from './styles';
 
 const FormAction = props => (
   <Form {...props}>
     <Header>
-      <UITypeSet locale={props.locale.header_title} variant="header_title" />
+      <UITypeSet locale={props.locales.header_title} variant="header_title" />
 
-      <Control
-        action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
-        component={UIIcon}
-        componentProps={{ name: 'delete' }}
-        array
-      />
+      { props.records && props.index !== null && (
+        <Control
+          action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
+          component={UIIcon}
+          componentProps={{ name: 'delete' }}
+          array
+        />
+      )}
     </Header>
 
     <Input
       name="person_responsible"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: props.locale.person_responsible,
+        css: props.styles.input,
+        labelLocale: props.locales.person_responsible,
       }}
     />
 
     <Input
       name="date_due"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: props.locale.date_due,
+        css: props.styles.input,
+        labelLocale: props.locales.date_due,
       }}
     />
 
     <Input
       name="completed_by"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: props.locale.completed_by,
+        css: props.styles.input,
+        labelLocale: props.locales.completed_by,
       }}
     />
 
     <Input
       name="date_completed"
       wrapperComponentProps={{
-        css: styles.input,
-        labelLocale: props.locale.date_completed,
+        css: props.styles.input,
+        labelLocale: props.locales.date_completed,
       }}
     />
 
@@ -58,16 +60,16 @@ const FormAction = props => (
       <Control
         action={({ value, field, ...options }) => field.entity.actionUpdate(value, options)}
         componentProps={{
-          css: styles.control,
-          locale: props.locale.update,
+          css: props.styles.control,
+          locale: props.locales.update,
         }}
       />
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionComplete(value, options)}
         componentProps={{
-          css: styles.control,
-          locale: props.locale.complete,
+          css: props.styles.control,
+          locale: props.locales.complete,
         }}
       />
     </Controls>
@@ -81,9 +83,9 @@ FormAction.propTypes = {
     actionUpdate: PropTypes.func.isRequired,
   }).isRequired,
 
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
 
-  locale: PropTypes.shape({
+  locales: PropTypes.exact({
     complete: PropTypesPlus.locale.isRequired,
     completed_by: PropTypesPlus.locale.isRequired,
     date_completed: PropTypesPlus.locale.isRequired,
@@ -93,11 +95,19 @@ FormAction.propTypes = {
     update: PropTypesPlus.locale.isRequired,
   }),
 
-  records: PropTypesImmutable.list.isRequired,
+  records: PropTypesImmutable.list,
+
+  styles: PropTypes.exact({
+    control: PropTypesPlus.css.isRequired,
+    input: PropTypesPlus.css.isRequired,
+  }),
 };
 
 FormAction.defaultProps = {
-  locale,
+  locales,
+  styles,
+  index: null,
+  records: undefined,
 };
 
 export default FormAction;

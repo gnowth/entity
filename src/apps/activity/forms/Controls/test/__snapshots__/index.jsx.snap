@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="styles__Controls-sc-1dx8192-0 giAAPM"
+>
+  
+  
+  <button
+    className="styles__Button-s8wl3z-0 ePJqpq"
+    onClick={[Function]}
+    to=""
+  >
+    RESET
+  </button>
+  <div
+    className="Spacer-rwkhcb-0 lpcHIp"
+  />
+  
+  
+  <button
+    className="styles__Button-s8wl3z-0 dlXBVH"
+    onClick={[Function]}
+    to=""
+  >
+    SAVE
+  </button>
+  
+  
+  <button
+    className="styles__Button-s8wl3z-0 dlXBVH"
+    onClick={[Function]}
+    to=""
+  >
+    SUBMIT
+  </button>
+</div>
+`;

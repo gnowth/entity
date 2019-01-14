@@ -4,11 +4,16 @@ import React from 'react';
 import { withDefault } from '@gnowth/default';
 import { UIWell } from '@gnowth/ui';
 
-const ViewScreen = ({ component: Component, ...props }) => (
-  <Component ratio={props.ratio} variant={props.variant}>
-    <props.queryComponent {...props.queryComponentProps} />
-  </Component>
-);
+const ViewScreen = (props) => {
+  const Component = props.component;
+  const QueryComponent = props.queryComponent;
+
+  return (
+    <Component ratio={props.ratio} variant={props.variant}>
+      <QueryComponent {...props.queryComponentProps} />
+    </Component>
+  );
+};
 
 ViewScreen.propTypes = {
   component: PropTypesPlus.component,

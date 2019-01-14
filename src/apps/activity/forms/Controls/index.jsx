@@ -6,49 +6,53 @@ import React from 'react';
 import { Control, Form } from '@entity/form';
 import { UIButton, UISpacer } from '@gnowth/ui';
 
-import locale from './locale';
+import locales from './locales';
 import styles, { Controls } from './styles';
 
-const FormControls = props => (
-  <Form {...props}>
-    { !props.resetHidden && (
-      <Control
-        action={props.resetAction}
-        component={props.buttonComponent}
-        componentProps={{
-          locale: locale.reset,
-          ...props.resetButtonComponentProps,
-        }}
-      />
-    )}
+const FormControls = (props) => {
+  const ExtraControlsComponent = props.extraControlsComponent;
 
-    <props.extraControlsComponent />
+  return (
+    <Form {...props}>
+      { !props.resetHidden && (
+        <Control
+          action={props.resetAction}
+          component={props.buttonComponent}
+          componentProps={{
+            locale: props.locales.reset,
+            ...props.resetButtonComponentProps,
+          }}
+        />
+      )}
 
-    { !props.saveHidden && (
-      <Control
-        action={props.saveAction}
-        component={props.buttonComponent}
-        componentProps={{
-          css: styles.buttons,
-          locale: locale.save,
-          ...props.saveButtonComponentProps,
-        }}
-      />
-    )}
+      <ExtraControlsComponent />
 
-    { !props.submitHidden && (
-      <Control
-        action={props.submitAction}
-        component={props.buttonComponent}
-        componentProps={{
-          css: styles.buttons,
-          locale: locale.submit,
-          ...props.submitButtonComponentProps,
-        }}
-      />
-    )}
-  </Form>
-);
+      { !props.saveHidden && (
+        <Control
+          action={props.saveAction}
+          component={props.buttonComponent}
+          componentProps={{
+            css: props.styles.buttons,
+            locale: props.locales.save,
+            ...props.saveButtonComponentProps,
+          }}
+        />
+      )}
+
+      { !props.submitHidden && (
+        <Control
+          action={props.submitAction}
+          component={props.buttonComponent}
+          componentProps={{
+            css: props.styles.buttons,
+            locale: props.locales.submit,
+            ...props.submitButtonComponentProps,
+          }}
+        />
+      )}
+    </Form>
+  );
+};
 
 FormControls.propTypes = {
   buttonComponent: PropTypesPlus.component,
@@ -59,12 +63,20 @@ FormControls.propTypes = {
     actionSave: PropTypes.func.isRequired,
     actionSubmit: PropTypes.func.isRequired,
   }).isRequired,
+  locales: PropTypes.exact({
+    reset: PropTypesPlus.locale.isRequired,
+    save: PropTypesPlus.locale.isRequired,
+    submit: PropTypesPlus.locale.isRequired,
+  }),
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
   resetHidden: PropTypes.bool,
   saveAction: PropTypes.func,
   saveButtonComponentProps: PropTypes.shape({}),
   saveHidden: PropTypes.bool,
+  styles: PropTypes.exact({
+    buttons: PropTypesPlus.css,
+  }),
   submitAction: PropTypes.func,
   submitButtonComponentProps: PropTypes.shape({}),
   submitHidden: PropTypes.bool,
@@ -72,6 +84,8 @@ FormControls.propTypes = {
 };
 
 FormControls.defaultProps = {
+  locales,
+  styles,
   buttonComponent: UIButton,
   component: Controls,
   extraControlsComponent: UISpacer,

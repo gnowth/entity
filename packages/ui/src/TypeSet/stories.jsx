@@ -5,7 +5,7 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import UITypeSet from './index';
+import UITypeSet from '.';
 
 const Wrapper = styled.div`
   text-align: center;

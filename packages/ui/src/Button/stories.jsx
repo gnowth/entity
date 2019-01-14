@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
-import UIButton from './index';
+import UIButton from '.';
 
 const Wrapper = styled.div`
   text-align: center;

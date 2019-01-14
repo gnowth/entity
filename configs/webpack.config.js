@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
 const rules = require('./webpack-rules.config');
@@ -40,7 +40,7 @@ module.exports = {
     // Common plugins
     [
       new ExtractTextPlugin('[name].[hash].css'),
-      new HtmlWebpackPlugin({ template: 'assets/index.html' }),
+      new HtmlPlugin({ template: 'assets/index.html' }),
     ],
 
     // Development plugins
