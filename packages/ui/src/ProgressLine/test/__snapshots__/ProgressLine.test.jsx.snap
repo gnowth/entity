@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="ProgressLinestyles__Block-sc-190heoc-0 lnOvKB"
+  height="4px"
+>
+  <div
+    className="ProgressLinestyles__Buffer-sc-190heoc-1 CWJxH"
+  />
+  <div
+    className="ProgressLinestyles__BarPrimary-sc-190heoc-2 jDuzrd"
+    value={null}
+  >
+    <span
+      className="ProgressLinestyles__BarPrimaryInner-sc-190heoc-3 beNip"
+      value={null}
+    />
+  </div>
+  <div
+    className="ProgressLinestyles__BarSecondary-sc-190heoc-4 dGZsfx"
+  >
+    <span
+      className="ProgressLinestyles__BarSecondaryInner-sc-190heoc-5 biugfP"
+    />
+  </div>
+</div>
+`;

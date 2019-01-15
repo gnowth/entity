@@ -6,7 +6,7 @@ import { withProps } from '@gnowth/higher-order-component';
 import { injectIntl } from 'react-intl';
 
 const TypeSet = styled.pre`
-  ${props => props.theme.typesets?.[props.variant]?.root}
+  ${props => props.theme?.typesets?.[props.variant]?.root}
   ${props => props.css}
 `;
 
@@ -26,7 +26,7 @@ export default _flowRight(
   withProps(props => ({
     as: props.component === null
       ? ({ children }) => children
-      : (props.component || props.theme.typesets?.[props.variant || 'text']?.component),
+      : (props.component || props.theme?.typesets?.[props.variant || 'text']?.component),
     children: props.children === undefined
       ? props.intl.formatMessage(props.locale, props.values)
       : props.children,

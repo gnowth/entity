@@ -26,6 +26,6 @@ export default _flowRight(
   withTheme,
   withProps(props => ({
     alt: props.name,
-    src: props.theme.images?.[props.name],
+    src: props.theme?.images?.[props.name],
   })),
 )(UIImage);

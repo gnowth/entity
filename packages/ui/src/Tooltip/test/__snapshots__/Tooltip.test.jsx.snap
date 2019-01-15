@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="Tooltipstyles__Wrapper-e5uewv-0 sc-bdVaJa inYuCB"
+>
+  <i
+    className="icon icon-apple Icon__UIIcon-sc-10so2ko-0 dgxCUQ"
+    name="apple"
+    onClick={[Function]}
+  />
+  <div
+    className="Tooltipstyles__Popup-e5uewv-1 bJpmwY"
+    hidden={true}
+  >
+    Test
+  </div>
+</div>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="ProgressCirclestyles__Container-sc-8rt8fw-1 cKCoNp"
+  size="32px"
+  value={null}
+>
+  <svg
+    className="ProgressCirclestyles__SVG-sc-8rt8fw-2 fkhGXm"
+    focusable="false"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 100 100"
+  >
+    <circle
+      className="ProgressCirclestyles__Circle-sc-8rt8fw-0 dukQRY"
+      cx="50%"
+      cy="50%"
+      r="40"
+      value={null}
+    />
+  </svg>
+</div>
+`;
