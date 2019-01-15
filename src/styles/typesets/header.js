@@ -1,3 +1,4 @@
+import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
 import baseCss from './base';
@@ -11,16 +12,16 @@ const baseHeader = css`
 
 export const header = {
   component: 'h1',
-  css: css`
+  root: css`
     ${baseHeader}
   `,
 };
 
 export const header_primary = {
   component: 'h1',
-  css: css`
+  root: css`
     ${baseHeader}
 
-    color: ${props => props.theme.vars.colorPrimary};
+    color: ${color({ name: 'primary' })};
   `,
 };

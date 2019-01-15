@@ -1,3 +1,4 @@
+import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
 export const contained = css`
@@ -7,13 +8,13 @@ export const contained = css`
 export const outlined = css`
   border: 1px solid currentColor;
   border-radius: 3px;
-  color: ${props => props.theme.vars.colorPrimary};
+  color: ${color({ name: 'primary' })};
   cursor: pointer;
   padding: 5px 30px;
 `;
 
 export const text = css`
-  color: ${props => props.theme.vars.colorBlack};
+  color: ${color({ name: 'black' })};
   text-decoration: none;
 `;
 

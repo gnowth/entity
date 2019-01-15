@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Person Responsible
     </label>
@@ -131,7 +131,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Due Date
     </label>
@@ -145,7 +145,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
+            className="Datestyles__DatePicker-ety37l-1 Vphxm"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -164,7 +164,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Completed by
     </label>
@@ -280,7 +280,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX kdHIzy"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Completed Date
     </label>
@@ -294,7 +294,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
+            className="Datestyles__DatePicker-ety37l-1 Vphxm"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}

@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
+import { color, component, sizeGridBase } from '@gnowth/style';
 
 const UIWell = styled.div`
-  background-color: ${props => props.theme.vars.colorWhite};
+  background-color: ${color({ name: 'white' })};
   border: 1px solid currentColor;
-  border-radius: calc(${props => props.theme.vars.gridSize} * ${props => props.ratio} * 0.5);
-  color: ${props => props.theme.vars.colorBlack};
-  padding: calc(${props => props.theme.vars.gridSize} * ${props => props.ratio} * 2);
+  border-radius: calc(${sizeGridBase} * ${props => props.ratio} * 0.5);
+  color: ${color({ name: 'black' })};
+  padding: calc(${sizeGridBase} * ${props => props.ratio} * 2);
 
-  ${props => props.theme.components?.uiWell?.[props.variant]}
+  ${component({ name: 'uiWell' })}
   ${props => props.css}
 `;
 

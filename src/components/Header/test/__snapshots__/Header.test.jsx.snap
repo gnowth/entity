@@ -2,17 +2,17 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="Box__UIBox-j97zbg-0 sc-dnqmqq jEPJNE"
+  className="Box__UIBox-j97zbg-0 sc-dnqmqq emXtqo"
 >
   <a
-    className="sc-iwsKbI gfniVm Buttonstyles__Button-mk3f56-0-a choPNg"
+    className="sc-iwsKbI gfniVm Buttonstyles__Button-mk3f56-0-a dPkgOK"
     href="https://github.com/gnowth/react"
     to="https://github.com/gnowth/react"
   >
     GitHub
   </a>
   <a
-    className="sc-gZMcBi iDaNrw Buttonstyles__Button-mk3f56-0-a choPNg"
+    className="sc-gZMcBi iDaNrw Buttonstyles__Button-mk3f56-0-a dPkgOK"
     href="https://gnowth.github.io/react/style-guide"
     to="https://gnowth.github.io/react/style-guide"
   >
@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
         "margin-right:1rem;",
       ]
     }
-    className="sc-gqjmRU lpbkHd Buttonstyles__Button-mk3f56-0-Link fwYiwn"
+    className="sc-gqjmRU lpbkHd Buttonstyles__Button-mk3f56-0-Link dteNnt"
     href="#/pages/changelog"
     locale={
       Object {
@@ -44,7 +44,7 @@ exports[`renders correctly 1`] = `
         "margin-right:1rem;",
       ]
     }
-    className="sc-VigVT ibkFLQ Buttonstyles__Button-mk3f56-0-Link fwYiwn"
+    className="sc-VigVT ibkFLQ Buttonstyles__Button-mk3f56-0-Link dteNnt"
     href="#/pages/readme"
     locale={
       Object {

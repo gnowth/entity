@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import { component } from '@gnowth/style';
 import { UIIcon } from '@gnowth/ui';
 import { List } from 'immutable';
 
@@ -76,7 +77,7 @@ class WidgetOrdering extends React.Component {
         { this.props.label }
         <UIIcon
           css={css`
-            ${props => props.theme.components?.widgetOrdering?.icon}
+            ${component({ name: 'widgetOrdering', branch: 'icon' })}
           `}
           name={this.nameMap[this.getOrderingState()]}
         />
@@ -98,6 +99,6 @@ WidgetOrdering.propTypes = {
 };
 
 export default styled(WidgetOrdering)`
-  ${props => props.theme.components?.widgetOrdering?.root}
+  ${component({ name: 'widgetInput', branch: 'root' })}
   ${props => props.css}
 `;

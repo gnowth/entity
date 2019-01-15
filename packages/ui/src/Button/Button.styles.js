@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { component } from '@gnowth/style';
 
 export const Button = styled.button`
   display: inline-block;
 
-  ${props => props.theme.components?.uiButton?.[props.variant]}
+  ${component({ name: 'uiButton' })}
   ${props => props.css}
 `;
 

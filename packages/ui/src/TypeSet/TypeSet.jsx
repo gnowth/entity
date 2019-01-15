@@ -6,7 +6,7 @@ import { withProps } from '@gnowth/higher-order-component';
 import { injectIntl } from 'react-intl';
 
 const TypeSet = styled.pre`
-  ${props => props.theme.typesets?.[props.variant]?.css}
+  ${props => props.theme.typesets?.[props.variant]?.root}
   ${props => props.css}
 `;
 

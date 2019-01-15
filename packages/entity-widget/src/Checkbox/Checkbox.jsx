@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withPropsFiltered } from '@gnowth/higher-order-component';
+import { component } from '@gnowth/style';
 
 const Input = styled.input`
   display: block;
   cursor: pointer;
   width: 14px;
 
-  ${props => props.theme.components?.widgetCheckbox?.[props.variant]}
+  ${component({ name: 'widgetCheckbox' })}
   ${props => props.css}
 `;
 

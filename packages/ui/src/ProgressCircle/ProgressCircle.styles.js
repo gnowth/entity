@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { color } from '@gnowth/style';
 
 const spinnerRotateLinear = keyframes`
   0% {
@@ -95,7 +96,7 @@ const spinnerStrokeRotate = props => keyframes`
 export const Circle = styled.circle`
   animation-name: ${props => spinnerStrokeRotate(props)};
   fill: transparent;
-  stroke: ${props => props.color || props.theme.vars.colorPrimary};
+  stroke: ${props => props.color || color({ name: 'primary' })(props)};
   stroke-dasharray: ${props => `${(100 - props.thickness) * Math.PI}px`};
   stroke-width: ${props => `${props.thickness}%`};
   transition: stroke-dashoffset 225ms linear;

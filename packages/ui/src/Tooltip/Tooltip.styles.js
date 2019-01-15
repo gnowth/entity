@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { color } from '@gnowth/style';
 
 export const Wrapper = styled.div`
   display: inline-block;
@@ -20,6 +21,6 @@ export const Popup = styled.div`
 
 export default {
   icon: css`
-    color: ${props => props.theme.vars.colorDanger};
+    color: ${color({ name: 'danger' })};
   `,
 };

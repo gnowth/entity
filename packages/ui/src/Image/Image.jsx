@@ -3,9 +3,10 @@ import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
+import { component } from '@gnowth/style';
 
 const UIImage = styled.img`
-  ${props => props.theme.components?.uiImage?.[props.variant]}
+  ${component({ name: 'uiImage' })}
   ${props => props.css}
 `;
 

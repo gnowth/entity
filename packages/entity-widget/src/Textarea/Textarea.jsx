@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withPropsFiltered } from '@gnowth/higher-order-component';
+import { component } from '@gnowth/style';
 
 const WidgetTextarea = styled(withPropsFiltered('textarea'))`
   width: 100%;
 
-  ${props => props.theme.components?.widgetTextarea?.[props.variant]}
+  ${component({ name: 'widgetTextarea' })}
   ${props => props.css}
 `;
 

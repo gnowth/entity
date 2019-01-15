@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Observation Date
     </label>
@@ -26,7 +26,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
+            className="Datestyles__DatePicker-ety37l-1 Vphxm"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -45,12 +45,12 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Title
     </label>
     <input
-      className="Input__WidgetInput-sc-2m50dl-0 ftREri"
+      className="Input__WidgetInput-sc-2m50dl-0 bFwcEA"
       errors={Immutable.List []}
       intl={
         Object {
@@ -89,12 +89,12 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Short Title
     </label>
     <input
-      className="Input__WidgetInput-sc-2m50dl-0 ftREri"
+      className="Input__WidgetInput-sc-2m50dl-0 bFwcEA"
       errors={Immutable.List []}
       intl={
         Object {
@@ -133,12 +133,12 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Description
     </label>
     <textarea
-      className="Textarea__WidgetTextarea-sc-11zi4lv-0 bROpBJ"
+      className="Textarea__WidgetTextarea-sc-11zi4lv-0 iQaKUz"
       errors={Immutable.List []}
       name="description"
       onChange={[Function]}
@@ -150,7 +150,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Due Date
     </label>
@@ -164,7 +164,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
+            className="Datestyles__DatePicker-ety37l-1 Vphxm"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -183,7 +183,7 @@ exports[`renders correctly 1`] = `
     className="Labelstyles__UILabelRoot-sc-1i1vlit-0 sc-ifAKCX WEtDF"
   >
     <label
-      className="TypeSet-sc-2d00f5-0 iIdHDq Labelstyles__Label-sc-1i1vlit-1 eVfaML"
+      className="TypeSet-sc-2d00f5-0 jJnJJj Labelstyles__Label-sc-1i1vlit-1 eVfaML"
     >
       Follow up actions
     </label>
