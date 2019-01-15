@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react';
 import * as colors from './colors';
 
 const Color = styled.div`
-  background-color: ${props => props.theme.colors[props.name]};
+  background-color: ${props => props.theme?.colors[props.name]};
   display: inline-block;
   border: 1px solid black;
   border-radius: 50%;
@@ -17,7 +17,7 @@ const Color = styled.div`
   width: 8rem;
 
   &:after {
-    content: '${props => `${props.name}: ${props.theme.colors[props.name]}`}';
+    content: '${props => `${props.name}: ${props.theme?.colors[props.name]}`}';
     left: 50%;
     position: absolute;
     top: calc(100% + 1rem);

@@ -7,4 +7,8 @@ module.exports = {
   resolver: 'jest-webpack-resolver',
 
   rootDir: process.cwd(),
+
+  setupFiles: [
+    'jest-prop-type-error',
+  ],
 };

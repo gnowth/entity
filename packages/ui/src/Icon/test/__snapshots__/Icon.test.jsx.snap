@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<i
+  className="icon icon-apple Icon__UIIcon-sc-10so2ko-0 ivuVRW"
+  name="apple"
+/>
+`;
