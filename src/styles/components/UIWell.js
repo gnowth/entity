@@ -1,13 +1,13 @@
+import { color } from '@gnowth/style';
 import { css } from 'styled-components';
-import { lighten } from 'polished';
 
 export const danger = css`
-  color: ${props => props.theme.vars.colorDanger};
-  background-color: ${props => lighten(0.275, props.theme.vars.colorDanger)}
+  color: ${color({ name: 'danger' })};
+  background-color: ${color({ name: 'danger', weight: '200' })}
 `;
 
 export const primary = css`
-  color: ${props => props.theme.vars.colorPrimary};
+  color: ${color({ name: 'primary' })};
 `;
 
 export const page = css`

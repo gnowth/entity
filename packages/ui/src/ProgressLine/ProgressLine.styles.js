@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { color } from '@gnowth/style';
 
 const primaryScale = keyframes`
   0% {
@@ -92,7 +93,7 @@ export const Block = styled.div`
 `;
 
 export const Buffer = styled.div`
-  background-color: ${props => props.color || props.theme.vars.colorGrey};
+  background-color: ${props => props.color || color({ name: 'gray' })(props)};
   height: 100%;
   position: absolute;
   transition: transform 0.25ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
@@ -120,7 +121,7 @@ export const BarPrimary = styled.div`
 `;
 
 export const BarPrimaryInner = styled.span`
-  background-color: ${props => props.color || props.theme.vars.colorPrimary};
+  background-color: ${props => props.color || color({ name: 'primary' })(props)};
   display: inline-block;
   height: 100%;
   position: absolute;
@@ -149,7 +150,7 @@ export const BarSecondary = styled.div`
 
 export const BarSecondaryInner = styled.span`
   animation: ${secondaryScale} 2s infinite linear;
-  background-color: ${props => props.color || props.theme.vars.colorPrimary};
+  background-color: ${props => props.color || color({ name: 'primary' })(props)};
   display: inline-block;
   height: 100%;
   position: absolute;

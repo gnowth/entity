@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { Link } from 'react-router-dom';
 import { filterProps } from '@gnowth/higher-order-component';
+import { component } from '@gnowth/style';
+import { Link } from 'react-router-dom';
 
 const ViewLink = props => (
   <Link
@@ -24,6 +25,6 @@ ViewLink.defaultProps = {
 };
 
 export default styled(ViewLink)`
-  ${props => props.theme.components?.viewLink?.[props.variant || 'main']}
+  ${component({ name: 'viewLink' })}
   ${props => props.css}
 `;

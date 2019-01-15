@@ -1,62 +1,63 @@
+import { color, mixin } from '@gnowth/style';
 import { css } from 'styled-components';
 
 import baseCss from './base';
 
 export const text = {
-  css: css`
+  root: css`
     ${baseCss}
 
-    ${props => props.disabled && props.theme.mixins.disabled}
-    ${props => props.readOnly && props.theme.mixins.readOnly}
+    ${mixin({ name: 'disabled' })}
+    ${mixin({ name: 'readOnly' })}
   `,
 };
 
 export const text_danger = {
-  css: css`
+  root: css`
     ${baseCss}
-    color: ${props => props.theme.vars.colorDanger};
+    color: ${color({ name: 'danger' })};
 
-    ${props => props.disabled && props.theme.mixins.disabled}
-    ${props => props.readOnly && props.theme.mixins.readOnly}
+    ${mixin({ name: 'disabled' })}
+    ${mixin({ name: 'readOnly' })}
   `,
 };
 
-export const text_grey = {
-  css: css`
+export const text_gray = {
+  root: css`
     ${baseCss}
-    color: ${props => props.theme.vars.colorGrey};
+    color: ${color({ name: 'gray' })};
 
-    ${props => props.disabled && props.theme.mixins.disabled}
-    ${props => props.readOnly && props.theme.mixins.readOnly}
+    ${mixin({ name: 'disabled' })}
+    ${mixin({ name: 'readOnly' })}
   `,
 };
 
 export const text_primary = {
-  css: css`
+  root: css`
     ${baseCss}
-    color: ${props => props.theme.vars.colorPrimary};
+    color: ${color({ name: 'primary' })};
 
-    ${props => props.disabled && props.theme.mixins.disabled}
-    ${props => props.readOnly && props.theme.mixins.readOnly}
+    ${mixin({ name: 'disabled' })}
+    ${mixin({ name: 'readOnly' })}
   `,
 };
 
 export const text_secondary = {
-  css: css`
+  root: css`
     ${baseCss}
-    color: ${props => props.theme.vars.colorSecondary};
+    color: ${color({ name: 'secondary' })};
 
-    ${props => props.disabled && props.theme.mixins.disabled}
-    ${props => props.readOnly && props.theme.mixins.readOnly}
+    ${mixin({ name: 'disabled' })}
+    ${mixin({ name: 'readOnly' })}
   `,
 };
 
 export const text_white = {
-  css: css`
+  root: css`
     ${baseCss}
-    color: ${props => props.theme.vars.colorWhite};
+    color: ${color({ name: 'white' })};
 
-    ${props => props.disabled && props.theme.mixins.disabled}
-    ${props => props.readOnly && props.theme.mixins.readOnly}
+    ${mixin({ name: 'disabled' })}
+    ${mixin({ name: 'readOnly' })}
   `,
 };

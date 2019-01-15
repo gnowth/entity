@@ -1,5 +1,5 @@
+import { color, mixin } from '@gnowth/style';
 import { css } from 'styled-components';
-import { lighten } from 'polished';
 
 export const button = css`
   border: 1px solid currentColor;
@@ -7,32 +7,32 @@ export const button = css`
   background-color: white;
   padding: 7px 20px;
   cursor: pointer;
-  color: ${props => props.theme.vars.colorSecondary};
+  color: ${color({ name: 'secondary' })};
   min-width: 150px;
   outline: none;
   text-transform: uppercase;
   text-align: center;
 
   &:hover {
-    background-color: ${props => props.theme.vars.colorWhite};
-    border-color: ${props => lighten(0.1, props.theme.vars.colorSecondary)};
-    color: ${props => lighten(0.1, props.theme.vars.colorSecondary)};
+    background-color: ${color({ name: 'white' })};
+    border-color: ${color({ name: 'secondary', weight: '400' })};
+    color: ${color({ name: 'secondary', weight: '400' })};
   }
 
-  ${props => props.disabled && props.theme.mixins.disabled}
+  ${mixin({ name: 'disabled' })}
 `;
 
 export const buttonSubmit = css`
   ${button}
 
-  background-color: ${props => props.theme.vars.colorPrimary};
-  border-color: ${props => props.theme.vars.colorPrimary};
-  color: ${props => props.theme.vars.colorWhite};
+  background-color: ${color({ name: 'primary' })};
+  border-color: ${color({ name: 'primary' })};
+  color: ${color({ name: 'white' })};
 
   &:hover {
-    background-color: ${props => lighten(0.1, props.theme.vars.colorPrimary)};
-    border-color: ${props => lighten(0.1, props.theme.vars.colorPrimary)};
-    color: ${props => props.theme.vars.colorWhite};
+    background-color: ${color({ name: 'primary', weight: '400' })};
+    border-color: ${color({ name: 'primary', weight: '400' })};
+    color: ${color({ name: 'white' })};
   }
 `;
 
@@ -40,16 +40,16 @@ export const buttonCancel = css`
   ${button}
 
   border: 0;
-  color: ${props => props.theme.vars.colorPrimary};
+  color: ${color({ name: 'primary' })};
 
   &:hover {
-    color: ${props => lighten(0.1, props.theme.vars.colorPrimary)};
+    color: ${color({ name: 'primary', weight: '400' })};
   }
 `;
 
 export const componentBox = css`
   background-color: hsl(0, 0%, 98%);
-  border: 1px solid ${props => props.theme.vars.colorSecondary};
+  border: 1px solid ${color({ name: 'secondary' })};
   border-radius: 4px;
   padding: 9px;
   width: 100%;
@@ -63,13 +63,17 @@ export const componentBox = css`
 `;
 
 export const disabled = css`
-  opacity: 0.4;
-  cursor: default;
-  pointer-events: none;
+  ${props => props.disabled && css`
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  `}
 `;
 
 export const readOnly = css`
-  opacity: 0.7;
-  cursor: default;
-  pointer-events: none;
+  ${props => props.readOnly && css`
+    opacity: 0.7;
+    cursor: default;
+    pointer-events: none;
+  `}
 `;

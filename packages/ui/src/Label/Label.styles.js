@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { color } from '@gnowth/style';
 
 export const UILabelRoot = styled.div`
   ${props => props.css}
@@ -10,7 +11,7 @@ export const Label = styled.label`
 
 export default {
   icon: css`
-    color: ${props => props.theme.vars.colorDanger};
+    color: ${color({ name: 'danger' })};
 
     && {
       font-size: 0.8rem;

@@ -22,6 +22,7 @@
   "dependencies": {
     "@gnowth/higher-order-component": "0.2.0",
     "@gnowth/prop-types-plus": "0.2.0",
+    "@gnowth/style": "0.2.0",
     "classnames": "2.2.6",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",

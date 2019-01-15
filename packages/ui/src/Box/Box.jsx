@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { component } from '@gnowth/style';
 
 const UIBox = styled.div`
   display: flex;
   align-items: ${props => props.alignItems};
   justify-content: ${props => props.justifyContent};
 
-  ${props => props.theme.components?.uiBox?.[props.variant]}
+  ${component({ name: 'uiBox' })}
   ${props => props.css}
 `;
 

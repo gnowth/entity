@@ -24,6 +24,7 @@
     "@gnowth/higher-order-component": "0.2.0",
     "@gnowth/prop-types-entity": "0.2.0",
     "@gnowth/prop-types-plus": "0.2.0",
+    "@gnowth/style": "0.2.0",
     "@gnowth/ui": "0.2.0",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",

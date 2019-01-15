@@ -1,27 +1,28 @@
+import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
 import baseCss from './base';
 
 export const label = {
   component: 'label',
-  css: css`
+  root: css`
     ${baseCss}
   `,
 };
 
 export const link = {
-  css: css`
+  root: css`
     ${baseCss}
 
-    color: ${props => props.theme.vars.colorPrimary};
+    color: ${color({ name: 'primary' })};
     text-decoration: underline;
   `,
 };
 
 export const placeholder = {
-  css: css`
+  root: css`
     ${baseCss}
 
-    color: ${props => props.theme.vars.colorGrey};
+    color: ${color({ name: 'gray' })};
   `,
 };

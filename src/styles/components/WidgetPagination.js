@@ -1,5 +1,5 @@
+import { color } from '@gnowth/style';
 import { css } from 'styled-components';
-import { lighten } from 'polished';
 
 // eslint-disable-next-line import/prefer-default-export
 export const main = {
@@ -10,7 +10,7 @@ export const main = {
     right: 0;
     box-shadow: 0 -1.5px 3px 0 rgba(0, 0, 0, 0.2);
     height: 50px;
-    background-color: ${props => props.theme.vars.colorWhite};
+    background-color: ${color({ name: 'white' })};
   `,
 
   pageFirst: css`
@@ -22,7 +22,7 @@ export const main = {
     top: 0;
     bottom: 0;
     left: calc(50% - 250px);
-    border: 1px solid ${props => props.theme.vars.colorPrimary};
+    border: 1px solid ${color({ name: 'primary' })};
     height: 50px;
     width: 75px;
     line-height: 50px;
@@ -30,7 +30,7 @@ export const main = {
     font-weight: bold;
 
     &:hover {
-      border-color: ${props => lighten(0.1, props.theme.vars.colorPrimary)};
+      border-color: ${color({ name: 'primary', weight: '400' })};
     }
   `,
 
@@ -39,7 +39,7 @@ export const main = {
     top: 0;
     bottom: 0;
     right: calc(50% - 250px);
-    border: 1px solid ${props => props.theme.vars.colorPrimary};
+    border: 1px solid ${color({ name: 'primary' })};
     height: 50px;
     width: 75px;
     line-height: 50px;
@@ -47,7 +47,7 @@ export const main = {
     font-weight: bold;
 
     &:hover {
-      border-color: ${props => lighten(0.1, props.theme.vars.colorPrimary)};
+      border-color: ${color({ name: 'primary', weight: '400' })};
     }
   `,
 

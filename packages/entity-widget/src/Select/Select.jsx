@@ -4,6 +4,7 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import Select from 'react-select';
+import { component } from '@gnowth/style';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 
@@ -41,7 +42,7 @@ class WidgetSelect extends React.Component {
         isMulti={this.props.field.many}
         onChange={this.handleChange}
         options={this.getOptions(this.props.options)}
-        styles={Object.assign({}, this.props.theme.components?.widgetSelect?.styles, this.props.styles)}
+        styles={Object.assign({}, component({ name: 'widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
         value={this.getValue(this.props.value)}
       />
     );
@@ -80,6 +81,6 @@ WidgetSelect.defaultProps = {
 };
 
 export default styled(WidgetSelect)`
-  ${props => props.theme.components?.widgetSelect?.[props.variant || 'main']?.css}
+  ${component({ name: 'widgetSelect', branch: 'root' })}
   ${props => props.css}
 `;
