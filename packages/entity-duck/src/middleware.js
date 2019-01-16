@@ -60,10 +60,10 @@ export default axios => store => next => (action) => {
     },
   ];
 
-  axios[action.meta.method]
+  const promise = axios[action.meta.method]
     .apply(null, args)
     .then(handleResponse(action, store.dispatch))
     .catch(handleError(action, store.dispatch));
 
-  return next(action);
+  return next({ ...action, promise });
 };

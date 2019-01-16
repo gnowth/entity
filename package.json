@@ -22,6 +22,7 @@
     "clean": "lerna clean",
     "coveralls": "jest --config configs/jest.config.js --coverage --collectCoverageFrom={src,packages}/**/*.{js,jsx} --collectCoverageFrom=!{src,packages}/**/*stories.{js,jsx} && cat ./coverage/lcov.info | coveralls",
     "deploy": "./scripts/deploy-ghpages.sh",
+    "fetch": "git fetch --prune",
     "git-view": "git log --all --graph --decorate --pretty=oneline --abbrev-commit",
     "lerna": "lerna",
     "lint": "npm run lint:css && npm run lint:js && npm run packages-lint",
