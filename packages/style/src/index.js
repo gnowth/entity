@@ -21,8 +21,8 @@ export const component = ({ name, defaultVariant = 'main', branch } = {}) => (pr
   }
 
   return branch
-    ? props.theme?.component?.[name]?.[props.variant || defaultVariant]?.[branch]
-    : props.theme?.component?.[name]?.[props.variant || defaultVariant];
+    ? props.theme?.components?.[name]?.[props.variant || defaultVariant]?.[branch]
+    : props.theme?.components?.[name]?.[props.variant || defaultVariant];
 };
 
 export const mixin = ({ name } = {}) => (props) => {

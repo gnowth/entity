@@ -2,6 +2,7 @@ const _flatten = require('lodash/flatten');
 const path = require('path');
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
@@ -11,6 +12,7 @@ const rules = require('./webpack-rules.config');
 const alias = require('./alias.config');
 
 const isBuild = process.env.npm_lifecycle_event === 'build';
+const isAnalyze = process.env.npm_lifecycle_event === 'analyze';
 
 module.exports = {
   module: { rules },
@@ -32,7 +34,23 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist/'),
     filename: `[name]${isBuild ? '.[chunkhash]' : ''}.js`,
-    chunkFilename: `[id]${isBuild ? '.[chunkhash]' : ''}.js`,
+    chunkFilename: `[name]${isBuild ? '.[chunkhash]' : ''}.js`,
+  },
+
+  optimization: {
+    sideEffects: true,
+
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 10,
+          enforce: true,
+        },
+      },
+    },
   },
 
   stats: {
@@ -60,9 +78,16 @@ module.exports = {
       ),
     ],
 
+    // Analyze plugins
+    isAnalyze && [
+      new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+    ],
+
     // Build plugins
-    isBuild && [
+    (isBuild || isAnalyze) && [
       new webpack.optimize.AggressiveMergingPlugin(),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-au/),
       new OptimizeCssnanoPlugin({
         cssnanoOptions: {
           preset: ['default', {

@@ -6,6 +6,7 @@
   "name": "@entity/duck",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
+  "sideEffects": false,
   "version": "0.2.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",

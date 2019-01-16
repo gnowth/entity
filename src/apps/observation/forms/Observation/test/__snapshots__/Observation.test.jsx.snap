@@ -26,7 +26,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="Datestyles__DatePicker-ety37l-1 Vphxm"
+            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -50,7 +50,7 @@ exports[`renders correctly 1`] = `
       Title
     </label>
     <input
-      className="Input__WidgetInput-sc-2m50dl-0 bFwcEA"
+      className="Input__WidgetInput-sc-2m50dl-0 ftREri"
       errors={Immutable.List []}
       intl={
         Object {
@@ -94,7 +94,7 @@ exports[`renders correctly 1`] = `
       Short Title
     </label>
     <input
-      className="Input__WidgetInput-sc-2m50dl-0 bFwcEA"
+      className="Input__WidgetInput-sc-2m50dl-0 ftREri"
       errors={Immutable.List []}
       intl={
         Object {
@@ -138,7 +138,7 @@ exports[`renders correctly 1`] = `
       Description
     </label>
     <textarea
-      className="Textarea__WidgetTextarea-sc-11zi4lv-0 iQaKUz"
+      className="Textarea__WidgetTextarea-sc-11zi4lv-0 bROpBJ"
       errors={Immutable.List []}
       name="description"
       onChange={[Function]}
@@ -164,7 +164,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="Datestyles__DatePicker-ety37l-1 Vphxm"
+            className="Datestyles__DatePicker-ety37l-1 bVaXHv"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
