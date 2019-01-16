@@ -7,6 +7,7 @@ const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const rules = require('./webpack-rules.config');
 const alias = require('./alias.config');
@@ -38,8 +39,6 @@ module.exports = {
   },
 
   optimization: {
-    sideEffects: true,
-
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -86,14 +85,29 @@ module.exports = {
     // Build plugins
     (isBuild || isAnalyze) && [
       new webpack.optimize.AggressiveMergingPlugin(),
+
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-au/),
+
       new OptimizeCssnanoPlugin({
         cssnanoOptions: {
           preset: ['default', {
             discardComments: { removeAll: true },
           }],
         },
+      }),
+
+      new WorkboxPlugin.GenerateSW({
+        exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+
+        runtimeCaching: [{
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: { maxEntries: 10 },
+          },
+        }],
       }),
     ],
   ]).filter(p => p),
