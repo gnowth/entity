@@ -17,6 +17,7 @@
     "webpackConfig": "./configs/webpack.config.js"
   },
   "scripts": {
+    "analyze": "webpack --mode production --progress --config configs/webpack.config.js",
     "build": "webpack --mode production --progress --config configs/webpack.config.js",
     "clean": "lerna clean",
     "coveralls": "jest --config configs/jest.config.js --coverage --collectCoverageFrom={src,packages}/**/*.{js,jsx} --collectCoverageFrom=!{src,packages}/**/*stories.{js,jsx} && cat ./coverage/lcov.info | coveralls",
@@ -89,6 +90,7 @@
     "@babel/plugin-proposal-export-default-from": "7.2.0",
     "@babel/plugin-proposal-export-namespace-from": "7.2.0",
     "@babel/plugin-proposal-optional-chaining": "7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-react-jsx": "7.2.0",
     "@babel/polyfill": "7.2.5",
     "@babel/preset-env": "7.2.3",
@@ -146,6 +148,7 @@
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.5.1",
     "webpack": "4.28.4",
+    "webpack-bundle-analyzer": "3.0.3",
     "webpack-cli": "3.2.1",
     "webpack-dev-server": "3.1.14",
     "webpack-s3-plugin": "1.0.3",
