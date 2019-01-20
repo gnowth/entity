@@ -10,15 +10,12 @@
   "version": "0.2.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
-    "clean": "rimraf dist",
+    "destroy": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
-    "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
     "postbuild": "npm run link-main:dist",
-    "postclean": "npm run link-main:src",
-    "prebuild": "npm run clean"
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
   },
   "dependencies": {
     "@entity/core": "0.2.0",

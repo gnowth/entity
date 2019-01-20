@@ -1,19 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c2 {
+  -webkit-animation-name: bvvTNa;
+  animation-name: bvvTNa;
+  fill: transparent;
+  stroke: black;
+  stroke-dasharray: 251.32741228718345px;
+  stroke-width: 20%;
+  -webkit-transition: stroke-dashoffset 225ms linear;
+  transition: stroke-dashoffset 225ms linear;
+  -webkit-transform-box: view-box;
+  -ms-transform-box: view-box;
+  transform-box: view-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  -webkit-transition-property: stroke;
+  transition-property: stroke;
+}
+
+.c0 {
+  display: inline-block;
+  height: 32px;
+  position: relative;
+  width: 32px;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
+}
+
+.c1 {
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  width: 100%;
+}
+
 <div
-  className="ProgressCirclestyles__Container-sc-8rt8fw-1 cKCoNp"
+  className="c0"
   size="32px"
   value={null}
 >
   <svg
-    className="ProgressCirclestyles__SVG-sc-8rt8fw-2 fkhGXm"
+    className="c1"
     focusable="false"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 100 100"
   >
     <circle
-      className="ProgressCirclestyles__Circle-sc-8rt8fw-0 dukQRY"
+      className="c2"
       cx="50%"
       cy="50%"
       r="40"

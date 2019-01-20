@@ -49,6 +49,13 @@ jobs:
         at: ~/project
     - run: npm run storybook:build
 
+  build-packages:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run packages-build
+
   lint-code:
     <<: *container_config
     steps:
@@ -112,6 +119,15 @@ workflows:
               - master
 
       - build-app:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - build-packages:
           requires:
           - setup
           filters:

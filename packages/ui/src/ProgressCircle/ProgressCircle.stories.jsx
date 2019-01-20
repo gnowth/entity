@@ -1,17 +1,10 @@
-import centered from '@storybook/addon-centered';
 import React from 'react';
-import { checkA11y } from '@storybook/addon-a11y';
-import { select, withKnobs } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { select } from '@storybook/addon-knobs';
 import { ThemeConsumer } from 'styled-components';
 
 import UIProgressCircle from '.';
 
-export default mod => storiesOf('UI/ProcessingCircle', mod)
-  .addDecorator(centered)
-  .addDecorator(checkA11y)
-  .addDecorator(withKnobs)
-
+export default stories => stories
   .add('dynamic story', () => (
     <ThemeConsumer>
       { theme => (

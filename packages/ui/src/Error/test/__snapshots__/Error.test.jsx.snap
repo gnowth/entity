@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <pre
-  className="TypeSet-sc-2d00f5-0 gXqwhy"
+  className=""
   name="text"
 >
   Error

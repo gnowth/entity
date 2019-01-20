@@ -26,7 +26,7 @@ export default [
     },
     plugins: [
       babel({
-        configFile: '../../babel.config.js',
+        configFile: path.join(__dirname, '../babel.config.js'),
         exclude: 'node_modules',
       }),
       resolve({
@@ -38,7 +38,7 @@ export default [
         matchers: ['<dir>/<dir>.jsx', '<dir>/<dir>.js'],
       }),
       commonjs(),
-      copy({ '../../assets/index.js': 'dist/index.js' }),
+      copy({ [path.join(__dirname, 'rollup-index.js')]: 'dist/index.js' }),
     ],
   },
 
@@ -51,7 +51,7 @@ export default [
     },
     plugins: [
       babel({
-        configFile: '../../babel.config.js',
+        configFile: path.join(__dirname, '../babel.config.js'),
         exclude: 'node_modules',
       }),
       resolve({

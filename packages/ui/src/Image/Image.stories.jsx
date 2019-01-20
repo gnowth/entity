@@ -1,9 +1,6 @@
-import centered from '@storybook/addon-centered';
 import styled, { css, ThemeConsumer } from 'styled-components';
 import React from 'react';
-import { checkA11y } from '@storybook/addon-a11y';
-import { select, withKnobs } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { select } from '@storybook/addon-knobs';
 
 import UIImage from '.';
 
@@ -29,11 +26,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default mod => storiesOf('UI/Image', mod)
-  .addDecorator(centered)
-  .addDecorator(checkA11y)
-  .addDecorator(withKnobs)
-
+export default stories => stories
   .add('dynamic story', () => (
     <ThemeConsumer>
       { theme => (

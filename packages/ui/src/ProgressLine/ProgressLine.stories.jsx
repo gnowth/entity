@@ -1,9 +1,6 @@
-import centered from '@storybook/addon-centered';
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
-import { checkA11y } from '@storybook/addon-a11y';
-import { select, withKnobs } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { select } from '@storybook/addon-knobs';
 
 import UIProgressLine from '.';
 
@@ -11,11 +8,7 @@ const Block = styled.div`
   width: 300px;
 `;
 
-export default mod => storiesOf('UI/ProcessingLine', mod)
-  .addDecorator(centered)
-  .addDecorator(checkA11y)
-  .addDecorator(withKnobs)
-
+export default stories => stories
   .add('dynamic story', () => (
     <ThemeConsumer>
       { theme => (

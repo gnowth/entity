@@ -1,9 +1,6 @@
-import centered from '@storybook/addon-centered';
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
-import { checkA11y } from '@storybook/addon-a11y';
-import { select, text, withKnobs } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { select, text } from '@storybook/addon-knobs';
 
 import UIWell from '.';
 
@@ -12,11 +9,7 @@ const Wrapper = styled.div`
   margin: 1rem;
 `;
 
-export default mod => storiesOf('UI/Well', mod)
-  .addDecorator(centered)
-  .addDecorator(checkA11y)
-  .addDecorator(withKnobs)
-
+export default stories => stories
   .add('dynamic story', () => (
     <ThemeConsumer>
       { theme => (
