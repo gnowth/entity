@@ -99,6 +99,6 @@ WidgetOrdering.propTypes = {
 };
 
 export default styled(WidgetOrdering)`
-  ${component({ name: 'widgetInput', branch: 'root' })}
+  ${component({ name: 'widgetOrdering', branch: 'root' })}
   ${props => props.css}
 `;

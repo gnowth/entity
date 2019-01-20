@@ -31,6 +31,9 @@
     "react-select": "2.3.0",
     "reselect": "4.0.0"
   },
+  "devDependencies": {
+    "@entity/core": "0.2.0"
+  },
   "peerDependencies": {
     "@storybook/addon-actions": "4.1.7",
     "@storybook/addon-knobs": "4.1.7",
@@ -38,6 +41,7 @@
     "react": "16.7.0",
     "react-datepicker": "2.0.0",
     "react-intl": "2.8.0",
+    "react-test-renderer": "16.7.0",
     "styled-components": "4.1.3"
   }
 }
