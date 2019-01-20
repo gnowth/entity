@@ -1,0 +1,7 @@
+**/assets/**/*
+**/coverage/**/*
+**/definition/**/*
+**/dist/**/*
+**/docs/**/*
+**/node_modules/**/*
+!**/.*/

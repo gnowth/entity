@@ -1,27 +1,105 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c0 {
+  height: 4px;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.6,1) 0ms;
+  transition: opacity 0.25s cubic-bezier(0.4,0,0.6,1) 0ms;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  width: 100%;
+}
+
+.c1 {
+  background-color: black;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: -webkit-transform 0.25ms cubic-bezier(0.4,0,0.6,1) 0ms;
+  -webkit-transition: transform 0.25ms cubic-bezier(0.4,0,0.6,1) 0ms;
+  transition: transform 0.25ms cubic-bezier(0.4,0,0.6,1) 0ms;
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  width: 100%;
+}
+
+.c2 {
+  height: 100%;
+  position: absolute;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  width: 100%;
+  -webkit-animation: jSYKOo 2s infinite linear;
+  animation: jSYKOo 2s infinite linear;
+  left: -145.166611%;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c3 {
+  background-color: black;
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  -webkit-animation: hvVyfP 2s infinite linear;
+  animation: hvVyfP 2s infinite linear;
+}
+
+.c4 {
+  -webkit-animation: hgPsqz 2s infinite linear;
+  animation: hgPsqz 2s infinite linear;
+  height: 100%;
+  left: -54.888891%;
+  position: absolute;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  visibility: visible;
+  width: 100%;
+}
+
+.c5 {
+  -webkit-animation: dkIHsc 2s infinite linear;
+  animation: dkIHsc 2s infinite linear;
+  background-color: black;
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  visibility: visible;
+  width: 100%;
+}
+
 <div
-  className="ProgressLinestyles__Block-sc-190heoc-0 lnOvKB"
+  className="c0"
   height="4px"
 >
   <div
-    className="ProgressLinestyles__Buffer-sc-190heoc-1 CWJxH"
+    className="c1"
   />
   <div
-    className="ProgressLinestyles__BarPrimary-sc-190heoc-2 jDuzrd"
+    className="c2"
     value={null}
   >
     <span
-      className="ProgressLinestyles__BarPrimaryInner-sc-190heoc-3 beNip"
+      className="c3"
       value={null}
     />
   </div>
   <div
-    className="ProgressLinestyles__BarSecondary-sc-190heoc-4 dGZsfx"
+    className="c4"
   >
     <span
-      className="ProgressLinestyles__BarSecondaryInner-sc-190heoc-5 biugfP"
+      className="c5"
     />
   </div>
 </div>

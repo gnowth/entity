@@ -20,6 +20,8 @@ module.exports = {
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-syntax-dynamic-import',
-    'babel-plugin-styled-components',
+    ['babel-plugin-styled-components', {
+      pure: true,
+    }],
   ],
 };

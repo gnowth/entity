@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c0.c0 {
+  font-size: 1rem;
+}
+
 <i
-  className="icon icon-apple Icon__UIIcon-sc-10so2ko-0 ivuVRW"
+  className="icon icon-apple c0"
   name="apple"
 />
 `;

@@ -10,10 +10,11 @@ const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const rules = require('./webpack-rules.config');
-const alias = require('./alias.config');
+const alias = require('./webpack-alias.config');
 
-const isBuild = process.env.npm_lifecycle_event === 'build';
 const isAnalyze = process.env.npm_lifecycle_event === 'analyze';
+const isBuild = process.env.npm_lifecycle_event === 'build';
+const isStart = process.env.npm_lifecycle_event === 'start';
 
 module.exports = {
   module: { rules },
@@ -21,7 +22,7 @@ module.exports = {
   devtool: 'cheap-source-map',
 
   resolve: {
-    alias,
+    alias: alias(path.join(process.cwd(), isAnalyze || isBuild || isStart ? '' : 'packages/dev-client')),
     extensions: ['.js', '.jsx'],
     plugins: [
       new DirectoryNamedPlugin(true),

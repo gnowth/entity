@@ -4,8 +4,12 @@ exports[`renders correctly 1`] = `
 Array [
   "",
   "",
-  <button
-    className="Buttonstyles__Button-mk3f56-0 ljupdW"
+  .c0 {
+  display: inline-block;
+}
+
+<button
+    className="c0"
     to=""
   >
     Test

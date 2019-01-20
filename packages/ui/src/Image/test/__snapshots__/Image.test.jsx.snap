@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <img
   alt="image"
-  className="Image__UIImage-btn0hr-0 izVBqL"
+  className=""
   name="image"
   src="path"
 />

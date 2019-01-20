@@ -10,15 +10,12 @@
   "version": "0.2.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
-    "clean": "rimraf dist",
+    "destroy": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
-    "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
     "postbuild": "npm run link-main:dist",
-    "postclean": "npm run link-main:src",
-    "prebuild": "npm run clean"
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
   },
   "dependencies": {
     "@gnowth/higher-order-component": "0.2.0",
@@ -29,14 +26,14 @@
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-intl": "2.7.2"
+    "react-intl": "2.8.0"
+  },
+  "devDependencies": {
+    "jest-styled-components": "6.3.1"
   },
   "peerDependencies": {
-    "@storybook/addon-a11y": "4.1.6",
-    "@storybook/addon-actions": "4.1.6",
-    "@storybook/addon-centered": "4.1.6",
-    "@storybook/addon-knobs": "4.1.6",
-    "@storybook/react": "4.1.6",
+    "@storybook/addon-actions": "4.1.7",
+    "@storybook/addon-knobs": "4.1.7",
     "react": "16.7.0",
     "react-router-dom": "4.3.1",
     "react-test-renderer": "16.7.0",

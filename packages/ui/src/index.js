@@ -1,4 +1,4 @@
-export { default as createStories } from './stories';
+export * from './stories';
 
 export { default as UIBox } from './Box';
 
