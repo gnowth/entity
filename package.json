@@ -20,7 +20,7 @@
     "analyze": "yarn workspace @serve/client-react analyze",
     "build": "yarn workspace @serve/client-react build",
     "clean": "lerna clean",
-    "coveralls": "jest --config configs/jest.config.js --coverage --collectCoverageFrom=packages/**/*.{js,jsx} --collectCoverageFrom=!packages/**/*stories.{js,jsx} && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "jest --config configs/jest.config.js --coverage --collectCoverageFrom=packages/**/*.{js,jsx} --collectCoverageFrom=!packages/**/*stories.{js,jsx} --maxWorkers=2 && cat ./coverage/lcov.info | coveralls",
     "deploy": "./scripts/deploy-ghpages.sh",
     "fetch": "git fetch --prune",
     "git-view": "git log --all --graph --decorate --pretty=oneline --abbrev-commit",

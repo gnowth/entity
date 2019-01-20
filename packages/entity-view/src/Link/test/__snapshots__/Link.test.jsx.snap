@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<a
+  className="Link-sc-1hs1rmw-0 jfsnLe"
+  href="#/test/undefined/"
+  onClick={[Function]}
+  value={
+    Immutable.Map {
+      "description": "",
+      "is_archived": false,
+      "locale": null,
+      "order": null,
+      "title": "",
+      "title_short": "",
+      "uuid": undefined,
+    }
+  }
+>
+  View
+</a>
+`;
