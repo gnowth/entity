@@ -8,18 +8,6 @@ import { UIIcon } from '@gnowth/ui';
 import { List } from 'immutable';
 
 class WidgetOrdering extends React.Component {
-  getOrderingState() {
-    const value = this.props.field.many
-      ? this.props.value
-      : List(this.props.value ? [this.props.value] : []);
-
-    if (value.includes(this.props.orderingKey)) return 'ascending';
-
-    if (value.includes(`-${this.props.orderingKey}`)) return 'descending';
-
-    return 'random';
-  }
-
   nameMap = {
     ascending: 'arrow_upward',
     descending: 'arrow_downward',
@@ -64,6 +52,18 @@ class WidgetOrdering extends React.Component {
   };
 
   handleKeyPress = () => {}
+
+  getOrderingState() {
+    const value = this.props.field.many
+      ? this.props.value
+      : List(this.props.value ? [this.props.value] : []);
+
+    if (value.includes(this.props.orderingKey)) return 'ascending';
+
+    if (value.includes(`-${this.props.orderingKey}`)) return 'descending';
+
+    return 'random';
+  }
 
   render() {
     return (

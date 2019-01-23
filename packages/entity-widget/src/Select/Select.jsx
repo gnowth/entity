@@ -9,19 +9,15 @@ import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 
 class WidgetSelect extends React.Component {
-  getOptions = createSelector(
+  selectOptions = createSelector(
     x => x,
     options => (options ? options.toJS() : []),
   )
 
-  getValue = createSelector(
+  selectValue = createSelector(
     x => x,
     value => (value && value.toJS ? value.toJS() : value),
   )
-
-  getOptionLabel = option => this.props.field.toString(fromJS(option))
-
-  getOptionValue = option => this.props.field.toString(fromJS(option))
 
   handleChange = value => this.props.onChange({
     target: {
@@ -31,19 +27,23 @@ class WidgetSelect extends React.Component {
     },
   })
 
+  handleGetOptionLabel = option => this.props.field.toString(fromJS(option))
+
+  handleGetOptionValue = option => this.props.field.toString(fromJS(option))
+
   render() {
     return (
       <Select
         {...this.props}
-        getOptionLabel={this.props.getOptionLabel || this.getOptionLabel}
-        getOptionValue={this.props.getOptionValue || this.getOptionValue}
+        getOptionLabel={this.props.getOptionLabel || this.handleGetOptionLabel}
+        getOptionValue={this.props.getOptionValue || this.handleGetOptionValue}
         isClearable={!this.props.field.blank}
         isLoading={this.props.processing}
         isMulti={this.props.field.many}
         onChange={this.handleChange}
-        options={this.getOptions(this.props.options)}
+        options={this.selectOptions(this.props.options)}
         styles={Object.assign({}, component({ name: 'widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
-        value={this.getValue(this.props.value)}
+        value={this.selectValue(this.props.value)}
       />
     );
   }

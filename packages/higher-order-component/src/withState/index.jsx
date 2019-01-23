@@ -9,11 +9,11 @@ export default ({ initialState = {}, mapProps = {} }) => (ComposedComponent) => 
       ? initialState(this.props)
       : initialState;
 
+    mounted = true;
+
     componentWillUnmount() {
       this.mounted = false;
     }
-
-    mounted = true;
 
     render() {
       const props = Object.assign(

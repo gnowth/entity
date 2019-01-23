@@ -14,15 +14,17 @@ import { connect } from 'react-redux';
 import withInput from './withInput';
 
 class Control extends React.Component {
-  getPropsContext() {
-    return {
-      errors: this.props.errors,
-      field: this.props.field,
-      initialValue: this.props.initialValue,
-      processing: this.props.processing,
-      processingDidFail: this.props.processingDidFail,
-      value: this.props.value,
-    };
+  handleEvent = () => {
+    const action = this.props.action({ ...this.getPropsContext() });
+
+    return _isObjectLike(action) && 'meta' in action && 'type' in action
+      ? this.props.setState({ action: this.props.dispatch(action) })
+      : this.props.onChange({
+        target: {
+          name: this.props.name,
+          value: action,
+        },
+      });
   }
 
   getProps() {
@@ -43,17 +45,15 @@ class Control extends React.Component {
     );
   }
 
-  handleEvent = () => {
-    const action = this.props.action({ ...this.getPropsContext() });
-
-    return _isObjectLike(action) && 'meta' in action && 'type' in action
-      ? this.props.setState({ action: this.props.dispatch(action) })
-      : this.props.onChange({
-        target: {
-          name: this.props.name,
-          value: action,
-        },
-      });
+  getPropsContext() {
+    return {
+      errors: this.props.errors,
+      field: this.props.field,
+      initialValue: this.props.initialValue,
+      processing: this.props.processing,
+      processingDidFail: this.props.processingDidFail,
+      value: this.props.value,
+    };
   }
 
   render() {

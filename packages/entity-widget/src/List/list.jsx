@@ -16,6 +16,28 @@ const ListComponent = styled.ul`
 `;
 
 class WidgetList extends React.Component {
+  handleClickFactory = option => () => {
+    if (this.props.readOnly || this.props.disabled) return undefined;
+
+    if (this.props.field.many) {
+      return this.props.onChange({
+        target: {
+          name: this.props.name,
+          value: this.props.value.includes(option)
+            ? this.props.value.filterNot(val => is(val, option))
+            : this.props.value.push(option),
+        },
+      });
+    }
+
+    return this.props.onChange({
+      target: {
+        name: this.props.name,
+        value: is(option, this.props.value) ? null : option,
+      },
+    });
+  }
+
   getPropsOption(option) {
     const props = {
       disabled: this.props.disabled,
@@ -55,28 +77,6 @@ class WidgetList extends React.Component {
         && this.props.options
         && this.props.options.size === 0,
     };
-  }
-
-  handleClickFactory = option => () => {
-    if (this.props.readOnly || this.props.disabled) return undefined;
-
-    if (this.props.field.many) {
-      return this.props.onChange({
-        target: {
-          name: this.props.name,
-          value: this.props.value.includes(option)
-            ? this.props.value.filterNot(val => is(val, option))
-            : this.props.value.push(option),
-        },
-      });
-    }
-
-    return this.props.onChange({
-      target: {
-        name: this.props.name,
-        value: is(option, this.props.value) ? null : option,
-      },
-    });
   }
 
   render() {

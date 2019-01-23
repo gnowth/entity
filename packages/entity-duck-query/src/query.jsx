@@ -12,6 +12,26 @@ import { createSelector } from 'reselect';
 import queryContainer from './query-container';
 
 class Query extends React.Component {
+  errorSelector = createSelector(
+    x => x,
+    value => this.props.field.validate(value),
+  );
+
+  handleInputChange = _debounce(this.props.onInputChange, 500);
+
+  handleChange = ({ target: { index, name, value } }) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (name !== this.props.name) throw new Error(`Query.handleChange (${this.props.name}): Invalid name ${name}!`);
+      if (index === null) throw new Error(`Query.handleChange (${this.props.name}): index cannot be null`);
+    }
+
+    return this.props.save(
+      index === undefined
+        ? value
+        : this.props.value.set(index, value),
+    );
+  }
+
   componentDidMount() {
     /**
      * HACK(thierry): reading directly from the store
@@ -104,26 +124,6 @@ class Query extends React.Component {
         && this.props.value.size === 0,
     };
   }
-
-  errorSelector = createSelector(
-    x => x,
-    value => this.props.field.validate(value),
-  );
-
-  handleChange = ({ target: { index, name, value } }) => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (name !== this.props.name) throw new Error(`Query.handleChange (${this.props.name}): Invalid name ${name}!`);
-      if (index === null) throw new Error(`Query.handleChange (${this.props.name}): index cannot be null`);
-    }
-
-    return this.props.save(
-      index === undefined
-        ? value
-        : this.props.value.set(index, value),
-    );
-  }
-
-  handleInputChange = _debounce(this.props.onInputChange, 500);
 
   renderAsComponent(props) {
     const shouldShow = this.getShouldShow();
