@@ -14,6 +14,16 @@ const Input = styled.input`
 `;
 
 class WidgetCheckbox extends React.Component {
+  ref = React.createRef()
+
+  handleChange = () => this.props.onChange({
+    target: {
+      index: this.props.index,
+      name: this.props.name,
+      value: !this.props.value,
+    },
+  })
+
   componentDidMount() {
     if (this.component) {
       this.ref.current.indeterminate = this.props.value === null;
@@ -25,16 +35,6 @@ class WidgetCheckbox extends React.Component {
       this.ref.current.indeterminate = this.props.value === null;
     }
   }
-
-  ref = React.createRef()
-
-  handleChange = () => this.props.onChange({
-    target: {
-      index: this.props.index,
-      name: this.props.name,
-      value: !this.props.value,
-    },
-  })
 
   render() {
     return (

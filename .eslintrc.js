@@ -86,21 +86,33 @@ module.exports = {
     'react/prop-types': [2, { ignore: ['className'] }],
 
     'react/sort-comp': [2, {
+      order: [
+        'static-methods',
+        'lifecycle',
+        'getters',
+        'setters',
+        'everything-else',
+        'rendering',
+      ],
+
       groups: {
         lifecycle: [
           'displayName',
-          'propTypes',
           'contextTypes',
           'childContextTypes',
+          'propTypes',
           'defaultProps',
           'getDerivedStateFromProps',
           'mixins',
           'statics',
           'constructor',
-          'getDefaultProps',
           'state',
-          'getInitialState',
+          'instance-variables',
+          '/^handle.+$/',
           'getChildContext',
+          'getDefaultProps',
+          'getInitialState',
+          'getSnapshotBeforeUpdate',
           'componentDidCatch',
           'componentDidMount',
           'componentDidUpdate',
@@ -108,11 +120,15 @@ module.exports = {
           'componentWillReceiveProps',
           'componentWillUnmount',
           'componentWillUpdate',
-          'getSnapshotBeforeUpdate',
           'shouldComponentUpdate',
           'UNSAFE_componentWillReceiveProps',
           'UNSAFE_componentWillMount',
           'UNSAFE_componentWillUpdate',
+        ],
+
+        rendering: [
+          '/^render.+$/',
+          'render',
         ],
       },
     }],

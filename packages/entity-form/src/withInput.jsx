@@ -11,25 +11,6 @@ import { withForm } from './context';
 
 export default function (ComposedComponent) {
   class withInput extends React.Component {
-    getProps() {
-      const field = this.props.formField.getField({ name: this.props.name });
-
-      return Object.assign({}, this.props, {
-        field,
-        disabled: this.props.disabled,
-        errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
-        index: this.props.index,
-        name: this.props.name,
-        onChange: this.props.array
-          ? this.handleChangeArray
-          : this.handleChange,
-        readOnly: this.props.readOnly,
-        initialValue: this.props.formInitialValue,
-        options: field.getOptions(),
-        value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
-      });
-    }
-
     handleChange = ({ target }) => {
       const index = target.getAttribute
         ? target.getAttribute('index') || undefined
@@ -66,6 +47,25 @@ export default function (ComposedComponent) {
         value: target.value,
       },
     })
+
+    getProps() {
+      const field = this.props.formField.getField({ name: this.props.name });
+
+      return Object.assign({}, this.props, {
+        field,
+        disabled: this.props.disabled,
+        errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
+        index: this.props.index,
+        name: this.props.name,
+        onChange: this.props.array
+          ? this.handleChangeArray
+          : this.handleChange,
+        readOnly: this.props.readOnly,
+        initialValue: this.props.formInitialValue,
+        options: field.getOptions(),
+        value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
+      });
+    }
 
     renderComponent(props) {
       return <ComposedComponent {...props} />;

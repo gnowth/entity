@@ -44,7 +44,7 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
      * this onChange allows 'this.props.onChange' to be dynamic
      * as debounced function cannot be changed once initialised
      */
-    onChange = event => this.props.onChange && this.props.onChange(event);
+    onChange = event => this.props.onChange && this.props.onChange(event); // eslint-disable-line react/sort-comp
 
     debouncedChange = _debounce(this.onChange, delay);
 
