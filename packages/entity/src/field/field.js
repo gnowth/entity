@@ -53,12 +53,11 @@ export default class Field {
   }
 
   getErrors(errors, options = {}) {
-    return options.name === undefined
-      ? errors
-      : errors
-        .filter(error => Map.isMap(error) && error.get('list'))
-        .flatMap(error => error.getIn(['errors', options.index]))
-        .filter(error => error);
+    if (process.env.NODE_ENV !== 'production') {
+      if (options.name) throw new Error(`Field.getErrors (${this.constructor.name}): option "name" is not supported.`);
+    }
+
+    return errors;
   }
 
   getErrorsArray(errors, options = {}) {
