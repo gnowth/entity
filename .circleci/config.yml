@@ -80,6 +80,9 @@ jobs:
         at: ~/project
     - run: npm run build
     - run: npm run storybook:build
+    - add_ssh_keys:
+        fingerprints:
+        - "39:03:90:10:2d:dc:c9:af:45:c6:eb:d3:35:e8:96:83"
     - run: npm run deploy
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
     - run: npm run packages-publish
