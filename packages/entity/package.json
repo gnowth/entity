@@ -23,6 +23,6 @@
     "query-string": "6.2.0"
   },
   "peerDependencies": {
-    "moment": "2.23.0"
+    "moment": "2.24.0"
   }
 }
