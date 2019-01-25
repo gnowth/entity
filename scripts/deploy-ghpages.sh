@@ -7,6 +7,9 @@ pwd
 remote=$(git config remote.origin.url)
 current=$(git symbolic-ref --short HEAD)
 
+# not strick check for github
+ssh -o StrictHostKeyChecking=no git@github.com
+
 # make a directory to put the gp-pages branch
 mkdir gh-pages-branch
 cd gh-pages-branch
