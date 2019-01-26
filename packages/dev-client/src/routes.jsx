@@ -53,4 +53,4 @@ Routes.defaultProps = {
   routeNotFound: '/pages/notfound',
 };
 
-export default Routes;
+export default React.memo(Routes);

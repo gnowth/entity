@@ -31,4 +31,4 @@ App.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default App;
+export default React.memo(App);

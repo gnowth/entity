@@ -11,7 +11,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import changelog from 'root/CHANGELOG.md';
 import readme from 'root/README.md';
 
-import locales from './locales';
+import defaultLocales from './locales';
 
 const Screen = styled.div`
   align-items: center;
@@ -20,50 +20,54 @@ const Screen = styled.div`
   justify-content: center;
 `;
 
-const AppPage = props => (
-  <App {...props}>
-    <Switch>
-      <Route
-        path={`${props.match.url}/changelog`}
-        render={() => (
-          <UIWell ratio={3} variant="page_flat">
-            <Markdown className="markdown-body" source={changelog} />
-          </UIWell>
-        )}
-      />
+const AppPage = (props) => {
+  const locales = Object.assign({}, defaultLocales, props.locales);
 
-      <Route
-        path={`${props.match.url}/readme`}
-        render={() => (
-          <UIWell ratio={3} variant="page_flat">
-            <Markdown className="markdown-body" source={readme} />
-          </UIWell>
-        )}
-      />
+  return (
+    <App {...props}>
+      <Switch>
+        <Route
+          path={`${props.match.url}/changelog`}
+          render={() => (
+            <UIWell ratio={3} variant="page_flat">
+              <Markdown className="markdown-body" source={changelog} />
+            </UIWell>
+          )}
+        />
 
-      <Route
-        path={`${props.match.url}/notfound`}
-        render={() => (
-          <Screen>
-            <UITypeSet locale={locales.not_found} variant="header" />
-          </Screen>
-        )}
-      />
+        <Route
+          path={`${props.match.url}/readme`}
+          render={() => (
+            <UIWell ratio={3} variant="page_flat">
+              <Markdown className="markdown-body" source={readme} />
+            </UIWell>
+          )}
+        />
 
-      <Redirect to={`${props.match.url}/notfound`} push />
-    </Switch>
-  </App>
-);
+        <Route
+          path={`${props.match.url}/notfound`}
+          render={() => (
+            <Screen>
+              <UITypeSet locale={locales.not_found} variant="header" />
+            </Screen>
+          )}
+        />
+
+        <Redirect to={`${props.match.url}/notfound`} push />
+      </Switch>
+    </App>
+  );
+};
 
 AppPage.propTypes = {
   locales: PropTypes.exact({
-    not_found: PropTypesPlus.locale.isRequired,
+    not_found: PropTypesPlus.locale,
   }),
   match: PropTypesRouter.match.isRequired,
 };
 
 AppPage.defaultProps = {
-  locales,
+  locales: undefined,
 };
 
-export default AppPage;
+export default React.memo(AppPage);

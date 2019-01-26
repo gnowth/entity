@@ -6,10 +6,11 @@ import React from 'react';
 import { Control, Form } from '@entity/form';
 import { UIButton, UISpacer } from '@gnowth/ui';
 
-import locales from './Controls.locales';
+import defaultLocales from './Controls.locales';
 import styles, { Controls } from './Controls.styles';
 
 const FormControls = (props) => {
+  const locales = Object.assign({}, defaultLocales, props.locales);
   const ExtraControlsComponent = props.extraControlsComponent;
 
   return (
@@ -19,7 +20,7 @@ const FormControls = (props) => {
           action={props.resetAction}
           component={props.buttonComponent}
           componentProps={{
-            locale: props.locales.reset,
+            locale: locales.reset,
             ...props.resetButtonComponentProps,
           }}
         />
@@ -33,7 +34,7 @@ const FormControls = (props) => {
           component={props.buttonComponent}
           componentProps={{
             css: props.styles.buttons,
-            locale: props.locales.save,
+            locale: locales.save,
             ...props.saveButtonComponentProps,
           }}
         />
@@ -45,7 +46,7 @@ const FormControls = (props) => {
           component={props.buttonComponent}
           componentProps={{
             css: props.styles.buttons,
-            locale: props.locales.submit,
+            locale: locales.submit,
             ...props.submitButtonComponentProps,
           }}
         />
@@ -64,9 +65,9 @@ FormControls.propTypes = {
     actionSubmit: PropTypes.func.isRequired,
   }).isRequired,
   locales: PropTypes.exact({
-    reset: PropTypesPlus.locale.isRequired,
-    save: PropTypesPlus.locale.isRequired,
-    submit: PropTypesPlus.locale.isRequired,
+    reset: PropTypesPlus.locale,
+    save: PropTypesPlus.locale,
+    submit: PropTypesPlus.locale,
   }),
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
@@ -84,11 +85,11 @@ FormControls.propTypes = {
 };
 
 FormControls.defaultProps = {
-  locales,
   styles,
   buttonComponent: UIButton,
   component: Controls,
   extraControlsComponent: UISpacer,
+  locales: undefined,
   resetAction: ({ value, field, ...configs }) => field.entity.actionReset(value, configs),
   resetButtonComponentProps: {},
   resetHidden: false,
@@ -100,4 +101,4 @@ FormControls.defaultProps = {
   submitHidden: false,
 };
 
-export default FormControls;
+export default React.memo(FormControls);
