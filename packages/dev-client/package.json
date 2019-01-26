@@ -5,9 +5,6 @@
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.2.0",
-  "workspaces": [
-    "packages/*"
-  ],
   "engines": {
     "node": "10.15.0",
     "npm": "6.4.1"
