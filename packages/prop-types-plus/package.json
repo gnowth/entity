@@ -23,7 +23,7 @@
   "dependencies": {
     "prop-types": "15.6.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-is": "16.7.0"
+    "react-is": "16.8.0-alpha.1"
   },
   "peerDependencies": {
     "lodash": "4.17.11"

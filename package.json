@@ -81,7 +81,7 @@
     "lerna": "3.10.8",
     "lodash": "4.17.11",
     "raw-loader": "1.0.0",
-    "react-test-renderer": "16.7.0",
+    "react-test-renderer": "16.8.0-alpha.1",
     "rimraf": "2.6.3",
     "rollup": "1.1.2",
     "rollup-plugin-babel": "4.3.2",
