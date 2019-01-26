@@ -7,7 +7,10 @@
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
   "sideEffects": false,
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
@@ -18,12 +21,12 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@gnowth/default": "0.2.0",
-    "@gnowth/higher-order-component": "0.2.0",
-    "@gnowth/prop-types-entity": "0.2.0",
-    "@gnowth/prop-types-plus": "0.2.0",
-    "@gnowth/style": "0.2.0",
-    "@gnowth/ui": "0.2.0",
+    "@gnowth/default": "0.3.0",
+    "@gnowth/higher-order-component": "0.3.0",
+    "@gnowth/prop-types-entity": "0.3.0",
+    "@gnowth/prop-types-plus": "0.3.0",
+    "@gnowth/style": "0.3.0",
+    "@gnowth/ui": "0.3.0",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
@@ -31,9 +34,9 @@
     "react-immutable-proptypes": "2.1.0"
   },
   "devDependencies": {
-    "@entity/core": "0.2.0",
-    "@entity/duck-query": "0.2.0",
-    "@entity/duck-namespace-screen": "0.2.0",
+    "@entity/core": "0.3.0",
+    "@entity/duck-query": "0.3.0",
+    "@entity/duck-namespace-screen": "0.3.0",
     "react-intl": "2.8.0",
     "react-redux": "6.0.0",
     "redux-mock-store": "1.5.3"

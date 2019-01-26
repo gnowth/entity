@@ -7,7 +7,10 @@
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
   "sideEffects": false,
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
@@ -18,10 +21,10 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@gnowth/default": "0.2.0",
-    "@gnowth/higher-order-component": "0.2.0",
-    "@gnowth/prop-types-entity": "0.2.0",
-    "@gnowth/prop-types-plus": "0.2.0",
+    "@gnowth/default": "0.3.0",
+    "@gnowth/higher-order-component": "0.3.0",
+    "@gnowth/prop-types-entity": "0.3.0",
+    "@gnowth/prop-types-plus": "0.3.0",
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",

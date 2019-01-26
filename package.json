@@ -4,7 +4,7 @@
   "name": "@gnowth/root",
   "private": true,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "workspaces": [
     "packages/*"
   ],
