@@ -8,6 +8,9 @@
   "repository": "https://github.com/gnowth/react.git",
   "sideEffects": false,
   "version": "0.2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
