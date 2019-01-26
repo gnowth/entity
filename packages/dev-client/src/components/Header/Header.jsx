@@ -1,39 +1,41 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { useDefaultStyle } from '@gnowth/style';
 import { UIBox, UIButton } from '@gnowth/ui';
 
 import defaultLocales from './Header.locales';
-import styles from './Header.styles';
+import defaultStyles from './Header.styles';
 
 const Header = (props) => {
   const locales = Object.assign({}, defaultLocales, props.locales);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
-    <UIBox css={props.styles.header} justifyContent="flex-start">
+    <UIBox css={styles.header} justifyContent="flex-start">
       <UIButton
-        css={props.styles.buttons}
+        css={styles.buttons}
         locale={locales.github}
         to="https://github.com/gnowth/react"
         variant="text"
       />
 
       <UIButton
-        css={props.styles.buttons}
+        css={styles.buttons}
         locale={locales.style_guide}
         to="https://gnowth.github.io/react/style-guide"
         variant="text"
       />
 
       <UIButton
-        css={props.styles.buttons}
+        css={styles.buttons}
         locale={locales.changelog}
         to="/pages/changelog"
         variant="text"
       />
 
       <UIButton
-        css={props.styles.buttons}
+        css={styles.buttons}
         locale={locales.readme}
         to="/pages/readme"
         variant="text"
@@ -56,8 +58,8 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  styles,
   locales: undefined,
+  styles: undefined,
 };
 
 export default React.memo(Header);

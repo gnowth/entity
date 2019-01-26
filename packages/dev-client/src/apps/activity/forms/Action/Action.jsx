@@ -4,13 +4,15 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
+import { useDefaultStyle } from '@gnowth/style';
 import { UIIcon, UITypeSet } from '@gnowth/ui';
 
 import defaultLocales from './Action.locales';
-import styles, { Controls, Header } from './Action.styles';
+import defaultStyles, { Controls, Header } from './Action.styles';
 
 const FormAction = (props) => {
   const locales = Object.assign({}, defaultLocales, props.locales);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
     <Form {...props}>
@@ -30,7 +32,7 @@ const FormAction = (props) => {
       <Input
         name="person_responsible"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.person_responsible,
         }}
       />
@@ -38,7 +40,7 @@ const FormAction = (props) => {
       <Input
         name="date_due"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.date_due,
         }}
       />
@@ -46,7 +48,7 @@ const FormAction = (props) => {
       <Input
         name="completed_by"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.completed_by,
         }}
       />
@@ -54,7 +56,7 @@ const FormAction = (props) => {
       <Input
         name="date_completed"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.date_completed,
         }}
       />
@@ -63,7 +65,7 @@ const FormAction = (props) => {
         <Control
           action={({ value, field, ...options }) => field.entity.actionUpdate(value, options)}
           componentProps={{
-            css: props.styles.control,
+            css: styles.control,
             locale: locales.update,
           }}
         />
@@ -71,7 +73,7 @@ const FormAction = (props) => {
         <Control
           action={({ value, field, ...options }) => field.entity.actionComplete(value, options)}
           componentProps={{
-            css: props.styles.control,
+            css: styles.control,
             locale: locales.complete,
           }}
         />
@@ -102,16 +104,16 @@ FormAction.propTypes = {
   records: PropTypesImmutable.list,
 
   styles: PropTypes.exact({
-    control: PropTypesPlus.css.isRequired,
-    input: PropTypesPlus.css.isRequired,
+    control: PropTypesPlus.css,
+    input: PropTypesPlus.css,
   }),
 };
 
 FormAction.defaultProps = {
-  styles,
   index: null,
   locales: undefined,
   records: undefined,
+  styles: undefined,
 };
 
 export default React.memo(FormAction);

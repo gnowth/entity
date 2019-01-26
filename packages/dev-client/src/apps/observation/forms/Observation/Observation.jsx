@@ -5,16 +5,18 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
+import { useDefaultStyle } from '@gnowth/style';
 import { UIErrorWell } from '@gnowth/ui';
 
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
 import defaultLocales from './Observation.locales';
-import styles from './Observation.styles';
+import defaultStyles from './Observation.styles';
 
 const FormObservation = (props) => {
   const locales = Object.assign({}, defaultLocales, props.locales);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
     <Form {...props}>
@@ -28,7 +30,7 @@ const FormObservation = (props) => {
       <Input
         name="date_activity"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.date_activity,
         }}
       />
@@ -36,7 +38,7 @@ const FormObservation = (props) => {
       <Input
         name="title"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.title,
         }}
       />
@@ -44,7 +46,7 @@ const FormObservation = (props) => {
       <Input
         name="title_short"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.title_short,
         }}
       />
@@ -52,7 +54,7 @@ const FormObservation = (props) => {
       <Input
         name="description"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.description,
         }}
       />
@@ -60,7 +62,7 @@ const FormObservation = (props) => {
       <Input
         name="date_due"
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.date_due,
         }}
       />
@@ -70,7 +72,7 @@ const FormObservation = (props) => {
         component={FormAction}
         componentProps={({ value }) => ({ records: value })}
         wrapperComponentProps={{
-          css: props.styles.input,
+          css: styles.input,
           labelLocale: locales.follow_up_actions,
         }}
         many
@@ -83,7 +85,7 @@ const FormObservation = (props) => {
 
       <Input
         component={FormControls}
-        componentProps={{ css: props.styles.controls }}
+        componentProps={{ css: styles.controls }}
       />
     </Form>
   );
@@ -108,8 +110,8 @@ FormObservation.propTypes = {
 };
 
 FormObservation.defaultProps = {
-  styles,
   locales: undefined,
+  styles: undefined,
 };
 
 export default React.memo(FormObservation);

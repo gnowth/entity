@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { useDefaultStyle } from '@gnowth/style';
 
 import UIIcon from '../Icon';
-import styles, { Popup, Wrapper } from './Tooltip.styles';
+import defaultStyles, { Popup, Wrapper } from './Tooltip.styles';
 
 class UITooltip extends React.Component {
   state = {
@@ -13,6 +14,7 @@ class UITooltip extends React.Component {
   handleClick = () => this.setState(prevState => ({ hidden: !prevState.hidden }))
 
   render() {
+    const styles = useDefaultStyle(defaultStyles, this.props.styles);
     const Component = this.props.component;
 
     return (
@@ -22,7 +24,7 @@ class UITooltip extends React.Component {
       >
         <Component
           onClick={this.handleClick}
-          {...{ css: this.props.styles.icon }}
+          {...{ css: styles.icon }}
           {...this.props.componentProps}
         />
 
@@ -45,10 +47,10 @@ UITooltip.propTypes = {
 };
 
 UITooltip.defaultProps = {
-  styles,
   component: UIIcon,
   componentProps: {},
   css: undefined,
+  styles: undefined,
 };
 
 export default UITooltip;
