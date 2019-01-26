@@ -8,9 +8,11 @@ import UIError from '../Error';
 import UITooltip from '../Tooltip';
 import UITypeSet from '../TypeSet';
 
+import defaultHooks from './Label.hooks';
 import defaultStyles, { Label, UILabelRoot } from './Label.styles';
 
 const UILabel = (props) => {
+  const hooks = Object.assign({}, defaultHooks, props.hooks);
   const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
@@ -27,14 +29,7 @@ const UILabel = (props) => {
       )}
 
       { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
-        <UITooltip
-          componentProps={{
-            css: styles.icon,
-            name: 'error',
-            material: true,
-          }}
-          css={styles.tooltip}
-        >
+        <UITooltip {...hooks.useGetPropsTooltip(props, styles)}>
           { props.errors.map((error, index) => (
             <UIError key={index}>{ error }</UIError> // eslint-disable-line
           ))}
@@ -50,6 +45,9 @@ UILabel.propTypes = {
   children: PropTypes.node,
   css: PropTypesPlus.css,
   errors: PropTypesImmutable.list,
+  hooks: PropTypes.exact({
+    useGetPropsTooltip: PropTypes.func,
+  }),
   label: PropTypes.string,
   labelComponentProps: PropTypes.shape({}),
   labelLocale: PropTypesPlus.locale,
@@ -63,10 +61,11 @@ UILabel.defaultProps = {
   children: undefined,
   css: undefined,
   errors: undefined,
+  hooks: undefined,
   label: undefined,
   labelComponentProps: {},
   labelLocale: undefined,
   styles: undefined,
 };
 
-export default UILabel;
+export default React.memo(UILabel);

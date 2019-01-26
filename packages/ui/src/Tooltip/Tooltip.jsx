@@ -4,53 +4,49 @@ import React from 'react';
 import { useDefaultStyle } from '@gnowth/style';
 
 import UIIcon from '../Icon';
+import defaultHooks from './Tooltip.hooks';
 import defaultStyles, { Popup, Wrapper } from './Tooltip.styles';
 
-class UITooltip extends React.Component {
-  state = {
-    hidden: true,
-  }
+const UITooltip = ({ Component, ...props }) => {
+  const hooks = Object.assign({}, defaultHooks, props.hooks);
+  const [hidden, setHidden] = React.useState(true);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
 
-  handleClick = () => this.setState(prevState => ({ hidden: !prevState.hidden }))
+  return (
+    <Wrapper
+      className={props.className}
+      css={props.css}
+    >
+      <Component {...hooks.useGetPropsTrigger(props, styles, hidden, setHidden)} />
 
-  render() {
-    const styles = useDefaultStyle(defaultStyles, this.props.styles);
-    const Component = this.props.component;
-
-    return (
-      <Wrapper
-        className={this.props.className}
-        css={this.props.css}
-      >
-        <Component
-          onClick={this.handleClick}
-          {...{ css: styles.icon }}
-          {...this.props.componentProps}
-        />
-
-        <Popup hidden={this.state.hidden}>
-          { this.props.children }
-        </Popup>
-      </Wrapper>
-    );
-  }
-}
+      <Popup hidden={hidden}>
+        { props.children }
+      </Popup>
+    </Wrapper>
+  );
+};
 
 UITooltip.propTypes = {
   children: PropTypes.node.isRequired,
-  component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
   css: PropTypesPlus.css,
+  event: PropTypes.string,
+  hooks: PropTypes.exact({
+    useGetPropsTrigger: PropTypes.func,
+  }),
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
   }),
+  Component: PropTypesPlus.component,
 };
 
 UITooltip.defaultProps = {
-  component: UIIcon,
   componentProps: {},
   css: undefined,
+  event: 'onClick',
+  hooks: undefined,
   styles: undefined,
+  Component: UIIcon,
 };
 
-export default UITooltip;
+export default React.memo(UITooltip);
