@@ -16,4 +16,4 @@ UIErrorWell.propTypes = {
   errors: PropTypesImmutable.list.isRequired,
 };
 
-export default UIErrorWell;
+export default React.memo(UIErrorWell);
