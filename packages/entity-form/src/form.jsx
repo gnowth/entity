@@ -8,6 +8,16 @@ import { Map } from 'immutable';
 import { FormProvider } from './context';
 
 class Form extends React.Component {
+  handleChange = ({ target }) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (target.name !== this.props.name) throw new Error(`Form.handleChange (${this.props.name}): different name provided "${target.name}"`);
+      if (target.index === null) throw new Error(`Form.handleChange (${this.props.name}): index cannot be null`);
+      if (!target.array && !Map.isMap(target.value) && target.value !== null) throw new Error(`Form.handleChange (${this.props.name}): Value must either be a "Map" or "null".`);
+    }
+
+    return this.props.onChange({ target });
+  };
+
   getProps() {
     return {
       formDisabled: this.props.disabled,
@@ -23,26 +33,17 @@ class Form extends React.Component {
     };
   }
 
-  handleChange = ({ target }) => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (target.name !== this.props.name) throw new Error(`Form.handleChange (${this.props.name}): different name provided "${target.name}"`);
-      if (target.index === null) throw new Error(`Form.handleChange (${this.props.name}): index cannot be null`);
-      if (!target.array && !Map.isMap(target.value) && target.value !== null) throw new Error(`Form.handleChange (${this.props.name}): Value must either be a "Map" or "null".`);
-    }
-
-    return this.props.onChange({ target });
-  };
-
   render() {
+    const Component = this.props.component;
+
     return (
       <FormProvider {...this.getProps()}>
-        <this.props.component
+        <Component
           className={this.props.className}
-          css={this.props.css}
           {...this.props.componentProps}
         >
           { this.props.children }
-        </this.props.component>
+        </Component>
       </FormProvider>
     );
   }
@@ -54,7 +55,9 @@ Form.propTypes = {
   componentProps: PropTypes.shape({}),
   css: PropTypesPlus.css,
   disabled: PropTypes.bool,
+  errors: PropTypesImmutable.list.isRequired,
   field: PropTypesEntity.entityField.isRequired,
+  index: PropTypes.number,
   initialValue: PropTypesImmutable.map,
   name: PropTypes.oneOfType([
     PropTypes.string.isRequired,
@@ -71,6 +74,7 @@ Form.defaultProps = {
   componentProps: {},
   css: undefined,
   disabled: false,
+  index: undefined,
   initialValue: undefined,
   name: undefined,
   nameMapper: {},

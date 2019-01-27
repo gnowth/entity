@@ -1,27 +1,31 @@
 {
   "author": "Thierry Wong",
   "description": "entity",
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0-only",
   "main": "src/index.js",
   "name": "@entity/core",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.2.0",
+  "sideEffects": false,
+  "version": "0.4.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
-    "clean": "rimraf dist",
+    "destroy": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
-    "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
     "postbuild": "npm run link-main:dist",
-    "prebuild": "npm run clean"
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
   },
   "dependencies": {
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
-    "moment": "2.22.2",
     "query-string": "6.2.0"
+  },
+  "peerDependencies": {
+    "moment": "2.24.0"
   }
 }

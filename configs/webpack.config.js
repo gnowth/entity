@@ -1,14 +1,20 @@
 const _flatten = require('lodash/flatten');
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const rules = require('./webpack-rules.config');
-const alias = require('./alias.config');
+const alias = require('./webpack-alias.config');
 
+const isAnalyze = process.env.npm_lifecycle_event === 'analyze';
 const isBuild = process.env.npm_lifecycle_event === 'build';
+const isStart = process.env.npm_lifecycle_event === 'start';
 
 module.exports = {
   module: { rules },
@@ -16,8 +22,11 @@ module.exports = {
   devtool: 'cheap-source-map',
 
   resolve: {
-    alias,
+    alias: alias(path.join(process.cwd(), isAnalyze || isBuild || isStart ? '' : 'packages/dev-client')),
     extensions: ['.js', '.jsx'],
+    plugins: [
+      new DirectoryNamedPlugin(true),
+    ],
   },
 
   entry: {
@@ -27,7 +36,21 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist/'),
     filename: `[name]${isBuild ? '.[chunkhash]' : ''}.js`,
-    chunkFilename: `[id]${isBuild ? '.[chunkhash]' : ''}.js`,
+    chunkFilename: `[name]${isBuild ? '.[chunkhash]' : ''}.js`,
+  },
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 10,
+          enforce: true,
+        },
+      },
+    },
   },
 
   stats: {
@@ -36,15 +59,10 @@ module.exports = {
   },
 
   plugins: _flatten([
-    // Build plugins
-    isBuild && [
-      new webpack.optimize.AggressiveMergingPlugin(),
-    ],
-
     // Common plugins
     [
       new ExtractTextPlugin('[name].[hash].css'),
-      new HtmlWebpackPlugin({ template: 'assets/index.html' }),
+      new HtmlPlugin({ template: 'assets/index.html' }),
     ],
 
     // Development plugins
@@ -58,6 +76,40 @@ module.exports = {
         },
         { reload: false } // eslint-disable-line comma-dangle
       ),
+    ],
+
+    // Analyze plugins
+    isAnalyze && [
+      new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+    ],
+
+    // Build plugins
+    (isBuild || isAnalyze) && [
+      new webpack.optimize.AggressiveMergingPlugin(),
+
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-au/),
+
+      new OptimizeCssnanoPlugin({
+        cssnanoOptions: {
+          preset: ['default', {
+            discardComments: { removeAll: true },
+          }],
+        },
+      }),
+
+      new WorkboxPlugin.GenerateSW({
+        exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+
+        runtimeCaching: [{
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: { maxEntries: 10 },
+          },
+        }],
+      }),
     ],
   ]).filter(p => p),
 };

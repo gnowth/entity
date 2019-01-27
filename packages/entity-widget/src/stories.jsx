@@ -1,7 +1,10 @@
-import widgetInput from './Input/stories';
-import widgetTextarea from './Textarea/stories';
+import createStoryForWidgetInput from './Input/Input.stories';
+import createStoryForWidgetTextarea from './Textarea/Textarea.stories';
 
-export default (mod) => {
-  widgetInput(mod);
-  widgetTextarea(mod);
-};
+export { default as createStoryForWidgetInput } from './Input/Input.stories';
+export { default as createStoryForWidgetTextarea } from './Textarea/Textarea.stories';
+
+export function createStoriesForWidget(storyFactory) {
+  createStoryForWidgetInput(storyFactory('Input'));
+  createStoryForWidgetTextarea(storyFactory('Textarea'));
+}

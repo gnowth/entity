@@ -1,4 +1,4 @@
-import _compose from 'lodash/fp/compose';
+import _flowRight from 'lodash/flowRight';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
@@ -11,25 +11,6 @@ import { withForm } from './context';
 
 export default function (ComposedComponent) {
   class withInput extends React.Component {
-    getProps() {
-      const field = this.props.formField.getField({ name: this.props.name });
-
-      return Object.assign({}, this.props, {
-        field,
-        disabled: this.props.disabled,
-        errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
-        index: this.props.index,
-        name: this.props.name,
-        onChange: this.props.array
-          ? this.handleChangeArray
-          : this.handleChange,
-        readOnly: this.props.readOnly,
-        initialValue: this.props.formInitialValue,
-        options: field.getOptions(),
-        value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
-      });
-    }
-
     handleChange = ({ target }) => {
       const index = target.getAttribute
         ? target.getAttribute('index') || undefined
@@ -67,13 +48,34 @@ export default function (ComposedComponent) {
       },
     })
 
+    getProps() {
+      const field = this.props.formField.getField({ name: this.props.name });
+
+      return Object.assign({}, this.props, {
+        field,
+        disabled: this.props.disabled,
+        errors: this.props.formField.getErrors(this.props.formErrors, { name: this.props.name }),
+        index: this.props.index,
+        name: this.props.name,
+        onChange: this.props.array
+          ? this.handleChangeArray
+          : this.handleChange,
+        readOnly: this.props.readOnly,
+        initialValue: this.props.formInitialValue,
+        options: field.getOptions(),
+        value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
+      });
+    }
+
     renderComponent(props) {
       return <ComposedComponent {...props} />;
     }
 
     renderQuery(props) {
+      const QueryComponent = this.props.queryComponent;
+
       return (
-        <this.props.queryComponent
+        <QueryComponent
           action={({ search }) => props.field.entity.duck.get({
             params: Map({ search }).merge(this.props.filterParams),
           })}
@@ -85,7 +87,7 @@ export default function (ComposedComponent) {
             processingDidFail: query.processingDidFail,
             options: query.value,
           })}
-        </this.props.queryComponent>
+        </QueryComponent>
       );
     }
 
@@ -99,21 +101,38 @@ export default function (ComposedComponent) {
   withInput.propTypes = {
     apiOptions: PropTypes.bool,
     array: PropTypes.bool,
+    disabled: PropTypes.bool,
     filterParams: PropTypesImmutable.map,
+    formErrors: PropTypesImmutable.list.isRequired,
     formField: PropTypesEntity.entityField.isRequired,
+    formOnChange: PropTypes.func.isRequired,
+    formIndex: PropTypes.number,
+    formInitialValue: PropTypesImmutable.map,
+    formName: PropTypesPlus.string,
+    formValue: PropTypesImmutable.map.isRequired,
+    index: PropTypes.number,
+    name: PropTypesPlus.string,
     queryComponent: PropTypesPlus.isRequiredIf('apiOptions', PropTypesPlus.component),
+    readOnly: PropTypes.bool,
     willChangeRecord: PropTypes.func,
   };
 
   withInput.defaultProps = {
     apiOptions: false,
     array: false,
+    disabled: undefined,
     filterParams: Map(),
+    formIndex: undefined,
+    formInitialValue: undefined,
+    formName: undefined,
+    index: undefined,
+    name: undefined,
     queryComponent: undefined,
+    readOnly: undefined,
     willChangeRecord: ({ nextRecord }) => nextRecord,
   };
 
-  return _compose(
+  return _flowRight(
     withForm,
     withDefault({ queryComponent: ['entityForm_query', 'component_query'] }),
   )(withInput);

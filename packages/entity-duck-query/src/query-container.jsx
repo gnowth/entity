@@ -1,4 +1,5 @@
 import _flowRight from 'lodash/flowRight';
+import _isFunction from 'lodash/isFunction';
 import _omitBy from 'lodash/omitBy';
 import PropTypes from 'prop-types';
 import { withDefault } from '@gnowth/default';
@@ -47,7 +48,7 @@ const mapStateToProps = (state, props) => Object.assign(
 const mapDispatchToProps = (dispatch, props) => ({
   clear: (options = {}) => dispatch(props.queryContainer_clear({ ...props.queryContainer_action.meta, ...options })),
   process: () => dispatch(props.queryContainer_action),
-  save: record => dispatch(props.queryContainer_save_local(record, { id: props.queryContainer_action.meta.id })),
+  save: record => dispatch(props.queryContainer_saveLocal(record, { id: props.queryContainer_action.meta.id })),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
@@ -85,6 +86,11 @@ export default _flowRight(
     const action = props.queryContainer_state.action
       || props.action({ search: props.queryContainer_state.search });
 
+    if (process.env.NODE_ENV !== 'production') {
+      if (!action.meta.keyRecord) throw new Error(`QueryContainer.withProps (${action.meta.entity.name}): "keyRecord" is required in meta.`);
+      if (!_isFunction(action.meta.entity.duck[action.meta.keyRecord])) throw new Error(`QueryContainer.withProps (${action.meta.entity.name}): duck property ${action.meta.keyRecord} must be a selector.`);
+    }
+
     return {
       queryContainer_action: action,
 
@@ -97,10 +103,9 @@ export default _flowRight(
       queryContainer_pagination: (state, options) => action.meta.keyPagination
         && action.meta.entity.duck[action.meta.keyPagination]?.(state, options),
 
-      queryContainer_record: (state, options) => action.meta.keyRecord
-        && action.meta.entity.duck[action.meta.keyRecord]?.(state, options),
+      queryContainer_record: (state, options) => action.meta.entity.duck[action.meta.keyRecord](state, options),
 
-      queryContainer_save_local: (value, options) => action.meta.keySaveLocal
+      queryContainer_saveLocal: (value, options) => action.meta.keySaveLocal
         && action.meta.entity.duck[action.meta.keySaveLocal]?.(value, options),
 
       queryContainer_status: (state, options) => !!action.meta.keyStatus

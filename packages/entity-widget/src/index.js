@@ -1,6 +1,6 @@
-export * from './List';
+export * from './stories';
 
-export { default as createStories } from './stories';
+export * from './List';
 
 export { default as WidgetBoolean } from './Boolean';
 

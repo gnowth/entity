@@ -21,9 +21,14 @@ const OptionText = props => (
 );
 
 OptionText.propTypes = {
+  css: PropTypesPlus.css,
   field: PropTypesEntity.field.isRequired,
   selected: PropTypes.bool.isRequired,
   value: PropTypesPlus.value.isRequired,
+};
+
+OptionText.defaultProps = {
+  css: undefined,
 };
 
 export default OptionText;

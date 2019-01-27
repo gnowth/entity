@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.c1 {
+  color: black;
+}
+
+.c1.c1 {
+  font-size: 1rem;
+}
+
+.c2 {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  top: 0;
+  left: 0;
+  padding: 8px;
+  position: absolute;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.c0 {
+  display: inline-block;
+  position: relative;
+}
+
+<div
+  className="c0"
+>
+  <i
+    className="icon icon-apple c1"
+    name="apple"
+    onClick={[Function]}
+  />
+  <div
+    className="c2"
+    hidden={true}
+  >
+    Test
+  </div>
+</div>
+`;

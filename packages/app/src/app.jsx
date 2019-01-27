@@ -1,64 +1,77 @@
 import _isFunction from 'lodash/isFunction';
-import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { DefaultProvider } from '@gnowth/default';
 
 import { AppConsumer } from './context';
 
-const App = props => (
-  <AppConsumer>
-    { (context) => {
-      if (process.env.NODE_ENV !== 'production') {
-        if (props.intlProviderProps && !context.intlProvider) throw new Error('entity-app (App): intlProvider is required in "AppRoot"');
-        if (props.themeProviderProps && !context.themeProvider) throw new Error('entity-app (App): themeProvider is required in "AppRoot"');
-      }
+class App extends React.PureComponent {
+  getPropsIntl(context) {
+    if (!context.intlProvider) return {};
 
-      const IntlProvider = (props.intlProviderProps && context.intlProvider) || React.Fragment;
-      const ThemeProvider = (props.themeProviderProps && context.themeProvider) || React.Fragment;
-      const Container = props.containerComponent || React.Fragment;
+    return _isFunction(this.props.intlProviderProps)
+      ? this.props.intlProviderProps(context.intlProviderProps)
+      : {
+        ...context.intlProviderProps,
+        ...this.props.intlProviderProps,
+        messages: Object.assign(
+          {},
+          context.intlProviderProps.messages,
+          this.props.intlProviderProps.messages,
+        ),
+      };
+  }
 
-      const getProps = name => (
-        _isFunction(props[name])
-          ? props[name](context[name])
-          : props[name]
-      ) || {};
+  getPropsTheme(context) {
+    if (!context.themeProvider) return {};
 
-      return (
-        <DefaultProvider {...Object.assign({}, context.defaults, props.defaults)}>
-          <IntlProvider {...getProps('intlProviderProps')}>
-            <ThemeProvider {...getProps('themeProviderProps')}>
-              <Container {...(props.containerComponentProps || {})}>
-                { props.children }
-              </Container>
-            </ThemeProvider>
-          </IntlProvider>
-        </DefaultProvider>
-      );
-    }}
-  </AppConsumer>
-);
+    const computedThemeProviderProps = _isFunction(this.props.themeProviderProps)
+      ? this.props.themeProviderProps(context.themeProviderProps)
+      : this.props.themeProviderProps;
 
-App.propTypes = exact({
+    return computedThemeProviderProps;
+  }
+
+  renderContext = (context) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (this.props.intlProviderProps && !context.intlProvider) throw new Error('App.renderContext: intlProvider is required in "AppRoot"');
+      if (this.props.themeProviderProps && !context.themeProvider) throw new Error('App.renderContext: themeProvider is required in "AppRoot"');
+    }
+
+    const IntlProvider = (this.props.intlProviderProps && context.intlProvider) || React.Fragment;
+    const ThemeProvider = (this.props.themeProviderProps && context.themeProvider) || React.Fragment;
+
+    return (
+      <DefaultProvider {...context.defaults} {...this.props.defaults}>
+        <IntlProvider {...this.getPropsIntl(context)}>
+          <ThemeProvider {...this.getPropsTheme(context)}>
+            { this.props.children }
+          </ThemeProvider>
+        </IntlProvider>
+      </DefaultProvider>
+    );
+  }
+
+  render() {
+    return <AppConsumer>{ this.renderContext }</AppConsumer>;
+  }
+}
+
+App.propTypes = {
   children: PropTypes.node.isRequired,
-  containerComponent: PropTypesPlus.isRequiredIf('containerComponentProps', PropTypesPlus.component),
-  containerComponentProps: PropTypes.shape({}),
   defaults: PropTypes.shape({}),
   intlProviderProps: PropTypes.exact({
-    locale: PropTypes.string.isRequired,
-    messages: PropTypes.object.isRequired,
+    locale: PropTypes.string,
+    messages: PropTypes.objectOf(PropTypes.string),
   }),
   themeProviderProps: PropTypes.exact({
     theme: PropTypes.shape({}).isRequired,
   }),
-});
+};
 
 App.defaultProps = {
-  containerComponent: undefined,
-  containerComponentProps: undefined,
-  defaults: undefined,
-  intlProviderProps: undefined,
+  defaults: {},
+  intlProviderProps: {},
   themeProviderProps: undefined,
 };
 

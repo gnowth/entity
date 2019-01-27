@@ -16,6 +16,28 @@ const ListComponent = styled.ul`
 `;
 
 class WidgetList extends React.Component {
+  handleClickFactory = option => () => {
+    if (this.props.readOnly || this.props.disabled) return undefined;
+
+    if (this.props.field.many) {
+      return this.props.onChange({
+        target: {
+          name: this.props.name,
+          value: this.props.value.includes(option)
+            ? this.props.value.filterNot(val => is(val, option))
+            : this.props.value.push(option),
+        },
+      });
+    }
+
+    return this.props.onChange({
+      target: {
+        name: this.props.name,
+        value: is(option, this.props.value) ? null : option,
+      },
+    });
+  }
+
   getPropsOption(option) {
     const props = {
       disabled: this.props.disabled,
@@ -57,52 +79,35 @@ class WidgetList extends React.Component {
     };
   }
 
-  handleClickFactory = option => () => {
-    if (this.props.readOnly || this.props.disabled) return undefined;
-
-    if (this.props.field.many) {
-      return this.props.onChange({
-        target: {
-          name: this.props.name,
-          value: this.props.value.includes(option)
-            ? this.props.value.filterNot(val => is(val, option))
-            : this.props.value.push(option),
-        },
-      });
-    }
-
-    return this.props.onChange({
-      target: {
-        name: this.props.name,
-        value: is(option, this.props.value) ? null : option,
-      },
-    });
-  }
-
   render() {
     const shouldShow = this.getShouldShow();
+    const Component = this.props.component;
+    const OptionComponent = this.props.optionComponent;
+    const ProcessingComponent = this.props.processingComponent;
+    const ProcessingDidFailComponent = this.props.processingDidFailComponent;
+    const RecordCountNoneComponent = this.props.recordCountNoneComponent;
 
     return (
-      <this.props.component {...this.props.componentProps}>
+      <Component {...this.props.componentProps}>
         { shouldShow.processingComponent && (
-          <this.props.processingComponent {...(this.props.processingComponentProps || {})} />
+          <ProcessingComponent {...(this.props.processingComponentProps || {})} />
         )}
 
         { shouldShow.processingDidFailComponent && (
-          <this.props.processingDidFailComponent {...(this.props.processingDidFailComponentProps || {})} />
+          <ProcessingDidFailComponent {...(this.props.processingDidFailComponentProps || {})} />
         )}
 
         { shouldShow.recordCoundNoneComponent && (
-          <this.props.recordCountNoneComponent {...(this.props.recordCountNoneComponentProps || {})} />
+          <RecordCountNoneComponent {...(this.props.recordCountNoneComponentProps || {})} />
         )}
 
         { shouldShow.options && this.props.options.map(option => (
-          <this.props.optionComponent
+          <OptionComponent
             key={this.props.field.getKey(option)}
             {...this.getPropsOption(option)}
           />
         ))}
-      </this.props.component>
+      </Component>
     );
   }
 }
@@ -123,7 +128,13 @@ WidgetList.propTypes = {
   processingDidFail: PropTypes.bool,
   processingDidFailComponent: PropTypesPlus.isRequiredIf('processingDidFailComponentProps', PropTypesPlus.component),
   processingDidFailComponentProps: PropTypes.shape({}),
+  recordCountNoneComponent: PropTypesPlus.isRequiredIf('recordCountNoneComponentProps', PropTypesPlus.component),
+  recordCountNoneComponentProps: PropTypes.shape({}),
   readOnly: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypesImmutable.map,
+    PropTypesImmutable.list,
+  ]),
 };
 
 WidgetList.defaultProps = {
@@ -139,7 +150,10 @@ WidgetList.defaultProps = {
   processingDidFail: false,
   processingDidFailComponent: undefined,
   processingDidFailComponentProps: undefined,
+  recordCountNoneComponent: undefined,
+  recordCountNoneComponentProps: undefined,
   readOnly: false,
+  value: undefined,
 };
 
 export default withDefault({

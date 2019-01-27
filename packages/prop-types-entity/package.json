@@ -1,26 +1,28 @@
 {
   "author": "Thierry Wong",
   "description": "prop-types-entity",
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0-only",
   "main": "src/index.js",
   "name": "@gnowth/prop-types-entity",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
-  "version": "0.2.0",
+  "sideEffects": false,
+  "version": "0.4.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
-    "clean": "rimraf dist",
+    "destroy": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:css": "stylelint 'src/**/*.{js,jsx}' --config ../../configs/stylelint.config.js",
-    "lint:js": "eslint -c ../../configs/eslint.config.js --ext .js --ext .jsx src",
     "postbuild": "npm run link-main:dist",
-    "prebuild": "npm run clean"
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.2.0",
-    "@gnowth/prop-types-plus": "0.2.0",
+    "@entity/core": "0.4.0",
+    "@gnowth/prop-types-plus": "0.4.0",
     "prop-types": "15.6.2"
   }
 }

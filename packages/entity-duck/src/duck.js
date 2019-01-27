@@ -1,6 +1,6 @@
-import _compose from 'lodash/fp/compose';
+import _flowRight from 'lodash/flowRight';
 import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/fp/mapValues';
+import _mapValues from 'lodash/mapValues';
 import { Entity } from '@entity/core';
 import { handleActions } from 'redux-actions';
 
@@ -32,15 +32,16 @@ export default class Duck {
   constructor(options = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (!options.entity || !Entity.isEntity(options.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
-      if (!options.app) throw new Error(`${this.constructor.name}.constructor (${options.entity.name}): "app" option is required`);
+      if (!/^[A-Z]/.exec(options.app)) throw new Error(`${this.constructor.name}.constructor (${options.entity.name}): "app" option must start with a capital letter`);
     }
 
-    const actions = _mapValues.convert({ cap: false })(
-      (actionFactory, action) => _compose(
+    const actions = _mapValues(
+      this.constructor.actions,
+      (actionFactory, action) => _flowRight(
         actionFactory({ entity: options.entity, keyAction: action }),
         this.constructor.toKey(options.app, options.entity),
       )(action),
-    )(this.constructor.actions);
+    );
 
     Object.assign(this, actions, options);
   }
@@ -49,10 +50,13 @@ export default class Duck {
     const duck = this.constructor;
     const initialState = duck.getInitialState({ entity: this.entity });
 
-    return _compose(
+    return _flowRight(
       reducerMap => handleActions(reducerMap, initialState),
       types => duck.getReducers(types, initialState),
-      _mapValues.convert({ cap: false })((_, keyAction) => duck.toKey(this.app, this.entity)(keyAction)),
+      actions => _mapValues(
+        actions,
+        (_, keyAction) => duck.toKey(this.app, this.entity)(keyAction),
+      ),
     )(duck.actions);
   }
 }

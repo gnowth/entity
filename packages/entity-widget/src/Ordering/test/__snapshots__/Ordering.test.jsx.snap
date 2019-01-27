@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<span
+  className="Ordering-sc-1hnxr7o-0 ilHuWj"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  test
+  <i
+    className="icon icon-unfold_more sc-bZQynM bOrPFB Icon__UIIcon-sc-10so2ko-0 ivuVRW"
+    name="unfold_more"
+  />
+</span>
+`;

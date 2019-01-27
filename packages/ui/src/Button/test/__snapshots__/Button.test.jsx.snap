@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  "",
+  "",
+  .c0 {
+  display: inline-block;
+}
+
+<button
+    className="c0"
+    to=""
+  >
+    Test
+  </button>,
+]
+`;

@@ -8,11 +8,11 @@
       "conventionalCommits": true
     }
   },
-  "lerna": "3.4.3",
+  "lerna": "3.10.7",
   "packages": [
     "packages/*"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.2.0"
+  "version": "0.4.0"
 }

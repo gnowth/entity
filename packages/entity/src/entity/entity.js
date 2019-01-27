@@ -91,6 +91,17 @@ export default class Entity {
     return this.validate(record, options).size === 0;
   }
 
+  static isValidFromErrors(errors, options = {}) {
+    return options.name
+      ? options.name.some(
+        n => errors
+          .filter(error => Map.isMap(error) && error.get('detail'))
+          .flatMap(error => error.getIn(['errors', n]))
+          .filter(error => error).size > 0,
+      )
+      : !errors || errors.size === 0;
+  }
+
   static toData(record) {
     if (process.env.NODE_ENV !== 'production') {
       if (record && !Map.isMap(record)) throw new Error(`Entity.toData (${this.name}): record must be either a Map or null or undefined`);

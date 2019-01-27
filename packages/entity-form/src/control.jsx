@@ -1,8 +1,10 @@
-import _compose from 'lodash/fp/compose';
+import _flowRight from 'lodash/flowRight';
 import _isFunction from 'lodash/isFunction';
 import _isObjectLike from 'lodash/isObjectLike';
 import _isString from 'lodash/isString';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { withDefault } from '@gnowth/default';
@@ -12,35 +14,6 @@ import { connect } from 'react-redux';
 import withInput from './withInput';
 
 class Control extends React.Component {
-  getPropsContext() {
-    return {
-      errors: this.props.errors,
-      field: this.props.field,
-      initialValue: this.props.initialValue,
-      processing: this.props.processing,
-      processingDidFail: this.props.processingDidFail,
-      value: this.props.value,
-    };
-  }
-
-  getProps() {
-    return Object.assign(
-      {
-        [this.props.event]: this.handleEvent,
-        disabled: this.props.disabled || this.props.readOnly,
-      },
-
-      !_isString(this.props.component) && {
-        processing: this.props.processing,
-        processDidFail: this.props.processDidFail,
-      },
-
-      _isFunction(this.props.componentProps)
-        ? this.props.componentProps(this.getPropsContext())
-        : this.props.componentProps,
-    );
-  }
-
   handleEvent = () => {
     const action = this.props.action({ ...this.getPropsContext() });
 
@@ -54,9 +27,40 @@ class Control extends React.Component {
       });
   }
 
+  getProps() {
+    return Object.assign(
+      {
+        [this.props.event]: this.handleEvent,
+        disabled: this.props.disabled || this.props.readOnly,
+      },
+
+      !_isString(this.props.component) && {
+        processing: this.props.processing,
+        processingDidFail: this.props.processingDidFail,
+      },
+
+      _isFunction(this.props.componentProps)
+        ? this.props.componentProps(this.getPropsContext())
+        : this.props.componentProps,
+    );
+  }
+
+  getPropsContext() {
+    return {
+      errors: this.props.errors,
+      field: this.props.field,
+      initialValue: this.props.initialValue,
+      processing: this.props.processing,
+      processingDidFail: this.props.processingDidFail,
+      value: this.props.value,
+    };
+  }
+
   render() {
+    const Component = this.props.component;
+
     return (
-      <this.props.component {...this.getProps()} />
+      <Component {...this.getProps()} />
     );
   }
 }
@@ -64,11 +68,30 @@ class Control extends React.Component {
 Control.propTypes = {
   action: PropTypes.func.isRequired,
   component: PropTypesPlus.component.isRequired,
+  componentProps: PropTypes.shape({}),
+  disabled: PropTypes.bool,
+  dispatch: PropTypes.func.isRequired,
+  errors: PropTypesImmutable.list.isRequired,
   event: PropTypes.string,
+  field: PropTypesEntity.entityField.isRequired,
+  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  name: PropTypesPlus.string,
+  onChange: PropTypes.func.isRequired,
+  processing: PropTypes.bool.isRequired,
+  processingDidFail: PropTypes.bool.isRequired,
+  readOnly: PropTypes.bool,
+  setState: PropTypes.func.isRequired,
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 
 Control.defaultProps = {
+  componentProps: {},
+  disabled: undefined,
   event: 'onClick',
+  initialValue: undefined,
+  name: undefined,
+  readOnly: undefined,
+  value: undefined,
 };
 
 const mapStateToProps = (state, props) => ({
@@ -78,14 +101,14 @@ const mapStateToProps = (state, props) => ({
       status: props.state.action.meta.keyProcessing,
     }),
 
-  processDidFail: !!props.state.action
+  processingDidFail: !!props.state.action
     && props.state.action.meta.entity.duck.status(state, {
       ...props.state.action.meta,
       status: props.state.action.meta.keyProcessingDidFail,
     }),
 });
 
-export default _compose(
+export default _flowRight(
   withInput,
   withDefault({
     component: ['entityForm_button', 'component_button'],

@@ -4,22 +4,18 @@ aliases:
   - &restore_cache
     restore_cache:
       keys:
-      - node-dependencies-{{ checksum "package.json" }}
-
-      # fallback to using the latest cache if no exact match is found
-      - node-dependencies-
+      - yarn-packages-{{ checksum "yarn.lock" }}
 
   - &save_cache
     save_cache:
+      key: yarn-packages-{{ checksum "yarn.lock" }}
       paths:
-      - node_modules
-
-      key: node-dependencies-{{ checksum "package.json" }}
+        - ~/.cache/yarn
 
 references:
   container_config: &container_config
     docker:
-    - image: circleci/node:10.13.0
+    - image: circleci/node:10.15.0
 
     working_directory: ~/project
 
@@ -29,63 +25,64 @@ jobs:
     steps:
     - checkout
     - *restore_cache
-    - run: yarn install
+    - run: yarn install --frozen-lockfile
     - *save_cache
+    - persist_to_workspace:
+        root: ~/project
+        paths: .
 
   build-app:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run build
 
   build-storybook:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run storybook:build
+
+  build-packages:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run packages-build
 
   lint-code:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run lint
 
   test-code:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
-    - run: npm run test
+    - attach_workspace:
+        at: ~/project
+    - run: npm run test -- --maxWorkers=2
 
   cover-code:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run coveralls
 
   update-build-publish-packages_build-deploy-app:
     <<: *container_config
     steps:
-    - checkout
-    - *restore_cache
-    - run: yarn install
-    - *save_cache
+    - attach_workspace:
+        at: ~/project
     - run: npm run build
     - run: npm run storybook:build
+    - add_ssh_keys:
+        fingerprints:
+        - "8a:e4:f1:cf:c0:07:82:7a:33:c2:4c:94:9c:7b:46:31"
     - run: npm run deploy
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
     - run: npm run packages-publish
@@ -129,6 +126,15 @@ workflows:
               - gh-pages
               - master
 
+      - build-packages:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
       - build-storybook:
           requires:
           - setup
@@ -140,13 +146,23 @@ workflows:
 
   branch-master:
     jobs:
+      - setup:
+          filters:
+            branches:
+              only:
+              - master
+
       - lint-code:
+          requires:
+          - setup
           filters:
             branches:
               only:
               - master
 
       - cover-code:
+          requires:
+          - setup
           filters:
             branches:
               only:
