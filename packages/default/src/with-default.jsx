@@ -1,45 +1,23 @@
 import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/mapValues';
-import _omitBy from 'lodash/omitBy';
 import React from 'react';
 
-import { Consumer } from './context';
-
-const getProps = (context, props, mapProps) => {
-  if (!mapProps) {
-    return { defaults: context };
-  }
-
-  const computedMapProps = _isFunction(mapProps)
-    ? mapProps(props)
-    : mapProps;
-
-  return _mapValues(
-    computedMapProps,
-    (value) => {
-      const computedValues = Array.isArray(value) ? value : [value];
-      const computedValue = computedValues.find(val => context[val]);
-
-      return computedValue ? context[computedValue] : undefined;
-    },
-  );
-};
+import useDefault from './use-default';
 
 const getDisplayName = ComposedComponent => ComposedComponent.displayName
   || ComposedComponent.name
   || 'Component';
 
-export default configs => (ComposedComponent) => {
-  const withDefault = props => (
-    <Consumer>
-      { context => (
-        <ComposedComponent
-          {...getProps(context, props, configs)}
-          {..._omitBy(props, prop => prop === undefined)}
-        />
-      )}
-    </Consumer>
-  );
+export default options => (ComposedComponent) => {
+  const withDefault = (props) => {
+    const defaults = useDefault(props, _isFunction(options) ? options(props) : options);
+
+    return (
+      <ComposedComponent
+        {...props}
+        {...(options ? defaults : { defaults })}
+      />
+    );
+  };
 
   withDefault.displayName = `withDefault(${getDisplayName(ComposedComponent)})`;
 

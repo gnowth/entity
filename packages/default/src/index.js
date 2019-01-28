@@ -1,5 +1,5 @@
-export { Consumer as DefaultConsumer } from './context';
+export * from './context';
 
-export { default as DefaultProvider } from './default-provider';
+export { default as useDefault } from './use-default';
 
 export { default as withDefault } from './with-default';
