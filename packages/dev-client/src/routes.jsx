@@ -13,7 +13,7 @@ const Routes = props => (
     <Switch>
       <Route
         path="/pages"
-        component={routerProps => (
+        render={routerProps => (
           <div>
             <Header />
 
@@ -25,7 +25,7 @@ const Routes = props => (
       { settings.ENABLE_FEATURE_OBSERVATION && (
         <Route
           path="/observation"
-          component={routerProps => (
+          render={routerProps => (
             <div>
               <Header />
 

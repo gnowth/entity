@@ -14,7 +14,7 @@ const AppObservation = props => (
     <Switch>
       <Route
         path={`${props.match.url}/list`}
-        component={() => (
+        render={() => (
           <ViewScreen
             queryComponentProps={{
               action: () => EntityObservation.duck.get(),
@@ -26,7 +26,7 @@ const AppObservation = props => (
 
       <Route
         path={`${props.match.url}/:uuid?`}
-        component={routeProps => (
+        render={routeProps => (
           <ViewScreen
             queryComponentProps={{
               action: () => EntityObservation.duck.get({ id: routeProps.match.params.uuid || null }),
