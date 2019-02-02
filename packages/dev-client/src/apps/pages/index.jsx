@@ -25,7 +25,7 @@ const AppPage = props => (
     <Switch>
       <Route
         path={`${props.match.url}/changelog`}
-        component={() => (
+        render={() => (
           <UIWell ratio={3} variant="page_flat">
             <Markdown className="markdown-body" source={changelog} />
           </UIWell>
@@ -34,7 +34,7 @@ const AppPage = props => (
 
       <Route
         path={`${props.match.url}/readme`}
-        component={() => (
+        render={() => (
           <UIWell ratio={3} variant="page_flat">
             <Markdown className="markdown-body" source={readme} />
           </UIWell>
@@ -43,7 +43,7 @@ const AppPage = props => (
 
       <Route
         path={`${props.match.url}/notfound`}
-        component={() => (
+        render={() => (
           <Screen>
             <UITypeSet locale={locales.not_found} variant="header" />
           </Screen>
