@@ -1,11 +1,11 @@
 import AnyField from './field-any';
 
 export default class IdField extends AnyField {
-  constructor(options = {}) {
-    super(options);
+  constructor(configs = {}) {
+    super(configs);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (options.many) throw new Error(`${this.constructor.name}.constructor: "many" option is not supported.`);
+      if (configs.many) throw new Error(`${this.constructor.name}.constructor: "many" option is not supported.`);
     }
   }
 

@@ -29,12 +29,12 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
   || ComposedComponent.name
   || 'Component';
 
-export default options => (ComposedComponent) => {
+export default configs => (ComposedComponent) => {
   const withDefault = props => (
     <Consumer>
       { context => (
         <ComposedComponent
-          {...getProps(context, props, options)}
+          {...getProps(context, props, configs)}
           {..._omitBy(props, prop => prop === undefined)}
         />
       )}

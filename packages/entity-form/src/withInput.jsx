@@ -61,9 +61,9 @@ export default function (ComposedComponent) {
           ? this.handleChangeArray
           : this.handleChange,
         readOnly: this.props.readOnly,
-        initialValue: this.props.formInitialValue,
         options: field.getOptions(),
         value: this.props.formField.getValue(this.props.formValue, { name: this.props.name }),
+        valueInitial: this.props.formValueInitial,
       });
     }
 
@@ -76,7 +76,7 @@ export default function (ComposedComponent) {
 
       return (
         <QueryComponent
-          action={({ search }) => props.field.entity.duck.get({
+          action={({ search }) => props.field.entity.duck.actions.get({
             params: Map({ search }).merge(this.props.filterParams),
           })}
         >
@@ -107,9 +107,9 @@ export default function (ComposedComponent) {
     formField: PropTypesEntity.entityField.isRequired,
     formOnChange: PropTypes.func.isRequired,
     formIndex: PropTypes.number,
-    formInitialValue: PropTypesImmutable.map,
     formName: PropTypesPlus.string,
     formValue: PropTypesImmutable.map.isRequired,
+    formValueInitial: PropTypesImmutable.map,
     index: PropTypes.number,
     name: PropTypesPlus.string,
     queryComponent: PropTypesPlus.isRequiredIf('apiOptions', PropTypesPlus.component),
@@ -123,8 +123,8 @@ export default function (ComposedComponent) {
     disabled: undefined,
     filterParams: Map(),
     formIndex: undefined,
-    formInitialValue: undefined,
     formName: undefined,
+    formValueInitial: undefined,
     index: undefined,
     name: undefined,
     queryComponent: undefined,

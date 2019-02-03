@@ -1,5 +1,4 @@
 import _flowRight from 'lodash/flowRight';
-import _isFunction from 'lodash/isFunction';
 import _omitBy from 'lodash/omitBy';
 import PropTypes from 'prop-types';
 import { withDefault } from '@gnowth/default';
@@ -8,47 +7,32 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state, props) => Object.assign(
   {
-    errors: props.queryContainer_errors(state, props.queryContainer_action.meta),
+    errors: props.queryContainer_action.duck.queries.errors(props.queryContainer_action, state),
 
-    field: props.queryContainer_action.meta.entity.getEntityField({ many: props.queryContainer_action.meta.id === undefined }),
-
-    initialValue: props.queryContainer_record(state, props.queryContainer_action.meta),
+    field: props.queryContainer_action.duck.entity.getEntityField({ many: props.queryContainer_action.meta.id === undefined }),
 
     inputValue: props.queryContainer_state.search,
 
-    processing: !!props.queryContainer_action.meta.keyProcessing
-      && props.queryContainer_status(state, {
-        ...props.queryContainer_action.meta,
-        status: props.queryContainer_action.meta.keyProcessing,
-      }),
+    processing: props.queryContainer_action.duck.queries.processing(props.queryContainer_action, state),
 
-    processingDidFail: !!props.queryContainer_action.meta.keyProcessingDidFail
-      && props.queryContainer_status(state, {
-        ...props.queryContainer_action.meta,
-        status: props.queryContainer_action.meta.keyProcessingDidFail,
-      }),
+    processingDidFail: props.queryContainer_action.duck.queries.processingDidFail(props.queryContainer_action, state),
 
-    processingSelector: s => !!props.queryContainer_action.meta.keyProcessing
-      && props.queryContainer_status(s, {
-        ...props.queryContainer_action.meta,
-        status: props.queryContainer_action.meta.keyProcessing,
-      }),
+    processingSelector: s => props.queryContainer_action.duck.queries.processing(props.queryContainer_action, s),
 
-    value: props.queryContainer_record(state, {
-      ...props.queryContainer_action.meta,
-      dirty: true,
-    }),
+    value: props.queryContainer_action.duck.queries.value(props.queryContainer_action, state),
+
+    valueInitial: props.queryContainer_action.duck.queries.valueInitial(props.queryContainer_action, state),
   },
 
-  props.queryContainer_action.meta.id === undefined && props.queryContainer_action.meta.entity.paginated && {
-    pagination: props.queryContainer_pagination(state, props.queryContainer_action.meta),
+  props.queryContainer_action.meta.id === undefined && props.queryContainer_action.duck.entity.paginated && {
+    pagination: props.queryContainer_action.duck.queries.processing(props.queryContainer_action, state),
   },
 );
 
 const mapDispatchToProps = (dispatch, props) => ({
-  clear: (options = {}) => dispatch(props.queryContainer_clear({ ...props.queryContainer_action.meta, ...options })),
+  clear: options => dispatch(props.queryContainer_action.duck.queries.clear(props.queryContainer_action, options)),
   process: () => dispatch(props.queryContainer_action),
-  save: record => dispatch(props.queryContainer_saveLocal(record, { id: props.queryContainer_action.meta.id })),
+  save: (record, options) => dispatch(props.queryContainer_action.duck.queries.onChange(props.queryContainer_action, record, options)),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
@@ -82,36 +66,10 @@ export default _flowRight(
     },
   }),
 
-  withProps((props) => {
-    const action = props.queryContainer_state.action
-      || props.action({ search: props.queryContainer_state.search });
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!action.meta.keyRecord) throw new Error(`QueryContainer.withProps (${action.meta.entity.name}): "keyRecord" is required in meta.`);
-      if (!_isFunction(action.meta.entity.duck[action.meta.keyRecord])) throw new Error(`QueryContainer.withProps (${action.meta.entity.name}): duck property ${action.meta.keyRecord} must be a selector.`);
-    }
-
-    return {
-      queryContainer_action: action,
-
-      queryContainer_clear: options => action.meta.keyClear
-        && action.meta.entity.duck[action.meta.keyClear]?.(options),
-
-      queryContainer_errors: (state, options) => action.meta.keyErrors
-        && action.meta.entity.duck[action.meta.keyErrors]?.(state, options),
-
-      queryContainer_pagination: (state, options) => action.meta.keyPagination
-        && action.meta.entity.duck[action.meta.keyPagination]?.(state, options),
-
-      queryContainer_record: (state, options) => action.meta.entity.duck[action.meta.keyRecord](state, options),
-
-      queryContainer_saveLocal: (value, options) => action.meta.keySaveLocal
-        && action.meta.entity.duck[action.meta.keySaveLocal]?.(value, options),
-
-      queryContainer_status: (state, options) => !!action.meta.keyStatus
-        && action.meta.entity.duck[action.meta.keyStatus]?.(state, options),
-    };
-  }),
+  withProps(props => ({
+    queryContainer_action: props.queryContainer_state.action
+      || props.action({ search: props.queryContainer_state.search }),
+  })),
 
   connect(mapStateToProps, mapDispatchToProps, mergeProps),
 

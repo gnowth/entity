@@ -24,11 +24,11 @@ class Input extends React.Component {
       !_isString(this.props.component) && {
         errors: this.props.errors,
         field: this.props.field,
-        initialValue: this.props.initialValue,
         onInputChange: this.props.onInputChange,
         options: this.props.options,
         processing: this.props.processing,
         processingDidFail: this.props.processingDidFail,
+        valueInitial: this.props.valueInitial,
       },
 
       _isFunction(this.props.componentProps)
@@ -91,7 +91,6 @@ Input.propTypes = {
   ]),
   errors: PropTypesImmutable.list.isRequired,
   field: PropTypesEntity.field.isRequired,
-  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
   name: PropTypesPlus.string,
   onChange: PropTypes.func.isRequired,
@@ -100,6 +99,7 @@ Input.propTypes = {
   processing: PropTypes.bool,
   processingDidFail: PropTypes.bool,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  valueInitial: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   wrapperComponent: PropTypesPlus.isRequiredIf('wrapperComponentProps', PropTypesPlus.component),
   wrapperComponentProps: PropTypes.shape({}),
 };
@@ -108,7 +108,6 @@ Input.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: {},
-  initialValue: undefined,
   many: undefined,
   name: undefined,
   onInputChange: undefined,
@@ -116,6 +115,7 @@ Input.defaultProps = {
   processing: false,
   processingDidFail: false,
   value: undefined,
+  valueInitial: undefined,
   wrapperComponent: undefined,
   wrapperComponentProps: undefined,
 };

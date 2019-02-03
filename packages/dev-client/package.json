@@ -45,7 +45,7 @@
     "axios": "0.18.0",
     "connected-react-router": "6.2.2",
     "font-awesome": "4.7.0",
-    "github-markdown-css": "2.10.0",
+    "github-markdown-css": "3.0.1",
     "history": "4.7.2",
     "immutable": "4.0.0-rc.12",
     "intl": "1.2.5",

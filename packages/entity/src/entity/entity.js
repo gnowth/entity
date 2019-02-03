@@ -38,8 +38,8 @@ export default class Entity {
     });
   }
 
-  static clean(record, options = {}) {
-    const newOptions = { ...options, entity: this };
+  static clean(record, configs = {}) {
+    const newOptions = { ...configs, entity: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -71,8 +71,8 @@ export default class Entity {
       .merge(values);
   }
 
-  static getEntityField(options = {}) {
-    return new EntityField({ entity: this, ...options });
+  static getEntityField(configs = {}) {
+    return new EntityField({ entity: this, ...configs });
   }
 
   static getId(record) {
@@ -87,13 +87,13 @@ export default class Entity {
     return !!maybeDescendant && maybeDescendant.prototype instanceof this;
   }
 
-  static isValid(record, options) {
-    return this.validate(record, options).size === 0;
+  static isValid(record, configs) {
+    return this.validate(record, configs).size === 0;
   }
 
-  static isValidFromErrors(errors, options = {}) {
-    return options.name
-      ? options.name.some(
+  static isValidFromErrors(errors, configs = {}) {
+    return configs.name
+      ? configs.name.some(
         n => errors
           .filter(error => Map.isMap(error) && error.get('detail'))
           .flatMap(error => error.getIn(['errors', n]))
@@ -128,18 +128,18 @@ export default class Entity {
     return record?.get(this.idField) || '';
   }
 
-  static validate(record, options = {}) {
+  static validate(record, configs = {}) {
     if (!record) return record;
 
     const detailErrors = Map(this.fields)
-      .filter((field, key) => !options.fields || options.fields[key])
+      .filter((field, key) => !configs.fields || configs.fields[key])
       .map((field, key) => field.validate(
         record.get(key),
         {
-          ...options,
+          ...configs,
           fieldName: key,
           record,
-          validators: options.fields && options.fields[key],
+          validators: configs.fields && configs.fields[key],
         },
       )).filterNot(errors => errors.size === 0);
 

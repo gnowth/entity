@@ -27,27 +27,27 @@ export default class Activity extends EntityTitle {
     uuid: new Fields.IdField({ blank: true }),
   }
 
-  static actionComplete(record, options = {}) {
+  static actionComplete(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityActivity.actionComplete (${this.name}): "save" action is required in duck`);
+      if (!this.duck?.actions.save) throw new Error(`EntityActivity.actionComplete (${this.name}): "save" action is required in duck`);
     }
 
-    return this.duck.save(record, {
+    return this.duck.actions.save(record, {
       action: 'complete',
       method: 'post',
-      ...options,
+      ...configs,
     });
   }
 
-  static actionSubmit(record, options = {}) {
+  static actionSubmit(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityActivity.actionSubmit (${this.name}): "save" action is required in duck`);
+      if (!this.duck?.actions.save) throw new Error(`EntityActivity.actionSubmit (${this.name}): "save" action is required in duck`);
     }
 
-    return this.duck.save(record, {
+    return this.duck.actions.save(record, {
       action: 'submit',
       method: 'post',
-      ...options,
+      ...configs,
     });
   }
 

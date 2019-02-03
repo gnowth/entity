@@ -1,10 +1,8 @@
 import { fromJS } from 'immutable';
 
-import { getIdentifier, parseError } from './utils';
-
 export default types => ({
-  [types.options]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+  [types.options]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -13,8 +11,8 @@ export default types => ({
     );
   },
 
-  [types.options_resolved]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+  [types.options_resolved]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -24,12 +22,12 @@ export default types => ({
     );
   },
 
-  [types.options_rejected]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+  [types.options_rejected]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
-        .setIn(['options_errors', identifier], parseError(action.payload))
+        .setIn(['options_errors', identifier], action.duck?.getErrors(action.payload))
         .setIn(['status', 'optioning', identifier], false)
         .setIn(['status', 'optioningDidFail', identifier], true),
     );

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
@@ -32,7 +31,7 @@ export default createStore(
   Map(),
   composeEnhancers(
     applyMiddleware(
-      duckMiddleware(axios),
+      duckMiddleware,
       routerMiddleware(history),
     ),
   ),

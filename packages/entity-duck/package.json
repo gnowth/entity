@@ -20,9 +20,8 @@
     "postdestroy": "npm run link-main:src",
     "prebuild": "npm run destroy"
   },
-  "dependencies": {
-    "@entity/core": "0.4.0",
-    "lodash": "4.17.11",
-    "redux-actions": "2.6.4"
+  "peerDependencies": {
+    "immutable": "4.0.0-rc.12",
+    "lodash": "4.17.11"
   }
 }

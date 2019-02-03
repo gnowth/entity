@@ -1,7 +1,5 @@
 import { fromJS, List } from 'immutable';
 
-import { getIdentifier } from './utils';
-
 const getDataFactory = (payload, entity) => entity.dataToRecord(payload);
 
 const listDataFactory = (payload, entity) => {
@@ -20,8 +18,8 @@ const listDataFactory = (payload, entity) => {
 };
 
 export default types => ({
-  [types.get]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+  [types.get]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -31,7 +29,7 @@ export default types => ({
   },
 
   [types.get_resolved]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+    const identifier = action.duck?.getIdentifier(action.meta);
     const dataFactory = action.meta.id ? getDataFactory : listDataFactory;
 
     return state.withMutations(
@@ -43,7 +41,7 @@ export default types => ({
           result => (
             action.meta.skipStore
               ? result
-              : fromJS(dataFactory(action.payload, action.meta.entity))
+              : fromJS(dataFactory(action.payload, action.duck.entity))
           ),
         )
         .updateIn(
@@ -53,7 +51,7 @@ export default types => ({
           result => (
             action.meta.skipStore
               ? result
-              : fromJS(dataFactory(action.payload, action.meta.entity))
+              : fromJS(dataFactory(action.payload, action.duck.entity))
           ),
         )
         .setIn(
@@ -67,7 +65,7 @@ export default types => ({
   },
 
   [types.get_rejected]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -75,7 +73,7 @@ export default types => ({
           action.meta.id
             ? ['detail_errors', action.meta.id]
             : ['list_errors', identifier],
-          action.payload,
+          action.duck?.getErrors(action.payload),
         )
         .setIn(['status', 'getting', identifier], false)
         .setIn(['status', 'gettingDidFail', identifier], true),

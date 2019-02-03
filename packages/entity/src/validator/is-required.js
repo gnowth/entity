@@ -1,8 +1,8 @@
-export default (value, options = {}) => {
+export default (value, configs = {}) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (!options.field) throw new Error('validators.isRequired: "field" option is required');
+    if (!configs.field) throw new Error('validators.isRequired: "field" option is required');
   }
 
-  return options.field.isBlank(value, options)
+  return configs.field.isBlank(value, configs)
     && 'May not be blank';
 };

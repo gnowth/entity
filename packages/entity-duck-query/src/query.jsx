@@ -70,7 +70,6 @@ class Query extends React.Component {
         ? this.props.errors
         : this.errorSelector(this.props.value).concat(this.props.errors),
       field: this.props.field,
-      initialValue: this.props.initialValue,
       inputValue: this.props.inputValue,
       name: this.props.name,
       onChange: this.handleChange,
@@ -78,6 +77,7 @@ class Query extends React.Component {
       processing: this.props.processing,
       processingDidFail: this.props.processingDidFail,
       value: this.props.value,
+      valueInitial: this.props.valueInitial,
     };
   }
 
@@ -187,18 +187,18 @@ class Query extends React.Component {
         {...props}
         errors={props.field.getErrorsArray(props.errors, { index })}
         index={index}
-        initialValue={props.initialValue?.get(index)}
         value={value}
         {...(_isFunction(this.props.componentProps)
           ? this.props.componentProps(Object.assign({}, props, {
             index,
             value,
             errors: props.field.getErrorsArray(props.errors, { index }),
-            initialValue: props.initialValue?.get(index),
+            valueInitial: props.valueInitial?.get(index),
             records: props.value,
           }))
           : (this.props.componentProps || {})
         )}
+        valueInitial={props.valueInitial ?.get(index)}
       />
     ));
   }
@@ -222,10 +222,6 @@ Query.propTypes = exact({
   componentProps: PropTypes.shape({}),
   errors: PropTypesImmutable.list,
   field: PropTypesDuck.entityField.isRequired,
-  initialValue: PropTypes.oneOfType([
-    PropTypesImmutable.list,
-    PropTypesImmutable.map,
-  ]),
   inputValue: PropTypes.string,
   name: PropTypes.string,
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool),
@@ -258,6 +254,10 @@ Query.propTypes = exact({
     PropTypesImmutable.list,
     PropTypesImmutable.map,
   ]),
+  valueInitial: PropTypes.oneOfType([
+    PropTypesImmutable.list,
+    PropTypesImmutable.map,
+  ]),
 });
 
 Query.defaultProps = {
@@ -266,7 +266,6 @@ Query.defaultProps = {
   component: undefined,
   componentProps: undefined,
   errors: List(),
-  initialValue: undefined,
   inputValue: '',
   name: 'entity-duck-query',
   many: undefined,
@@ -284,6 +283,7 @@ Query.defaultProps = {
   recordCountNoneComponentProps: undefined,
   shouldProcess: true,
   value: undefined,
+  valueInitial: undefined,
 };
 
 export default queryContainer(Query);

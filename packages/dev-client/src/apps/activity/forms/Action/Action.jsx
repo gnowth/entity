@@ -16,7 +16,7 @@ const FormAction = props => (
 
       { props.records && props.index !== null && (
         <Control
-          action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
+          action={({ value, field, ...configs }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...configs, index: props.index })}
           component={UIIcon}
           componentProps={{ name: 'delete' }}
           array
@@ -58,7 +58,7 @@ const FormAction = props => (
 
     <Controls>
       <Control
-        action={({ value, field, ...options }) => field.entity.actionUpdate(value, options)}
+        action={({ value, field, ...configs }) => field.entity.actionUpdate(value, configs)}
         componentProps={{
           css: props.styles.control,
           locale: props.locales.update,
@@ -66,7 +66,7 @@ const FormAction = props => (
       />
 
       <Control
-        action={({ value, field, ...options }) => field.entity.actionComplete(value, options)}
+        action={({ value, field, ...configs }) => field.entity.actionComplete(value, configs)}
         componentProps={{
           css: props.styles.control,
           locale: props.locales.complete,

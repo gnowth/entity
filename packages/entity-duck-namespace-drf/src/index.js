@@ -1,89 +1,83 @@
-import { Duck } from '@entity/duck';
-import { List, Map } from 'immutable';
+import _isString from 'lodash/isString';
+import { Entity } from '@entity/core';
+import Duck from '@entity/duck';
+import { fromJS, List, Map } from 'immutable';
+import { stringify } from 'query-string';
 
 import reducerClear from './reducer-clear';
 import reducerGet from './reducer-get';
 import reducerOptions from './reducer-options';
 import reducerSave from './reducer-save';
 import reducerDelete from './reducer-delete';
-import { getId, getIdentifier, NULL_ID } from './utils';
+import Action from './action';
+import Queries from './queries';
+import Selectors from './selectors';
 
-export default class RestDuck extends Duck {
+export default class DuckDRF extends Duck {
   static namespace = 'dango_rest_framework';
 
-  static actions = {
-    clear: Duck.createAction({
-      meta: ({ payload }) => payload,
-      payload: () => undefined,
-    }),
+  static Action = Action
 
-    delete_rejected: Duck.createAction(),
-    delete_resolved: Duck.createAction(),
-    delete: Duck.createAction({
-      defaultMeta: ({ entity, payload }) => ({
-        id: entity.getId(payload),
-        keyProcessing: 'deleting',
-        keyProcessingDidFail: 'deletingDidFail',
-        method: 'delete',
-        params: Map(),
-        useDuckMiddleware: true,
+  static Queries = Queries
+
+  static Selectors = Selectors
+
+  static getActions(configs = {}) {
+    return {
+      clear: this.makeAction({ hasPayload: false }),
+
+      delete: this.makeAction({
+        defaultMeta: {
+          sideEffect: true,
+          useDuckMiddleware: true,
+        },
+        metaFromPayload: payload => ({ id: configs.entity?.getId(payload) }),
       }),
-    }),
+      delete_rejected: this.makeAction(),
+      delete_resolved: this.makeAction(),
 
-    get_rejected: Duck.createAction(),
-    get_resolved: Duck.createAction(),
-    get: Duck.createAction({
-      defaultMeta: ({ payload = {} }) => ({
-        keyClear: 'clear',
-        keyErrors: 'errors',
-        keyPagination: 'pagination',
-        keyProcessing: 'getting',
-        keyProcessingDidFail: 'gettingDidFail',
-        keyRecord: 'record',
-        keySaveLocal: 'save_local',
-        keyStatus: 'status',
-        method: 'get',
-        params: Map(),
-        useDuckMiddleware: payload.id !== null,
+      get: this.makeAction({
+        hasPayload: false,
+        metaFromPayload: payload => ({
+          sideEffect: payload.id !== null,
+          useDuckMiddleware: payload.id !== null,
+        }),
       }),
-      meta: ({ payload }) => payload,
-      payload: () => undefined,
-    }),
+      get_rejected: this.makeAction(),
+      get_resolved: this.makeAction(),
 
-    options_rejected: Duck.createAction(),
-    options_resolved: Duck.createAction(),
-    options: Duck.createAction({
-      defaultMeta: {
-        method: 'options',
-        params: Map(),
-        useDuckMiddleware: true,
-      },
-      meta: ({ payload }) => payload,
-      payload: () => undefined,
-    }),
-
-    save_local: Duck.createAction(),
-    save_rejected: Duck.createAction(),
-    save_resolved: Duck.createAction(),
-    save: Duck.createAction({
-      defaultMeta: ({ entity, payload }) => ({
-        id: entity.getId(payload) || null,
-        keyErrors: 'errors',
-        keyProcessing: 'saving',
-        keyProcessingDidFail: 'savingDidFail',
-        method: entity.getId(payload) ? 'put' : 'post',
-        params: Map(),
-        useDuckMiddleware: true,
+      options: this.makeAction({
+        defaultMeta: {
+          sideEffect: true,
+          useDuckMiddleware: true,
+        },
+        hasPayload: false,
       }),
-    }),
-  };
+      options_rejected: this.makeAction(),
+      options_resolved: this.makeAction(),
 
-  static getInitialState({ entity }) {
-    const initialRecord = entity.dataToRecord({});
+      save: this.makeAction({
+        defaultMeta: {
+          sideEffect: true,
+          useDuckMiddleware: true,
+        },
+        metaFromPayload: payload => ({
+          id: configs.entity?.getId(payload) || null,
+          method: configs.entity?.getId(payload) ? 'put' : 'post',
+        }),
+      }),
+      save_local: this.makeAction(),
+      save_rejected: this.makeAction(),
+      save_resolved: this.makeAction(),
+    };
+  }
+
+  static getInitialState(configs = {}) {
+    const initialRecord = configs.entity?.dataToRecord({});
 
     return Map({
-      detail: Map({ [NULL_ID]: initialRecord }),
-      detail_dirty: Map({ [NULL_ID]: initialRecord }),
+      detail: Map({ [configs.ID_NULL]: initialRecord }),
+      detail_dirty: Map({ [configs.ID_NULL]: initialRecord }),
       detail_errors: Map(),
       list: Map(),
       list_dirty: Map(),
@@ -113,108 +107,91 @@ export default class RestDuck extends Duck {
     };
   }
 
-  constructor(options) {
-    super(options);
+  constructor(configs = {}) {
+    super({
+      name: configs.entity?.name,
+      ID_NULL: 'id_null',
+      ...configs,
+    });
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!/^\/.*\/$/.test(options.entity.paths?.apiBase)) throw new Error(`RestDuck.constructor (${options.entity.name}): "apiBase" of "entity" option must start with a "/" and end with a "/"`);
+      if (!/^\/.*\/$/.test(configs.entity?.paths?.apiBase)) throw new Error(`RestDuck.constructor (${configs.entity?.name}): "apiBase" of "entity" option must start with a "/" and end with a "/"`);
+      if (!configs.entity || !Entity.isEntity(configs.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
     }
   }
 
-  errors(state, options) {
-    return state.getIn([
-      this.app,
-      this.constructor.namespace,
-      this.entity.name,
-      options.id === undefined ? 'list_errors' : 'detail_errors',
-      options.id === undefined ? getIdentifier(options) : getId(options),
-    ]);
+  getId({ id = '' } = {}) {
+    return id === null ? this.ID_NULL : id;
   }
 
-  record(state, options = {}) {
-    const record = state.getIn([
-      this.app,
-      this.constructor.namespace,
-      this.entity.name,
-      `${options.id === undefined ? 'list' : 'detail'}${options.dirty ? '_dirty' : ''}`,
-      options.id === undefined ? getIdentifier(options) : getId(options),
-      ...(options.id === undefined && this.entity.paginated ? ['results'] : []),
-    ]);
-
+  getIdentifier({ id = '', tag = '', params = Map(), method = 'get', action = '' }) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.id === undefined && !List.isList(record)) throw new Error(`RestDuck.record (${this.entity.name}): record must be a list. Did you forget to set "paginated"?`);
+      if (!Map.isMap(params)) throw new Error('getIdentifier: "params" options must be an immutable map');
+
+      const invalidParams = params.filterNot((param = '') => _isString(param)).toKeyedSeq();
+      if (invalidParams.size > 0) throw new Error(`getIdentifier (${invalidParams.join(', ')}): params must be a string or undefined`);
     }
 
-    return record;
+    const paramsString = stringify(params.filter(p => p).toJS());
+
+    const paramsFrag = paramsString && `.${paramsString}`;
+    const actionFrag = action && `.${action}`;
+    const tagFrag = tag && `.${tag}`;
+    const idFrag = id === null ? `.${this.ID_NULL}` : `.${id}`;
+
+    return `${method}${actionFrag}${tagFrag}${idFrag}${paramsFrag}`;
   }
 
-  meta(state, options = {}) {
-    return state.getIn([
-      this.app,
-      this.constructor.namespace,
-      this.entity.name,
-      'options',
-      getIdentifier({ method: 'options', ...options }),
-    ]);
+  getErrors(error) {
+    return List([
+      !error.response
+        && (error.message || 'Unknown Error'),
+
+      error.response?.state === 0
+        && 'Error 0: A fatal error occurred.',
+
+      error.response?.status === 401
+        && `Error 401: ${error.response.data.detail || error.response.data}`,
+
+      error.response?.status === 403
+        && `Error 403: ${error.response.data.detail || error.response.data}`,
+
+      error.response?.status === 404
+        && 'Error 404: Not found.',
+
+      error.response?.status >= 500
+        && error.response.status < 600
+        && `Error ${error.response.status}: A server error occurred.`,
+
+      error.response?.data
+        && error.response.status !== 401
+        && error.response.status !== 403
+        && fromJS({
+          api: true,
+          detail: true,
+          message: 'Invalid Fields',
+          errors: error.response.data,
+        }),
+    ]).filter(e => e);
   }
 
-  pagination(state, options) {
+  reject(action, error) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.entity.paginated) throw new Error(`RestDuck.pagination (${this.entity.name}): paginated option must be set.`);
+      console.error(error); // eslint-disable-line no-console
     }
 
-    const recordsMap = state.getIn([
-      this.app,
-      this.constructor.namespace,
-      this.entity.name,
-      'list',
-      getIdentifier(options),
-    ]);
-
-    return recordsMap && recordsMap.remove('results');
+    return this.actions[`${action.name}_rejected`](error, {
+      ...action.meta,
+      response: error.response,
+      sideEffect: false,
+    });
   }
 
-  status(state, options) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!options.status) throw new Error(`RestDuck.status (${this.entity.name}): "status" option is required`);
-      if (!options.method) throw new Error(`RestDuck.status (${this.entity.name}): "method" option is required`);
-    }
-
-    return state.getIn(
-      [
-        this.app,
-        this.constructor.namespace,
-        this.entity.name,
-        'status',
-        options.status,
-        getIdentifier(options),
-      ],
-      false,
-    );
-  }
-
-  hasPermissions(state, options) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!options.permissions) throw new Error(`RestDuck.hasPermissions (${this.entity.name}): "permissions" option is required`);
-      if (!options.method) throw new Error(`RestDuck.hasPermission (${this.entity.name}): "method" option is required`);
-    }
-
-    const permissions = state.getIn(
-      [
-        this.app,
-        this.constructor.namespace,
-        this.entity.name,
-        'options',
-        getIdentifier(options),
-        'permissions',
-      ],
-      List(),
-    );
-
-    const requiredPermissions = Array.isArray(options.permissions)
-      ? options.permissions
-      : [options.permissions];
-
-    return !!requiredPermissions.find(permission => permissions.includes(permission));
+  resolve(action, response) {
+    return this.actions[`${action.name}_resolved`](response.data, {
+      ...action.meta,
+      response,
+      sideEffect: false,
+    });
   }
 }

@@ -6,9 +6,9 @@ import { getDisplayName } from '@gnowth/higher-order-component';
 
 import Query from './query';
 
-export default (options = {}) => (ComposedComponent) => {
+export default (configs = {}) => (ComposedComponent) => {
   const withQuery = (props) => {
-    const computedOptions = _isFunction(options) ? options(props) : options;
+    const computedOptions = _isFunction(configs) ? configs(props) : configs;
 
     return (
       <Query action={props.action} {...computedOptions.componentProps || {}}>

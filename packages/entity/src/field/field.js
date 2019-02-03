@@ -29,8 +29,8 @@ export default class Field {
     );
   }
 
-  clean(record, options = {}) {
-    const newOptions = { ...options, field: this };
+  clean(record, configs = {}) {
+    const newOptions = { ...configs, field: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -52,9 +52,9 @@ export default class Field {
     }
   }
 
-  getErrors(errors, options = {}) {
+  getErrors(errors, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`Field.getErrors (${this.constructor.name}): option "name" is not supported.`);
+      if (configs.name) throw new Error(`Field.getErrors (${this.constructor.name}): option "name" is not supported.`);
     }
 
     return errors;

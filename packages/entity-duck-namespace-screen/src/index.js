@@ -1,29 +1,31 @@
-import { Duck } from '@entity/duck';
+import { Entity } from '@entity/core';
+import Duck from '@entity/duck';
 import { Map } from 'immutable';
+
+import Queries from './queries';
+import Selectors from './selectors';
 
 export default class ScreenDuck extends Duck {
   static namespace = 'screens';
 
-  static actions = {
-    clear: Duck.createAction({
-      meta: ({ payload }) => payload,
-      payload: () => undefined,
-    }),
-    get: Duck.createAction({
-      defaultMeta: {
-        id: null,
-        keyClear: 'clear',
-        keyRecord: 'record',
-        keySaveLocal: 'save_local',
-        params: Map(),
-      },
-    }),
-    save_local: Duck.createAction(),
-    save: Duck.createAction(),
-  };
+  static Queries = Queries
 
-  static getInitialState({ entity }) {
-    const defaultValue = entity.dataToRecord({});
+  static Selectors = Selectors
+
+  static getActions() {
+    return {
+      clear: this.makeAction({ hasPayload: false }),
+      get: this.makeAction({
+        hasPayload: false,
+        defaultMeta: { id: null },
+      }),
+      save: this.makeAction(),
+      save_local: this.makeAction(),
+    };
+  }
+
+  static getInitialState(configs = {}) {
+    const defaultValue = configs.entity?.dataToRecord({});
 
     return Map({
       detail: defaultValue,
@@ -59,6 +61,14 @@ export default class ScreenDuck extends Duck {
         );
       },
     };
+  }
+
+  constructor(configs = {}) {
+    super({ name: configs.entity?.name, ...configs });
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (!configs.entity || !Entity.isEntity(configs.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
+    }
   }
 
   record(state, { dirty, id } = {}) {

@@ -30,41 +30,41 @@ export default class Title extends Entity {
     urlBase: '',
   }
 
-  static actionArchive(record, options = {}) {
+  static actionArchive(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
+      if (!this.duck?.actions?.save) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
     }
 
-    return this.duck.save(record, {
+    return this.duck.actions.save(record, {
       action: 'archive',
       method: 'post',
-      ...options,
+      ...configs,
     });
   }
 
-  static actionArrayDeleteAtIndexOrdered(records, options) {
-    return this.actionArrayDeleteAtIndex(records, options)
+  static actionArrayDeleteAtIndexOrdered(records, configs) {
+    return this.actionArrayDeleteAtIndex(records, configs)
       .map((record, i) => record.set('order', i));
   }
 
-  static actionArrayMoveAtIndexOrdered(records, options) {
-    return this.actionArrayMoveAtIndex(records, options)
+  static actionArrayMoveAtIndexOrdered(records, configs) {
+    return this.actionArrayMoveAtIndex(records, configs)
       .map((record, i) => record.set('order', i));
   }
 
-  static actionSave(record, options = {}) {
+  static actionSave(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
+      if (!this.duck?.actions?.save) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
     }
 
-    return this.duck.save(record, {
+    return this.duck.actions.save(record, {
       invalidateList: true,
-      ...options,
+      ...configs,
     });
   }
 
-  static toLink(record, options = {}) {
-    const computedParams = (options.params || Map())
+  static toLink(record, configs = {}) {
+    const computedParams = (configs.params || Map())
       .filterNot(param => param === undefined);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -72,7 +72,7 @@ export default class Title extends Entity {
       if (computedParams.some(value => !_isString(value))) throw new Error(`EntityTitle.toLink (${this.name}): every params must be a string or undefined`);
     }
 
-    return `${this.paths?.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+    return `${this.paths?.urlBase}${this.getId(record, configs)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
   static toLocale(record) {
@@ -89,8 +89,8 @@ export default class Title extends Entity {
       : '';
   }
 
-  static toUrl(record, options = {}) {
-    const computedParams = (options.params || Map)
+  static toUrl(record, configs = {}) {
+    const computedParams = (configs.params || Map())
       .remove('page')
       .remove('page_size')
       .filterNot(param => param === undefined);
@@ -98,10 +98,10 @@ export default class Title extends Entity {
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(this.paths?.urlBase)) throw new Error(`EntityTitle.toUrl (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
       if (computedParams.some(param => !_isString(param))) throw new Error(`EntityTitle.toUrl (${this.name}): every params must be a string or undefined`);
-      if (!options.settings?.BASE_URL) throw new Error(`EntityTitle.toUrl (${this.name}): "settings.BASE_URL" must be set.`);
+      if (!configs.settings?.BASE_URL) throw new Error(`EntityTitle.toUrl (${this.name}): "settings.BASE_URL" must be set.`);
     }
 
-    return `${options.settings.BASE_URL}${this.paths?.urlBase}${this.getId(record, options)}/?${queryString.stringify(computedParams.toJS())}`;
+    return `${configs.settings.BASE_URL}${this.paths?.urlBase}${this.getId(record, configs)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
   static toUrlExport({ params = Map(), settings } = {}) {

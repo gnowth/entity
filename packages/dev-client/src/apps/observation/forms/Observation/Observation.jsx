@@ -74,7 +74,7 @@ const FormObservation = props => (
     />
 
     <Control
-      action={({ value, field, ...options }) => field.entity.actionActionsAdd(value, options)}
+      action={({ value, field, ...configs }) => field.entity.actionActionsAdd(value, configs)}
       componentProps={{ locale: props.locales.follow_up_actions_add }}
     />
 
