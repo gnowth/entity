@@ -1,10 +1,8 @@
 import { List } from 'immutable';
 
-import { getId, getIdentifier, parseError } from './utils';
-
 export default (types, initialState) => ({
-  [types.delete]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+  [types.delete]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -13,9 +11,9 @@ export default (types, initialState) => ({
     );
   },
 
-  [types.delete_resolved]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
-    const id = getId(action.meta);
+  [types.delete_resolved]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
+    const id = action.duck?.getId(action.meta);
 
     return state.withMutations(
       s => s
@@ -28,13 +26,13 @@ export default (types, initialState) => ({
     );
   },
 
-  [types.delete_rejected]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
-    const id = getId(action.meta);
+  [types.delete_rejected]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
+    const id = action.duck?.getId(action.meta);
 
     return state.withMutations(
       s => s
-        .setIn(['detail_errors', id], parseError(action.payload))
+        .setIn(['detail_errors', id], action.duck?.getErrors(action.payload))
         .setIn(['status', 'deleting', identifier], false)
         .setIn(['status', 'deletingDidFail', identifier], true),
     );

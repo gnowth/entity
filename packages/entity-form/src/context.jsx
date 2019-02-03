@@ -29,7 +29,6 @@ FormProvider.propTypes = exact({
   formErrors: PropTypesImmutable.list.isRequired,
   formField: PropTypesEntity.field.isRequired,
   formIndex: PropTypes.number,
-  formInitialValue: PropTypesImmutable.map,
   formName: PropTypesPlus.string,
   formNameMapper: PropTypes.shape({}),
   formOnChange: PropTypes.func.isRequired,
@@ -38,13 +37,14 @@ FormProvider.propTypes = exact({
     PropTypesImmutable.map,
     PropTypesImmutable.list,
   ]).isRequired,
+  formValueInitial: PropTypesImmutable.map,
 });
 
 FormProvider.defaultProps = {
   formDisabled: false,
   formIndex: undefined,
-  formInitialValue: null,
   formName: undefined,
   formNameMapper: {},
   formReadOnly: false,
+  formValueInitial: null,
 };

@@ -21,7 +21,10 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/duck": "0.4.0",
+    "@entity/core": "0.4.0",
+    "@entity/duck": "0.4.0"
+  },
+  "peerDependencies": {
     "immutable": "4.0.0-rc.12"
   }
 }

@@ -6,15 +6,14 @@ import React from 'react';
 export const filterProps = props => _flowRight(
   modifiedProps => _omitBy(modifiedProps, p => p === undefined),
   modifiedProps => _omit(modifiedProps, [
-    'defaultValue',
     'field',
-    'initialValue',
     'inputValue',
     'mapProps',
     'onInputChange',
     'options',
     'processing',
     'processingDidFail',
+    'valueInitial',
     'willChangeRecord',
   ]),
 )(props);

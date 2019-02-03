@@ -21,11 +21,11 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "immutable": "4.0.0-rc.12",
-    "lodash": "4.17.11",
     "prop-types": "15.6.2"
   },
   "peerDependencies": {
+    "immutable": "4.0.0-rc.12",
+    "lodash": "4.17.11",
     "react": "16.7.0"
   }
 }

@@ -27,8 +27,6 @@
     "@gnowth/prop-types-plus": "0.4.0",
     "@gnowth/style": "0.4.0",
     "@gnowth/ui": "0.4.0",
-    "immutable": "4.0.0-rc.12",
-    "lodash": "4.17.11",
     "prop-types": "15.6.2",
     "prop-types-exact": "1.2.0",
     "react-immutable-proptypes": "2.1.0"
@@ -42,6 +40,8 @@
     "redux-mock-store": "1.5.3"
   },
   "peerDependencies": {
+    "immutable": "4.0.0-rc.12",
+    "lodash": "4.17.11",
     "react": "16.7.0",
     "react-router-dom": "4.3.1",
     "react-test-renderer": "16.7.0",

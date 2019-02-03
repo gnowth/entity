@@ -1,10 +1,8 @@
 import { List } from 'immutable';
 
-import { getId, getIdentifier, parseError } from './utils';
-
 export default (types, initialState) => ({
-  [types.save]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
+  [types.save]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -13,15 +11,15 @@ export default (types, initialState) => ({
     );
   },
 
-  [types.save_local]: (state, action) => state
-    .setIn(['detail_dirty', getId(action.meta)], action.payload),
+  [types.save_local]: (state, action = {}) => state
+    .setIn(['detail_dirty', action.duck?.getId(action.meta)], action.payload),
 
-  [types.save_resolved]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
-    const id = getId(action.meta);
+  [types.save_resolved]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
+    const id = action.duck?.getId(action.meta);
 
-    const record = action.meta.entity.dataToRecord(action.payload);
-    const newId = action.meta.entity.getId(record);
+    const record = action.duck.entity.dataToRecord(action.payload);
+    const newId = action.duck.entity.getId(record);
 
     return state.withMutations(
       s => s
@@ -53,13 +51,13 @@ export default (types, initialState) => ({
     );
   },
 
-  [types.save_rejected]: (state, action) => {
-    const identifier = getIdentifier(action.meta);
-    const id = getId(action.meta);
+  [types.save_rejected]: (state, action = {}) => {
+    const identifier = action.duck?.getIdentifier(action.meta);
+    const id = action.duck?.getId(action.meta);
 
     return state.withMutations(
       s => s
-        .setIn(['detail_errors', id], parseError(action.payload))
+        .setIn(['detail_errors', id], action.duck?.getErrors(action.payload))
         .setIn(['status', 'saving', identifier], false)
         .setIn(['status', 'savingDidFail', identifier], true),
     );

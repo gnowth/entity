@@ -24,12 +24,12 @@ class Form extends React.Component {
       formErrors: this.props.errors,
       formField: this.props.field,
       formIndex: this.props.index,
-      formInitialValue: this.props.initialValue,
       formName: this.props.name,
       formNameMapper: this.props.nameMapper,
       formOnChange: this.handleChange,
       formReadOnly: this.props.readOnly,
       formValue: this.props.value,
+      formValueInitial: this.props.valueInitial,
     };
   }
 
@@ -58,7 +58,6 @@ Form.propTypes = {
   errors: PropTypesImmutable.list.isRequired,
   field: PropTypesEntity.entityField.isRequired,
   index: PropTypes.number,
-  initialValue: PropTypesImmutable.map,
   name: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
@@ -67,6 +66,7 @@ Form.propTypes = {
   onChange: PropTypes.func.isRequired,
   readOnly: PropTypes.bool,
   value: PropTypesImmutable.map.isRequired,
+  valueInitial: PropTypesImmutable.map,
 };
 
 Form.defaultProps = {
@@ -75,10 +75,10 @@ Form.defaultProps = {
   css: undefined,
   disabled: false,
   index: undefined,
-  initialValue: undefined,
   name: undefined,
   nameMapper: {},
   readOnly: false,
+  valueInitial: undefined,
 };
 
 export default Form;

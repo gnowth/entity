@@ -49,10 +49,10 @@ class Control extends React.Component {
     return {
       errors: this.props.errors,
       field: this.props.field,
-      initialValue: this.props.initialValue,
       processing: this.props.processing,
       processingDidFail: this.props.processingDidFail,
       value: this.props.value,
+      valueInitial: this.props.valueInitial,
     };
   }
 
@@ -74,7 +74,6 @@ Control.propTypes = {
   errors: PropTypesImmutable.list.isRequired,
   event: PropTypes.string,
   field: PropTypesEntity.entityField.isRequired,
-  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   name: PropTypesPlus.string,
   onChange: PropTypes.func.isRequired,
   processing: PropTypes.bool.isRequired,
@@ -82,30 +81,29 @@ Control.propTypes = {
   readOnly: PropTypes.bool,
   setState: PropTypes.func.isRequired,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  valueInitial: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 
 Control.defaultProps = {
   componentProps: {},
   disabled: undefined,
   event: 'onClick',
-  initialValue: undefined,
   name: undefined,
   readOnly: undefined,
   value: undefined,
+  valueInitial: undefined,
 };
 
 const mapStateToProps = (state, props) => ({
-  processing: !!props.state.action
-    && props.state.action.meta.entity.duck.status(state, {
-      ...props.state.action.meta,
-      status: props.state.action.meta.keyProcessing,
-    }),
+  processing: !!props.state.action?.duck?.queries?.processing(
+    props.state.action,
+    state,
+  ),
 
-  processingDidFail: !!props.state.action
-    && props.state.action.meta.entity.duck.status(state, {
-      ...props.state.action.meta,
-      status: props.state.action.meta.keyProcessingDidFail,
-    }),
+  processingDidFail: !!props.state.action?.duck?.queries.processingDidFail(
+    props.state.action,
+    state,
+  ),
 });
 
 export default _flowRight(
