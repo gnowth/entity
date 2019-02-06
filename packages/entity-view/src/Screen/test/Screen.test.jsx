@@ -20,11 +20,11 @@ it('renders correctly', () => {
     <DefaultProvider store={store}>
       <Provider store={store}>
         <ViewScreen
-          queryComponent={Query}
           queryComponentProps={{
             action: () => EntityTest.duck.actions.get(),
             component: () => <div>Mounted</div>,
           }}
+          QueryComponent={Query}
         />
       </Provider>
     </DefaultProvider>,

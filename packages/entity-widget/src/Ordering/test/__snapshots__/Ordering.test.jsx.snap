@@ -10,7 +10,7 @@ exports[`renders correctly 1`] = `
 >
   test
   <i
-    className="icon icon-unfold_more sc-bZQynM bOrPFB Icon__UIIcon-sc-10so2ko-0 ivuVRW"
+    className="icon icon-unfold_more sc-EHOje jvzENE Icon__UIIcon-sc-10so2ko-0 ivuVRW"
     name="unfold_more"
   />
 </span>

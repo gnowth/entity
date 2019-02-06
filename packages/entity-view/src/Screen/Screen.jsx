@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withDefault } from '@gnowth/default';
+import { useDefault } from '@gnowth/default';
 import { UIWell } from '@gnowth/ui';
+
+const mapDefaultToProps = {
+  QueryComponent: ['entityView_query', 'component_query'],
+};
 
 const ViewScreen = (props) => {
   const Component = props.component;
-  const QueryComponent = props.queryComponent;
+  const { QueryComponent } = useDefault(props, mapDefaultToProps);
 
   return (
     <Component ratio={props.ratio} variant={props.variant}>
@@ -17,21 +21,20 @@ const ViewScreen = (props) => {
 
 ViewScreen.propTypes = {
   component: PropTypesPlus.component,
-  queryComponent: PropTypesPlus.component.isRequired,
   queryComponentProps: PropTypes.shape({
     action: PropTypes.func.isRequired,
     component: PropTypesPlus.component.isRequired,
   }).isRequired,
   ratio: PropTypes.number,
   variant: PropTypes.string,
+  QueryComponent: PropTypesPlus.component,
 };
 
 ViewScreen.defaultProps = {
   component: UIWell,
   ratio: 2,
   variant: 'page',
+  QueryComponent: undefined,
 };
 
-export default withDefault({
-  queryComponent: ['entityView_query', 'component_query'],
-})(ViewScreen);
+export default React.memo(ViewScreen);

@@ -33,7 +33,7 @@
   "peerDependencies": {
     "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
-    "react": "16.8.0-alpha.1",
+    "react": "16.8.1",
     "react-redux": "6.0.0"
   }
 }
