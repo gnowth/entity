@@ -19,5 +19,11 @@
     "postbuild": "npm run link-main:dist",
     "postdestroy": "npm run link-main:src",
     "prebuild": "npm run destroy"
+  },
+  "dependencies": {
+    "lodash": "4.17.11"
+  },
+  "peerDependencies": {
+    "styled-components": "4.1.3"
   }
 }

@@ -4,12 +4,15 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form } from '@entity/form';
+import { useDefaultStyle } from '@gnowth/style';
 import { UIButton, UISpacer } from '@gnowth/ui';
 
-import locales from './Controls.locales';
-import styles, { Controls } from './Controls.styles';
+import defaultLocales from './Controls.locales';
+import defaultStyles, { Controls } from './Controls.styles';
 
 const FormControls = (props) => {
+  const locales = Object.assign({}, defaultLocales, props.locales);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
   const ExtraControlsComponent = props.extraControlsComponent;
 
   return (
@@ -19,7 +22,7 @@ const FormControls = (props) => {
           action={props.resetAction}
           component={props.buttonComponent}
           componentProps={{
-            locale: props.locales.reset,
+            locale: locales.reset,
             ...props.resetButtonComponentProps,
           }}
         />
@@ -32,8 +35,8 @@ const FormControls = (props) => {
           action={props.saveAction}
           component={props.buttonComponent}
           componentProps={{
-            css: props.styles.buttons,
-            locale: props.locales.save,
+            css: styles.buttons,
+            locale: locales.save,
             ...props.saveButtonComponentProps,
           }}
         />
@@ -44,8 +47,8 @@ const FormControls = (props) => {
           action={props.submitAction}
           component={props.buttonComponent}
           componentProps={{
-            css: props.styles.buttons,
-            locale: props.locales.submit,
+            css: styles.buttons,
+            locale: locales.submit,
             ...props.submitButtonComponentProps,
           }}
         />
@@ -64,9 +67,9 @@ FormControls.propTypes = {
     actionSubmit: PropTypes.func.isRequired,
   }).isRequired,
   locales: PropTypes.exact({
-    reset: PropTypesPlus.locale.isRequired,
-    save: PropTypesPlus.locale.isRequired,
-    submit: PropTypesPlus.locale.isRequired,
+    reset: PropTypesPlus.locale,
+    save: PropTypesPlus.locale,
+    submit: PropTypesPlus.locale,
   }),
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
@@ -84,20 +87,20 @@ FormControls.propTypes = {
 };
 
 FormControls.defaultProps = {
-  locales,
-  styles,
   buttonComponent: UIButton,
   component: Controls,
   extraControlsComponent: UISpacer,
+  locales: undefined,
   resetAction: ({ value, field, ...configs }) => field.entity.actionReset(value, configs),
   resetButtonComponentProps: {},
   resetHidden: false,
   saveAction: ({ value, field, ...configs }) => field.entity.actionSave(value, configs),
   saveButtonComponentProps: {},
   saveHidden: false,
+  styles: undefined,
   submitAction: ({ value, field, ...configs }) => field.entity.actionSubmit(value, configs),
   submitButtonComponentProps: {},
   submitHidden: false,
 };
 
-export default FormControls;
+export default React.memo(FormControls);

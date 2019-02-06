@@ -23,6 +23,6 @@
   },
   "peerDependencies": {
     "lodash": "4.17.11",
-    "react": "16.7.0"
+    "react": "16.8.1"
   }
 }

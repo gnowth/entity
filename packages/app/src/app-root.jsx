@@ -54,4 +54,4 @@ AppRoot.defaultProps = {
   themeProviderProps: undefined,
 };
 
-export default AppRoot;
+export default React.memo(AppRoot);

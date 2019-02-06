@@ -52,4 +52,4 @@ UIButton.defaultProps = {
   variant: 'main',
 };
 
-export default UIButton;
+export default React.memo(UIButton);

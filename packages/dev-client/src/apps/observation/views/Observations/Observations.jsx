@@ -8,6 +8,7 @@ const ViewObservations = props => (
     <thead>
       <tr><th>Test</th></tr>
     </thead>
+
     <tbody>
       { props.value.map(observation => (
         <tr key={props.field.getId(observation)}>
@@ -30,4 +31,4 @@ ViewObservations.propTypes = {
   value: PropTypesImmutable.list.isRequired,
 };
 
-export default ViewObservations;
+export default React.memo(ViewObservations);

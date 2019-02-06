@@ -5,96 +5,102 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
+import { useDefaultStyle } from '@gnowth/style';
 import { UIErrorWell } from '@gnowth/ui';
 
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
-import locales from './Observation.locales';
-import styles from './Observation.styles';
+import defaultLocales from './Observation.locales';
+import defaultStyles from './Observation.styles';
 
-const FormObservation = props => (
-  <Form {...props}>
-    <Input component={UIErrorWell} />
+const FormObservation = (props) => {
+  const locales = Object.assign({}, defaultLocales, props.locales);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
 
-    <Input
-      component={ViewRedirectOnCreate}
-      componentProps={{ to: props.field.entity.toLink(props.value) }}
-    />
+  return (
+    <Form {...props}>
+      <Input component={UIErrorWell} />
 
-    <Input
-      name="date_activity"
-      wrapperComponentProps={{
-        css: props.styles.input,
-        labelLocale: props.locales.date_activity,
-      }}
-    />
+      <Input
+        component={ViewRedirectOnCreate}
+        componentProps={{ to: props.field.entity.toLink(props.value) }}
+      />
 
-    <Input
-      name="title"
-      wrapperComponentProps={{
-        css: props.styles.input,
-        labelLocale: props.locales.title,
-      }}
-    />
+      <Input
+        name="date_activity"
+        wrapperComponentProps={{
+          css: styles.input,
+          labelLocale: locales.date_activity,
+        }}
+      />
 
-    <Input
-      name="title_short"
-      wrapperComponentProps={{
-        css: props.styles.input,
-        labelLocale: props.locales.title_short,
-      }}
-    />
+      <Input
+        name="title"
+        wrapperComponentProps={{
+          css: styles.input,
+          labelLocale: locales.title,
+        }}
+      />
 
-    <Input
-      name="description"
-      wrapperComponentProps={{
-        css: props.styles.input,
-        labelLocale: props.locales.description,
-      }}
-    />
+      <Input
+        name="title_short"
+        wrapperComponentProps={{
+          css: styles.input,
+          labelLocale: locales.title_short,
+        }}
+      />
 
-    <Input
-      name="date_due"
-      wrapperComponentProps={{
-        css: props.styles.input,
-        labelLocale: props.locales.date_due,
-      }}
-    />
+      <Input
+        name="description"
+        wrapperComponentProps={{
+          css: styles.input,
+          labelLocale: locales.description,
+        }}
+      />
 
-    <Input
-      name="follow_up_actions"
-      component={FormAction}
-      componentProps={({ value }) => ({ records: value })}
-      wrapperComponentProps={{
-        css: props.styles.input,
-        labelLocale: props.locales.follow_up_actions,
-      }}
-      many
-    />
+      <Input
+        name="date_due"
+        wrapperComponentProps={{
+          css: styles.input,
+          labelLocale: locales.date_due,
+        }}
+      />
 
-    <Control
-      action={({ value, field, ...configs }) => field.entity.actionActionsAdd(value, configs)}
-      componentProps={{ locale: props.locales.follow_up_actions_add }}
-    />
+      <Input
+        name="follow_up_actions"
+        component={FormAction}
+        componentProps={({ value }) => ({ records: value })}
+        wrapperComponentProps={{
+          css: styles.input,
+          labelLocale: locales.follow_up_actions,
+        }}
+        many
+      />
 
-    <Input
-      component={FormControls}
-      componentProps={{ css: props.styles.controls }}
-    />
-  </Form>
-);
+      <Control
+        action={({ value, field, ...options }) => field.entity.actionActionsAdd(value, options)}
+        componentProps={{ locale: locales.follow_up_actions_add }}
+      />
+
+      <Input
+        component={FormControls}
+        componentProps={{ css: styles.controls }}
+      />
+    </Form>
+  );
+};
 
 FormObservation.propTypes = {
   field: PropTypesEntity.entityField.isRequired,
   locales: PropTypes.exact({
-    date_activity: PropTypesPlus.locale.isRequired,
-    date_due: PropTypesPlus.locale.isRequired,
-    description: PropTypesPlus.locale.isRequired,
-    follow_up_actions: PropTypesPlus.locale.isRequired,
-    follow_up_actions_add: PropTypesPlus.locale.isRequired,
-    title: PropTypesPlus.locale.isRequired,
-    title_short: PropTypesPlus.locale.isRequired,
+    date_activity: PropTypesPlus.locale,
+    date_due: PropTypesPlus.locale,
+    description: PropTypesPlus.locale,
+    follow_up_actions: PropTypesPlus.locale,
+    follow_up_actions_add: PropTypesPlus.locale,
+    title: PropTypesPlus.locale,
+    title_short: PropTypesPlus.locale,
   }),
   styles: PropTypes.exact({
     input: PropTypesPlus.css,
@@ -104,8 +110,8 @@ FormObservation.propTypes = {
 };
 
 FormObservation.defaultProps = {
-  locales,
-  styles,
+  locales: undefined,
+  styles: undefined,
 };
 
-export default FormObservation;
+export default React.memo(FormObservation);

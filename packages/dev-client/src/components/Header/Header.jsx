@@ -1,42 +1,48 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { useDefaultStyle } from '@gnowth/style';
 import { UIBox, UIButton } from '@gnowth/ui';
 
-import locales from './Header.locales';
-import styles from './Header.styles';
+import defaultLocales from './Header.locales';
+import defaultStyles from './Header.styles';
 
-const Header = props => (
-  <UIBox css={props.styles.header} justifyContent="flex-start">
-    <UIButton
-      css={props.styles.buttons}
-      locale={props.locales.github}
-      to="https://github.com/gnowth/react"
-      variant="text"
-    />
+const Header = (props) => {
+  const locales = Object.assign({}, defaultLocales, props.locales);
+  const styles = useDefaultStyle(defaultStyles, props.styles);
 
-    <UIButton
-      css={props.styles.buttons}
-      locale={props.locales.style_guide}
-      to="https://gnowth.github.io/react/style-guide"
-      variant="text"
-    />
+  return (
+    <UIBox css={styles.header} justifyContent="flex-start">
+      <UIButton
+        css={styles.buttons}
+        locale={locales.github}
+        to="https://github.com/gnowth/react"
+        variant="text"
+      />
 
-    <UIButton
-      css={props.styles.buttons}
-      locale={props.locales.changelog}
-      to="/pages/changelog"
-      variant="text"
-    />
+      <UIButton
+        css={styles.buttons}
+        locale={locales.style_guide}
+        to="https://gnowth.github.io/react/style-guide"
+        variant="text"
+      />
 
-    <UIButton
-      css={props.styles.buttons}
-      locale={props.locales.readme}
-      to="/pages/readme"
-      variant="text"
-    />
-  </UIBox>
-);
+      <UIButton
+        css={styles.buttons}
+        locale={locales.changelog}
+        to="/pages/changelog"
+        variant="text"
+      />
+
+      <UIButton
+        css={styles.buttons}
+        locale={locales.readme}
+        to="/pages/readme"
+        variant="text"
+      />
+    </UIBox>
+  );
+};
 
 Header.propTypes = {
   locales: PropTypes.exact({
@@ -52,8 +58,8 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  locales,
-  styles,
+  locales: undefined,
+  styles: undefined,
 };
 
-export default Header;
+export default React.memo(Header);

@@ -29,4 +29,4 @@ UIError.defaultProps = {
   children: undefined,
 };
 
-export default UIError;
+export default React.memo(UIError);
