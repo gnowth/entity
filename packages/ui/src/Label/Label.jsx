@@ -14,6 +14,7 @@ import defaultStyles, { Label, UILabelRoot } from './Label.styles';
 const UILabel = (props) => {
   const hooks = Object.assign({}, defaultHooks, props.hooks);
   const styles = useDefaultStyle(defaultStyles, props.styles);
+  const propsTooltip = hooks.useGetPropsTooltip(props, styles);
 
   return (
     <UILabelRoot className={props.className} css={props.css}>
@@ -29,7 +30,7 @@ const UILabel = (props) => {
       )}
 
       { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
-        <UITooltip {...hooks.useGetPropsTooltip(props, styles)}>
+        <UITooltip {...propsTooltip}>
           { props.errors.map((error, index) => (
             <UIError key={index}>{ error }</UIError> // eslint-disable-line
           ))}

@@ -19,7 +19,30 @@ export default class Queries {
     return undefined;
   }
 
+  makeMapStateToProps(action = {}) {
+    return state => ({
+      errors: action.duck.queries.errors(action, state),
+      pagination: action.duck.queries.pagination(action, state),
+      processing: action.duck.queries.processing(action, state),
+      processingDidFail: action.duck.queries.processingDidFail(action, state),
+      value: action.duck.queries.value(action, state),
+      valueInitial: action.duck.queries.valueInitial(action, state),
+    });
+  }
+
+  makeMapDispatchToProps(action = {}) {
+    return {
+      clear: (...args) => action.duck.queries.clear(action, ...args),
+      onChange: (...args) => action.duck.queries.onChange(action, ...args),
+      process: () => action,
+    };
+  }
+
   onChange() {
+    return undefined;
+  }
+
+  pagination() {
     return undefined;
   }
 
@@ -29,10 +52,6 @@ export default class Queries {
 
   processingDidFail() {
     return false;
-  }
-
-  pagination() {
-    return undefined;
   }
 
   value() {

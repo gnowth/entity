@@ -22,7 +22,7 @@ it('renders correctly', () => {
         <ViewScreen
           queryComponent={Query}
           queryComponentProps={{
-            action: () => EntityTest.duck.actions.get(),
+            action: EntityTest.duck.actions.get(),
             component: () => <div>Mounted</div>,
           }}
         />

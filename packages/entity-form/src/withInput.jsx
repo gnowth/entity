@@ -11,6 +11,10 @@ import { withForm } from './context';
 
 export default function (ComposedComponent) {
   class withInput extends React.Component {
+    state = {
+      valueInput: '',
+    }
+
     handleChange = ({ target }) => {
       const index = target.getAttribute
         ? target.getAttribute('index') || undefined
@@ -48,6 +52,8 @@ export default function (ComposedComponent) {
       },
     })
 
+    handleChangeInput = valueInput => this.setState({ valueInput })
+
     getProps() {
       const field = this.props.formField.getField({ name: this.props.name });
 
@@ -76,13 +82,13 @@ export default function (ComposedComponent) {
 
       return (
         <QueryComponent
-          action={({ search }) => props.field.entity.duck.actions.get({
-            params: Map({ search }).merge(this.props.filterParams),
+          action={props.field.entity.duck.actions.get({
+            params: Map({ search: this.state.valueInput }).merge(this.props.filterParams),
           })}
         >
           { query => this.renderComponent({
             ...props,
-            onInputChange: query.onInputChange,
+            onInputChange: this.handleChangeInput,
             processing: query.processing,
             processingDidFail: query.processingDidFail,
             options: query.value,

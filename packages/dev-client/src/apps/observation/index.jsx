@@ -17,7 +17,7 @@ const AppObservation = props => (
         render={() => (
           <ViewScreen
             queryComponentProps={{
-              action: () => EntityObservation.duck.actions.get(),
+              action: EntityObservation.duck.actions.get(),
               component: ViewObservations,
             }}
           />
@@ -29,7 +29,7 @@ const AppObservation = props => (
         render={routeProps => (
           <ViewScreen
             queryComponentProps={{
-              action: () => EntityObservation.duck.actions.get({ id: routeProps.match.params.uuid || null }),
+              action: EntityObservation.duck.actions.get({ id: routeProps.match.params.uuid || null }),
               component: FormObservation,
             }}
           />

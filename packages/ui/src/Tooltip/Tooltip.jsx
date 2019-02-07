@@ -9,9 +9,9 @@ import defaultStyles, { Popup, Wrapper } from './Tooltip.styles';
 
 const UITooltip = (props) => {
   const hooks = Object.assign({}, defaultHooks, props.hooks);
-  const [hidden, setHidden] = React.useState(true);
   const styles = useDefaultStyle(defaultStyles, props.styles);
   const Component = props.component;
+  const [hidden, setHidden] = React.useState(true);
 
   return (
     <Wrapper

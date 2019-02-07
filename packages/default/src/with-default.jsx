@@ -7,14 +7,14 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
   || ComposedComponent.name
   || 'Component';
 
-export default options => (ComposedComponent) => {
+export default configs => (ComposedComponent) => {
   const withDefault = (props) => {
-    const defaults = useDefault(props, _isFunction(options) ? options(props) : options); // eslint-disable-line react-hooks/rules-of-hooks
+    const defaults = useDefault(props, _isFunction(configs) ? configs(props) : configs); // eslint-disable-line react-hooks/rules-of-hooks
 
     return (
       <ComposedComponent
         {...props}
-        {...(options ? defaults : { defaults })}
+        {...(configs ? defaults : { defaults })}
       />
     );
   };
