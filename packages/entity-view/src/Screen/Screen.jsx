@@ -23,7 +23,7 @@ ViewScreen.propTypes = {
   component: PropTypesPlus.component,
   queryComponent: PropTypesPlus.component,
   queryComponentProps: PropTypes.shape({
-    action: PropTypes.func.isRequired,
+    action: PropTypesPlus.action.isRequired,
     component: PropTypesPlus.component.isRequired,
   }).isRequired,
   ratio: PropTypes.number,

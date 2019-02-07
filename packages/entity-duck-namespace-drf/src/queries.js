@@ -7,6 +7,7 @@ export default class QueriesDRF extends Duck.Queries {
     clear: ['get', 'options'],
     errors: ['delete', 'get', 'options', 'save'],
     onChange: ['get'],
+    pagination: ['get'],
     processing: ['delete', 'get', 'options', 'save'],
     processingDidFail: ['delete', 'get', 'options', 'save'],
     value: ['get', 'options'],
@@ -19,7 +20,6 @@ export default class QueriesDRF extends Duck.Queries {
         ...action.meta,
         ...meta,
         sideEffect: false,
-        useDuckMiddleware: false,
       })
       : super.clear(action, meta);
   }
@@ -39,7 +39,6 @@ export default class QueriesDRF extends Duck.Queries {
         ...action.meta,
         ...meta,
         sideEffect: false,
-        useDuckMiddleware: false,
       })
       : super.onChange(action, payload, meta);
   }

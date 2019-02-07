@@ -22,9 +22,7 @@
   },
   "dependencies": {
     "@entity/core": "0.4.0",
-    "@entity/duck": "0.4.0"
-  },
-  "peerDependencies": {
+    "@entity/duck": "0.4.0",
     "immutable": "4.0.0-rc.12"
   }
 }

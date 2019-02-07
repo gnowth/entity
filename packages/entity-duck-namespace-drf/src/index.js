@@ -27,10 +27,7 @@ export default class DuckDRF extends Duck {
       clear: this.makeAction({ hasPayload: false }),
 
       delete: this.makeAction({
-        defaultMeta: {
-          sideEffect: true,
-          useDuckMiddleware: true,
-        },
+        defaultMeta: { sideEffect: true },
         metaFromPayload: payload => ({ id: configs.entity?.getId(payload) }),
       }),
       delete_rejected: this.makeAction(),
@@ -38,29 +35,20 @@ export default class DuckDRF extends Duck {
 
       get: this.makeAction({
         hasPayload: false,
-        metaFromPayload: payload => ({
-          sideEffect: payload.id !== null,
-          useDuckMiddleware: payload.id !== null,
-        }),
+        metaFromPayload: (payload = {}) => ({ sideEffect: payload.id !== null }),
       }),
       get_rejected: this.makeAction(),
       get_resolved: this.makeAction(),
 
       options: this.makeAction({
-        defaultMeta: {
-          sideEffect: true,
-          useDuckMiddleware: true,
-        },
+        defaultMeta: { sideEffect: true },
         hasPayload: false,
       }),
       options_rejected: this.makeAction(),
       options_resolved: this.makeAction(),
 
       save: this.makeAction({
-        defaultMeta: {
-          sideEffect: true,
-          useDuckMiddleware: true,
-        },
+        defaultMeta: { sideEffect: true },
         metaFromPayload: payload => ({
           id: configs.entity?.getId(payload) || null,
           method: configs.entity?.getId(payload) ? 'put' : 'post',

@@ -27,6 +27,7 @@
     "@gnowth/prop-types-plus": "0.4.0",
     "@gnowth/style": "0.4.0",
     "@gnowth/ui": "0.4.0",
+    "immutable": "4.0.0-rc.12",
     "prop-types": "15.6.2",
     "react-immutable-proptypes": "2.1.0",
     "react-select": "2.3.0",
@@ -38,7 +39,6 @@
   "peerDependencies": {
     "@storybook/addon-actions": "4.1.11",
     "@storybook/addon-knobs": "4.1.11",
-    "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11",
     "moment": "2.24.0",
     "react": "16.8.1",

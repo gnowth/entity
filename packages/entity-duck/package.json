@@ -20,8 +20,10 @@
     "postdestroy": "npm run link-main:src",
     "prebuild": "npm run destroy"
   },
+  "dependencies": {
+    "immutable": "4.0.0-rc.12"
+  },
   "peerDependencies": {
-    "immutable": "4.0.0-rc.12",
     "lodash": "4.17.11"
   }
 }

@@ -39,9 +39,7 @@ export default class SelectorsDRF extends Duck.Selectors {
   }
 
   pagination(state, meta) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!this.entity.paginated) throw new Error(`RestDuck.pagination (${this.entity.name}): paginated option must be set.`);
-    }
+    if (!this.entity.paginated) return undefined;
 
     const recordsMap = this.getState(state).getIn([
       'list',
@@ -59,7 +57,7 @@ export default class SelectorsDRF extends Duck.Selectors {
     ]);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (meta.id === undefined && !List.isList(record)) throw new Error(`RestDuck.record (${this.entity.name}): record must be a list. Did you forget to set "paginated"?`);
+      if (meta.id === undefined && record !== undefined && !List.isList(record)) throw new Error(`RestDuck.record (${this.entity.name}): record must be a list. Did you forget to set "paginated"?`);
     }
 
     return record;

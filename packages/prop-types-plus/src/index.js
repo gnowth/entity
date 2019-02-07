@@ -1,3 +1,4 @@
+import action from './action';
 import allOfType from './all-of-type';
 import component from './component';
 import componentProps from './component-props';
@@ -16,6 +17,7 @@ import value from './value';
 import withRequired from './with-required';
 
 export default {
+  action,
   allOfType,
   component,
   componentProps,
