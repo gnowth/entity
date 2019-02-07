@@ -27,6 +27,7 @@ module.exports = {
 
   plugins: [
     'react',
+    'react-hooks',
     'import',
     'jsx-a11y',
   ],
@@ -78,6 +79,8 @@ module.exports = {
 
     // need to reconsider
     'react/destructuring-assignment': 0,
+
+    'react-hooks/rules-of-hooks': 'error',
 
     // disabled until custom PropTypes is fixed
     'react/no-typos': 0,
@@ -150,7 +153,7 @@ module.exports = {
 
     react: {
       pragma: 'React',
-      version: '16.7.0',
+      version: '16.8.1',
     },
   },
 };

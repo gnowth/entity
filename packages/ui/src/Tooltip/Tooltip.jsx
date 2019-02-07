@@ -7,10 +7,11 @@ import UIIcon from '../Icon';
 import defaultHooks from './Tooltip.hooks';
 import defaultStyles, { Popup, Wrapper } from './Tooltip.styles';
 
-const UITooltip = ({ Component, ...props }) => {
+const UITooltip = (props) => {
   const hooks = Object.assign({}, defaultHooks, props.hooks);
   const [hidden, setHidden] = React.useState(true);
   const styles = useDefaultStyle(defaultStyles, props.styles);
+  const Component = props.component;
 
   return (
     <Wrapper
@@ -28,6 +29,7 @@ const UITooltip = ({ Component, ...props }) => {
 
 UITooltip.propTypes = {
   children: PropTypes.node.isRequired,
+  component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
   css: PropTypesPlus.css,
   event: PropTypes.string,
@@ -37,16 +39,15 @@ UITooltip.propTypes = {
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
   }),
-  Component: PropTypesPlus.component,
 };
 
 UITooltip.defaultProps = {
+  component: UIIcon,
   componentProps: {},
   css: undefined,
   event: 'onClick',
   hooks: undefined,
   styles: undefined,
-  Component: UIIcon,
 };
 
 export default React.memo(UITooltip);
