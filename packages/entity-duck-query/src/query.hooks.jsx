@@ -3,7 +3,7 @@ import { List } from 'immutable';
 
 import useQuery from './use-query';
 
-const mapDefaultToProps = {
+const mapDefault = {
   processingComponent: ['entityDuckQuery_processing', 'component_processing'],
   processingDidFailComponent: ['entityDuckQuery_processingDidFail', 'component_processingDidFail'],
   recordCountComponent: ['entityDuckQuery_recordCount', 'component_recordCount'],
@@ -11,7 +11,7 @@ const mapDefaultToProps = {
 };
 
 export default {
-  useComponents: props => useDefault(props, mapDefaultToProps),
+  useComponents: props => useDefault(mapDefault, props),
 
   useGetProps: (props) => {
     const queryProps = useQuery(props);

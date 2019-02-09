@@ -4,13 +4,13 @@ import React from 'react';
 import { useDefault } from '@gnowth/default';
 import { UIWell } from '@gnowth/ui';
 
-const mapDefaultToProps = {
+const mapDefault = {
   queryComponent: ['entityView_query', 'component_query'],
 };
 
 const ViewScreen = (props) => {
   const Component = props.component;
-  const Defaults = useDefault(props, mapDefaultToProps);
+  const Defaults = useDefault(mapDefault, props);
 
   return (
     <Component ratio={props.ratio} variant={props.variant}>
