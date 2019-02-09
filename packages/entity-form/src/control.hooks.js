@@ -74,4 +74,13 @@ export default {
       useGetPropsComponent(props.componentProps, input),
     );
   },
+
+  useGetPropsComponentErrorBoundary: (props, components) => React.useMemo(
+    () => (
+      components.errorBoundaryComponent === React.Fragment
+        ? {}
+        : props.errorBoundaryComponentProps
+    ),
+    [props.errorBoundaryComponentProps, components.errorBoundaryComponent],
+  ),
 };

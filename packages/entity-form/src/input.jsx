@@ -15,24 +15,26 @@ const Input = (props) => {
   const shouldShow = hooks.useShouldShow(props, componentProps, Components);
 
   return (
-    <Components.wrapper {...hooks.useWrapperComponentProps(props, componentProps, shouldShow)}>
-      { shouldShow.children && props.children(componentProps) }
+    <Components.errorBoundary {...hooks.useGetPropsComponentErrorBoundary(props, Components)}>
+      <Components.wrapper {...hooks.useWrapperComponentProps(props, componentProps, shouldShow)}>
+        { shouldShow.children && props.children(componentProps) }
 
-      { shouldShow.component && (
-        <Components.component {...componentProps} />
-      )}
+        { shouldShow.component && (
+          <Components.component {...componentProps} />
+        )}
 
-      { shouldShow.componentArray && componentProps.value.map((val, index) => (
-        <Components.component
-          {...componentProps}
-          errors={componentProps.field.getErrorsArray(componentProps.errors, { index })}
-          index={index}
-          key={componentProps.field.getId(val) || index}
-          value={val}
-          valueInitial={(componentProps.valueInitial || List()).get(index)}
-        />
-      ))}
-    </Components.wrapper>
+        { shouldShow.componentArray && componentProps.value.map((val, index) => (
+          <Components.component
+            {...componentProps}
+            errors={componentProps.field.getErrorsArray(componentProps.errors, { index })}
+            index={index}
+            key={componentProps.field.getId(val) || index}
+            value={val}
+            valueInitial={(componentProps.valueInitial || List()).get(index)}
+          />
+        ))}
+      </Components.wrapper>
+    </Components.errorBoundary>
   );
 };
 
@@ -40,9 +42,12 @@ Input.propTypes = exact({
   children: PropTypes.func,
   component: PropTypesPlus.notRequiredIf('children', PropTypesPlus.component),
   componentProps: PropTypesPlus.componentProps,
-  hooks: PropTypes.shape({
+  errorBoundaryComponent: PropTypesPlus.component,
+  errorBoundaryComponentProps: PropTypes.shape({}),
+  hooks: PropTypes.exact({
     useComponents: PropTypes.func,
     useGetProps: PropTypes.func,
+    useGetPropsComponentErrorBoundary: PropTypes.func,
     useShouldShow: PropTypes.func,
     useWrapperComponentProps: PropTypes.func,
   }),
@@ -60,6 +65,8 @@ Input.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: {},
+  errorBoundaryComponent: undefined,
+  errorBoundaryComponentProps: {},
   hooks: undefined,
   loadOptionsFromAPI: false,
   loadValueFromAPI: false,
