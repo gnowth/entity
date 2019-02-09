@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const Context = React.createContext({});
+export const DefaultContext = React.createContext({});
 
-export const DefaultConsumer = Context.Consumer;
+export const DefaultConsumer = DefaultContext.Consumer;
 
 export const DefaultProvider = ({ children, ...props }) => (
-  <Context.Provider value={props}>
+  <DefaultContext.Provider value={props}>
     { children }
-  </Context.Provider>
+  </DefaultContext.Provider>
 );
 
 DefaultProvider.propTypes = {

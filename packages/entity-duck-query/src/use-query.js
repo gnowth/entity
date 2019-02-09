@@ -3,20 +3,18 @@ import { useDefault } from '@gnowth/default';
 
 import useRedux from './use-redux';
 
-const useClearOnUnmount = (redux, configs) => React.useEffect(() => () => {
-  if (!configs.persist) redux.dispatch.clear();
-
-  if (configs.persist && !configs.persistDirty) redux.dispatch.clear({ dirty: true });
-}, []);
-
+const mapDefault = {
+  store: 'store',
+};
 
 const useProcessIfNeeded = (redux, configs) => {
-  const { store } = useDefault({}, { store: 'store' });
+  const { store } = useDefault(mapDefault);
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(
     () => {
-      const shouldProcess = !configs.action.duck.queries.processing(configs.action, store.getState())
+      const shouldProcess = redux.dispatch.process
+        && !configs.action?.duck.queries.processing(configs.action, store.getState())
         && (
           !redux.state.value
           || (!mounted && configs.cached)
@@ -29,20 +27,31 @@ const useProcessIfNeeded = (redux, configs) => {
   );
 };
 
+const useClearOnUnmount = (redux, configs) => React.useEffect(() => () => {
+  if (!redux.dispatch.clear) return;
 
-export default (configs = {}) => {
-  const redux = useRedux(
-    configs.action.duck.queries.makeMapStateToProps(configs.action),
-    configs.action.duck.queries.makeMapDispatchToProps(configs.action),
-  );
+  if (!configs.persist) redux.dispatch.clear();
 
+  if (configs.persist && !configs.persistDirty) redux.dispatch.clear({ dirty: true });
+}, []);
+
+const useReduxWithAction = action => useRedux(...React.useMemo(
+  () => [
+    action?.duck.queries.makeMapStateToProps(action),
+    action?.duck.queries.makeMapDispatchToProps(action),
+  ],
+  [action],
+));
+
+const useQuery = (configs = {}) => {
+  const redux = useReduxWithAction(configs.action);
   useProcessIfNeeded(redux, configs);
   useClearOnUnmount(redux, configs);
 
   return {
     clear: redux.dispatch.clear,
     errors: redux.state.errors,
-    field: configs.action.duck.entity.getEntityField({ many: configs.action.meta.id === undefined }),
+    field: configs.action?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined }),
     name: 'entity_duck_use_query',
     onChange: redux.dispatch.onChange,
     pagination: redux.state.pagination,
@@ -52,3 +61,5 @@ export default (configs = {}) => {
     valueInitial: redux.state.valueInitial,
   };
 };
+
+export default useQuery;

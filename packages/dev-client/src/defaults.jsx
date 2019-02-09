@@ -1,4 +1,4 @@
-import { Query } from '@entity/duck-query';
+import { useQuery, Query } from '@entity/duck-query';
 import { WidgetBoolean, WidgetDate, WidgetInput, WidgetList, WidgetSelect, WidgetTextarea } from '@entity/widget';
 import { UIButton, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Redirect } from 'react-router-dom';
@@ -17,6 +17,7 @@ export default {
   component_recordCount: ({ value }) => `${value} Record(s) Found`,
   component_recordCountNone: () => 'No Records Found',
   component_redirect: Redirect,
+  hook_useQuery: useQuery,
   widget_boolean: WidgetBoolean,
   widget_char: WidgetInput,
   widget_date: WidgetDate,
