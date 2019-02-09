@@ -8,6 +8,7 @@ export default {
     const mapDefault = React.useMemo(
       () => ({
         component: `widget_${props.type || input.field.type}`,
+        errorBoundaryComponent: ['entityForm_errorBoundary', 'component_errorBoundary'],
         wrapperComponent: ['entityForm_label', 'component_label'],
       }),
       [props.type, input.field.type],
@@ -17,6 +18,7 @@ export default {
 
     return {
       component: Components.component,
+      errorBoundary: Components.errorBoundaryComponent || React.Fragment,
       wrapper: props.children || !Components.wrapperComponent
         ? React.Fragment
         : Components.wrapperComponent,
@@ -43,6 +45,15 @@ export default {
     _isFunction(props.componentProps)
       ? props.componentProps(input)
       : props.componentProps,
+  ),
+
+  useGetPropsComponentErrorBoundary: (props, components) => React.useMemo(
+    () => (
+      components.errorBoundary === React.Fragment
+        ? {}
+        : props.errorBoundaryComponentProps
+    ),
+    [props.errorBoundaryComponentProps, components.errorBoundary],
   ),
 
   useShouldShow: (props, componentProps, Components) => ({

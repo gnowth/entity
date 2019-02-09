@@ -1,6 +1,6 @@
 import { useQuery, Query } from '@entity/duck-query';
 import { WidgetBoolean, WidgetDate, WidgetInput, WidgetList, WidgetSelect, WidgetTextarea } from '@entity/widget';
-import { UIButton, UILabel, UIProgressCircle } from '@gnowth/ui';
+import { UIButton, UIErrorBoundary, UILabel, UIProgressCircle } from '@gnowth/ui';
 import { Redirect } from 'react-router-dom';
 
 import settings from 'settings';
@@ -10,6 +10,7 @@ export default {
   settings,
   store,
   component_button: UIButton,
+  component_errorBoundary: UIErrorBoundary,
   component_label: UILabel,
   component_processing: UIProgressCircle,
   component_processingDidFail: () => 'Unable to load data. Try to refresh the page',
