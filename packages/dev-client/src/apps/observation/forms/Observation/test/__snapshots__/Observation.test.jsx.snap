@@ -290,6 +290,7 @@ exports[`renders correctly 1`] = `
   
   <button
     className="c6"
+    disabled={false}
     onClick={[Function]}
     to=""
   >
@@ -305,6 +306,7 @@ exports[`renders correctly 1`] = `
       
       <button
         className="c6"
+        disabled={false}
         onClick={[Function]}
         to=""
       >
@@ -317,6 +319,7 @@ exports[`renders correctly 1`] = `
       
       <button
         className="c10"
+        disabled={false}
         onClick={[Function]}
         to=""
       >
@@ -326,6 +329,7 @@ exports[`renders correctly 1`] = `
       
       <button
         className="c10"
+        disabled={false}
         onClick={[Function]}
         to=""
       >

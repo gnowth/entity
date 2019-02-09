@@ -98,14 +98,14 @@ export default function (ComposedComponent) {
     }
 
     render() {
-      return this.props.apiOptions
+      return this.props.loadOptionsFromAPI
         ? this.renderQuery(this.getProps())
         : this.renderComponent(this.getProps());
     }
   }
 
   withInput.propTypes = {
-    apiOptions: PropTypes.bool,
+    loadOptionsFromAPI: PropTypes.bool,
     array: PropTypes.bool,
     disabled: PropTypes.bool,
     filterParams: PropTypesImmutable.map,
@@ -118,13 +118,13 @@ export default function (ComposedComponent) {
     formValueInitial: PropTypesImmutable.map,
     index: PropTypes.number,
     name: PropTypesPlus.string,
-    queryComponent: PropTypesPlus.isRequiredIf('apiOptions', PropTypesPlus.component),
+    queryComponent: PropTypesPlus.isRequiredIf('loadOptionsFromAPI', PropTypesPlus.component),
     readOnly: PropTypes.bool,
     willChangeRecord: PropTypes.func,
   };
 
   withInput.defaultProps = {
-    apiOptions: false,
+    loadOptionsFromAPI: false,
     array: false,
     disabled: undefined,
     filterParams: Map(),

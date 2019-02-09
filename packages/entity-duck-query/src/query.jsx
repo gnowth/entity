@@ -1,10 +1,8 @@
 import _isFunction from 'lodash/isFunction';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { List } from 'immutable';
 
 import defaultHooks from './query.hooks';
 
@@ -86,7 +84,6 @@ Query.propTypes = exact({
   ]),
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
-  errors: PropTypesImmutable.list,
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
     useGetProps: PropTypes.func,
@@ -112,7 +109,6 @@ Query.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: {},
-  errors: List(),
   hooks: undefined,
   many: undefined,
   persist: true,

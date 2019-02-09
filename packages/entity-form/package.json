@@ -31,6 +31,7 @@
     "react-immutable-proptypes": "2.1.0"
   },
   "peerDependencies": {
+    "@entity/duck": "0.4.0",
     "lodash": "4.17.11",
     "react": "16.8.1",
     "react-redux": "6.0.0"

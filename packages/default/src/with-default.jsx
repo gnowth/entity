@@ -9,7 +9,7 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
 
 export default configs => (ComposedComponent) => {
   const withDefault = (props) => {
-    const defaults = useDefault(props, _isFunction(configs) ? configs(props) : configs); // eslint-disable-line react-hooks/rules-of-hooks
+    const defaults = useDefault(_isFunction(configs) ? configs(props) : configs, props); // eslint-disable-line react-hooks/rules-of-hooks
 
     return (
       <ComposedComponent
