@@ -16,7 +16,7 @@ export { default as UIImage } from './Image';
 
 export { default as UILabel } from './Label';
 
-export { default as UIPortal } from './Portal';
+export { default as UIPopup } from './Popup';
 
 export { default as UIProgressCircle } from './ProgressCircle';
 
