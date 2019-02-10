@@ -1,6 +1,6 @@
 import { useQuery, Query } from '@entity/duck-query';
 import { WidgetBoolean, WidgetDate, WidgetInput, WidgetList, WidgetSelect, WidgetTextarea } from '@entity/widget';
-import { UIButton, UIErrorBoundary, UILabel, UIProgressCircle } from '@gnowth/ui';
+import { UIButton, UIErrorBoundary, UILabel, UIPopup, UIProgressCircle } from '@gnowth/ui';
 import { Redirect } from 'react-router-dom';
 
 import settings from 'settings';
@@ -19,6 +19,8 @@ export default {
   component_recordCountNone: () => 'No Records Found',
   component_redirect: Redirect,
   hook_useQuery: useQuery,
+  uiPopup_component_overlay: UIPopup.Overlay,
+  uiPopup_component_portal: UIPopup.Portal,
   widget_boolean: WidgetBoolean,
   widget_char: WidgetInput,
   widget_date: WidgetDate,

@@ -21,14 +21,17 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
+    "@gnowth/default": "0.4.0",
     "@gnowth/higher-order-component": "0.4.0",
     "@gnowth/prop-types-plus": "0.4.0",
     "@gnowth/style": "0.4.0",
     "classnames": "2.2.6",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.6.2",
+    "prop-types-exact": "1.2.0",
     "react-immutable-proptypes": "2.1.0",
-    "react-intl": "2.8.0"
+    "react-intl": "2.8.0",
+    "react-onclickoutside": "6.7.1"
   },
   "devDependencies": {
     "jest-styled-components": "6.3.1"
@@ -38,6 +41,7 @@
     "@storybook/addon-knobs": "4.1.11",
     "lodash": "4.17.11",
     "react": "16.8.1",
+    "react-dom": "16.8.1",
     "react-router-dom": "4.3.1",
     "react-test-renderer": "16.8.1",
     "styled-components": "4.1.3"
