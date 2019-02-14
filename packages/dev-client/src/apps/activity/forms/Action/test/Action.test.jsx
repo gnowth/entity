@@ -18,6 +18,7 @@ it('renders correctly', () => {
         errors={List()}
         field={new Fields.EntityField({ entity: EntityAction })}
         onChange={() => undefined}
+        onSubmit={() => undefined}
         value={EntityAction.dataToRecord({})}
       />
     </App>,

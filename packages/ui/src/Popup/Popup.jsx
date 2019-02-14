@@ -11,7 +11,7 @@ import defaultHooks from './Popup.hooks';
 
 const ContainerComponent = styled.div`
   display: inline-block;
-  position: relative;
+  position: ${props => (props.static ? 'static' : 'relative')};
 `;
 
 /**
@@ -21,38 +21,42 @@ const ContainerComponent = styled.div`
 function Popup(props) {
   const [opened, setOpened] = React.useState(false);
   const hooks = Object.assign({}, defaultHooks, props.hooks);
-  const { Container, Content, Control, Component } = hooks.useComponents(props);
-  Popup.handleClickOutside = () => setOpened(false);
+  const { Container, Control, Component, Wrapper } = hooks.useComponents(props);
+  const componentProps = hooks.useGetPropsComponent(props, opened, setOpened);
+
+  Popup.handleClickOutside = hooks.useGetClickOutside(componentProps);
 
   return (
     <Container {...hooks.useGetPropsContainer(props)}>
       <Control {...hooks.useGetPropsControl(props, opened, setOpened)} />
 
-      <Component {...hooks.useGetPropsComponent(props, opened)}>
-        <Content {...hooks.useGetPropsContent(props)} />
-      </Component>
+      <Wrapper {...hooks.useGetPropsWrapper(props, opened)}>
+        <Component {...componentProps} />
+      </Wrapper>
     </Container>
   );
 }
 
 Popup.propTypes = exact({
-  component: PropTypesPlus.component,
+  component: PropTypesPlus.component.isRequired,
   componentProps: PropTypes.shape({}),
   containerComponent: PropTypesPlus.component,
   containerComponentProps: PropTypes.shape({}),
-  contentComponent: PropTypesPlus.component.isRequired,
-  contentComponentProps: PropTypes.shape({}),
   controlComponent: PropTypesPlus.component,
   controlComponentProps: PropTypes.shape({}),
   event: PropTypesPlus.string,
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
+    useGetClickOutside: PropTypes.func,
     useGetPropsComponent: PropTypes.func,
     useGetPropsContainer: PropTypes.func,
-    useGetPropsContent: PropTypes.func,
     useGetPropsControl: PropTypes.func,
+    useGetPropsWrapper: PropTypes.func,
   }),
+  onClose: PropTypes.func,
   type: PropTypesPlus.string,
+  wrapperComponent: PropTypesPlus.component,
+  wrapperComponentProps: PropTypes.shape({}),
 
   // onclickoutside props
   disableOnClickOutside: PropTypes.func.isRequired,
@@ -65,16 +69,17 @@ Popup.propTypes = exact({
 });
 
 Popup.defaultProps = {
-  component: undefined,
   componentProps: {},
   containerComponent: ContainerComponent,
   containerComponentProps: {},
-  contentComponentProps: {},
   controlComponent: undefined,
   controlComponentProps: {},
   event: 'onClick',
   hooks: undefined,
+  onClose: () => undefined,
   type: undefined,
+  wrapperComponent: undefined,
+  wrapperComponentProps: {},
 };
 
 const clickOutsideConfig = {

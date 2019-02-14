@@ -15,7 +15,7 @@ const Query = (props) => {
   const Component = props.component;
 
   return (
-    <>
+    <Components.errorBoundaryComponent {...hooks.useGetPropsComponentErrorBoundary(props, Components)}>
       { shouldShow.children && props.children(componentProps) }
 
       { shouldShow.processingComponent && (
@@ -71,7 +71,7 @@ const Query = (props) => {
           valueInitial={componentProps.valueInitial?.get(index)}
         />
       ))}
-    </>
+    </Components.errorBoundaryComponent>
   );
 };
 
@@ -84,9 +84,12 @@ Query.propTypes = exact({
   ]),
   component: PropTypesPlus.isRequiredIf('componentProps', PropTypesPlus.component),
   componentProps: PropTypes.shape({}),
+  errorBoundaryComponent: PropTypesPlus.component,
+  errorBoundaryComponentProps: PropTypes.shape({}),
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
     useGetProps: PropTypes.func,
+    useGetPropsComponentErrorBoundary: PropTypes.func,
     useShouldShow: PropTypes.func,
   }),
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool),
@@ -109,6 +112,8 @@ Query.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: {},
+  errorBoundaryComponent: undefined,
+  errorBoundaryComponentProps: {},
   hooks: undefined,
   many: undefined,
   persist: true,

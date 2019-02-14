@@ -34,11 +34,16 @@ export default class Queries {
     return {
       clear: (...args) => action.duck.queries.clear(action, ...args),
       onChange: (...args) => action.duck.queries.onChange(action, ...args),
+      onSubmit: (...args) => action.duck.queries.onSubmit(action, ...args),
       process: () => action,
     };
   }
 
   onChange() {
+    return undefined;
+  }
+
+  onSubmit() {
     return undefined;
   }
 

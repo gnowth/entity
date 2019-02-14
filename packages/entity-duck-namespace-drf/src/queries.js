@@ -7,6 +7,7 @@ export default class QueriesDRF extends Duck.Queries {
     clear: ['get', 'options'],
     errors: ['delete', 'get', 'options', 'save'],
     onChange: ['get'],
+    onSubmit: ['get'],
     pagination: ['get'],
     processing: ['delete', 'get', 'options', 'save'],
     processingDidFail: ['delete', 'get', 'options', 'save'],
@@ -18,8 +19,8 @@ export default class QueriesDRF extends Duck.Queries {
     return this.hasSupport('clear', action)
       ? action.duck?.actions?.clear({
         ...action.meta,
-        ...meta,
         sideEffect: false,
+        ...meta,
       })
       : super.clear(action, meta);
   }
@@ -37,8 +38,19 @@ export default class QueriesDRF extends Duck.Queries {
     return this.hasSupport('onChange', action, ['options'])
       ? action.duck?.actions?.save_local(payload, {
         ...action.meta,
-        ...meta,
         sideEffect: false,
+        ...meta,
+      })
+      : super.onChange(action, payload, meta);
+  }
+
+  onSubmit(action = {}, payload, meta = {}) {
+    return this.hasSupport('onSubmit', action, ['options'])
+      ? action.duck?.actions?.save(payload, {
+        ...action.meta,
+        sideEffect: true,
+        id: action.meta.id || undefined,
+        ...meta,
       })
       : super.onChange(action, payload, meta);
   }

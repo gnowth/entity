@@ -29,8 +29,17 @@ function useHandleEvent(props, input, setAction) {
     () => {
       const computedAction = props.action(input);
 
-      return computedAction.duck instanceof Duck
-        ? setAction(store.dispatch(computedAction))
+      if (computedAction && computedAction.duck instanceof Duck) {
+        return setAction(store.dispatch(computedAction));
+      }
+
+      return props.submit
+        ? input.onSubmit({
+          target: {
+            name: input.name,
+            value: computedAction,
+          },
+        })
         : input.onChange({
           target: {
             name: input.name,
@@ -38,7 +47,7 @@ function useHandleEvent(props, input, setAction) {
           },
         });
     },
-    [props.action, input],
+    [props.action, props.submit, input],
   );
 }
 

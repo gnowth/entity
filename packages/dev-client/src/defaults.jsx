@@ -12,6 +12,7 @@ export default {
   component_button: UIButton,
   component_errorBoundary: UIErrorBoundary,
   component_label: UILabel,
+  component_popup: UIPopup,
   component_processing: UIProgressCircle,
   component_processingDidFail: () => 'Unable to load data. Try to refresh the page',
   component_query: Query,
