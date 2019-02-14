@@ -54,6 +54,7 @@ const useQuery = (configs = {}) => {
     field: configs.action?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined }),
     name: 'entity_duck_use_query',
     onChange: redux.dispatch.onChange,
+    onSubmit: redux.dispatch.onSubmit,
     pagination: redux.state.pagination,
     processing: redux.state.processing,
     processingDidFail: redux.state.processingDidFail,

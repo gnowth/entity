@@ -29,7 +29,7 @@ export default {
       if (invalidParams.size > 0) throw new Error(`DuckMiddleware.action.meta (${invalidParams.join(', ')}): params must be a string or undefined`);
     }
 
-    const customAction = this.meta?.action ? `${this.action?.meta?.action}/` : '';
+    const customAction = this.meta?.action ? `${this.meta?.action}/` : '';
 
     const args = [
       this.meta?.id

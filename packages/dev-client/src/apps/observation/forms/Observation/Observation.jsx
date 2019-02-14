@@ -3,7 +3,7 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { Control, Form, Input } from '@entity/form';
+import { Control, Form, Input, PopupShadow } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
 import { useDefaultStyle } from '@gnowth/style';
 import { UIErrorWell } from '@gnowth/ui';
@@ -11,6 +11,7 @@ import { UIErrorWell } from '@gnowth/ui';
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
+import FormTitle from './FormTitle';
 import defaultLocales from './Observation.locales';
 import defaultStyles from './Observation.styles';
 
@@ -41,6 +42,11 @@ const FormObservation = (props) => {
           css: styles.input,
           labelLocale: locales.title,
         }}
+      />
+
+      <PopupShadow
+        controlComponentProps={{ children: 'Test' }}
+        component={FormTitle}
       />
 
       <Input

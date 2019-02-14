@@ -33,6 +33,7 @@ Control.propTypes = exact({
     useGetPropsComponent: PropTypes.func,
     useGetPropsComponentErrorBoundary: PropTypes.func,
   }),
+  submit: PropTypes.bool,
 });
 
 Control.defaultProps = {
@@ -42,6 +43,7 @@ Control.defaultProps = {
   errorBoundaryComponentProps: {},
   event: 'onClick',
   hooks: undefined,
+  submit: false,
 };
 
 export default React.memo(Control);

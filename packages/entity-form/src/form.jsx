@@ -34,6 +34,7 @@ Form.propTypes = {
   }),
   name: PropTypesPlus.string,
   onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   value: PropTypesImmutable.map.isRequired,
   valueInitial: PropTypesImmutable.map,
 };

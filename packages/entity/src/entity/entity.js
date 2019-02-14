@@ -32,8 +32,8 @@ export default class Entity {
     return records.delete(index).insert(indexTo, records.get(index));
   }
 
-  static actionReset(record) {
-    return this.dataToRecord({
+  static actionReset(record, configs = {}) {
+    return configs.valueInitial || this.dataToRecord({
       [this.idField]: record.get(this.idField),
     });
   }

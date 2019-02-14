@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c5 {
+.c7 {
   width: 100%;
   background-color: hsl(0,0%,98%);
   border: 1px solid hsl(0,0%,80%);
@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
   resize: none;
 }
 
-.c5:focus {
+.c7:focus {
   background-color: white;
   border-color: #2684ff;
   outline: none;
@@ -48,7 +48,7 @@ exports[`renders correctly 1`] = `
   display: inline-block;
 }
 
-.c10 {
+.c11 {
   display: inline-block;
   margin-left: 24px;
 }
@@ -57,11 +57,16 @@ exports[`renders correctly 1`] = `
   margin-top: 24px;
 }
 
-.c7 {
+.c8 {
   margin-top: 48px;
 }
 
-.c9 {
+.c5 {
+  display: inline-block;
+  position: relative;
+}
+
+.c10 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -92,7 +97,7 @@ exports[`renders correctly 1`] = `
   display: block;
 }
 
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -179,9 +184,25 @@ exports[`renders correctly 1`] = `
       }
       name="title"
       onChange={[Function]}
+      onSubmit={[Function]}
       value=""
       variant="main"
     />
+  </div>
+  <div>
+    <div
+      className="c5"
+    >
+      
+      
+      <button
+        className="c6"
+        onClick={[Function]}
+        to=""
+      >
+        Test
+      </button>
+    </div>
   </div>
   <div
     className="c0"
@@ -223,6 +244,7 @@ exports[`renders correctly 1`] = `
       }
       name="title_short"
       onChange={[Function]}
+      onSubmit={[Function]}
       value=""
       variant="main"
     />
@@ -236,10 +258,11 @@ exports[`renders correctly 1`] = `
       Description
     </label>
     <textarea
-      className="c5"
+      className="c7"
       errors={Immutable.List []}
       name="description"
       onChange={[Function]}
+      onSubmit={[Function]}
       value=""
       variant="main"
     />
@@ -297,10 +320,10 @@ exports[`renders correctly 1`] = `
     Add action
   </button>
   <div
-    className="c7"
+    className="c8"
   >
     <div
-      className="c8"
+      className="c9"
     >
       
       
@@ -313,12 +336,12 @@ exports[`renders correctly 1`] = `
         RESET
       </button>
       <div
-        className="c9"
+        className="c10"
       />
       
       
       <button
-        className="c10"
+        className="c11"
         disabled={false}
         onClick={[Function]}
         to=""
@@ -328,7 +351,7 @@ exports[`renders correctly 1`] = `
       
       
       <button
-        className="c10"
+        className="c11"
         disabled={false}
         onClick={[Function]}
         to=""

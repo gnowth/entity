@@ -8,7 +8,7 @@ export default {
   useComponents(props) {
     const mapDefault = React.useMemo(
       () => ({
-        component: `uiPopup_component_${props.type}`,
+        wrapperComponent: `uiPopup_component_${props.type}`,
         controlComponent: ['uiPopup_control', 'component_button'],
       }),
       [props.type],
@@ -17,16 +17,40 @@ export default {
     const defaults = useDefault(mapDefault, props);
 
     return {
-      Component: defaults.component || Portal,
+      Component: props.component,
       Container: props.containerComponent,
-      Content: props.contentComponent,
       Control: defaults.controlComponent,
+      Wrapper: defaults.wrapperComponent || Portal,
     };
   },
 
-  useGetPropsComponent(props, opened) {
+  /**
+   * Hack(thierry): react-onclickoutside use the first instance of the
+   * onClose provided. So it is unabled to capture the changing values around it.
+   * Hence mutating the staticObject giving it a new onClose
+   */
+  useGetClickOutside(componentProps) {
+    const [staticObject] = React.useState({});
+
+    staticObject.onClose = componentProps.onClose;
+
+    return () => staticObject.onClose();
+  },
+
+  useGetPropsComponent(props, opened, setOpened) {
+    const handleClose = React.useCallback(
+      (x) => {
+        if (!opened) return x;
+
+        setOpened(false);
+        props.onClose();
+        return x;
+      },
+      [opened, props.onClose],
+    );
+
     return Object.assign(
-      { visible: opened },
+      { onClose: handleClose },
       _isFunction(props.componentProps)
         ? props.componentProps()
         : props.componentProps,
@@ -35,17 +59,6 @@ export default {
 
   useGetPropsContainer(props) {
     return props.containerComponentProps;
-  },
-
-  useGetPropsContent(props, setOpened) {
-    const handleClose = React.useCallback(() => setOpened(false), []);
-
-    return Object.assign(
-      { onClose: handleClose },
-      _isFunction(props.contentComponentProps)
-        ? props.contentComponentProps()
-        : props.contentComponentProps,
-    );
   },
 
   useGetPropsControl(props, opened, setOpened) {
@@ -57,6 +70,15 @@ export default {
     return Object.assign(
       { [props.event]: handleEvent },
       props.controlComponentProps,
+    );
+  },
+
+  useGetPropsWrapper(props, opened) {
+    return Object.assign(
+      { visible: opened },
+      _isFunction(props.wrapperComponentProps)
+        ? props.wrapperComponentProps()
+        : props.wrapperComponentProps,
     );
   },
 };

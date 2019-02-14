@@ -4,45 +4,55 @@ export default class QueriesScreen extends Duck.Queries {
   supportedActions = {
     clear: ['get'],
     onChange: ['get'],
+    onSubmit: ['get'],
     value: ['get'],
     valueInitial: ['get'],
   }
 
-  clear(action = {}, configs = {}) {
+  clear(action = {}, meta = {}) {
     return this.hasSupport('clear', action)
       ? action.duck?.actions?.clear({
         ...action.meta,
-        ...configs,
+        ...meta,
       })
       : super.clear(action.meta);
   }
 
-  onChange(action = {}, payload, configs = {}) {
+  onChange(action = {}, payload, meta = {}) {
     return this.hasSupport('onChange', action)
       ? action.duck?.actions?.save_local(payload, {
         ...action.meta,
-        ...configs,
+        ...meta,
       })
-      : super.onChange(action, payload, configs);
+      : super.onChange(action, payload, meta);
   }
 
-  value(action = {}, state, configs = {}) {
+  onSubmit(action = {}, payload, meta = {}) {
+    return this.hasSupport('onSubmit', action)
+      ? action.duck?.actions?.save(payload, {
+        ...action.meta,
+        ...meta,
+      })
+      : super.onChange(action, payload, meta);
+  }
+
+  value(action = {}, state, meta = {}) {
     return this.hasSupport('value', action)
       ? action.duck?.selectors.record(state, {
         ...action.meta,
         dirty: true,
-        ...configs,
+        ...meta,
       })
-      : super.value(action, state, configs);
+      : super.value(action, state, meta);
   }
 
-  valueInitial(action = {}, state, configs = {}) {
+  valueInitial(action = {}, state, meta = {}) {
     return this.hasSupport('valueInitial', action)
       ? action.duck?.selectors.record(state, {
         ...action.meta,
         dirty: false,
-        ...configs,
+        ...meta,
       })
-      : super.valueInitial(action, state, configs);
+      : super.valueInitial(action, state, meta);
   }
 }

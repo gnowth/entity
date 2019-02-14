@@ -29,6 +29,7 @@ export default {
     {
       name: props.name,
       onChange: input.onChange,
+      onSubmit: input.onSubmit,
       value: input.value,
     },
 

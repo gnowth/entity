@@ -47,6 +47,38 @@ const useHandleChange = (props, context) => React.useCallback(
   [props.name, props.willChangeRecord, props.array, context],
 );
 
+const useHandleSubmit = (props, context) => React.useCallback(
+  props.array
+    ? ({ target }) => context.onSubmit({
+      target: {
+        array: true,
+        name: context.name,
+        value: target.value,
+      },
+    })
+    : ({ target }) => {
+      const index = target.getAttribute
+        ? target.getAttribute('index') || undefined
+        : target.index;
+
+      const field = context.field.getField({ name: props.name });
+
+      return context.onSubmit({
+        target: {
+          index: context.index,
+          name: context.name,
+          value: target.name
+            ? context.value.setIn(
+              index === undefined ? [target.name] : [target.name, index],
+              field.clean(target.value),
+            )
+            : context.value.merge(target.value),
+        },
+      });
+    },
+  [props.name, props.array, context],
+);
+
 function useInput(configs) {
   const computedConfigs = Object.assign({}, useInput.defaultConfigs, configs);
 
@@ -74,6 +106,7 @@ function useInput(configs) {
     index: computedConfigs.index,
     name: computedConfigs.name,
     onChange: useHandleChange(computedConfigs, context),
+    onSubmit: useHandleSubmit(computedConfigs, context),
     processing: query.processing,
     processingDidFail: query.processingDidFail,
     readOnly: computedConfigs.readOnly,
