@@ -7,8 +7,8 @@ import { UIBox, UIButton } from '@gnowth/ui';
 import defaultLocales from './Header.locales';
 import defaultStyles from './Header.styles';
 
-const Header = (props) => {
-  const locales = Object.assign({}, defaultLocales, props.locales);
+function Header(props) {
+  const locales = { ...defaultLocales, ...props.locales };
   const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
@@ -42,7 +42,7 @@ const Header = (props) => {
       />
     </UIBox>
   );
-};
+}
 
 Header.propTypes = {
   locales: PropTypes.exact({

@@ -9,10 +9,10 @@ import defaultHooks from './form.hooks';
 
 function Form(props) {
   const Component = props.component;
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+  const hooks = { ...defaultHooks, ...props.hooks };
 
   return (
-    <FormProvider {...hooks.useGetProps(props)}>
+    <FormProvider {...hooks.useProps(props)}>
       <Component
         className={props.className}
         {...props.componentProps}
@@ -30,7 +30,7 @@ Form.propTypes = {
   errors: PropTypesImmutable.list.isRequired,
   field: PropTypesEntity.entityField.isRequired,
   hooks: PropTypes.shape({
-    useGetProps: PropTypes.func,
+    useProps: PropTypes.func,
   }),
   name: PropTypesPlus.string,
   onChange: PropTypes.func.isRequired,

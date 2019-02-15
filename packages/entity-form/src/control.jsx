@@ -12,12 +12,12 @@ const mapDefault = {
 };
 
 function Control(props) {
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+  const hooks = { ...defaultHooks, ...props.hooks };
   const Components = useDefault(mapDefault, props);
 
   return (
-    <Components.errorBoundaryComponent {...hooks.useGetPropsComponentErrorBoundary(props, Components)}>
-      <Components.component {...hooks.useGetPropsComponent(props, Components.component)} />
+    <Components.errorBoundaryComponent {...hooks.usePropsErrorBoundary(props, Components)}>
+      <Components.component {...hooks.usePropsComponent(props, Components.component)} />
     </Components.errorBoundaryComponent>
   );
 }
@@ -30,8 +30,8 @@ Control.propTypes = exact({
   errorBoundaryComponentProps: PropTypes.shape({}),
   event: PropTypesPlus.string,
   hooks: PropTypes.exact({
-    useGetPropsComponent: PropTypes.func,
-    useGetPropsComponentErrorBoundary: PropTypes.func,
+    usePropsComponent: PropTypes.func,
+    usePropsErrorBoundary: PropTypes.func,
   }),
   submit: PropTypes.bool,
 });

@@ -15,8 +15,8 @@ import FormTitle from './FormTitle';
 import defaultLocales from './Observation.locales';
 import defaultStyles from './Observation.styles';
 
-const FormObservation = (props) => {
-  const locales = Object.assign({}, defaultLocales, props.locales);
+function FormObservation(props) {
+  const locales = { ...defaultLocales, ...props.locales };
   const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
@@ -95,7 +95,7 @@ const FormObservation = (props) => {
       />
     </Form>
   );
-};
+}
 
 FormObservation.propTypes = {
   field: PropTypesEntity.entityField.isRequired,

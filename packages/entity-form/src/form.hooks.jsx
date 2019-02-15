@@ -16,7 +16,7 @@ function useOnPreviousChange(value, handler, shadow) {
 }
 
 export default {
-  useGetProps(props) {
+  useProps(props) {
     const [value, setValue] = React.useState(props.value);
     const handleChange = React.useCallback(
       event => setValue(event.target.value),

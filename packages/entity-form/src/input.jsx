@@ -7,15 +7,15 @@ import { List } from 'immutable';
 import defaultHooks from './input.hooks';
 import useInput from './use-input';
 
-const Input = (props) => {
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+function Input(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
   const input = useInput(props);
   const Components = hooks.useComponents(props, input);
-  const componentProps = hooks.useGetProps(props, input, Components);
+  const componentProps = hooks.useProps(props, input, Components);
   const shouldShow = hooks.useShouldShow(props, componentProps, Components);
 
   return (
-    <Components.errorBoundary {...hooks.useGetPropsComponentErrorBoundary(props, Components)}>
+    <Components.errorBoundary {...hooks.usePropsErrorBoundary(props, Components)}>
       <Components.wrapper {...hooks.useWrapperComponentProps(props, componentProps, shouldShow)}>
         { shouldShow.children && props.children(componentProps) }
 
@@ -36,7 +36,7 @@ const Input = (props) => {
       </Components.wrapper>
     </Components.errorBoundary>
   );
-};
+}
 
 Input.propTypes = exact({
   children: PropTypes.func,
@@ -46,8 +46,8 @@ Input.propTypes = exact({
   errorBoundaryComponentProps: PropTypes.shape({}),
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
-    useGetProps: PropTypes.func,
-    useGetPropsComponentErrorBoundary: PropTypes.func,
+    useProps: PropTypes.func,
+    usePropsErrorBoundary: PropTypes.func,
     useShouldShow: PropTypes.func,
     useWrapperComponentProps: PropTypes.func,
   }),

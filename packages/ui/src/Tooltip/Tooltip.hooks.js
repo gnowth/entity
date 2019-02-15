@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  useGetPropsTrigger: (props, styles, hidden, setHidden) => React.useMemo(
+  usePropsTrigger: (props, styles, hidden, setHidden) => React.useMemo(
     () => Object.assign(
       {
         [props.event]: () => setHidden(!hidden),

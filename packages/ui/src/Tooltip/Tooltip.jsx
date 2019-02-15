@@ -7,8 +7,8 @@ import UIIcon from '../Icon';
 import defaultHooks from './Tooltip.hooks';
 import defaultStyles, { Popup, Wrapper } from './Tooltip.styles';
 
-const UITooltip = (props) => {
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+function UITooltip(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
   const styles = useDefaultStyle(defaultStyles, props.styles);
   const Component = props.component;
   const [hidden, setHidden] = React.useState(true);
@@ -18,14 +18,14 @@ const UITooltip = (props) => {
       className={props.className}
       css={props.css}
     >
-      <Component {...hooks.useGetPropsTrigger(props, styles, hidden, setHidden)} />
+      <Component {...hooks.usePropsTrigger(props, styles, hidden, setHidden)} />
 
       <Popup hidden={hidden}>
         { props.children }
       </Popup>
     </Wrapper>
   );
-};
+}
 
 UITooltip.propTypes = {
   children: PropTypes.node.isRequired,
@@ -34,7 +34,7 @@ UITooltip.propTypes = {
   css: PropTypesPlus.css,
   event: PropTypes.string,
   hooks: PropTypes.exact({
-    useGetPropsTrigger: PropTypes.func,
+    usePropsTrigger: PropTypes.func,
   }),
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,

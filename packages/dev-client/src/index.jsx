@@ -18,14 +18,17 @@ import setup from './setup';
 
 setup({ settings });
 
+const intlProviderProps = { locale: 'en', messages: {} };
+const themeProviderProps = { theme };
+
 function render() {
   ReactDOM.render(
     <AppRoot
       defaults={defaults}
       intlProvider={IntlProvider}
-      intlProviderProps={{ locale: 'en', messages: {} }}
+      intlProviderProps={intlProviderProps}
       themeProvider={ThemeProvider}
-      themeProviderProps={{ theme }}
+      themeProviderProps={themeProviderProps}
     >
       <Provider store={store}>
         <ConnectedRouter history={history}>
