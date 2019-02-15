@@ -20,17 +20,17 @@ const ContainerComponent = styled.div`
  */
 function Popup(props) {
   const [opened, setOpened] = React.useState(false);
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+  const hooks = { ...defaultHooks, ...props.hooks };
   const { Container, Control, Component, Wrapper } = hooks.useComponents(props);
-  const componentProps = hooks.useGetPropsComponent(props, opened, setOpened);
+  const componentProps = hooks.usePropsComponent(props, opened, setOpened);
 
   Popup.handleClickOutside = hooks.useGetClickOutside(componentProps);
 
   return (
-    <Container {...hooks.useGetPropsContainer(props)}>
-      <Control {...hooks.useGetPropsControl(props, opened, setOpened)} />
+    <Container {...hooks.usePropsContainer(props)}>
+      <Control {...hooks.usePropsControl(props, opened, setOpened)} />
 
-      <Wrapper {...hooks.useGetPropsWrapper(props, opened)}>
+      <Wrapper {...hooks.usePropsWrapper(props, opened)}>
         <Component {...componentProps} />
       </Wrapper>
     </Container>
@@ -48,10 +48,10 @@ Popup.propTypes = exact({
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
     useGetClickOutside: PropTypes.func,
-    useGetPropsComponent: PropTypes.func,
-    useGetPropsContainer: PropTypes.func,
-    useGetPropsControl: PropTypes.func,
-    useGetPropsWrapper: PropTypes.func,
+    usePropsComponent: PropTypes.func,
+    usePropsContainer: PropTypes.func,
+    usePropsControl: PropTypes.func,
+    usePropsWrapper: PropTypes.func,
   }),
   onClose: PropTypes.func,
   type: PropTypesPlus.string,

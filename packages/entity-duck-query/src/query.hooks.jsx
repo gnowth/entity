@@ -22,7 +22,7 @@ export default {
     };
   },
 
-  useGetProps: (props) => {
+  usePropsComponent(props) {
     const queryProps = useQuery(props);
 
     return {
@@ -67,7 +67,7 @@ export default {
     };
   },
 
-  useGetPropsComponentErrorBoundary: (props, components) => React.useMemo(
+  usePropsErrorBoundary: (props, components) => React.useMemo(
     () => (
       components.errorBoundaryComponent === React.Fragment
         ? {}

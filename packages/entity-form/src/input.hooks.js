@@ -25,7 +25,7 @@ export default {
     };
   },
 
-  useGetProps: (props, input, Components) => Object.assign(
+  useProps: (props, input, Components) => Object.assign(
     {
       name: props.name,
       onChange: input.onChange,
@@ -48,7 +48,7 @@ export default {
       : props.componentProps,
   ),
 
-  useGetPropsComponentErrorBoundary: (props, components) => React.useMemo(
+  usePropsErrorBoundary: (props, components) => React.useMemo(
     () => (
       components.errorBoundary === React.Fragment
         ? {}

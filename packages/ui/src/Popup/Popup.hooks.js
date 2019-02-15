@@ -37,7 +37,7 @@ export default {
     return () => staticObject.onClose();
   },
 
-  useGetPropsComponent(props, opened, setOpened) {
+  usePropsComponent(props, opened, setOpened) {
     const handleClose = React.useCallback(
       (x) => {
         if (!opened) return x;
@@ -57,11 +57,11 @@ export default {
     );
   },
 
-  useGetPropsContainer(props) {
+  usePropsContainer(props) {
     return props.containerComponentProps;
   },
 
-  useGetPropsControl(props, opened, setOpened) {
+  usePropsControl(props, opened, setOpened) {
     const handleEvent = React.useCallback(
       () => setOpened(!opened),
       [opened],
@@ -73,7 +73,7 @@ export default {
     );
   },
 
-  useGetPropsWrapper(props, opened) {
+  usePropsWrapper(props, opened) {
     return Object.assign(
       { visible: opened },
       _isFunction(props.wrapperComponentProps)

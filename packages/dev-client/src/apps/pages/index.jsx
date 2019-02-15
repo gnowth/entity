@@ -20,8 +20,8 @@ const Screen = styled.div`
   justify-content: center;
 `;
 
-const AppPage = (props) => {
-  const locales = Object.assign({}, defaultLocales, props.locales);
+function AppPage(props) {
+  const locales = { ...defaultLocales, ...props.locales };
 
   return (
     <App {...props}>
@@ -57,7 +57,7 @@ const AppPage = (props) => {
       </Switch>
     </App>
   );
-};
+}
 
 AppPage.propTypes = {
   locales: PropTypes.exact({

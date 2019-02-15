@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  useGetPropsTooltip: (props, styles) => React.useMemo(
+  usePropsTooltip: (props, styles) => React.useMemo(
     () => ({
       componentProps: {
         css: styles.icon,

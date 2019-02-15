@@ -6,16 +6,16 @@ import React from 'react';
 
 import defaultHooks from './query.hooks';
 
-const Query = (props) => {
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+function Query(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
   const Components = hooks.useComponents(props);
-  const componentProps = hooks.useGetProps(props);
+  const componentProps = hooks.usePropsComponent(props);
   const shouldShow = hooks.useShouldShow(props, componentProps, Components);
 
   const Component = props.component;
 
   return (
-    <Components.errorBoundaryComponent {...hooks.useGetPropsComponentErrorBoundary(props, Components)}>
+    <Components.errorBoundaryComponent {...hooks.usePropsErrorBoundary(props, Components)}>
       { shouldShow.children && props.children(componentProps) }
 
       { shouldShow.processingComponent && (
@@ -73,7 +73,7 @@ const Query = (props) => {
       ))}
     </Components.errorBoundaryComponent>
   );
-};
+}
 
 Query.propTypes = exact({
   action: PropTypesPlus.action.isRequired,
@@ -88,8 +88,8 @@ Query.propTypes = exact({
   errorBoundaryComponentProps: PropTypes.shape({}),
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
-    useGetProps: PropTypes.func,
-    useGetPropsComponentErrorBoundary: PropTypes.func,
+    usePropsComponent: PropTypes.func,
+    usePropsErrorBoundary: PropTypes.func,
     useShouldShow: PropTypes.func,
   }),
   many: PropTypesPlus.notRequiredIf('action', PropTypes.bool),

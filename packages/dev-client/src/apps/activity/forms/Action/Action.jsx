@@ -10,8 +10,8 @@ import { UIIcon, UITypeSet } from '@gnowth/ui';
 import defaultLocales from './Action.locales';
 import defaultStyles, { Controls, Header } from './Action.styles';
 
-const FormAction = (props) => {
-  const locales = Object.assign({}, defaultLocales, props.locales);
+function FormAction(props) {
+  const locales = { ...defaultLocales, ...props.locales };
   const styles = useDefaultStyle(defaultStyles, props.styles);
 
   return (
@@ -80,7 +80,7 @@ const FormAction = (props) => {
       </Controls>
     </Form>
   );
-};
+}
 
 FormAction.propTypes = {
   field: PropTypesEntity.entityFieldWithInterface({

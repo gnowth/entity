@@ -8,7 +8,7 @@ const mapDefault = {
   queryComponent: ['entityView_query', 'component_query'],
 };
 
-const ViewScreen = (props) => {
+function ViewScreen(props) {
   const Component = props.component;
   const Defaults = useDefault(mapDefault, props);
 
@@ -17,7 +17,7 @@ const ViewScreen = (props) => {
       <Defaults.queryComponent {...props.queryComponentProps} />
     </Component>
   );
-};
+}
 
 ViewScreen.propTypes = {
   component: PropTypesPlus.component,

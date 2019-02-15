@@ -11,7 +11,7 @@ const mapDefault = {
   store: 'store',
 };
 
-function useGetPropsComponent(componentProps, input) {
+function usePropsComponent(componentProps, input) {
   return React.useMemo(
     () => (
       _isFunction(componentProps)
@@ -64,7 +64,7 @@ function useStatus(action) {
 }
 
 export default {
-  useGetPropsComponent: (props, component) => {
+  usePropsComponent: (props, component) => {
     const [action, setAction] = React.useState();
     const input = useInput(props);
     const status = useStatus(action);
@@ -80,11 +80,11 @@ export default {
         processingDidFail: input.processingDidFail || status.processingDidFail || false,
       },
 
-      useGetPropsComponent(props.componentProps, input),
+      usePropsComponent(props.componentProps, input),
     );
   },
 
-  useGetPropsComponentErrorBoundary: (props, components) => React.useMemo(
+  usePropsErrorBoundary: (props, components) => React.useMemo(
     () => (
       components.errorBoundaryComponent === React.Fragment
         ? {}

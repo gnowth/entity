@@ -8,7 +8,7 @@ import { UIBox, UIButton } from '@gnowth/ui';
 import defaultLocales from './FormTitle.locales';
 
 function FormTitle(props) {
-  const locales = Object.assign({}, defaultLocales, props.locales);
+  const locales = { ...defaultLocales, ...props.locales };
 
   return (
     <Form {...props}>

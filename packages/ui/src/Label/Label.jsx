@@ -11,10 +11,10 @@ import UITypeSet from '../TypeSet';
 import defaultHooks from './Label.hooks';
 import defaultStyles, { Label, UILabelRoot } from './Label.styles';
 
-const UILabel = (props) => {
-  const hooks = Object.assign({}, defaultHooks, props.hooks);
+function UILabel(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
   const styles = useDefaultStyle(defaultStyles, props.styles);
-  const propsTooltip = hooks.useGetPropsTooltip(props, styles);
+  const propsTooltip = hooks.usePropsTooltip(props, styles);
 
   return (
     <UILabelRoot className={props.className} css={props.css}>
@@ -40,14 +40,14 @@ const UILabel = (props) => {
       { props.children }
     </UILabelRoot>
   );
-};
+}
 
 UILabel.propTypes = {
   children: PropTypes.node,
   css: PropTypesPlus.css,
   errors: PropTypesImmutable.list,
   hooks: PropTypes.exact({
-    useGetPropsTooltip: PropTypes.func,
+    usePropsTooltip: PropTypes.func,
   }),
   label: PropTypes.string,
   labelComponentProps: PropTypes.shape({}),

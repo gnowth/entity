@@ -1,78 +1,48 @@
-import _isFunction from 'lodash/isFunction';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { DefaultProvider } from '@gnowth/default';
 
-import { AppConsumer } from './context';
+import { Context } from './context';
+import defaultHooks from './app.hooks';
 
-class App extends React.PureComponent {
-  getPropsIntl(context) {
-    if (!context.intlProvider) return {};
+function App(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
+  const context = React.useContext(Context);
+  const { DefaultProvider, IntlProvider, ThemeProvider } = hooks.useComponents(props, context);
 
-    return _isFunction(this.props.intlProviderProps)
-      ? this.props.intlProviderProps(context.intlProviderProps)
-      : {
-        ...context.intlProviderProps,
-        ...this.props.intlProviderProps,
-        messages: Object.assign(
-          {},
-          context.intlProviderProps.messages,
-          this.props.intlProviderProps.messages,
-        ),
-      };
-  }
-
-  getPropsTheme(context) {
-    if (!context.themeProvider) return {};
-
-    const computedThemeProviderProps = _isFunction(this.props.themeProviderProps)
-      ? this.props.themeProviderProps(context.themeProviderProps)
-      : this.props.themeProviderProps;
-
-    return computedThemeProviderProps;
-  }
-
-  renderContext = (context) => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (this.props.intlProviderProps && !context.intlProvider) throw new Error('App.renderContext: intlProvider is required in "AppRoot"');
-      if (this.props.themeProviderProps && !context.themeProvider) throw new Error('App.renderContext: themeProvider is required in "AppRoot"');
-    }
-
-    const IntlProvider = (this.props.intlProviderProps && context.intlProvider) || React.Fragment;
-    const ThemeProvider = (this.props.themeProviderProps && context.themeProvider) || React.Fragment;
-
-    return (
-      <DefaultProvider {...context.defaults} {...this.props.defaults}>
-        <IntlProvider {...this.getPropsIntl(context)}>
-          <ThemeProvider {...this.getPropsTheme(context)}>
-            { this.props.children }
-          </ThemeProvider>
-        </IntlProvider>
-      </DefaultProvider>
-    );
-  }
-
-  render() {
-    return <AppConsumer>{ this.renderContext }</AppConsumer>;
-  }
+  return (
+    <IntlProvider {...hooks.usePropsIntl(props, context, IntlProvider)}>
+      <ThemeProvider {...hooks.usePropsTheme(props, context, ThemeProvider)}>
+        <DefaultProvider {...hooks.usePropsDefault(props, context, DefaultProvider)}>
+          { props.children }
+        </DefaultProvider>
+      </ThemeProvider>
+    </IntlProvider>
+  );
 }
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
   defaults: PropTypes.shape({}),
+  hooks: PropTypes.exact({
+    useComponents: PropTypes.func,
+    usePropsDefault: PropTypes.func,
+    usePropsIntl: PropTypes.func,
+    usePropsTheme: PropTypes.func,
+  }),
   intlProviderProps: PropTypes.exact({
     locale: PropTypes.string,
-    messages: PropTypes.objectOf(PropTypes.string),
+    messages: PropTypes.shape({}),
   }),
   themeProviderProps: PropTypes.exact({
-    theme: PropTypes.shape({}).isRequired,
+    theme: PropTypes.shape({}),
   }),
 };
 
 App.defaultProps = {
-  defaults: {},
-  intlProviderProps: {},
+  defaults: undefined,
+  hooks: undefined,
+  intlProviderProps: undefined,
   themeProviderProps: undefined,
 };
 
-export default App;
+export default React.memo(App);

@@ -10,8 +10,8 @@ import { UIButton, UISpacer } from '@gnowth/ui';
 import defaultLocales from './Controls.locales';
 import defaultStyles, { Controls } from './Controls.styles';
 
-const FormControls = (props) => {
-  const locales = Object.assign({}, defaultLocales, props.locales);
+function FormControls(props) {
+  const locales = { ...defaultLocales, ...props.locales };
   const styles = useDefaultStyle(defaultStyles, props.styles);
   const ExtraControlsComponent = props.extraControlsComponent;
 
@@ -55,7 +55,7 @@ const FormControls = (props) => {
       )}
     </Form>
   );
-};
+}
 
 FormControls.propTypes = {
   buttonComponent: PropTypesPlus.component,
