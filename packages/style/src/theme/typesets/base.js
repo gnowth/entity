@@ -1,5 +1,6 @@
-import { color } from '@gnowth/style';
 import { css } from 'styled-components';
+
+import { color } from '../../selectors';
 
 export default css`
   color: ${color({ name: 'black' })};

@@ -1,10 +1,10 @@
-import { color, mixin } from '@gnowth/style';
 import { css } from 'styled-components';
 
+import { color, mixin } from '../../selectors';
 import baseCss from './base';
 
-export const text = {
-  root: css`
+export const component_uiType_text = {
+  css: css`
     ${baseCss}
 
     ${mixin({ name: 'disabled' })}
@@ -12,8 +12,8 @@ export const text = {
   `,
 };
 
-export const text_danger = {
-  root: css`
+export const component_uiType_text_danger = {
+  css: css`
     ${baseCss}
     color: ${color({ name: 'danger' })};
 
@@ -22,8 +22,8 @@ export const text_danger = {
   `,
 };
 
-export const text_gray = {
-  root: css`
+export const component_uiType_text_gray = {
+  css: css`
     ${baseCss}
     color: ${color({ name: 'gray' })};
 
@@ -32,8 +32,8 @@ export const text_gray = {
   `,
 };
 
-export const text_primary = {
-  root: css`
+export const component_uiType_text_primary = {
+  css: css`
     ${baseCss}
     color: ${color({ name: 'primary' })};
 
@@ -42,8 +42,8 @@ export const text_primary = {
   `,
 };
 
-export const text_secondary = {
-  root: css`
+export const component_uiType_text_secondary = {
+  css: css`
     ${baseCss}
     color: ${color({ name: 'secondary' })};
 
@@ -52,8 +52,8 @@ export const text_secondary = {
   `,
 };
 
-export const text_white = {
-  root: css`
+export const component_uiType_text_white = {
+  css: css`
     ${baseCss}
     color: ${color({ name: 'white' })};
 

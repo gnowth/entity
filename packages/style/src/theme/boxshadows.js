@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 
-export const effect1 = css`
+export const boxshadows_effect1 = css`
   box-shadow: 0 10px 6px -6px #777;
 `;
 
-export const effect2 = css`
+export const boxshadows_effect2 = css`
   position: relative;
 
   &::before,
@@ -29,7 +29,7 @@ export const effect2 = css`
   }
 `;
 
-export const effect3 = css`
+export const boxshadows_effect3 = css`
   position: relative;
 
   &::before {
@@ -47,7 +47,7 @@ export const effect3 = css`
   }
 `;
 
-export const effect4 = css`
+export const boxshadows_effect4 = css`
   position: relative;
 
   &::after {
@@ -66,7 +66,7 @@ export const effect4 = css`
   }
 `;
 
-export const effect5 = css`
+export const boxshadows_effect5 = css`
   position: relative;
 
   &::before,
@@ -91,7 +91,7 @@ export const effect5 = css`
   }
 `;
 
-export const effect6 = css`
+export const boxshadows_effect6 = css`
   position: relative;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
@@ -115,7 +115,7 @@ export const effect6 = css`
   }
 `;
 
-export const effect7 = css`
+export const boxshadows_effect7 = css`
   position: relative;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
@@ -139,7 +139,7 @@ export const effect7 = css`
   }
 `;
 
-export const effect8 = css`
+export const boxshadows_effect8 = css`
   position: relative;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
@@ -163,42 +163,42 @@ export const effect8 = css`
   }
 `;
 
-export const material1 = css`
+export const boxshadows_material1 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 `;
 
-export const material2 = css`
+export const boxshadows_material2 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 `;
 
-export const material3 = css`
+export const boxshadows_material3 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 `;
 
-export const material4 = css`
+export const boxshadows_material4 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 `;
 
-export const material5 = css`
+export const boxshadows_material5 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 `;
 
-export const material_hover1 = css`
+export const boxshadows_materialHover1 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -209,7 +209,7 @@ export const material_hover1 = css`
   }
 `;
 
-export const material_hover2 = css`
+export const boxshadows_materialHover2 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -220,7 +220,7 @@ export const material_hover2 = css`
   }
 `;
 
-export const material_hover3 = css`
+export const boxshadows_materialHover3 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -231,7 +231,7 @@ export const material_hover3 = css`
   }
 `;
 
-export const material_hover4 = css`
+export const boxshadows_materialHover4 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -242,7 +242,7 @@ export const material_hover4 = css`
   }
 `;
 
-export const material_hover5 = css`
+export const boxshadows_materialHover5 = css`
   border-radius: 2px;
   position: relative;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);

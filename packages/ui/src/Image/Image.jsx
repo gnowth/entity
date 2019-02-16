@@ -3,7 +3,7 @@ import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/style';
+import { component, image } from '@gnowth/style';
 
 const UIImage = styled.img`
   ${component({ name: 'uiImage' })}
@@ -26,6 +26,6 @@ export default _flowRight(
   withTheme,
   withProps(props => ({
     alt: props.name,
-    src: props.theme?.images?.[props.name],
+    src: image(props),
   })),
 )(UIImage);

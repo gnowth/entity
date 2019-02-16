@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "immutable": "4.0.0-rc.12",
-    "prop-types": "15.6.2"
+    "prop-types": "15.7.2"
   },
   "peerDependencies": {
     "lodash": "4.17.11",
-    "react": "16.8.1"
+    "react": "16.8.2"
   }
 }

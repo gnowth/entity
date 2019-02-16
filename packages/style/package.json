@@ -23,6 +23,9 @@
   "dependencies": {
     "lodash": "4.17.11"
   },
+  "devDependencies": {
+    "react": "16.8.2"
+  },
   "peerDependencies": {
     "styled-components": "4.1.3"
   }

@@ -1,6 +1,6 @@
-import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
+import { color } from '../../selectors';
 import baseCss from './base';
 
 const baseHeader = css`
@@ -10,16 +10,16 @@ const baseHeader = css`
   opacity: 0.87;
 `;
 
-export const header = {
+export const component_uiType_header = {
   component: 'h1',
-  root: css`
+  css: css`
     ${baseHeader}
   `,
 };
 
-export const header_primary = {
+export const component_uiType_header_primary = {
   component: 'h1',
-  root: css`
+  css: css`
     ${baseHeader}
 
     color: ${color({ name: 'primary' })};

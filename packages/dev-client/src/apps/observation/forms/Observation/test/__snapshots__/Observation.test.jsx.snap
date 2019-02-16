@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 .c4 {
   width: 100%;
   background-color: hsl(0,0%,98%);
-  border: 1px solid hsl(0,0%,80%);
+  border: 1px solid #03a9f4;
   border-radius: 4px;
   padding: 9px;
   width: 100%;
@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
 .c7 {
   width: 100%;
   background-color: hsl(0,0%,98%);
-  border: 1px solid hsl(0,0%,80%);
+  border: 1px solid #03a9f4;
   border-radius: 4px;
   padding: 9px;
   width: 100%;
@@ -36,11 +36,13 @@ exports[`renders correctly 1`] = `
 }
 
 .c1 {
-  color: #000;
-  font-family: Arial,Sans-Serif;
-  font-size: 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.25px;
+  -moz-letter-spacing: 0.25px;
+  -ms-letter-spacing: 0.25px;
+  letter-spacing: 0.25px;
   margin: 0;
-  opacity: 0.6;
   padding: 0;
 }
 
@@ -76,7 +78,7 @@ exports[`renders correctly 1`] = `
   display: block;
   width: 100%;
   background-color: hsl(0,0%,98%);
-  border: 1px solid hsl(0,0%,80%);
+  border: 1px solid #03a9f4;
   border-radius: 4px;
   padding: 9px;
   width: 100%;

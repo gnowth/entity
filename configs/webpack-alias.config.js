@@ -8,5 +8,5 @@ module.exports = root => ({
   settings: path.join(root, 'src/settings.config'),
   src: path.join(root, 'src/'),
   store: path.join(root, 'src/store'),
-  styles: path.join(root, 'src/styles/'),
+  styles: path.join(root, 'src/styles'),
 });
