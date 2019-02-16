@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
+import json from 'rollup-plugin-json';
 import namedDirectory from 'rollup-plugin-named-directory';
 import path from 'path';
 import replace from 'rollup-plugin-replace';
@@ -29,8 +30,9 @@ export default [
         configFile: path.join(__dirname, '../babel.config.js'),
         exclude: 'node_modules',
       }),
+      json(),
       resolve({
-        extensions: ['.jsx'],
+        extensions: ['.jsx', '.json'],
         main: false,
         module: true,
       }),
@@ -54,8 +56,9 @@ export default [
         configFile: path.join(__dirname, '../babel.config.js'),
         exclude: 'node_modules',
       }),
+      json(),
       resolve({
-        extensions: ['.jsx'],
+        extensions: ['.jsx', 'json'],
         main: false,
         module: true,
       }),

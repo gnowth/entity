@@ -1,5 +1,6 @@
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
+import { variant } from '@gnowth/style';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
@@ -18,7 +19,7 @@ export default stories => stories
           disabled={boolean('disabled', false)}
           onClick={action('clicked')}
           processing={boolean('processing', false)}
-          variant={select('variant', Object.keys(theme.components?.uiButton || {}), 'outlined')}
+          variant={select('variant', variant({ name: 'component_uiButton_' })({ theme }), 'text')}
         >
           { text('children', 'Hello Button') }
         </UIButton>
@@ -28,10 +29,10 @@ export default stories => stories
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.components?.uiButton || {}).map(variant => (
-        <Wrapper key={variant}>
-          <UIButton variant={variant}>
-            {variant}
+      { theme => variant({ name: 'component_uiButton_' })({ theme }).map(name => (
+        <Wrapper key={name}>
+          <UIButton variant={name}>
+            { name }
           </UIButton>
         </Wrapper>
       ))}

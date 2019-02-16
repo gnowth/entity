@@ -1,4 +1,4 @@
-import { boxShadow, color } from '@gnowth/style';
+import { boxshadow, color } from '@gnowth/style';
 import { css } from 'styled-components';
 
 export default {
@@ -10,6 +10,6 @@ export default {
     background: ${color({ name: 'white' })};
     padding: 1rem;
 
-    ${boxShadow({ name: 'material1' })}
+    ${boxshadow({ name: 'material1' })}
   `,
 };

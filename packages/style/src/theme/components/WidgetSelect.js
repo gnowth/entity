@@ -1,8 +1,9 @@
-import { mixin } from '@gnowth/style';
 import { css } from 'styled-components';
 
+import { mixin } from '../../selectors';
+
 // eslint-disable-next-line import/prefer-default-export
-export const main = {
+export const component_widgetSelect_main = {
   root: css`
     ${mixin({ name: 'disabled' })}
     ${mixin({ name: 'readOnly' })}

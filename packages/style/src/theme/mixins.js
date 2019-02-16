@@ -1,7 +1,8 @@
-import { color, mixin } from '@gnowth/style';
 import { css } from 'styled-components';
 
-export const button = css`
+import { color, mixin } from '../selectors';
+
+export const mixin_button = css`
   border: 1px solid currentColor;
   border-radius: 5px;
   background-color: white;
@@ -22,8 +23,8 @@ export const button = css`
   ${mixin({ name: 'disabled' })}
 `;
 
-export const buttonSubmit = css`
-  ${button}
+export const mixin_buttonSubmit = css`
+  ${mixin_button}
 
   background-color: ${color({ name: 'primary' })};
   border-color: ${color({ name: 'primary' })};
@@ -36,8 +37,8 @@ export const buttonSubmit = css`
   }
 `;
 
-export const buttonCancel = css`
-  ${button}
+export const mixin_buttonCancel = css`
+  ${mixin_button}
 
   border: 0;
   color: ${color({ name: 'primary' })};
@@ -47,7 +48,7 @@ export const buttonCancel = css`
   }
 `;
 
-export const componentBox = css`
+export const mixin_componentBox = css`
   background-color: hsl(0, 0%, 98%);
   border: 1px solid ${color({ name: 'secondary' })};
   border-radius: 4px;
@@ -62,7 +63,7 @@ export const componentBox = css`
   }
 `;
 
-export const disabled = css`
+export const mixin_disabled = css`
   ${props => props.disabled && css`
     opacity: 0.4;
     cursor: default;
@@ -70,7 +71,7 @@ export const disabled = css`
   `}
 `;
 
-export const readOnly = css`
+export const mixin_readOnly = css`
   ${props => props.readOnly && css`
     opacity: 0.7;
     cursor: default;

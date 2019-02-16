@@ -21,9 +21,9 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "prop-types": "15.6.2",
+    "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-is": "16.8.1"
+    "react-is": "16.8.2"
   },
   "peerDependencies": {
     "lodash": "4.17.11"

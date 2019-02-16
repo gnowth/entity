@@ -1,8 +1,9 @@
-import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
+import { color } from '../../selectors';
+
 // eslint-disable-next-line import/prefer-default-export
-export const main = {
+export const component_widgetPagination_main = {
   navigation: css`
     position: fixed;
     bottom: 0;

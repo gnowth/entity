@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppRoot } from '@gnowth/app';
+import { defaultTheme, GlobalStyles } from '@gnowth/style';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
@@ -10,7 +11,6 @@ import { ThemeProvider } from 'styled-components';
 import * as theme from 'styles';
 import settings from 'settings';
 import store, { history } from 'store';
-import GlobalStyles from 'styles/global';
 
 import Routes from './routes';
 import defaults from './defaults';
@@ -19,7 +19,7 @@ import setup from './setup';
 setup({ settings });
 
 const intlProviderProps = { locale: 'en', messages: {} };
-const themeProviderProps = { theme };
+const themeProviderProps = { theme: { ...defaultTheme, ...theme } };
 
 function render() {
   ReactDOM.render(

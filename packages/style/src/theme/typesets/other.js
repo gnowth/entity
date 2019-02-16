@@ -1,17 +1,17 @@
-import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
+import { color } from '../../selectors';
 import baseCss from './base';
 
-export const label = {
+export const component_uiType_label = {
   component: 'label',
-  root: css`
+  css: css`
     ${baseCss}
   `,
 };
 
-export const link = {
-  root: css`
+export const component_uiType_link = {
+  css: css`
     ${baseCss}
 
     color: ${color({ name: 'primary' })};
@@ -19,8 +19,8 @@ export const link = {
   `,
 };
 
-export const placeholder = {
-  root: css`
+export const component_uiType_placeholder = {
+  css: css`
     ${baseCss}
 
     color: ${color({ name: 'gray' })};

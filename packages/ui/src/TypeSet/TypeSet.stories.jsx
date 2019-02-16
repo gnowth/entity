@@ -1,5 +1,6 @@
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
+import { variant } from '@gnowth/style';
 import { select, text } from '@storybook/addon-knobs';
 
 import UITypeSet from '.';
@@ -14,7 +15,7 @@ export default stories => stories
     <ThemeConsumer>
       { theme => (
         <UITypeSet
-          variant={select('variant', Object.keys(theme.typesets || {}), 'text')}
+          variant={select('variant', variant({ name: 'component_uiType_' })({ theme }), 'body1')}
         >
           { text('children', 'Hello TypeSet') }
         </UITypeSet>
@@ -24,10 +25,10 @@ export default stories => stories
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.typesets || {}).map(variant => (
-        <Wrapper key={variant}>
-          <UITypeSet variant={variant}>
-            { variant }
+      { theme => variant({ name: 'component_uiType_' })({ theme }).map(name => (
+        <Wrapper key={name}>
+          <UITypeSet variant={name}>
+            { name }
           </UITypeSet>
         </Wrapper>
       ))}

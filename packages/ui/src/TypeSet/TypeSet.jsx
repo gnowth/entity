@@ -3,10 +3,11 @@ import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
+import { component } from '@gnowth/style';
 import { injectIntl } from 'react-intl';
 
 const TypeSet = styled.pre`
-  ${props => props.theme?.typesets?.[props.variant]?.root}
+  ${component({ name: 'uiType', branch: 'css' })}
   ${props => props.css}
 `;
 
@@ -17,7 +18,7 @@ TypeSet.propTypes = {
 
 TypeSet.defaultProps = {
   css: undefined,
-  variant: 'text',
+  variant: 'body1',
 };
 
 export default _flowRight(
@@ -26,7 +27,7 @@ export default _flowRight(
   withProps(props => ({
     as: props.component === null
       ? ({ children }) => children
-      : (props.component || props.theme?.typesets?.[props.variant || 'text']?.component),
+      : (props.component || component({ name: 'uiType', branch: 'component', defaultVariant: 'body1' })(props)),
     children: props.children === undefined
       ? props.intl.formatMessage(props.locale, props.values)
       : props.children,

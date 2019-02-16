@@ -1,7 +1,8 @@
-import { color } from '@gnowth/style';
 import { css } from 'styled-components';
 
+import { color } from '../../selectors';
+
 // eslint-disable-next-line import/prefer-default-export
-export const main = css`
+export const component_viewLink_main = css`
   color: ${color({ name: 'black' })};
 `;

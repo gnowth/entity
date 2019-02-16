@@ -1,5 +1,6 @@
 import styled, { css, ThemeConsumer } from 'styled-components';
 import React from 'react';
+import { variant } from '@gnowth/style';
 import { select } from '@storybook/addon-knobs';
 
 import UIImage from '.';
@@ -33,7 +34,7 @@ export default stories => stories
         <UIImage
           css={imageCss}
           name={select('name', Object.keys(theme.images || {}), Object.keys(theme.images || {})[0])}
-          variant={select('variant', Object.keys(theme.components?.uiImage || {}), 'main')}
+          variant={select('variant', variant({ name: 'component_uiImage_' })({ theme }), 'main')}
         />
       )}
     </ThemeConsumer>
@@ -41,7 +42,7 @@ export default stories => stories
 
   .add('names', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.images || {}).map(name => (
+      { theme => variant({ name: 'images_' })({ theme }).map(name => (
         <Wrapper key={name} label={name}>
           <UIImage css={imageCss} name={name} />
         </Wrapper>
@@ -51,14 +52,14 @@ export default stories => stories
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.components?.uiImage || {}).map(variant => (
-        <Wrapper key={variant}>
+      { theme => variant({ name: 'component_uiImage_' })({ theme }).map(name => (
+        <Wrapper key={name}>
           <UIImage
-            name={Object.keys(theme.images || {})[0]}
-            variant={variant}
+            name={variant({ name: 'images_' })({ theme })[0]}
+            variant={name}
           />
 
-          { variant }
+          { name }
         </Wrapper>
       ))}
     </ThemeConsumer>

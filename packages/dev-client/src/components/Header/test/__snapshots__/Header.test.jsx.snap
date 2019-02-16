@@ -3,14 +3,14 @@
 exports[`renders correctly 1`] = `
 .c2 {
   display: inline-block;
-  color: #000;
+  color: #000000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .c5 {
   display: inline-block;
-  color: #000;
+  color: #000000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  background: #fff;
+  background: #ffffff;
   padding: 1rem;
   border-radius: 2px;
   position: relative;

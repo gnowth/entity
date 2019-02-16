@@ -1,9 +1,9 @@
-export const boxShadow = ({ name } = {}) => (props) => {
+export const boxshadow = ({ name } = {}) => (props) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (!name) throw new Error('style.boxShadow: option "name" is required');
+    if (!name) throw new Error('style.boxshadow: option "name" is required');
   }
 
-  return props.theme?.boxShadows?.[name];
+  return props.theme?.[`boxshadows_${name}`];
 };
 
 export const color = ({ defaultColor = 'black', name, weight = '500' } = {}) => (props) => {
@@ -12,7 +12,9 @@ export const color = ({ defaultColor = 'black', name, weight = '500' } = {}) => 
     if (!weight) throw new Error(`style.color (name: ${name}): option "weight" is invalid`);
   }
 
-  return props.theme?.colors?.[name] || defaultColor;
+  return props.theme?.[`palette_${name}`]?.colorMap[weight]?.hex
+    || props.theme?.[`palette_${name}`]?.base
+    || defaultColor;
 };
 
 export const component = ({ name, defaultVariant = 'main', branch } = {}) => (props) => {
@@ -20,9 +22,9 @@ export const component = ({ name, defaultVariant = 'main', branch } = {}) => (pr
     if (!name) throw new Error('style.component: option "name" is required');
   }
 
-  return branch
-    ? props.theme?.components?.[name]?.[props.variant || defaultVariant]?.[branch]
-    : props.theme?.components?.[name]?.[props.variant || defaultVariant];
+  const theme = props.theme?.[`component_${name}_${props.variant || defaultVariant}`];
+
+  return branch ? theme?.[branch] : theme;
 };
 
 export const mixin = ({ name } = {}) => (props) => {
@@ -30,7 +32,13 @@ export const mixin = ({ name } = {}) => (props) => {
     if (!name) throw new Error('style.mixin: option "name" is required');
   }
 
-  return props.theme?.mixins?.[name];
+  return props.theme?.[`mixin_${name}`];
 };
 
 export const sizeGridBase = props => props.theme?.vars?.gridBase || '0.5rem';
+
+export const variant = options => props => Object.keys(props.theme)
+  .filter(name => name.startsWith(options.name))
+  .map(name => name.replace(options.name, ''));
+
+export const image = props => props.theme?.[`images_${props.name}`];

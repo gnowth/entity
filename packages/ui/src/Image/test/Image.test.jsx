@@ -8,7 +8,7 @@ it('renders correctly', () => {
   const tree = renderer.create(
     <UIImage
       name="image"
-      theme={{ images: { image: 'path' } }}
+      theme={{ images_image: 'path' }}
     />,
   ).toJSON();
 

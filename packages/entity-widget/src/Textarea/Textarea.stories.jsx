@@ -1,5 +1,6 @@
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
+import { variant } from '@gnowth/style';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 
@@ -18,7 +19,7 @@ export default stories => stories
           name={text('name', 'storybook')}
           onChange={action('changed')}
           value={text('value', 'Hello Textarea')}
-          variant={select('variant', Object.keys(theme.components?.widgetCheckbox || {}), 'main')}
+          variant={select('variant', variant({ name: 'component_widgetTextarea_' })({ theme }), 'main')}
         />
       )}
     </ThemeConsumer>
@@ -26,13 +27,13 @@ export default stories => stories
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.components?.widgetCheckbox || {}).map(variant => (
-        <Wrapper key={variant}>
+      { theme => variant({ name: 'component_widgetTextarea_' })({ theme }).map(name => (
+        <Wrapper key={name}>
           <WidgetTextarea
             name="storybook"
             onChange={() => undefined}
-            value={variant}
-            variant={variant}
+            value={name}
+            variant={name}
           />
         </Wrapper>
       ))}
