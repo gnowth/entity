@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-
-import useRedux from './use-redux';
+import useRedux from '@private/use-redux';
 
 const mapDefault = {
   store: 'store',

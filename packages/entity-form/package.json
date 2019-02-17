@@ -25,6 +25,7 @@
     "@gnowth/higher-order-component": "0.4.0",
     "@gnowth/prop-types-entity": "0.4.0",
     "@gnowth/prop-types-plus": "0.4.0",
+    "@private/use-redux": "0.4.0",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
@@ -33,7 +34,6 @@
   "peerDependencies": {
     "@entity/duck": "0.4.0",
     "lodash": "4.17.11",
-    "react": "16.8.2",
-    "react-redux": "6.0.0"
+    "react": "16.8.2"
   }
 }
