@@ -3,9 +3,9 @@ import _isString from 'lodash/isString';
 import Duck from '@entity/duck';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
+import useRedux from '@private/use-redux';
 
 import useInput from './use-input';
-import useRedux from './use-redux';
 
 const mapDefault = {
   store: 'store',

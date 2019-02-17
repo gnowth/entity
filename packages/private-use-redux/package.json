@@ -1,0 +1,17 @@
+{
+  "author": "Thierry Wong",
+  "description": "useredux",
+  "license": "AGPL-3.0-only",
+  "main": "index.js",
+  "name": "@private/use-redux",
+  "private": true,
+  "sideEffects": false,
+  "version": "0.4.0",
+  "dependencies": {
+    "@gnowth/default": "0.4.0"
+  },
+  "peerDependencies": {
+    "lodash": "4.17.11",
+    "react": "16.8.2"
+  }
+}

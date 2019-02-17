@@ -1,9 +1,12 @@
 import _isFunction from 'lodash/isFunction';
 import _mapKeys from 'lodash/mapKeys';
 import React from 'react';
-import { getDisplayName } from '@gnowth/higher-order-component';
 
 import useQuery from './use-query';
+
+const getDisplayName = ComposedComponent => ComposedComponent.displayName
+  || ComposedComponent.name
+  || 'Component';
 
 export default (configs = {}) => (ComposedComponent) => {
   function withQuery(props) {
