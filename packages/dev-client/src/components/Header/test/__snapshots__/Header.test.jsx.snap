@@ -81,8 +81,7 @@ exports[`renders correctly 1`] = `
     locale={
       Object {
         "defaultMessage": "CHANGELOG",
-        "description": "Link Changelog",
-        "id": "component.header.changelog",
+        "id": "packages.dev-client.src.components.Header.changelog",
       }
     }
     onClick={[Function]}
@@ -101,8 +100,7 @@ exports[`renders correctly 1`] = `
     locale={
       Object {
         "defaultMessage": "README",
-        "description": "Link readme",
-        "id": "component.header.readme",
+        "id": "packages.dev-client.src.components.Header.readme",
       }
     }
     onClick={[Function]}

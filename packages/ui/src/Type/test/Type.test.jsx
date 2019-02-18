@@ -3,12 +3,12 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import UITypeSet from '..';
+import UIType from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(
     <IntlProvider locale="en" messages={{}}>
-      <UITypeSet theme={{}}>Test</UITypeSet>
+      <UIType>Test</UIType>
     </IntlProvider>,
   ).toJSON();
 

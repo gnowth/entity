@@ -15,7 +15,6 @@ import * as widgetInput from './components/WidgetInput';
 import * as widgetPagination from './components/WidgetPagination';
 import * as widgetSelect from './components/WidgetSelect';
 import * as widgetTextarea from './components/WidgetTextarea';
-import * as typesets from './typesets';
 import global from './global';
 
 export default {
@@ -24,7 +23,6 @@ export default {
   ...getPalettes(palettes),
   ...boxshadows,
   ...mixins,
-  ...typesets,
   ...vars,
 
   ...uiButton,

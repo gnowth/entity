@@ -3,7 +3,7 @@ import React from 'react';
 import { variant } from '@gnowth/style';
 import { select, text } from '@storybook/addon-knobs';
 
-import UITypeSet from '.';
+import UIType from '.';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -14,11 +14,11 @@ export default stories => stories
   .add('dynamic story', () => (
     <ThemeConsumer>
       { theme => (
-        <UITypeSet
+        <UIType
           variant={select('variant', variant({ name: 'component_uiType_' })({ theme }), 'body1')}
         >
           { text('children', 'Hello TypeSet') }
-        </UITypeSet>
+        </UIType>
       )}
     </ThemeConsumer>
   ))
@@ -27,9 +27,9 @@ export default stories => stories
     <ThemeConsumer>
       { theme => variant({ name: 'component_uiType_' })({ theme }).map(name => (
         <Wrapper key={name}>
-          <UITypeSet variant={name}>
+          <UIType variant={name}>
             { name }
-          </UITypeSet>
+          </UIType>
         </Wrapper>
       ))}
     </ThemeConsumer>

@@ -6,10 +6,18 @@ export const boxshadow = ({ name } = {}) => (props) => {
   return props.theme?.[`boxshadows_${name}`];
 };
 
-export const color = ({ defaultColor = 'black', name, weight = '500' } = {}) => (props) => {
+export const color = ({ asBackground, defaultColor = 'black', name, weight = '500' } = {}) => (props) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!name) throw new Error('style.color: option "name" is required');
     if (!weight) throw new Error(`style.color (name: ${name}): option "weight" is invalid`);
+  }
+
+  if (asBackground) {
+    return (
+      props.theme?.[`palette_${name}`]?.colorMap[weight]?.darkContrast
+        ? props.theme?.palette_white?.base
+        : props.theme?.palette_black?.base
+    ) || defaultColor;
   }
 
   return props.theme?.[`palette_${name}`]?.colorMap[weight]?.hex
@@ -17,12 +25,12 @@ export const color = ({ defaultColor = 'black', name, weight = '500' } = {}) => 
     || defaultColor;
 };
 
-export const component = ({ name, defaultVariant = 'main', branch } = {}) => (props) => {
+export const component = ({ name, defaultVariant = 'main', branch, variant } = {}) => (props) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!name) throw new Error('style.component: option "name" is required');
   }
 
-  const theme = props.theme?.[`component_${name}_${props.variant || defaultVariant}`];
+  const theme = props.theme?.[`component_${name}_${variant || props.variant || defaultVariant}`];
 
   return branch ? theme?.[branch] : theme;
 };

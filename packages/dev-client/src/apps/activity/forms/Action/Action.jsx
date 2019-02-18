@@ -5,7 +5,7 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
 import { useDefaultStyle } from '@gnowth/style';
-import { UIIcon, UITypeSet } from '@gnowth/ui';
+import { UIIcon, UIType } from '@gnowth/ui';
 
 import defaultLocales from './Action.locales';
 import defaultStyles, { Controls, Header } from './Action.styles';
@@ -17,13 +17,16 @@ function FormAction(props) {
   return (
     <Form {...props}>
       <Header>
-        <UITypeSet locale={locales.header_title} variant="header_title" />
+        <UIType
+          value={locales.header_title}
+          variant="h4"
+        />
 
         { props.records && props.index !== null && (
           <Control
             action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
             component={UIIcon}
-            componentProps={{ name: 'delete' }}
+            componentProps={{ name: 'delete', material: true }}
             array
           />
         )}

@@ -30,15 +30,15 @@
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-select": "2.4.0",
+    "react-select": "2.4.1",
     "reselect": "4.0.0"
   },
   "devDependencies": {
     "@entity/core": "0.4.0"
   },
   "peerDependencies": {
-    "@storybook/addon-actions": "4.1.11",
-    "@storybook/addon-knobs": "4.1.11",
+    "@storybook/addon-actions": "4.1.12",
+    "@storybook/addon-knobs": "4.1.12",
     "lodash": "4.17.11",
     "moment": "2.24.0",
     "react": "16.8.2",

@@ -5,7 +5,7 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
 import { App } from '@gnowth/app';
-import { UITypeSet, UIWell } from '@gnowth/ui';
+import { UIType, UIWell } from '@gnowth/ui';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import changelog from 'root/CHANGELOG.md';
@@ -48,7 +48,7 @@ function AppPage(props) {
           path={`${props.match.url}/notfound`}
           render={() => (
             <Screen>
-              <UITypeSet locale={locales.not_found} variant="header" />
+              <UIType value={locales.not_found} variant="h1" />
             </Screen>
           )}
         />

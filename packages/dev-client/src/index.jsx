@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { AppRoot } from '@gnowth/app';
 import { defaultTheme, GlobalStyles } from '@gnowth/style';
 import { ConnectedRouter } from 'connected-react-router/immutable';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider } from '@private/react-intl';
 import { Provider } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';

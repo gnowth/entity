@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-export default PropTypes.shape({
+export default PropTypes.exact({
   defaultMessage: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   id: PropTypes.string.isRequired,
 });
