@@ -3,7 +3,7 @@ import React from 'react';
 import { AppRoot } from '@gnowth/app';
 import { defaultTheme, GlobalStyles } from '@gnowth/style';
 import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider } from '@private/react-intl';
 import { ThemeProvider } from 'styled-components';
 
 import * as theme from 'styles';

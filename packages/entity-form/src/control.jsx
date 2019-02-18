@@ -24,6 +24,7 @@ function Control(props) {
 
 Control.propTypes = exact({
   action: PropTypes.func.isRequired,
+  array: PropTypes.bool,
   component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
   errorBoundaryComponent: PropTypesPlus.component,
@@ -37,6 +38,7 @@ Control.propTypes = exact({
 });
 
 Control.defaultProps = {
+  array: false,
   component: undefined,
   componentProps: {},
   errorBoundaryComponent: undefined,

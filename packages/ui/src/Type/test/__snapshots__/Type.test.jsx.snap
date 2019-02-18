@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<pre
-  className=""
+.c0 {
+  color: black;
+}
+
+<span
+  className="c0"
 >
   Test
-</pre>
+</span>
 `;

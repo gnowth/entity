@@ -1,7 +1,93 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c5 {
+  width: 100%;
+  background-color: hsl(0,0%,98%);
+  border: 1px solid #03a9f4;
+  border-radius: 4px;
+  padding: 9px;
+  width: 100%;
+}
+
+.c5:focus {
+  background-color: white;
+  border-color: #2684ff;
+  outline: none;
+  box-shadow: 0 0 0 1px #2684ff;
+}
+
+.c8 {
+  width: 100%;
+  background-color: hsl(0,0%,98%);
+  border: 1px solid #03a9f4;
+  border-radius: 4px;
+  padding: 9px;
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+.c8:focus {
+  background-color: white;
+  border-color: #2684ff;
+  outline: none;
+  box-shadow: 0 0 0 1px #2684ff;
+}
+
+.c1 {
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.25px;
+  -moz-letter-spacing: 0.25px;
+  -ms-letter-spacing: 0.25px;
+  letter-spacing: 0.25px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: inline-block;
+}
+
+.c12 {
+  display: inline-block;
+  margin-left: 24px;
+}
+
+.c2 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.25px;
+  -moz-letter-spacing: 0.25px;
+  -ms-letter-spacing: 0.25px;
+  letter-spacing: 0.25px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  margin-top: 24px;
+}
+
+.c9 {
+  margin-top: 48px;
+}
+
+.c6 {
+  display: inline-block;
+  position: relative;
+}
+
+.c11 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
 .c4 {
+  display: block;
   width: 100%;
   background-color: hsl(0,0%,98%);
   border: 1px solid #03a9f4;
@@ -17,89 +103,15 @@ exports[`renders correctly 1`] = `
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c7 {
-  width: 100%;
-  background-color: hsl(0,0%,98%);
-  border: 1px solid #03a9f4;
-  border-radius: 4px;
-  padding: 9px;
-  width: 100%;
-  height: 100px;
-  resize: none;
+.c3 .react-datepicker-wrapper {
+  display: block;
 }
 
-.c7:focus {
-  background-color: white;
-  border-color: #2684ff;
-  outline: none;
-  box-shadow: 0 0 0 1px #2684ff;
-}
-
-.c1 {
-  font-size: 0.875rem;
-  font-weight: 400;
-  -webkit-letter-spacing: 0.25px;
-  -moz-letter-spacing: 0.25px;
-  -ms-letter-spacing: 0.25px;
-  letter-spacing: 0.25px;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  display: inline-block;
-}
-
-.c11 {
-  display: inline-block;
-  margin-left: 24px;
-}
-
-.c0 {
-  margin-top: 24px;
-}
-
-.c8 {
-  margin-top: 48px;
-}
-
-.c5 {
-  display: inline-block;
-  position: relative;
+.c3 .react-datepicker__input-container {
+  display: block;
 }
 
 .c10 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c3 {
-  display: block;
-  width: 100%;
-  background-color: hsl(0,0%,98%);
-  border: 1px solid #03a9f4;
-  border-radius: 4px;
-  padding: 9px;
-  width: 100%;
-}
-
-.c3:focus {
-  background-color: white;
-  border-color: #2684ff;
-  outline: none;
-  box-shadow: 0 0 0 1px #2684ff;
-}
-
-.c2 .react-datepicker-wrapper {
-  display: block;
-}
-
-.c2 .react-datepicker__input-container {
-  display: block;
-}
-
-.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,12 +129,12 @@ exports[`renders correctly 1`] = `
     className="c0"
   >
     <label
-      className="c1 "
+      className="c1 c2"
     >
       Observation Date
     </label>
     <div
-      className="c2"
+      className="c3"
     >
       <div
         className="react-datepicker-wrapper"
@@ -131,7 +143,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="c3"
+            className="c4"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -150,12 +162,12 @@ exports[`renders correctly 1`] = `
     className="c0"
   >
     <label
-      className="c1 "
+      className="c1 c2"
     >
       Title
     </label>
     <input
-      className="c4"
+      className="c5"
       errors={Immutable.List []}
       intl={
         Object {
@@ -193,12 +205,12 @@ exports[`renders correctly 1`] = `
   </div>
   <div>
     <div
-      className="c5"
+      className="c6"
     >
       
       
       <button
-        className="c6"
+        className="c7"
         onClick={[Function]}
         to=""
       >
@@ -210,12 +222,12 @@ exports[`renders correctly 1`] = `
     className="c0"
   >
     <label
-      className="c1 "
+      className="c1 c2"
     >
       Short Title
     </label>
     <input
-      className="c4"
+      className="c5"
       errors={Immutable.List []}
       intl={
         Object {
@@ -255,12 +267,12 @@ exports[`renders correctly 1`] = `
     className="c0"
   >
     <label
-      className="c1 "
+      className="c1 c2"
     >
       Description
     </label>
     <textarea
-      className="c7"
+      className="c8"
       errors={Immutable.List []}
       name="description"
       onChange={[Function]}
@@ -273,12 +285,12 @@ exports[`renders correctly 1`] = `
     className="c0"
   >
     <label
-      className="c1 "
+      className="c1 c2"
     >
       Due Date
     </label>
     <div
-      className="c2"
+      className="c3"
     >
       <div
         className="react-datepicker-wrapper"
@@ -287,7 +299,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="c3"
+            className="c4"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -306,7 +318,7 @@ exports[`renders correctly 1`] = `
     className="c0"
   >
     <label
-      className="c1 "
+      className="c1 c2"
     >
       Follow up actions
     </label>
@@ -314,7 +326,7 @@ exports[`renders correctly 1`] = `
   
   
   <button
-    className="c6"
+    className="c7"
     disabled={false}
     onClick={[Function]}
     to=""
@@ -322,15 +334,15 @@ exports[`renders correctly 1`] = `
     Add action
   </button>
   <div
-    className="c8"
+    className="c9"
   >
     <div
-      className="c9"
+      className="c10"
     >
       
       
       <button
-        className="c6"
+        className="c7"
         disabled={false}
         onClick={[Function]}
         to=""
@@ -338,12 +350,12 @@ exports[`renders correctly 1`] = `
         RESET
       </button>
       <div
-        className="c10"
+        className="c11"
       />
       
       
       <button
-        className="c11"
+        className="c12"
         disabled={false}
         onClick={[Function]}
         to=""
@@ -353,7 +365,7 @@ exports[`renders correctly 1`] = `
       
       
       <button
-        className="c11"
+        className="c12"
         disabled={false}
         onClick={[Function]}
         to=""

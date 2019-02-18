@@ -1,7 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-.c2 {
+.c1 {
+  color: #000000;
+  font-size: 2.125rem;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.25px;
+  -moz-letter-spacing: 0.25px;
+  -ms-letter-spacing: 0.25px;
+  letter-spacing: 0.25px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  color: #000000;
   font-size: 0.875rem;
   font-weight: 400;
   -webkit-letter-spacing: 0.25px;
@@ -12,16 +25,27 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c6 {
+.c8 {
   display: inline-block;
   margin-top: 0.5rem;
 }
 
-.c1 {
+.c4 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.25px;
+  -moz-letter-spacing: 0.25px;
+  -ms-letter-spacing: 0.25px;
+  letter-spacing: 0.25px;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
   margin-top: 1.5rem;
 }
 
-.c4 {
+.c6 {
   display: block;
   width: 100%;
   background-color: hsl(0,0%,98%);
@@ -31,22 +55,22 @@ exports[`renders correctly 1`] = `
   width: 100%;
 }
 
-.c4:focus {
+.c6:focus {
   background-color: white;
   border-color: #2684ff;
   outline: none;
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c3 .react-datepicker-wrapper {
+.c5 .react-datepicker-wrapper {
   display: block;
 }
 
-.c3 .react-datepicker__input-container {
+.c5 .react-datepicker__input-container {
   display: block;
 }
 
-.c5 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -82,17 +106,17 @@ exports[`renders correctly 1`] = `
   <div
     className="c0"
   >
-    <pre
-      className=""
+    <h4
+      className="c1"
     >
       Action
-    </pre>
+    </h4>
   </div>
   <div
-    className="c1"
+    className="c2"
   >
     <label
-      className="c2 "
+      className="c3 c4"
     >
       Person Responsible
     </label>
@@ -205,15 +229,15 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
+    className="c2"
   >
     <label
-      className="c2 "
+      className="c3 c4"
     >
       Due Date
     </label>
     <div
-      className="c3"
+      className="c5"
     >
       <div
         className="react-datepicker-wrapper"
@@ -222,7 +246,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="c4"
+            className="c6"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -238,10 +262,10 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
+    className="c2"
   >
     <label
-      className="c2 "
+      className="c3 c4"
     >
       Completed by
     </label>
@@ -354,15 +378,15 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
+    className="c2"
   >
     <label
-      className="c2 "
+      className="c3 c4"
     >
       Completed Date
     </label>
     <div
-      className="c3"
+      className="c5"
     >
       <div
         className="react-datepicker-wrapper"
@@ -371,7 +395,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="c4"
+            className="c6"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -387,12 +411,12 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c7"
   >
     
     
     <button
-      className="c6"
+      className="c8"
       disabled={false}
       onClick={[Function]}
       to=""
@@ -402,7 +426,7 @@ exports[`renders correctly 1`] = `
     
     
     <button
-      className="c6"
+      className="c8"
       disabled={false}
       onClick={[Function]}
       to=""

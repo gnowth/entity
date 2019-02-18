@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
-import UITypeSet from '../TypeSet';
+import UIType from '../Type';
 import UIProgressCircle from '../ProgressCircle';
 import { Button, LinkHyper, LinkRouter } from './Button.styles';
 
@@ -10,13 +10,13 @@ const UIButton = ({ processing, ...props }) => (
   <>
     { props.to && /^https?:\/\//.exec(props.to) && (
       <LinkHyper {...props} href={props.to}>
-        <UITypeSet locale={props.locale} component={null}>{ props.children }</UITypeSet>
+        <UIType value={props.locale} component={null}>{ props.children }</UIType>
       </LinkHyper>
     )}
 
     { props.to && !/^https?:\/\//.exec(props.to) && (
       <LinkRouter {...props}>
-        <UITypeSet locale={props.locale} component={null}>{ props.children }</UITypeSet>
+        <UIType value={props.locale} component={null}>{ props.children }</UIType>
       </LinkRouter>
     )}
 
@@ -27,7 +27,7 @@ const UIButton = ({ processing, ...props }) => (
         )}
 
         { !processing && (
-          <UITypeSet locale={props.locale} component={null}>{ props.children }</UITypeSet>
+          <UIType value={props.locale} component={null}>{ props.children }</UIType>
         )}
       </Button>
     )}

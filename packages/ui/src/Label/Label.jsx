@@ -6,7 +6,7 @@ import { useDefaultStyle } from '@gnowth/style';
 
 import UIError from '../Error';
 import UITooltip from '../Tooltip';
-import UITypeSet from '../TypeSet';
+import UIType from '../Type';
 
 import defaultHooks from './Label.hooks';
 import defaultStyles, { Label, UILabelRoot } from './Label.styles';
@@ -19,14 +19,14 @@ function UILabel(props) {
   return (
     <UILabelRoot className={props.className} css={props.css}>
       { (props.label || props.labelLocale) && (
-        <UITypeSet
+        <UIType
           component={Label}
-          locale={props.labelLocale}
+          value={props.labelLocale}
           variant="label"
           {...props.labelComponentProps}
         >
           { props.label }
-        </UITypeSet>
+        </UIType>
       )}
 
       { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (

@@ -8,7 +8,7 @@ import UIError from '..';
 it('renders correctly', () => {
   const tree = renderer.create(
     <IntlProvider locale="en" messages={{}}>
-      <UIError theme={{}}>Error</UIError>
+      <UIError>Error</UIError>
     </IntlProvider>,
   ).toJSON();
 

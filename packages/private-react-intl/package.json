@@ -1,0 +1,17 @@
+{
+  "author": "Thierry Wong",
+  "description": "react-intl",
+  "license": "AGPL-3.0-only",
+  "main": "index.js",
+  "name": "@private/react-intl",
+  "private": true,
+  "sideEffects": false,
+  "version": "0.4.0",
+  "dependencies": {
+    "prop-types": "15.7.2"
+  },
+  "peerDependencies": {
+    "react": "16.8.2",
+    "react-intl": "2.8.0"
+  }
+}

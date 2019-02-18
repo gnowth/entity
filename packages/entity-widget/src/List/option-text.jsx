@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { UITypeSet } from '@gnowth/ui';
+import { UIType } from '@gnowth/ui';
 import { css } from 'styled-components';
 
 const textStyle = css`
@@ -10,14 +10,14 @@ const textStyle = css`
 `;
 
 const OptionText = props => (
-  <UITypeSet
-    variant="list_option_text"
+  <UIType
     component="li"
+    css={textStyle}
+    variant="body2"
     {...props}
-    css={css`${props.css} ${textStyle}`}
   >
     { props.field.toString(props.value) }
-  </UITypeSet>
+  </UIType>
 );
 
 OptionText.propTypes = {
