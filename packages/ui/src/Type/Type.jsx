@@ -1,4 +1,3 @@
-import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -25,12 +24,12 @@ const PropTypesChildren = PropTypes.oneOfType([
   PropTypesImmutable.map,
 ]);
 
-UIType.propTypes = exact({
-  _css: PropTypesPlus.css,
+UIType.propTypes = {
   children: PropTypesChildren,
   className: PropTypesPlus.string,
   component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
+  hidden: PropTypes.bool,
   hooks: PropTypes.exact({
     useChildren: PropTypes.func,
     useComponent: PropTypes.func,
@@ -55,14 +54,14 @@ UIType.propTypes = exact({
   processingDidFail: PropTypes.bool,
   value: PropTypesChildren,
   valueInitial: PropTypesChildren,
-});
+};
 
 UIType.defaultProps = {
-  _css: undefined,
   children: undefined,
   className: '',
   component: undefined,
   componentProps: undefined,
+  hidden: undefined,
   hooks: undefined,
   palette: undefined,
   paletteAsBackground: false,

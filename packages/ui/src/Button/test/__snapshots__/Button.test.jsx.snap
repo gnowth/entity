@@ -1,18 +1,146 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Array [
-  "",
-  "",
+.c1 {
+  color: black;
+}
+
+.c1.c1 {
+  font-size: 1rem;
+}
+
+.c4 {
+  -webkit-animation-name: bvvTNa;
+  animation-name: bvvTNa;
+  fill: transparent;
+  stroke: black;
+  stroke-dasharray: 251.32741228718345px;
+  stroke-width: 20%;
+  -webkit-transition: stroke-dashoffset 225ms linear;
+  transition: stroke-dashoffset 225ms linear;
+  -webkit-transform-box: view-box;
+  -ms-transform-box: view-box;
+  transform-box: view-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  -webkit-transition-property: stroke;
+  transition-property: stroke;
+}
+
+.c2 {
+  height: 32px;
+  position: relative;
+  width: 32px;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
+}
+
+.c3 {
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  width: 100%;
+}
+
+.c5 {
+  color: black;
+}
+
+.c0 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  padding: 0.5em 1.5em;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  background-color: black;
+}
+
+.c0:focus {
+  background-color: black;
+}
+
+.c0:disabled {
+  background-color: black;
+  cursor: auto;
+}
+
+.c0:disabled * {
+  color: black;
+}
+
+@media print {
   .c0 {
-  display: inline-block;
+    display: none;
+  }
 }
 
 <button
-    className="c0"
-    to=""
+  className="c0"
+  content="Test"
+>
+  <i
+    className="uiButton-Icon icon icon-name uiButton-Icon c1"
+    hidden={true}
+    name="name"
+  />
+  <span
+    className="c2"
+    hidden={true}
+    size="32px"
+    value={null}
+  >
+    <svg
+      className="c3"
+      focusable="false"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 100 100"
+    >
+      <circle
+        className="c4"
+        cx="50%"
+        cy="50%"
+        r="40"
+        value={null}
+      />
+    </svg>
+  </span>
+  <span
+    className="uiButton-Content c5"
   >
     Test
-  </button>,
-]
+  </span>
+</button>
 `;

@@ -1,55 +1,91 @@
 import PropTypes from 'prop-types';
+import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { useEnhance } from '@private/hooks';
 
-import UIType from '../Type';
-import UIProgressCircle from '../ProgressCircle';
-import { Button, LinkHyper, LinkRouter } from './Button.styles';
+import hooks from './Button.hooks';
+import Button from './Button.styles';
 
-const UIButton = ({ processing, ...props }) => (
-  <>
-    { props.to && /^https?:\/\//.exec(props.to) && (
-      <LinkHyper {...props} href={props.to}>
-        <UIType value={props.locale} component={null}>{ props.children }</UIType>
-      </LinkHyper>
-    )}
+function UIButton(originalProps) {
+  const props = useEnhance(originalProps, { hooks });
+  const { Content, Icon, Processing } = props.hooks.useComponents(props);
 
-    { props.to && !/^https?:\/\//.exec(props.to) && (
-      <LinkRouter {...props}>
-        <UIType value={props.locale} component={null}>{ props.children }</UIType>
-      </LinkRouter>
-    )}
+  return (
+    <Button {...props.hooks.useProps(props)}>
+      <Icon {...props.hooks.usePropsIcon(props)} />
 
-    { !props.to && (
-      <Button {...props}>
-        { processing && (
-          <UIProgressCircle size="0.75rem" />
-        )}
+      <Processing {...props.hooks.usePropsProcessing(props)} />
 
-        { !processing && (
-          <UIType value={props.locale} component={null}>{ props.children }</UIType>
-        )}
-      </Button>
-    )}
-  </>
-);
+      <Content {...props.hooks.usePropsContent(props)} />
+    </Button>
+  );
+}
 
 UIButton.propTypes = {
   children: PropTypes.node,
-  css: PropTypesPlus.css,
-  locale: PropTypesPlus.locale,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypesPlus.locale,
+    PropTypesImmutable.map,
+  ]),
+  contentComponent: PropTypesPlus.component,
+  contentComponentHidden: PropTypes.bool,
+  contentComponentPaletteAsBackground: PropTypes.bool,
+  contentComponentProps: PropTypes.shape({}),
+  hidden: PropTypes.bool,
+  hooks: PropTypes.exact({
+    useComponents: PropTypes.func,
+    useProps: PropTypes.func,
+    usePropsContent: PropTypes.func,
+    usePropsIcon: PropTypes.func,
+    usePropsProcessing: PropTypes.func,
+  }),
+  iconComponent: PropTypesPlus.component,
+  iconComponentCss: PropTypesPlus.css,
+  iconComponentFont: PropTypesPlus.string,
+  iconComponentHidden: PropTypes.bool,
+  iconComponentName: PropTypesPlus.string,
+  iconComponentPaletteAsBackground: PropTypes.bool,
+  iconComponentProps: PropTypes.shape({}),
+  media: PropTypesPlus.string,
+  mediaPrintDisabled: PropTypes.bool,
+  namespace: PropTypesPlus.string,
+  palette: PropTypesPlus.string,
+  paletteWeight: PropTypes.string,
   processing: PropTypes.bool,
-  to: PropTypes.string,
-  variant: PropTypes.string,
+  processingComponent: PropTypesPlus.component,
+  processingComponentPaletteAsBackground: PropTypes.bool,
+  processingComponentProps: PropTypes.shape({}),
+  variant: PropTypesPlus.string,
 };
 
 UIButton.defaultProps = {
   children: undefined,
-  css: undefined,
-  locale: undefined,
-  processing: false,
-  to: '',
-  variant: 'main',
+  content: undefined,
+  contentComponent: undefined,
+  contentComponentHidden: undefined,
+  contentComponentPaletteAsBackground: undefined,
+  contentComponentProps: undefined,
+  hidden: undefined,
+  hooks: undefined,
+  iconComponent: undefined,
+  iconComponentCss: undefined,
+  iconComponentFont: undefined,
+  iconComponentHidden: undefined,
+  iconComponentName: undefined,
+  iconComponentPaletteAsBackground: undefined,
+  iconComponentProps: undefined,
+  media: undefined,
+  mediaPrintDisabled: undefined,
+  namespace: 'component_uiButton',
+  palette: undefined,
+  paletteWeight: undefined,
+  processing: undefined,
+  processingComponent: undefined,
+  processingComponentPaletteAsBackground: undefined,
+  processingComponentProps: undefined,
+  variant: 'standard',
 };
 
 export default React.memo(UIButton);

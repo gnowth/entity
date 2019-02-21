@@ -19,13 +19,13 @@ function FormTitle(props) {
 
       <UIBox justifyContent="flex-end">
         <UIButton
-          locale={locales.button_cancel}
+          content={locales.button_cancel}
           onClick={props.onClose}
         />
 
         <Control
           action={({ value }) => props.onClose(value)}
-          componentProps={{ locale: locales.button_ok }}
+          componentProps={{ content: locales.button_ok }}
           submit
         />
       </UIBox>

@@ -14,29 +14,25 @@ function Header(props) {
   return (
     <UIBox css={styles.header} justifyContent="flex-start">
       <UIButton
-        css={styles.buttons}
-        locale={locales.github}
+        content={locales.github}
         to="https://github.com/gnowth/react"
         variant="text"
       />
 
       <UIButton
-        css={styles.buttons}
-        locale={locales.style_guide}
+        content={locales.style_guide}
         to="https://gnowth.github.io/react/style-guide"
         variant="text"
       />
 
       <UIButton
-        css={styles.buttons}
-        locale={locales.changelog}
+        content={locales.changelog}
         to="/pages/changelog"
         variant="text"
       />
 
       <UIButton
-        css={styles.buttons}
-        locale={locales.readme}
+        content={locales.readme}
         to="/pages/readme"
         variant="text"
       />
@@ -52,7 +48,6 @@ Header.propTypes = {
     style_guide: PropTypesPlus.locale.isRequired,
   }),
   styles: PropTypes.exact({
-    buttons: PropTypesPlus.css,
     header: PropTypesPlus.css,
   }),
 };

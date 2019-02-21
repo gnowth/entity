@@ -1,30 +1,10 @@
 import classnames from 'classnames';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
-import { withProps } from '@gnowth/higher-order-component';
 
-const UIIcon = styled.i`
-  && {
-    font-size: 1rem;
-  }
+import { colorFromPalette, component } from '@gnowth/style';
 
-  ${props => props.theme?.components?.uiIcon?.[props.variant]}
-  ${props => props.css}
-`;
-
-UIIcon.propTypes = {
-  css: PropTypesPlus.css,
-  name: PropTypes.string.isRequired,
-  variant: PropTypes.string,
-};
-
-UIIcon.defaultProps = {
-  css: undefined,
-  variant: 'main',
-};
-
-export default withProps(props => ({
+const UIIcon = styled.i.attrs(props => ({
   className: classnames({
     'material-icons': props.material,
     [`fa fa-${props.name}`]: props.fontawesome,
@@ -32,4 +12,36 @@ export default withProps(props => ({
     [props.className]: props.className,
   }),
   children: props.material ? props.name : props.children,
-}))(UIIcon);
+}))`
+  && {
+    font-size: 1rem;
+  }
+
+  color: ${colorFromPalette()};
+
+  ${component({ name: 'uiIcon' })}
+`;
+
+UIIcon.propTypes = {
+  fontawesome: PropTypes.bool,
+  hidden: PropTypes.bool,
+  material: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  palette: PropTypes.string,
+  paletteAsBackground: PropTypes.bool,
+  paletteWeight: PropTypes.string,
+  variant: PropTypes.string,
+};
+
+UIIcon.defaultProps = {
+  fontawesome: false,
+  hidden: undefined,
+  material: false,
+  palette: undefined,
+  paletteAsBackground: false,
+  paletteWeight: undefined,
+  variant: 'standard',
+  visible: true,
+};
+
+export default UIIcon;

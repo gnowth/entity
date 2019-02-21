@@ -1,10 +1,10 @@
 export const var_font_body = '';
 export const var_font_header = '';
-export const var_media_phoneOnly = 'max-width: 599px';
-export const var_media_tabletPortraitUp = 'min-width: 600px';
-export const var_media_tabletLandscapeUp = 'min-width: 900px';
-export const var_media_desktopUp = 'min-width: 1200px';
-export const var_media_desktopBigUp = 'min-width: 1800px';
+export const var_media_phonePortrait = 'max-width: 30em';
+export const var_media_phoneLandscape = 'max-width: 37.5em';
+export const var_media_tabletPortrait = 'max-width: 56.25em';
+export const var_media_tabletLandscape = 'max-width: 75em';
+export const var_media_desktopBig = 'min-width: 112.5em';
 export const var_size_grid = '16px';
 export const var_zindex_overlay = '';
 export const var_zindex_portal = '';
