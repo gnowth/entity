@@ -4,15 +4,14 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form } from '@entity/form';
-import { useDefaultStyle } from '@gnowth/style';
 import { UIButton, UISpacer } from '@gnowth/ui';
+import { useEnhance } from '@private/hooks';
 
-import defaultLocales from './Controls.locales';
-import defaultStyles, { Controls } from './Controls.styles';
+import locales from './Controls.locales';
+import styles, { Controls } from './Controls.styles';
 
-function FormControls(props) {
-  const locales = { ...defaultLocales, ...props.locales };
-  const styles = useDefaultStyle(defaultStyles, props.styles);
+function FormControls(originalProps) {
+  const props = useEnhance(originalProps, { locales, styles });
   const ExtraControlsComponent = props.extraControlsComponent;
 
   return (
@@ -22,7 +21,7 @@ function FormControls(props) {
           action={props.resetAction}
           component={props.buttonComponent}
           componentProps={{
-            locale: locales.reset,
+            content: props.locales.reset,
             ...props.resetButtonComponentProps,
           }}
         />
@@ -35,8 +34,8 @@ function FormControls(props) {
           action={props.saveAction}
           component={props.buttonComponent}
           componentProps={{
-            css: styles.buttons,
-            locale: locales.save,
+            content: props.locales.save,
+            css: props.styles.buttons,
             ...props.saveButtonComponentProps,
           }}
         />
@@ -47,8 +46,10 @@ function FormControls(props) {
           action={props.submitAction}
           component={props.buttonComponent}
           componentProps={{
-            css: styles.buttons,
-            locale: locales.submit,
+            content: props.locales.submit,
+            css: props.styles.buttons,
+            palette: 'primary',
+            variant: 'contained',
             ...props.submitButtonComponentProps,
           }}
         />

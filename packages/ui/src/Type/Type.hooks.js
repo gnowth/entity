@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { color } from '@gnowth/style';
+import { colorFromPalette } from '@gnowth/style';
 
 const StringComponent = props => props.children;
 
 const Component = styled.span`
-  color: ${props => color({
-    asBackground: props.paletteAsBackground,
-    name: props.palette || 'black',
-    weight: props.paletteWeight,
-  })(props)};
+  color: ${colorFromPalette()};
+
   ${props => props.css}
 `;
 
@@ -21,9 +18,13 @@ const mapDefault = {
 
 export default {
   useChildren(props) {
-    const { intlContext } = useDefault(mapDefault, props);
-    const intl = React.useContext(intlContext || DummyContext);
+    const { intlContext = DummyContext } = useDefault(mapDefault, props);
+    const intl = React.useContext(intlContext);
     const value = props.children || props.value;
+
+    if (value instanceof Error) {
+      return value.message;
+    }
 
     if (props.field) {
       return props.field.toString(value);
@@ -48,6 +49,7 @@ export default {
       as: props.component,
       className: props.className,
       css: props.css,
+      hidden: props.hidden,
       palette: props.palette,
       paletteAsBackground: props.paletteAsBackground,
       paletteWeight: props.paletteWeight,

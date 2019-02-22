@@ -10,7 +10,7 @@ it('renders correctly', () => {
   const tree = renderer.create(
     <ThemeProvider theme={{}}>
       <IntlProvider locale="en" messages={{}}>
-        <UIButton>Test</UIButton>
+        <UIButton content="Test" />
       </IntlProvider>
     </ThemeProvider>,
   ).toJSON();

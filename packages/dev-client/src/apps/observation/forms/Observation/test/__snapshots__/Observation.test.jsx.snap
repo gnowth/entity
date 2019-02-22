@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c8 {
+.c13 {
   width: 100%;
   background-color: hsl(0,0%,98%);
   border: 1px solid #03a9f4;
@@ -28,11 +28,67 @@ exports[`renders correctly 1`] = `
   resize: none;
 }
 
-.c8:focus {
+.c13:focus {
   background-color: white;
   border-color: #2684ff;
   outline: none;
   box-shadow: 0 0 0 1px #2684ff;
+}
+
+.c8 {
+  color: #000000;
+}
+
+.c8.c8 {
+  font-size: 1rem;
+}
+
+.c11 {
+  -webkit-animation-name: bvvTNa;
+  animation-name: bvvTNa;
+  fill: transparent;
+  stroke: #000000;
+  stroke-dasharray: 251.32741228718345px;
+  stroke-width: 20%;
+  -webkit-transition: stroke-dashoffset 225ms linear;
+  transition: stroke-dashoffset 225ms linear;
+  -webkit-transform-box: view-box;
+  -ms-transform-box: view-box;
+  transform-box: view-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  -webkit-transition-property: stroke;
+  transition-property: stroke;
+}
+
+.c9 {
+  height: 32px;
+  position: relative;
+  width: 32px;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
+}
+
+.c10 {
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  width: 100%;
 }
 
 .c1 {
@@ -47,13 +103,115 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c7 {
-  display: inline-block;
+.c12 {
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 500;
+  -webkit-letter-spacing: 1.25px;
+  -moz-letter-spacing: 1.25px;
+  -ms-letter-spacing: 1.25px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
 }
 
-.c12 {
-  display: inline-block;
-  margin-left: 24px;
+.c7 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  padding: 0.5em 1.5em;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:hover {
+  background-color: #f7f7f7;
+}
+
+.c7:focus {
+  background-color: #ebebeb;
+}
+
+.c7:disabled {
+  background-color: #dedede;
+  cursor: auto;
+}
+
+.c7:disabled * {
+  color: #a6a6a6;
+}
+
+.c17 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  padding: 0.5em 1.5em;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #4caf50;
+}
+
+.c17:hover {
+  background-color: #f7f7f7;
+}
+
+.c17:focus {
+  background-color: #ebebeb;
+}
+
+.c17:disabled {
+  background-color: #dedede;
+  cursor: auto;
+}
+
+.c17:disabled * {
+  color: #a6a6a6;
+}
+
+.c17:hover {
+  background-color: #67bb6a;
+}
+
+.c17:focus {
+  background-color: #3c9f40;
+}
+
+.c17:disabled {
+  background-color: #dedede;
+  cursor: auto;
+}
+
+.c17:disabled * {
+  color: #a6a6a6;
 }
 
 .c2 {
@@ -71,7 +229,7 @@ exports[`renders correctly 1`] = `
   margin-top: 24px;
 }
 
-.c9 {
+.c14 {
   margin-top: 48px;
 }
 
@@ -80,7 +238,7 @@ exports[`renders correctly 1`] = `
   position: relative;
 }
 
-.c11 {
+.c16 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -111,11 +269,23 @@ exports[`renders correctly 1`] = `
   display: block;
 }
 
-.c10 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media print {
+  .c7 {
+    display: none;
+  }
+}
+
+@media print {
+  .c17 {
+    display: none;
+  }
 }
 
 <div>
@@ -207,14 +377,41 @@ exports[`renders correctly 1`] = `
     <div
       className="c6"
     >
-      
-      
       <button
         className="c7"
         onClick={[Function]}
-        to=""
       >
-        Test
+        <i
+          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          hidden={true}
+          name="name"
+        />
+        <span
+          className="c9"
+          hidden={true}
+          size="32px"
+          value={null}
+        >
+          <svg
+            className="c10"
+            focusable="false"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 100 100"
+          >
+            <circle
+              className="c11"
+              cx="50%"
+              cy="50%"
+              r="40"
+              value={null}
+            />
+          </svg>
+        </span>
+        <span
+          className="uiButton-Content c12"
+        >
+          Test
+        </span>
       </button>
     </div>
   </div>
@@ -272,7 +469,7 @@ exports[`renders correctly 1`] = `
       Description
     </label>
     <textarea
-      className="c8"
+      className="c13"
       errors={Immutable.List []}
       name="description"
       onChange={[Function]}
@@ -323,54 +520,190 @@ exports[`renders correctly 1`] = `
       Follow up actions
     </label>
   </div>
-  
-  
   <button
     className="c7"
+    content={
+      Object {
+        "defaultMessage": "Add action",
+        "id": "packages.dev-client.src.apps.observation.forms.Observation.follow_up_actions_add",
+      }
+    }
     disabled={false}
     onClick={[Function]}
-    to=""
   >
-    Add action
+    <i
+      className="uiButton-Icon icon icon-name uiButton-Icon c8"
+      hidden={true}
+      name="name"
+    />
+    <span
+      className="c9"
+      hidden={true}
+      size="32px"
+      value={null}
+    >
+      <svg
+        className="c10"
+        focusable="false"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 100 100"
+      >
+        <circle
+          className="c11"
+          cx="50%"
+          cy="50%"
+          r="40"
+          value={null}
+        />
+      </svg>
+    </span>
+    <span
+      className="uiButton-Content c12"
+      hidden={false}
+    >
+      Add action
+    </span>
   </button>
   <div
-    className="c9"
+    className="c14"
   >
     <div
-      className="c10"
+      className="c15"
     >
-      
-      
       <button
         className="c7"
+        content={
+          Object {
+            "defaultMessage": "RESET",
+            "id": "packages.dev-client.src.apps.activity.forms.Controls.reset",
+          }
+        }
         disabled={false}
         onClick={[Function]}
-        to=""
       >
-        RESET
+        <i
+          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          hidden={true}
+          name="name"
+        />
+        <span
+          className="c9"
+          hidden={true}
+          size="32px"
+          value={null}
+        >
+          <svg
+            className="c10"
+            focusable="false"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 100 100"
+          >
+            <circle
+              className="c11"
+              cx="50%"
+              cy="50%"
+              r="40"
+              value={null}
+            />
+          </svg>
+        </span>
+        <span
+          className="uiButton-Content c12"
+          hidden={false}
+        >
+          RESET
+        </span>
       </button>
       <div
-        className="c11"
+        className="c16"
       />
-      
-      
       <button
-        className="c12"
+        className="c7"
+        content={
+          Object {
+            "defaultMessage": "SAVE",
+            "id": "packages.dev-client.src.apps.activity.forms.Controls.save",
+          }
+        }
         disabled={false}
         onClick={[Function]}
-        to=""
       >
-        SAVE
+        <i
+          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          hidden={true}
+          name="name"
+        />
+        <span
+          className="c9"
+          hidden={true}
+          size="32px"
+          value={null}
+        >
+          <svg
+            className="c10"
+            focusable="false"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 100 100"
+          >
+            <circle
+              className="c11"
+              cx="50%"
+              cy="50%"
+              r="40"
+              value={null}
+            />
+          </svg>
+        </span>
+        <span
+          className="uiButton-Content c12"
+          hidden={false}
+        >
+          SAVE
+        </span>
       </button>
-      
-      
       <button
-        className="c12"
+        className="c17"
+        content={
+          Object {
+            "defaultMessage": "SUBMIT",
+            "id": "packages.dev-client.src.apps.activity.forms.Controls.submit",
+          }
+        }
         disabled={false}
         onClick={[Function]}
-        to=""
       >
-        SUBMIT
+        <i
+          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          hidden={true}
+          name="name"
+        />
+        <span
+          className="c9"
+          hidden={true}
+          size="32px"
+          value={null}
+        >
+          <svg
+            className="c10"
+            focusable="false"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 100 100"
+          >
+            <circle
+              className="c11"
+              cx="50%"
+              cy="50%"
+              r="40"
+              value={null}
+            />
+          </svg>
+        </span>
+        <span
+          className="uiButton-Content c12"
+          hidden={false}
+        >
+          SUBMIT
+        </span>
       </button>
     </div>
   </div>

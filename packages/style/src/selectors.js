@@ -15,8 +15,8 @@ export const color = ({ asBackground, defaultColor = 'black', name, weight = '50
   if (asBackground) {
     return (
       props.theme?.[`palette_${name}`]?.colorMap[weight]?.darkContrast
-        ? props.theme?.palette_white?.base
-        : props.theme?.palette_black?.base
+        ? props.theme?.palette_black?.base
+        : props.theme?.palette_white?.base
     ) || defaultColor;
   }
 
@@ -24,6 +24,14 @@ export const color = ({ asBackground, defaultColor = 'black', name, weight = '50
     || props.theme?.[`palette_${name}`]?.base
     || defaultColor;
 };
+
+export const colorFromPalette = (configs = {}) => props => color({
+  asBackground: configs.asBackground === undefined
+    ? props.paletteAsBackground
+    : configs.asBackground,
+  name: props.palette || 'black',
+  weight: configs.weight || props.paletteWeight,
+})(props);
 
 export const component = ({ name, defaultVariant = 'main', branch, variant } = {}) => (props) => {
   if (process.env.NODE_ENV !== 'production') {

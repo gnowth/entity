@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c0 {
+  display: block;
+  cursor: pointer;
+  width: 14px;
+}
+
 <input
   checked={false}
-  className="Checkbox__Input-sc-1sna3ij-0 hxZJpk"
+  className="c0"
   name="test"
   onChange={[Function]}
   type="checkbox"

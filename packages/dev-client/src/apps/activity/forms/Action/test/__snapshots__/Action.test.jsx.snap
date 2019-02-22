@@ -1,6 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c9 {
+  color: #000000;
+}
+
+.c9.c9 {
+  font-size: 1rem;
+}
+
+.c12 {
+  -webkit-animation-name: bvvTNa;
+  animation-name: bvvTNa;
+  fill: transparent;
+  stroke: #000000;
+  stroke-dasharray: 251.32741228718345px;
+  stroke-width: 20%;
+  -webkit-transition: stroke-dashoffset 225ms linear;
+  transition: stroke-dashoffset 225ms linear;
+  -webkit-transform-box: view-box;
+  -ms-transform-box: view-box;
+  transform-box: view-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  -webkit-transition-property: stroke;
+  transition-property: stroke;
+}
+
+.c10 {
+  height: 32px;
+  position: relative;
+  width: 32px;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
+}
+
+.c11 {
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  width: 100%;
+}
+
 .c1 {
   color: #000000;
   font-size: 2.125rem;
@@ -25,9 +81,58 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
+.c13 {
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 500;
+  -webkit-letter-spacing: 1.25px;
+  -moz-letter-spacing: 1.25px;
+  -ms-letter-spacing: 1.25px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
 .c8 {
-  display: inline-block;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  padding: 0.5em 1.5em;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   margin-top: 0.5rem;
+}
+
+.c8:hover {
+  background-color: #f7f7f7;
+}
+
+.c8:focus {
+  background-color: #ebebeb;
+}
+
+.c8:disabled {
+  background-color: #dedede;
+  cursor: auto;
+}
+
+.c8:disabled * {
+  color: #a6a6a6;
 }
 
 .c4 {
@@ -100,6 +205,12 @@ exports[`renders correctly 1`] = `
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem;
+}
+
+@media print {
+  .c8 {
+    display: none;
+  }
 }
 
 <div>
@@ -413,25 +524,93 @@ exports[`renders correctly 1`] = `
   <div
     className="c7"
   >
-    
-    
     <button
       className="c8"
+      content={
+        Object {
+          "defaultMessage": "UPDATE",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.update",
+        }
+      }
       disabled={false}
       onClick={[Function]}
-      to=""
     >
-      UPDATE
+      <i
+        className="uiButton-Icon icon icon-name uiButton-Icon c9"
+        hidden={true}
+        name="name"
+      />
+      <span
+        className="c10"
+        hidden={true}
+        size="32px"
+        value={null}
+      >
+        <svg
+          className="c11"
+          focusable="false"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 100 100"
+        >
+          <circle
+            className="c12"
+            cx="50%"
+            cy="50%"
+            r="40"
+            value={null}
+          />
+        </svg>
+      </span>
+      <span
+        className="uiButton-Content c13"
+        hidden={false}
+      >
+        UPDATE
+      </span>
     </button>
-    
-    
     <button
       className="c8"
+      content={
+        Object {
+          "defaultMessage": "COMPLETE",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.complete",
+        }
+      }
       disabled={false}
       onClick={[Function]}
-      to=""
     >
-      COMPLETE
+      <i
+        className="uiButton-Icon icon icon-name uiButton-Icon c9"
+        hidden={true}
+        name="name"
+      />
+      <span
+        className="c10"
+        hidden={true}
+        size="32px"
+        value={null}
+      >
+        <svg
+          className="c11"
+          focusable="false"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 100 100"
+        >
+          <circle
+            className="c12"
+            cx="50%"
+            cy="50%"
+            r="40"
+            value={null}
+          />
+        </svg>
+      </span>
+      <span
+        className="uiButton-Content c13"
+        hidden={false}
+      >
+        COMPLETE
+      </span>
     </button>
   </div>
 </div>

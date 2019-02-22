@@ -68,16 +68,16 @@ function FormAction(props) {
         <Control
           action={({ value, field, ...options }) => field.entity.actionUpdate(value, options)}
           componentProps={{
+            content: locales.update,
             css: styles.control,
-            locale: locales.update,
           }}
         />
 
         <Control
           action={({ value, field, ...options }) => field.entity.actionComplete(value, options)}
           componentProps={{
+            content: locales.complete,
             css: styles.control,
-            locale: locales.complete,
           }}
         />
       </Controls>

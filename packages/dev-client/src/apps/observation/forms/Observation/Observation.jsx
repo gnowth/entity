@@ -86,7 +86,7 @@ function FormObservation(props) {
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionActionsAdd(value, options)}
-        componentProps={{ locale: locales.follow_up_actions_add }}
+        componentProps={{ content: locales.follow_up_actions_add }}
       />
 
       <Input

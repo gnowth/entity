@@ -16,13 +16,12 @@ export default stories => stories
     <ThemeConsumer>
       { theme => (
         <UIButton
+          content={text('children', 'Hello Button')}
           disabled={boolean('disabled', false)}
           onClick={action('clicked')}
           processing={boolean('processing', false)}
           variant={select('variant', variant({ name: 'component_uiButton_' })({ theme }), 'text')}
-        >
-          { text('children', 'Hello Button') }
-        </UIButton>
+        />
       )}
     </ThemeConsumer>
   ))
@@ -31,9 +30,13 @@ export default stories => stories
     <ThemeConsumer>
       { theme => variant({ name: 'component_uiButton_' })({ theme }).map(name => (
         <Wrapper key={name}>
-          <UIButton variant={name}>
-            { name }
-          </UIButton>
+          <UIButton
+            content={name}
+            iconComponentFont="material"
+            iconComponentName="delete"
+            palette="primary"
+            variant={name}
+          />
         </Wrapper>
       ))}
     </ThemeConsumer>
