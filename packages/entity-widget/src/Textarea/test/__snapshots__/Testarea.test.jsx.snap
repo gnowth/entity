@@ -8,8 +8,9 @@ exports[`renders correctly 1`] = `
 <textarea
   className="c0"
   name="test"
+  namespace="component_widgetTextarea"
   onChange={[Function]}
   value=""
-  variant="main"
+  variant="standard"
 />
 `;

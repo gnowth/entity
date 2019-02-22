@@ -1,27 +1,26 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useDefaultStyle } from '@gnowth/style';
+import { useEnhance } from '@private/hooks';
 
 import UIIcon from '../Icon';
-import defaultHooks from './Tooltip.hooks';
-import defaultStyles, { Popup, Wrapper } from './Tooltip.styles';
+import hooks from './Tooltip.hooks';
+import styles, { Popup, Wrapper } from './Tooltip.styles';
 
 function UITooltip(props) {
-  const hooks = { ...defaultHooks, ...props.hooks };
-  const styles = useDefaultStyle(defaultStyles, props.styles);
-  const Component = props.component;
+  const enhancedProps = useEnhance(props, { hooks, styles });
+  const Component = enhancedProps.component;
   const [hidden, setHidden] = React.useState(true);
 
   return (
     <Wrapper
-      className={props.className}
-      css={props.css}
+      className={enhancedProps.className}
+      css={enhancedProps.css}
     >
-      <Component {...hooks.usePropsTrigger(props, styles, hidden, setHidden)} />
+      <Component {...enhancedProps.hooks.usePropsTrigger(enhancedProps, enhancedProps.styles, hidden, setHidden)} />
 
       <Popup hidden={hidden}>
-        { props.children }
+        { enhancedProps.children }
       </Popup>
     </Wrapper>
   );

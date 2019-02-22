@@ -77,7 +77,7 @@ class WidgetOrdering extends React.Component {
         { this.props.label }
         <UIIcon
           css={css`
-            ${component({ name: 'widgetOrdering', branch: 'icon' })}
+            ${component({ namespace: 'component_widgetOrdering', branch: 'icon' })}
           `}
           name={this.nameMap[this.getOrderingState()]}
         />
@@ -99,6 +99,6 @@ WidgetOrdering.propTypes = {
 };
 
 export default styled(WidgetOrdering)`
-  ${component({ name: 'widgetOrdering', branch: 'root' })}
+  ${component({ namespace: 'component_widgetOrdering', branch: 'root' })}
   ${props => props.css}
 `;

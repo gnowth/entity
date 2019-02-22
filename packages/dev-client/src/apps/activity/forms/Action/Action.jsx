@@ -4,27 +4,26 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
-import { useDefaultStyle } from '@gnowth/style';
 import { UIIcon, UIType } from '@gnowth/ui';
+import { useEnhance } from '@private/hooks';
 
-import defaultLocales from './Action.locales';
-import defaultStyles, { Controls, Header } from './Action.styles';
+import locales from './Action.locales';
+import styles, { Controls, Header } from './Action.styles';
 
 function FormAction(props) {
-  const locales = { ...defaultLocales, ...props.locales };
-  const styles = useDefaultStyle(defaultStyles, props.styles);
+  const enhancedProps = useEnhance(props, { locales, styles });
 
   return (
-    <Form {...props}>
+    <Form {...enhancedProps}>
       <Header>
         <UIType
-          value={locales.header_title}
+          value={enhancedProps.locales.header_title}
           variant="h4"
         />
 
-        { props.records && props.index !== null && (
+        { enhancedProps.records && enhancedProps.index !== null && (
           <Control
-            action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
+            action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(enhancedProps.records, { ...options, index: enhancedProps.index })}
             component={UIIcon}
             componentProps={{ name: 'delete', material: true }}
             array
@@ -35,32 +34,32 @@ function FormAction(props) {
       <Input
         name="person_responsible"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.person_responsible,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.person_responsible,
         }}
       />
 
       <Input
         name="date_due"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.date_due,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.date_due,
         }}
       />
 
       <Input
         name="completed_by"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.completed_by,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.completed_by,
         }}
       />
 
       <Input
         name="date_completed"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.date_completed,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.date_completed,
         }}
       />
 
@@ -68,16 +67,16 @@ function FormAction(props) {
         <Control
           action={({ value, field, ...options }) => field.entity.actionUpdate(value, options)}
           componentProps={{
-            content: locales.update,
-            css: styles.control,
+            content: enhancedProps.locales.update,
+            css: enhancedProps.styles.control,
           }}
         />
 
         <Control
           action={({ value, field, ...options }) => field.entity.actionComplete(value, options)}
           componentProps={{
-            content: locales.complete,
-            css: styles.control,
+            content: enhancedProps.locales.complete,
+            css: enhancedProps.styles.control,
           }}
         />
       </Controls>

@@ -25,6 +25,6 @@ ViewLink.defaultProps = {
 };
 
 export default styled(ViewLink)`
-  ${component({ name: 'viewLink' })}
+  ${component({ namespace: 'component_viewLink' })}
   ${props => props.css}
 `;

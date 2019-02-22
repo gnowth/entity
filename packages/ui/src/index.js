@@ -1,7 +1,5 @@
 export * from './stories';
 
-export { default as UIBox } from './Box';
-
 export { default as UIButton } from './Button';
 
 export { default as UIError } from './Error';
@@ -9,6 +7,8 @@ export { default as UIError } from './Error';
 export { default as UIErrorBoundary } from './ErrorBoundary';
 
 export { default as UIErrorWell } from './ErrorWell';
+
+export { default as UIFlexBox } from './FlexBox';
 
 export { default as UIIcon } from './Icon';
 

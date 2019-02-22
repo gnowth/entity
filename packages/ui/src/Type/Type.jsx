@@ -2,18 +2,17 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useThemeComponent } from '@gnowth/style';
+import { useEnhance } from '@private/hooks';
 
-import defaultHooks from './Type.hooks';
+import hooks from './Type.hooks';
 
 function UIType(props) {
-  const computedProps = useThemeComponent({ name: 'uiType' }, props);
-  const hooks = { ...defaultHooks, ...computedProps.hooks };
-  const Component = hooks.useComponent(computedProps);
+  const enhancedProps = useEnhance(props, { hooks });
+  const Component = enhancedProps.hooks.useComponent(enhancedProps);
 
   return (
-    <Component {...hooks.usePropsComponent(computedProps)}>
-      { hooks.useChildren(computedProps) }
+    <Component {...enhancedProps.hooks.useProps(enhancedProps)}>
+      { enhancedProps.hooks.useChildren(enhancedProps) }
     </Component>
   );
 }
@@ -25,16 +24,16 @@ const PropTypesChildren = PropTypes.oneOfType([
 ]);
 
 UIType.propTypes = {
+  as: PropTypesPlus.component,
   children: PropTypesChildren,
   className: PropTypesPlus.string,
-  component: PropTypesPlus.component,
-  componentProps: PropTypes.shape({}),
   hidden: PropTypes.bool,
   hooks: PropTypes.exact({
     useChildren: PropTypes.func,
     useComponent: PropTypes.func,
-    usePropsComponent: PropTypes.func,
+    useProps: PropTypes.func,
   }),
+  namespace: PropTypesPlus.string,
   palette: PropTypes.string,
   paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
@@ -45,6 +44,7 @@ UIType.propTypes = {
   field: PropTypes.shape({
     toString: PropTypes.func.isRequired,
   }),
+  mediaPrintDisabled: PropTypes.bool,
   name: PropTypesPlus.string,
   onChange: PropTypes.func,
   onInputChange: PropTypes.func,
@@ -57,14 +57,15 @@ UIType.propTypes = {
 };
 
 UIType.defaultProps = {
+  as: undefined,
   children: undefined,
   className: '',
-  component: undefined,
-  componentProps: undefined,
   hidden: undefined,
   hooks: undefined,
+  mediaPrintDisabled: undefined,
+  namespace: 'component_uiType',
   palette: undefined,
-  paletteAsBackground: false,
+  paletteAsBackground: undefined,
   paletteWeight: undefined,
   variant: undefined,
 

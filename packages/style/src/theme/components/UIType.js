@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export const component_uiType_h1 = {
-  component: 'h1',
+  as: 'h1',
   css: css`
     font-size: 6rem;
     font-weight: 300;
@@ -12,7 +12,7 @@ export const component_uiType_h1 = {
 };
 
 export const component_uiType_h2 = {
-  component: 'h2',
+  as: 'h2',
   css: css`
     font-size: 3.75rem;
     font-weight: 300;
@@ -23,7 +23,7 @@ export const component_uiType_h2 = {
 };
 
 export const component_uiType_h3 = {
-  component: 'h3',
+  as: 'h3',
   css: css`
     font-size: 3rem;
     font-weight: 400;
@@ -34,7 +34,7 @@ export const component_uiType_h3 = {
 };
 
 export const component_uiType_h4 = {
-  component: 'h4',
+  as: 'h4',
   css: css`
     font-size: 2.125rem;
     font-weight: 400;
@@ -45,7 +45,7 @@ export const component_uiType_h4 = {
 };
 
 export const component_uiType_h5 = {
-  component: 'h5',
+  as: 'h5',
   css: css`
     font-size: 1.5rem;
     font-weight: 400;
@@ -56,7 +56,7 @@ export const component_uiType_h5 = {
 };
 
 export const component_uiType_h6 = {
-  component: 'h6',
+  as: 'h6',
   css: css`
     font-size: 1.25rem;
     font-weight: 500;
@@ -67,7 +67,7 @@ export const component_uiType_h6 = {
 };
 
 export const component_uiType_subtitle1 = {
-  component: 'p',
+  as: 'p',
   css: css`
     font-size: 1rem;
     font-weight: 400;
@@ -78,7 +78,7 @@ export const component_uiType_subtitle1 = {
 };
 
 export const component_uiType_subtitle2 = {
-  component: 'p',
+  as: 'p',
   css: css`
     font-size: 0.875rem;
     font-weight: 500;
@@ -89,7 +89,7 @@ export const component_uiType_subtitle2 = {
 };
 
 export const component_uiType_body1 = {
-  component: 'p',
+  as: 'p',
   css: css`
     font-size: 1rem;
     font-weight: 400;
@@ -100,7 +100,7 @@ export const component_uiType_body1 = {
 };
 
 export const component_uiType_body2 = {
-  component: 'p',
+  as: 'p',
   css: css`
     font-size: 0.875rem;
     font-weight: 400;
@@ -111,7 +111,7 @@ export const component_uiType_body2 = {
 };
 
 export const component_uiType_button = {
-  component: 'span',
+  as: 'span',
   css: css`
     font-size: 0.875rem;
     font-weight: 500;
@@ -123,7 +123,7 @@ export const component_uiType_button = {
 };
 
 export const component_uiType_caption = {
-  component: 'p',
+  as: 'p',
   css: css`
     font-size: 0.75rem;
     font-weight: 400;
@@ -134,7 +134,7 @@ export const component_uiType_caption = {
 };
 
 export const component_uiType_label = {
-  component: 'label',
+  as: 'label',
   css: css`
     font-size: 0.875rem;
     font-weight: 400;
@@ -145,7 +145,7 @@ export const component_uiType_label = {
 };
 
 export const component_uiType_overline = {
-  component: 'p',
+  as: 'p',
   css: css`
     font-size: 0.625rem;
     font-weight: 400;

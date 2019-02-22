@@ -6,20 +6,22 @@ import { component } from '@gnowth/style';
 const WidgetTextarea = styled(withPropsFiltered('textarea'))`
   width: 100%;
 
-  ${component({ name: 'widgetTextarea' })}
+  ${component()}
   ${props => props.css}
 `;
 
 WidgetTextarea.propTypes = {
   name: PropTypes.string.isRequired,
+  namespace: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   variant: PropTypes.string,
 };
 
 WidgetTextarea.defaultProps = {
+  namespace: 'component_widgetTextarea',
   value: '',
-  variant: 'main',
+  variant: 'standard',
 };
 
 export default WidgetTextarea;

@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     display: block;
   }
 
-  ${component({ name: 'widgetDate', branch: 'root' })}
+  ${component({ namespace: 'component_widgetDate', branch: 'root' })}
   ${props => props.css}
 `;
 
@@ -19,6 +19,6 @@ export const DatePicker = styled(ReactDatePicker)`
   display: block;
   width: 100%;
 
-  ${component({ name: 'widgetDate', branch: 'input' })}
+  ${component({ namespace: 'component_widgetDate', branch: 'input' })}
   ${props => props.css}
 `;

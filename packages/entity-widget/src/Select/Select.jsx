@@ -42,7 +42,7 @@ class WidgetSelect extends React.Component {
         isMulti={this.props.field.many}
         onChange={this.handleChange}
         options={this.selectOptions(this.props.options)}
-        styles={Object.assign({}, component({ name: 'widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
+        styles={Object.assign({}, component({ namespace: 'component_widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
         value={this.selectValue(this.props.value)}
       />
     );
@@ -81,6 +81,6 @@ WidgetSelect.defaultProps = {
 };
 
 export default styled(WidgetSelect)`
-  ${component({ name: 'widgetSelect', branch: 'root' })}
+  ${component({ namespace: 'component_widgetSelect', branch: 'root' })}
   ${props => props.css}
 `;

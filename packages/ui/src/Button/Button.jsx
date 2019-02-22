@@ -7,17 +7,17 @@ import { useEnhance } from '@private/hooks';
 import hooks from './Button.hooks';
 import Button from './Button.styles';
 
-function UIButton(originalProps) {
-  const props = useEnhance(originalProps, { hooks });
-  const { Content, Icon, Processing } = props.hooks.useComponents(props);
+function UIButton(props) {
+  const enhancedProps = useEnhance(props, { hooks });
+  const { Content, Icon, Processing } = enhancedProps.hooks.useComponents(enhancedProps);
 
   return (
-    <Button {...props.hooks.useProps(props)}>
-      <Icon {...props.hooks.usePropsIcon(props)} />
+    <Button {...enhancedProps.hooks.useProps(enhancedProps)}>
+      <Icon {...enhancedProps.hooks.usePropsIcon(enhancedProps)} />
 
-      <Processing {...props.hooks.usePropsProcessing(props)} />
+      <Processing {...enhancedProps.hooks.usePropsProcessing(enhancedProps)} />
 
-      <Content {...props.hooks.usePropsContent(props)} />
+      <Content {...enhancedProps.hooks.usePropsContent(enhancedProps)} />
     </Button>
   );
 }

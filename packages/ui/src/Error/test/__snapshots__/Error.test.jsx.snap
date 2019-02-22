@@ -5,6 +5,12 @@ exports[`renders correctly 1`] = `
   color: black;
 }
 
+@media print {
+  .c0 {
+    color: black;
+  }
+}
+
 <span
   className="c0"
 >

@@ -5,42 +5,41 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input, PopupShadow } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
-import { useDefaultStyle } from '@gnowth/style';
 import { UIErrorWell } from '@gnowth/ui';
+import { useEnhance } from '@private/hooks';
 
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
 import FormTitle from './FormTitle';
-import defaultLocales from './Observation.locales';
-import defaultStyles from './Observation.styles';
+import locales from './Observation.locales';
+import styles from './Observation.styles';
 
 function FormObservation(props) {
-  const locales = { ...defaultLocales, ...props.locales };
-  const styles = useDefaultStyle(defaultStyles, props.styles);
+  const enhancedProps = useEnhance(props, { locales, styles });
 
   return (
-    <Form {...props}>
+    <Form {...enhancedProps}>
       <Input component={UIErrorWell} />
 
       <Input
         component={ViewRedirectOnCreate}
-        componentProps={{ to: props.field.entity.toLink(props.value) }}
+        componentProps={{ to: enhancedProps.field.entity.toLink(enhancedProps.value) }}
       />
 
       <Input
         name="date_activity"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.date_activity,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.date_activity,
         }}
       />
 
       <Input
         name="title"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.title,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.title,
         }}
       />
 
@@ -52,24 +51,24 @@ function FormObservation(props) {
       <Input
         name="title_short"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.title_short,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.title_short,
         }}
       />
 
       <Input
         name="description"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.description,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.description,
         }}
       />
 
       <Input
         name="date_due"
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.date_due,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.date_due,
         }}
       />
 
@@ -78,20 +77,20 @@ function FormObservation(props) {
         component={FormAction}
         componentProps={({ value }) => ({ records: value })}
         wrapperComponentProps={{
-          css: styles.input,
-          labelLocale: locales.follow_up_actions,
+          css: enhancedProps.styles.input,
+          labelLocale: enhancedProps.locales.follow_up_actions,
         }}
         many
       />
 
       <Control
         action={({ value, field, ...options }) => field.entity.actionActionsAdd(value, options)}
-        componentProps={{ content: locales.follow_up_actions_add }}
+        componentProps={{ content: enhancedProps.locales.follow_up_actions_add }}
       />
 
       <Input
         component={FormControls}
-        componentProps={{ css: styles.controls }}
+        componentProps={{ css: enhancedProps.styles.controls }}
       />
     </Form>
   );

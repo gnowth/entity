@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-.c1 {
-  color: black;
-}
-
 .c1.c1 {
   font-size: 1rem;
 }
@@ -57,10 +53,6 @@ exports[`renders correctly 1`] = `
   width: 100%;
 }
 
-.c5 {
-  color: black;
-}
-
 .c0 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
@@ -102,6 +94,12 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
+  .c5 {
+    color: black;
+  }
+}
+
+@media print {
   .c0 {
     display: none;
   }
@@ -139,6 +137,7 @@ exports[`renders correctly 1`] = `
   </span>
   <span
     className="uiButton-Content c5"
+    value="Test"
   >
     Test
   </span>

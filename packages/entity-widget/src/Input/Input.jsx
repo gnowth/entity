@@ -8,20 +8,22 @@ import { injectIntl } from 'react-intl';
 const WidgetInput = styled(withPropsFiltered('input'))`
   width: 100%;
 
-  ${component({ name: 'widgetInput' })}
+  ${component()}
   ${props => props.css}
 `;
 
 WidgetInput.propTypes = {
   name: PropTypes.string.isRequired,
+  namespace: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   variant: PropTypes.string,
 };
 
 WidgetInput.defaultProps = {
+  namespace: 'component_widgetInput',
   value: '',
-  variant: 'main',
+  variant: 'standard',
 };
 
 export default _flowRight(

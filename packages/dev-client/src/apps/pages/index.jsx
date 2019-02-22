@@ -6,12 +6,13 @@ import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
 import { App } from '@gnowth/app';
 import { UIType, UIWell } from '@gnowth/ui';
+import { useEnhance } from '@private/hooks';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import changelog from 'root/CHANGELOG.md';
 import readme from 'root/README.md';
 
-import defaultLocales from './locales';
+import locales from './locales';
 
 const Screen = styled.div`
   align-items: center;
@@ -21,13 +22,13 @@ const Screen = styled.div`
 `;
 
 function AppPage(props) {
-  const locales = { ...defaultLocales, ...props.locales };
+  const enhancedProps = useEnhance(props, { locales });
 
   return (
-    <App {...props}>
+    <App {...enhancedProps}>
       <Switch>
         <Route
-          path={`${props.match.url}/changelog`}
+          path={`${enhancedProps.match.url}/changelog`}
           render={() => (
             <UIWell ratio={3} variant="page_flat">
               <Markdown className="markdown-body" source={changelog} />
@@ -36,7 +37,7 @@ function AppPage(props) {
         />
 
         <Route
-          path={`${props.match.url}/readme`}
+          path={`${enhancedProps.match.url}/readme`}
           render={() => (
             <UIWell ratio={3} variant="page_flat">
               <Markdown className="markdown-body" source={readme} />
@@ -45,15 +46,15 @@ function AppPage(props) {
         />
 
         <Route
-          path={`${props.match.url}/notfound`}
+          path={`${enhancedProps.match.url}/notfound`}
           render={() => (
             <Screen>
-              <UIType value={locales.not_found} variant="h1" />
+              <UIType value={enhancedProps.locales.not_found} variant="h1" />
             </Screen>
           )}
         />
 
-        <Redirect to={`${props.match.url}/notfound`} push />
+        <Redirect to={`${enhancedProps.match.url}/notfound`} push />
       </Switch>
     </App>
   );

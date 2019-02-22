@@ -35,11 +35,15 @@ exports[`renders correctly 1`] = `
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c8 {
+.c8.c8 {
+  font-size: 1rem;
+}
+
+.c19 {
   color: #000000;
 }
 
-.c8.c8 {
+.c19.c19 {
   font-size: 1rem;
 }
 
@@ -92,7 +96,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c1 {
-  color: #000000;
   font-size: 0.875rem;
   font-weight: 400;
   -webkit-letter-spacing: 0.25px;
@@ -104,6 +107,18 @@ exports[`renders correctly 1`] = `
 }
 
 .c12 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  -webkit-letter-spacing: 1.25px;
+  -moz-letter-spacing: 1.25px;
+  -ms-letter-spacing: 1.25px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+.c20 {
   color: #000000;
   font-size: 0.875rem;
   font-weight: 500;
@@ -177,7 +192,7 @@ exports[`renders correctly 1`] = `
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-color: #4caf50;
+  margin-left: 24px;
 }
 
 .c17:hover {
@@ -197,20 +212,62 @@ exports[`renders correctly 1`] = `
   color: #a6a6a6;
 }
 
-.c17:hover {
-  background-color: #67bb6a;
+.c18 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  padding: 0.5em 1.5em;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #4caf50;
+  margin-left: 24px;
 }
 
-.c17:focus {
-  background-color: #3c9f40;
+.c18:hover {
+  background-color: #f7f7f7;
 }
 
-.c17:disabled {
+.c18:focus {
+  background-color: #ebebeb;
+}
+
+.c18:disabled {
   background-color: #dedede;
   cursor: auto;
 }
 
-.c17:disabled * {
+.c18:disabled * {
+  color: #a6a6a6;
+}
+
+.c18:hover {
+  background-color: #67bb6a;
+}
+
+.c18:focus {
+  background-color: #3c9f40;
+}
+
+.c18:disabled {
+  background-color: #dedede;
+  cursor: auto;
+}
+
+.c18:disabled * {
   color: #a6a6a6;
 }
 
@@ -277,6 +334,24 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
+  .c1 {
+    color: #000000;
+  }
+}
+
+@media print {
+  .c12 {
+    color: #000000;
+  }
+}
+
+@media print {
+  .c20 {
+    color: #000000;
+  }
+}
+
+@media print {
   .c7 {
     display: none;
   }
@@ -284,6 +359,12 @@ exports[`renders correctly 1`] = `
 
 @media print {
   .c17 {
+    display: none;
+  }
+}
+
+@media print {
+  .c18 {
     display: none;
   }
 }
@@ -300,6 +381,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c1 c2"
+      value={
+        Object {
+          "defaultMessage": "Observation Date",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.date_activity",
+        }
+      }
     >
       Observation Date
     </label>
@@ -333,6 +420,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c1 c2"
+      value={
+        Object {
+          "defaultMessage": "Title",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.title",
+        }
+      }
     >
       Title
     </label>
@@ -367,10 +460,11 @@ exports[`renders correctly 1`] = `
         }
       }
       name="title"
+      namespace="component_widgetInput"
       onChange={[Function]}
       onSubmit={[Function]}
       value=""
-      variant="main"
+      variant="standard"
     />
   </div>
   <div>
@@ -420,6 +514,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c1 c2"
+      value={
+        Object {
+          "defaultMessage": "Short Title",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.title_short",
+        }
+      }
     >
       Short Title
     </label>
@@ -454,10 +554,11 @@ exports[`renders correctly 1`] = `
         }
       }
       name="title_short"
+      namespace="component_widgetInput"
       onChange={[Function]}
       onSubmit={[Function]}
       value=""
-      variant="main"
+      variant="standard"
     />
   </div>
   <div
@@ -465,6 +566,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c1 c2"
+      value={
+        Object {
+          "defaultMessage": "Description",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.description",
+        }
+      }
     >
       Description
     </label>
@@ -472,10 +579,11 @@ exports[`renders correctly 1`] = `
       className="c13"
       errors={Immutable.List []}
       name="description"
+      namespace="component_widgetTextarea"
       onChange={[Function]}
       onSubmit={[Function]}
       value=""
-      variant="main"
+      variant="standard"
     />
   </div>
   <div
@@ -483,6 +591,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c1 c2"
+      value={
+        Object {
+          "defaultMessage": "Due Date",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.date_due",
+        }
+      }
     >
       Due Date
     </label>
@@ -516,6 +630,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c1 c2"
+      value={
+        Object {
+          "defaultMessage": "Follow up actions",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.follow_up_actions",
+        }
+      }
     >
       Follow up actions
     </label>
@@ -560,6 +680,12 @@ exports[`renders correctly 1`] = `
     <span
       className="uiButton-Content c12"
       hidden={false}
+      value={
+        Object {
+          "defaultMessage": "Add action",
+          "id": "packages.dev-client.src.apps.observation.forms.Observation.follow_up_actions_add",
+        }
+      }
     >
       Add action
     </span>
@@ -610,6 +736,12 @@ exports[`renders correctly 1`] = `
         <span
           className="uiButton-Content c12"
           hidden={false}
+          value={
+            Object {
+              "defaultMessage": "RESET",
+              "id": "packages.dev-client.src.apps.activity.forms.Controls.reset",
+            }
+          }
         >
           RESET
         </span>
@@ -618,7 +750,7 @@ exports[`renders correctly 1`] = `
         className="c16"
       />
       <button
-        className="c7"
+        className="c17"
         content={
           Object {
             "defaultMessage": "SAVE",
@@ -657,12 +789,18 @@ exports[`renders correctly 1`] = `
         <span
           className="uiButton-Content c12"
           hidden={false}
+          value={
+            Object {
+              "defaultMessage": "SAVE",
+              "id": "packages.dev-client.src.apps.activity.forms.Controls.save",
+            }
+          }
         >
           SAVE
         </span>
       </button>
       <button
-        className="c17"
+        className="c18"
         content={
           Object {
             "defaultMessage": "SUBMIT",
@@ -673,7 +811,7 @@ exports[`renders correctly 1`] = `
         onClick={[Function]}
       >
         <i
-          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          className="uiButton-Icon icon icon-name uiButton-Icon c19"
           hidden={true}
           name="name"
         />
@@ -699,8 +837,14 @@ exports[`renders correctly 1`] = `
           </svg>
         </span>
         <span
-          className="uiButton-Content c12"
+          className="uiButton-Content c20"
           hidden={false}
+          value={
+            Object {
+              "defaultMessage": "SUBMIT",
+              "id": "packages.dev-client.src.apps.activity.forms.Controls.submit",
+            }
+          }
         >
           SUBMIT
         </span>

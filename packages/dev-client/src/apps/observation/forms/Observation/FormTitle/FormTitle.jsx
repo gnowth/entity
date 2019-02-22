@@ -3,32 +3,33 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
-import { UIBox, UIButton } from '@gnowth/ui';
+import { UIFlexBox, UIButton } from '@gnowth/ui';
+import { useEnhance } from '@private/hooks';
 
-import defaultLocales from './FormTitle.locales';
+import locales from './FormTitle.locales';
 
 function FormTitle(props) {
-  const locales = { ...defaultLocales, ...props.locales };
+  const enhancedProps = useEnhance(props, { locales });
 
   return (
-    <Form {...props}>
+    <Form {...enhancedProps.props}>
       <Input
         name="title"
-        wrapperComponentProps={{ labelLocale: locales.label_title }}
+        wrapperComponentProps={{ labelLocale: enhancedProps.locales.label_title }}
       />
 
-      <UIBox justifyContent="flex-end">
+      <UIFlexBox justifyContent="flex-end">
         <UIButton
-          content={locales.button_cancel}
-          onClick={props.onClose}
+          content={enhancedProps.locales.button_cancel}
+          onClick={enhancedProps.props.onClose}
         />
 
         <Control
-          action={({ value }) => props.onClose(value)}
-          componentProps={{ content: locales.button_ok }}
+          action={({ value }) => enhancedProps.props.onClose(value)}
+          componentProps={{ content: enhancedProps.locales.button_ok }}
           submit
         />
-      </UIBox>
+      </UIFlexBox>
     </Form>
   );
 }

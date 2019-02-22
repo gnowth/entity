@@ -6,20 +6,22 @@ import { withProps } from '@gnowth/higher-order-component';
 import { component, image } from '@gnowth/style';
 
 const UIImage = styled.img`
-  ${component({ name: 'uiImage' })}
+  ${component()}
   ${props => props.css}
 `;
 
 UIImage.propTypes = {
   alt: PropTypes.string.isRequired,
   css: PropTypesPlus.css,
+  namespace: PropTypesPlus.string,
   src: PropTypes.string.isRequired,
   variant: PropTypes.string,
 };
 
 UIImage.defaultProps = {
   css: undefined,
-  variant: 'main',
+  namespace: 'component_uiImage',
+  variant: 'standard',
 };
 
 export default _flowRight(

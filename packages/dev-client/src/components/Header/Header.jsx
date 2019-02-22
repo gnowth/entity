@@ -1,42 +1,41 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useDefaultStyle } from '@gnowth/style';
-import { UIBox, UIButton } from '@gnowth/ui';
+import { UIFlexBox, UIButton } from '@gnowth/ui';
+import { useEnhance } from '@private/hooks';
 
-import defaultLocales from './Header.locales';
-import defaultStyles from './Header.styles';
+import locales from './Header.locales';
+import styles from './Header.styles';
 
 function Header(props) {
-  const locales = { ...defaultLocales, ...props.locales };
-  const styles = useDefaultStyle(defaultStyles, props.styles);
+  const enhancedProps = useEnhance(props, { locales, styles });
 
   return (
-    <UIBox css={styles.header} justifyContent="flex-start">
+    <UIFlexBox {...enhancedProps} css={enhancedProps.styles.header} justifyContent="flex-start">
       <UIButton
-        content={locales.github}
+        content={enhancedProps.locales.github}
         to="https://github.com/gnowth/react"
         variant="text"
       />
 
       <UIButton
-        content={locales.style_guide}
+        content={enhancedProps.locales.style_guide}
         to="https://gnowth.github.io/react/style-guide"
         variant="text"
       />
 
       <UIButton
-        content={locales.changelog}
+        content={enhancedProps.locales.changelog}
         to="/pages/changelog"
         variant="text"
       />
 
       <UIButton
-        content={locales.readme}
+        content={enhancedProps.locales.readme}
         to="/pages/readme"
         variant="text"
       />
-    </UIBox>
+    </UIFlexBox>
   );
 }
 

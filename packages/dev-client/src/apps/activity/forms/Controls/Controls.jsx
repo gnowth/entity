@@ -10,47 +10,47 @@ import { useEnhance } from '@private/hooks';
 import locales from './Controls.locales';
 import styles, { Controls } from './Controls.styles';
 
-function FormControls(originalProps) {
-  const props = useEnhance(originalProps, { locales, styles });
-  const ExtraControlsComponent = props.extraControlsComponent;
+function FormControls(props) {
+  const enhancedProps = useEnhance(props, { locales, styles });
+  const ExtraControlsComponent = enhancedProps.extraControlsComponent;
 
   return (
     <Form {...props}>
-      { !props.resetHidden && (
+      { !enhancedProps.resetHidden && (
         <Control
-          action={props.resetAction}
-          component={props.buttonComponent}
+          action={enhancedProps.resetAction}
+          component={enhancedProps.buttonComponent}
           componentProps={{
-            content: props.locales.reset,
-            ...props.resetButtonComponentProps,
+            content: enhancedProps.locales.reset,
+            ...enhancedProps.resetButtonComponentProps,
           }}
         />
       )}
 
       <ExtraControlsComponent />
 
-      { !props.saveHidden && (
+      { !enhancedProps.saveHidden && (
         <Control
-          action={props.saveAction}
-          component={props.buttonComponent}
+          action={enhancedProps.saveAction}
+          component={enhancedProps.buttonComponent}
           componentProps={{
-            content: props.locales.save,
-            css: props.styles.buttons,
-            ...props.saveButtonComponentProps,
+            content: enhancedProps.locales.save,
+            css: enhancedProps.styles.buttons,
+            ...enhancedProps.saveButtonComponentProps,
           }}
         />
       )}
 
-      { !props.submitHidden && (
+      { !enhancedProps.submitHidden && (
         <Control
-          action={props.submitAction}
-          component={props.buttonComponent}
+          action={enhancedProps.submitAction}
+          component={enhancedProps.buttonComponent}
           componentProps={{
-            content: props.locales.submit,
-            css: props.styles.buttons,
+            content: enhancedProps.locales.submit,
+            css: enhancedProps.styles.buttons,
             palette: 'primary',
             variant: 'contained',
-            ...props.submitButtonComponentProps,
+            ...enhancedProps.submitButtonComponentProps,
           }}
         />
       )}

@@ -33,14 +33,14 @@ export const colorFromPalette = (configs = {}) => props => color({
   weight: configs.weight || props.paletteWeight,
 })(props);
 
-export const component = ({ name, defaultVariant = 'main', branch, variant } = {}) => (props) => {
+export const component = (configs = {}) => (props) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (!name) throw new Error('style.component: option "name" is required');
+    if (!configs.namespace && !props.namespace) throw new Error('style.component: option "namespace" is required');
   }
 
-  const theme = props.theme?.[`component_${name}_${variant || props.variant || defaultVariant}`];
+  const theme = props.theme?.[`${configs.namespace || props.namespace}_${configs.variant || props.variant || configs.defaultVariant || 'standard'}`];
 
-  return branch ? theme?.[branch] : theme;
+  return configs.branch ? theme?.[configs.branch] : theme;
 };
 
 export const mixin = ({ name } = {}) => (props) => {
@@ -51,7 +51,7 @@ export const mixin = ({ name } = {}) => (props) => {
   return props.theme?.[`mixin_${name}`];
 };
 
-export const sizeGridBase = props => props.theme?.vars?.gridBase || '0.5rem';
+export const sizeGridBase = props => props.theme?.var_size_grid || '0.5rem';
 
 export const variant = options => props => Object.keys(props.theme)
   .filter(name => name.startsWith(options.name))
