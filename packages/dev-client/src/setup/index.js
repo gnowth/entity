@@ -10,12 +10,12 @@ import 'normalize.css/normalize.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import setupAxios from './axios';
+import setupWorkbox from './workbox';
 import setupXDomain from './xdomain';
 
 export default function ({ settings }) {
   setupAxios(settings);
 
-  if (settings.XDOMAIN_ENABLED) {
-    setupXDomain(settings);
-  }
+  if (settings.ENABLE_FEATURE_WORKBOX) setupWorkbox(settings);
+  if (settings.ENABLE_FEATURE_XDOMAIN) setupXDomain(settings);
 }
