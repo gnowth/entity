@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-.c2 {
-  color: #000000;
-}
-
 .c2.c2 {
   font-size: 1rem;
 }
@@ -58,7 +54,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c6 {
-  color: #000000;
   font-size: 0.875rem;
   font-weight: 500;
   -webkit-letter-spacing: 1.25px;
@@ -133,6 +128,12 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
+  .c6 {
+    color: #000000;
+  }
+}
+
+@media print {
   .c1 {
     display: none;
   }
@@ -180,6 +181,12 @@ exports[`renders correctly 1`] = `
     </span>
     <span
       className="uiButton-Content c6"
+      value={
+        Object {
+          "defaultMessage": "GitHub",
+          "id": "packages.dev-client.src.components.Header.github",
+        }
+      }
     >
       GitHub
     </span>
@@ -223,6 +230,12 @@ exports[`renders correctly 1`] = `
     </span>
     <span
       className="uiButton-Content c6"
+      value={
+        Object {
+          "defaultMessage": "StyleGuide",
+          "id": "packages.dev-client.src.components.Header.style_guide",
+        }
+      }
     >
       StyleGuide
     </span>
@@ -237,8 +250,7 @@ exports[`renders correctly 1`] = `
     }
     css={
       Array [
-        undefined,
-        undefined,
+        " ",
       ]
     }
     href="#/pages/changelog"
@@ -274,6 +286,12 @@ exports[`renders correctly 1`] = `
     </span>
     <span
       className="uiButton-Content c6"
+      value={
+        Object {
+          "defaultMessage": "CHANGELOG",
+          "id": "packages.dev-client.src.components.Header.changelog",
+        }
+      }
     >
       CHANGELOG
     </span>
@@ -288,8 +306,7 @@ exports[`renders correctly 1`] = `
     }
     css={
       Array [
-        undefined,
-        undefined,
+        " ",
       ]
     }
     href="#/pages/readme"
@@ -325,6 +342,12 @@ exports[`renders correctly 1`] = `
     </span>
     <span
       className="uiButton-Content c6"
+      value={
+        Object {
+          "defaultMessage": "README",
+          "id": "packages.dev-client.src.components.Header.readme",
+        }
+      }
     >
       README
     </span>

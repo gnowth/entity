@@ -4,9 +4,10 @@ const settingsMap = {
     BASE_API_URL: 'https://www.gnowth.com/api',
     BASE_URL: 'https://www.gnowth.com/#',
     ENABLE_FEATURE_OBSERVATION: false,
+    ENABLE_FEATURE_WORKBOX: true,
+    ENABLE_FEATURE_XDOMAIN: true,
     ENVIRONMENT: 'production',
     VERSION: 'PROD-1.0.0',
-    XDOMAIN_ENABLED: true,
   },
 };
 
@@ -19,10 +20,10 @@ export default Object.assign(
     CSRF_COOKIE_NAME: 'csrftoken',
     ENVIRONMENT: 'development',
     ENABLE_FEATURE_OBSERVATION: true,
+    ENABLE_FEATURE_XDOMAIN: false,
     NAMESPACE: 'broker',
     LANG: ['en'],
     VERSION: 'DEV-0.1.0',
-    XDOMAIN_ENABLED: false,
   },
 
   // env settings

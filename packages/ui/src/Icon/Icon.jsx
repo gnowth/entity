@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { colorFromPalette, component } from '@gnowth/style';
@@ -17,9 +17,12 @@ const UIIcon = styled.i.attrs(props => ({
     font-size: 1rem;
   }
 
-  color: ${colorFromPalette()};
+  ${props => props.palette && css`
+    color: ${colorFromPalette()};
+  `}
 
-  ${component({ name: 'uiIcon' })}
+  ${component()}
+  ${props => props.css}
 `;
 
 UIIcon.propTypes = {
@@ -27,6 +30,7 @@ UIIcon.propTypes = {
   hidden: PropTypes.bool,
   material: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  namespace: PropTypes.string,
   palette: PropTypes.string,
   paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
@@ -37,11 +41,11 @@ UIIcon.defaultProps = {
   fontawesome: false,
   hidden: undefined,
   material: false,
+  namespace: 'component_uiIcon',
   palette: undefined,
   paletteAsBackground: false,
   paletteWeight: undefined,
   variant: 'standard',
-  visible: true,
 };
 
 export default UIIcon;

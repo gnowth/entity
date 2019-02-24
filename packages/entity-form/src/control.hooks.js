@@ -36,12 +36,14 @@ function useHandleEvent(props, input, setAction) {
       return props.submit
         ? input.onSubmit({
           target: {
+            index: input.index,
             name: input.name,
             value: computedAction,
           },
         })
         : input.onChange({
           target: {
+            index: input.index,
             name: input.name,
             value: computedAction,
           },

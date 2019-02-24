@@ -18,8 +18,4 @@ export default class Enum extends Entity {
   static toString(record) {
     return record?.get('label') || '';
   }
-
-  static toLocale(record) {
-    return record?.get('locale');
-  }
 }

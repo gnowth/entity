@@ -1,12 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { colorFromPalette } from '@gnowth/style';
+import { color, colorFromPalette } from '@gnowth/style';
 
 const StringComponent = props => props.children;
 
 const Component = styled.span`
-  color: ${colorFromPalette()};
+  ${props => props.palette && css`
+    color: ${colorFromPalette()};
+  `}
+
+  ${props => !props.mediaPrintDisabled && css`
+    @media print {
+      color: ${color({ name: 'black' })}
+    }
+  `}
 
   ${props => props.css}
 `;
@@ -21,6 +29,10 @@ export default {
     const { intlContext = DummyContext } = useDefault(mapDefault, props);
     const intl = React.useContext(intlContext);
     const value = props.children || props.value;
+
+    if (props.hidden) {
+      return null;
+    }
 
     if (value instanceof Error) {
       return value.message;
@@ -38,21 +50,19 @@ export default {
   },
 
   useComponent(props) {
-    return props.component === null
+    return props.as === null
       ? StringComponent
       : Component;
   },
 
-  usePropsComponent(props) {
+  useProps(props) {
     return {
-      ...props.componentProps,
-      as: props.component,
-      className: props.className,
-      css: props.css,
-      hidden: props.hidden,
-      palette: props.palette,
-      paletteAsBackground: props.paletteAsBackground,
-      paletteWeight: props.paletteWeight,
+      ...props,
+      hooks: undefined,
+      locales: undefined,
+      names: undefined,
+      styles: undefined,
+      theme: undefined,
     };
   },
 };

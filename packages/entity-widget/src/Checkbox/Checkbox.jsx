@@ -9,7 +9,7 @@ const Input = styled.input`
   cursor: pointer;
   width: 14px;
 
-  ${component({ name: 'widgetCheckbox' })}
+  ${component()}
   ${props => props.css}
 `;
 
@@ -52,6 +52,7 @@ class WidgetCheckbox extends React.Component {
 WidgetCheckbox.propTypes = {
   index: PropTypes.number,
   name: PropTypes.string.isRequired,
+  namespace: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.bool,
   variant: PropTypes.string,
@@ -59,8 +60,9 @@ WidgetCheckbox.propTypes = {
 
 WidgetCheckbox.defaultProps = {
   index: undefined,
+  namespace: 'component_widgetCheckbox',
   value: false,
-  variant: 'main',
+  variant: 'standard',
 };
 
 export default withPropsFiltered(WidgetCheckbox);

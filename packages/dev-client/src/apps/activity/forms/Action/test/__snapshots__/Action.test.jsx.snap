@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-.c9 {
-  color: #000000;
-}
-
 .c9.c9 {
   font-size: 1rem;
 }
@@ -58,7 +54,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c1 {
-  color: #000000;
   font-size: 2.125rem;
   font-weight: 400;
   -webkit-letter-spacing: 0.25px;
@@ -70,7 +65,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c3 {
-  color: #000000;
   font-size: 0.875rem;
   font-weight: 400;
   -webkit-letter-spacing: 0.25px;
@@ -82,7 +76,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c13 {
-  color: #000000;
   font-size: 0.875rem;
   font-weight: 500;
   -webkit-letter-spacing: 1.25px;
@@ -208,6 +201,24 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
+  .c1 {
+    color: #000000;
+  }
+}
+
+@media print {
+  .c3 {
+    color: #000000;
+  }
+}
+
+@media print {
+  .c13 {
+    color: #000000;
+  }
+}
+
+@media print {
   .c8 {
     display: none;
   }
@@ -219,6 +230,12 @@ exports[`renders correctly 1`] = `
   >
     <h4
       className="c1"
+      value={
+        Object {
+          "defaultMessage": "Action",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.header_title",
+        }
+      }
     >
       Action
     </h4>
@@ -228,6 +245,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c3 c4"
+      value={
+        Object {
+          "defaultMessage": "Person Responsible",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.person_responsible",
+        }
+      }
     >
       Person Responsible
     </label>
@@ -344,6 +367,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c3 c4"
+      value={
+        Object {
+          "defaultMessage": "Due Date",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.date_due",
+        }
+      }
     >
       Due Date
     </label>
@@ -377,6 +406,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c3 c4"
+      value={
+        Object {
+          "defaultMessage": "Completed by",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.completed_by",
+        }
+      }
     >
       Completed by
     </label>
@@ -493,6 +528,12 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c3 c4"
+      value={
+        Object {
+          "defaultMessage": "Completed Date",
+          "id": "packages.dev-client.src.apps.activity.forms.Action.date_completed",
+        }
+      }
     >
       Completed Date
     </label>
@@ -564,6 +605,12 @@ exports[`renders correctly 1`] = `
       <span
         className="uiButton-Content c13"
         hidden={false}
+        value={
+          Object {
+            "defaultMessage": "UPDATE",
+            "id": "packages.dev-client.src.apps.activity.forms.Action.update",
+          }
+        }
       >
         UPDATE
       </span>
@@ -608,6 +655,12 @@ exports[`renders correctly 1`] = `
       <span
         className="uiButton-Content c13"
         hidden={false}
+        value={
+          Object {
+            "defaultMessage": "COMPLETE",
+            "id": "packages.dev-client.src.apps.activity.forms.Action.complete",
+          }
+        }
       >
         COMPLETE
       </span>

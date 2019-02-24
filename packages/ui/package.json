@@ -32,19 +32,19 @@
     "prop-types-exact": "1.2.0",
     "react-immutable-proptypes": "2.1.0",
     "react-intl": "2.8.0",
-    "react-onclickoutside": "6.7.1"
+    "react-onclickoutside": "6.8.0"
   },
   "devDependencies": {
     "jest-styled-components": "6.3.1"
   },
   "peerDependencies": {
-    "@storybook/addon-actions": "4.1.12",
-    "@storybook/addon-knobs": "4.1.12",
+    "@storybook/addon-actions": "4.1.13",
+    "@storybook/addon-knobs": "4.1.13",
     "lodash": "4.17.11",
-    "react": "16.8.2",
-    "react-dom": "16.8.2",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
     "react-router-dom": "4.3.1",
-    "react-test-renderer": "16.8.2",
+    "react-test-renderer": "16.8.3",
     "styled-components": "4.1.3"
   }
 }

@@ -2,42 +2,41 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useDefaultStyle } from '@gnowth/style';
+import { useEnhance } from '@private/hooks';
 
 import UIError from '../Error';
 import UITooltip from '../Tooltip';
 import UIType from '../Type';
 
-import defaultHooks from './Label.hooks';
-import defaultStyles, { Label, UILabelRoot } from './Label.styles';
+import hooks from './Label.hooks';
+import styles, { Label, UILabelRoot } from './Label.styles';
 
 function UILabel(props) {
-  const hooks = { ...defaultHooks, ...props.hooks };
-  const styles = useDefaultStyle(defaultStyles, props.styles);
-  const propsTooltip = hooks.usePropsTooltip(props, styles);
+  const enhancedProps = useEnhance(props, { hooks, styles });
+  const propsTooltip = enhancedProps.hooks.usePropsTooltip(enhancedProps, enhancedProps.styles);
 
   return (
-    <UILabelRoot className={props.className} css={props.css}>
-      { (props.label || props.labelLocale) && (
+    <UILabelRoot className={enhancedProps.className} css={enhancedProps.css}>
+      { (enhancedProps.label || enhancedProps.labelLocale) && (
         <UIType
-          component={Label}
-          value={props.labelLocale}
+          as={Label}
+          value={enhancedProps.labelLocale}
           variant="label"
-          {...props.labelComponentProps}
+          {...enhancedProps.labelComponentProps}
         >
-          { props.label }
+          { enhancedProps.label }
         </UIType>
       )}
 
-      { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
+      { (enhancedProps.label || enhancedProps.labelLocale) && enhancedProps.errors && enhancedProps.errors.size > 0 && (
         <UITooltip {...propsTooltip}>
-          { props.errors.map((error, index) => (
+          { enhancedProps.errors.map((error, index) => (
             <UIError key={index}>{ error }</UIError> // eslint-disable-line
           ))}
         </UITooltip>
       )}
 
-      { props.children }
+      { enhancedProps.children }
     </UILabelRoot>
   );
 }

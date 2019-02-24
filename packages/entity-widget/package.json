@@ -38,14 +38,14 @@
     "jest-styled-components": "6.3.1"
   },
   "peerDependencies": {
-    "@storybook/addon-actions": "4.1.12",
-    "@storybook/addon-knobs": "4.1.12",
+    "@storybook/addon-actions": "4.1.13",
+    "@storybook/addon-knobs": "4.1.13",
     "lodash": "4.17.11",
     "moment": "2.24.0",
-    "react": "16.8.2",
+    "react": "16.8.3",
     "react-datepicker": "2.1.0",
     "react-intl": "2.8.0",
-    "react-test-renderer": "16.8.2",
+    "react-test-renderer": "16.8.3",
     "styled-components": "4.1.3"
   }
 }

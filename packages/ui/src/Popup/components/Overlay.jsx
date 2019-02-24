@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { color, component } from '@gnowth/style';
 
 const Overlay = styled.div`
@@ -6,7 +7,17 @@ const Overlay = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
   position: absolute;
 
-  ${component({ name: 'uiPopup_Overlay' })}
+  ${component()}
 `;
+
+Overlay.propTypes = {
+  namespace: PropTypes.string,
+  variant: PropTypes.string,
+};
+
+Overlay.defaultProps = {
+  namespace: 'component_uiPopup_Overlay',
+  variant: 'standard',
+};
 
 export default Overlay;

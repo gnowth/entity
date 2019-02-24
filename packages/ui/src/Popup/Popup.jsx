@@ -4,10 +4,11 @@ import withOnClickOutside from 'react-onclickoutside';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { useEnhance } from '@private/hooks';
 
 import Overlay from './components/Overlay';
 import Portal from './components/Portal';
-import defaultHooks from './Popup.hooks';
+import hooks from './Popup.hooks';
 
 const ContainerComponent = styled.div`
   display: inline-block;
@@ -20,17 +21,17 @@ const ContainerComponent = styled.div`
  */
 function Popup(props) {
   const [opened, setOpened] = React.useState(false);
-  const hooks = { ...defaultHooks, ...props.hooks };
-  const { Container, Control, Component, Wrapper } = hooks.useComponents(props);
-  const componentProps = hooks.usePropsComponent(props, opened, setOpened);
+  const enhancedProps = useEnhance(props, { hooks });
+  const { Container, Control, Component, Wrapper } = enhancedProps.hooks.useComponents(enhancedProps);
+  const componentProps = enhancedProps.hooks.usePropsComponent(enhancedProps, opened, setOpened);
 
-  Popup.handleClickOutside = hooks.useGetClickOutside(componentProps);
+  Popup.handleClickOutside = enhancedProps.hooks.useGetClickOutside(componentProps);
 
   return (
-    <Container {...hooks.usePropsContainer(props)}>
-      <Control {...hooks.usePropsControl(props, opened, setOpened)} />
+    <Container {...enhancedProps.hooks.usePropsContainer(enhancedProps)}>
+      <Control {...enhancedProps.hooks.usePropsControl(enhancedProps, opened, setOpened)} />
 
-      <Wrapper {...hooks.usePropsWrapper(props, opened)}>
+      <Wrapper {...enhancedProps.hooks.usePropsWrapper(enhancedProps, opened)}>
         <Component {...componentProps} />
       </Wrapper>
     </Container>

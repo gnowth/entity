@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { color } from '../../selectors';
 
 // eslint-disable-next-line import/prefer-default-export
-export const component_widgetPagination_main = {
+export const component_widgetPagination_standard = {
   navigation: css`
     position: fixed;
     bottom: 0;

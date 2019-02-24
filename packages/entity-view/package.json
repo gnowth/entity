@@ -36,14 +36,14 @@
     "@entity/duck-namespace-screen": "0.4.0",
     "@entity/duck-query": "0.4.0",
     "react-intl": "2.8.0",
-    "react-redux": "6.0.0",
+    "react-redux": "6.0.1",
     "redux-mock-store": "1.5.3"
   },
   "peerDependencies": {
     "immutable": "4.0.0-rc.12",
-    "react": "16.8.2",
+    "react": "16.8.3",
     "react-router-dom": "4.3.1",
-    "react-test-renderer": "16.8.2",
+    "react-test-renderer": "16.8.3",
     "styled-components": "4.1.3"
   }
 }

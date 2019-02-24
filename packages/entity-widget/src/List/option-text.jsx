@@ -11,7 +11,7 @@ const textStyle = css`
 
 const OptionText = props => (
   <UIType
-    component="li"
+    as="li"
     css={textStyle}
     variant="body2"
     {...props}

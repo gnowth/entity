@@ -75,10 +75,6 @@ export default class Title extends Entity {
     return `${this.paths?.urlBase}${this.getId(record, configs)}/?${queryString.stringify(computedParams.toJS())}`;
   }
 
-  static toLocale(record) {
-    return record?.get('locale') || {};
-  }
-
   static toString(record) {
     return record?.get('title') || '';
   }

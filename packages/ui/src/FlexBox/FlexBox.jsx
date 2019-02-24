@@ -2,25 +2,27 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { component } from '@gnowth/style';
 
-const UIBox = styled.div`
+const UIFlexBox = styled.div`
   display: flex;
   align-items: ${props => props.alignItems};
   justify-content: ${props => props.justifyContent};
 
-  ${component({ name: 'uiBox' })}
+  ${component()}
   ${props => props.css}
 `;
 
-UIBox.propTypes = {
+UIFlexBox.propTypes = {
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
+  namespace: PropTypes.string,
   variant: PropTypes.string,
 };
 
-UIBox.defaultProps = {
+UIFlexBox.defaultProps = {
   alignItems: 'center',
   justifyContent: 'center',
-  variant: 'main',
+  namespace: 'component_uiFlexBox',
+  variant: 'standard',
 };
 
-export default UIBox;
+export default UIFlexBox;

@@ -6,7 +6,7 @@
   "repository": "https://github.com/gnowth/react.git",
   "version": "0.4.0",
   "engines": {
-    "node": "10.15.0",
+    "node": "10.15.1",
     "npm": "6.4.1"
   },
   "scripts": {
@@ -35,15 +35,15 @@
     "@gnowth/ui": "0.4.0",
     "@private/hooks": "0.4.0",
     "@private/react-intl": "0.4.0",
-    "@storybook/addon-a11y": "4.1.12",
-    "@storybook/addon-actions": "4.1.12",
-    "@storybook/addon-centered": "4.1.12",
-    "@storybook/addon-knobs": "4.1.12",
-    "@storybook/addon-links": "4.1.12",
-    "@storybook/addon-notes": "4.1.12",
-    "@storybook/addon-options": "4.1.12",
-    "@storybook/addon-storysource": "4.1.12",
-    "@storybook/react": "4.1.12",
+    "@storybook/addon-a11y": "4.1.13",
+    "@storybook/addon-actions": "4.1.13",
+    "@storybook/addon-centered": "4.1.13",
+    "@storybook/addon-knobs": "4.1.13",
+    "@storybook/addon-links": "4.1.13",
+    "@storybook/addon-notes": "4.1.13",
+    "@storybook/addon-options": "4.1.13",
+    "@storybook/addon-storysource": "4.1.13",
+    "@storybook/react": "4.1.13",
     "axios": "0.18.0",
     "connected-react-router": "6.3.1",
     "font-awesome": "4.7.0",
@@ -57,13 +57,13 @@
     "normalize.css": "8.0.1",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
-    "react": "16.8.2",
+    "react": "16.8.3",
     "react-datepicker": "2.1.0",
-    "react-dom": "16.8.2",
+    "react-dom": "16.8.3",
     "react-immutable-proptypes": "2.1.0",
     "react-intl": "2.8.0",
     "react-markdown": "4.0.6",
-    "react-redux": "6.0.0",
+    "react-redux": "6.0.1",
     "react-router-dom": "4.3.1",
     "react-router-prop-types": "1.0.4",
     "redux": "4.0.1",
@@ -74,6 +74,6 @@
   "devDependencies": {
     "directory-named-webpack-plugin": "4.0.0",
     "jest-styled-components": "6.3.1",
-    "react-test-renderer": "16.8.2"
+    "react-test-renderer": "16.8.3"
   }
 }
