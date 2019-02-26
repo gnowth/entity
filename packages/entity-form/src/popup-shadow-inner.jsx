@@ -3,7 +3,7 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
 
-import useInput from './use-input';
+import useContextInput from './use-context-input';
 
 const mapDefault = {
   popupComponent: ['entityForm_popup', 'component_popup'],
@@ -11,7 +11,7 @@ const mapDefault = {
 
 function PopupShadowInner({ popupComponent, ...props }) {
   const Defaults = useDefault(mapDefault, { popupComponent });
-  const input = useInput();
+  const input = useContextInput();
   const handleClose = React.useCallback(
     () => {
       input.onChange({

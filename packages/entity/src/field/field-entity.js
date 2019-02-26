@@ -35,7 +35,7 @@ export default class EntityField extends AnyField {
   }
 
   dataToValue(data) {
-    return this.getEntity({ data }).dataToRecord(data);
+    return this.entity.dataToRecord(data);
   }
 
   default() {
@@ -44,14 +44,10 @@ export default class EntityField extends AnyField {
     return this.blank ? null : this.entity.dataToRecord({});
   }
 
-  getEntity() {
-    return this.entity;
-  }
-
   getErrors(errors, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (configs.name && !_isString(configs.name)) throw new Error(`EntityField.getErrors (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (configs.name && !this.getEntity(configs).fields[configs.name]) throw new Error(`EntityField.getErrors (${this.entity.name}): field "${configs.name}" not found`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getErrors (${this.entity.name}): field "${configs.name}" not found`);
     }
 
     return configs.name
@@ -65,22 +61,22 @@ export default class EntityField extends AnyField {
   getField(configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (configs.name && !_isString(configs.name)) throw new Error(`EntityField.getField (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (configs.name && !this.getEntity(configs).fields[configs.name]) throw new Error(`EntityField.getField (${this.entity.name}): field "${configs.name}" not found`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getField (${this.entity.name}): field "${configs.name}" not found`);
     }
 
     return configs.name
-      ? this.getEntity(configs).fields[configs.name]
+      ? this.entity.fields[configs.name]
       : this;
   }
 
   getId(value, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (configs.name && !_isString(configs.name)) throw new Error(`EntityField.getId (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (configs.name && !this.getEntity(configs).fields[configs.name]) throw new Error(`EntityField.getId (${this.entity.name}): field "${configs.name}" not found`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getId (${this.entity.name}): field "${configs.name}" not found`);
     }
 
     return this.getField({ value, ...configs })
-      .getEntity({ value, ...configs })
+      .entity
       .getId(this.getValue(value, configs));
   }
 
@@ -95,7 +91,7 @@ export default class EntityField extends AnyField {
   getValue(value, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (configs.name && !_isString(configs.name)) throw new Error(`EntityField.getValue (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (configs.name && !this.getEntity(configs).fields[configs.name]) throw new Error(`EntityField.getValue (${this.entity.name}): field "${configs.name}" not found`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getValue (${this.entity.name}): field "${configs.name}" not found`);
     }
 
     return configs.name
@@ -106,7 +102,7 @@ export default class EntityField extends AnyField {
   isBlank(value = null, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (configs.name && !_isString(configs.name)) throw new Error(`EntityField.isBlank (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (configs.name && !this.getEntity(configs).fields[configs.name]) throw new Error(`EntityField.isBlank (${this.entity.name}): field "${configs.name}" not found`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.isBlank (${this.entity.name}): field "${configs.name}" not found`);
     }
 
     return value === null || (
@@ -117,7 +113,7 @@ export default class EntityField extends AnyField {
   }
 
   toData(value, configs = {}) {
-    return this.getEntity({ value, ...configs }).toData(value, configs);
+    return this.entity.toData(value, configs);
   }
 
   valueToParam(value = null) {
@@ -131,6 +127,6 @@ export default class EntityField extends AnyField {
   }
 
   toString(value, configs = {}) {
-    return this.getEntity({ value, ...configs }).toString(value, configs);
+    return this.entity.toString(value, configs);
   }
 }

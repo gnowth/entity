@@ -1,6 +1,6 @@
 export * from './context';
 
-export { default as useInput } from './use-input';
+export { default as useContextInput } from './use-context-input';
 
 export { default as withInput } from './with-input';
 

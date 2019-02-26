@@ -46,12 +46,6 @@ export default class Field {
     return this.many ? List() : null;
   }
 
-  getEntity() {
-    if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`Field.getEntity (${this.constructor.name}): method is not supported.`);
-    }
-  }
-
   getErrors(errors, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (configs.name) throw new Error(`Field.getErrors (${this.constructor.name}): option "name" is not supported.`);

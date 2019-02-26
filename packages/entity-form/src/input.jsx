@@ -5,11 +5,11 @@ import React from 'react';
 import { List } from 'immutable';
 
 import defaultHooks from './input.hooks';
-import useInput from './use-input';
+import useContextInput from './use-context-input';
 
 function Input(props) {
   const hooks = { ...defaultHooks, ...props.hooks };
-  const input = useInput(props);
+  const input = useContextInput(props);
   const Components = hooks.useComponents(props, input);
   const componentProps = hooks.useProps(props, input, Components);
   const shouldShow = hooks.useShouldShow(props, componentProps, Components);
