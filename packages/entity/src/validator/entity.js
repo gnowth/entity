@@ -8,8 +8,8 @@ export default validatorOptions => (value, options) => {
   return _isFunction(validatorOptions)
     ? validatorOptions({
       record: value,
-      entity: options.field.getEntity(options),
+      entity: options.field.entity,
       ...options,
     })
-    : options.field.getEntity(options).validate(value, validatorOptions);
+    : options.field.entity.validate(value, validatorOptions);
 };

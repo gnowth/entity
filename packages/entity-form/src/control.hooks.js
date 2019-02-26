@@ -5,7 +5,7 @@ import React from 'react';
 import { useDefault } from '@gnowth/default';
 import useRedux from '@private/use-redux';
 
-import useInput from './use-input';
+import useContextInput from './use-context-input';
 
 const mapDefault = {
   store: 'store',
@@ -68,7 +68,7 @@ function useStatus(action) {
 export default {
   usePropsComponent: (props, component) => {
     const [action, setAction] = React.useState();
-    const input = useInput(props);
+    const input = useContextInput(props);
     const status = useStatus(action);
 
     return Object.assign(

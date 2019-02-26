@@ -1,18 +1,16 @@
 import React from 'react';
-
 import { useDefault } from '@gnowth/default';
-import { FormContext } from './context';
 
 const mapDefault = {
   useQuery: ['entityForm_useQuery', 'hook_useQuery'],
 };
 
-const useHandleChange = (props, context) => React.useCallback(
-  props.array
-    ? ({ target }) => context.onChange({
+const useHandleChange = (props, configs = {}) => React.useCallback(
+  configs.array
+    ? ({ target }) => props.onChange({
       target: {
         array: true,
-        name: context.name,
+        name: props.name,
         value: target.value,
       },
     })
@@ -21,38 +19,38 @@ const useHandleChange = (props, context) => React.useCallback(
         ? target.getAttribute('index') || undefined
         : target.index;
 
-      const field = context.field.getField({ name: props.name });
+      const field = props.field.getField(configs);
 
-      const nextValue = props.willChangeRecord({
+      const nextValue = configs.willChangeRecord({
         field,
         nextRecord: target.name
-          ? context.value.setIn(
+          ? props.value.setIn(
             index === undefined ? [target.name] : [target.name, index],
             field.clean(target.value),
           )
-          : context.value.merge(target.value),
+          : props.value.merge(target.value),
         nextValue: target.value,
-        record: context.value,
-        value: context.field.getValue(context.value, { name: props.name }),
+        record: props.value,
+        value: props.field.getValue(props.value, configs),
       });
 
-      return context.onChange({
+      return props.onChange({
         target: {
-          index: context.index,
-          name: context.name,
+          index: props.index,
+          name: props.name,
           value: nextValue,
         },
       });
     },
-  [props.name, props.willChangeRecord, props.array, context],
+  [configs.name, configs.willChangeRecord, configs.array, props.name, props.index, props.field, props.onChange, props.value],
 );
 
-const useHandleSubmit = (props, context) => React.useCallback(
-  props.array
-    ? ({ target }) => context.onSubmit({
+const useHandleSubmit = (props, configs = {}) => React.useCallback(
+  configs.array
+    ? ({ target }) => props.onSubmit({
       target: {
         array: true,
-        name: context.name,
+        name: props.name,
         value: target.value,
       },
     })
@@ -61,38 +59,34 @@ const useHandleSubmit = (props, context) => React.useCallback(
         ? target.getAttribute('index') || undefined
         : target.index;
 
-      const field = context.field.getField({ name: props.name });
+      const field = props.field.getField(configs);
 
-      return context.onSubmit({
+      return props.onSubmit({
         target: {
-          index: context.index,
-          name: context.name,
+          index: props.index,
+          name: props.name,
           value: target.name
-            ? context.value.setIn(
+            ? props.value.setIn(
               index === undefined ? [target.name] : [target.name, index],
               field.clean(target.value),
             )
-            : context.value.merge(target.value),
+            : props.value.merge(target.value),
         },
       });
     },
-  [props.name, props.array, context],
+  [configs.name, configs.array, props.value, props.name, props.index, props.onSubmit, props.field],
 );
 
-function useInput(configs) {
-  const computedConfigs = Object.assign({}, useInput.defaultConfigs, configs);
-
+function useInput(props, configs) {
+  const computedConfigs = { ...useInput.defaultConfigs, ...configs };
   const [valueInput, setValueInput] = React.useState('');
   const onInputChange = React.useCallback(input => setValueInput(input), []);
-
-  const context = React.useContext(FormContext);
   const defaults = useDefault(mapDefault, computedConfigs);
-
-  const field = context.field.getField({ name: computedConfigs.name });
+  const field = props.field.getField({ name: computedConfigs.name });
 
   const query = defaults.useQuery({
     action: computedConfigs.loadOptionsFromAPI
-      ? field.getEntity().duck.actions.get({
+      ? field.entity.duck.actions.get({
         params: Map({ search: valueInput }).merge(computedConfigs.filterParams),
       })
       : undefined,
@@ -102,19 +96,19 @@ function useInput(configs) {
     field,
     onInputChange,
     disabled: computedConfigs.disabled,
-    errors: context.field.getErrors(context.errors, { name: computedConfigs.name }),
+    errors: props.field.getErrors(props.errors, { name: computedConfigs.name }),
     index: computedConfigs.index,
     name: computedConfigs.name,
-    onChange: useHandleChange(computedConfigs, context),
-    onSubmit: useHandleSubmit(computedConfigs, context),
+    onChange: useHandleChange(props, computedConfigs),
+    onSubmit: useHandleSubmit(props, computedConfigs),
     processing: query.processing,
     processingDidFail: query.processingDidFail,
     readOnly: computedConfigs.readOnly,
     options: computedConfigs.loadOptionsFromAPI
       ? query.value
       : field.getOptions(),
-    value: context.field.getValue(context.value, { name: computedConfigs.name }),
-    valueInitial: context.field.getValue(context.valueInitial, { name: computedConfigs.name }),
+    value: props.field.getValue(props.value, { name: computedConfigs.name }),
+    valueInitial: props.field.getValue(props.valueInitial, { name: computedConfigs.name }),
   };
 }
 
