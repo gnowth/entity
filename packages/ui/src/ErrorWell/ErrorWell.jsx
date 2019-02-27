@@ -2,14 +2,14 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 
 import UIError from '../Error';
-import UIWell from '../Well';
+import UICard from '../Card';
 
 const UIErrorWell = props => props.errors.size > 0 && (
-  <UIWell className={props.className} variant="danger">
+  <UICard className={props.className} variant="danger">
     { props.errors.map((error, index) => (
       <UIError key={index}>{ error }</UIError> // eslint-disable-line
     ))}
-  </UIWell>
+  </UICard>
 );
 
 UIErrorWell.propTypes = {

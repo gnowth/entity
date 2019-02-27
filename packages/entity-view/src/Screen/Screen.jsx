@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { UIWell } from '@gnowth/ui';
+import { UICard } from '@gnowth/ui';
 
 const mapDefault = {
   queryComponent: ['entityView_query', 'component_query'],
@@ -31,7 +31,7 @@ ViewScreen.propTypes = {
 };
 
 ViewScreen.defaultProps = {
-  component: UIWell,
+  component: UICard,
   queryComponent: undefined,
   ratio: 2,
   variant: 'page',

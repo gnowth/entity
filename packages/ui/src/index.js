@@ -2,6 +2,8 @@ export * from './stories';
 
 export { default as UIButton } from './Button';
 
+export { default as UICard } from './Card';
+
 export { default as UIError } from './Error';
 
 export { default as UIErrorBoundary } from './ErrorBoundary';
@@ -25,5 +27,3 @@ export { default as UIProgressLine } from './ProgressLine';
 export { default as UISpacer } from './Spacer';
 
 export { default as UIType } from './Type';
-
-export { default as UIWell } from './Well';

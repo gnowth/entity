@@ -4,7 +4,7 @@ import React from 'react';
 import { useDefault } from '@gnowth/default';
 
 export default {
-  useComponents: (props, input) => {
+  useComponents(props, input) {
     const mapDefault = React.useMemo(
       () => ({
         component: `widget_${props.type || input.field.type}`,
@@ -25,48 +25,54 @@ export default {
     };
   },
 
-  useProps: (props, input, Components) => Object.assign(
-    {
-      name: props.name,
-      onChange: input.onChange,
-      onSubmit: input.onSubmit,
-      value: input.value,
-    },
+  useProps(props, input, Components) {
+    return Object.assign(
+      {
+        name: props.name,
+        onChange: input.onChange,
+        onSubmit: input.onSubmit,
+        value: input.value,
+      },
 
-    (props.children || !_isString(Components.component)) && {
-      errors: input.errors,
-      field: input.field,
-      onInputChange: input.onInputChange,
-      options: input.options,
-      processing: input.processing,
-      processingDidFail: input.processingDidFail,
-      valueInitial: input.valueInitial,
-    },
+      (props.children || !_isString(Components.component)) && {
+        errors: input.errors,
+        field: input.field,
+        onInputChange: input.onInputChange,
+        options: input.options,
+        processing: input.processing,
+        processingDidFail: input.processingDidFail,
+        valueInitial: input.valueInitial,
+      },
 
-    _isFunction(props.componentProps)
-      ? props.componentProps(input)
-      : props.componentProps,
-  ),
+      _isFunction(props.componentProps)
+        ? props.componentProps(input)
+        : props.componentProps,
+    );
+  },
 
-  usePropsErrorBoundary: (props, components) => React.useMemo(
-    () => (
-      components.errorBoundary === React.Fragment
-        ? {}
-        : props.errorBoundaryComponentProps
-    ),
-    [props.errorBoundaryComponentProps, components.errorBoundary],
-  ),
+  usePropsErrorBoundary(props, components) {
+    return React.useMemo(
+      () => (
+        components.errorBoundary === React.Fragment
+          ? {}
+          : props.errorBoundaryComponentProps
+      ),
+      [props.errorBoundaryComponentProps, components.errorBoundary],
+    );
+  },
 
-  useShouldShow: (props, componentProps, Components) => ({
-    children: !!props.children,
+  useShouldShow(props, componentProps, Components) {
+    return {
+      children: !!props.children,
 
-    component: !props.children && !!Components.component && !props.many,
+      component: !props.children && !!Components.component && !props.many,
 
-    componentArray: !props.children && !!Components.component && props.many && componentProps.value,
-  }),
+      componentArray: !props.children && !!Components.component && props.many && componentProps.value,
+    };
+  },
 
-  useWrapperComponentProps: (props, componentProps, shouldShow) => (
-    shouldShow.children
+  useWrapperComponentProps(props, componentProps, shouldShow) {
+    return shouldShow.children
       ? {}
       : Object.assign(
         {},
@@ -74,6 +80,6 @@ export default {
         _isFunction(props.wrapperComponentProps)
           ? props.wrapperComponentProps(componentProps)
           : props.wrapperComponentProps,
-      )
-  ),
+      );
+  },
 };

@@ -66,7 +66,7 @@ function useStatus(action) {
 }
 
 export default {
-  usePropsComponent: (props, component) => {
+  usePropsComponent(props, component) {
     const [action, setAction] = React.useState();
     const input = useContextInput(props);
     const status = useStatus(action);
@@ -86,12 +86,14 @@ export default {
     );
   },
 
-  usePropsErrorBoundary: (props, components) => React.useMemo(
-    () => (
-      components.errorBoundaryComponent === React.Fragment
-        ? {}
-        : props.errorBoundaryComponentProps
-    ),
-    [props.errorBoundaryComponentProps, components.errorBoundaryComponent],
-  ),
+  usePropsErrorBoundary(props, components) {
+    return React.useMemo(
+      () => (
+        components.errorBoundaryComponent === React.Fragment
+          ? {}
+          : props.errorBoundaryComponentProps
+      ),
+      [props.errorBoundaryComponentProps, components.errorBoundaryComponent],
+    );
+  },
 };
