@@ -6,7 +6,7 @@ import React from 'react';
 
 import { DefaultContext } from './context';
 
-export default (mapDefault, defaults = {}) => {
+export default function (mapDefault, defaults = {}) {
   const context = React.useContext(DefaultContext) || defaults;
 
   if (!mapDefault) return context;
@@ -35,4 +35,4 @@ export default (mapDefault, defaults = {}) => {
     ),
     [context, mapDefault, ..._map(mapDefault, (val, key) => defaults[key])],
   );
-};
+}

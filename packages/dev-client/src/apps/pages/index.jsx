@@ -5,7 +5,7 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
 import { App } from '@gnowth/app';
-import { UIType, UIWell } from '@gnowth/ui';
+import { UIType, UICard } from '@gnowth/ui';
 import { useEnhance } from '@private/hooks';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
@@ -30,18 +30,18 @@ function AppPage(props) {
         <Route
           path={`${enhancedProps.match.url}/changelog`}
           render={() => (
-            <UIWell ratio={3} variant="page_flat">
+            <UICard ratio={3} variant="page_flat">
               <Markdown className="markdown-body" source={changelog} />
-            </UIWell>
+            </UICard>
           )}
         />
 
         <Route
           path={`${enhancedProps.match.url}/readme`}
           render={() => (
-            <UIWell ratio={3} variant="page_flat">
+            <UICard ratio={3} variant="page_flat">
               <Markdown className="markdown-body" source={readme} />
-            </UIWell>
+            </UICard>
           )}
         />
 

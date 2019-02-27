@@ -7,7 +7,7 @@ import * as vars from './vars';
 
 import * as uiButton from './components/UIButton';
 import * as uiType from './components/UIType';
-import * as uiWell from './components/UIWell';
+import * as uiCard from './components/UICard';
 import * as viewLink from './components/ViewLink';
 import * as widgetCheckbox from './components/WidgetCheckbox';
 import * as widgetDate from './components/WidgetDate';
@@ -27,7 +27,7 @@ export default {
 
   ...uiButton,
   ...uiType,
-  ...uiWell,
+  ...uiCard,
   ...viewLink,
   ...widgetCheckbox,
   ...widgetDate,

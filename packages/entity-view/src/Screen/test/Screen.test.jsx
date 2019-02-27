@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 import ViewScreen from '..';
 
-const store = configureStore([])(Map({}));
+const store = configureStore([])(Map());
 
 class EntityTest extends EntityTitle {}
 EntityTest.duck = new DuckScreen({ app: 'Test', entity: EntityTest });

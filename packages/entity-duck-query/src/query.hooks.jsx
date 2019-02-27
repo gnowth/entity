@@ -34,7 +34,7 @@ export default {
 
       name: queryProps.name,
 
-      onChange: ({ target: { index, name, value } }) => {
+      onChange({ target: { index, name, value } }) {
         if (process.env.NODE_ENV !== 'production') {
           if (name !== queryProps.name) throw new Error(`Query.handleChange (${queryProps.name}): Invalid name ${name}!`);
           if (index === null) throw new Error(`Query.handleChange (${queryProps.name}): index cannot be null`);
@@ -47,7 +47,7 @@ export default {
         );
       },
 
-      onSubmit: ({ target: { index, name, value } }) => {
+      onSubmit({ target: { index, name, value } }) {
         if (process.env.NODE_ENV !== 'production') {
           if (name !== queryProps.name) throw new Error(`Query.handleSubmit (${queryProps.name}): Invalid name ${name}!`);
           if (index === null) throw new Error(`Query.handleSubmit (${queryProps.name}): index cannot be null`);
@@ -67,64 +67,68 @@ export default {
     };
   },
 
-  usePropsErrorBoundary: (props, components) => React.useMemo(
-    () => (
-      components.errorBoundaryComponent === React.Fragment
-        ? {}
-        : props.errorBoundaryComponentProps
-    ),
-    [props.errorBoundaryComponentProps, components.errorBoundaryComponent],
-  ),
+  usePropsErrorBoundary(props, components) {
+    return React.useMemo(
+      () => (
+        components.errorBoundaryComponent === React.Fragment
+          ? {}
+          : props.errorBoundaryComponentProps
+      ),
+      [props.errorBoundaryComponentProps, components.errorBoundaryComponent],
+    );
+  },
 
-  useShouldShow: (props, componentProps, Components) => ({
-    children: !!props.children,
+  useShouldShow(props, componentProps, Components) {
+    return {
+      children: !!props.children,
 
-    component: !props.children && (
-      !props.shouldProcess || (
-        !props.many
+      component: !props.children && (
+        !props.shouldProcess || (
+          !props.many
+          && !componentProps.processing
+          && !componentProps.processingDidFail
+          && componentProps.value !== undefined
+        )
+      ),
+
+      componentArray: !props.children && (
+        !props.shouldProcess || (
+          !!props.many
+          && !componentProps.processing
+          && !componentProps.processingDidFail
+          && componentProps.value !== undefined
+        )
+      ),
+
+      processingComponent: !props.children
+        && props.shouldProcess
+        && componentProps.processing
+        && Components.processingComponent,
+
+      processingDidFailComponent: !props.children
+        && props.shouldProcess
+        && componentProps.processingDidFail
+        && Components.processingDidFailComponent,
+
+      recordCountComponent: !props.children
+        && props.shouldProcess
+        && Components.recordCountComponent
         && !componentProps.processing
         && !componentProps.processingDidFail
+        && props.action.meta.id === undefined
+        && !props.recordCountHidden
         && componentProps.value !== undefined
-      )
-    ),
+        && componentProps.value.size > 0,
 
-    componentArray: !props.children && (
-      !props.shouldProcess || (
-        !!props.many
+      recordCountNoneComponent: !props.children
+        && props.shouldProcess
+        && Components.recordCountNoneComponent
         && !componentProps.processing
         && !componentProps.processingDidFail
+        && props.action.meta.id === undefined
+        && !props.recordCountHidden
         && componentProps.value !== undefined
-      )
-    ),
-
-    processingComponent: !props.children
-      && props.shouldProcess
-      && componentProps.processing
-      && Components.processingComponent,
-
-    processingDidFailComponent: !props.children
-      && props.shouldProcess
-      && componentProps.processingDidFail
-      && Components.processingDidFailComponent,
-
-    recordCountComponent: !props.children
-      && props.shouldProcess
-      && Components.recordCountComponent
-      && !componentProps.processing
-      && !componentProps.processingDidFail
-      && props.action.meta.id === undefined
-      && !props.recordCountHidden
-      && componentProps.value !== undefined
-      && componentProps.value.size > 0,
-
-    recordCountNoneComponent: !props.children
-      && props.shouldProcess
-      && Components.recordCountNoneComponent
-      && !componentProps.processing
-      && !componentProps.processingDidFail
-      && props.action.meta.id === undefined
-      && !props.recordCountHidden
-      && componentProps.value !== undefined
-      && componentProps.value.size === 0,
-  }),
+        && componentProps.value.size === 0,
+    };
+  },
 };

@@ -8,9 +8,9 @@ import hooks from './Tooltip.hooks';
 import styles, { Popup, Wrapper } from './Tooltip.styles';
 
 function UITooltip(props) {
+  const [hidden, setHidden] = React.useState(true);
   const enhancedProps = useEnhance(props, { hooks, styles });
   const Component = enhancedProps.component;
-  const [hidden, setHidden] = React.useState(true);
 
   return (
     <Wrapper

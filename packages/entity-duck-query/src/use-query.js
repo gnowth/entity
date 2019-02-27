@@ -6,7 +6,7 @@ const mapDefault = {
   store: 'store',
 };
 
-const useProcessIfNeeded = (redux, configs) => {
+function useProcessIfNeeded(redux, configs) {
   const { store } = useDefault(mapDefault);
   const [mounted, setMounted] = React.useState(false);
 
@@ -24,25 +24,29 @@ const useProcessIfNeeded = (redux, configs) => {
     },
     [redux.state.value],
   );
-};
+}
 
-const useClearOnUnmount = (redux, configs) => React.useEffect(() => () => {
-  if (!redux.dispatch.clear) return;
+function useClearOnUnmount(redux, configs) {
+  return React.useEffect(() => () => {
+    if (!redux.dispatch.clear) return;
 
-  if (!configs.persist) redux.dispatch.clear();
+    if (!configs.persist) redux.dispatch.clear();
 
-  if (configs.persist && !configs.persistDirty) redux.dispatch.clear({ dirty: true });
-}, []);
+    if (configs.persist && !configs.persistDirty) redux.dispatch.clear({ dirty: true });
+  }, []);
+}
 
-const useReduxWithAction = action => useRedux(...React.useMemo(
-  () => [
-    action?.duck.queries.makeMapStateToProps(action),
-    action?.duck.queries.makeMapDispatchToProps(action),
-  ],
-  [action],
-));
+function useReduxWithAction(action) {
+  return useRedux(...React.useMemo(
+    () => [
+      action?.duck.queries.makeMapStateToProps(action),
+      action?.duck.queries.makeMapDispatchToProps(action),
+    ],
+    [action],
+  ));
+}
 
-const useQuery = (configs = {}) => {
+function useQuery(configs = {}) {
   const redux = useReduxWithAction(configs.action);
   useProcessIfNeeded(redux, configs);
   useClearOnUnmount(redux, configs);
@@ -60,6 +64,6 @@ const useQuery = (configs = {}) => {
     value: redux.state.value,
     valueInitial: redux.state.valueInitial,
   };
-};
+}
 
 export default useQuery;
