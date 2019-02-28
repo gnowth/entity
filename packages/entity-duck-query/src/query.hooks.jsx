@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { List } from 'immutable';
 
 import useQuery from './use-query';
 
@@ -23,48 +22,7 @@ export default {
   },
 
   usePropsComponent(props) {
-    const queryProps = useQuery(props);
-
-    return {
-      errors: queryProps.processing || queryProps.value === undefined
-        ? queryProps.errors || List()
-        : queryProps.field.validate(queryProps.value).concat(queryProps.errors || List()),
-
-      field: queryProps.field,
-
-      name: queryProps.name,
-
-      onChange({ target: { index, name, value } }) {
-        if (process.env.NODE_ENV !== 'production') {
-          if (name !== queryProps.name) throw new Error(`Query.handleChange (${queryProps.name}): Invalid name ${name}!`);
-          if (index === null) throw new Error(`Query.handleChange (${queryProps.name}): index cannot be null`);
-        }
-
-        return queryProps.onChange(
-          index === undefined
-            ? value
-            : queryProps.value.set(index, value),
-        );
-      },
-
-      onSubmit({ target: { index, name, value } }) {
-        if (process.env.NODE_ENV !== 'production') {
-          if (name !== queryProps.name) throw new Error(`Query.handleSubmit (${queryProps.name}): Invalid name ${name}!`);
-          if (index === null) throw new Error(`Query.handleSubmit (${queryProps.name}): index cannot be null`);
-        }
-
-        return queryProps.onSubmit(
-          index === undefined
-            ? value
-            : queryProps.value.set(index, value),
-        );
-      },
-
-      processing: queryProps.processing,
-      processingDidFail: queryProps.processingDidFail,
-      value: queryProps.value,
-      valueInitial: queryProps.valueInitial,
-    };
+    return useQuery(props);
   },
 
   usePropsErrorBoundary(props, components) {

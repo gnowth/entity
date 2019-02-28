@@ -1,6 +1,7 @@
+import useRedux from '@private/use-redux';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import useRedux from '@private/use-redux';
+import { List } from 'immutable';
 
 const mapDefault = {
   store: 'store',
@@ -46,22 +47,73 @@ function useReduxWithAction(action) {
   ));
 }
 
+function useErrors(configs = {}) {
+  return React.useMemo(
+    () => (
+      configs.processing || configs.value === undefined
+        ? configs.errors || List()
+        : configs.field.validate(configs.value).concat(configs.errors || List())
+    ),
+    [configs.errors, configs.field, configs.processing, configs.value],
+  );
+}
+
+function useOnChange(configs = {}) {
+  return React.useCallback(
+    ({ target: { index, name, value } }) => {
+      if (process.env.NODE_ENV !== 'production') {
+        if (name !== configs.name) throw new Error(`Query.handleChange (${configs.name}): Invalid name ${name}!`);
+        if (index === null) throw new Error(`Query.handleChange (${configs.name}): index cannot be null`);
+      }
+
+      return configs.onChange(
+        index === undefined
+          ? value
+          : configs.value.set(index, value),
+      );
+    },
+    [configs.name, configs.onChange, configs.value],
+  );
+}
+
+function useOnSubmit(configs = {}) {
+  return React.useCallback(
+    ({ target: { index, name, value } }) => {
+      if (process.env.NODE_ENV !== 'production') {
+        if (name !== configs.name) throw new Error(`Query.handleSubmit (${configs.name}): Invalid name ${name}!`);
+        if (index === null) throw new Error(`Query.handleSubmit (${configs.name}): index cannot be null`);
+      }
+
+      return configs.onSubmit(
+        index === undefined
+          ? value
+          : configs.value.set(index, value),
+      );
+    },
+    [configs.name, configs.onSubmit, configs.value],
+  );
+}
+
 function useQuery(configs = {}) {
   const redux = useReduxWithAction(configs.action);
   useProcessIfNeeded(redux, configs);
   useClearOnUnmount(redux, configs);
 
+  const field = configs.action ?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined });
+  const name = 'entity_duck_use_query';
+  const { processing, value } = redux.state;
+
   return {
+    field,
+    name,
+    value,
     clear: redux.dispatch.clear,
-    errors: redux.state.errors,
-    field: configs.action?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined }),
-    name: 'entity_duck_use_query',
-    onChange: redux.dispatch.onChange,
-    onSubmit: redux.dispatch.onSubmit,
+    errors: useErrors({ field, processing, value, errors: redux.state.errors }),
+    onChange: useOnChange({ name, value, onChange: redux.dispatch.onChange }),
+    onSubmit: useOnSubmit({ name, value, onSubmit: redux.dispatch.onSubmit }),
     pagination: redux.state.pagination,
     processing: redux.state.processing,
     processingDidFail: redux.state.processingDidFail,
-    value: redux.state.value,
     valueInitial: redux.state.valueInitial,
   };
 }
