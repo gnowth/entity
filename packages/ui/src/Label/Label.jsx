@@ -17,18 +17,16 @@ function UILabel(props) {
 
   return (
     <UILabelRoot className={enhancedProps.className} css={enhancedProps.css}>
-      { (enhancedProps.label || enhancedProps.labelLocale) && (
+      { enhancedProps.label && (
         <UIType
           as={Label}
-          value={enhancedProps.labelLocale}
           variant="label"
+          value={enhancedProps.label}
           {...enhancedProps.labelComponentProps}
-        >
-          { enhancedProps.label }
-        </UIType>
+        />
       )}
 
-      { (enhancedProps.label || enhancedProps.labelLocale) && enhancedProps.errors && enhancedProps.errors.size > 0 && (
+      { enhancedProps.label && enhancedProps.errors && enhancedProps.errors.size > 0 && (
         <UITooltip {...propsTooltip}>
           { enhancedProps.errors.map((error, index) => (
             <UIError key={index}>{ error }</UIError> // eslint-disable-line
@@ -48,9 +46,8 @@ UILabel.propTypes = {
   hooks: PropTypes.exact({
     usePropsTooltip: PropTypes.func,
   }),
-  label: PropTypes.string,
+  label: PropTypesPlus.typography,
   labelComponentProps: PropTypes.shape({}),
-  labelLocale: PropTypesPlus.locale,
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
     tooltip: PropTypesPlus.css,
@@ -64,7 +61,6 @@ UILabel.defaultProps = {
   hooks: undefined,
   label: undefined,
   labelComponentProps: {},
-  labelLocale: undefined,
   styles: undefined,
 };
 

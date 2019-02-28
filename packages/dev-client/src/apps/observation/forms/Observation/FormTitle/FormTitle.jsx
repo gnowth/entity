@@ -15,7 +15,7 @@ function FormTitle(props) {
     <Form {...enhancedProps.props}>
       <Input
         name="title"
-        wrapperComponentProps={{ labelLocale: enhancedProps.locales.label_title }}
+        wrapperComponentProps={{ label: enhancedProps.locales.label_title }}
       />
 
       <UIFlexBox justifyContent="flex-end">
