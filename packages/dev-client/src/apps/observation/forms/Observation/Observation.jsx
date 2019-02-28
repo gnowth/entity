@@ -31,7 +31,7 @@ function FormObservation(props) {
         name="date_activity"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.date_activity,
+          label: enhancedProps.locales.date_activity,
         }}
       />
 
@@ -39,7 +39,7 @@ function FormObservation(props) {
         name="title"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.title,
+          label: enhancedProps.locales.title,
         }}
       />
 
@@ -52,7 +52,7 @@ function FormObservation(props) {
         name="title_short"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.title_short,
+          label: enhancedProps.locales.title_short,
         }}
       />
 
@@ -60,7 +60,7 @@ function FormObservation(props) {
         name="description"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.description,
+          label: enhancedProps.locales.description,
         }}
       />
 
@@ -68,7 +68,7 @@ function FormObservation(props) {
         name="date_due"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.date_due,
+          label: enhancedProps.locales.date_due,
         }}
       />
 
@@ -78,7 +78,7 @@ function FormObservation(props) {
         componentProps={({ value }) => ({ records: value })}
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.follow_up_actions,
+          label: enhancedProps.locales.follow_up_actions,
         }}
         many
       />

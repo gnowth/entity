@@ -35,7 +35,7 @@ function FormAction(props) {
         name="person_responsible"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.person_responsible,
+          label: enhancedProps.locales.person_responsible,
         }}
       />
 
@@ -43,7 +43,7 @@ function FormAction(props) {
         name="date_due"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.date_due,
+          label: enhancedProps.locales.date_due,
         }}
       />
 
@@ -51,7 +51,7 @@ function FormAction(props) {
         name="completed_by"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.completed_by,
+          label: enhancedProps.locales.completed_by,
         }}
       />
 
@@ -59,7 +59,7 @@ function FormAction(props) {
         name="date_completed"
         wrapperComponentProps={{
           css: enhancedProps.styles.input,
-          labelLocale: enhancedProps.locales.date_completed,
+          label: enhancedProps.locales.date_completed,
         }}
       />
 

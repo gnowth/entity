@@ -85,7 +85,7 @@ export default class EntityField extends AnyField {
   }
 
   getOptions() {
-    return this.configs || this.entity.configs || List();
+    return this.options || this.entity.options || List();
   }
 
   getValue(value, configs = {}) {
