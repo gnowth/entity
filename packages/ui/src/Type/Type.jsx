@@ -17,15 +17,9 @@ function UIType(props) {
   );
 }
 
-const PropTypesChildren = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypesPlus.locale,
-  PropTypesImmutable.map,
-]);
-
 UIType.propTypes = {
   as: PropTypesPlus.component,
-  children: PropTypesChildren,
+  children: PropTypesPlus.typography,
   className: PropTypesPlus.string,
   hidden: PropTypes.bool,
   hooks: PropTypes.exact({
@@ -52,8 +46,8 @@ UIType.propTypes = {
   options: PropTypesImmutable.list,
   processing: PropTypes.bool,
   processingDidFail: PropTypes.bool,
-  value: PropTypesChildren,
-  valueInitial: PropTypesChildren,
+  value: PropTypesPlus.typography,
+  valueInitial: PropTypesPlus.typography,
 };
 
 UIType.defaultProps = {
