@@ -1,5 +1,4 @@
 import _isString from 'lodash/isString';
-import axios from 'axios';
 import Duck from '@entity/duck';
 import { Map } from 'immutable';
 
@@ -17,7 +16,7 @@ export default {
     return this;
   },
 
-  effect(store) {
+  effect(store, configs = {}) {
     if (!this.meta?.sideEffect) return Duck.Action.effect.call(this, store);
 
     const params = this.meta?.params || Map();
@@ -31,17 +30,22 @@ export default {
 
     const customAction = this.meta?.action ? `${this.meta?.action}/` : '';
 
+    const path = this.duck?.entity?.getPaths(configs)?.apiBase;
+
     const args = [
       this.meta?.id
-        ? `${this.duck?.entity?.paths?.apiBase}${this.meta?.id}/${customAction}`
-        : `${this.duck?.entity?.paths?.apiBase}${customAction}`,
+        ? `${path}${this.meta?.id}/${customAction}`
+        : `${path}${customAction}`,
       ...(this.payload ? [this.duck?.entity?.toData(this.payload)] : []),
       {
+        configs,
+        store,
+        action: this,
         params: params.filter(p => p).toJS(),
       },
     ];
 
-    this.promise = axios[this.meta?.method || this.name]
+    this.promise = configs.client[this.meta?.method || this.name]
       .apply(null, args)
       .then(response => store.dispatch(this.duck.resolve(this, response)))
       .catch(error => store.dispatch(this.duck.reject(this, error)))

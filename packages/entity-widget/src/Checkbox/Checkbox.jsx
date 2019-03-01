@@ -9,7 +9,7 @@ const Input = styled.input`
   cursor: pointer;
   width: 14px;
 
-  ${component()}
+  ${component({ branch: 'css' })}
   ${props => props.css}
 `;
 

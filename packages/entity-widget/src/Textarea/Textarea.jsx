@@ -6,7 +6,7 @@ import { component } from '@gnowth/style';
 const WidgetTextarea = styled(withPropsFiltered('textarea'))`
   width: 100%;
 
-  ${component()}
+  ${component({ branch: 'css' })}
   ${props => props.css}
 `;
 

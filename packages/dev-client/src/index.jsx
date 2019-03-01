@@ -16,7 +16,7 @@ import Routes from './routes';
 import defaults from './defaults';
 import setup from './setup';
 
-setup({ settings });
+setup(settings);
 
 const intlProviderProps = { locale: 'en', messages: {} };
 const themeProviderProps = { theme: { ...defaultTheme, ...theme } };

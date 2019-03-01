@@ -8,7 +8,7 @@ import { injectIntl } from 'react-intl';
 const WidgetInput = styled(withPropsFiltered('input'))`
   width: 100%;
 
-  ${component()}
+  ${component({ branch: 'css' })}
   ${props => props.css}
 `;
 

@@ -13,6 +13,8 @@ export default class Entity {
     uuid: new IdField({ blank: true }),
   }
 
+  static paths = {}
+
   static actionArrayDeleteAtIndex(records, { index = null } = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (!List.isList(records)) throw new Error(`Entity.actionArrayDeleteAt (${this.name}): "records" must be an immutable List.`);
@@ -77,6 +79,10 @@ export default class Entity {
 
   static getId(record) {
     return record?.get(this.idField);
+  }
+
+  static getPaths() {
+    return this.paths;
   }
 
   static isEntity(maybeEntity) {

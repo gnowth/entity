@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDefault } from '@gnowth/default';
+import { Map } from 'immutable';
 
 const mapDefault = {
   useQuery: ['entityForm_useQuery', 'hook_useQuery'],
