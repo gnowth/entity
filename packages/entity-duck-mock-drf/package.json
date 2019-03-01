@@ -1,9 +1,9 @@
 {
   "author": "Thierry Wong",
-  "description": "entity-duck-namespace-drf",
+  "description": "entity",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
-  "name": "@entity/duck-namespace-drf",
+  "name": "@entity/duck-mock-drf",
   "private": false,
   "repository": "https://github.com/gnowth/react.git",
   "sideEffects": false,
@@ -21,12 +21,7 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.4.0",
-    "@entity/duck": "0.4.0",
-    "immutable": "4.0.0-rc.12",
-    "query-string": "6.2.0"
-  },
-  "peerDependencies": {
-    "lodash": "4.17.11"
+    "query-string": "6.2.0",
+    "uuid": "3.3.2"
   }
 }

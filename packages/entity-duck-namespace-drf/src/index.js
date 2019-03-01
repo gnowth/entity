@@ -103,7 +103,6 @@ export default class DuckDRF extends Duck {
     });
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!/^\/.*\/$/.test(configs.entity?.paths?.apiBase)) throw new Error(`RestDuck.constructor (${configs.entity?.name}): "apiBase" of "entity" option must start with a "/" and end with a "/"`);
       if (!configs.entity || !Entity.isEntity(configs.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
     }
   }
@@ -135,7 +134,7 @@ export default class DuckDRF extends Duck {
       !error.response
         && (error.message || 'Unknown Error'),
 
-      error.response?.state === 0
+      error.response?.status === 0
         && 'Error 0: A fatal error occurred.',
 
       error.response?.status === 401

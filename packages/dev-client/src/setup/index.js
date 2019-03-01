@@ -13,7 +13,7 @@ import setupAxios from './axios';
 import setupWorkbox from './workbox';
 import setupXDomain from './xdomain';
 
-export default function ({ settings }) {
+export default function (settings) {
   setupAxios(settings);
 
   if (settings.ENABLE_FEATURE_WORKBOX) setupWorkbox(settings);

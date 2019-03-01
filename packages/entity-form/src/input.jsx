@@ -59,6 +59,7 @@ Input.propTypes = exact({
   willChangeRecord: PropTypes.func,
   wrapperComponent: PropTypesPlus.notRequiredIf('children', PropTypesPlus.component),
   wrapperComponentProps: PropTypesPlus.componentProps,
+  wrapperComponentVariant: PropTypesPlus.string,
 });
 
 Input.defaultProps = {
@@ -76,6 +77,7 @@ Input.defaultProps = {
   willChangeRecord: ({ nextRecord }) => nextRecord,
   wrapperComponent: undefined,
   wrapperComponentProps: undefined,
+  wrapperComponentVariant: undefined,
 };
 
 export default React.memo(Input);

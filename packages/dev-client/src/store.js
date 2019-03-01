@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
@@ -5,8 +6,11 @@ import { Map } from 'immutable';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { combineReducers } from 'redux-immutable';
 
+import settings from 'settings';
+
 const reqs = [
   require.context('apps', true, /\.\/[^/]*\/entities\/[^/]*\.js$/),
+  require.context('entities', false, /[^/]*\.js$/),
 ];
 
 const rootReducerMap = createDuckReducerFromRequires(reqs, combineReducers);
@@ -31,7 +35,7 @@ export default createStore(
   Map(),
   composeEnhancers(
     applyMiddleware(
-      duckMiddleware,
+      duckMiddleware({ client: axios, settings }),
       routerMiddleware(history),
     ),
   ),

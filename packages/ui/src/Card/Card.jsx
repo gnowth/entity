@@ -10,7 +10,7 @@ const UICard = styled.div`
   color: ${colorFromPalette()};
   padding: calc(${sizeGridBase} * ${props => props.ratio} * 2);
 
-  ${component()}
+  ${component({ branch: 'css' })}
   ${props => props.css}
 `;
 
