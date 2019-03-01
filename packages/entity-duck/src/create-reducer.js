@@ -30,5 +30,5 @@ export default (reqs, combineReducers) => _flowRight(
   ducks => _mapValues(ducks, makeAppReducersFromDucks(combineReducers)),
   ducks => _groupBy(ducks, duck => duck.app),
   ducks => _filter(ducks, duck => duck instanceof Duck),
-  requests => _flatMap(requests, req => req.keys().map(key => req(key).default?.duck)),
+  requests => _flatMap(requests, req => req.duck || req.keys?.().map?.(key => req(key).default?.duck)),
 )(reqs);
