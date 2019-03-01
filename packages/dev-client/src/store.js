@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { EntitiesPeople } from '@apps/people';
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
@@ -11,6 +12,7 @@ import settings from 'settings';
 const reqs = [
   require.context('apps', true, /\.\/[^/]*\/entities\/[^/]*\.js$/),
   require.context('entities', false, /[^/]*\.js$/),
+  EntitiesPeople,
 ];
 
 const rootReducerMap = createDuckReducerFromRequires(reqs, combineReducers);

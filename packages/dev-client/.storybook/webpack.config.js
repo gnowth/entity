@@ -31,7 +31,7 @@ module.exports = {
 
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?!(@gnowth|@entity)\/).*/,
+        exclude: /node_modules\/(?!(@apps|@entity|@gnowth|@private)\/).*/,
         loader: 'babel-loader',
         options: babelConfig,
       },

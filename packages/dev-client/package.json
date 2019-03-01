@@ -18,6 +18,7 @@
     "storybook:build": "build-storybook -c .storybook -o ../../dist/style-guide"
   },
   "dependencies": {
+    "@apps/people": "0.4.0",
     "@entity/core": "0.4.0",
     "@entity/duck": "0.4.0",
     "@entity/duck-namespace-drf": "0.4.0",
