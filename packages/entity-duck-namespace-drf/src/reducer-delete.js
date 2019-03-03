@@ -2,7 +2,7 @@ import { List } from 'immutable';
 
 export default (types, initialState) => ({
   [types.delete]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -12,8 +12,8 @@ export default (types, initialState) => ({
   },
 
   [types.delete_resolved]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
-    const id = action.duck?.getId(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
+    const id = action.duck.getId(action.meta);
 
     return state.withMutations(
       s => s
@@ -27,8 +27,8 @@ export default (types, initialState) => ({
   },
 
   [types.delete_rejected]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
-    const id = action.duck?.getId(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
+    const id = action.duck.getId(action.meta);
 
     return state.withMutations(
       s => s

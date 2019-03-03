@@ -7,7 +7,7 @@ import put from './put';
 
 export { default as mockNull } from './mock-null';
 
-export default {
+export const client = {
   get,
   head,
   options,
