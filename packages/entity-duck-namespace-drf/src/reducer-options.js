@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 
 export default types => ({
   [types.options]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -12,7 +12,7 @@ export default types => ({
   },
 
   [types.options_resolved]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -23,7 +23,7 @@ export default types => ({
   },
 
   [types.options_rejected]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s

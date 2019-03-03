@@ -1,7 +1,7 @@
-import client, { mockNull } from '@entity/duck-mock-drf';
 import { EntitiesAuth } from '@apps/auth';
 import { EntitiesPeople } from '@apps/people';
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
+import { client, mockNull } from '@private/entity-duck-mock-drf';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
 import { Map } from 'immutable';

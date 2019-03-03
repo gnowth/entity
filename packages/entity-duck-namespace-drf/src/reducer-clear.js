@@ -1,7 +1,7 @@
 export default (types, initialState) => ({
   [types.clear]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
-    const id = action.duck?.getId(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
+    const id = action.duck.getId(action.meta);
 
     return action.meta?.dirty
       ? state.setIn(

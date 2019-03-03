@@ -19,7 +19,7 @@ const listDataFactory = (payload, entity) => {
 
 export default types => ({
   [types.get]: (state, action = {}) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
@@ -29,35 +29,29 @@ export default types => ({
   },
 
   [types.get_resolved]: (state, action) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
-    const dataFactory = action.meta.id ? getDataFactory : listDataFactory;
+    const identifier = action.duck.getIdentifier(action.meta);
+    const dataFactory = action.meta.id === undefined ? listDataFactory : getDataFactory;
+
+    const record = fromJS(dataFactory(action.payload, action.duck.entity));
 
     return state.withMutations(
       s => s
         .updateIn(
-          action.meta.id
-            ? ['detail', action.meta.id]
-            : ['list', identifier],
-          result => (
-            action.meta.skipStore
-              ? result
-              : fromJS(dataFactory(action.payload, action.duck.entity))
-          ),
+          action.meta.id === undefined
+            ? ['list', identifier]
+            : ['detail', action.duck.entity.getId(record)],
+          result => (action.meta.skipStore || action.meta.skipRecordUpdate ? result : record),
         )
         .updateIn(
-          action.meta.id
-            ? ['detail_dirty', action.meta.id]
-            : ['list_dirty', identifier],
-          result => (
-            action.meta.skipStore
-              ? result
-              : fromJS(dataFactory(action.payload, action.duck.entity))
-          ),
+          action.meta.id === undefined
+            ? ['list_dirty', identifier]
+            : ['detail_dirty', action.duck.entity.getId(record)],
+          result => (action.meta.skipStore || action.meta.skipRecordUpdate ? result : record),
         )
         .setIn(
-          action.meta.id
-            ? ['detail_errors', action.meta.id]
-            : ['list_errors', identifier],
+          action.meta.id === undefined
+            ? ['list_errors', identifier]
+            : ['detail_errors', action.duck.getId(action.meta)],
           List(),
         )
         .setIn(['status', 'getting', identifier], false),
@@ -65,14 +59,14 @@ export default types => ({
   },
 
   [types.get_rejected]: (state, action) => {
-    const identifier = action.duck?.getIdentifier(action.meta);
+    const identifier = action.duck.getIdentifier(action.meta);
 
     return state.withMutations(
       s => s
         .setIn(
-          action.meta.id
-            ? ['detail_errors', action.meta.id]
-            : ['list_errors', identifier],
+          action.meta.id === undefined
+            ? ['list_errors', identifier]
+            : ['detail_errors', action.duck.getId(action.meta)],
           action.duck?.getErrors(action.payload),
         )
         .setIn(['status', 'getting', identifier], false)
