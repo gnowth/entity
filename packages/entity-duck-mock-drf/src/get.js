@@ -9,10 +9,10 @@ function logResponse(path, configs) {
 }
 
 export default function (path, configs = {}) {
-  if (configs.action.meta.id !== undefined) {
-    if (configs.action.duck.entity.mock?.[configs.action.meta.id]) {
+  if (configs.action.meta.id === null) {
+    if (configs.action.duck.entity.mockStoreNull) {
       return Promise.resolve({
-        data: configs.action.duck.entity.mock?.[configs.action.meta.id],
+        data: configs.action.duck.entity.mockStoreNull,
       }).then(logResponse(path, configs));
     }
 
@@ -22,7 +22,20 @@ export default function (path, configs = {}) {
     return Promise.reject(error);
   }
 
-  const dataList = Object.values(configs.action.duck.entity.mock || {});
+  if (configs.action.meta.id !== undefined) {
+    if (configs.action.duck.entity.mockStore?.[configs.action.meta.id]) {
+      return Promise.resolve({
+        data: configs.action.duck.entity.mockStore?.[configs.action.meta.id],
+      }).then(logResponse(path, configs));
+    }
+
+    const error = new Error('Not found');
+    error.response = { status: 404 };
+
+    return Promise.reject(error);
+  }
+
+  const dataList = Object.values(configs.action.duck.entity.mockStore || {});
   if (configs.action.duck.entity.paginated || configs.params.page_size) {
     const page = Number(configs.params.page || 1);
     const pageSize = Number(configs.params.page_size || 100);

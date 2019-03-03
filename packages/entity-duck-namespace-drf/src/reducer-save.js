@@ -34,16 +34,8 @@ export default (types, initialState) => ({
             ? state.getIn(['detail', id])
             : record,
         )
-        .updateIn(['detail', newId], detail => (
-          newId === id
-            ? detail
-            : record
-        ))
-        .updateIn(['detail_dirty', newId], detail => (
-          newId === id
-            ? detail
-            : record
-        ))
+        .updateIn(['detail', newId], detail => (newId === id ? detail : record))
+        .updateIn(['detail_dirty', newId], detail => (newId === id ? detail : record))
         .setIn(['detail_errors', id], List())
         .setIn(['status', 'saving', identifier], false)
         .update('list', list => (action.meta.invalidateList ? initialState.get('list') : list))

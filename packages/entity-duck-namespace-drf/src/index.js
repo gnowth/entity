@@ -13,7 +13,7 @@ import Action from './action';
 import Queries from './queries';
 import Selectors from './selectors';
 
-export default class DuckDRF extends Duck {
+export default class DjangoRestFramework extends Duck {
   static namespace = 'dango_rest_framework';
 
   static Action = Action
@@ -107,8 +107,8 @@ export default class DuckDRF extends Duck {
     }
   }
 
-  getId({ id = '' } = {}) {
-    return id === null ? this.ID_NULL : id;
+  getId(configs = {}) {
+    return configs.id === null ? this.ID_NULL : configs.id || '';
   }
 
   getIdentifier({ id = '', tag = '', params = Map(), method = 'get', action = '' }) {

@@ -5,6 +5,8 @@ import options from './options';
 import post from './post';
 import put from './put';
 
+export { default as mockNull } from './mock-null';
+
 export default {
   get,
   head,
@@ -12,4 +14,5 @@ export default {
   post,
   put,
   delete: deleteFn,
+  mocking: true,
 };

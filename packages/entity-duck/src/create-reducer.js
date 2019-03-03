@@ -1,3 +1,4 @@
+import _flatten from 'lodash/flatten';
 import _flowRight from 'lodash/flowRight';
 import _filter from 'lodash/filter';
 import _flatMap from 'lodash/flatMap';
@@ -30,5 +31,5 @@ export default (reqs, combineReducers) => _flowRight(
   ducks => _mapValues(ducks, makeAppReducersFromDucks(combineReducers)),
   ducks => _groupBy(ducks, duck => duck.app),
   ducks => _filter(ducks, duck => duck instanceof Duck),
-  requests => _flatMap(requests, req => req.duck || req.keys?.().map?.(key => req(key).default?.duck)),
+  requests => _flatMap(_flatten(requests), req => req.duck || req.keys?.().map?.(key => req(key).default?.duck)),
 )(reqs);

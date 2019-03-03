@@ -1,4 +1,4 @@
-import DuckRest from '@entity/duck-namespace-drf';
+import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Fields } from '@entity/core';
 
 import EntityAction from 'apps/activity/entities/Action';
@@ -28,6 +28,6 @@ class Observation extends EntityActivity {
   }
 }
 
-Observation.duck = new DuckRest({ app: 'Observation', entity: Observation });
+Observation.duck = new DuckDjangoRestFramework({ app: 'Observation', entity: Observation });
 
 export default Observation;

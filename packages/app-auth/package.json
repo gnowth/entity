@@ -1,0 +1,23 @@
+{
+  "author": "Thierry Wong",
+  "description": "app-auth",
+  "license": "AGPL-3.0-only",
+  "main": "index.js",
+  "name": "@apps/auth",
+  "private": true,
+  "sideEffects": false,
+  "version": "0.4.0",
+  "dependencies": {
+    "@apps/people": "0.4.0",
+    "@entity/core": "0.4.0",
+    "@entity/duck-namespace-auth": "0.4.0",
+    "@entity/duck-query": "0.4.0",
+    "@gnowth/default": "0.4.0",
+    "@private/use-redux": "0.4.0"
+  },
+  "peerDependencies": {
+    "lodash": "4.17.11",
+    "react": "16.8.3",
+    "react-router-dom": "4.3.1"
+  }
+}

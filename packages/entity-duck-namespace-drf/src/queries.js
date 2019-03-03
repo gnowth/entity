@@ -1,18 +1,32 @@
 import Duck from '@entity/duck';
 
-export default class QueriesDRF extends Duck.Queries {
+export default class DjangoRestFramework extends Duck.Queries {
   bypassActions = ['clear', 'save_local']
+
+  statusMap = {
+    delete: 'deleting',
+    get: 'getting',
+    options: 'optioning',
+    save: 'saving',
+  };
+
+  statusMapDidFail = {
+    delete: 'deletingDidFail',
+    get: 'gettingDidFail',
+    options: 'optioningDidFail',
+    save: 'savingDidFail',
+  }
 
   supportedActions = {
     clear: ['get', 'options'],
     errors: ['delete', 'get', 'options', 'save'],
-    onChange: ['get'],
-    onSubmit: ['get'],
-    pagination: ['get'],
+    onChange: ['!options', 'get'],
+    onSubmit: ['!options', 'get'],
+    pagination: ['!options', 'get'],
     processing: ['delete', 'get', 'options', 'save'],
     processingDidFail: ['delete', 'get', 'options', 'save'],
     value: ['get', 'options'],
-    valueInitial: ['get'],
+    valueInitial: ['!options', 'get'],
   }
 
   clear(action = {}, meta = {}) {
@@ -35,7 +49,7 @@ export default class QueriesDRF extends Duck.Queries {
   }
 
   onChange(action = {}, payload, meta = {}) {
-    return this.hasSupport('onChange', action, ['options'])
+    return this.hasSupport('onChange', action)
       ? action.duck?.actions?.save_local(payload, {
         ...action.meta,
         sideEffect: false,
@@ -45,7 +59,7 @@ export default class QueriesDRF extends Duck.Queries {
   }
 
   onSubmit(action = {}, payload, meta = {}) {
-    return this.hasSupport('onSubmit', action, ['options'])
+    return this.hasSupport('onSubmit', action)
       ? action.duck?.actions?.save(payload, {
         ...action.meta,
         sideEffect: true,
@@ -56,17 +70,10 @@ export default class QueriesDRF extends Duck.Queries {
   }
 
   processing(action = {}, state, meta = {}) {
-    const statusMap = {
-      delete: 'deleting',
-      get: 'getting',
-      options: 'optioning',
-      save: 'saving',
-    };
-
     const result = !this.shouldBypass(action) && this.hasSupport('processing', action)
       ? action.duck?.selectors?.status(state, {
         ...action.meta,
-        status: statusMap[action.name],
+        status: this.statusMap[action.name] || action.name,
         ...meta,
       })
       : undefined;
@@ -77,17 +84,10 @@ export default class QueriesDRF extends Duck.Queries {
   }
 
   processingDidFail(action = {}, state, meta = {}) {
-    const statusMap = {
-      delete: 'deletingDidFail',
-      get: 'gettingDidFail',
-      options: 'optioningDidFail',
-      save: 'savingDidFail',
-    };
-
     const result = !this.shouldBypass(action) && this.hasSupport('processingDidFail', action)
       ? action.duck?.selectors?.status(state, {
         ...action.meta,
-        status: statusMap[action.name],
+        status: this.statusMapDidFail[action.name] || `${action.name}DidFail`,
         ...meta,
       })
       : undefined;
@@ -98,7 +98,7 @@ export default class QueriesDRF extends Duck.Queries {
   }
 
   pagination(action = {}, state, meta = {}) {
-    return this.hasSupport('pagination', action, ['options'])
+    return this.hasSupport('pagination', action)
       ? action.duck?.selectors.pagination(state, {
         ...action.meta,
         ...meta,
@@ -121,7 +121,7 @@ export default class QueriesDRF extends Duck.Queries {
   }
 
   valueInitial(action = {}, state, meta = {}) {
-    return this.hasSupport('value', action, ['options'])
+    return this.hasSupport('value', action)
       ? action.duck?.selectors.record(state, {
         ...action.meta,
         dirty: false,

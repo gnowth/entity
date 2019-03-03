@@ -3,7 +3,7 @@ import _isString from 'lodash/isString';
 import Duck from '@entity/duck';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import useRedux from '@private/use-redux';
+import { useRedux } from '@private/use-redux';
 
 import useContextInput from './use-context-input';
 
