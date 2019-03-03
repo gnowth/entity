@@ -1,6 +1,6 @@
-import useRedux from '@private/use-redux';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
+import { useRedux } from '@private/use-redux';
 import { List } from 'immutable';
 
 const mapDefault = {

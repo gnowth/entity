@@ -1,4 +1,5 @@
-import axios from 'axios';
+import client, { mockNull } from '@entity/duck-mock-drf';
+import { EntitiesAuth } from '@apps/auth';
 import { EntitiesPeople } from '@apps/people';
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
@@ -12,6 +13,7 @@ import settings from 'settings';
 const reqs = [
   require.context('apps', true, /\.\/[^/]*\/entities\/[^/]*\.js$/),
   require.context('entities', false, /[^/]*\.js$/),
+  mockNull(EntitiesAuth),
   EntitiesPeople,
 ];
 
@@ -37,7 +39,7 @@ export default createStore(
   Map(),
   composeEnhancers(
     applyMiddleware(
-      duckMiddleware({ client: axios, settings }),
+      duckMiddleware({ client, settings }),
       routerMiddleware(history),
     ),
   ),

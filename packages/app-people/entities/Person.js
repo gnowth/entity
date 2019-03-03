@@ -1,4 +1,4 @@
-import DuckRest from '@entity/duck-namespace-drf';
+import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Entity, Fields } from '@entity/core';
 
 class Person extends Entity {
@@ -28,6 +28,6 @@ class Person extends Entity {
   }
 }
 
-Person.duck = new DuckRest({ app: 'People', entity: Person });
+Person.duck = new DuckDjangoRestFramework({ app: 'People', entity: Person });
 
 export default Person;

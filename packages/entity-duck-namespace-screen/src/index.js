@@ -5,7 +5,7 @@ import { Map } from 'immutable';
 import Queries from './queries';
 import Selectors from './selectors';
 
-export default class ScreenDuck extends Duck {
+export default class Screen extends Duck {
   static namespace = 'screens';
 
   static Queries = Queries
@@ -69,17 +69,5 @@ export default class ScreenDuck extends Duck {
     if (process.env.NODE_ENV !== 'production') {
       if (!configs.entity || !Entity.isEntity(configs.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
     }
-  }
-
-  record(state, { dirty, id } = {}) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (id !== null) throw new Error(`ScreenDuck.record (${this.entity.name}): only support id === null`);
-    }
-
-    return state.getIn([
-      this.app,
-      this.constructor.namespace,
-      this.entity.name, dirty ? 'detail_dirty' : 'detail',
-    ]);
   }
 }

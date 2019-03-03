@@ -1,7 +1,7 @@
 import Duck from '@entity/duck';
 import { List } from 'immutable';
 
-export default class SelectorsDRF extends Duck.Selectors {
+export default class DjangoRestFramework extends Duck.Selectors {
   errors(state, meta = {}) {
     return this.getState(state).getIn([
       meta.id === undefined ? 'list_errors' : 'detail_errors',

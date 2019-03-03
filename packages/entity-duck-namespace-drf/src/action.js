@@ -7,7 +7,7 @@ export default {
 
   init(...args) {
     this.defaultMeta = {
-      method: this.name,
+      method: this.name, // TODO might not be needed.
       ...this.defaultMeta,
     };
 
@@ -37,12 +37,16 @@ export default {
         ? `${path}${this.meta?.id}/${customAction}`
         : `${path}${customAction}`,
       ...(this.payload ? [this.duck?.entity?.toData(this.payload)] : []),
-      {
-        configs,
-        store,
-        action: this,
-        params: params.filter(p => p).toJS(),
-      },
+      configs.client.mocking
+        ? {
+          configs,
+          store,
+          action: this,
+          params: params.filter(p => p).toJS(),
+        }
+        : {
+          params: params.filter(p => p).toJS(),
+        },
     ];
 
     this.promise = configs.client[this.meta?.method || this.name]

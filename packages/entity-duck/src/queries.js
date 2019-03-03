@@ -1,11 +1,12 @@
 export default class Queries {
   supportedActions = {}
 
-  hasSupport(name, action = {}, ignoredActions = []) {
-    const supported = (this.supportedActions[name] || []).includes(action.name);
+  hasSupport(name, action = {}) {
+    const actions = this.supportedActions[name] || [];
+    const supported = actions.includes(action.name);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!supported && !ignoredActions.includes(action.name)) throw new Error(`@entity-duck queries.${name}: action name "${action.name}" is not supported`);
+      if (!supported && !actions.includes(`!${action.name}`)) throw new Error(`@entity-duck queries.${name}: action name "${action.name}" is not supported`);
     }
 
     return supported;

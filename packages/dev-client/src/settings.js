@@ -23,6 +23,8 @@ export default Object.assign(
     ENABLE_FEATURE_XDOMAIN: false,
     NAMESPACE: 'broker',
     LANG: ['en'],
+    URL_LOGIN: '/auth/login',
+    URL_LOGOUT: '/auth/logout',
     VERSION: 'DEV-0.1.0',
   },
 

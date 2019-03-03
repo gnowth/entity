@@ -1,6 +1,6 @@
 import Duck from '@entity/duck';
 
-export default class QueriesScreen extends Duck.Queries {
+export default class Screen extends Duck.Queries {
   supportedActions = {
     clear: ['get'],
     onChange: ['get'],
