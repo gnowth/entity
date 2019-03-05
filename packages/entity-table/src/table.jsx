@@ -32,9 +32,9 @@ function Table(props) {
           <HeaderRowComponent>
             { React.Children.map(props.children, child => !child.props.hidden && (
               <HeaderComponent {...props.headerComponentProps}>
-                {HeaderWrapperComponent && (
+                { HeaderWrapperComponent && (
                   <HeaderWrapperComponent>
-                    {child.props.label}
+                    { child.props.label }
                   </HeaderWrapperComponent>
                 )}
 
@@ -70,7 +70,7 @@ function Table(props) {
                 field: props.field,
               }}
             >
-              {props.children}
+              { props.children }
             </Provider>
           </RowComponent>
         ))}
