@@ -43,7 +43,7 @@ class Column extends React.Component {
 
     return (
       <Consumer>
-        {(context) => {
+        { (context) => {
           const props = this.props.name
             ? {
               name: this.props.name,

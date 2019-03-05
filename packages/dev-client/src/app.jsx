@@ -6,6 +6,7 @@ import { IntlProvider } from '@private/react-intl';
 import { ThemeProvider } from 'styled-components';
 
 import * as theme from 'styles';
+import EntityAppClient from 'entities/AppClient';
 
 import Routes from './routes';
 import defaults from './defaults';
@@ -16,6 +17,7 @@ const themeProviderProps = { theme: { ...defaultTheme, ...theme } };
 const App = () => (
   <AppRoot
     defaults={defaults}
+    entity={EntityAppClient}
     intlProvider={IntlProvider}
     intlProviderProps={intlProviderProps}
     themeProvider={ThemeProvider}

@@ -7,8 +7,15 @@ import { useEnhance } from '@private/hooks';
 import hooks from './Button.hooks';
 import Button from './Button.styles';
 
+const localProps = [
+  'contentComponentPaletteAsBackground',
+  'iconComponentPaletteAsBackground',
+  'processingComponentPaletteAsBackground',
+];
+
+
 function UIButton(props) {
-  const enhancedProps = useEnhance(props, { hooks });
+  const enhancedProps = useEnhance(props, { hooks, localProps });
   const { Content, Icon, Processing } = enhancedProps.hooks.useComponents(enhancedProps);
 
   return (
@@ -23,6 +30,7 @@ function UIButton(props) {
 }
 
 UIButton.propTypes = {
+  as: PropTypesPlus.component,
   children: PropTypes.node,
   content: PropTypes.oneOfType([
     PropTypes.string,
@@ -33,6 +41,8 @@ UIButton.propTypes = {
   contentComponentHidden: PropTypes.bool,
   contentComponentPaletteAsBackground: PropTypes.bool,
   contentComponentProps: PropTypes.shape({}),
+  css: PropTypesPlus.css,
+  disabled: PropTypes.bool,
   hidden: PropTypes.bool,
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
@@ -51,22 +61,29 @@ UIButton.propTypes = {
   media: PropTypesPlus.string,
   mediaPrintDisabled: PropTypes.bool,
   namespace: PropTypesPlus.string,
+  onClick: PropTypes.func,
   palette: PropTypesPlus.string,
+  paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
   processing: PropTypes.bool,
   processingComponent: PropTypesPlus.component,
   processingComponentPaletteAsBackground: PropTypes.bool,
   processingComponentProps: PropTypes.shape({}),
+  processingDidFail: PropTypes.bool,
+  to: PropTypesPlus.string,
   variant: PropTypesPlus.string,
 };
 
 UIButton.defaultProps = {
+  as: undefined,
   children: undefined,
   content: undefined,
   contentComponent: undefined,
   contentComponentHidden: undefined,
   contentComponentPaletteAsBackground: undefined,
   contentComponentProps: undefined,
+  css: undefined,
+  disabled: undefined,
   hidden: undefined,
   hooks: undefined,
   iconComponent: undefined,
@@ -79,12 +96,16 @@ UIButton.defaultProps = {
   media: undefined,
   mediaPrintDisabled: undefined,
   namespace: 'component_uiButton',
+  onClick: undefined,
   palette: undefined,
+  paletteAsBackground: undefined,
   paletteWeight: undefined,
   processing: undefined,
   processingComponent: undefined,
   processingComponentPaletteAsBackground: undefined,
   processingComponentProps: undefined,
+  processingDidFail: undefined,
+  to: undefined,
   variant: 'standard',
 };
 

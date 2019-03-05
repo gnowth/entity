@@ -27,6 +27,7 @@ UIType.propTypes = {
     useComponent: PropTypes.func,
     useProps: PropTypes.func,
   }),
+  mediaPrintDisabled: PropTypes.bool,
   namespace: PropTypesPlus.string,
   palette: PropTypes.string,
   paletteAsBackground: PropTypes.bool,
@@ -38,7 +39,6 @@ UIType.propTypes = {
   field: PropTypes.shape({
     toString: PropTypes.func.isRequired,
   }),
-  mediaPrintDisabled: PropTypes.bool,
   name: PropTypesPlus.string,
   onChange: PropTypes.func,
   onInputChange: PropTypes.func,
@@ -46,8 +46,14 @@ UIType.propTypes = {
   options: PropTypesImmutable.list,
   processing: PropTypes.bool,
   processingDidFail: PropTypes.bool,
-  value: PropTypesPlus.typography,
-  valueInitial: PropTypesPlus.typography,
+  value: PropTypes.oneOfType([
+    PropTypesPlus.typography,
+    PropTypesPlus.value,
+  ]),
+  valueInitial: PropTypes.oneOfType([
+    PropTypesPlus.typography,
+    PropTypesPlus.value,
+  ]),
 };
 
 UIType.defaultProps = {

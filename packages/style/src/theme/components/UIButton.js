@@ -61,6 +61,33 @@ export const component_uiButton_fab = {
   `,
 };
 
+export const component_uiButton_flat = {
+  contentComponentPaletteAsBackground: true,
+  iconComponentPaletteAsBackground: true,
+  processingComponentPaletteAsBackground: true,
+  css: css`
+    background-color: ${colorFromPalette()};
+    border-radius: 0;
+
+    &:hover {
+      background-color: ${colorFromPalette({ weight: '400' })};
+    }
+
+    &:focus {
+      background-color: ${colorFromPalette({ weight: '700' })};
+    }
+
+    &:disabled {
+      background-color: ${color({ name: 'gray', weight: '200' })};
+      cursor: auto;
+
+      * {
+        color: ${color({ name: 'gray', weight: '800' })};
+      }
+    }
+  `,
+};
+
 export const component_uiButton_icon = {
   contentComponentHidden: true,
   iconComponentHidden: false,
@@ -73,6 +100,16 @@ export const component_uiButton_icon = {
         padding: 0.5em;
       }
     `}
+  `,
+};
+
+export const component_uiButton_navigation = {
+  css: css`
+    border-radius: 0;
+
+    &.active {
+      border-bottom: 2px solid ${colorFromPalette()};
+    }
   `,
 };
 

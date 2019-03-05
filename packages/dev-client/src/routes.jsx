@@ -1,17 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { AppliedRoute } from '@apps/auth';
+import { Navigation } from '@gnowth/app';
 import { Switch, Redirect } from 'react-router-dom';
 
 import settings from 'settings';
-import Header from 'components/Header';
 
 const AppPages = React.lazy(() => import('apps/pages'));
 const AppObservation = React.lazy(() => import('apps/observation'));
 
 const Routes = props => (
   <React.Suspense fallback={<div>Loading...</div>}>
-    <Header />
+    <Navigation
+      name="screen"
+      palette="secondary"
+      paletteAsBackground
+      variant="flat"
+    />
 
     <Switch>
       <AppliedRoute

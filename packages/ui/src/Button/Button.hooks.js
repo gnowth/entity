@@ -1,3 +1,4 @@
+import _omitBy from 'lodash/omitBy';
 import classnames from 'classnames';
 import { useDefault } from '@gnowth/default';
 
@@ -24,19 +25,16 @@ export default {
   },
 
   useProps(props) {
-    const defaults = useDefault(mapDefault, props);
+    const { linkComponent } = useDefault(mapDefault, props);
 
-    return Object.assign(
-      {},
-
-      props.to && {
-        as: (!defaults.linkComponent || /^https?:\/\//.exec(props.to))
-          ? 'a'
-          : defaults.linkComponent,
-        href: props.to,
-      },
+    return _omitBy(Object.assign(
+      { href: props.to },
 
       props,
+
+      props.to && {
+        as: props.as || (!/^https?:\/\//.exec(props.to) && linkComponent) || 'a',
+      },
 
       {
         disabled: props.processing || props.disabled,
@@ -46,20 +44,19 @@ export default {
         styles: undefined,
         theme: undefined,
       },
-    );
+    ), (value, key) => /^\$\$/.test(key));
   },
 
   usePropsIcon(props) {
     return Object.assign(
       {
         css: props.iconComponentCss,
-        hidden: props.processing || props.iconComponentHidden === undefined
-          ? true
-          : props.iconComponentHidden,
+        hidden: props.processing || props.iconComponentHidden === undefined || props.iconComponentHidden,
         name: props.iconComponentName || 'name',
         palette: props.palette,
-        paletteAsBackground: props.iconComponentPaletteAsBackground,
+        paletteAsBackground: props.$$iconComponentPaletteAsBackground,
         paletteWeight: props.paletteWeight,
+        variant: 'button',
       },
 
       props.iconComponentFont && {
@@ -69,7 +66,7 @@ export default {
       props.iconComponentProps,
 
       {
-        className: classnames('uiButton-Icon', props.contentComponentProps?.className),
+        className: classnames('uiButton-Icon', props.iconComponentProps?.className),
       },
     );
   },
@@ -79,7 +76,7 @@ export default {
       children: props.children,
       hidden: props.contentComponentHidden || props.processing,
       palette: props.palette,
-      paletteAsBackground: props.contentComponentPaletteAsBackground,
+      paletteAsBackground: props.$$contentComponentPaletteAsBackground,
       paletteWeight: props.paletteWeight,
       value: props.content,
       variant: 'button',
@@ -92,7 +89,7 @@ export default {
     return {
       hidden: !props.processing,
       palette: props.palette,
-      paletteAsBackground: props.processingComponentPaletteAsBackground,
+      paletteAsBackground: props.$$processingComponentPaletteAsBackground,
       paletteWeight: props.paletteWeight,
       variant: 'button',
     };
