@@ -35,7 +35,7 @@ export default class DjangoRestFramework extends Duck {
 
       get: this.makeAction({
         hasPayload: false,
-        metaFromPayload: (payload = {}) => ({ sideEffect: payload.id !== null && !!payload.action }),
+        metaFromPayload: (payload = {}) => ({ sideEffect: payload.id !== null && !payload.action }),
       }),
       get_rejected: this.makeAction(),
       get_resolved: this.makeAction(),

@@ -1,5 +1,7 @@
 import EntityAuth from './entities/Auth';
 
+export { default as AppliedRoute } from './components/AppliedRoute';
+
 export { default as Authenticate } from './components/Authenticate';
 
 export { default as AuthenticatedRoute } from './components/AuthenticatedRoute';

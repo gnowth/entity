@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { AppliedRoute } from '@apps/auth';
+import { Switch, Redirect } from 'react-router-dom';
 
 import settings from 'settings';
 import Header from 'components/Header';
@@ -10,31 +11,19 @@ const AppObservation = React.lazy(() => import('apps/observation'));
 
 const Routes = props => (
   <React.Suspense fallback={<div>Loading...</div>}>
-    <Switch>
-      <Route
-        path="/pages"
-        render={routerProps => (
-          <div>
-            <Header />
+    <Header />
 
-            <AppPages {...routerProps} />
-          </div>
-        )}
+    <Switch>
+      <AppliedRoute
+        path="/pages"
+        component={AppPages}
       />
 
       { settings.ENABLE_FEATURE_OBSERVATION && (
-        <Route
+        <AppliedRoute
           path="/observation"
-          render={routerProps => (
-            <div>
-              <Header />
-
-              <AppObservation
-                {...routerProps}
-                routeNotFound={props.routeNotFound}
-              />
-            </div>
-          )}
+          component={AppObservation}
+          componentProps={{ routeNotFound: props.routeNotFound }}
         />
       )}
 
