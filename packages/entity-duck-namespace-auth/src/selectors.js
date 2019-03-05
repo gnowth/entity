@@ -32,4 +32,8 @@ export default class Auth extends DuckDjangoRestFramework.Selectors {
   record(state) {
     return this.getState(state).get('detail');
   }
+
+  whoAmIed(state) {
+    return this.getState(state).getIn(['status', 'whoAmIed']);
+  }
 }

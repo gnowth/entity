@@ -29,6 +29,7 @@ export default class Auth extends DuckDjangoRestFramework {
       status: Map({
         authenticating: false,
         authenticatingDidFail: false,
+        whoAmIed: false,
       }),
     });
   }
@@ -38,7 +39,8 @@ export default class Auth extends DuckDjangoRestFramework {
       [types.whoAmI]: state => state.withMutations(
         s => s
           .setIn(['status', 'authenticating'], true)
-          .setIn(['status', 'authenticatingDidFail'], false),
+          .setIn(['status', 'authenticatingDidFail'], false)
+          .setIn(['status', 'whoAmIed'], true),
       ),
 
       [types.whoAmI_rejected]: (state, action) => (

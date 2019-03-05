@@ -1,1 +1,1 @@
-# @entity/core
+# @entity/duck-mock-drf
