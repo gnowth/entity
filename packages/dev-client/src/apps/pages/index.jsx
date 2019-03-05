@@ -21,7 +21,7 @@ const Screen = styled.div`
   justify-content: center;
 `;
 
-function AppPage(props) {
+function AppPages(props) {
   const enhancedProps = useEnhance(props, { locales });
 
   return (
@@ -60,15 +60,15 @@ function AppPage(props) {
   );
 }
 
-AppPage.propTypes = {
+AppPages.propTypes = {
   locales: PropTypes.exact({
     not_found: PropTypesPlus.locale,
   }),
   match: PropTypesRouter.match.isRequired,
 };
 
-AppPage.defaultProps = {
+AppPages.defaultProps = {
   locales: undefined,
 };
 
-export default React.memo(AppPage);
+export default React.memo(AppPages);

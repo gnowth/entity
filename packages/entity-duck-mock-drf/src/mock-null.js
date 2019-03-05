@@ -1,4 +1,4 @@
-import uuid from 'uuid/v1';
+import faker from 'faker';
 
 export default (entities) => {
   const computedEntities = Array.isArray(entities)
@@ -6,9 +6,7 @@ export default (entities) => {
     : [entities];
 
   return computedEntities.map((entity) => {
-    entity.mockStoreNull = entity.dataToRecord({ // eslint-disable-line no-param-reassign
-      [entity.idField]: uuid(),
-    });
+    entity.mockStoreNull = entity.mock(faker, 0); // eslint-disable-line no-param-reassign
 
     return entity;
   });

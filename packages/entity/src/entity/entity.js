@@ -1,4 +1,10 @@
+import _flowRight from 'lodash/flowRight';
+import _get from 'lodash/get';
+import _keyBy from 'lodash/keyBy';
 import _isFunction from 'lodash/isFunction';
+import _mapValues from 'lodash/mapValues';
+import _range from 'lodash/range';
+import _sample from 'lodash/sample';
 import { List, Map } from 'immutable';
 
 import EntityField from '../field/field-entity';
@@ -10,7 +16,7 @@ export default class Entity {
   static idField = 'uuid'
 
   static fields = {
-    uuid: new IdField({ blank: true }),
+    uuid: new IdField({ blank: true, mock: 'random.uuid' }),
   }
 
   static paths = {}
@@ -106,6 +112,37 @@ export default class Entity {
           .filter(error => error).size > 0,
       )
       : !errors || errors.size === 0;
+  }
+
+  static mock(faker, index, preMock) {
+    return _flowRight(
+      record => this.toData(record),
+      data => this.dataToRecord(data),
+      fields => ({
+        ...preMock,
+        ..._mapValues(
+          fields,
+          (field) => {
+            if (field instanceof EntityField && !field.blank && field.entity.mockStore) {
+              return _sample(Object.values(field.entity.mockStore));
+            }
+
+            return field.mock && (
+              field.mock === 'index'
+                ? index
+                : _get(faker, field.mock)()
+            );
+          },
+        ),
+      }),
+    )(this.fields);
+  }
+
+  static mockMany(faker, configs = {}) {
+    return _keyBy(
+      _range(configs.size).map(index => this.mock(faker, index)),
+      this.idField,
+    );
   }
 
   static toData(record) {
