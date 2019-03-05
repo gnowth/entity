@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { color, boxshadow } from '../../selectors';
+import { boxshadow, color, variable } from '../../selectors';
 
 export const component_uiCard_danger = {
   css: css`
@@ -13,7 +13,7 @@ export const component_uiCard_page = {
   css: css`
     border: 0;
     margin: auto;
-    max-width: 100rem;
+    max-width: ${variable({ name: 'size', variant: 'pageMaxWidth' })};
   `,
 };
 
@@ -35,6 +35,7 @@ export const component_uiCard_panel = {
 export const component_uiCard_panel_focused = {
   css: css`
     ${boxshadow({ name: 'material1' })}
+    background-color: ${color({ name: 'gray', weight: '100' })};
     border: 0;
     border-bottom: 0.25rem solid ${color({ name: 'secondary' })};
   `,

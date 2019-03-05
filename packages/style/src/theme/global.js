@@ -9,7 +9,7 @@ export default css`
   }
 
   body {
-    background-color: ${color({ name: 'gray', weight: '100' })};
+    background-color: ${color({ name: 'gray', weight: '400' })};
     font-family: Arial, Sans-Serif;
   }
 `;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
+import { withPropsFiltered } from '@gnowth/higher-order-component';
 import { colorFromPalette, component, sizeGridBase } from '@gnowth/style';
 
 const UICard = styled.div`
@@ -34,4 +35,4 @@ UICard.defaultProps = {
   ratio: 1,
 };
 
-export default UICard;
+export default withPropsFiltered(UICard);

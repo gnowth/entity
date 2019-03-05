@@ -95,10 +95,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -112,20 +112,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c8:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c8:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c8:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c8:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c4 {
@@ -188,7 +188,7 @@ exports[`renders correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #f0f0f0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

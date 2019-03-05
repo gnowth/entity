@@ -139,10 +139,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -155,20 +155,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c7:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c7:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c7:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c7:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c17 {
@@ -179,10 +179,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -196,20 +196,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c17:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c17:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c17:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c17:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c18 {
@@ -220,10 +220,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -238,20 +238,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c18:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c18:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c18:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c18:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c18:hover {
@@ -263,12 +263,12 @@ exports[`renders correctly 1`] = `
 }
 
 .c18:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c18:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c2 {

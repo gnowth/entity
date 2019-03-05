@@ -94,10 +94,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -110,20 +110,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c1:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c1:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c1:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c1:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c8 {
@@ -134,10 +134,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -151,20 +151,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c8:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c8:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c8:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c8:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c9 {
@@ -175,10 +175,10 @@ exports[`renders correctly 1`] = `
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -193,20 +193,20 @@ exports[`renders correctly 1`] = `
 }
 
 .c9:hover {
-  background-color: #f7f7f7;
+  background-color: #fdfdfd;
 }
 
 .c9:focus {
-  background-color: #ebebeb;
+  background-color: #fbfbfb;
 }
 
 .c9:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c9:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c9:hover {
@@ -218,12 +218,12 @@ exports[`renders correctly 1`] = `
 }
 
 .c9:disabled {
-  background-color: #dedede;
+  background-color: #f8f8f8;
   cursor: auto;
 }
 
 .c9:disabled * {
-  color: #a6a6a6;
+  color: #e9e9e9;
 }
 
 .c7 {

@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color, colorFromPalette } from '@gnowth/style';
 
 export default styled.button`
   align-self: center;
-  background-color: transparent;
+  background-color: ${props => (props.paletteAsBackground ? colorFromPalette()(props) : 'transparent')};
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   outline: none;
   padding: 0.5em 1.5em;

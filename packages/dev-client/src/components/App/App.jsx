@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { EntityTitle } from '@entity/core';
 import { AppRoot } from '@gnowth/app';
 import { defaultTheme, GlobalStyles } from '@gnowth/style';
 import { Provider } from 'react-redux';
@@ -13,6 +14,7 @@ import defaults from '../../defaults';
 const App = props => (
   <AppRoot
     defaults={defaults}
+    entity={EntityTitle}
     intlProvider={IntlProvider}
     intlProviderProps={{ locale: 'en', messages: {} }}
     themeProvider={ThemeProvider}

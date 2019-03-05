@@ -7,30 +7,55 @@ import { css, ThemeContext } from 'styled-components';
 
 const defaultHook = (hook, ...args) => hook(...args);
 
-export default function (props, configs = {}) {
+export default function (_props, configs = {}) {
   const theme = React.useContext(ThemeContext) || {};
-  const componentTheme = theme[`${configs.namespace || props.namespace}_${configs.variant || props.variant}`] || {};
+  const componentTheme = theme[`${configs.namespace || _props.namespace}_${configs.variant || _props.variant}`] || {};
 
-  return {
-    ...configs,
+  const props = {
     ...componentTheme,
-    ..._omitBy(props, _isUndefined),
-    css: css`${componentTheme.css} ${props.css}`,
+
+    ..._omitBy(_props, _isUndefined),
+
+    css: css`${componentTheme.css} ${_props.css}`,
+
     hooks: _mapValues(
       configs.hooks,
-      (hook, key) => (...args) => (props.hooks?.[key] || defaultHook)(
+      (hook, key) => (...args) => (_props.hooks?.[key] || defaultHook)(
         (...themeArgs) => (componentTheme.hooks?.[key] || defaultHook)(hook, ...themeArgs),
         ...args,
       ),
     ),
-    locales: { ...configs.locales, ...componentTheme.locales, ...props.locales },
-    names: { ...configs.names, ...componentTheme.names, ...props.names },
+
+    locales: {
+      ...configs.locales,
+      ...componentTheme.locales,
+      ..._props.locales,
+    },
+
+    names: {
+      ...configs.names,
+      ...componentTheme.names,
+      ..._props.names,
+    },
+
     styles: _mergeWith(
       {},
       configs.styles,
       componentTheme.styles,
-      props.styles,
+      _props.styles,
       (obj, src) => css`${obj} ${src}`,
     ),
   };
+
+  (configs.transient || []).forEach((key) => {
+    props[`$${key}`] = props[key];
+    delete props[key];
+  });
+
+  (configs.localProps || []).forEach((key) => {
+    props[`$$${key}`] = props[key];
+    delete props[key];
+  });
+
+  return props;
 }

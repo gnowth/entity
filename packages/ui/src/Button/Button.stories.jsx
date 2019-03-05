@@ -18,7 +18,10 @@ export default stories => stories
         <UIButton
           content={text('children', 'Hello Button')}
           disabled={boolean('disabled', false)}
+          iconComponentFont="material"
+          iconComponentName="delete"
           onClick={action('clicked')}
+          palette="primary"
           processing={boolean('processing', false)}
           variant={select('variant', variant({ name: 'component_uiButton_' })({ theme }), 'text')}
         />
