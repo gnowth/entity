@@ -14,16 +14,16 @@ import TextField from '../field/field-text';
 
 export default class Title extends Entity {
   static fields = {
-    description: new TextField(),
+    description: new TextField({ blank: true }),
     is_archived: new BooleanField({ default: false }),
     locale: new EntityField({
       blank: true,
       entity: EntityLocale,
     }),
-    order: new IntegerField(),
-    title: new CharField(),
+    order: new IntegerField({ mock: 'index' }),
+    title: new CharField({ mock: 'lorem.sentence' }),
     title_short: new CharField({ blank: true }),
-    uuid: new IdField({ blank: true }),
+    uuid: new IdField({ blank: true, mock: 'random.uuid' }),
   }
 
   static paths = {

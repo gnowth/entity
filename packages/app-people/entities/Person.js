@@ -7,10 +7,10 @@ class Person extends Entity {
   static paginated = true;
 
   static fields = {
-    id: new Fields.IdField(),
-    username: new Fields.CharField(),
-    first_name: new Fields.CharField(),
-    last_name: new Fields.CharField(),
+    id: new Fields.IdField({ mock: 'random.uuid' }),
+    username: new Fields.CharField({ mock: 'internet.userName' }),
+    first_name: new Fields.CharField({ mock: 'name.firstName' }),
+    last_name: new Fields.CharField({ mock: 'name.lastName' }),
   };
 
   static paths = {
