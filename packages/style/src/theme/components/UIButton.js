@@ -159,3 +159,5 @@ export const component_uiButton_raised = {
     }
   `,
 };
+
+export const component_uiButton_text = {};

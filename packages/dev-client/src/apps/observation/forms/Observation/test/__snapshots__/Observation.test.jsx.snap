@@ -132,9 +132,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c7 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -172,9 +169,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c17 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -213,9 +207,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c18 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
