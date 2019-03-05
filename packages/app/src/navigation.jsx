@@ -13,9 +13,9 @@ function Navigation(_props) {
 
   const { Container, NavLink } = props.hooks.useComponents(props);
 
-  const navigations = _isFunction(context.entity.navigations ?.[props.name])
+  const navigations = _isFunction(context.entity.navigations?.[props.name])
     ? context.entity.navigations[props.name](props.entityConfigs)
-    : context.entity.navigations ?.[props.name];
+    : context.entity.navigations?.[props.name];
 
   return (
     <Container {...props.hooks.usePropsContainer(props)}>

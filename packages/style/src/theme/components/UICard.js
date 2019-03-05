@@ -11,6 +11,7 @@ export const component_uiCard_danger = {
 
 export const component_uiCard_page = {
   css: css`
+    background-color: ${color({ name: 'gray', weight: '400' })};
     border: 0;
     margin: auto;
     max-width: ${variable({ name: 'size', variant: 'pageMaxWidth' })};

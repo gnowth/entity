@@ -92,6 +92,7 @@ export default {
       paletteAsBackground: props.$$processingComponentPaletteAsBackground,
       paletteWeight: props.paletteWeight,
       variant: 'button',
+      ...props.processingComponentProps,
     };
   },
 };

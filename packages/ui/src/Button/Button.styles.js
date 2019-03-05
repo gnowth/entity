@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { color, colorFromPalette } from '@gnowth/style';
 
 export default styled.button`
-  align-self: center;
   background-color: ${props => (props.paletteAsBackground ? colorFromPalette()(props) : 'transparent')};
   border: 0;
   border-radius: 0.25em;
