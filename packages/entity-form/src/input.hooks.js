@@ -77,6 +77,10 @@ export default {
       : Object.assign(
         { variant: props.wrapperComponentVariant },
         componentProps,
+        {
+          css: undefined,
+          label: undefined,
+        },
         _isFunction(props.wrapperComponentProps)
           ? props.wrapperComponentProps(componentProps)
           : props.wrapperComponentProps,

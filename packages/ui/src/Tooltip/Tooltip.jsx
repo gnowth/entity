@@ -7,20 +7,20 @@ import UIIcon from '../Icon';
 import hooks from './Tooltip.hooks';
 import styles, { Popup, Wrapper } from './Tooltip.styles';
 
-function UITooltip(props) {
+function UITooltip(_props) {
   const [hidden, setHidden] = React.useState(true);
-  const enhancedProps = useEnhance(props, { hooks, styles });
-  const Component = enhancedProps.component;
+  const props = useEnhance(_props, { hooks, styles });
+  const Component = props.component;
 
   return (
     <Wrapper
-      className={enhancedProps.className}
-      css={enhancedProps.css}
+      className={props.className}
+      css={props.css}
     >
-      <Component {...enhancedProps.hooks.usePropsTrigger(enhancedProps, enhancedProps.styles, hidden, setHidden)} />
+      <Component {...props.hooks.usePropsTrigger(props, props.styles, hidden, setHidden)} />
 
       <Popup hidden={hidden}>
-        { enhancedProps.children }
+        { props.children }
       </Popup>
     </Wrapper>
   );

@@ -60,9 +60,9 @@
     "normalize.css": "8.0.1",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
-    "react": "16.8.3",
+    "react": "16.8.4",
     "react-datepicker": "2.1.0",
-    "react-dom": "16.8.3",
+    "react-dom": "16.8.4",
     "react-immutable-proptypes": "2.1.0",
     "react-intl": "2.8.0",
     "react-markdown": "4.0.6",
@@ -77,6 +77,6 @@
   "devDependencies": {
     "directory-named-webpack-plugin": "4.0.0",
     "jest-styled-components": "6.3.1",
-    "react-test-renderer": "16.8.3"
+    "react-test-renderer": "16.8.4"
   }
 }

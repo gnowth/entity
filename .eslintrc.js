@@ -153,7 +153,7 @@ module.exports = {
 
     react: {
       pragma: 'React',
-      version: '16.8.3',
+      version: '16.8.4',
     },
   },
 };

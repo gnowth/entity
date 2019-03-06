@@ -13,6 +13,14 @@ export default styled.button`
   position: relative;
   text-decoration: none;
 
+  ${props => props.margin && css`
+    margin: ${props.margin};
+  `}
+
+  ${props => props.padding && css`
+    padding: ${props.padding};
+  `}
+
   &:hover {
     background-color: ${color({ name: 'gray', weight: '50' })};
   }

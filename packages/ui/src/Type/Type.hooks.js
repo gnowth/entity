@@ -1,3 +1,4 @@
+import _omitBy from 'lodash/omitBy';
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
@@ -8,6 +9,14 @@ const StringComponent = props => props.children;
 const Component = styled.span`
   ${props => props.palette && css`
     color: ${colorFromPalette()};
+  `}
+
+  ${props => props.margin && css`
+    margin: ${props.margin};
+  `}
+
+  ${props => props.padding && css`
+    padding: ${props.padding};
   `}
 
   ${props => !props.mediaPrintDisabled && css`
@@ -56,13 +65,14 @@ export default {
   },
 
   useProps(props) {
-    return {
+    return _omitBy({
       ...props,
+      children: undefined,
       hooks: undefined,
       locales: undefined,
       names: undefined,
       styles: undefined,
       theme: undefined,
-    };
+    }, (value, key) => /^\$\$/.test(key));
   },
 };

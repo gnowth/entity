@@ -19,19 +19,19 @@ const ContainerComponent = styled.div`
  * To ignore element outside container, attach className 'ignore-react-onclickoutside' to it
  * https://github.com/Pomax/react-onclickoutside#marking-elements-as-skip-over-this-one-during-the-event-loop
  */
-function Popup(props) {
+function Popup(_props) {
   const [opened, setOpened] = React.useState(false);
-  const enhancedProps = useEnhance(props, { hooks });
-  const { Container, Control, Component, Wrapper } = enhancedProps.hooks.useComponents(enhancedProps);
-  const componentProps = enhancedProps.hooks.usePropsComponent(enhancedProps, opened, setOpened);
+  const props = useEnhance(_props, { hooks });
+  const { Container, Control, Component, Wrapper } = props.hooks.useComponents(props);
+  const componentProps = props.hooks.usePropsComponent(props, opened, setOpened);
 
-  Popup.handleClickOutside = enhancedProps.hooks.useGetClickOutside(componentProps);
+  Popup.handleClickOutside = props.hooks.useGetClickOutside(componentProps);
 
   return (
-    <Container {...enhancedProps.hooks.usePropsContainer(enhancedProps)}>
-      <Control {...enhancedProps.hooks.usePropsControl(enhancedProps, opened, setOpened)} />
+    <Container {...props.hooks.usePropsContainer(props)}>
+      <Control {...props.hooks.usePropsControl(props, opened, setOpened)} />
 
-      <Wrapper {...enhancedProps.hooks.usePropsWrapper(enhancedProps, opened)}>
+      <Wrapper {...props.hooks.usePropsWrapper(props, opened)}>
         <Component {...componentProps} />
       </Wrapper>
     </Container>
@@ -59,6 +59,9 @@ Popup.propTypes = exact({
   wrapperComponent: PropTypesPlus.component,
   wrapperComponentProps: PropTypes.shape({}),
 
+  // form props
+  name: PropTypesPlus.string,
+
   // onclickoutside props
   disableOnClickOutside: PropTypes.func.isRequired,
   enableOnClickOutside: PropTypes.func.isRequired,
@@ -81,6 +84,9 @@ Popup.defaultProps = {
   type: undefined,
   wrapperComponent: undefined,
   wrapperComponentProps: {},
+
+  // form props
+  name: undefined,
 };
 
 const clickOutsideConfig = {

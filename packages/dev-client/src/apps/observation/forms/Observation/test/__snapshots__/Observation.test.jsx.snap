@@ -40,7 +40,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c19 {
-  color: #000000;
+  color: #ffffff;
 }
 
 .c19.c19 {
@@ -52,6 +52,31 @@ exports[`renders correctly 1`] = `
   animation-name: bvvTNa;
   fill: transparent;
   stroke: #000000;
+  stroke-dasharray: 251.32741228718345px;
+  stroke-width: 20%;
+  -webkit-transition: stroke-dashoffset 225ms linear;
+  transition: stroke-dashoffset 225ms linear;
+  -webkit-transform-box: view-box;
+  -ms-transform-box: view-box;
+  transform-box: view-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
+  -webkit-transition-property: stroke;
+  transition-property: stroke;
+}
+
+.c20 {
+  -webkit-animation-name: bvvTNa;
+  animation-name: bvvTNa;
+  fill: transparent;
+  stroke: #ffffff;
   stroke-dasharray: 251.32741228718345px;
   stroke-width: 20%;
   -webkit-transition: stroke-dashoffset 225ms linear;
@@ -118,8 +143,8 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c20 {
-  color: #000000;
+.c21 {
+  color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
   -webkit-letter-spacing: 1.25px;
@@ -277,10 +302,6 @@ exports[`renders correctly 1`] = `
   margin-top: 24px;
 }
 
-.c14 {
-  margin-top: 48px;
-}
-
 .c6 {
   display: inline-block;
   position: relative;
@@ -324,6 +345,10 @@ exports[`renders correctly 1`] = `
   display: flex;
 }
 
+.c14 {
+  margin-top: 48px;
+}
+
 @media print {
   .c1 {
     color: #000000;
@@ -337,7 +362,7 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
-  .c20 {
+  .c21 {
     color: #000000;
   }
 }
@@ -682,10 +707,10 @@ exports[`renders correctly 1`] = `
     </span>
   </button>
   <div
-    className="c14"
+    className=""
   >
     <div
-      className="c15"
+      className="c14 c15"
     >
       <button
         className="c7"
@@ -819,7 +844,7 @@ exports[`renders correctly 1`] = `
             viewBox="0 0 100 100"
           >
             <circle
-              className="c11"
+              className="c20"
               cx="50%"
               cy="50%"
               r="40"
@@ -828,7 +853,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </span>
         <span
-          className="uiButton-Content c20"
+          className="uiButton-Content c21"
           hidden={false}
           value={
             Object {

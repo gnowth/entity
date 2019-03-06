@@ -13,17 +13,17 @@ const localProps = [
   'processingComponentPaletteAsBackground',
 ];
 
-function UIButton(props) {
-  const enhancedProps = useEnhance(props, { hooks, localProps });
-  const { Content, Icon, Processing } = enhancedProps.hooks.useComponents(enhancedProps);
+function UIButton(_props) {
+  const props = useEnhance(_props, { hooks, localProps });
+  const { Content, Icon, Processing } = props.hooks.useComponents(props);
 
   return (
-    <Button {...enhancedProps.hooks.useProps(enhancedProps)}>
-      <Icon {...enhancedProps.hooks.usePropsIcon(enhancedProps)} />
+    <Button {...props.hooks.useProps(props)}>
+      <Icon {...props.hooks.usePropsIcon(props)} />
 
-      <Processing {...enhancedProps.hooks.usePropsProcessing(enhancedProps)} />
+      <Processing {...props.hooks.usePropsProcessing(props)} />
 
-      <Content {...enhancedProps.hooks.usePropsContent(enhancedProps)} />
+      <Content {...props.hooks.usePropsContent(props)} />
     </Button>
   );
 }

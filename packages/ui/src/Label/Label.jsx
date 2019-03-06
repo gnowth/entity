@@ -11,30 +11,30 @@ import UIType from '../Type';
 import hooks from './Label.hooks';
 import styles, { Label, UILabelRoot } from './Label.styles';
 
-function UILabel(props) {
-  const enhancedProps = useEnhance(props, { hooks, styles });
-  const propsTooltip = enhancedProps.hooks.usePropsTooltip(enhancedProps, enhancedProps.styles);
+function UILabel(_props) {
+  const props = useEnhance(_props, { hooks, styles });
+  const propsTooltip = props.hooks.usePropsTooltip(props, props.styles);
 
   return (
-    <UILabelRoot className={enhancedProps.className} css={enhancedProps.css}>
-      { enhancedProps.label && (
+    <UILabelRoot className={props.className} css={props.css}>
+      { props.label && (
         <UIType
           as={Label}
           variant="label"
-          value={enhancedProps.label}
-          {...enhancedProps.labelComponentProps}
+          value={props.label}
+          {...props.labelComponentProps}
         />
       )}
 
-      { enhancedProps.label && enhancedProps.errors && enhancedProps.errors.size > 0 && (
+      { props.label && props.errors && props.errors.size > 0 && (
         <UITooltip {...propsTooltip}>
-          { enhancedProps.errors.map((error, index) => (
+          { props.errors.map((error, index) => (
             <UIError key={index}>{ error }</UIError> // eslint-disable-line
           ))}
         </UITooltip>
       )}
 
-      { enhancedProps.children }
+      { props.children }
     </UILabelRoot>
   );
 }

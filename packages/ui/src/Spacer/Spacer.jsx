@@ -1,5 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export default styled.div`
-  flex: 1;
+  flex: ${props => (props.flex === undefined ? 1 : props.flex)};
+
+  ${props => props.margin && css`
+    margin: ${props.margin};
+  `}
+
+  ${props => props.padding && css`
+    padding: ${props.padding};
+  `}
 `;

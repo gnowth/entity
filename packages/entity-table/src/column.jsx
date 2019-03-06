@@ -71,7 +71,7 @@ Column.propTypes = {
   ]),
   children: PropTypesPlus.isRequiredIfNot('component', PropTypes.func),
 
-  label: PropTypes.string,
+  label: PropTypes.node,
   hidden: PropTypes.bool,
 
   // component

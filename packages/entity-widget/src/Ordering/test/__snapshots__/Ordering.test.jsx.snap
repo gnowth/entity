@@ -14,8 +14,10 @@ exports[`renders correctly 1`] = `
 >
   test
   <i
-    className="icon icon-unfold_more c0"
+    className="material-icons c0"
     name="unfold_more"
-  />
+  >
+    unfold_more
+  </i>
 </span>
 `;

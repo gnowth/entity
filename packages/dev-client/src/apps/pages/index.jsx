@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
-import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
 import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
 import { App } from '@gnowth/app';
 import { UIType, UICard } from '@gnowth/ui';
-import { useEnhance } from '@private/hooks';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import changelog from 'root/CHANGELOG.md';
@@ -21,54 +18,43 @@ const Screen = styled.div`
   justify-content: center;
 `;
 
-function AppPages(props) {
-  const enhancedProps = useEnhance(props, { locales });
+const AppPages = props => (
+  <App {...props}>
+    <Switch>
+      <Route
+        path={`${props.match.url}/changelog`}
+        render={() => (
+          <UICard ratio={3} variant="page_flat">
+            <Markdown className="markdown-body" source={changelog} />
+          </UICard>
+        )}
+      />
 
-  return (
-    <App {...enhancedProps}>
-      <Switch>
-        <Route
-          path={`${enhancedProps.match.url}/changelog`}
-          render={() => (
-            <UICard ratio={3} variant="page_flat">
-              <Markdown className="markdown-body" source={changelog} />
-            </UICard>
-          )}
-        />
+      <Route
+        path={`${props.match.url}/readme`}
+        render={() => (
+          <UICard ratio={3} variant="page_flat">
+            <Markdown className="markdown-body" source={readme} />
+          </UICard>
+        )}
+      />
 
-        <Route
-          path={`${enhancedProps.match.url}/readme`}
-          render={() => (
-            <UICard ratio={3} variant="page_flat">
-              <Markdown className="markdown-body" source={readme} />
-            </UICard>
-          )}
-        />
+      <Route
+        path={`${props.match.url}/notfound`}
+        render={() => (
+          <Screen>
+            <UIType value={locales.not_found} variant="h1" />
+          </Screen>
+        )}
+      />
 
-        <Route
-          path={`${enhancedProps.match.url}/notfound`}
-          render={() => (
-            <Screen>
-              <UIType value={enhancedProps.locales.not_found} variant="h1" />
-            </Screen>
-          )}
-        />
-
-        <Redirect to={`${enhancedProps.match.url}/notfound`} push />
-      </Switch>
-    </App>
-  );
-}
+      <Redirect to={`${props.match.url}/notfound`} push />
+    </Switch>
+  </App>
+);
 
 AppPages.propTypes = {
-  locales: PropTypes.exact({
-    not_found: PropTypesPlus.locale,
-  }),
   match: PropTypesRouter.match.isRequired,
-};
-
-AppPages.defaultProps = {
-  locales: undefined,
 };
 
 export default React.memo(AppPages);

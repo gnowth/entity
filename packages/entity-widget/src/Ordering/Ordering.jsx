@@ -79,6 +79,7 @@ class WidgetOrdering extends React.Component {
           css={css`
             ${component({ namespace: 'component_widgetOrdering', branch: 'icon' })}
           `}
+          material
           name={this.nameMap[this.getOrderingState()]}
         />
       </span>
@@ -94,7 +95,7 @@ WidgetOrdering.propTypes = {
   ]).isRequired,
   onChange: PropTypes.func.isRequired,
   field: PropTypesEntity.field.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   orderingKey: PropTypes.string.isRequired,
 };
 

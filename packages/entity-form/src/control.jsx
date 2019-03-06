@@ -34,6 +34,7 @@ Control.propTypes = exact({
     usePropsComponent: PropTypes.func,
     usePropsErrorBoundary: PropTypes.func,
   }),
+  name: PropTypesPlus.string,
   submit: PropTypes.bool,
 });
 
@@ -45,6 +46,7 @@ Control.defaultProps = {
   errorBoundaryComponentProps: {},
   event: 'onClick',
   hooks: undefined,
+  name: undefined,
   submit: false,
 };
 

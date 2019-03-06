@@ -24,7 +24,7 @@
     "@entity/core": "0.4.0",
     "@entity/duck-namespace-drf": "0.4.0",
     "immutable": "4.0.0-rc.12",
-    "query-string": "6.2.0"
+    "query-string": "6.3.0"
   },
   "peerDependencies": {
     "lodash": "4.17.11"
