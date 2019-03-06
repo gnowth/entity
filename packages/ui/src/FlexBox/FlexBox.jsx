@@ -1,13 +1,26 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { component } from '@gnowth/style';
+import { component, colorFromPalette } from '@gnowth/style';
 
 const UIFlexBox = styled.div`
-  display: flex;
   align-items: ${props => props.alignItems};
+  display: flex;
   justify-content: ${props => props.justifyContent};
 
+  ${props => props.palette && css`
+    background-color: ${colorFromPalette()(props)};
+  `}
+
+  ${props => props.margin && css`
+    margin: ${props.margin};
+  `}
+
+  ${props => props.padding && css`
+    padding: ${props.padding};
+  `}
+
   ${component()}
+
   ${props => props.css}
 `;
 

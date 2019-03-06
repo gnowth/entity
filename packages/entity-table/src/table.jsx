@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
+import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 
 import { Provider } from './base';
@@ -88,32 +89,14 @@ Table.propTypes = {
   value: PropTypesImmutable.list.isRequired,
   field: PropTypesEntity.entityField.isRequired,
   customHeaderRowComponentProps: PropTypes.shape({}),
-  customHeaderRowComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
+  customHeaderRowComponent: PropTypesPlus.component,
   headerRowComponentProps: PropTypes.shape({}),
-  headerRowComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
+  headerRowComponent: PropTypesPlus.component,
   headerComponentProps: PropTypes.shape({}),
-  headerComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
-  headerWrapperComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
-  rowComponentProps: PropTypes.oneOfType([
-    PropTypes.shape({}),
-    PropTypes.func,
-  ]),
-  rowComponent: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.func.isRequired,
-  ]),
+  headerComponent: PropTypesPlus.component,
+  headerWrapperComponent: PropTypesPlus.component,
+  rowComponentProps: PropTypesPlus.componentProps,
+  rowComponent: PropTypesPlus.component,
 };
 
 Table.defaultProps = {

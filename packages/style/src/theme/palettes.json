@@ -29,7 +29,7 @@
       {
         "name": "500",
         "hex": "#4caf50",
-        "darkContrast": true
+        "darkContrast": false
       },
       {
         "name": "600",

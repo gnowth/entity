@@ -14,11 +14,19 @@ const UIIcon = styled.i.attrs(props => ({
   children: props.material ? props.name : props.children,
 }))`
   && {
-    font-size: 1rem;
+    font-size: ${props => props.size || '1rem'};
   }
 
   ${props => props.palette && css`
     color: ${colorFromPalette()};
+  `}
+
+  ${props => props.margin && css`
+    margin: ${props.margin};
+  `}
+
+  ${props => props.padding && css`
+    padding: ${props.padding};
   `}
 
   ${component()}
@@ -29,11 +37,14 @@ UIIcon.propTypes = {
   fontawesome: PropTypes.bool,
   hidden: PropTypes.bool,
   material: PropTypes.bool,
+  margin: PropTypes.string,
   name: PropTypes.string.isRequired,
   namespace: PropTypes.string,
+  padding: PropTypes.string,
   palette: PropTypes.string,
   paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
+  size: PropTypes.string,
   variant: PropTypes.string,
 };
 
@@ -41,10 +52,13 @@ UIIcon.defaultProps = {
   fontawesome: false,
   hidden: undefined,
   material: false,
+  margin: undefined,
   namespace: 'component_uiIcon',
+  padding: undefined,
   palette: undefined,
   paletteAsBackground: false,
   paletteWeight: undefined,
+  size: undefined,
   variant: 'standard',
 };
 

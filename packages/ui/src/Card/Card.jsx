@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withPropsFiltered } from '@gnowth/higher-order-component';
@@ -10,6 +10,14 @@ const UICard = styled.div`
   border-radius: calc(${sizeGridBase} * ${props => props.ratio} * 0.5);
   color: ${colorFromPalette()};
   padding: calc(${sizeGridBase} * ${props => props.ratio} * 2);
+
+  ${props => props.margin && css`
+    margin: ${props.margin};
+  `}
+
+  ${props => props.padding && css`
+    padding: ${props.padding};
+  `}
 
   ${component({ branch: 'css' })}
   ${props => props.css}

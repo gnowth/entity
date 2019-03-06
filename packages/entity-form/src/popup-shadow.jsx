@@ -5,7 +5,7 @@ import PopupShadowInner from './popup-shadow-inner';
 import useContextInput from './use-context-input';
 
 function PopupShadow(props) {
-  const input = useContextInput();
+  const input = useContextInput(props);
 
   return (
     <Form {...input} shadow>

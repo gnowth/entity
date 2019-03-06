@@ -29,7 +29,8 @@ export const colorFromPalette = (configs = {}) => props => color({
   asBackground: configs.asBackground === undefined
     ? props.paletteAsBackground
     : configs.asBackground,
-  name: props.palette || 'black',
+  defaultColor: configs.defaultColor,
+  name: configs.name || props.palette || 'black',
   weight: configs.weight || props.paletteWeight,
 })(props);
 

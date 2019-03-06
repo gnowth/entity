@@ -92,7 +92,7 @@ export default class Title extends Entity {
       .remove('page_size')
       .filterNot(param => param === undefined);
 
-    const path = this.getPaths(configs) ?.urlBase;
+    const path = this.getPaths(configs)?.urlBase;
 
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toUrl (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);

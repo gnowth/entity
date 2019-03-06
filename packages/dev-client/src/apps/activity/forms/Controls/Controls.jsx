@@ -5,82 +5,69 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { Control, Form } from '@entity/form';
 import { UIButton, UISpacer } from '@gnowth/ui';
-import { useEnhance } from '@private/hooks';
 
 import locales from './Controls.locales';
 import styles, { Controls } from './Controls.styles';
 
-function FormControls(props) {
-  const enhancedProps = useEnhance(props, { locales, styles });
-  const ExtraControlsComponent = enhancedProps.extraControlsComponent;
+const FormControls = ({ extraControlsComponent: ExtraControlsComponent, ...props }) => (
+  <Form {...props} css={props.css}>
+    { !props.resetHidden && (
+      <Control
+        action={props.resetAction}
+        component={props.buttonComponent}
+        componentProps={{
+          content: locales.reset,
+          ...props.resetButtonComponentProps,
+        }}
+      />
+    )}
 
-  return (
-    <Form {...props}>
-      { !enhancedProps.resetHidden && (
-        <Control
-          action={enhancedProps.resetAction}
-          component={enhancedProps.buttonComponent}
-          componentProps={{
-            content: enhancedProps.locales.reset,
-            ...enhancedProps.resetButtonComponentProps,
-          }}
-        />
-      )}
+    <ExtraControlsComponent />
 
-      <ExtraControlsComponent />
+    { !props.saveHidden && (
+      <Control
+        action={props.saveAction}
+        component={props.buttonComponent}
+        componentProps={{
+          content: locales.save,
+          css: styles.buttons,
+          ...props.saveButtonComponentProps,
+        }}
+      />
+    )}
 
-      { !enhancedProps.saveHidden && (
-        <Control
-          action={enhancedProps.saveAction}
-          component={enhancedProps.buttonComponent}
-          componentProps={{
-            content: enhancedProps.locales.save,
-            css: enhancedProps.styles.buttons,
-            ...enhancedProps.saveButtonComponentProps,
-          }}
-        />
-      )}
-
-      { !enhancedProps.submitHidden && (
-        <Control
-          action={enhancedProps.submitAction}
-          component={enhancedProps.buttonComponent}
-          componentProps={{
-            content: enhancedProps.locales.submit,
-            css: enhancedProps.styles.buttons,
-            palette: 'primary',
-            variant: 'contained',
-            ...enhancedProps.submitButtonComponentProps,
-          }}
-        />
-      )}
-    </Form>
-  );
-}
+    { !props.submitHidden && (
+      <Control
+        action={props.submitAction}
+        component={props.buttonComponent}
+        componentProps={{
+          content: locales.submit,
+          css: styles.buttons,
+          palette: 'primary',
+          variant: 'contained',
+          ...props.submitButtonComponentProps,
+        }}
+      />
+    )}
+  </Form>
+);
 
 FormControls.propTypes = {
   buttonComponent: PropTypesPlus.component,
   component: PropTypesPlus.component,
+  css: PropTypesPlus.css,
   extraControlsComponent: PropTypesPlus.component,
   field: PropTypesEntity.entityFieldWithInterface({
     actionReset: PropTypes.func.isRequired,
     actionSave: PropTypes.func.isRequired,
     actionSubmit: PropTypes.func.isRequired,
   }).isRequired,
-  locales: PropTypes.exact({
-    reset: PropTypesPlus.locale,
-    save: PropTypesPlus.locale,
-    submit: PropTypesPlus.locale,
-  }),
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
   resetHidden: PropTypes.bool,
   saveAction: PropTypes.func,
   saveButtonComponentProps: PropTypes.shape({}),
   saveHidden: PropTypes.bool,
-  styles: PropTypes.exact({
-    buttons: PropTypesPlus.css,
-  }),
   submitAction: PropTypes.func,
   submitButtonComponentProps: PropTypes.shape({}),
   submitHidden: PropTypes.bool,
@@ -90,15 +77,14 @@ FormControls.propTypes = {
 FormControls.defaultProps = {
   buttonComponent: UIButton,
   component: Controls,
+  css: undefined,
   extraControlsComponent: UISpacer,
-  locales: undefined,
   resetAction: ({ value, field, ...configs }) => field.entity.actionReset(value, configs),
   resetButtonComponentProps: {},
   resetHidden: false,
   saveAction: ({ value, field, ...configs }) => field.entity.actionSave(value, configs),
   saveButtonComponentProps: {},
   saveHidden: false,
-  styles: undefined,
   submitAction: ({ value, field, ...configs }) => field.entity.actionSubmit(value, configs),
   submitButtonComponentProps: {},
   submitHidden: false,

@@ -6,20 +6,27 @@ import { useEnhance } from '@private/hooks';
 
 import hooks from './Type.hooks';
 
-function UIType(props) {
-  const enhancedProps = useEnhance(props, { hooks });
-  const Component = enhancedProps.hooks.useComponent(enhancedProps);
+const localProps = [
+  'onInputChange',
+];
+
+function UIType(_props) {
+  const props = useEnhance(_props, { hooks, localProps });
+  const Component = props.hooks.useComponent(props);
 
   return (
-    <Component {...enhancedProps.hooks.useProps(enhancedProps)}>
-      { enhancedProps.hooks.useChildren(enhancedProps) }
+    <Component {...props.hooks.useProps(props)}>
+      { props.hooks.useChildren(props) }
     </Component>
   );
 }
 
 UIType.propTypes = {
   as: PropTypesPlus.component,
-  children: PropTypesPlus.typography,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypesPlus.typography,
+  ]),
   className: PropTypesPlus.string,
   hidden: PropTypes.bool,
   hooks: PropTypes.exact({
@@ -39,6 +46,7 @@ UIType.propTypes = {
   field: PropTypes.shape({
     toString: PropTypes.func.isRequired,
   }),
+  fieldToStringName: PropTypesPlus.string,
   name: PropTypesPlus.string,
   onChange: PropTypes.func,
   onInputChange: PropTypes.func,
@@ -72,6 +80,7 @@ UIType.defaultProps = {
   // form props
   errors: undefined,
   field: undefined,
+  fieldToStringName: undefined,
   name: undefined,
   onChange: undefined,
   onInputChange: undefined,

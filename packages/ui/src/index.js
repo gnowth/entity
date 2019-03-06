@@ -18,6 +18,8 @@ export { default as UIImage } from './Image';
 
 export { default as UILabel } from './Label';
 
+export { default as UILine } from './Line';
+
 export { default as UIPopup } from './Popup';
 
 export { default as UIProgressCircle } from './ProgressCircle';

@@ -17,7 +17,7 @@
   },
   "peerDependencies": {
     "lodash": "4.17.11",
-    "react": "16.8.3",
+    "react": "16.8.4",
     "react-router-dom": "4.3.1"
   }
 }

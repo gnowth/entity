@@ -99,7 +99,7 @@ function useQuery(configs = {}) {
   useProcessIfNeeded(redux, configs);
   useClearOnUnmount(redux, configs);
 
-  const field = configs.action ?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined });
+  const field = configs.action?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined });
   const name = 'entity_duck_use_query';
   const { processing, value } = redux.state;
 
