@@ -49,8 +49,7 @@ export default {
         },
     ];
 
-    this.promise = configs.client[this.meta?.method || this.name]
-      .apply(null, args)
+    this.promise = configs.client[this.meta?.method || this.name](...args)
       .then(response => store.dispatch(this.duck.resolve(this, response)))
       .catch(error => store.dispatch(this.duck.reject(this, error)))
       .catch(console.error); // eslint-disable-line no-console

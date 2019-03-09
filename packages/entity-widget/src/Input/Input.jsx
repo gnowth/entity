@@ -15,14 +15,11 @@ const WidgetInput = styled(withPropsFiltered('input'))`
 WidgetInput.propTypes = {
   name: PropTypes.string.isRequired,
   namespace: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
   variant: PropTypes.string,
 };
 
 WidgetInput.defaultProps = {
   namespace: 'component_widgetInput',
-  value: '',
   variant: 'standard',
 };
 

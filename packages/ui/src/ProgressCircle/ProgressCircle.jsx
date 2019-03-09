@@ -11,11 +11,22 @@ const ProgressCircle = props => (
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 100 100"
     >
+      { props.bufferPalette && (
+        <Circle
+          cx="50%"
+          cy="50%"
+          palette={props.bufferPalette}
+          paletteWeight={props.bufferPaletteWeight}
+          r={(50 - props.thickness / 2).toString()}
+          thickness={props.thickness}
+          value={100}
+        />
+      )}
+
       <Circle
         cx="50%"
         cy="50%"
         palette={props.palette}
-        paletteAsBackground={props.paletteAsBackground}
         paletteWeight={props.paletteWeight}
         r={(50 - props.thickness / 2).toString()}
         thickness={props.thickness}
@@ -26,8 +37,9 @@ const ProgressCircle = props => (
 );
 
 ProgressCircle.propTypes = {
+  bufferPalette: PropTypesPlus.string,
+  bufferPaletteWeight: PropTypes.string,
   palette: PropTypesPlus.string,
-  paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
   size: PropTypes.string,
   value: PropTypes.number,
@@ -35,8 +47,9 @@ ProgressCircle.propTypes = {
 };
 
 ProgressCircle.defaultProps = {
+  bufferPalette: undefined,
+  bufferPaletteWeight: undefined,
   palette: undefined,
-  paletteAsBackground: undefined,
   paletteWeight: undefined,
   size: '32px',
   value: null,

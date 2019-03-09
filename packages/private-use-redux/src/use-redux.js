@@ -7,19 +7,51 @@ const mapDefault = {
   store: 'store',
 };
 
-export default (mapStateToProps, mapDispatchToProps) => {
+function shallowEqual(objA, objB) {
+  if (Object.is(objA, objB)) {
+    return true;
+  }
+
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  for (let i = 0; i < keysA.length; i += 1) {
+    if (!Object.prototype.hasOwnProperty.call(objB, keysA[i]) || !Object.is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+export default (mapStateToProps = () => ({}), mapDispatchToProps) => {
   const { store } = useDefault(mapDefault);
 
-  const [reduxState, setReduxState] = React.useState(store.getState());
+  const [reduxState, setReduxState] = React.useState(() => mapStateToProps(store.getState()));
 
-  React.useEffect(() => {
-    const unsubscribe = store.subscribe(() => setReduxState(store.getState()));
-    return () => unsubscribe();
-  });
+  const stateRef = React.useRef(reduxState);
+  stateRef.current = reduxState;
+
+  React.useEffect(
+    () => store.subscribe(() => {
+      const newState = mapStateToProps(store.getState());
+
+      if (!shallowEqual(newState, stateRef.current)) setReduxState(newState);
+    }),
+    [mapStateToProps],
+  );
 
   return React.useMemo(
     () => ({
-      state: mapStateToProps?.(reduxState) || {},
+      state: reduxState,
       dispatch: _isFunction(mapDispatchToProps)
         ? mapDispatchToProps(store.dispatch)
         : _mapValues(
@@ -27,6 +59,6 @@ export default (mapStateToProps, mapDispatchToProps) => {
           func => (...args) => store.dispatch(func(...args)),
         ),
     }),
-    [mapStateToProps, mapDispatchToProps, reduxState],
+    [mapDispatchToProps, reduxState],
   );
 };

@@ -8,10 +8,7 @@ import WidgetInput from '..';
 it('renders correctly', () => {
   const tree = renderer.create(
     <IntlProvider locale="en" messages={{}}>
-      <WidgetInput
-        name="test"
-        onChange={() => undefined}
-      />
+      <WidgetInput name="test" />
     </IntlProvider>,
   ).toJSON();
 

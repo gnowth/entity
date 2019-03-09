@@ -76,7 +76,7 @@ exports[`renders correctly 1`] = `
   -webkit-animation-name: bvvTNa;
   animation-name: bvvTNa;
   fill: transparent;
-  stroke: #ffffff;
+  stroke: #4caf50;
   stroke-dasharray: 251.32741228718345px;
   stroke-width: 20%;
   -webkit-transition: stroke-dashoffset 225ms linear;
@@ -98,6 +98,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c9 {
+  display: inline-block;
   height: 32px;
   position: relative;
   width: 32px;
@@ -496,7 +497,7 @@ exports[`renders correctly 1`] = `
           hidden={true}
           name="name"
         />
-        <span
+        <div
           className="c9"
           hidden={true}
           size="32px"
@@ -516,7 +517,7 @@ exports[`renders correctly 1`] = `
               value={null}
             />
           </svg>
-        </span>
+        </div>
         <span
           className="uiButton-Content c12"
         >
@@ -672,7 +673,7 @@ exports[`renders correctly 1`] = `
       hidden={true}
       name="name"
     />
-    <span
+    <div
       className="c9"
       hidden={true}
       size="32px"
@@ -692,7 +693,7 @@ exports[`renders correctly 1`] = `
           value={null}
         />
       </svg>
-    </span>
+    </div>
     <span
       className="uiButton-Content c12"
       hidden={false}
@@ -728,7 +729,7 @@ exports[`renders correctly 1`] = `
           hidden={true}
           name="name"
         />
-        <span
+        <div
           className="c9"
           hidden={true}
           size="32px"
@@ -748,7 +749,7 @@ exports[`renders correctly 1`] = `
               value={null}
             />
           </svg>
-        </span>
+        </div>
         <span
           className="uiButton-Content c12"
           hidden={false}
@@ -781,7 +782,7 @@ exports[`renders correctly 1`] = `
           hidden={true}
           name="name"
         />
-        <span
+        <div
           className="c9"
           hidden={true}
           size="32px"
@@ -801,7 +802,7 @@ exports[`renders correctly 1`] = `
               value={null}
             />
           </svg>
-        </span>
+        </div>
         <span
           className="uiButton-Content c12"
           hidden={false}
@@ -831,7 +832,7 @@ exports[`renders correctly 1`] = `
           hidden={true}
           name="name"
         />
-        <span
+        <div
           className="c9"
           hidden={true}
           size="32px"
@@ -851,7 +852,7 @@ exports[`renders correctly 1`] = `
               value={null}
             />
           </svg>
-        </span>
+        </div>
         <span
           className="uiButton-Content c21"
           hidden={false}

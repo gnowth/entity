@@ -27,6 +27,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   height: 32px;
   position: relative;
   width: 32px;
@@ -49,7 +50,7 @@ exports[`renders correctly 1`] = `
   width: 100%;
 }
 
-<span
+<div
   className="c0"
   size="32px"
   value={null}
@@ -68,5 +69,5 @@ exports[`renders correctly 1`] = `
       value={null}
     />
   </svg>
-</span>
+</div>
 `;
