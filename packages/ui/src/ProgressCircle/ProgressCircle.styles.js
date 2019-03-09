@@ -115,7 +115,8 @@ export const Circle = styled.circle`
   `}
 `;
 
-export const Container = styled.span`
+export const Container = styled.div`
+  display: inline-block;
   height: ${props => props.size};
   position: relative;
   width: ${props => props.size};

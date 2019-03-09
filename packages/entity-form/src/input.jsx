@@ -71,7 +71,7 @@ Input.defaultProps = {
   hooks: undefined,
   loadOptionsFromAPI: false,
   loadValueFromAPI: false,
-  many: false,
+  many: undefined,
   name: undefined,
   type: undefined,
   willChangeRecord: ({ nextRecord }) => nextRecord,

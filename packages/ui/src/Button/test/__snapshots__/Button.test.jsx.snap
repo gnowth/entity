@@ -31,6 +31,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c2 {
+  display: inline-block;
   height: 32px;
   position: relative;
   width: 32px;
@@ -111,7 +112,7 @@ exports[`renders correctly 1`] = `
     hidden={true}
     name="name"
   />
-  <span
+  <div
     className="c2"
     hidden={true}
     size="32px"
@@ -131,7 +132,7 @@ exports[`renders correctly 1`] = `
         value={null}
       />
     </svg>
-  </span>
+  </div>
   <span
     className="uiButton-Content c5"
     value="Test"

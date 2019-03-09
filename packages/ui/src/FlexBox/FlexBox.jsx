@@ -11,6 +11,10 @@ const UIFlexBox = styled.div`
     background-color: ${colorFromPalette()(props)};
   `}
 
+  ${props => props.flexDirection && css`
+    flex-direction: ${props.flexDirection};
+  `}
+
   ${props => props.margin && css`
     margin: ${props.margin};
   `}
@@ -33,7 +37,6 @@ UIFlexBox.propTypes = {
 
 UIFlexBox.defaultProps = {
   alignItems: 'center',
-  justifyContent: 'center',
   namespace: 'component_uiFlexBox',
   variant: 'standard',
 };

@@ -36,8 +36,6 @@ exports[`renders correctly 1`] = `
   }
   name="test"
   namespace="component_widgetInput"
-  onChange={[Function]}
-  value=""
   variant="standard"
 />
 `;

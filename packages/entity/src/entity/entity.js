@@ -5,6 +5,7 @@ import _isFunction from 'lodash/isFunction';
 import _mapValues from 'lodash/mapValues';
 import _range from 'lodash/range';
 import _sample from 'lodash/sample';
+import _sampleSize from 'lodash/sampleSize';
 import { List, Map } from 'immutable';
 
 import EntityField from '../field/field-entity';
@@ -91,6 +92,10 @@ export default class Entity {
     return this.paths;
   }
 
+  static getSize() {
+    return 0;
+  }
+
   static isEntity(maybeEntity) {
     return !!maybeEntity && maybeEntity.prototype instanceof Entity;
   }
@@ -114,17 +119,18 @@ export default class Entity {
       : !errors || errors.size === 0;
   }
 
-  static mock(faker, index, preMock) {
+  static mock(faker, index, mockData) {
     return _flowRight(
       record => this.toData(record),
       data => this.dataToRecord(data),
       fields => ({
-        ...preMock,
         ..._mapValues(
           fields,
           (field) => {
             if (field instanceof EntityField && !field.blank && field.entity.mockStore) {
-              return _sample(Object.values(field.entity.mockStore));
+              return field.many
+                ? _sampleSize(Object.values(field.entity.mockStore))
+                : _sample(Object.values(field.entity.mockStore));
             }
 
             return field.mock && (
@@ -134,6 +140,7 @@ export default class Entity {
             );
           },
         ),
+        ...mockData,
       }),
     )(this.fields);
   }
