@@ -21,6 +21,7 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
+    "@entity/duck": "0.4.0",
     "@gnowth/default": "0.4.0",
     "@gnowth/higher-order-component": "0.4.0",
     "@gnowth/prop-types-entity": "0.4.0",
@@ -31,9 +32,12 @@
     "prop-types-exact": "1.2.0",
     "react-immutable-proptypes": "2.1.0"
   },
-  "peerDependencies": {
-    "@entity/duck": "0.4.0",
+  "devDependencies": {
     "lodash": "4.17.11",
     "react": "16.8.4"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0"
   }
 }

@@ -14,6 +14,7 @@ const rootPath = process.cwd();
 const packageFile = require(path.join(rootPath, 'package.json'));
 const dependencies = []
   .concat(packageFile.dependencies ? Object.keys(packageFile.dependencies) : [])
+  .concat(packageFile.devDependencies ? Object.keys(packageFile.devDependencies) : [])
   .concat(packageFile.peerDependencies ? Object.keys(packageFile.peerDependencies) : []);
 
 export default [

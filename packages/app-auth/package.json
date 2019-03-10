@@ -15,9 +15,14 @@
     "@gnowth/default": "0.4.0",
     "@private/use-redux": "0.4.0"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "lodash": "4.17.11",
     "react": "16.8.4",
     "react-router-dom": "4.3.1"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0",
+    "react-router-dom": ">=4.0.0"
   }
 }

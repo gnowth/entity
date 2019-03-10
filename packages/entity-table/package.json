@@ -27,9 +27,14 @@
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "lodash": "4.17.11",
     "react": "16.8.4",
     "styled-components": "4.1.3"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0",
+    "styled-components": ">=4.0.0"
   }
 }

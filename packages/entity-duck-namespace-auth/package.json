@@ -26,7 +26,10 @@
     "immutable": "4.0.0-rc.12",
     "query-string": "6.3.0"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "lodash": "4.17.11"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0"
   }
 }

@@ -2,14 +2,15 @@ import _isFunction from 'lodash/isFunction';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhance } from '@private/hooks';
+import { useEnhanceProps } from '@gnowth/style';
+
 
 import { Context } from './context';
 import hooks from './navigation.hooks';
 
 function Navigation(_props) {
   const context = React.useContext(Context);
-  const props = useEnhance(_props, { hooks });
+  const props = useEnhanceProps(_props, { hooks });
 
   const { Container, NavLink } = props.hooks.useComponents(props);
 

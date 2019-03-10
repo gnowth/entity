@@ -25,7 +25,10 @@
     "react-immutable-proptypes": "2.1.0",
     "react-is": "16.8.4"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "lodash": "4.17.11"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0"
   }
 }
