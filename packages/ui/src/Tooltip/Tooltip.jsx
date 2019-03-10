@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhance } from '@private/hooks';
+import { useEnhanceProps } from '@gnowth/style';
+
 
 import UIIcon from '../Icon';
 import hooks from './Tooltip.hooks';
@@ -9,7 +10,7 @@ import styles, { Popup, Wrapper } from './Tooltip.styles';
 
 function UITooltip(_props) {
   const [hidden, setHidden] = React.useState(true);
-  const props = useEnhance(_props, { hooks, styles });
+  const props = useEnhanceProps(_props, { hooks, styles });
   const Component = props.component;
 
   return (

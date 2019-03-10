@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhance } from '@private/hooks';
+import { useEnhanceProps } from '@gnowth/style';
+
 
 import hooks from './Type.hooks';
 
@@ -11,7 +12,7 @@ const localProps = [
 ];
 
 function UIType(_props) {
-  const props = useEnhance(_props, { hooks, localProps });
+  const props = useEnhanceProps(_props, { hooks, localProps });
   const Component = props.hooks.useComponent(props);
 
   return (

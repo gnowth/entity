@@ -4,7 +4,8 @@ import withOnClickOutside from 'react-onclickoutside';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhance } from '@private/hooks';
+import { useEnhanceProps } from '@gnowth/style';
+
 
 import Overlay from './components/Overlay';
 import Portal from './components/Portal';
@@ -21,7 +22,7 @@ const ContainerComponent = styled.div`
  */
 function Popup(_props) {
   const [opened, setOpened] = React.useState(false);
-  const props = useEnhance(_props, { hooks });
+  const props = useEnhanceProps(_props, { hooks });
   const { Container, Control, Component, Wrapper } = props.hooks.useComponents(props);
   const componentProps = props.hooks.usePropsComponent(props, opened, setOpened);
 

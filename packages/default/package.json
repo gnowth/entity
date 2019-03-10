@@ -20,8 +20,12 @@
   "dependencies": {
     "prop-types": "15.7.2"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "lodash": "4.17.11",
     "react": "16.8.4"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0"
   }
 }

@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhance } from '@private/hooks';
+import { useEnhanceProps } from '@gnowth/style';
+
 
 import UIError from '../Error';
 import UITooltip from '../Tooltip';
@@ -12,7 +13,7 @@ import hooks from './Label.hooks';
 import styles, { Label, UILabelRoot } from './Label.styles';
 
 function UILabel(_props) {
-  const props = useEnhance(_props, { hooks, styles });
+  const props = useEnhanceProps(_props, { hooks, styles });
   const propsTooltip = props.hooks.usePropsTooltip(props, props.styles);
 
   return (

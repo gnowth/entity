@@ -36,7 +36,6 @@
     "@gnowth/style": "0.4.0",
     "@gnowth/ui": "0.4.0",
     "@private/entity-duck-mock-drf": "0.4.0",
-    "@private/hooks": "0.4.0",
     "@private/react-intl": "0.4.0",
     "@storybook/addon-a11y": "4.1.13",
     "@storybook/addon-actions": "4.1.13",

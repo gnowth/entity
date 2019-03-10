@@ -10,8 +10,12 @@
   "dependencies": {
     "prop-types": "15.7.2"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "react": "16.8.4",
     "react-intl": "2.8.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-intl": ">=2.0.0"
   }
 }
