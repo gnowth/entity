@@ -18,36 +18,32 @@ const mapStateToProps = state => ({
 });
 
 export default {
-  useHandleRender(props) {
-    const Component = props.component;
+  useHandleRender(_props) {
+    const Component = _props.component;
     const state = useReduxState(mapStateToProps);
-    const Defaults = useDefault(mapDefault, props);
+    const Defaults = useDefault(mapDefault, _props);
 
-    return React.useCallback(
-      routerProps => (
-        <>
-          { (!state.whoAmIed || state.authenticating) && (
-            <Defaults.processingComponent />
-          )}
+    return routerProps => (
+      <>
+        {(!state.whoAmIed || state.authenticating) && (
+          <Defaults.processingComponent />
+        )}
 
-          { !state.authenticating && state.currentUser && (
-            <Component
-              {...routerProps}
-              {...(
-                _isFunction(props.componentProps)
-                  ? props.componentProps(routerProps)
-                  : props.componentProps
-              )}
-            />
-          )}
+        {!state.authenticating && state.currentUser && (
+          <Component
+            {...routerProps}
+            {...(
+              _isFunction(_props.componentProps)
+                ? _props.componentProps(routerProps)
+                : _props.componentProps
+            )}
+          />
+        )}
 
-          { !!state.whoAmIed && !state.authenticating && !state.currentUser && (
-            <Redirect to={`${Defaults.settings.URL_LOGIN}?redirect=${routerProps.location.pathname}${routerProps.location.search}`} />
-          )}
-        </>
-      ),
-
-      [state, Defaults.settings, Defaults.processingComponent, props.componentProps],
+        {!!state.whoAmIed && !state.authenticating && !state.currentUser && (
+          <Redirect to={`${Defaults.settings.URL_LOGIN}?redirect=${routerProps.location.pathname}${routerProps.location.search}`} />
+        )}
+      </>
     );
   },
 };

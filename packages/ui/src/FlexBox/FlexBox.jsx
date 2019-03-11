@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { component, colorFromPalette } from '@gnowth/style';
+import { component, colorFromPalette, mixin } from '@gnowth/style';
 
 const UIFlexBox = styled.div`
   align-items: ${props => props.alignItems};
@@ -15,13 +15,8 @@ const UIFlexBox = styled.div`
     flex-direction: ${props.flexDirection};
   `}
 
-  ${props => props.margin && css`
-    margin: ${props.margin};
-  `}
-
-  ${props => props.padding && css`
-    padding: ${props.padding};
-  `}
+  ${mixin({ name: 'margin' })}
+  ${mixin({ name: 'padding' })}
 
   ${component()}
 

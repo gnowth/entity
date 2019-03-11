@@ -23,7 +23,7 @@ export default class Activity extends EntityTitle {
     }),
     title: new Fields.CharField(),
     title_short: new Fields.CharField({ blank: true }),
-    uuid: new Fields.IdField({ blank: true }),
+    uuid: new Fields.IdField({ blank: true, mock: 'random.uuid' }),
   }
 
   static actionComplete(record, configs = {}) {

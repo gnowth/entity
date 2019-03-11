@@ -6,7 +6,6 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useEnhanceProps } from '@gnowth/style';
 
-
 import Overlay from './components/Overlay';
 import Portal from './components/Portal';
 import hooks from './Popup.hooks';

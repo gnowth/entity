@@ -4,7 +4,6 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useEnhanceProps } from '@gnowth/style';
 
-
 import UIError from '../Error';
 import UITooltip from '../Tooltip';
 import UIType from '../Type';

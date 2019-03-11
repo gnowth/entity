@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { color, mixin } from '../selectors';
+import { color } from '../selectors';
 
 export const mixin_button = css`
   border: 1px solid currentColor;
@@ -19,8 +19,6 @@ export const mixin_button = css`
     border-color: ${color({ name: 'secondary', weight: '400' })};
     color: ${color({ name: 'secondary', weight: '400' })};
   }
-
-  ${mixin({ name: 'disabled' })}
 `;
 
 export const mixin_buttonSubmit = css`
@@ -63,18 +61,14 @@ export const mixin_componentBox = css`
   }
 `;
 
-export const mixin_disabled = css`
-  ${props => props.disabled && css`
-    opacity: 0.4;
-    cursor: default;
-    pointer-events: none;
-  `}
-`;
+export const mixin_margin = css`
+  ${props => props.margin && css`
+    margin: ${props.margin};
+   `}
+ `;
 
-export const mixin_readOnly = css`
-  ${props => props.readOnly && css`
-    opacity: 0.7;
-    cursor: default;
-    pointer-events: none;
+export const mixin_padding = css`
+  ${props => props.padding && css`
+    padding: ${props.padding};
   `}
 `;

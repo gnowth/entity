@@ -4,7 +4,6 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useEnhanceProps } from '@gnowth/style';
 
-
 import hooks from './Button.hooks';
 import Button from './Button.styles';
 
