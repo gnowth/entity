@@ -120,10 +120,6 @@ export const Container = styled.div`
   height: ${props => props.size};
   position: relative;
   width: ${props => props.size};
-
-  ${props => props.value === null && css`
-    animation: ${spinnerRotateLinear} 2s linear infinite;
-  `}
 `;
 
 export const SVG = styled.svg`
@@ -135,4 +131,8 @@ export const SVG = styled.svg`
   transform: rotate(-90deg);
   transform-origin: center;
   width: 100%;
+
+  ${props => props.value === null && css`
+    animation: ${spinnerRotateLinear} 2s linear infinite;
+  `}
 `;

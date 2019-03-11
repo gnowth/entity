@@ -14,7 +14,6 @@ export default stories => stories
     <ThemeConsumer>
       { theme => (
         <UICard
-          ratio={select('ratio', [1, 2, 4, 8, 16], 1)}
           variant={select('variant', Object.keys(theme.components?.uiCard || {}), 'main')}
         >
           { text('children', 'Hello Well') }

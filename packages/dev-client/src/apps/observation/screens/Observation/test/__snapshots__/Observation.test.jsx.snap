@@ -102,8 +102,6 @@ exports[`renders correctly 1`] = `
   height: 32px;
   position: relative;
   width: 32px;
-  -webkit-animation: eXzyYY 2s linear infinite;
-  animation: eXzyYY 2s linear infinite;
 }
 
 .c11 {
@@ -119,6 +117,8 @@ exports[`renders correctly 1`] = `
   -ms-transform-origin: center;
   transform-origin: center;
   width: 100%;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
 }
 
 .c2 {
@@ -284,10 +284,8 @@ exports[`renders correctly 1`] = `
 
 .c0 {
   background-color: #ffffff;
-  border: 1px solid currentColor;
-  border-radius: calc(0.5rem * 1 * 0.5);
   color: #000000;
-  padding: calc(0.5rem * 1 * 2);
+  padding: 1rem;
 }
 
 .c3 {
@@ -509,6 +507,7 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
+            value={null}
             viewBox="0 0 100 100"
           >
             <circle
@@ -685,6 +684,7 @@ exports[`renders correctly 1`] = `
         className="c11"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
+        value={null}
         viewBox="0 0 100 100"
       >
         <circle
@@ -741,6 +741,7 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
+            value={null}
             viewBox="0 0 100 100"
           >
             <circle
@@ -794,6 +795,7 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
+            value={null}
             viewBox="0 0 100 100"
           >
             <circle
@@ -844,6 +846,7 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
+            value={null}
             viewBox="0 0 100 100"
           >
             <circle
