@@ -12,14 +12,12 @@ const UIImage = styled.img`
 
 UIImage.propTypes = {
   alt: PropTypes.string.isRequired,
-  css: PropTypesPlus.css,
   namespace: PropTypesPlus.string,
   src: PropTypes.string.isRequired,
   variant: PropTypes.string,
 };
 
 UIImage.defaultProps = {
-  css: undefined,
   namespace: 'component_uiImage',
   variant: 'standard',
 };

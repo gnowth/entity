@@ -2,50 +2,6 @@ import { css } from 'styled-components';
 
 import { color } from '../selectors';
 
-export const mixin_button = css`
-  border: 1px solid currentColor;
-  border-radius: 5px;
-  background-color: white;
-  padding: 7px 20px;
-  cursor: pointer;
-  color: ${color({ palette: 'secondary' })};
-  min-width: 150px;
-  outline: none;
-  text-transform: uppercase;
-  text-align: center;
-
-  &:hover {
-    background-color: ${color({ palette: 'white' })};
-    border-color: ${color({ palette: 'secondary', paletteWeight: '400' })};
-    color: ${color({ palette: 'secondary', paletteWeight: '400' })};
-  }
-`;
-
-export const mixin_buttonSubmit = css`
-  ${mixin_button}
-
-  background-color: ${color({ palette: 'primary' })};
-  border-color: ${color({ palette: 'primary' })};
-  color: ${color({ palette: 'white' })};
-
-  &:hover {
-    background-color: ${color({ palette: 'primary', paletteWeight: '400' })};
-    border-color: ${color({ palette: 'primary', paletteWeight: '400' })};
-    color: ${color({ palette: 'white' })};
-  }
-`;
-
-export const mixin_buttonCancel = css`
-  ${mixin_button}
-
-  border: 0;
-  color: ${color({ palette: 'primary' })};
-
-  &:hover {
-    color: ${color({ palette: 'primary', paletteWeight: '400' })};
-  }
-`;
-
 export const mixin_componentBox = css`
   background-color: hsl(0, 0%, 98%);
   border: 1px solid ${color({ palette: 'secondary' })};

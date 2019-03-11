@@ -47,7 +47,7 @@
     "@storybook/addon-storysource": "4.1.13",
     "@storybook/react": "4.1.13",
     "axios": "0.18.0",
-    "connected-react-router": "6.3.1",
+    "connected-react-router": "6.3.2",
     "font-awesome": "4.7.0",
     "github-markdown-css": "3.0.1",
     "history": "4.7.2",
@@ -74,7 +74,7 @@
     "xdomain": "0.7.3"
   },
   "devDependencies": {
-    "directory-named-webpack-plugin": "4.0.0",
+    "directory-named-webpack-plugin": "4.0.1",
     "jest-styled-components": "6.3.1",
     "react-test-renderer": "16.8.4",
     "redux-mock-store": "1.5.3"
