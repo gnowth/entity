@@ -9,6 +9,7 @@ const ProgressCircle = props => (
     <SVG
       focusable="false"
       preserveAspectRatio="xMidYMid meet"
+      value={props.value}
       viewBox="0 0 100 100"
     >
       { props.bufferPalette && (

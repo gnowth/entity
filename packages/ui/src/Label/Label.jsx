@@ -48,6 +48,7 @@ UILabel.propTypes = {
   }),
   label: PropTypesPlus.typography,
   labelComponentProps: PropTypes.shape({}),
+  namespace: PropTypesPlus.string,
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
     tooltip: PropTypesPlus.css,
@@ -61,6 +62,7 @@ UILabel.defaultProps = {
   hooks: undefined,
   label: undefined,
   labelComponentProps: {},
+  namespace: 'componet_uiLabel',
   styles: undefined,
 };
 

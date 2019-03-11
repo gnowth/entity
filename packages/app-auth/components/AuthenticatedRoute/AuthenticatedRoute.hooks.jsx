@@ -25,11 +25,11 @@ export default {
 
     return routerProps => (
       <>
-        {(!state.whoAmIed || state.authenticating) && (
+        { (!state.whoAmIed || state.authenticating) && (
           <Defaults.processingComponent />
         )}
 
-        {!state.authenticating && state.currentUser && (
+        { !state.authenticating && state.currentUser && (
           <Component
             {...routerProps}
             {...(
@@ -40,7 +40,7 @@ export default {
           />
         )}
 
-        {!!state.whoAmIed && !state.authenticating && !state.currentUser && (
+        { !!state.whoAmIed && !state.authenticating && !state.currentUser && (
           <Redirect to={`${Defaults.settings.URL_LOGIN}?redirect=${routerProps.location.pathname}${routerProps.location.search}`} />
         )}
       </>

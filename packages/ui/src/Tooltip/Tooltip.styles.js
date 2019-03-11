@@ -21,6 +21,6 @@ export const Popup = styled.div`
 
 export default {
   icon: css`
-    color: ${color({ name: 'danger' })};
+    color: ${color({ palette: 'danger' })};
   `,
 };

@@ -68,8 +68,6 @@ exports[`renders correctly 1`] = `
   height: 32px;
   position: relative;
   width: 32px;
-  -webkit-animation: eXzyYY 2s linear infinite;
-  animation: eXzyYY 2s linear infinite;
 }
 
 .c4 {
@@ -85,6 +83,8 @@ exports[`renders correctly 1`] = `
   -ms-transform-origin: center;
   transform-origin: center;
   width: 100%;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
 }
 
 .c6 {
@@ -95,8 +95,6 @@ exports[`renders correctly 1`] = `
   -ms-letter-spacing: 1.25px;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0;
 }
 
 .c12 {
@@ -108,8 +106,6 @@ exports[`renders correctly 1`] = `
   -ms-letter-spacing: 1.25px;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0;
 }
 
 .c1 {
@@ -315,6 +311,7 @@ exports[`renders correctly 1`] = `
         className="c4"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
+        value={null}
         viewBox="0 0 100 100"
       >
         <circle
@@ -368,6 +365,7 @@ exports[`renders correctly 1`] = `
         className="c4"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
+        value={null}
         viewBox="0 0 100 100"
       >
         <circle
@@ -418,6 +416,7 @@ exports[`renders correctly 1`] = `
         className="c4"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
+        value={null}
         viewBox="0 0 100 100"
       >
         <circle

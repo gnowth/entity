@@ -8,7 +8,7 @@ const mapDefault = {
 };
 
 const Container = styled.div`
-  background-color: ${props => colorFromPalette({ asBackground: !props.paletteAsBackground })(props)};
+  background-color: ${props => colorFromPalette({ paletteAsBackground: !props.paletteAsBackground })(props)};
 `;
 
 export default {

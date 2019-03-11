@@ -11,7 +11,7 @@ export const Label = styled.label`
 
 export default {
   icon: css`
-    color: ${color({ name: 'danger' })};
+    color: ${color({ palette: 'danger' })};
 
     && {
       font-size: 0.8rem;

@@ -8,30 +8,30 @@ export const mixin_button = css`
   background-color: white;
   padding: 7px 20px;
   cursor: pointer;
-  color: ${color({ name: 'secondary' })};
+  color: ${color({ palette: 'secondary' })};
   min-width: 150px;
   outline: none;
   text-transform: uppercase;
   text-align: center;
 
   &:hover {
-    background-color: ${color({ name: 'white' })};
-    border-color: ${color({ name: 'secondary', weight: '400' })};
-    color: ${color({ name: 'secondary', weight: '400' })};
+    background-color: ${color({ palette: 'white' })};
+    border-color: ${color({ palette: 'secondary', paletteWeight: '400' })};
+    color: ${color({ palette: 'secondary', paletteWeight: '400' })};
   }
 `;
 
 export const mixin_buttonSubmit = css`
   ${mixin_button}
 
-  background-color: ${color({ name: 'primary' })};
-  border-color: ${color({ name: 'primary' })};
-  color: ${color({ name: 'white' })};
+  background-color: ${color({ palette: 'primary' })};
+  border-color: ${color({ palette: 'primary' })};
+  color: ${color({ palette: 'white' })};
 
   &:hover {
-    background-color: ${color({ name: 'primary', weight: '400' })};
-    border-color: ${color({ name: 'primary', weight: '400' })};
-    color: ${color({ name: 'white' })};
+    background-color: ${color({ palette: 'primary', paletteWeight: '400' })};
+    border-color: ${color({ palette: 'primary', paletteWeight: '400' })};
+    color: ${color({ palette: 'white' })};
   }
 `;
 
@@ -39,16 +39,16 @@ export const mixin_buttonCancel = css`
   ${mixin_button}
 
   border: 0;
-  color: ${color({ name: 'primary' })};
+  color: ${color({ palette: 'primary' })};
 
   &:hover {
-    color: ${color({ name: 'primary', weight: '400' })};
+    color: ${color({ palette: 'primary', paletteWeight: '400' })};
   }
 `;
 
 export const mixin_componentBox = css`
   background-color: hsl(0, 0%, 98%);
-  border: 1px solid ${color({ name: 'secondary' })};
+  border: 1px solid ${color({ palette: 'secondary' })};
   border-radius: 4px;
   padding: 9px;
   width: 100%;

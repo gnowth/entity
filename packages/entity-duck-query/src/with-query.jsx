@@ -8,19 +8,17 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
   || 'Component';
 
 export default (configs = {}) => (ComposedComponent) => {
-  function withQuery(props) {
-    return (
-      <Query
-        component={ComposedComponent}
-        componentProps={props}
-        {...(
-          _isFunction(configs)
-            ? configs(props)
-            : configs
-        )}
-      />
-    );
-  }
+  const withQuery = props => (
+    <Query
+      component={ComposedComponent}
+      componentProps={props}
+      {...(
+        _isFunction(configs)
+          ? configs(props)
+          : configs
+      )}
+    />
+  );
 
   withQuery.displayName = `withQuery(${getDisplayName(ComposedComponent)})`;
 
