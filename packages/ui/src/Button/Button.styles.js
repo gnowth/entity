@@ -17,19 +17,19 @@ export default styled.button`
   ${mixin({ name: 'padding' })}
 
   &:hover {
-    background-color: ${color({ name: 'gray', weight: '50' })};
+    background-color: ${color({ palette: 'gray', paletteWeight: '50' })};
   }
 
   &:focus {
-    background-color: ${color({ name: 'gray', weight: '100' })};
+    background-color: ${color({ palette: 'gray', paletteWeight: '100' })};
   }
 
   &:disabled {
-    background-color: ${color({ name: 'gray', weight: '200' })};
+    background-color: ${color({ palette: 'gray', paletteWeight: '200' })};
     cursor: auto;
 
     * {
-      color: ${color({ name: 'gray', weight: '800' })};
+      color: ${color({ palette: 'gray', paletteWeight: '800' })};
     }
   }
 

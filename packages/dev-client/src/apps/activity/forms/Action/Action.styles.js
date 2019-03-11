@@ -10,7 +10,7 @@ export const Controls = styled.div`
 
 export const Header = styled.div`
   align-items: center;
-  border-bottom: 1px solid ${color({ name: 'gray' })};
+  border-bottom: 1px solid ${color({ palette: 'gray' })};
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;

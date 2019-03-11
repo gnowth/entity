@@ -11,7 +11,7 @@ export const component_widgetPagination_standard = {
     right: 0;
     box-shadow: 0 -1.5px 3px 0 rgba(0, 0, 0, 0.2);
     height: 50px;
-    background-color: ${color({ name: 'white' })};
+    background-color: ${color({ palette: 'white' })};
   `,
 
   pageFirst: css`
@@ -23,7 +23,7 @@ export const component_widgetPagination_standard = {
     top: 0;
     bottom: 0;
     left: calc(50% - 250px);
-    border: 1px solid ${color({ name: 'primary' })};
+    border: 1px solid ${color({ palette: 'primary' })};
     height: 50px;
     width: 75px;
     line-height: 50px;
@@ -31,7 +31,7 @@ export const component_widgetPagination_standard = {
     font-weight: bold;
 
     &:hover {
-      border-color: ${color({ name: 'primary', weight: '400' })};
+      border-color: ${color({ palette: 'primary', paletteWeight: '400' })};
     }
   `,
 
@@ -40,7 +40,7 @@ export const component_widgetPagination_standard = {
     top: 0;
     bottom: 0;
     right: calc(50% - 250px);
-    border: 1px solid ${color({ name: 'primary' })};
+    border: 1px solid ${color({ palette: 'primary' })};
     height: 50px;
     width: 75px;
     line-height: 50px;
@@ -48,7 +48,7 @@ export const component_widgetPagination_standard = {
     font-weight: bold;
 
     &:hover {
-      border-color: ${color({ name: 'primary', weight: '400' })};
+      border-color: ${color({ palette: 'primary', paletteWeight: '400' })};
     }
   `,
 

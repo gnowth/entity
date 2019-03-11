@@ -4,7 +4,7 @@ import React from 'react';
 import { color, variant } from './selectors';
 
 const Color = styled.div`
-  background-color: ${props => color({ name: props.name })(props)};
+  background-color: ${props => color({ palette: props.name })(props)};
   display: inline-block;
   border: 1px solid black;
   border-radius: 50%;
@@ -15,7 +15,7 @@ const Color = styled.div`
   width: 8rem;
 
   &:after {
-    content: '${props => `${props.name}: ${color({ name: props.name })(props)}`}';
+    content: '${props => `${props.name}: ${color({ palette: props.name })(props)}`}';
     left: 50%;
     position: absolute;
     top: calc(100% + 1rem);

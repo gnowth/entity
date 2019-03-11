@@ -5,7 +5,7 @@ import { withPropsFiltered } from '@gnowth/higher-order-component';
 import { colorFromPalette, component, mixin, sizeGridBase } from '@gnowth/style';
 
 const UICard = styled.div`
-  background-color: ${props => colorFromPalette({ asBackground: !props.paletteAsBackground })(props)};
+  background-color: ${props => colorFromPalette({ paletteAsBackground: !props.paletteAsBackground })(props)};
   border: 1px solid currentColor;
   border-radius: calc(${sizeGridBase} * ${props => props.ratio} * 0.5);
   color: ${colorFromPalette()};

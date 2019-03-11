@@ -11,8 +11,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: ${color({ name: 'white' })};
-  border: 2px solid ${color({ name: 'black' })};
+  background-color: ${color({ palette: 'white' })};
+  border: 2px solid ${color({ palette: 'black' })};
   border-radius: 5px;
   max-width: 1024px;
   min-height: 100px;

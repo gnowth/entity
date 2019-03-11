@@ -6,32 +6,36 @@ export const boxshadow = ({ name } = {}) => (props) => {
   return props.theme?.[`boxshadows_${name}`];
 };
 
-export const color = ({ asBackground, defaultColor = 'black', name, weight = '500' } = {}) => (props) => {
+export const color = (configs = {}) => (props) => {
+  const { palette } = configs;
+  const paletteWeight = configs.paletteWeight || '500';
+  const defaultColor = configs.defaultColor || 'black';
+
   if (process.env.NODE_ENV !== 'production') {
-    if (!name) throw new Error('style.color: option "name" is required');
-    if (!weight) throw new Error(`style.color (name: ${name}): option "weight" is invalid`);
+    if (!palette) throw new Error('style.color: option "name" is required');
+    if (!paletteWeight) throw new Error(`style.color (name: ${palette}): option "weight" is invalid`);
   }
 
-  if (asBackground) {
+  if (configs.paletteAsBackground) {
     return (
-      props.theme?.[`palette_${name}`]?.colorMap[weight]?.darkContrast
+      props.theme?.[`palette_${palette}`]?.colorMap[paletteWeight]?.darkContrast
         ? props.theme?.palette_black?.base
         : props.theme?.palette_white?.base
     ) || defaultColor;
   }
 
-  return props.theme?.[`palette_${name}`]?.colorMap[weight]?.hex
-    || props.theme?.[`palette_${name}`]?.base
+  return props.theme?.[`palette_${palette}`]?.colorMap[paletteWeight]?.hex
+    || props.theme?.[`palette_${palette}`]?.base
     || defaultColor;
 };
 
 export const colorFromPalette = (configs = {}) => props => color({
-  asBackground: configs.asBackground === undefined
+  paletteAsBackground: configs.paletteAsBackground === undefined
     ? props.paletteAsBackground
-    : configs.asBackground,
+    : configs.paletteAsBackground,
   defaultColor: configs.defaultColor,
-  name: configs.name || props.palette || 'black',
-  weight: configs.weight || props.paletteWeight,
+  palette: configs.palette || props.palette || 'black',
+  paletteWeight: configs.paletteWeight || props.paletteWeight,
 })(props);
 
 export const component = (configs = {}) => (props) => {

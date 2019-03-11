@@ -95,8 +95,6 @@ exports[`renders correctly 1`] = `
   -ms-letter-spacing: 1.25px;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0;
 }
 
 .c12 {
@@ -108,8 +106,6 @@ exports[`renders correctly 1`] = `
   -ms-letter-spacing: 1.25px;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0;
 }
 
 .c1 {

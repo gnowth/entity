@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { color, component } from '@gnowth/style';
 
 const Overlay = styled.div`
-  background-color: ${color({ name: 'white' })};
+  background-color: ${color({ palette: 'white' })};
   display: ${props => (props.visible ? 'block' : 'none')};
   position: absolute;
 

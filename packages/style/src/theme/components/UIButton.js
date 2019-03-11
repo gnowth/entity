@@ -10,19 +10,19 @@ export const component_uiButton_contained = {
     background-color: ${colorFromPalette()};
 
     &:hover {
-      background-color: ${colorFromPalette({ weight: '400' })};
+      background-color: ${colorFromPalette({ paletteWeight: '400' })};
     }
 
     &:focus {
-      background-color: ${colorFromPalette({ weight: '700' })};
+      background-color: ${colorFromPalette({ paletteWeight: '700' })};
     }
 
     &:disabled {
-      background-color: ${color({ name: 'gray', weight: '200' })};
+      background-color: ${color({ palette: 'gray', paletteWeight: '200' })};
       cursor: auto;
 
       * {
-        color: ${color({ name: 'gray', weight: '800' })};
+        color: ${color({ palette: 'gray', paletteWeight: '800' })};
       }
     }
   `,
@@ -43,19 +43,19 @@ export const component_uiButton_fab = {
     width: 3em;
 
     &:hover {
-      background-color: ${colorFromPalette({ weight: '400' })};
+      background-color: ${colorFromPalette({ paletteWeight: '400' })};
     }
 
     &:focus {
-      background-color: ${colorFromPalette({ weight: '700' })};
+      background-color: ${colorFromPalette({ paletteWeight: '700' })};
     }
 
     &:disabled {
-      background-color: ${color({ name: 'gray', weight: '200' })};
+      background-color: ${color({ palette: 'gray', paletteWeight: '200' })};
       cursor: auto;
 
       * {
-        color: ${color({ name: 'gray', weight: '800' })};
+        color: ${color({ palette: 'gray', paletteWeight: '800' })};
       }
     }
   `,
@@ -70,19 +70,19 @@ export const component_uiButton_flat = {
     border-radius: 0;
 
     &:hover {
-      background-color: ${colorFromPalette({ weight: '400' })};
+      background-color: ${colorFromPalette({ paletteWeight: '400' })};
     }
 
     &:focus {
-      background-color: ${colorFromPalette({ weight: '700' })};
+      background-color: ${colorFromPalette({ paletteWeight: '700' })};
     }
 
     &:disabled {
-      background-color: ${color({ name: 'gray', weight: '200' })};
+      background-color: ${color({ palette: 'gray', paletteWeight: '200' })};
       cursor: auto;
 
       * {
-        color: ${color({ name: 'gray', weight: '800' })};
+        color: ${color({ palette: 'gray', paletteWeight: '800' })};
       }
     }
   `,
@@ -115,19 +115,19 @@ export const component_uiButton_navigation = {
 
 export const component_uiButton_outlined = {
   css: css`
-    border: 1px solid ${color({ name: 'gray', weight: '200' })};
+    border: 1px solid ${color({ palette: 'gray', paletteWeight: '200' })};
 
     &:hover {
-      background-color: ${color({ name: 'gray', weight: '50' })};
+      background-color: ${color({ palette: 'gray', paletteWeight: '50' })};
     }
 
     &:disabled {
-      background-color: ${color({ name: 'white' })};
-      border-color: ${color({ name: 'gray', weight: '800' })};
+      background-color: ${color({ palette: 'white' })};
+      border-color: ${color({ palette: 'gray', paletteWeight: '800' })};
       cursor: auto;
 
       * {
-        color: ${color({ name: 'gray', weight: '400' })};
+        color: ${color({ palette: 'gray', paletteWeight: '400' })};
       }
     }
   `,
@@ -142,19 +142,19 @@ export const component_uiButton_raised = {
     background-color: ${colorFromPalette()};
 
     &:hover {
-      background-color: ${colorFromPalette({ weight: '400' })};
+      background-color: ${colorFromPalette({ paletteWeight: '400' })};
     }
 
     &:focus {
-      background-color: ${colorFromPalette({ weight: '700' })};
+      background-color: ${colorFromPalette({ paletteWeight: '700' })};
     }
 
     &:disabled {
-      background-color: ${color({ name: 'gray', weight: '200' })};
+      background-color: ${color({ palette: 'gray', paletteWeight: '200' })};
       cursor: auto;
 
       * {
-        color: ${color({ name: 'gray', weight: '800' })};
+        color: ${color({ palette: 'gray', paletteWeight: '800' })};
       }
     }
   `,

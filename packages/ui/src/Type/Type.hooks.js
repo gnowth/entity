@@ -15,7 +15,7 @@ const Component = styled.span`
   ${mixin({ name: 'padding' })}
 
   ${media.print`
-    color: ${color({ name: 'black' })}
+    color: ${color({ palette: 'black' })}
   `}
 
   ${props => props.css}
