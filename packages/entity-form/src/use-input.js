@@ -85,7 +85,7 @@ function useHandleSubmit(props, configs = {}) {
 function useInput(props, configs) {
   const computedConfigs = { ...useInput.defaultConfigs, ...configs };
   const [valueInput, setValueInput] = React.useState('');
-  const onInputChange = React.useCallback(input => setValueInput(input), []);
+  const onChangeInput = React.useCallback(input => setValueInput(input), []);
   const defaults = useDefault(mapDefault, computedConfigs);
   const field = props.field.getField({ name: computedConfigs.name });
 
@@ -99,7 +99,7 @@ function useInput(props, configs) {
 
   return {
     field,
-    onInputChange,
+    onChangeInput,
     disabled: computedConfigs.disabled,
     errors: props.field.getErrors(props.errors, { name: computedConfigs.name }),
     index: computedConfigs.index,

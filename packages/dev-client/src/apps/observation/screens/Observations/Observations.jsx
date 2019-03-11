@@ -1,9 +1,12 @@
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
+import { withQuery } from '@entity/duck-query';
 import { ViewLink } from '@entity/view';
 
-const ViewObservations = props => (
+import EntityObservation from 'apps/observation/entities/Observation';
+
+export const Observations = props => (
   <table>
     <thead>
       <tr><th>Test</th></tr>
@@ -16,7 +19,7 @@ const ViewObservations = props => (
           <td>{ props.field.toString(observation) }</td>
           <td>
             <ViewLink
-              {...props}
+              field={props.field}
               value={observation}
             />
           </td>
@@ -26,9 +29,11 @@ const ViewObservations = props => (
   </table>
 );
 
-ViewObservations.propTypes = {
+Observations.propTypes = {
   field: PropTypesEntity.entityField.isRequired,
   value: PropTypesImmutable.list.isRequired,
 };
 
-export default React.memo(ViewObservations);
+export default withQuery({
+  action: EntityObservation.duck.actions.get(),
+})(Observations);

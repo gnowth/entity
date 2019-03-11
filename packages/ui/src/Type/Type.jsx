@@ -8,7 +8,7 @@ import { useEnhanceProps } from '@gnowth/style';
 import hooks from './Type.hooks';
 
 const localProps = [
-  'onInputChange',
+  'onChangeInput',
 ];
 
 function UIType(_props) {
@@ -50,7 +50,7 @@ UIType.propTypes = {
   fieldToStringName: PropTypesPlus.string,
   name: PropTypesPlus.string,
   onChange: PropTypes.func,
-  onInputChange: PropTypes.func,
+  onChangeInput: PropTypes.func,
   onSubmit: PropTypes.func,
   options: PropTypesImmutable.list,
   processing: PropTypes.bool,
@@ -84,7 +84,7 @@ UIType.defaultProps = {
   fieldToStringName: undefined,
   name: undefined,
   onChange: undefined,
-  onInputChange: undefined,
+  onChangeInput: undefined,
   onSubmit: undefined,
   options: undefined,
   processing: undefined,

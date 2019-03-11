@@ -1,10 +1,12 @@
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
+import { withQuery } from '@entity/duck-query';
 import { Control, Form, Input, PopupShadow } from '@entity/form';
 import { ViewRedirectOnCreate } from '@entity/view';
-import { UIErrorWell } from '@gnowth/ui';
+import { UICard, UIErrorWell } from '@gnowth/ui';
 
+import EntityObservation from 'apps/observation/entities/Observation';
 import FormAction from 'apps/activity/forms/Action';
 import FormControls from 'apps/activity/forms/Controls';
 
@@ -12,13 +14,13 @@ import FormTitle from './FormTitle';
 import locales from './Observation.locales';
 import styles from './Observation.styles';
 
-const FormObservation = props => (
-  <Form {...props}>
+export const Observation = props => (
+  <Form {...props} component={UICard} componentProps={{ variant: 'screen' }}>
     <Input component={UIErrorWell} />
 
     <Input
       component={ViewRedirectOnCreate}
-      componentProps={{ to: props.field.entity.toLink(props.value) }}
+      componentProps={({ field, value }) => ({ to: field.entity.toLink(value) })}
     />
 
     <Input
@@ -89,9 +91,11 @@ const FormObservation = props => (
   </Form>
 );
 
-FormObservation.propTypes = {
+Observation.propTypes = {
   field: PropTypesEntity.entityField.isRequired,
   value: PropTypesImmutable.map.isRequired,
 };
 
-export default React.memo(FormObservation);
+export default withQuery(props => ({
+  action: EntityObservation.duck.actions.get({ id: props.match?.params?.uuid || null }),
+}))(Observation);
