@@ -4,7 +4,6 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useEnhanceProps } from '@gnowth/style';
 
-
 import { Context } from './context';
 import hooks from './navigation.hooks';
 

@@ -8,8 +8,5 @@ export const component_widgetTextarea_standard = {
     ${mixin({ name: 'componentBox' })}
     height: 100px;
     resize: none;
-
-    ${mixin({ name: 'disabled' })};
-    ${mixin({ name: 'readOnly' })};
   `,
 };

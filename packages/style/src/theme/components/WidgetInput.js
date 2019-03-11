@@ -6,8 +6,5 @@ import { mixin } from '../../selectors';
 export const component_widgetInput_standard = {
   css: css`
     ${mixin({ name: 'componentBox' })}
-
-    ${mixin({ name: 'disabled' })};
-    ${mixin({ name: 'readOnly' })};
   `,
 };

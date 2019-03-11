@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withPropsFiltered } from '@gnowth/higher-order-component';
-import { colorFromPalette, component, sizeGridBase } from '@gnowth/style';
+import { colorFromPalette, component, mixin, sizeGridBase } from '@gnowth/style';
 
 const UICard = styled.div`
   background-color: ${props => colorFromPalette({ asBackground: !props.paletteAsBackground })(props)};
@@ -11,13 +11,7 @@ const UICard = styled.div`
   color: ${colorFromPalette()};
   padding: calc(${sizeGridBase} * ${props => props.ratio} * 2);
 
-  ${props => props.margin && css`
-    margin: ${props.margin};
-  `}
-
-  ${props => props.padding && css`
-    padding: ${props.padding};
-  `}
+  ${mixin({ name: 'margin' })}
 
   ${component({ branch: 'css' })}
   ${props => props.css}

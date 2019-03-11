@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, colorFromPalette } from '@gnowth/style';
+import { color, colorFromPalette, media, mixin } from '@gnowth/style';
 
 export default styled.button`
   background-color: ${props => (props.paletteAsBackground ? colorFromPalette()(props) : 'transparent')};
@@ -13,13 +13,8 @@ export default styled.button`
   position: relative;
   text-decoration: none;
 
-  ${props => props.margin && css`
-    margin: ${props.margin};
-  `}
-
-  ${props => props.padding && css`
-    padding: ${props.padding};
-  `}
+  ${mixin({ name: 'margin' })}
+  ${mixin({ name: 'padding' })}
 
   &:hover {
     background-color: ${color({ name: 'gray', weight: '50' })};
@@ -52,10 +47,8 @@ export default styled.button`
     }
   `}
 
-  ${props => !props.mediaPrintDisabled && css`
-    @media print {
-      display: none;
-    }
+  ${media.print`
+    display: none;
   `}
 
   ${props => props.css}

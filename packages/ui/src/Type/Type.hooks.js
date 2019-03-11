@@ -2,7 +2,7 @@ import _omitBy from 'lodash/omitBy';
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { color, colorFromPalette } from '@gnowth/style';
+import { color, colorFromPalette, media, mixin } from '@gnowth/style';
 
 const StringComponent = props => props.children;
 
@@ -11,18 +11,11 @@ const Component = styled.span`
     color: ${colorFromPalette()};
   `}
 
-  ${props => props.margin && css`
-    margin: ${props.margin};
-  `}
+  ${mixin({ name: 'margin' })}
+  ${mixin({ name: 'padding' })}
 
-  ${props => props.padding && css`
-    padding: ${props.padding};
-  `}
-
-  ${props => !props.mediaPrintDisabled && css`
-    @media print {
-      color: ${color({ name: 'black' })}
-    }
+  ${media.print`
+    color: ${color({ name: 'black' })}
   `}
 
   ${props => props.css}

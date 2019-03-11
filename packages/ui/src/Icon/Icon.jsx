@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { colorFromPalette, component } from '@gnowth/style';
+import { colorFromPalette, component, mixin } from '@gnowth/style';
 
 const UIIcon = styled.i.attrs(props => ({
   className: classnames({
@@ -21,13 +21,8 @@ const UIIcon = styled.i.attrs(props => ({
     color: ${colorFromPalette()};
   `}
 
-  ${props => props.margin && css`
-    margin: ${props.margin};
-  `}
-
-  ${props => props.padding && css`
-    padding: ${props.padding};
-  `}
+  ${mixin({ name: 'margin' })}
+  ${mixin({ name: 'padding' })}
 
   ${component()}
   ${props => props.css}
