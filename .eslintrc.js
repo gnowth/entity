@@ -46,6 +46,7 @@ module.exports = {
       'error',
       {
         devDependencies: [
+          '**/__mocks__/**',
           '**/*.config.js',
           '**/*.test.js',
           '**/*.test.jsx',

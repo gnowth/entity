@@ -76,6 +76,7 @@
   "devDependencies": {
     "directory-named-webpack-plugin": "4.0.0",
     "jest-styled-components": "6.3.1",
-    "react-test-renderer": "16.8.4"
+    "react-test-renderer": "16.8.4",
+    "redux-mock-store": "1.5.3"
   }
 }

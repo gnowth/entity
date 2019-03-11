@@ -7,14 +7,14 @@ import { List } from 'immutable';
 import App from 'components/App';
 import EntityObservation from 'apps/observation/entities/Observation';
 
-import ViewObservations from '..';
+import { Observations } from '..';
 
 jest.mock('store');
 
 it('renders correctly', () => {
   const tree = renderer.create(
     <App>
-      <ViewObservations
+      <Observations
         field={new Fields.EntityField({ entity: EntityObservation })}
         value={List()}
       />

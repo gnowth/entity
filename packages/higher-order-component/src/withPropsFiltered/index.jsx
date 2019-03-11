@@ -9,7 +9,7 @@ export const filterProps = props => _flowRight(
     'field',
     'inputValue',
     'mapProps',
-    'onInputChange',
+    'onChangeInput',
     'options',
     'processing',
     'processingDidFail',

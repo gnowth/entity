@@ -41,6 +41,7 @@ class WidgetSelect extends React.Component {
         isLoading={this.props.processing}
         isMulti={this.props.field.many}
         onChange={this.handleChange}
+        onInputChange={this.props.onChangeInput}
         options={this.selectOptions(this.props.options)}
         styles={Object.assign({}, component({ namespace: 'component_widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
         value={this.selectValue(this.props.value)}
@@ -56,6 +57,7 @@ WidgetSelect.propTypes = {
   index: PropTypes.number,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func,
   options: PropTypesImmutable.list,
   processing: PropTypes.bool,
   styles: PropTypes.shape({}),
@@ -73,6 +75,7 @@ WidgetSelect.defaultProps = {
   getOptionLabel: undefined,
   getOptionValue: undefined,
   index: undefined,
+  onChangeInput: undefined,
   options: undefined,
   processing: false,
   styles: {},

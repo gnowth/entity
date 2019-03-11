@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-.c5 {
+.c6 {
   width: 100%;
   background-color: hsl(0,0%,98%);
   border: 1px solid #03a9f4;
@@ -10,14 +10,14 @@ exports[`renders correctly 1`] = `
   width: 100%;
 }
 
-.c5:focus {
+.c6:focus {
   background-color: white;
   border-color: #2684ff;
   outline: none;
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c13 {
+.c14 {
   width: 100%;
   background-color: hsl(0,0%,98%);
   border: 1px solid #03a9f4;
@@ -28,26 +28,26 @@ exports[`renders correctly 1`] = `
   resize: none;
 }
 
-.c13:focus {
+.c14:focus {
   background-color: white;
   border-color: #2684ff;
   outline: none;
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c8.c8 {
+.c9.c9 {
   font-size: 1rem;
 }
 
-.c19 {
+.c20 {
   color: #ffffff;
 }
 
-.c19.c19 {
+.c20.c20 {
   font-size: 1rem;
 }
 
-.c11 {
+.c12 {
   -webkit-animation-name: bvvTNa;
   animation-name: bvvTNa;
   fill: transparent;
@@ -72,7 +72,7 @@ exports[`renders correctly 1`] = `
   transition-property: stroke;
 }
 
-.c20 {
+.c21 {
   -webkit-animation-name: bvvTNa;
   animation-name: bvvTNa;
   fill: transparent;
@@ -97,7 +97,7 @@ exports[`renders correctly 1`] = `
   transition-property: stroke;
 }
 
-.c9 {
+.c10 {
   display: inline-block;
   height: 32px;
   position: relative;
@@ -106,7 +106,7 @@ exports[`renders correctly 1`] = `
   animation: eXzyYY 2s linear infinite;
 }
 
-.c10 {
+.c11 {
   height: 100%;
   left: 0;
   top: 0;
@@ -121,7 +121,7 @@ exports[`renders correctly 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c2 {
   font-size: 0.875rem;
   font-weight: 400;
   -webkit-letter-spacing: 0.25px;
@@ -132,7 +132,7 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   font-size: 0.875rem;
   font-weight: 500;
   -webkit-letter-spacing: 1.25px;
@@ -144,7 +144,7 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c21 {
+.c22 {
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -157,7 +157,7 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c8 {
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -177,58 +177,20 @@ exports[`renders correctly 1`] = `
   text-decoration: none;
 }
 
-.c7:hover {
+.c8:hover {
   background-color: #fdfdfd;
 }
 
-.c7:focus {
+.c8:focus {
   background-color: #fbfbfb;
 }
 
-.c7:disabled {
+.c8:disabled {
   background-color: #f8f8f8;
   cursor: auto;
 }
 
-.c7:disabled * {
-  color: #e9e9e9;
-}
-
-.c17 {
-  background-color: transparent;
-  border: 0;
-  border-radius: 0.25em;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  outline: none;
-  padding: 0.5em 1.5em;
-  position: relative;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  margin-left: 24px;
-}
-
-.c17:hover {
-  background-color: #fdfdfd;
-}
-
-.c17:focus {
-  background-color: #fbfbfb;
-}
-
-.c17:disabled {
-  background-color: #f8f8f8;
-  cursor: auto;
-}
-
-.c17:disabled * {
+.c8:disabled * {
   color: #e9e9e9;
 }
 
@@ -250,7 +212,6 @@ exports[`renders correctly 1`] = `
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-color: #4caf50;
   margin-left: 24px;
 }
 
@@ -271,24 +232,71 @@ exports[`renders correctly 1`] = `
   color: #e9e9e9;
 }
 
-.c18:hover {
-  background-color: #67bb6a;
+.c19 {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  padding: 0.5em 1.5em;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #4caf50;
+  margin-left: 24px;
 }
 
-.c18:focus {
-  background-color: #3c9f40;
+.c19:hover {
+  background-color: #fdfdfd;
 }
 
-.c18:disabled {
+.c19:focus {
+  background-color: #fbfbfb;
+}
+
+.c19:disabled {
   background-color: #f8f8f8;
   cursor: auto;
 }
 
-.c18:disabled * {
+.c19:disabled * {
   color: #e9e9e9;
 }
 
-.c2 {
+.c19:hover {
+  background-color: #67bb6a;
+}
+
+.c19:focus {
+  background-color: #3c9f40;
+}
+
+.c19:disabled {
+  background-color: #f8f8f8;
+  cursor: auto;
+}
+
+.c19:disabled * {
+  color: #e9e9e9;
+}
+
+.c0 {
+  background-color: #ffffff;
+  border: 1px solid currentColor;
+  border-radius: calc(0.5rem * 1 * 0.5);
+  color: #000000;
+  padding: calc(0.5rem * 1 * 2);
+}
+
+.c3 {
   font-size: 0.875rem;
   font-weight: 400;
   -webkit-letter-spacing: 0.25px;
@@ -299,22 +307,22 @@ exports[`renders correctly 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c1 {
   margin-top: 24px;
 }
 
-.c6 {
+.c7 {
   display: inline-block;
   position: relative;
 }
 
-.c16 {
+.c17 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c4 {
+.c5 {
   display: block;
   width: 100%;
   background-color: hsl(0,0%,98%);
@@ -324,58 +332,52 @@ exports[`renders correctly 1`] = `
   width: 100%;
 }
 
-.c4:focus {
+.c5:focus {
   background-color: white;
   border-color: #2684ff;
   outline: none;
   box-shadow: 0 0 0 1px #2684ff;
 }
 
-.c3 .react-datepicker-wrapper {
+.c4 .react-datepicker-wrapper {
   display: block;
 }
 
-.c3 .react-datepicker__input-container {
+.c4 .react-datepicker__input-container {
   display: block;
 }
 
-.c15 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c14 {
+.c15 {
   margin-top: 48px;
 }
 
 @media print {
-  .c1 {
+  .c2 {
     color: #000000;
   }
 }
 
 @media print {
-  .c12 {
+  .c13 {
     color: #000000;
   }
 }
 
 @media print {
-  .c21 {
+  .c22 {
     color: #000000;
   }
 }
 
 @media print {
-  .c7 {
-    display: none;
-  }
-}
-
-@media print {
-  .c17 {
+  .c8 {
     display: none;
   }
 }
@@ -386,7 +388,15 @@ exports[`renders correctly 1`] = `
   }
 }
 
-<div>
+@media print {
+  .c19 {
+    display: none;
+  }
+}
+
+<div
+  className="c0"
+>
   <div
     className=""
   />
@@ -394,21 +404,21 @@ exports[`renders correctly 1`] = `
     className=""
   />
   <div
-    className="c0"
+    className="c1"
   >
     <label
-      className="c1 c2"
+      className="c2 c3"
       value={
         Object {
           "defaultMessage": "Observation Date",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.date_activity",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.date_activity",
         }
       }
     >
       Observation Date
     </label>
     <div
-      className="c3"
+      className="c4"
     >
       <div
         className="react-datepicker-wrapper"
@@ -417,7 +427,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="c4"
+            className="c5"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -433,21 +443,21 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c0"
+    className="c1"
   >
     <label
-      className="c1 c2"
+      className="c2 c3"
       value={
         Object {
           "defaultMessage": "Title",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.title",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.title",
         }
       }
     >
       Title
     </label>
     <input
-      className="c5"
+      className="c6"
       errors={Immutable.List []}
       intl={
         Object {
@@ -486,31 +496,31 @@ exports[`renders correctly 1`] = `
   </div>
   <div>
     <div
-      className="c6"
+      className="c7"
     >
       <button
-        className="c7"
+        className="c8"
         onClick={[Function]}
       >
         <i
-          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          className="uiButton-Icon icon icon-name uiButton-Icon c9"
           hidden={true}
           name="name"
         />
         <div
-          className="c9"
+          className="c10"
           hidden={true}
           size="32px"
           value={null}
         >
           <svg
-            className="c10"
+            className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 100 100"
           >
             <circle
-              className="c11"
+              className="c12"
               cx="50%"
               cy="50%"
               r="40"
@@ -519,7 +529,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <span
-          className="uiButton-Content c12"
+          className="uiButton-Content c13"
         >
           Test
         </span>
@@ -527,21 +537,21 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c0"
+    className="c1"
   >
     <label
-      className="c1 c2"
+      className="c2 c3"
       value={
         Object {
           "defaultMessage": "Short Title",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.title_short",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.title_short",
         }
       }
     >
       Short Title
     </label>
     <input
-      className="c5"
+      className="c6"
       errors={Immutable.List []}
       intl={
         Object {
@@ -579,21 +589,21 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="c0"
+    className="c1"
   >
     <label
-      className="c1 c2"
+      className="c2 c3"
       value={
         Object {
           "defaultMessage": "Description",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.description",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.description",
         }
       }
     >
       Description
     </label>
     <textarea
-      className="c13"
+      className="c14"
       errors={Immutable.List []}
       name="description"
       namespace="component_widgetTextarea"
@@ -604,21 +614,21 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="c0"
+    className="c1"
   >
     <label
-      className="c1 c2"
+      className="c2 c3"
       value={
         Object {
           "defaultMessage": "Due Date",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.date_due",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.date_due",
         }
       }
     >
       Due Date
     </label>
     <div
-      className="c3"
+      className="c4"
     >
       <div
         className="react-datepicker-wrapper"
@@ -627,7 +637,7 @@ exports[`renders correctly 1`] = `
           className="react-datepicker__input-container"
         >
           <input
-            className="c4"
+            className="c5"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -643,14 +653,14 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c0"
+    className="c1"
   >
     <label
-      className="c1 c2"
+      className="c2 c3"
       value={
         Object {
           "defaultMessage": "Follow up actions",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.follow_up_actions",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.follow_up_actions",
         }
       }
     >
@@ -658,35 +668,35 @@ exports[`renders correctly 1`] = `
     </label>
   </div>
   <button
-    className="c7"
+    className="c8"
     content={
       Object {
         "defaultMessage": "Add action",
-        "id": "packages.dev-client.src.apps.observation.forms.Observation.follow_up_actions_add",
+        "id": "packages.dev-client.src.apps.observation.screens.Observation.follow_up_actions_add",
       }
     }
     disabled={false}
     onClick={[Function]}
   >
     <i
-      className="uiButton-Icon icon icon-name uiButton-Icon c8"
+      className="uiButton-Icon icon icon-name uiButton-Icon c9"
       hidden={true}
       name="name"
     />
     <div
-      className="c9"
+      className="c10"
       hidden={true}
       size="32px"
       value={null}
     >
       <svg
-        className="c10"
+        className="c11"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 100 100"
       >
         <circle
-          className="c11"
+          className="c12"
           cx="50%"
           cy="50%"
           r="40"
@@ -695,12 +705,12 @@ exports[`renders correctly 1`] = `
       </svg>
     </div>
     <span
-      className="uiButton-Content c12"
+      className="uiButton-Content c13"
       hidden={false}
       value={
         Object {
           "defaultMessage": "Add action",
-          "id": "packages.dev-client.src.apps.observation.forms.Observation.follow_up_actions_add",
+          "id": "packages.dev-client.src.apps.observation.screens.Observation.follow_up_actions_add",
         }
       }
     >
@@ -711,10 +721,10 @@ exports[`renders correctly 1`] = `
     className=""
   >
     <div
-      className="c14 c15"
+      className="c15 c16"
     >
       <button
-        className="c7"
+        className="c8"
         content={
           Object {
             "defaultMessage": "RESET",
@@ -725,24 +735,24 @@ exports[`renders correctly 1`] = `
         onClick={[Function]}
       >
         <i
-          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          className="uiButton-Icon icon icon-name uiButton-Icon c9"
           hidden={true}
           name="name"
         />
         <div
-          className="c9"
+          className="c10"
           hidden={true}
           size="32px"
           value={null}
         >
           <svg
-            className="c10"
+            className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 100 100"
           >
             <circle
-              className="c11"
+              className="c12"
               cx="50%"
               cy="50%"
               r="40"
@@ -751,7 +761,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <span
-          className="uiButton-Content c12"
+          className="uiButton-Content c13"
           hidden={false}
           value={
             Object {
@@ -764,10 +774,10 @@ exports[`renders correctly 1`] = `
         </span>
       </button>
       <div
-        className="c16"
+        className="c17"
       />
       <button
-        className="c17"
+        className="c18"
         content={
           Object {
             "defaultMessage": "SAVE",
@@ -778,24 +788,24 @@ exports[`renders correctly 1`] = `
         onClick={[Function]}
       >
         <i
-          className="uiButton-Icon icon icon-name uiButton-Icon c8"
+          className="uiButton-Icon icon icon-name uiButton-Icon c9"
           hidden={true}
           name="name"
         />
         <div
-          className="c9"
+          className="c10"
           hidden={true}
           size="32px"
           value={null}
         >
           <svg
-            className="c10"
+            className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 100 100"
           >
             <circle
-              className="c11"
+              className="c12"
               cx="50%"
               cy="50%"
               r="40"
@@ -804,7 +814,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <span
-          className="uiButton-Content c12"
+          className="uiButton-Content c13"
           hidden={false}
           value={
             Object {
@@ -817,7 +827,7 @@ exports[`renders correctly 1`] = `
         </span>
       </button>
       <button
-        className="c18"
+        className="c19"
         content={
           Object {
             "defaultMessage": "SUBMIT",
@@ -828,24 +838,24 @@ exports[`renders correctly 1`] = `
         onClick={[Function]}
       >
         <i
-          className="uiButton-Icon icon icon-name uiButton-Icon c19"
+          className="uiButton-Icon icon icon-name uiButton-Icon c20"
           hidden={true}
           name="name"
         />
         <div
-          className="c9"
+          className="c10"
           hidden={true}
           size="32px"
           value={null}
         >
           <svg
-            className="c10"
+            className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 100 100"
           >
             <circle
-              className="c20"
+              className="c21"
               cx="50%"
               cy="50%"
               r="40"
@@ -854,7 +864,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <span
-          className="uiButton-Content c21"
+          className="uiButton-Content c22"
           hidden={false}
           value={
             Object {

@@ -37,7 +37,7 @@ export default {
       (props.children || !_isString(Components.component)) && {
         errors: input.errors,
         field: input.field,
-        onInputChange: input.onInputChange,
+        onChangeInput: input.onChangeInput,
         options: input.options,
         processing: input.processing,
         processingDidFail: input.processingDidFail,

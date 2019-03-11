@@ -36,16 +36,20 @@ export default (mapStateToProps = () => ({}), mapDispatchToProps) => {
   const { store } = useDefault(mapDefault);
 
   const [reduxState, setReduxState] = React.useState(() => mapStateToProps(store.getState()));
+  const updateState = () => {
+    const newState = mapStateToProps(store.getState());
 
-  const stateRef = React.useRef(reduxState);
-  stateRef.current = reduxState;
+    if (!shallowEqual(newState, reduxState)) setReduxState(newState);
+  };
 
   React.useEffect(
-    () => store.subscribe(() => {
-      const newState = mapStateToProps(store.getState());
+    () => {
+      const unsubscribe = store.subscribe(updateState);
 
-      if (!shallowEqual(newState, stateRef.current)) setReduxState(newState);
-    }),
+      updateState();
+
+      return unsubscribe;
+    },
     [mapStateToProps],
   );
 

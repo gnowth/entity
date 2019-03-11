@@ -1,5 +1,4 @@
-export default {
-  dispatch: jest.fn(),
-  getState: jest.fn(),
-  subscribe: jest.fn(),
-};
+import configureStore from 'redux-mock-store';
+import { Map } from 'immutable';
+
+export default configureStore([])(Map());
