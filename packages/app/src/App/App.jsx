@@ -1,22 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Context } from './context';
-import defaultHooks from './app.hooks';
+import { AppProvider, Context } from '../context';
+import defaultHooks from './App.hooks';
 
 function App(props) {
   const hooks = { ...defaultHooks, ...props.hooks };
   const context = React.useContext(Context);
   const { DefaultProvider, IntlProvider, ThemeProvider } = hooks.useComponents(props, context);
 
+  const nextContext = {
+    ...context,
+    defaults: hooks.usePropsDefault(props, context, DefaultProvider),
+    intlProviderProps: hooks.usePropsIntl(props, context, IntlProvider),
+    themeProviderProps: hooks.usePropsTheme(props, context, ThemeProvider),
+  };
+
   return (
-    <IntlProvider {...hooks.usePropsIntl(props, context, IntlProvider)}>
-      <ThemeProvider {...hooks.usePropsTheme(props, context, ThemeProvider)}>
-        <DefaultProvider {...hooks.usePropsDefault(props, context, DefaultProvider)}>
-          { props.children }
-        </DefaultProvider>
-      </ThemeProvider>
-    </IntlProvider>
+    <AppProvider {...nextContext}>
+      <IntlProvider {...nextContext.intlProviderProps}>
+        <ThemeProvider {...nextContext.themeProviderProps}>
+          <DefaultProvider {...nextContext.defaults}>
+            { props.children }
+          </DefaultProvider>
+        </ThemeProvider>
+      </IntlProvider>
+    </AppProvider>
   );
 }
 

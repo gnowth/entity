@@ -18,10 +18,9 @@
     "storybook:build": "build-storybook -c .storybook -o ../../dist/style-guide"
   },
   "dependencies": {
-    "@apps/auth": "0.4.0",
-    "@apps/people": "0.4.0",
     "@entity/core": "0.4.0",
     "@entity/duck": "0.4.0",
+    "@entity/duck-namespace-auth": "0.4.0",
     "@entity/duck-namespace-drf": "0.4.0",
     "@entity/duck-namespace-screen": "0.4.0",
     "@entity/duck-query": "0.4.0",

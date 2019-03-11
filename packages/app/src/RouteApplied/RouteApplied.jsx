@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import hooks from './AppliedRoute.hooks';
+import hooks from './RouteApplied.hooks';
 
-function AppliedRoute(props) {
+function RouteApplied(props) {
   return (
     <Route
       {...props}
@@ -13,4 +13,4 @@ function AppliedRoute(props) {
   );
 }
 
-export default AppliedRoute;
+export default RouteApplied;
