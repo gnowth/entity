@@ -64,4 +64,4 @@ export const variant = options => props => Object.keys(props.theme)
 
 export const image = props => props.theme?.[`images_${props.name}`];
 
-export const variable = configs => props => props.theme?.[`var_${configs.name || props.name}_${configs.variant || props.variant}`];
+export const variable = configs => props => props.theme?.[`var_${configs.name || props.name}_${configs.variant}`];

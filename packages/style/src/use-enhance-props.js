@@ -7,6 +7,7 @@ import React from 'react';
 import { css, ThemeContext } from 'styled-components';
 
 import { component } from './selectors';
+import cleanProps from './use-clean-props';
 
 const defaultHook = (hook, ...args) => hook(...args);
 
@@ -71,5 +72,5 @@ export default function (_props, configs = {}) {
     delete props[key];
   });
 
-  return props;
+  return configs.clean ? cleanProps(props) : props;
 }

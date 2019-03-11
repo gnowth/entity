@@ -8,7 +8,7 @@ const UIFlexBox = withEnhanceProps(styled.div`
   justify-content: ${props => props.justifyContent};
 
   ${props => props.$palette && css`
-    background-color: ${colorFromPalette()(props)};
+    background-color: ${colorFromPalette({ paletteAsBackground: props.$paletteAsBackground === undefined || !props.$paletteAsBackground })(props)};
   `}
 
   ${props => props.flexDirection && css`
@@ -17,7 +17,6 @@ const UIFlexBox = withEnhanceProps(styled.div`
 
   ${mixin({ name: 'margin' })}
   ${mixin({ name: 'padding' })}
-
   ${props => props.css}
 `);
 
@@ -25,12 +24,18 @@ UIFlexBox.propTypes = {
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
   namespace: PropTypes.string,
+  palette: PropTypes.string,
+  paletteAsBackground: PropTypes.bool,
+  paletteWeight: PropTypes.string,
   variant: PropTypes.string,
 };
 
 UIFlexBox.defaultProps = {
   alignItems: 'center',
   namespace: 'component_uiFlexBox',
+  palette: undefined,
+  paletteAsBackground: undefined,
+  paletteWeight: undefined,
   variant: 'standard',
 };
 

@@ -4,18 +4,19 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/style';
 
 const UICard = withEnhanceProps(styled.div`
-  background-color: ${props => colorFromPalette({ paletteAsBackground: !props.$paletteAsBackground })(props)};
-  color: ${colorFromPalette()};
+  background-color: ${props => colorFromPalette({ paletteAsBackground: props.$paletteAsBackground === undefined || !props.$paletteAsBackground })(props)};
 
-  ${mixin({ name: 'padding' })}
   ${mixin({ name: 'margin' })}
+  ${mixin({ name: 'padding' })}
 
-  ${props => props.css}
+${props => props.css}
 `);
 
 UICard.propTypes = {
   css: PropTypesPlus.css,
+  margin: PropTypesPlus.string,
   namespace: PropTypesPlus.string,
+  padding: PropTypesPlus.string,
   palette: PropTypes.string,
   paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
@@ -24,6 +25,8 @@ UICard.propTypes = {
 
 UICard.defaultProps = {
   css: undefined,
+  margin: undefined,
+  padding: undefined,
   palette: undefined,
   paletteAsBackground: undefined,
   paletteWeight: undefined,
