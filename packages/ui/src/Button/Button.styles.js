@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { color, colorFromPalette, media, mixin } from '@gnowth/style';
 
 export default styled.button`
-  background-color: ${props => (props.paletteAsBackground ? colorFromPalette()(props) : 'transparent')};
+  background-color: ${props => (props.$paletteAsBackground ? colorFromPalette()(props) : 'transparent')};
   border: 0;
   border-radius: 0.25em;
   cursor: pointer;
@@ -33,8 +33,8 @@ export default styled.button`
     }
   }
 
-  ${props => props.media && css`
-    @media only screen and (${props.media}) {
+  ${props => props.$media && css`
+    @media only screen and (${props.$media}) {
       padding: 0.5em 1em;
 
       .uiButton-Content {

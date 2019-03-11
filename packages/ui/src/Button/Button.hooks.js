@@ -1,10 +1,16 @@
-import _omitBy from 'lodash/omitBy';
 import classnames from 'classnames';
 import { useDefault } from '@gnowth/default';
+import { useCleanProps } from '@gnowth/style';
 
 import UIIcon from '../Icon';
 import UIProgressCircle from '../ProgressCircle';
 import UIType from '../Type';
+
+const local = [
+  'contentComponentPaletteAsBackground',
+  'iconComponentPaletteAsBackground',
+  'processingComponentPaletteAsBackground',
+];
 
 const mapDefault = {
   contentComponent: ['uiButton_component_type', 'component_type'],
@@ -27,7 +33,7 @@ export default {
   useProps(props) {
     const { linkComponent } = useDefault(mapDefault, props);
 
-    return _omitBy(Object.assign(
+    return useCleanProps(Object.assign(
       { href: props.to },
 
       props,
@@ -38,13 +44,8 @@ export default {
 
       {
         disabled: props.processing || props.disabled,
-        hooks: undefined,
-        locales: undefined,
-        names: undefined,
-        styles: undefined,
-        theme: undefined,
       },
-    ), (value, key) => /^\$\$/.test(key));
+    ), { local });
   },
 
   usePropsIcon(props) {
@@ -54,8 +55,8 @@ export default {
         hidden: props.processing || props.iconComponentHidden === undefined || props.iconComponentHidden,
         name: props.iconComponentName || 'name',
         palette: props.palette,
-        paletteAsBackground: props.$$iconComponentPaletteAsBackground,
-        paletteWeight: props.paletteWeight,
+        paletteAsBackground: props.iconComponentPaletteAsBackground,
+        paletteWeight: props.$paletteWeight,
         variant: 'button',
       },
 
@@ -75,9 +76,9 @@ export default {
     return {
       children: props.children,
       hidden: props.contentComponentHidden || props.processing,
-      palette: props.palette,
-      paletteAsBackground: props.$$contentComponentPaletteAsBackground,
-      paletteWeight: props.paletteWeight,
+      palette: props.$palette,
+      paletteAsBackground: props.contentComponentPaletteAsBackground,
+      paletteWeight: props.$paletteWeight,
       value: props.content,
       variant: 'button',
       ...props.contentComponentProps,
@@ -88,9 +89,9 @@ export default {
   usePropsProcessing(props) {
     return {
       hidden: !props.processing,
-      palette: props.palette,
-      paletteAsBackground: props.$$processingComponentPaletteAsBackground,
-      paletteWeight: props.paletteWeight,
+      palette: props.$palette,
+      paletteAsBackground: props.processingComponentPaletteAsBackground,
+      paletteWeight: props.$paletteWeight,
       variant: 'button',
       ...props.processingComponentProps,
     };

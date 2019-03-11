@@ -1,13 +1,16 @@
-import _omitBy from 'lodash/omitBy';
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { color, colorFromPalette, media, mixin } from '@gnowth/style';
+import { color, colorFromPalette, media, mixin, useCleanProps } from '@gnowth/style';
+
+const local = [
+  'onChangeInput',
+];
 
 const StringComponent = props => props.children;
 
 const Component = styled.span`
-  ${props => props.palette && css`
+  ${props => props.$palette && css`
     color: ${colorFromPalette()};
   `}
 
@@ -58,14 +61,6 @@ export default {
   },
 
   useProps(props) {
-    return _omitBy({
-      ...props,
-      children: undefined,
-      hooks: undefined,
-      locales: undefined,
-      names: undefined,
-      styles: undefined,
-      theme: undefined,
-    }, (value, key) => /^\$\$/.test(key));
+    return useCleanProps(props, { local });
   },
 };

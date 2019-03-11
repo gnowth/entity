@@ -4,15 +4,10 @@ import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useEnhanceProps } from '@gnowth/style';
 
-
 import hooks from './Type.hooks';
 
-const localProps = [
-  'onChangeInput',
-];
-
 function UIType(_props) {
-  const props = useEnhanceProps(_props, { hooks, localProps });
+  const props = useEnhanceProps(_props, { hooks });
   const Component = props.hooks.useComponent(props);
 
   return (

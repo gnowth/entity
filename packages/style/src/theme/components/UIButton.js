@@ -10,7 +10,7 @@ export const component_uiButton_contained = {
     background-color: ${colorFromPalette()};
 
     &:hover {
-      background-color: ${colorFromPalette({ paletteWeight: '400' })};
+      background-color: ${props => colorFromPalette({ paletteWeight: '400' })(props)};
     }
 
     &:focus {

@@ -7,14 +7,8 @@ import { useEnhanceProps } from '@gnowth/style';
 import hooks from './Button.hooks';
 import Button from './Button.styles';
 
-const localProps = [
-  'contentComponentPaletteAsBackground',
-  'iconComponentPaletteAsBackground',
-  'processingComponentPaletteAsBackground',
-];
-
 function UIButton(_props) {
-  const props = useEnhanceProps(_props, { hooks, localProps });
+  const props = useEnhanceProps(_props, { hooks });
   const { Content, Icon, Processing } = props.hooks.useComponents(props);
 
   return (
