@@ -9,7 +9,7 @@ export default css`
   }
 
   body {
-    background-color: ${color({ palette: 'gray', paletteeight: '400' })};
+    background-color: ${color({ palette: 'gray', paletteWeight: '400' })};
     font-family: Arial, Sans-Serif;
   }
 

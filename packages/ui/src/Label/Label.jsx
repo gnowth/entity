@@ -62,7 +62,7 @@ UILabel.defaultProps = {
   hooks: undefined,
   label: undefined,
   labelComponentProps: {},
-  namespace: 'componet_uiLabel',
+  namespace: 'component_uiLabel',
   styles: undefined,
 };
 
