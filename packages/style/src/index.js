@@ -8,6 +8,8 @@ export { default as getPalettes } from './get-palettes';
 
 export { default as media } from './media';
 
+export { default as useCleanProps } from './use-clean-props';
+
 export { default as useEnhanceProps } from './use-enhance-props';
 
 export { default as withCleanTransient } from './with-clean-transient';

@@ -36,6 +36,7 @@ UITooltip.propTypes = {
   hooks: PropTypes.exact({
     usePropsTrigger: PropTypes.func,
   }),
+  namespace: PropTypesPlus.string,
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
   }),
@@ -47,6 +48,7 @@ UITooltip.defaultProps = {
   css: undefined,
   event: 'onClick',
   hooks: undefined,
+  namespace: 'component_uiTooltip',
   styles: undefined,
 };
 
