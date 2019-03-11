@@ -1,5 +1,6 @@
 import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Entity, Fields } from '@entity/core';
+import { mock } from '@private/entity-duck-mock-drf';
 
 class Person extends Entity {
   static idField = 'id';
@@ -30,5 +31,6 @@ class Person extends Entity {
 }
 
 Person.duck = new DuckDjangoRestFramework({ app: 'People', entity: Person });
+mock(Person, { size: 20 });
 
 export default Person;

@@ -1,6 +1,7 @@
 import moment from 'moment';
-import { EntityPerson } from '@apps/people';
 import { EntityTitle, Fields } from '@entity/core';
+
+import EntityPerson from 'apps/people/entities/Person';
 
 export default class Activity extends EntityTitle {
   static fields = {

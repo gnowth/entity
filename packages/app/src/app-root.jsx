@@ -25,6 +25,7 @@ function AppRoot(props) {
 }
 
 AppRoot.propTypes = exact({
+  authEntity: PropTypesEntity.entity,
   children: PropTypes.node.isRequired,
   defaults: PropTypes.shape({}),
   entity: PropTypesEntity.entity.isRequired,
@@ -40,6 +41,7 @@ AppRoot.propTypes = exact({
 });
 
 AppRoot.defaultProps = {
+  authEntity: undefined,
   defaults: {},
   intlProvider: undefined,
   intlProviderProps: undefined,

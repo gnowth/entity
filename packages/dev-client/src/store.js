@@ -1,7 +1,5 @@
-import { EntitiesAuth } from '@apps/auth';
-import { EntitiesPeople } from '@apps/people';
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
-import { mock, Client } from '@private/entity-duck-mock-drf';
+import { Client } from '@private/entity-duck-mock-drf';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
 import { Map } from 'immutable';
@@ -13,8 +11,6 @@ import settings from 'settings';
 const reqs = [
   require.context('apps', true, /\.\/[^/]*\/entities\/[^/]*\.js$/),
   require.context('entities', false, /[^/]*\.js$/),
-  mock(EntitiesPeople, { size: 20 }),
-  mock(EntitiesAuth, { size: 20 }),
 ];
 
 const rootReducerMap = createDuckReducerFromRequires(reqs, combineReducers);

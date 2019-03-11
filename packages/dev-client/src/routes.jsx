@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { AppliedRoute } from '@apps/auth';
-import { Navigation } from '@gnowth/app';
+import { Navigation, RouteApplied } from '@gnowth/app';
 import { Switch, Redirect } from 'react-router-dom';
 
 import settings from 'settings';
@@ -19,13 +18,13 @@ const Routes = props => (
     />
 
     <Switch>
-      <AppliedRoute
+      <RouteApplied
         path="/pages"
         component={AppPages}
       />
 
       { settings.ENABLE_FEATURE_OBSERVATION && (
-        <AppliedRoute
+        <RouteApplied
           path="/observation"
           component={AppObservation}
           componentProps={{ routeNotFound: props.routeNotFound }}

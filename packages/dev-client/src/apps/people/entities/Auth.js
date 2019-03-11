@@ -1,5 +1,6 @@
 import DuckAuth from '@entity/duck-namespace-auth';
-import { EntityPerson } from '@apps/people';
+
+import EntityPerson from 'apps/people/entities/Person';
 
 class Auth extends EntityPerson {
   static paths = {

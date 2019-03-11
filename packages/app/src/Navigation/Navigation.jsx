@@ -1,21 +1,23 @@
 import _isFunction from 'lodash/isFunction';
 import PropTypes from 'prop-types';
+import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
 import { useEnhanceProps } from '@gnowth/style';
 
-import { Context } from './context';
-import hooks from './navigation.hooks';
+import { Context } from '../context';
+import hooks from './Navigation.hooks';
 
 function Navigation(_props) {
-  const context = React.useContext(Context);
   const props = useEnhanceProps(_props, { hooks });
+  const context = React.useContext(Context);
+  const entity = props.entity || context.entity;
 
   const { Container, NavLink } = props.hooks.useComponents(props);
 
-  const navigations = _isFunction(context.entity.navigations?.[props.name])
-    ? context.entity.navigations[props.name](props.entityConfigs)
-    : context.entity.navigations?.[props.name];
+  const navigations = _isFunction(entity.navigations?.[props.name])
+    ? entity.navigations[props.name](props.entityConfigs)
+    : entity.navigations?.[props.name];
 
   return (
     <Container {...props.hooks.usePropsContainer(props)}>
@@ -29,6 +31,7 @@ function Navigation(_props) {
 Navigation.propTypes = {
   containerComponent: PropTypesPlus.component,
   containerComponentProps: PropTypes.shape({}),
+  entity: PropTypesEntity.entity,
   entityConfigs: PropTypes.shape({}),
   hooks: PropTypes.exact({
     useComponents: PropTypes.func,
@@ -47,6 +50,7 @@ Navigation.propTypes = {
 Navigation.defaultProps = {
   containerComponent: undefined,
   containerComponentProps: undefined,
+  entity: undefined,
   entityConfigs: undefined,
   hooks: undefined,
   namespace: 'app_navigation',
