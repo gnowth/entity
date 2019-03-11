@@ -24,7 +24,7 @@ const AppPages = props => (
       <Route
         path={`${props.match.url}/changelog`}
         render={() => (
-          <UICard ratio={3} variant="page_flat">
+          <UICard variant="page_flat">
             <Markdown className="markdown-body" source={changelog} />
           </UICard>
         )}
@@ -33,7 +33,7 @@ const AppPages = props => (
       <Route
         path={`${props.match.url}/readme`}
         render={() => (
-          <UICard ratio={3} variant="page_flat">
+          <UICard variant="page_flat">
             <Markdown className="markdown-body" source={readme} />
           </UICard>
         )}

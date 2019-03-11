@@ -5,40 +5,7 @@ exports[`renders correctly 1`] = `
   font-size: 1rem;
 }
 
-.c10 {
-  color: #ffffff;
-}
-
-.c10.c10 {
-  font-size: 1rem;
-}
-
 .c5 {
-  -webkit-animation-name: bvvTNa;
-  animation-name: bvvTNa;
-  fill: transparent;
-  stroke: #000000;
-  stroke-dasharray: 251.32741228718345px;
-  stroke-width: 20%;
-  -webkit-transition: stroke-dashoffset 225ms linear;
-  transition: stroke-dashoffset 225ms linear;
-  -webkit-transform-box: view-box;
-  -ms-transform-box: view-box;
-  transform-box: view-box;
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-  -webkit-animation-duration: 4s;
-  animation-duration: 4s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
-  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
-  -webkit-transition-property: stroke;
-  transition-property: stroke;
-}
-
-.c11 {
   -webkit-animation-name: bvvTNa;
   animation-name: bvvTNa;
   fill: transparent;
@@ -97,7 +64,7 @@ exports[`renders correctly 1`] = `
   text-transform: uppercase;
 }
 
-.c12 {
+.c10 {
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -259,7 +226,7 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
-  .c12 {
+  .c10 {
     color: #000000;
   }
 }
@@ -402,7 +369,7 @@ exports[`renders correctly 1`] = `
     onClick={[Function]}
   >
     <i
-      className="uiButton-Icon icon icon-name uiButton-Icon c10"
+      className="uiButton-Icon icon icon-name uiButton-Icon c2"
       hidden={true}
       name="name"
     />
@@ -420,7 +387,7 @@ exports[`renders correctly 1`] = `
         viewBox="0 0 100 100"
       >
         <circle
-          className="c11"
+          className="c5"
           cx="50%"
           cy="50%"
           r="40"
@@ -429,7 +396,7 @@ exports[`renders correctly 1`] = `
       </svg>
     </div>
     <span
-      className="uiButton-Content c12"
+      className="uiButton-Content c10"
       hidden={false}
       value={
         Object {

@@ -8,7 +8,7 @@ const mapDefault = {
 };
 
 const Container = styled.div`
-  background-color: ${props => colorFromPalette({ paletteAsBackground: !props.paletteAsBackground })(props)};
+  background-color: ${props => colorFromPalette({ paletteAsBackground: !props.$paletteAsBackground })(props)};
 `;
 
 export default {
@@ -33,14 +33,14 @@ export default {
         ? undefined
         : defaults.navLinkComponent,
       activeClassName: 'active',
-      contentComponentPaletteAsBackground: props.paletteAsBackground,
+      contentComponentPaletteAsBackground: props.$paletteAsBackground,
       css: css`
         &.active {
           border-bottom: 2px solid white;
         }
       `,
-      palette: props.palette,
-      paletteWeight: props.paletteWeight,
+      palette: props.$palette,
+      paletteWeight: props.$paletteWeight,
       variant: props.variant,
       ...configs.item,
     };

@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { colorFromPalette, component, mixin } from '@gnowth/style';
+import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/style';
 
-const UIIcon = styled.i.attrs(props => ({
+const UIIcon = withEnhanceProps(styled.i.attrs(props => ({
   className: classnames({
     'material-icons': props.material,
     [`fa fa-${props.name}`]: props.fontawesome,
@@ -17,16 +17,15 @@ const UIIcon = styled.i.attrs(props => ({
     font-size: ${props => props.size || '1rem'};
   }
 
-  ${props => props.palette && css`
+  ${props => props.$palette && css`
     color: ${colorFromPalette()};
   `}
 
   ${mixin({ name: 'margin' })}
   ${mixin({ name: 'padding' })}
 
-  ${component()}
   ${props => props.css}
-`;
+`);
 
 UIIcon.propTypes = {
   fontawesome: PropTypes.bool,

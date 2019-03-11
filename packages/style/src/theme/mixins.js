@@ -62,13 +62,13 @@ export const mixin_componentBox = css`
 `;
 
 export const mixin_margin = css`
-  ${props => props.margin && css`
-    margin: ${props.margin};
+  ${props => props.$margin && css`
+    margin: ${props.$margin};
    `}
  `;
 
 export const mixin_padding = css`
-  ${props => props.padding && css`
-    padding: ${props.padding};
+  ${props => props.$padding && css`
+    padding: ${props.$padding};
   `}
 `;

@@ -22,7 +22,7 @@ export const component_uiCard_page = {
 };
 
 export const component_uiCard_page_flat = {
-  padding: '1rem',
+  padding: '1.5rem',
 };
 
 export const component_uiCard_panel = {

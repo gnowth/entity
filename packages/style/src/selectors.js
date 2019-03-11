@@ -31,11 +31,11 @@ export const color = (configs = {}) => (props) => {
 
 export const colorFromPalette = (configs = {}) => props => color({
   paletteAsBackground: configs.paletteAsBackground === undefined
-    ? props.paletteAsBackground
+    ? props.$paletteAsBackground
     : configs.paletteAsBackground,
   defaultColor: configs.defaultColor,
-  palette: configs.palette || props.palette || 'black',
-  paletteWeight: configs.paletteWeight || props.paletteWeight,
+  palette: configs.palette || props.$palette || 'black',
+  paletteWeight: configs.paletteWeight || props.$paletteWeight,
 })(props);
 
 export const component = (configs = {}) => (props) => {

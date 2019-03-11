@@ -1,3 +1,4 @@
+import _isFunction from 'lodash/isFunction';
 import _isUndefined from 'lodash/isUndefined';
 import _mapValues from 'lodash/mapValues';
 import _mergeWith from 'lodash/mergeWith';
@@ -5,14 +6,28 @@ import _omitBy from 'lodash/omitBy';
 import React from 'react';
 import { css, ThemeContext } from 'styled-components';
 
+import { component } from './selectors';
+
 const defaultHook = (hook, ...args) => hook(...args);
+
+const defaultTransient = [
+  'margin',
+  'media',
+  'mediaPrintDisabled',
+  'padding',
+  'palette',
+  'paletteAsBackground',
+  'paletteWeight',
+];
 
 export default function (_props, configs = {}) {
   const theme = React.useContext(ThemeContext) || {};
-  const componentTheme = theme[`${configs.namespace || _props.namespace}_${configs.variant || _props.variant}`] || {};
+  const componentTheme = component(configs)({ theme, ..._props }) || {};
 
   const props = {
     ...componentTheme,
+
+    theme,
 
     ..._omitBy(_props, _isUndefined),
 
@@ -47,13 +62,12 @@ export default function (_props, configs = {}) {
     ),
   };
 
-  (configs.transient || []).forEach((key) => {
-    props[`$${key}`] = props[key];
-    delete props[key];
-  });
+  const transient = _isFunction(configs.transient)
+    ? configs.transient(defaultTransient)
+    : defaultTransient.concat(configs.transient || []);
 
-  (configs.localProps || []).forEach((key) => {
-    props[`$$${key}`] = props[key];
+  transient.forEach((key) => {
+    props[`$${key}`] = props[key];
     delete props[key];
   });
 
