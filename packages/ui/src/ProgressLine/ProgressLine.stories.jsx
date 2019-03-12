@@ -12,9 +12,9 @@ export default stories => stories
   .add('dynamic story', () => (
     <Block>
       <UIProgressLine
-        color={select('color', ['blue', 'red', 'black'])}
-        colorBuffer={select('colorBuffer', ['blue', 'red', 'black'])}
+        bufferPalette={select('bufferPalette', ['primary', 'secondary', 'gray'])}
         height={select('height', ['1px', '2px', '4px', '8px', '16px'], '4px')}
+        palette={select('palette', ['primary', 'secondary', 'gray'])}
         value={select('value', [null, 0, 33, 50, 100], null)}
       />
     </Block>

@@ -4,38 +4,55 @@ import React from 'react';
 import * as S from './ProgressLine.styles';
 
 const UIProgressLine = props => (
-  <S.Block className={props.className} height={props.height}>
-    <S.Buffer color={props.colorBuffer} />
+  <S.Block
+    className={props.className}
+    height={props.height}
+    $margin={props.margin}
+    $padding={props.padding}
+  >
+    <S.Buffer
+      palette={props.bufferPalette}
+      value={props.bufferValue}
+    />
 
-    <S.BarPrimary
-      color={props.color}
-      value={props.value}
-    >
+    <S.BarPrimary value={props.value}>
       <S.BarPrimaryInner
-        color={props.color}
+        palette={props.palette}
+        paletteWeight={props.paletteWeight}
         value={props.value}
       />
     </S.BarPrimary>
 
     { props.value === null && (
-      <S.BarSecondary color={props.color}>
-        <S.BarSecondaryInner color={props.color} />
+      <S.BarSecondary>
+        <S.BarSecondaryInner
+          palette={props.palette}
+          paletteWeight={props.paletteWeight}
+        />
       </S.BarSecondary>
     )}
   </S.Block>
 );
 
 UIProgressLine.propTypes = {
-  color: PropTypes.string,
-  colorBuffer: PropTypes.string,
+  bufferPalette: PropTypes.string,
+  bufferValue: PropTypes.number,
   height: PropTypes.string,
+  margin: PropTypes.string,
+  padding: PropTypes.string,
+  palette: PropTypes.string,
+  paletteWeight: PropTypes.string,
   value: PropTypes.number,
 };
 
 UIProgressLine.defaultProps = {
-  color: undefined,
-  colorBuffer: undefined,
+  bufferPalette: undefined,
+  bufferValue: 100,
   height: '4px',
+  margin: undefined,
+  padding: undefined,
+  palette: undefined,
+  paletteWeight: undefined,
   value: null,
 };
 

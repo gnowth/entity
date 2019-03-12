@@ -39,6 +39,14 @@ exports[`renders correctly 1`] = `
   font-size: 1rem;
 }
 
+.c20 {
+  color: #ffffff;
+}
+
+.c20.c20 {
+  font-size: 1rem;
+}
+
 .c12 {
   -webkit-animation-name: bvvTNa;
   animation-name: bvvTNa;
@@ -107,7 +115,7 @@ exports[`renders correctly 1`] = `
   text-transform: uppercase;
 }
 
-.c20 {
+.c21 {
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -119,6 +127,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -156,6 +168,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c18 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -194,6 +210,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c19 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -250,7 +270,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c0 {
-  background-color: #ffffff;
+  background-color: #000000;
   padding: 1rem;
 }
 
@@ -327,7 +347,7 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
-  .c20 {
+  .c21 {
     color: #000000;
   }
 }
@@ -364,12 +384,6 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c2 c3"
-      value={
-        Object {
-          "defaultMessage": "Observation Date",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.date_activity",
-        }
-      }
     >
       Observation Date
     </label>
@@ -403,12 +417,6 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c2 c3"
-      value={
-        Object {
-          "defaultMessage": "Title",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.title",
-        }
-      }
     >
       Title
     </label>
@@ -498,12 +506,6 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c2 c3"
-      value={
-        Object {
-          "defaultMessage": "Short Title",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.title_short",
-        }
-      }
     >
       Short Title
     </label>
@@ -550,12 +552,6 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c2 c3"
-      value={
-        Object {
-          "defaultMessage": "Description",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.description",
-        }
-      }
     >
       Description
     </label>
@@ -575,12 +571,6 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c2 c3"
-      value={
-        Object {
-          "defaultMessage": "Due Date",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.date_due",
-        }
-      }
     >
       Due Date
     </label>
@@ -614,12 +604,6 @@ exports[`renders correctly 1`] = `
   >
     <label
       className="c2 c3"
-      value={
-        Object {
-          "defaultMessage": "Follow up actions",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.follow_up_actions",
-        }
-      }
     >
       Follow up actions
     </label>
@@ -665,12 +649,6 @@ exports[`renders correctly 1`] = `
     <span
       className="uiButton-Content c13"
       hidden={false}
-      value={
-        Object {
-          "defaultMessage": "Add action",
-          "id": "packages.dev-client.src.apps.observation.screens.Observation.follow_up_actions_add",
-        }
-      }
     >
       Add action
     </span>
@@ -722,12 +700,6 @@ exports[`renders correctly 1`] = `
         <span
           className="uiButton-Content c13"
           hidden={false}
-          value={
-            Object {
-              "defaultMessage": "RESET",
-              "id": "packages.dev-client.src.apps.activity.forms.Controls.reset",
-            }
-          }
         >
           RESET
         </span>
@@ -776,12 +748,6 @@ exports[`renders correctly 1`] = `
         <span
           className="uiButton-Content c13"
           hidden={false}
-          value={
-            Object {
-              "defaultMessage": "SAVE",
-              "id": "packages.dev-client.src.apps.activity.forms.Controls.save",
-            }
-          }
         >
           SAVE
         </span>
@@ -798,7 +764,7 @@ exports[`renders correctly 1`] = `
         onClick={[Function]}
       >
         <i
-          className="uiButton-Icon icon icon-name uiButton-Icon c9"
+          className="uiButton-Icon icon icon-name uiButton-Icon c20"
           hidden={true}
           name="name"
         />
@@ -825,14 +791,8 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <span
-          className="uiButton-Content c20"
+          className="uiButton-Content c21"
           hidden={false}
-          value={
-            Object {
-              "defaultMessage": "SUBMIT",
-              "id": "packages.dev-client.src.apps.activity.forms.Controls.submit",
-            }
-          }
         >
           SUBMIT
         </span>

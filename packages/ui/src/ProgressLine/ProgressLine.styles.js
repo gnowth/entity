@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color, mixin } from '@gnowth/style';
 
 const primaryScale = keyframes`
   0% {
@@ -85,20 +85,28 @@ const secondaryTranslate = keyframes`
 
 export const Block = styled.div`
   height: ${props => props.height};
+  min-width: 2rem;
   overflow: hidden;
   position: relative;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   transform: translateZ(0);
-  width: 100%;
+
+  ${mixin({ name: 'padding' })}
+  ${mixin({ name: 'margin' })}
 `;
 
 export const Buffer = styled.div`
-  background-color: ${props => props.color || color({ palette: 'gray' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'gray' })(props)};
   height: 100%;
   position: absolute;
   transition: transform 0.25ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   transform-origin: top left;
   width: 100%;
+
+  ${props => props.value !== null && css`
+    transition: transform 225ms;
+    transform: translateX(-${50 - props.value / 2}%);
+  `}
 `;
 
 export const BarPrimary = styled.div`
@@ -121,7 +129,7 @@ export const BarPrimary = styled.div`
 `;
 
 export const BarPrimaryInner = styled.span`
-  background-color: ${props => props.color || color({ palette: 'primary' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'primary', paletteWeight: props.paletteWeight })(props)};
   display: inline-block;
   height: 100%;
   position: absolute;
@@ -150,7 +158,7 @@ export const BarSecondary = styled.div`
 
 export const BarSecondaryInner = styled.span`
   animation: ${secondaryScale} 2s infinite linear;
-  background-color: ${props => props.color || color({ palette: 'primary' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'primary', paletteWeight: props.paletteWeight })(props)};
   display: inline-block;
   height: 100%;
   position: absolute;

@@ -55,6 +55,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -136,7 +140,6 @@ exports[`renders correctly 1`] = `
   </div>
   <span
     className="uiButton-Content c5"
-    value="Test"
   >
     Test
   </span>
