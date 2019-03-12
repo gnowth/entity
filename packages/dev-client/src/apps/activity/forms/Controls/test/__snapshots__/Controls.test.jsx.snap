@@ -5,6 +5,14 @@ exports[`renders correctly 1`] = `
   font-size: 1rem;
 }
 
+.c10 {
+  color: #ffffff;
+}
+
+.c10.c10 {
+  font-size: 1rem;
+}
+
 .c5 {
   -webkit-animation-name: bvvTNa;
   animation-name: bvvTNa;
@@ -64,7 +72,7 @@ exports[`renders correctly 1`] = `
   text-transform: uppercase;
 }
 
-.c10 {
+.c11 {
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -76,6 +84,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -113,6 +125,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -151,6 +167,10 @@ exports[`renders correctly 1`] = `
 }
 
 .c9 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-radius: 0.25em;
@@ -226,7 +246,7 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
-  .c10 {
+  .c11 {
     color: #000000;
   }
 }
@@ -293,12 +313,6 @@ exports[`renders correctly 1`] = `
     <span
       className="uiButton-Content c6"
       hidden={false}
-      value={
-        Object {
-          "defaultMessage": "RESET",
-          "id": "packages.dev-client.src.apps.activity.forms.Controls.reset",
-        }
-      }
     >
       RESET
     </span>
@@ -347,12 +361,6 @@ exports[`renders correctly 1`] = `
     <span
       className="uiButton-Content c6"
       hidden={false}
-      value={
-        Object {
-          "defaultMessage": "SAVE",
-          "id": "packages.dev-client.src.apps.activity.forms.Controls.save",
-        }
-      }
     >
       SAVE
     </span>
@@ -369,7 +377,7 @@ exports[`renders correctly 1`] = `
     onClick={[Function]}
   >
     <i
-      className="uiButton-Icon icon icon-name uiButton-Icon c2"
+      className="uiButton-Icon icon icon-name uiButton-Icon c10"
       hidden={true}
       name="name"
     />
@@ -396,14 +404,8 @@ exports[`renders correctly 1`] = `
       </svg>
     </div>
     <span
-      className="uiButton-Content c10"
+      className="uiButton-Content c11"
       hidden={false}
-      value={
-        Object {
-          "defaultMessage": "SUBMIT",
-          "id": "packages.dev-client.src.apps.activity.forms.Controls.submit",
-        }
-      }
     >
       SUBMIT
     </span>

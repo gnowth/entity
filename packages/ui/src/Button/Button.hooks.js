@@ -8,6 +8,10 @@ import UIType from '../Type';
 
 const local = [
   'contentComponentPaletteAsBackground',
+  'iconComponentCss',
+  'iconComponentFont',
+  'iconComponentHidden',
+  'iconComponentName',
   'iconComponentPaletteAsBackground',
   'processingComponentPaletteAsBackground',
 ];
@@ -54,7 +58,7 @@ export default {
         css: props.iconComponentCss,
         hidden: props.processing || props.iconComponentHidden === undefined || props.iconComponentHidden,
         name: props.iconComponentName || 'name',
-        palette: props.palette,
+        palette: props.$palette,
         paletteAsBackground: props.iconComponentPaletteAsBackground,
         paletteWeight: props.$paletteWeight,
         variant: 'button',

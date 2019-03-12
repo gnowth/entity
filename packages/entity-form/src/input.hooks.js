@@ -1,5 +1,7 @@
 import _isFunction from 'lodash/isFunction';
 import _isString from 'lodash/isString';
+import _isUndefined from 'lodash/isUndefined';
+import _omitBy from 'lodash/omitBy';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
 
@@ -26,7 +28,7 @@ export default {
   },
 
   useProps(props, input, Components) {
-    return Object.assign(
+    return _omitBy(Object.assign(
       {
         name: props.name,
         onChange: input.onChange,
@@ -47,7 +49,7 @@ export default {
       _isFunction(props.componentProps)
         ? props.componentProps(input)
         : props.componentProps,
-    );
+    ), _isUndefined);
   },
 
   usePropsErrorBoundary(props, components) {

@@ -5,14 +5,17 @@ import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/style';
 const UIFlexBox = withEnhanceProps(styled.div`
   align-items: ${props => props.alignItems};
   display: flex;
-  justify-content: ${props => props.justifyContent};
 
   ${props => props.$palette && css`
-    background-color: ${colorFromPalette({ paletteAsBackground: props.$paletteAsBackground === undefined || !props.$paletteAsBackground })(props)};
+    background-color: ${colorFromPalette({ paletteAsBackground: props.$paletteAsBackground !== undefined && !props.$paletteAsBackground })(props)};
   `}
 
   ${props => props.flexDirection && css`
     flex-direction: ${props.flexDirection};
+  `}
+
+  ${props => props.justifyContent && css`
+    justify-content: ${props.justifyContent};
   `}
 
   ${mixin({ name: 'margin' })}

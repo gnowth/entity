@@ -127,16 +127,16 @@ export default class Entity {
         ..._mapValues(
           fields,
           (field) => {
-            if (field instanceof EntityField && !field.blank && field.entity.mockStore) {
+            if (field instanceof EntityField && !field.blank && field.entity.store) {
               return field.many
-                ? _sampleSize(Object.values(field.entity.mockStore))
-                : _sample(Object.values(field.entity.mockStore));
+                ? _sampleSize(Object.values(field.entity.store))
+                : _sample(Object.values(field.entity.store));
             }
 
             return field.mock && (
               field.mock === 'index'
                 ? index
-                : _get(faker, field.mock)()
+                : _get(faker, field.mock)(field.mockConfigs)
             );
           },
         ),

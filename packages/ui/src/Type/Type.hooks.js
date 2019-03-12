@@ -5,6 +5,7 @@ import { color, colorFromPalette, media, mixin, useCleanProps } from '@gnowth/st
 
 const local = [
   'onChangeInput',
+  'value',
 ];
 
 const StringComponent = props => props.children;
