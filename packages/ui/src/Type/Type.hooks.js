@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
-import { color, colorFromPalette, media, mixin, useCleanProps } from '@gnowth/style';
+import { color, colorFromPalette, media, mixin, useCleanProps } from '@gnowth/theme';
 
 const local = [
   'onChangeInput',

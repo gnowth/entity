@@ -5,7 +5,7 @@ import 'material-design-icons/iconfont/material-icons.css';
 import 'normalize.css/normalize.css';
 
 import React from 'react';
-import { defaultTheme, GlobalStyles } from '@gnowth/style';
+import { defaultTheme, GlobalStyles } from '@gnowth/theme';
 import { withNotes } from '@storybook/addon-notes';
 import { withOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';

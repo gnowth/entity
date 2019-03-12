@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/style';
+import { useEnhanceProps } from '@gnowth/theme';
 
 import hooks from './Type.hooks';
 

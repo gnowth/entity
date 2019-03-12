@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withPropsFiltered } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 
 const Input = styled.input`
   display: block;

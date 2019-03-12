@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { useDefault } from '@gnowth/default';
-import { colorFromPalette } from '@gnowth/style';
+import { colorFromPalette } from '@gnowth/theme';
 
 const mapDefault = {
   buttonComponent: ['app_component_button', 'component_button'],

@@ -3,7 +3,7 @@ import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
-import { component, image } from '@gnowth/style';
+import { component, image } from '@gnowth/theme';
 
 const UIImage = styled.img`
   ${component()}

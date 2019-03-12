@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/style';
+import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/theme';
 
 const UIFlexBox = withEnhanceProps(styled.div`
   align-items: ${props => props.alignItems};

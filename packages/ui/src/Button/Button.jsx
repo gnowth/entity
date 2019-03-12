@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/style';
+import { useEnhanceProps } from '@gnowth/theme';
 
 import hooks from './Button.hooks';
 import Button from './Button.styles';

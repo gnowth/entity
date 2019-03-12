@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color } from '@gnowth/theme';
 
 const spinnerRotateLinear = keyframes`
   0% {

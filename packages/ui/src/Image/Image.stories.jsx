@@ -1,6 +1,6 @@
 import styled, { css, ThemeConsumer } from 'styled-components';
 import React from 'react';
-import { variant } from '@gnowth/style';
+import { variant } from '@gnowth/theme';
 import { select } from '@storybook/addon-knobs';
 
 import UIImage from '.';

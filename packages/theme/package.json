@@ -1,9 +1,9 @@
 {
   "author": "Thierry Wong",
-  "description": "style",
+  "description": "theme",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
-  "name": "@gnowth/style",
+  "name": "@gnowth/theme",
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/style';
+import { useEnhanceProps } from '@gnowth/theme';
 
 import { Context } from '../context';
 import hooks from './Navigation.hooks';
