@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "name": "@gnowth/prop-types-plus",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
   "version": "0.4.0",
   "publishConfig": {
