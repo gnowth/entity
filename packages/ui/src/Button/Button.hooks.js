@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useDefault } from '@gnowth/default';
-import { useCleanProps } from '@gnowth/style';
+import { useCleanProps } from '@gnowth/theme';
 
 import UIIcon from '../Icon';
 import UIProgressCircle from '../ProgressCircle';

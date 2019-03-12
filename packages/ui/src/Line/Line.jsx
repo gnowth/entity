@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorFromPalette, withEnhanceProps } from '@gnowth/style';
+import { colorFromPalette, withEnhanceProps } from '@gnowth/theme';
 
 export default withEnhanceProps(styled.hr`
   border: 0;

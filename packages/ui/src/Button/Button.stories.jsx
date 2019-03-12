@@ -1,6 +1,6 @@
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
-import { variant } from '@gnowth/style';
+import { variant } from '@gnowth/theme';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 

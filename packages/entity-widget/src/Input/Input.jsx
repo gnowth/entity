@@ -2,7 +2,7 @@ import _flowRight from 'lodash/flowRight';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withProps, withPropsFiltered } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 import { injectIntl } from 'react-intl';
 
 const WidgetInput = styled(withPropsFiltered('input'))`

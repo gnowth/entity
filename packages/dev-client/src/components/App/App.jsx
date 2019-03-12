@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { EntityTitle } from '@entity/core';
 import { AppRoot } from '@gnowth/app';
-import { defaultTheme, GlobalStyles } from '@gnowth/style';
+import { defaultTheme, GlobalStyles } from '@gnowth/theme';
 import { Provider } from 'react-redux';
 import { IntlProvider } from '@private/react-intl';
 import { ThemeProvider } from 'styled-components';

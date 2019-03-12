@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color } from '@gnowth/theme';
 
 export const UILabelRoot = styled.div`
   ${props => props.css}

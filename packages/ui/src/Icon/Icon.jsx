@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/style';
+import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/theme';
 
 const UIIcon = withEnhanceProps(styled.i.attrs(props => ({
   className: classnames({

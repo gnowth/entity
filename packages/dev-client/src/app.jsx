@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppRoot, Authenticate } from '@gnowth/app';
-import { defaultTheme, GlobalStyles } from '@gnowth/style';
+import { defaultTheme, GlobalStyles } from '@gnowth/theme';
 import { IntlProvider } from '@private/react-intl';
 import { ThemeProvider } from 'styled-components';
 

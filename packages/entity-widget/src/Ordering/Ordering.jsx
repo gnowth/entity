@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 import { UIIcon } from '@gnowth/ui';
 import { List } from 'immutable';
 

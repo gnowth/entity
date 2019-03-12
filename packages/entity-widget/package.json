@@ -26,7 +26,7 @@
     "@gnowth/higher-order-component": "0.4.0",
     "@gnowth/prop-types-entity": "0.4.0",
     "@gnowth/prop-types-plus": "0.4.0",
-    "@gnowth/style": "0.4.0",
+    "@gnowth/theme": "0.4.0",
     "@gnowth/ui": "0.4.0",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",

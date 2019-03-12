@@ -1,6 +1,6 @@
 import { useQuery, Query } from '@entity/duck-query';
 import { WidgetBoolean, WidgetDate, WidgetInput, WidgetList, WidgetSelect, WidgetTextarea } from '@entity/widget';
-import { withCleanTransient } from '@gnowth/style';
+import { withCleanTransient } from '@gnowth/theme';
 import { UIButton, UICard, UIErrorBoundary, UILabel, UIPopup, UIProgressCircle } from '@gnowth/ui';
 import { IntlContext } from '@private/react-intl';
 import { Link, NavLink, Redirect } from 'react-router-dom';

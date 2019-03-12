@@ -4,7 +4,7 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import Select from 'react-select';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 

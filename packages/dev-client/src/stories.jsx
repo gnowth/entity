@@ -1,5 +1,5 @@
 import centered from '@storybook/addon-centered';
-import { createStoriesForTheme } from '@gnowth/style';
+import { createStoriesForTheme } from '@gnowth/theme';
 import { createStoriesForUI } from '@gnowth/ui';
 import { createStoriesForWidget } from '@entity/widget';
 import { checkA11y } from '@storybook/addon-a11y';
