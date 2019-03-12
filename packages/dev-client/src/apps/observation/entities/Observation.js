@@ -1,6 +1,6 @@
 import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Fields } from '@entity/core';
-import { mock } from '@private/entity-duck-mock-drf';
+import { mock } from '@entity/duck-mock-drf';
 
 import EntityAction from 'apps/activity/entities/Action';
 import EntityActivity from 'apps/activity/entities/Activity';
