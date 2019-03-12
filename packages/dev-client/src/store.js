@@ -1,5 +1,5 @@
 import { createDuckReducerFromRequires, duckMiddleware } from '@entity/duck';
-import { Client } from '@private/entity-duck-mock-drf';
+import { Client } from '@entity/duck-mock-drf';
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import { createBrowserHistory } from 'history';
 import { Map } from 'immutable';

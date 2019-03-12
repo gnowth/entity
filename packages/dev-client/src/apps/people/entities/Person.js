@@ -1,6 +1,6 @@
 import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Entity, Fields } from '@entity/core';
-import { mock } from '@private/entity-duck-mock-drf';
+import { mock } from '@entity/duck-mock-drf';
 
 class Person extends Entity {
   static idField = 'id';
