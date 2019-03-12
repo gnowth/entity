@@ -3,7 +3,7 @@
   "license": "AGPL-3.0-only",
   "name": "@serve/client-react",
   "private": true,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "version": "0.4.0",
   "engines": {
     "node": "10.15.1",

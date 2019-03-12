@@ -3,7 +3,7 @@
   "license": "AGPL-3.0-only",
   "name": "@gnowth/root",
   "private": true,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "version": "0.4.0",
   "workspaces": [
     "packages/*"

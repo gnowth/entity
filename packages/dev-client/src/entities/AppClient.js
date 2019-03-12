@@ -8,12 +8,12 @@ class AppClient extends Entity {
       {
         content: locales.link_github,
         key: 'github',
-        to: 'https://github.com/gnowth/react',
+        to: 'https://github.com/gnowth/entity',
       },
       {
         content: locales.link_style_guide,
         key: 'styleguide',
-        to: 'https://gnowth.github.io/react/style-guide',
+        to: 'https://gnowth.github.io/entity/style-guide',
       },
       {
         content: locales.link_observation,
