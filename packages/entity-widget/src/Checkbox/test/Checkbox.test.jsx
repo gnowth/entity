@@ -6,10 +6,7 @@ import WidgetCheckbox from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <WidgetCheckbox
-      name="test"
-      onChange={() => undefined}
-    />,
+    <WidgetCheckbox />,
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

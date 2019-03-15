@@ -47,13 +47,12 @@ export default class DjangoRestFramework extends Duck.Selectors {
     ]);
 
     return recordsMap;
-    // return recordsMap && recordsMap.remove('results'); // TODO fix. selectors is creating a new map all the time
   }
 
   record(state, meta = {}) {
     const record = this.getState(state).getIn([
       `${meta.id === undefined ? 'list' : 'detail'}${meta.dirty ? '_dirty' : ''}`,
-      meta.id === undefined ? this.duck.getIdentifier(meta) : this.duck.getId(meta),
+      meta.id === undefined || meta.action ? this.duck.getIdentifier(meta) : this.duck.getId(meta),
       ...(meta.id === undefined && this.entity.paginated ? ['results'] : []),
     ]);
 

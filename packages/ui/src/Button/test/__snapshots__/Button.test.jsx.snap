@@ -30,13 +30,6 @@ exports[`renders correctly 1`] = `
   transition-property: stroke;
 }
 
-.c2 {
-  display: inline-block;
-  height: 32px;
-  position: relative;
-  width: 32px;
-}
-
 .c3 {
   height: 100%;
   left: 0;
@@ -50,8 +43,13 @@ exports[`renders correctly 1`] = `
   -ms-transform-origin: center;
   transform-origin: center;
   width: 100%;
-  -webkit-animation: eXzyYY 2s linear infinite;
-  animation: eXzyYY 2s linear infinite;
+}
+
+.c2 {
+  display: inline-block;
+  height: 32px;
+  position: relative;
+  width: 32px;
 }
 
 .c0 {
@@ -126,7 +124,6 @@ exports[`renders correctly 1`] = `
       className="c3"
       focusable="false"
       preserveAspectRatio="xMidYMid meet"
-      value={null}
       viewBox="0 0 100 100"
     >
       <circle

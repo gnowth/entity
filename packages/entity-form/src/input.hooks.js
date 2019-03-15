@@ -77,11 +77,9 @@ export default {
     return shouldShow.children
       ? {}
       : Object.assign(
-        { variant: props.wrapperComponentVariant },
-        componentProps,
         {
-          css: undefined,
-          label: undefined,
+          inputProps: componentProps,
+          variant: props.wrapperComponentVariant,
         },
         _isFunction(props.wrapperComponentProps)
           ? props.wrapperComponentProps(componentProps)

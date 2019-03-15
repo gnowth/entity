@@ -48,6 +48,18 @@ export default types => ({
             : ['detail_dirty', action.duck.entity.getId(record)],
           result => (action.meta.skipStore || action.meta.skipRecordUpdate ? result : record),
         )
+        .updateIn(
+          action.meta.id === undefined
+            ? ['list', identifier]
+            : ['detail', action.meta.action ? identifier : action.duck.entity.getId(record)],
+          result => (!action.meta.skipStore && action.meta.id === null && action.meta.action ? record : result),
+        )
+        .updateIn(
+          action.meta.id === undefined
+            ? ['list_dirty', identifier]
+            : ['detail_dirty', action.meta.action ? identifier : action.duck.entity.getId(record)],
+          result => (!action.meta.skipStore && action.meta.id === null && action.meta.action ? record : result),
+        )
         .setIn(
           action.meta.id === undefined
             ? ['list_errors', identifier]

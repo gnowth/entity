@@ -14,7 +14,7 @@ const UIIcon = withEnhanceProps(styled.i.attrs(props => ({
   children: props.material ? props.name : props.children,
 }))`
   && {
-    font-size: ${props => props.size || '1rem'};
+    font-size: ${props => props.fontSize || '1rem'};
   }
 
   ${props => props.$palette && css`
@@ -29,6 +29,7 @@ const UIIcon = withEnhanceProps(styled.i.attrs(props => ({
 
 UIIcon.propTypes = {
   fontawesome: PropTypes.bool,
+  fontSize: PropTypes.string,
   hidden: PropTypes.bool,
   material: PropTypes.bool,
   margin: PropTypes.string,
@@ -38,12 +39,12 @@ UIIcon.propTypes = {
   palette: PropTypes.string,
   paletteAsBackground: PropTypes.bool,
   paletteWeight: PropTypes.string,
-  size: PropTypes.string,
   variant: PropTypes.string,
 };
 
 UIIcon.defaultProps = {
   fontawesome: false,
+  fontSize: undefined,
   hidden: undefined,
   material: false,
   margin: undefined,
@@ -52,7 +53,6 @@ UIIcon.defaultProps = {
   palette: undefined,
   paletteAsBackground: false,
   paletteWeight: undefined,
-  size: undefined,
   variant: 'standard',
 };
 

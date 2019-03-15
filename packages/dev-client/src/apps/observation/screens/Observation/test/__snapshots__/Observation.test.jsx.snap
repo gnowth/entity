@@ -72,13 +72,6 @@ exports[`renders correctly 1`] = `
   transition-property: stroke;
 }
 
-.c10 {
-  display: inline-block;
-  height: 32px;
-  position: relative;
-  width: 32px;
-}
-
 .c11 {
   height: 100%;
   left: 0;
@@ -92,8 +85,13 @@ exports[`renders correctly 1`] = `
   -ms-transform-origin: center;
   transform-origin: center;
   width: 100%;
-  -webkit-animation: eXzyYY 2s linear infinite;
-  animation: eXzyYY 2s linear infinite;
+}
+
+.c10 {
+  display: inline-block;
+  height: 32px;
+  position: relative;
+  width: 32px;
 }
 
 .c2 {
@@ -232,6 +230,7 @@ exports[`renders correctly 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   background-color: #4caf50;
+  min-width: 8rem;
   margin-left: 24px;
 }
 
@@ -270,7 +269,6 @@ exports[`renders correctly 1`] = `
 }
 
 .c0 {
-  background-color: #000000;
   padding: 1rem;
 }
 
@@ -481,7 +479,6 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
-            value={null}
             viewBox="0 0 100 100"
           >
             <circle
@@ -634,7 +631,6 @@ exports[`renders correctly 1`] = `
         className="c11"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
-        value={null}
         viewBox="0 0 100 100"
       >
         <circle
@@ -685,7 +681,6 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
-            value={null}
             viewBox="0 0 100 100"
           >
             <circle
@@ -733,7 +728,6 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
-            value={null}
             viewBox="0 0 100 100"
           >
             <circle
@@ -778,7 +772,6 @@ exports[`renders correctly 1`] = `
             className="c11"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
-            value={null}
             viewBox="0 0 100 100"
           >
             <circle

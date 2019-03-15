@@ -1,7 +1,23 @@
 import styled from 'styled-components';
-import { colorFromPalette, withEnhanceProps } from '@gnowth/theme';
+import PropTypes from 'prop-types';
+import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/theme';
 
-export default withEnhanceProps(styled.hr`
+const UILine = withEnhanceProps(styled.hr`
   border: 0;
   border-bottom: 1px ${props => props.borderStyle || 'solid'} ${colorFromPalette()};
+
+  ${mixin({ name: 'margin' })}
+  ${props => props.css}
 `);
+
+UILine.propTypes = {
+  namespace: PropTypes.string,
+  variant: PropTypes.string,
+};
+
+UILine.defaultProps = {
+  namespace: 'component_uiLine',
+  variant: undefined,
+};
+
+export default UILine;

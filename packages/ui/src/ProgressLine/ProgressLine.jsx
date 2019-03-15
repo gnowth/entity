@@ -1,59 +1,92 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import * as S from './ProgressLine.styles';
+import { BarPrimary, BarPrimaryInner, BarSecondary, BarSecondaryInner, BarWrapper, Block, Buffer } from './ProgressLine.styles';
 
-const UIProgressLine = props => (
-  <S.Block
-    className={props.className}
-    height={props.height}
-    $margin={props.margin}
-    $padding={props.padding}
-  >
-    <S.Buffer
-      palette={props.bufferPalette}
-      value={props.bufferValue}
-    />
+function UIProgressLine(props) {
+  const [value, setValue] = React.useState(props.valueInitial === undefined ? props.value : props.valueInitial);
+  const [bufferValue, setBufferValue] = React.useState(props.bufferValueInitial === undefined ? props.bufferValue : props.bufferValueInitial);
 
-    <S.BarPrimary value={props.value}>
-      <S.BarPrimaryInner
-        palette={props.palette}
-        paletteWeight={props.paletteWeight}
-        value={props.value}
+  React.useEffect(
+    () => {
+      setTimeout(
+        () => {
+          setValue(props.value);
+          setBufferValue(props.bufferValue);
+        },
+        0,
+      );
+    },
+    [props.value, props.bufferValue],
+  );
+
+  return (
+    <Block
+      className={props.className}
+      height={props.height}
+      $margin={props.margin}
+      $padding={props.padding}
+    >
+      <Buffer
+        palette={props.bufferPalette}
+        paletteWeight={props.bufferPaletteWeight}
+        transitionDuration={props.transitionDuration}
+        value={bufferValue}
       />
-    </S.BarPrimary>
 
-    { props.value === null && (
-      <S.BarSecondary>
-        <S.BarSecondaryInner
-          palette={props.palette}
-          paletteWeight={props.paletteWeight}
-        />
-      </S.BarSecondary>
-    )}
-  </S.Block>
-);
+      <BarWrapper thickness={props.thickness || props.height}>
+        <BarPrimary value={props.value} transitionDuration={props.transitionDuration}>
+          <BarPrimaryInner
+            palette={props.palette}
+            paletteWeight={props.paletteWeight}
+            transitionDuration={props.transitionDuration}
+            value={value}
+          />
+        </BarPrimary>
+
+        { value === null && (
+          <BarSecondary>
+            <BarSecondaryInner
+              palette={props.palette}
+              paletteWeight={props.paletteWeight}
+            />
+          </BarSecondary>
+        )}
+      </BarWrapper>
+    </Block>
+  );
+}
 
 UIProgressLine.propTypes = {
   bufferPalette: PropTypes.string,
+  bufferPaletteWeight: PropTypes.string,
   bufferValue: PropTypes.number,
+  bufferValueInitial: PropTypes.number,
   height: PropTypes.string,
   margin: PropTypes.string,
   padding: PropTypes.string,
   palette: PropTypes.string,
   paletteWeight: PropTypes.string,
+  thickness: PropTypes.string,
+  transitionDuration: PropTypes.string,
   value: PropTypes.number,
+  valueInitial: PropTypes.number,
 };
 
 UIProgressLine.defaultProps = {
   bufferPalette: undefined,
+  bufferPaletteWeight: undefined,
   bufferValue: 100,
+  bufferValueInitial: undefined,
   height: '4px',
   margin: undefined,
   padding: undefined,
   palette: undefined,
   paletteWeight: undefined,
+  thickness: undefined,
+  transitionDuration: undefined,
   value: null,
+  valueInitial: undefined,
 };
 
 export default UIProgressLine;

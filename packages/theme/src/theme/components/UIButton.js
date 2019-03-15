@@ -8,6 +8,7 @@ export const component_uiButton_contained = {
   processingComponentPaletteAsBackground: true,
   css: css`
     background-color: ${colorFromPalette()};
+    min-width: 8rem;
 
     &:hover {
       background-color: ${props => colorFromPalette({ paletteWeight: '400' })(props)};
