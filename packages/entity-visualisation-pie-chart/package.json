@@ -1,0 +1,40 @@
+{
+  "author": "Thierry Wong",
+  "description": "entity-visualisation-pie-chart",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.js",
+  "name": "@entity/visualisation-pie-chart",
+  "private": false,
+  "repository": "https://github.com/gnowth/entity.git",
+  "sideEffects": false,
+  "version": "0.4.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "destroy": "rimraf dist",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "postbuild": "npm run link-main:dist",
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
+  },
+  "dependencies": {
+    "@gnowth/prop-types-entity": "0.4.0",
+    "@entity/visualisation": "0.4.0",
+    "immutable": "4.0.0-rc.12",
+    "prop-types": "15.7.2",
+    "react-immutable-proptypes": "2.1.0"
+  },
+  "devDependencies": {
+    "d3": "5.9.1",
+    "lodash": "4.17.11",
+    "react": "16.8.4"
+  },
+  "peerDependencies": {
+    "d3": ">=5.0.0",
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0"
+  }
+}
