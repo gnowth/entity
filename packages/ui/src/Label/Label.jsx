@@ -16,19 +16,24 @@ function UILabel(_props) {
   const propsTooltip = props.hooks.usePropsTooltip(props, props.styles);
 
   return (
-    <UILabelRoot className={props.className} css={props.css}>
+    <UILabelRoot
+      className={props.className}
+      css={props.css}
+      $margin={props.$margin} // eslint-disable-line react/prop-types
+    >
       { props.label && (
         <UIType
           as={Label}
-          variant="label"
+          palette={props.labelComponentPalette}
+          variant={props.labelComponentVariant || 'label'}
           value={props.label}
           {...props.labelComponentProps}
         />
       )}
 
-      { props.label && props.errors && props.errors.size > 0 && (
+      { props.label && !props.errorComponentHidden && props.inputProps.errors && props.inputProps.errors.size > 0 && (
         <UITooltip {...propsTooltip}>
-          { props.errors.map((error, index) => (
+          { props.inputProps.errors.map((error, index) => (
             <UIError key={index}>{ error }</UIError> // eslint-disable-line
           ))}
         </UITooltip>
@@ -42,12 +47,18 @@ function UILabel(_props) {
 UILabel.propTypes = {
   children: PropTypes.node,
   css: PropTypesPlus.css,
-  errors: PropTypesImmutable.list,
+  errorComponentHidden: PropTypes.bool,
   hooks: PropTypes.exact({
     usePropsTooltip: PropTypes.func,
   }),
+  inputProps: PropTypes.shape({
+    errors: PropTypesImmutable.list,
+  }).isRequired,
   label: PropTypesPlus.typography,
+  labelComponentPalette: PropTypes.string,
   labelComponentProps: PropTypes.shape({}),
+  labelComponentVariant: PropTypes.string,
+  margin: PropTypes.string,
   namespace: PropTypesPlus.string,
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
@@ -58,10 +69,13 @@ UILabel.propTypes = {
 UILabel.defaultProps = {
   children: undefined,
   css: undefined,
-  errors: undefined,
+  errorComponentHidden: undefined,
   hooks: undefined,
   label: undefined,
+  labelComponentPalette: undefined,
   labelComponentProps: {},
+  labelComponentVariant: undefined,
+  margin: undefined,
   namespace: 'component_uiLabel',
   styles: undefined,
 };

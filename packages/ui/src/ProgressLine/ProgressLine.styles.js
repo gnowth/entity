@@ -84,6 +84,8 @@ const secondaryTranslate = keyframes`
 `;
 
 export const Block = styled.div`
+  display: flex;
+  align-items: center;
   height: ${props => props.height};
   min-width: 2rem;
   overflow: hidden;
@@ -95,36 +97,36 @@ export const Block = styled.div`
   ${mixin({ name: 'margin' })}
 `;
 
+export const BarWrapper = styled.div`
+  height: ${props => props.thickness};
+  position: relative;
+  flex: 1;
+`;
+
 export const Buffer = styled.div`
-  background-color: ${props => color({ palette: props.palette || 'gray' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'gray', paletteWeight: props.paletteWeight })(props)};
   height: 100%;
   position: absolute;
-  transition: transform 0.25ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-  transform-origin: top left;
+  transition: transform ${props => props.transitionDuration || '225ms'};
+  transform-origin: left top;
   width: 100%;
 
   ${props => props.value !== null && css`
-    transition: transform 225ms;
-    transform: translateX(-${50 - props.value / 2}%);
+    transform: translateX(${props.value - 100}%);
   `}
 `;
 
 export const BarPrimary = styled.div`
   height: 100%;
   position: absolute;
-  transform: scaleX(0);
-  transform-origin: top left;
+  transform-origin: left top;
   width: 100%;
 
   ${props => props.value === null && css`
+    transform: scaleX(0);
     animation: ${primaryTranslate} 2s infinite linear;
     left: -145.166611%;
     transition: none;
-  `}
-
-  ${props => props.value !== null && css`
-    transition: transform 225ms;
-    transform: translateX(-${50 - props.value / 2}%);
   `}
 `;
 
@@ -140,8 +142,8 @@ export const BarPrimaryInner = styled.span`
   `}
 
   ${props => props.value !== null && css`
-    transform: scaleX(${props.value / 100});
-    transition: transform 225ms;
+    transform: translateX(${props.value - 100}%);
+    transition: transform ${props.transitionDuration || '225ms'} cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   `}
 `;
 
@@ -151,7 +153,7 @@ export const BarSecondary = styled.div`
   left: -54.888891%;
   position: absolute;
   transition: none;
-  transform-origin: top left;
+  transform-origin: left top;
   visibility: visible;
   width: 100%;
 `;

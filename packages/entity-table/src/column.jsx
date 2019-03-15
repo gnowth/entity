@@ -75,7 +75,7 @@ Column.propTypes = {
   hidden: PropTypes.bool,
 
   // component
-  componentProps: PropTypes.shape({}),
+  componentProps: PropTypesPlus.componentProps,
   component: PropTypesPlus.component,
   wrapperComponent: PropTypes.oneOfType([
     PropTypes.string.isRequired,

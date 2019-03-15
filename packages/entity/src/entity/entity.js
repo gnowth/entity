@@ -136,7 +136,7 @@ export default class Entity {
             return field.mock && (
               field.mock === 'index'
                 ? index
-                : _get(faker, field.mock)(field.mockConfigs)
+                : _get(faker, field.mock)(...(field.mockConfigs || []))
             );
           },
         ),

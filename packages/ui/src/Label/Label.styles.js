@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { color } from '@gnowth/theme';
+import { color, mixin } from '@gnowth/theme';
 
 export const UILabelRoot = styled.div`
+  ${mixin({ name: 'margin' })}
   ${props => props.css}
 `;
 

@@ -12,6 +12,7 @@ import { is } from 'immutable';
 import OptionText from './option-text';
 
 const ListComponent = styled.ul`
+  list-style-type: none;
   ${props => props.css}
 `;
 

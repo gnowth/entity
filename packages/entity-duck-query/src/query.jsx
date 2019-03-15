@@ -19,7 +19,10 @@ function Query(props) {
       { shouldShow.children && props.children(componentProps) }
 
       { shouldShow.processingComponent && (
-        <Components.processingComponent {...props.processingComponentProps} />
+        <Components.processingComponent
+          variant="processing"
+          {...props.processingComponentProps}
+        />
       )}
 
       { shouldShow.processingDidFailComponent && (

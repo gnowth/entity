@@ -6,7 +6,7 @@ import UILabel from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <UILabel />,
+    <UILabel inputProps={{}} />,
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -38,13 +38,6 @@ exports[`renders correctly 1`] = `
   transition-property: stroke;
 }
 
-.c3 {
-  display: inline-block;
-  height: 32px;
-  position: relative;
-  width: 32px;
-}
-
 .c4 {
   height: 100%;
   left: 0;
@@ -58,8 +51,13 @@ exports[`renders correctly 1`] = `
   -ms-transform-origin: center;
   transform-origin: center;
   width: 100%;
-  -webkit-animation: eXzyYY 2s linear infinite;
-  animation: eXzyYY 2s linear infinite;
+}
+
+.c3 {
+  display: inline-block;
+  height: 32px;
+  position: relative;
+  width: 32px;
 }
 
 .c6 {
@@ -189,6 +187,7 @@ exports[`renders correctly 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   background-color: #4caf50;
+  min-width: 8rem;
   margin-left: 24px;
 }
 
@@ -298,7 +297,6 @@ exports[`renders correctly 1`] = `
         className="c4"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
-        value={null}
         viewBox="0 0 100 100"
       >
         <circle
@@ -346,7 +344,6 @@ exports[`renders correctly 1`] = `
         className="c4"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
-        value={null}
         viewBox="0 0 100 100"
       >
         <circle
@@ -391,7 +388,6 @@ exports[`renders correctly 1`] = `
         className="c4"
         focusable="false"
         preserveAspectRatio="xMidYMid meet"
-        value={null}
         viewBox="0 0 100 100"
       >
         <circle

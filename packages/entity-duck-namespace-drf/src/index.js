@@ -35,7 +35,7 @@ export default class DjangoRestFramework extends Duck {
 
       get: this.makeAction({
         hasPayload: false,
-        metaFromPayload: (payload = {}) => ({ sideEffect: payload.id !== null && !payload.action }),
+        metaFromPayload: (payload = {}) => ({ sideEffect: payload.id !== null || payload.action }),
       }),
       get_rejected: this.makeAction(),
       get_resolved: this.makeAction(),
@@ -124,7 +124,9 @@ export default class DjangoRestFramework extends Duck {
     const paramsFrag = paramsString && `.${paramsString}`;
     const actionFrag = action && `.${action}`;
     const tagFrag = tag && `.${tag}`;
-    const idFrag = id === null ? `.${this.ID_NULL}` : `.${id}`;
+    const idFrag = id === null // eslint-disable-line no-nested-ternary
+      ? `.${this.ID_NULL}`
+      : (id === '' ? '' : `.${id}`);
 
     return `${method}${actionFrag}${tagFrag}${idFrag}${paramsFrag}`;
   }
