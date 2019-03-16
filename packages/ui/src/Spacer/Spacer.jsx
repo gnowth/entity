@@ -5,8 +5,7 @@ import { mixins, withEnhanceProps } from '@gnowth/theme';
 const UISpacer = withEnhanceProps(styled.div`
   flex: ${props => (props.flex === undefined ? 1 : props.flex)};
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
 `);
 
 UISpacer.propTypes = {

@@ -18,8 +18,7 @@ const UIFlexBox = withEnhanceProps(styled.div`
     justify-content: ${props.justifyContent};
   `}
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
   ${props => props.css}
 `);
 

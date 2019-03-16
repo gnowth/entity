@@ -21,8 +21,7 @@ const UIIcon = withEnhanceProps(styled.i.attrs(props => ({
     color: ${colorFromPalette()};
   `}
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
 
   ${props => props.css}
 `);

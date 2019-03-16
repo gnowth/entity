@@ -93,8 +93,7 @@ export const Block = styled.div`
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   transform: translateZ(0);
 
-  ${mixins.padding}
-  ${mixins.margin}
+  ${mixins.space}
 `;
 
 export const BarWrapper = styled.div`

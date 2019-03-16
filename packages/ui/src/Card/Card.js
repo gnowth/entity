@@ -6,8 +6,7 @@ import { colorFromPalette, mixins, withEnhanceProps } from '@gnowth/theme';
 const UICard = withEnhanceProps(styled.div`
   background-color: ${props => props.$palette && colorFromPalette({ paletteAsBackground: props.$paletteAsBackground !== undefined && !props.$paletteAsBackground })(props)};
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
 
   ${props => props.css}
 `);

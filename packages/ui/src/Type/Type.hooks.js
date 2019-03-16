@@ -13,8 +13,7 @@ const Component = styled.span`
     color: ${colorFromPalette()};
   `}
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
 
   ${media.print`
     color: ${color({ palette: 'black' })};

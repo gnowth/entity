@@ -14,8 +14,7 @@ export default styled.button`
   position: relative;
   text-decoration: none;
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
 
   &:hover {
     background-color: ${color({ palette: 'gray', paletteWeight: '50' })};

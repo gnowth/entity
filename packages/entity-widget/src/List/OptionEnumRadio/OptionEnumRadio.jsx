@@ -12,8 +12,7 @@ const Container = styled.li`
   align-items: center;
   display: ${props => (props.inline ? 'inline-flex' : 'flex')};
 
-  ${mixins.margin}
-  ${mixins.padding}
+  ${mixins.space}
 `;
 
 const OptionEnumRadio = props => (
