@@ -1,17 +1,17 @@
 import * as d3 from 'd3';
 import React from 'react';
 import { Graph } from '@entity/visualisation';
-import { Map } from 'immutable';
+import { List, Map } from 'immutable';
 
 import VisualisationPieChart from './visualisation';
 
 export default stories => stories
   .add('basic', () => (
     <Graph
-      data={[
+      data={List([
         Map({ value: 5 }),
         Map({ value: 7 }),
-      ]}
+      ])}
       height={500}
       onChange={() => undefined}
       value={Map()}

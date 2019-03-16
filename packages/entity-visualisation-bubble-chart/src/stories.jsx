@@ -1,14 +1,14 @@
 import * as d3 from 'd3';
 import React from 'react';
 import { Graph } from '@entity/visualisation';
-import { Map } from 'immutable';
+import { List, Map } from 'immutable';
 
 import Visualisation from './visualisation';
 
 export default stories => stories
   .add('basic', () => (
     <Graph
-      data={[
+      data={List([
         {
           color_index: 1,
           name: 'sdfsdggg1',
@@ -30,7 +30,7 @@ export default stories => stories
           type: 'sdfsdgg2',
           uuid: 'dfdf2',
         },
-      ]}
+      ])}
       height={500}
       onChange={() => undefined}
       value={Map()}
