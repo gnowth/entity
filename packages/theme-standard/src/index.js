@@ -3,6 +3,7 @@ import { utils } from '@gnowth/theme';
 import palettes from './palettes.json';
 
 import * as boxshadows from './boxshadows';
+import * as scales from './scales';
 import * as vars from './vars';
 
 import * as uiButton from './components/UIButton';
@@ -22,6 +23,7 @@ export default {
 
   ...utils.getPalettes(palettes),
   ...boxshadows,
+  ...scales,
   ...vars,
 
   ...uiButton,
