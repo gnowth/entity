@@ -13,7 +13,7 @@ export default class Queries {
   }
 
   clear() {
-    return undefined;
+    return { type: '@@NOOP' };
   }
 
   errors() {
@@ -41,11 +41,11 @@ export default class Queries {
   }
 
   onChange() {
-    return undefined;
+    return { type: '@@NOOP' };
   }
 
   onSubmit() {
-    return undefined;
+    return { type: '@@NOOP' };
   }
 
   pagination() {
