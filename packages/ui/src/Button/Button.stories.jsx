@@ -18,8 +18,8 @@ export default stories => stories
         <UIButton
           content={text('children', 'Hello Button')}
           disabled={boolean('disabled', false)}
-          iconComponentFont="material"
-          iconComponentName="delete"
+          iconFont="material"
+          iconName="delete"
           onClick={action('clicked')}
           palette="primary"
           processing={boolean('processing', false)}
@@ -35,8 +35,8 @@ export default stories => stories
         <Wrapper key={name}>
           <UIButton
             content={name}
-            iconComponentFont="material"
-            iconComponentName="delete"
+            iconFont="material"
+            iconName="delete"
             palette="primary"
             variant={name}
           />

@@ -7,13 +7,13 @@ import UIProgressCircle from '../ProgressCircle';
 import UIType from '../Type';
 
 const local = [
-  'contentComponentPaletteAsBackground',
-  'iconComponentCss',
-  'iconComponentFont',
-  'iconComponentHidden',
-  'iconComponentName',
-  'iconComponentPaletteAsBackground',
-  'processingComponentPaletteAsBackground',
+  'contentPaletteAsBackground',
+  'iconCss',
+  'iconFont',
+  'iconHidden',
+  'iconName',
+  'iconPaletteAsBackground',
+  'processingPaletteAsBackground',
 ];
 
 const mapDefault = {
@@ -55,17 +55,17 @@ export default {
   usePropsIcon(props) {
     return Object.assign(
       {
-        css: props.iconComponentCss,
-        hidden: props.processing || props.iconComponentHidden === undefined || props.iconComponentHidden,
-        name: props.iconComponentName || 'name',
+        css: props.iconCss,
+        hidden: props.processing || props.iconHidden === undefined || props.iconHidden,
+        name: props.iconName || 'name',
         palette: props.$palette,
-        paletteAsBackground: props.iconComponentPaletteAsBackground,
+        paletteAsBackground: props.iconPaletteAsBackground,
         paletteWeight: props.$paletteWeight,
         variant: 'button',
       },
 
-      props.iconComponentFont && {
-        [props.iconComponentFont]: true,
+      props.iconFont && {
+        [props.iconFont]: true,
       },
 
       props.iconComponentProps,
@@ -79,9 +79,9 @@ export default {
   usePropsContent(props) {
     return {
       children: props.children,
-      hidden: props.contentComponentHidden || props.processing,
+      hidden: props.contentHidden || props.processing,
       palette: props.$palette,
-      paletteAsBackground: props.contentComponentPaletteAsBackground,
+      paletteAsBackground: props.contentPaletteAsBackground,
       paletteWeight: props.$paletteWeight,
       value: props.content,
       variant: 'button',
@@ -94,7 +94,7 @@ export default {
     return {
       hidden: !props.processing,
       palette: props.$palette,
-      paletteAsBackground: props.processingComponentPaletteAsBackground,
+      paletteAsBackground: props.processingPaletteAsBackground,
       paletteWeight: props.$paletteWeight,
       variant: 'button',
       ...props.processingComponentProps,
