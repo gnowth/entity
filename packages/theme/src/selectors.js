@@ -48,14 +48,6 @@ export const component = (configs = {}) => (props) => {
   return configs.branch ? theme?.[configs.branch] : theme;
 };
 
-export const mixin = ({ name } = {}) => (props) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (!name) throw new Error('style.mixin: option "name" is required');
-  }
-
-  return props.theme?.[`mixin_${name}`];
-};
-
 export const sizeGridBase = props => props.theme?.var_size_grid || '0.5rem';
 
 export const variant = options => props => Object.keys(props.theme)

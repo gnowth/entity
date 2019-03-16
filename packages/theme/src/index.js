@@ -1,3 +1,5 @@
+export * as mixins from './mixins';
+
 export * from './selectors';
 
 export * from './stories';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { mixin } from '@gnowth/theme';
+import { mixins } from '@gnowth/theme';
 import { UIType } from '@gnowth/ui';
 
 import WidgetCheckbox from '../../Checkbox';
@@ -12,8 +12,8 @@ const Container = styled.li`
   align-items: center;
   display: ${props => (props.inline ? 'inline-flex' : 'flex')};
 
-  ${mixin({ name: 'margin' })}
-  ${mixin({ name: 'padding' })}
+  ${mixins.margin}
+  ${mixins.padding}
 `;
 
 const OptionEnumRadio = props => (

@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color, mixin } from '@gnowth/theme';
+import { color, mixins } from '@gnowth/theme';
 
 const primaryScale = keyframes`
   0% {
@@ -93,8 +93,8 @@ export const Block = styled.div`
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   transform: translateZ(0);
 
-  ${mixin({ name: 'padding' })}
-  ${mixin({ name: 'margin' })}
+  ${mixins.padding}
+  ${mixins.margin}
 `;
 
 export const BarWrapper = styled.div`

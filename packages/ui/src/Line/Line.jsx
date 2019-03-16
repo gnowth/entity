@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/theme';
+import { colorFromPalette, mixins, withEnhanceProps } from '@gnowth/theme';
 
 const UILine = withEnhanceProps(styled.hr`
   border: 0;
   border-bottom: 1px ${props => props.borderStyle || 'solid'} ${colorFromPalette()};
 
-  ${mixin({ name: 'margin' })}
+  ${mixins.margin}
   ${props => props.css}
 `);
 
