@@ -20,6 +20,10 @@ function UILabel(_props) {
       className={props.className}
       css={props.css}
       $margin={props.$margin} // eslint-disable-line react/prop-types
+      $marginBottom={props.$marginBottom} // eslint-disable-line react/prop-types
+      $marginLeft={props.$marginLeft} // eslint-disable-line react/prop-types
+      $marginRight={props.$marginRight} // eslint-disable-line react/prop-types
+      $marginTop={props.$marginTop} // eslint-disable-line react/prop-types
     >
       { props.label && (
         <UIType
@@ -59,6 +63,10 @@ UILabel.propTypes = {
   labelComponentProps: PropTypes.shape({}),
   labelComponentVariant: PropTypes.string,
   margin: PropTypes.string,
+  marginBottom: PropTypes.string,
+  marginLeft: PropTypes.string,
+  marginRight: PropTypes.string,
+  marginTop: PropTypes.string,
   namespace: PropTypesPlus.string,
   styles: PropTypes.exact({
     icon: PropTypesPlus.css,
@@ -76,6 +84,10 @@ UILabel.defaultProps = {
   labelComponentProps: {},
   labelComponentVariant: undefined,
   margin: undefined,
+  marginBottom: undefined,
+  marginLeft: undefined,
+  marginRight: undefined,
+  marginTop: undefined,
   namespace: 'component_uiLabel',
   styles: undefined,
 };

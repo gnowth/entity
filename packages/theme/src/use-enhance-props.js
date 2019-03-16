@@ -13,9 +13,17 @@ const defaultHook = (hook, ...args) => hook(...args);
 
 const defaultTransient = [
   'margin',
+  'marginBottom',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
   'media',
   'mediaPrintDisabled',
   'padding',
+  'paddingBottom',
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
   'palette',
   'paletteAsBackground',
   'paletteWeight',

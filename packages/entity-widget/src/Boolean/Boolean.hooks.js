@@ -14,6 +14,10 @@ export default {
       css: props.css,
       hidden: props.hidden,
       margin: props.$margin,
+      marginBottom: props.$marginBottom,
+      marginLeft: props.$marginLeft,
+      marginRight: props.$marginRight,
+      marginTop: props.$marginTop,
       ...props.containerComponentProps,
     };
   },

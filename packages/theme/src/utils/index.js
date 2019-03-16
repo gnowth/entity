@@ -1,2 +1,3 @@
-// eslint-disable-next-line
+export { default as createMixin } from './create-mixin';
+
 export { default as getPalettes } from './get-palettes';

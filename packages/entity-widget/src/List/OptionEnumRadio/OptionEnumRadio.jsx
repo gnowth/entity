@@ -21,12 +21,20 @@ const OptionEnumRadio = props => (
     css={props.css}
     inline={props.inline}
     $margin={props.margin}
+    $marginBottom={props.marginBottom}
+    $marginLeft={props.marginLeft}
+    $marginRight={props.marginRight}
+    $marginTop={props.marginTop}
     $padding={props.padding}
+    $paddingBottom={props.paddingBottom}
+    $paddingLeft={props.paddingLeft}
+    $paddingRight={props.paddingRight}
+    $paddingTop={props.paddingTop}
     {...props.containerComponentProps}
   >
     <WidgetCheckbox
       iconFontSize="1.5rem"
-      margin="0 0.5rem 0 0"
+      marginRight="0.5rem"
       onChange={props.onClick}
       value={props.selected}
       variant="radio"
@@ -49,8 +57,16 @@ OptionEnumRadio.propTypes = {
   inline: PropTypes.bool,
   labelComponentProps: PropTypes.shape({}),
   margin: PropTypes.string,
+  marginBottom: PropTypes.string,
+  marginLeft: PropTypes.string,
+  marginRight: PropTypes.string,
+  marginTop: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   padding: PropTypes.string,
+  paddingBottom: PropTypes.string,
+  paddingLeft: PropTypes.string,
+  paddingRight: PropTypes.string,
+  paddingTop: PropTypes.string,
   selected: PropTypes.bool,
   value: PropTypesPlus.value,
 };
@@ -62,7 +78,15 @@ OptionEnumRadio.defaultProps = {
   inline: undefined,
   labelComponentProps: undefined,
   margin: undefined,
+  marginBottom: undefined,
+  marginLeft: undefined,
+  marginRight: undefined,
+  marginTop: undefined,
   padding: undefined,
+  paddingBottom: undefined,
+  paddingLeft: undefined,
+  paddingRight: undefined,
+  paddingTop: undefined,
   selected: undefined,
   value: undefined,
 };
