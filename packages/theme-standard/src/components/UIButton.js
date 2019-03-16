@@ -1,11 +1,10 @@
+import { color, colorFromPalette, boxshadow } from '@gnowth/theme';
 import { css } from 'styled-components';
 
-import { color, colorFromPalette, boxshadow } from '../../selectors';
-
 export const component_uiButton_contained = {
-  contentComponentPaletteAsBackground: true,
-  iconComponentPaletteAsBackground: true,
-  processingComponentPaletteAsBackground: true,
+  contentPaletteAsBackground: true,
+  iconPaletteAsBackground: true,
+  processingPaletteAsBackground: true,
   css: css`
     background-color: ${colorFromPalette()};
     min-width: 8rem;
@@ -30,11 +29,11 @@ export const component_uiButton_contained = {
 };
 
 export const component_uiButton_fab = {
-  contentComponentHidden: true,
-  contentComponentPaletteAsBackground: true,
-  iconComponentHidden: false,
-  iconComponentPaletteAsBackground: true,
-  processingComponentPaletteAsBackground: true,
+  contentHidden: true,
+  contentPaletteAsBackground: true,
+  iconHidden: false,
+  iconPaletteAsBackground: true,
+  processingPaletteAsBackground: true,
   css: css`
     ${boxshadow({ name: 'materialHover3' })};
     background-color: ${colorFromPalette()};
@@ -63,9 +62,9 @@ export const component_uiButton_fab = {
 };
 
 export const component_uiButton_flat = {
-  contentComponentPaletteAsBackground: true,
-  iconComponentPaletteAsBackground: true,
-  processingComponentPaletteAsBackground: true,
+  contentPaletteAsBackground: true,
+  iconPaletteAsBackground: true,
+  processingPaletteAsBackground: true,
   css: css`
     background-color: ${colorFromPalette()};
     border-radius: 0;
@@ -90,8 +89,8 @@ export const component_uiButton_flat = {
 };
 
 export const component_uiButton_icon = {
-  contentComponentHidden: true,
-  iconComponentHidden: false,
+  contentHidden: true,
+  iconHidden: false,
   css: css`
     border-radius: 50%;
     padding: 0.5em;
@@ -135,9 +134,9 @@ export const component_uiButton_outlined = {
 };
 
 export const component_uiButton_raised = {
-  contentComponentPaletteAsBackground: true,
-  iconComponentPaletteAsBackground: true,
-  processingComponentPaletteAsBackground: true,
+  contentPaletteAsBackground: true,
+  iconPaletteAsBackground: true,
+  processingPaletteAsBackground: true,
   css: css`
     ${boxshadow({ name: 'material2' })};
     background-color: ${colorFromPalette()};

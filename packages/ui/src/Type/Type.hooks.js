@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, colorFromPalette, media, mixin, useCleanProps } from '@gnowth/theme';
+import { color, colorFromPalette, media, mixins, useCleanProps } from '@gnowth/theme';
 
 const local = [
   'onChangeInput',
@@ -13,8 +13,7 @@ const Component = styled.span`
     color: ${colorFromPalette()};
   `}
 
-  ${mixin({ name: 'margin' })}
-  ${mixin({ name: 'padding' })}
+  ${mixins.space}
 
   ${media.print`
     color: ${color({ palette: 'black' })};

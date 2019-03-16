@@ -33,7 +33,7 @@ export default {
         ? undefined
         : defaults.navLinkComponent,
       activeClassName: 'active',
-      contentComponentPaletteAsBackground: props.$paletteAsBackground,
+      contentPaletteAsBackground: props.$paletteAsBackground,
       css: css`
         &.active {
           border-bottom: 2px solid white;

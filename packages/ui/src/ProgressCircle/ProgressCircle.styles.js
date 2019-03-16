@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color, mixin } from '@gnowth/theme';
+import { color, mixins } from '@gnowth/theme';
 
 const spinnerRotateLinear = keyframes`
   0% {
@@ -121,8 +121,8 @@ export const Container = styled.div`
   position: relative;
   width: ${props => props.size};
 
-  ${mixin({ name: 'margin' })}
-  ${mixin({ name: 'padding' })}
+  ${mixins.margin}
+  ${mixins.padding}
 `;
 
 export const SVG = styled.svg`

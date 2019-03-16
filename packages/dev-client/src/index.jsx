@@ -8,6 +8,7 @@ import settings from 'settings';
 import store, { history } from 'store';
 
 import App from './app';
+import Routes from './routes';
 import setup from './setup';
 
 setup(settings);
@@ -17,7 +18,9 @@ function render() {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <HashRouter>
-          <App />
+          <App>
+            <Routes />
+          </App>
         </HashRouter>
       </ConnectedRouter>
     </Provider>,

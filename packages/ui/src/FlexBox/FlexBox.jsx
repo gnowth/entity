@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { colorFromPalette, mixin, withEnhanceProps } from '@gnowth/theme';
+import { colorFromPalette, mixins, withEnhanceProps } from '@gnowth/theme';
 
 const UIFlexBox = withEnhanceProps(styled.div`
   align-items: ${props => props.alignItems};
@@ -18,8 +18,7 @@ const UIFlexBox = withEnhanceProps(styled.div`
     justify-content: ${props.justifyContent};
   `}
 
-  ${mixin({ name: 'margin' })}
-  ${mixin({ name: 'padding' })}
+  ${mixins.space}
   ${props => props.css}
 `);
 

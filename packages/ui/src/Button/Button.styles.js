@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, colorFromPalette, media, mixin } from '@gnowth/theme';
+import { color, colorFromPalette, media, mixins } from '@gnowth/theme';
 
 export default styled.button`
   align-items: center;
@@ -14,8 +14,7 @@ export default styled.button`
   position: relative;
   text-decoration: none;
 
-  ${mixin({ name: 'margin' })}
-  ${mixin({ name: 'padding' })}
+  ${mixins.space}
 
   &:hover {
     background-color: ${color({ palette: 'gray', paletteWeight: '50' })};

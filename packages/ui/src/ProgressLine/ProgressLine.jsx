@@ -25,7 +25,10 @@ function UIProgressLine(props) {
       className={props.className}
       height={props.height}
       $margin={props.margin}
-      $padding={props.padding}
+      $marginBottom={props.marginBottom}
+      $marginLeft={props.marginLeft}
+      $marginRight={props.marginRight}
+      $marginTop={props.marginTop}
     >
       <Buffer
         palette={props.bufferPalette}
@@ -64,7 +67,10 @@ UIProgressLine.propTypes = {
   bufferValueInitial: PropTypes.number,
   height: PropTypes.string,
   margin: PropTypes.string,
-  padding: PropTypes.string,
+  marginBottom: PropTypes.string,
+  marginLeft: PropTypes.string,
+  marginRight: PropTypes.string,
+  marginTop: PropTypes.string,
   palette: PropTypes.string,
   paletteWeight: PropTypes.string,
   thickness: PropTypes.string,
@@ -80,7 +86,10 @@ UIProgressLine.defaultProps = {
   bufferValueInitial: undefined,
   height: '4px',
   margin: undefined,
-  padding: undefined,
+  marginBottom: undefined,
+  marginLeft: undefined,
+  marginRight: undefined,
+  marginTop: undefined,
   palette: undefined,
   paletteWeight: undefined,
   thickness: undefined,

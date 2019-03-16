@@ -43,6 +43,8 @@ exports[`renders correctly 1`] = `
   -ms-transform-origin: center;
   transform-origin: center;
   width: 100%;
+  -webkit-animation: eXzyYY 2s linear infinite;
+  animation: eXzyYY 2s linear infinite;
 }
 
 .c10 {
@@ -553,6 +555,7 @@ exports[`renders correctly 1`] = `
           className="c11"
           focusable="false"
           preserveAspectRatio="xMidYMid meet"
+          value={null}
           viewBox="0 0 100 100"
         >
           <circle
@@ -597,6 +600,7 @@ exports[`renders correctly 1`] = `
           className="c11"
           focusable="false"
           preserveAspectRatio="xMidYMid meet"
+          value={null}
           viewBox="0 0 100 100"
         >
           <circle

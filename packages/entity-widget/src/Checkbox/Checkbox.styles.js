@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { mixin } from '@gnowth/theme';
+import { mixins } from '@gnowth/theme';
 
 export const Container = styled.div`
   display: inline-block;
   line-height: 0;
   position: relative;
 
-  ${mixin({ name: 'margin' })}
+  ${mixins.margin}
 `;
 
 export const Input = styled.input`

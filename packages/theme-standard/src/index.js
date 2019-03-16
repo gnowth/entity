@@ -1,8 +1,9 @@
-import getPalettes from '../get-palettes';
+import { getPalettes } from '@gnowth/theme';
+
 import palettes from './palettes.json';
 
 import * as boxshadows from './boxshadows';
-import * as mixins from './mixins';
+import * as scales from './scales';
 import * as vars from './vars';
 
 import * as uiButton from './components/UIButton';
@@ -22,7 +23,7 @@ export default {
 
   ...getPalettes(palettes),
   ...boxshadows,
-  ...mixins,
+  ...scales,
   ...vars,
 
   ...uiButton,
