@@ -3,6 +3,7 @@ const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 
 const alias = require('../../../configs/webpack-alias.config');
 const babelConfig = require('../../../babel.config');
+const rules = require('../../../configs/webpack-rules.config');
 
 module.exports = {
   resolve: {
@@ -15,6 +16,8 @@ module.exports = {
 
   module: {
     rules: [
+      ...rules,
+
       {
         test: /stories\.jsx?$/,
         loaders: [
@@ -27,23 +30,6 @@ module.exports = {
           },
         ],
         enforce: 'pre',
-      },
-
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?!(@apps|@entity|@gnowth|@private)\/).*/,
-        loader: 'babel-loader',
-        options: babelConfig,
-      },
-
-      {
-        test: /\.(css)(\?.*)?$/,
-        loaders: ['style-loader', 'css-loader'],
-      },
-
-      {
-        test: /\.(png|gif|jpg|woff|svg|woff2|ttf|eot|otf)(\?.*)?$/,
-        loader: 'file-loader',
       },
     ],
   },
