@@ -1,5 +1,5 @@
+import { color } from '@gnowth/theme';
 import { css } from 'styled-components';
-import { color } from '../selectors';
 
 export default css`
   * {

@@ -1,24 +1,19 @@
 /* eslint-disable react/jsx-filename-extension */
-import 'assets/fonts/icon-font.css';
-import 'font-awesome/css/font-awesome.css';
-import 'material-design-icons/iconfont/material-icons.css';
-import 'normalize.css/normalize.css';
-
 import React from 'react';
-import { defaultTheme, GlobalStyles } from '@gnowth/theme';
 import { withNotes } from '@storybook/addon-notes';
 import { withOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
-import { ThemeProvider } from 'styled-components';
 
-import * as theme from 'styles';
+import settings from 'settings';
+import setup from 'src/setup';
 import store, { history } from 'store';
+import App from 'src/app';
+
+setup(settings);
 
 const componentReq = require.context('src', true, /stories\.jsx$/);
-const themeProviderProps = { theme: { ...defaultTheme, ...theme } };
 
 addDecorator(withNotes);
 
@@ -29,25 +24,11 @@ addDecorator(withOptions({
 addDecorator(story => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      { story() }
+      <App>
+        { story() }
+      </App>
     </ConnectedRouter>
   </Provider>
-));
-
-addDecorator(story => (
-  <IntlProvider locale="en" messages={{}}>
-    { story() }
-  </IntlProvider>
-));
-
-addDecorator(story => (
-  <ThemeProvider {...themeProviderProps}>
-    <>
-      { story() }
-
-      <GlobalStyles />
-    </>
-  </ThemeProvider>
 ));
 
 configure(() => {

@@ -1,4 +1,5 @@
-import getPalettes from '../get-palettes';
+import { getPalettes } from '@gnowth/theme';
+
 import palettes from './palettes.json';
 
 import * as boxshadows from './boxshadows';

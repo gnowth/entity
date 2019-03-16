@@ -1,6 +1,5 @@
+import { color, colorFromPalette, boxshadow } from '@gnowth/theme';
 import { css } from 'styled-components';
-
-import { color, colorFromPalette, boxshadow } from '../../selectors';
 
 export const component_uiButton_contained = {
   contentPaletteAsBackground: true,

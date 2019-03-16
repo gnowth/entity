@@ -1,0 +1,32 @@
+{
+  "author": "Thierry Wong",
+  "description": "theme",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.js",
+  "name": "@gnowth/theme-standard",
+  "private": false,
+  "repository": "https://github.com/gnowth/entity.git",
+  "sideEffects": false,
+  "version": "0.4.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "destroy": "rimraf dist",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "postbuild": "npm run link-main:dist",
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
+  },
+  "dependencies": {
+    "@gnowth/theme": "0.4.0"
+  },
+  "devDependencies": {
+    "styled-components": "4.1.3"
+  },
+  "peerDependencies": {
+    "styled-components": ">=4.0.0"
+  }
+}

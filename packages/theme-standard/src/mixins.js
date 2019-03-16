@@ -1,6 +1,5 @@
+import { color } from '@gnowth/theme';
 import { css } from 'styled-components';
-
-import { color } from '../selectors';
 
 export const mixin_componentBox = css`
   background-color: hsl(0, 0%, 98%);

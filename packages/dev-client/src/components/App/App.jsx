@@ -1,8 +1,9 @@
+import standardTheme from '@gnowth/theme-standard';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { EntityTitle } from '@entity/core';
 import { AppRoot } from '@gnowth/app';
-import { defaultTheme, GlobalStyles } from '@gnowth/theme';
+import { GlobalStyles } from '@gnowth/theme';
 import { Provider } from 'react-redux';
 import { IntlProvider } from '@private/react-intl';
 import { ThemeProvider } from 'styled-components';
@@ -18,7 +19,7 @@ const App = props => (
     intlProvider={IntlProvider}
     intlProviderProps={{ locale: 'en', messages: {} }}
     themeProvider={ThemeProvider}
-    themeProviderProps={{ theme: { ...defaultTheme, ...theme } }}
+    themeProviderProps={{ theme: { ...standardTheme, ...theme } }}
     {...props}
   >
     <Provider store={defaults.store}>
