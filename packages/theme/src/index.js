@@ -1,10 +1,10 @@
 export * as mixins from './mixins';
 
-export * as utils from './utils';
-
 export * from './selectors';
 
 export * from './stories';
+
+export * from './utils';
 
 export { default as media } from './media';
 

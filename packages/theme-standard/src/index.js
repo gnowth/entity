@@ -1,4 +1,4 @@
-import { utils } from '@gnowth/theme';
+import { getPalettes } from '@gnowth/theme';
 
 import palettes from './palettes.json';
 
@@ -21,7 +21,7 @@ import global from './global';
 export default {
   global,
 
-  ...utils.getPalettes(palettes),
+  ...getPalettes(palettes),
   ...boxshadows,
   ...scales,
   ...vars,
