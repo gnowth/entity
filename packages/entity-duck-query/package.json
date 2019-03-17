@@ -24,7 +24,6 @@
     "@gnowth/default": "0.4.0",
     "@gnowth/prop-types-plus": "0.4.0",
     "@private/use-redux": "0.4.0",
-    "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0"
