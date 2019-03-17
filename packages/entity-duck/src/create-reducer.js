@@ -1,9 +1,4 @@
-import _flatten from 'lodash/flatten';
-import _flowRight from 'lodash/flowRight';
-import _filter from 'lodash/filter';
-import _flatMap from 'lodash/flatMap';
-import _groupBy from 'lodash/groupBy';
-import _mapValues from 'lodash/mapValues';
+import _ from 'lodash';
 
 import Duck from './duck';
 
@@ -15,21 +10,21 @@ const makeReducer = (ducks) => {
   return ducks[0].reducer;
 };
 
-const makeReducersFromDucks = combineReducers => _flowRight(
+const makeReducersFromDucks = combineReducers => _.flowRight(
   combineReducers,
-  ducks => _mapValues(ducks, makeReducer),
-  ducks => _groupBy(ducks, duck => duck.name),
+  ducks => _.mapValues(ducks, makeReducer),
+  ducks => _.groupBy(ducks, duck => duck.name),
 );
 
-const makeAppReducersFromDucks = combineReducers => _flowRight(
+const makeAppReducersFromDucks = combineReducers => _.flowRight(
   combineReducers,
-  ducks => _mapValues(ducks, makeReducersFromDucks(combineReducers)),
-  ducks => _groupBy(ducks, duck => duck.namespace),
+  ducks => _.mapValues(ducks, makeReducersFromDucks(combineReducers)),
+  ducks => _.groupBy(ducks, duck => duck.namespace),
 );
 
-export default (reqs, combineReducers) => _flowRight(
-  ducks => _mapValues(ducks, makeAppReducersFromDucks(combineReducers)),
-  ducks => _groupBy(ducks, duck => duck.app),
-  ducks => _filter(ducks, duck => duck instanceof Duck),
-  requests => _flatMap(_flatten(requests), req => req.duck || req.keys?.().map?.(key => req(key).default?.duck)),
+export default (reqs, combineReducers) => _.flowRight(
+  ducks => _.mapValues(ducks, makeAppReducersFromDucks(combineReducers)),
+  ducks => _.groupBy(ducks, duck => duck.app),
+  ducks => _.filter(ducks, duck => duck instanceof Duck),
+  requests => _.flatMap(_.flatten(requests), req => req.duck || req.keys?.().map?.(key => req(key).default?.duck)),
 )(reqs);

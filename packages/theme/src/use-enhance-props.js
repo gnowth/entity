@@ -1,8 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _isUndefined from 'lodash/isUndefined';
-import _mapValues from 'lodash/mapValues';
-import _mergeWith from 'lodash/mergeWith';
-import _omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 import React from 'react';
 import { css, ThemeContext } from 'styled-components';
 
@@ -38,11 +34,11 @@ export default function (_props, configs = {}) {
 
     theme,
 
-    ..._omitBy(_props, _isUndefined),
+    ..._.omitBy(_props, _.isUndefined),
 
     css: css`${componentTheme.css} ${_props.css}`,
 
-    hooks: _mapValues(
+    hooks: _.mapValues(
       configs.hooks,
       (hook, key) => (...args) => (_props.hooks?.[key] || defaultHook)(
         (...themeArgs) => (componentTheme.hooks?.[key] || defaultHook)(hook, ...themeArgs),
@@ -62,7 +58,7 @@ export default function (_props, configs = {}) {
       ..._props.names,
     },
 
-    styles: _mergeWith(
+    styles: _.mergeWith(
       {},
       configs.styles,
       componentTheme.styles,
@@ -71,7 +67,7 @@ export default function (_props, configs = {}) {
     ),
   };
 
-  const transient = _isFunction(configs.transient)
+  const transient = _.isFunction(configs.transient)
     ? configs.transient(defaultTransient)
     : defaultTransient.concat(configs.transient || []);
 

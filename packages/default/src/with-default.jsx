@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 
 import useDefault from './use-default';
@@ -9,7 +9,7 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
 
 export default configs => (ComposedComponent) => {
   function withDefault(props) {
-    const defaults = useDefault(_isFunction(configs) ? configs(props) : configs, props); // eslint-disable-line react-hooks/rules-of-hooks
+    const defaults = useDefault(_.isFunction(configs) ? configs(props) : configs, props); // eslint-disable-line react-hooks/rules-of-hooks
 
     return (
       <ComposedComponent

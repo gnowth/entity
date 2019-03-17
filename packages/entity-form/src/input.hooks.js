@@ -1,7 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _isString from 'lodash/isString';
-import _isUndefined from 'lodash/isUndefined';
-import _omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
 
@@ -28,7 +25,7 @@ export default {
   },
 
   useProps(props, input, Components) {
-    return _omitBy(Object.assign(
+    return _.omitBy(Object.assign(
       {
         name: props.name,
         onChange: input.onChange,
@@ -36,7 +33,7 @@ export default {
         value: input.value,
       },
 
-      (props.children || !_isString(Components.component)) && {
+      (props.children || !_.isString(Components.component)) && {
         errors: input.errors,
         field: input.field,
         onChangeInput: input.onChangeInput,
@@ -46,10 +43,10 @@ export default {
         valueInitial: input.valueInitial,
       },
 
-      _isFunction(props.componentProps)
+      _.isFunction(props.componentProps)
         ? props.componentProps(input)
         : props.componentProps,
-    ), _isUndefined);
+    ), _.isUndefined);
   },
 
   usePropsErrorBoundary(props, components) {
@@ -81,7 +78,7 @@ export default {
           inputProps: componentProps,
           variant: props.wrapperComponentVariant,
         },
-        _isFunction(props.wrapperComponentProps)
+        _.isFunction(props.wrapperComponentProps)
           ? props.wrapperComponentProps(componentProps)
           : props.wrapperComponentProps,
       );

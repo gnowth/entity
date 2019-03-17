@@ -1,4 +1,4 @@
-import _flowRight from 'lodash/flowRight';
+import _ from 'lodash';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withProps, withPropsFiltered } from '@gnowth/higher-order-component';
@@ -23,7 +23,7 @@ WidgetInput.defaultProps = {
   variant: 'standard',
 };
 
-export default _flowRight(
+export default _.flowRight(
   injectIntl,
   withProps(props => ({
     placeholder: props.placeholder === undefined && props.placeholderLocale

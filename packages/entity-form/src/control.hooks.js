@@ -1,5 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _isString from 'lodash/isString';
+import _ from 'lodash';
 import Duck from '@entity/duck';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
@@ -14,7 +13,7 @@ const mapDefault = {
 function usePropsComponent(componentProps, input) {
   return React.useMemo(
     () => (
-      _isFunction(componentProps)
+      _.isFunction(componentProps)
         ? componentProps(input)
         : componentProps
     ),
@@ -77,7 +76,7 @@ export default {
         disabled: input.disabled || input.readOnly || false,
       },
 
-      !_isString(component) && {
+      !_.isString(component) && {
         processing: input.processing || status.processing || false,
         processingDidFail: input.processingDidFail || status.processingDidFail || false,
       },

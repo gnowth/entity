@@ -1,8 +1,4 @@
-import _flowRight from 'lodash/flowRight';
-import _isFunction from 'lodash/isFunction';
-import _isUndefined from 'lodash/isUndefined';
-import _omit from 'lodash/omit';
-import _omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 
 const defaultLocal = [
   'hooks',
@@ -25,12 +21,12 @@ const defaultLocal = [
 ];
 
 export default function (props, configs = {}) {
-  const local = _isFunction(configs.local)
+  const local = _.isFunction(configs.local)
     ? configs.local(defaultLocal)
     : defaultLocal.concat(configs.local || []);
 
-  return _flowRight(
-    obj => _omitBy(obj, _isUndefined),
-    obj => _omit(obj, local),
+  return _.flowRight(
+    obj => _.omitBy(obj, _.isUndefined),
+    obj => _.omit(obj, local),
   )(props);
 }

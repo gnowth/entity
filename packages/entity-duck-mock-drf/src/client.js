@@ -1,5 +1,4 @@
-import _flowRight from 'lodash/flowRight';
-import _sample from 'lodash/sample';
+import _ from 'lodash';
 import { stringify } from 'query-string';
 
 export default class Client {
@@ -71,8 +70,8 @@ export default class Client {
     if (!configs.entity.store) return this.getError(404);
 
     if (configs.id === null) {
-      return _flowRight(
-        _sample,
+      return _.flowRight(
+        _.sample,
         Object.values,
       )(configs.entity.store) || this.getError(404);
     }

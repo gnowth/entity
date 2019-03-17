@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -15,7 +15,7 @@ function Navigation(_props) {
 
   const { Container, NavLink } = props.hooks.useComponents(props);
 
-  const navigations = _isFunction(entity.navigations?.[props.name])
+  const navigations = _.isFunction(entity.navigations?.[props.name])
     ? entity.navigations[props.name](props.entityConfigs)
     : entity.navigations?.[props.name];
 

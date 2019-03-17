@@ -1,5 +1,4 @@
-import _omit from 'lodash/omit';
-import _omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 import React from 'react';
 
 const getDisplayName = ComposedComponent => ComposedComponent.displayName
@@ -8,7 +7,7 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
 
 export default (ComposedComponent, additional = []) => {
   const withCleanTransient = props => (
-    <ComposedComponent {..._omitBy(_omit(props, additional), (value, key) => key.startsWith('$'))} />
+    <ComposedComponent {..._.omitBy(_.omit(props, additional), (value, key) => key.startsWith('$'))} />
   );
 
   withCleanTransient.displayName = `withCleanTransient(${getDisplayName(ComposedComponent)})`;

@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _ from 'lodash';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
@@ -55,7 +55,7 @@ function Table(props) {
           <RowComponent
             key={props.field.entity.getId(record)}
             {...(
-              _isFunction(props.rowComponentProps)
+              _.isFunction(props.rowComponentProps)
                 ? props.rowComponentProps({
                   name: props.name,
                   value: record,

@@ -1,11 +1,11 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 
 export default validatorOptions => (value, options) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!options.field) throw new Error('validator.validatorOptions: "field" option is required');
   }
 
-  return _isFunction(validatorOptions)
+  return _.isFunction(validatorOptions)
     ? validatorOptions({
       record: value,
       entity: options.field.entity,

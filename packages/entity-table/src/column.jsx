@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/fp/isFunction';
+import _ from 'lodash';
 import React from 'react';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import PropTypes from 'prop-types';
@@ -29,7 +29,7 @@ class Column extends React.Component {
                 childrenFromValue: true,
               }
               : {},
-            _isFunction(this.props.componentProps)
+            _.isFunction(this.props.componentProps)
               ? this.props.componentProps(props)
               : this.props.componentProps,
           )}

@@ -1,5 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/mapValues';
+import _ from 'lodash';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
 
@@ -56,9 +55,9 @@ export default (mapStateToProps = () => ({}), mapDispatchToProps) => {
   return React.useMemo(
     () => ({
       state: reduxState,
-      dispatch: _isFunction(mapDispatchToProps)
+      dispatch: _.isFunction(mapDispatchToProps)
         ? mapDispatchToProps(store.dispatch)
-        : _mapValues(
+        : _.mapValues(
           mapDispatchToProps || {},
           func => (...args) => store.dispatch(func(...args)),
         ),

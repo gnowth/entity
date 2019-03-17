@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 import { DefaultProvider } from '@gnowth/default';
 
@@ -14,7 +14,7 @@ export default {
   usePropsDefault(props, context, provider) {
     const defaults = React.useMemo(
       () => (
-        _isFunction(props.defaults)
+        _.isFunction(props.defaults)
           ? props.defaults(context.defaults)
           : { ...context.defaults, ...props.defaults }
       ),
@@ -29,7 +29,7 @@ export default {
   usePropsIntl(props, context, provider) {
     const intlProviderProps = React.useMemo(
       () => (
-        _isFunction(props.intlProviderProps)
+        _.isFunction(props.intlProviderProps)
           ? props.intlProviderProps(context.intlProviderProps)
           : {
             ...context.intlProviderProps,
@@ -59,7 +59,7 @@ export default {
   usePropsTheme(props, context, provider) {
     const theme = React.useMemo(
       () => (
-        _isFunction(props.themeProviderProps)
+        _.isFunction(props.themeProviderProps)
           ? props.themeProviderProps(context.themeProviderProps)
           : { ...context.themeProviderProps, ...props.themeProviderProps }
       ),

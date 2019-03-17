@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
 import { useReduxState } from '@private/use-redux';
@@ -39,7 +39,7 @@ export default {
           <Component
             {...routerProps}
             {...(
-              _isFunction(_props.componentProps)
+              _.isFunction(_props.componentProps)
                 ? _props.componentProps(routerProps)
                 : _props.componentProps
             )}

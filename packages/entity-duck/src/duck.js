@@ -1,5 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/mapValues';
+import _ from 'lodash';
 
 import Action from './action';
 import Queries from './queries';
@@ -33,7 +32,7 @@ export default class Duck {
   }
 
   static makeActions(duck, configs) {
-    return _mapValues(
+    return _.mapValues(
       this.getActions(configs),
       (action, name) => (...args) => {
         const computedAction = {
@@ -57,7 +56,7 @@ export default class Duck {
     const reducerMap = this.getReducers(types, initialState, configs);
 
     return (state = initialState, action) => (
-      _isFunction(reducerMap[action.type])
+      _.isFunction(reducerMap[action.type])
         ? reducerMap[action.type](state, action)
         : state
     );
@@ -72,7 +71,7 @@ export default class Duck {
   }
 
   static makeTypes(configs = {}) {
-    return _mapValues(
+    return _.mapValues(
       this.getActions(configs),
       (action, name) => this.makeType(name, configs),
     );
@@ -100,7 +99,7 @@ export default class Duck {
   }
 
   makeActions(dispatch) {
-    return _mapValues(
+    return _.mapValues(
       this.actions,
       action => (...args) => dispatch(action(...args)),
     );
