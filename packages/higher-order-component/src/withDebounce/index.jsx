@@ -40,7 +40,7 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
       withDebounceDisabled: this.props.withDebounceDisabled,
     };
 
-    /** Note (thierry):
+    /** NOTE(thierry):
      * this onChange allows 'this.props.onChange' to be dynamic
      * as debounced function cannot be changed once initialised
      */

@@ -19,19 +19,6 @@
   "css.validate": false,
   "scss.validate": false,
 
-  "stylelint.config": {
-    "extends": "./configs/stylelint.config.js"
-  },
-
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
-
-  // "code-runner.executorMap": {
-  //   "javascript": "node",
-  //   "python": "python",
-  //   "powershell": "powershell -ExecutionPolicy ByPass -File",
-  //   "shellscript": "bash",
-  //   "typescript": "./node_modules/.bin/ts-node",
-  //   "coffeescript": "coffee"
-  // }
 }

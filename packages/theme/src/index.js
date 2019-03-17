@@ -1,4 +1,8 @@
-export * as mixins from './mixins';
+// WORKAROUND(thierry) workaround because namespace not support by typescipt
+// export * as mixins from './mixins';
+import * as import_mixins from './mixins';
+
+export const mixins = import_mixins;
 
 export * from './selectors';
 

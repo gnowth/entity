@@ -20,6 +20,48 @@ references:
     working_directory: ~/project
 
 jobs:
+  build-app:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run build
+
+  build-packages:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run packages-build
+
+  build-storybook:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run storybook:build
+
+  check-code:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run check
+
+  cover-code:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run coveralls
+
+  lint-code:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: ~/project
+    - run: npm run lint
+
   setup:
     <<: *container_config
     steps:
@@ -31,47 +73,12 @@ jobs:
         root: ~/project
         paths: .
 
-  build-app:
-    <<: *container_config
-    steps:
-    - attach_workspace:
-        at: ~/project
-    - run: npm run build
-
-  build-storybook:
-    <<: *container_config
-    steps:
-    - attach_workspace:
-        at: ~/project
-    - run: npm run storybook:build
-
-  build-packages:
-    <<: *container_config
-    steps:
-    - attach_workspace:
-        at: ~/project
-    - run: npm run packages-build
-
-  lint-code:
-    <<: *container_config
-    steps:
-    - attach_workspace:
-        at: ~/project
-    - run: npm run lint
-
   test-code:
     <<: *container_config
     steps:
     - attach_workspace:
         at: ~/project
     - run: npm run test -- --maxWorkers=2
-
-  cover-code:
-    <<: *container_config
-    steps:
-    - attach_workspace:
-        at: ~/project
-    - run: npm run coveralls
 
   update-build-publish-packages_build-deploy-app:
     <<: *container_config
@@ -93,24 +100,6 @@ workflows:
   branches:
     jobs:
       - setup:
-          filters:
-            branches:
-              ignore:
-              - gh-pages
-              - master
-
-      - lint-code:
-          requires:
-          - setup
-          filters:
-            branches:
-              ignore:
-              - gh-pages
-              - master
-
-      - test-code:
-          requires:
-          - setup
           filters:
             branches:
               ignore:
@@ -144,6 +133,33 @@ workflows:
               - gh-pages
               - master
 
+      - check-code:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - lint-code:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
+      - test-code:
+          requires:
+          - setup
+          filters:
+            branches:
+              ignore:
+              - gh-pages
+              - master
+
   branch-master:
     jobs:
       - setup:
@@ -152,7 +168,7 @@ workflows:
               only:
               - master
 
-      - lint-code:
+      - check-code:
           requires:
           - setup
           filters:
@@ -168,10 +184,19 @@ workflows:
               only:
               - master
 
+      - lint-code:
+          requires:
+          - setup
+          filters:
+            branches:
+              only:
+              - master
+
       - update-build-publish-packages_build-deploy-app:
           requires:
-          - lint-code
+          - check-code
           - cover-code
+          - lint-code
           filters:
             branches:
               only:
