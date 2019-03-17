@@ -1,4 +1,4 @@
-// eslint-disable-next-line
+// eslint-disable-next-line import/prefer-default-export
 export const scale_space = [
   '0',
   '0.25rem',

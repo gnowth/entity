@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import React from 'react';
@@ -17,6 +16,7 @@ const VisualisationBubbleChart = props => (
   />
 );
 
+/* eslint-disable react/no-unused-prop-types */
 VisualisationBubbleChart.propTypes = {
   entity: PropTypesEntity.entity.isRequired,
   height: PropTypes.number,
@@ -24,6 +24,7 @@ VisualisationBubbleChart.propTypes = {
   padding: PropTypes.number,
   width: PropTypes.number,
 };
+/* eslint-enable react/no-unused-prop-types */
 
 VisualisationBubbleChart.defaultProps = {
   height: undefined,

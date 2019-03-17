@@ -38,7 +38,7 @@ function UILabel(_props) {
       { props.label && !props.errorComponentHidden && props.inputProps.errors && props.inputProps.errors.size > 0 && (
         <UITooltip {...propsTooltip}>
           { props.inputProps.errors.map((error, index) => (
-            <UIError key={index}>{ error }</UIError> // eslint-disable-line
+            <UIError key={index}>{ error }</UIError> // eslint-disable-line react/no-array-index-key
           ))}
         </UITooltip>
       )}
