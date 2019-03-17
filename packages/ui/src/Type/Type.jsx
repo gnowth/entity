@@ -35,13 +35,13 @@ const mapDefault = {
 };
 
 function UIType(_props) {
-  const props = useEnhanceProps(_props, { hooks });
-  const Component = props.hooks.useComponent(props);
+  const props = useEnhanceProps(_props);
+  const Component = hooks.useComponent(props);
   const { intlContext = DummyContext } = useDefault(mapDefault, props);
   const intl = React.useContext(intlContext);
 
   return (
-    <Component {...props.hooks.useProps(props)}>
+    <Component {...hooks.useProps(props)}>
       { (props.render || render)(props, intl) }
     </Component>
   );
@@ -58,11 +58,6 @@ UIType.propTypes = {
     toString: PropTypes.func.isRequired,
   }),
   hidden: PropTypes.bool,
-  hooks: PropTypes.exact({
-    useChildren: PropTypes.func,
-    useComponent: PropTypes.func,
-    useProps: PropTypes.func,
-  }),
   intlContext: PropTypes.shape({}),
   mediaPrintDisabled: PropTypes.bool,
   namespace: PropTypesPlus.string,
@@ -83,7 +78,6 @@ UIType.defaultProps = {
   className: '',
   field: undefined,
   hidden: undefined,
-  hooks: undefined,
   intlContext: undefined,
   mediaPrintDisabled: undefined,
   namespace: 'component_uiType',

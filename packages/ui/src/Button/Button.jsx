@@ -8,16 +8,16 @@ import hooks from './Button.hooks';
 import Button from './Button.styles';
 
 function UIButton(_props) {
-  const props = useEnhanceProps(_props, { hooks });
-  const { Content, Icon, Processing } = props.hooks.useComponents(props);
+  const props = useEnhanceProps(_props);
+  const { Content, Icon, Processing } = hooks.useComponents(props);
 
   return (
-    <Button {...props.hooks.useProps(props)}>
-      <Icon {...props.hooks.usePropsIcon(props)} />
+    <Button {...hooks.useProps(props)}>
+      <Icon {...hooks.usePropsIcon(props)} />
 
-      <Processing {...props.hooks.usePropsProcessing(props)} />
+      <Processing {...hooks.usePropsProcessing(props)} />
 
-      <Content {...props.hooks.usePropsContent(props)} />
+      <Content {...hooks.usePropsContent(props)} />
     </Button>
   );
 }
@@ -37,13 +37,6 @@ UIButton.propTypes = {
   css: PropTypesPlus.css,
   disabled: PropTypes.bool,
   hidden: PropTypes.bool,
-  hooks: PropTypes.exact({
-    useComponents: PropTypes.func,
-    useProps: PropTypes.func,
-    usePropsContent: PropTypes.func,
-    usePropsIcon: PropTypes.func,
-    usePropsProcessing: PropTypes.func,
-  }),
   iconComponent: PropTypesPlus.component,
   iconComponentProps: PropTypes.shape({}),
   iconCss: PropTypesPlus.css,
@@ -78,7 +71,6 @@ UIButton.defaultProps = {
   css: undefined,
   disabled: undefined,
   hidden: undefined,
-  hooks: undefined,
   iconComponent: undefined,
   iconComponentProps: undefined,
   iconCss: undefined,

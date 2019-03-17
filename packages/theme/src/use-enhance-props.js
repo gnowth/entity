@@ -1,12 +1,9 @@
 import _ from 'lodash';
-import idx from 'idx';
 import React from 'react';
 import { css, ThemeContext } from 'styled-components';
 
 import { component } from './selectors';
 import cleanProps from './use-clean-props';
-
-const defaultHook = (hook, ...args) => hook(...args);
 
 const defaultTransient = [
   'margin',
@@ -39,14 +36,6 @@ export default function (_props, configs = {}) {
 
     css: css`${componentTheme.css} ${_props.css}`,
 
-    hooks: _.mapValues(
-      configs.hooks,
-      (hook, key) => (...args) => (idx(_props, x => x.hooks[key]) || defaultHook)(
-        (...themeArgs) => (idx(componentTheme, x => x.hooks[key]) || defaultHook)(hook, ...themeArgs),
-        ...args,
-      ),
-    ),
-
     locales: {
       ...configs.locales,
       ...componentTheme.locales,
@@ -58,14 +47,6 @@ export default function (_props, configs = {}) {
       ...componentTheme.names,
       ..._props.names,
     },
-
-    styles: _.mergeWith(
-      {},
-      configs.styles,
-      componentTheme.styles,
-      _props.styles,
-      (obj, src) => css`${obj} ${src}`,
-    ),
   };
 
   const transient = _.isFunction(configs.transient)

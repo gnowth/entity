@@ -12,8 +12,8 @@ import hooks from './Label.hooks';
 import styles, { Label, UILabelRoot } from './Label.styles';
 
 function UILabel(_props) {
-  const props = useEnhanceProps(_props, { hooks, styles });
-  const propsTooltip = props.hooks.usePropsTooltip(props, props.styles);
+  const props = useEnhanceProps(_props);
+  const propsTooltip = hooks.usePropsTooltip(props, styles);
 
   return (
     <UILabelRoot
@@ -52,9 +52,6 @@ UILabel.propTypes = {
   children: PropTypes.node,
   css: PropTypesPlus.css,
   errorComponentHidden: PropTypes.bool,
-  hooks: PropTypes.exact({
-    usePropsTooltip: PropTypes.func,
-  }),
   inputProps: PropTypes.shape({
     errors: PropTypesImmutable.list,
   }).isRequired,
@@ -68,17 +65,12 @@ UILabel.propTypes = {
   marginRight: PropTypes.string,
   marginTop: PropTypes.string,
   namespace: PropTypesPlus.string,
-  styles: PropTypes.exact({
-    icon: PropTypesPlus.css,
-    tooltip: PropTypesPlus.css,
-  }),
 };
 
 UILabel.defaultProps = {
   children: undefined,
   css: undefined,
   errorComponentHidden: undefined,
-  hooks: undefined,
   label: undefined,
   labelComponentPalette: undefined,
   labelComponentProps: {},
@@ -89,7 +81,6 @@ UILabel.defaultProps = {
   marginRight: undefined,
   marginTop: undefined,
   namespace: 'component_uiLabel',
-  styles: undefined,
 };
 
 export default React.memo(UILabel);

@@ -1,11 +1,9 @@
 import _ from 'lodash';
 
 const defaultLocal = [
-  'hooks',
   'locales',
   'names',
   'namespace',
-  'styles',
   'variant',
 
   'errors',
