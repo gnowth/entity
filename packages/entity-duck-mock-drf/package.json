@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "faker": "4.1.0",
-    "query-string": "6.3.0"
+    "query-string": "6.4.0"
   },
   "devDependencies": {
     "lodash": "4.17.11"

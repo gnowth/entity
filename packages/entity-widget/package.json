@@ -31,7 +31,7 @@
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-select": "2.4.1",
+    "react-select": "2.4.2",
     "reselect": "4.0.0"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "lodash": "4.17.11",
     "moment": "2.24.0",
     "react": "16.8.4",
-    "react-datepicker": "2.1.0",
+    "react-datepicker": "2.2.0",
     "react-intl": "2.8.0",
     "react-test-renderer": "16.8.4",
     "styled-components": "4.1.3"
