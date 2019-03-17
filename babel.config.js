@@ -19,11 +19,10 @@ module.exports = {
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-optional-chaining',
-    'babel-plugin-react-intl-auto',
     '@babel/plugin-syntax-dynamic-import',
-    ['babel-plugin-styled-components', {
-      pure: true,
-    }],
+    'babel-plugin-idx',
+    'babel-plugin-react-intl-auto',
+    ['babel-plugin-styled-components', { pure: true }],
     'lodash',
   ],
 };

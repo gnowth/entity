@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import { Entity } from '@entity/core';
 import Duck from '@entity/duck';
 import { fromJS, List, Map } from 'immutable';
@@ -136,23 +137,23 @@ export default class DjangoRestFramework extends Duck {
       !error.response
         && (error.message || 'Unknown Error'),
 
-      _.get(error, 'response.status') === 0
+      idx(error, x => x.response.status) === 0
         && 'Error 0: A fatal error occurred.',
 
-      _.get(error, 'response.status') === 401
+      idx(error, x => x.response.status) === 401
         && `Error 401: ${error.response.data.detail || error.response.data}`,
 
-      _.get(error, 'response.status') === 403
+      idx(error, x => x.response.status) === 403
         && `Error 403: ${error.response.data.detail || error.response.data}`,
 
-      _.get(error, 'response.status') === 404
+      idx(error, x => x.response.status) === 404
         && 'Error 404: Not found.',
 
-      _.get(error, 'response.status') >= 500
+      idx(error, x => x.response.status) >= 500
         && error.response.status < 600
         && `Error ${error.response.status}: A server error occurred.`,
 
-      _.get(error, 'response.data')
+      idx(error, x => x.response.data)
         && error.response.status !== 401
         && error.response.status !== 403
         && fromJS({
