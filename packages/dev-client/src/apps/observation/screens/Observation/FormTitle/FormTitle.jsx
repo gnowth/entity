@@ -1,4 +1,4 @@
-import _identity from 'lodash/identity';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Control, Form, Input } from '@entity/form';
@@ -33,7 +33,7 @@ FormTitle.propTypes = {
 };
 
 FormTitle.defaultProps = {
-  onClose: _identity,
+  onClose: _.identity,
 };
 
 export default React.memo(FormTitle);

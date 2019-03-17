@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 
 import getDisplayName from '../get-display-name';
@@ -7,7 +7,7 @@ export default (componentProps = {}) => (ComposedComponent) => {
   const withProps = props => (
     <ComposedComponent
       {...props}
-      {...(_isFunction(componentProps) ? componentProps(props) : componentProps)}
+      {...(_.isFunction(componentProps) ? componentProps(props) : componentProps)}
     />
   );
 

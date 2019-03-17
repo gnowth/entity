@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 
 export default {
@@ -10,7 +10,7 @@ export default {
         <Component
           {...routerProps}
           {...(
-            _isFunction(props.componentProps)
+            _.isFunction(props.componentProps)
               ? props.componentProps(routerProps)
               : props.componentProps
           )}

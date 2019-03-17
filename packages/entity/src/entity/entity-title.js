@@ -1,4 +1,4 @@
-import _isString from 'lodash/isString';
+import _ from 'lodash';
 import queryString from 'query-string';
 import { Map } from 'immutable';
 
@@ -70,7 +70,7 @@ export default class Title extends Entity {
     const path = this.getPaths(configs)?.urlBase;
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toLink (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(value => !_isString(value))) throw new Error(`EntityTitle.toLink (${this.name}): every params must be a string or undefined`);
+      if (computedParams.some(value => !_.isString(value))) throw new Error(`EntityTitle.toLink (${this.name}): every params must be a string or undefined`);
     }
 
     return `${path}${this.getId(record, configs)}/?${queryString.stringify(computedParams.toJS())}`;
@@ -96,7 +96,7 @@ export default class Title extends Entity {
 
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toUrl (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(param => !_isString(param))) throw new Error(`EntityTitle.toUrl (${this.name}): every params must be a string or undefined`);
+      if (computedParams.some(param => !_.isString(param))) throw new Error(`EntityTitle.toUrl (${this.name}): every params must be a string or undefined`);
       if (!configs.settings?.BASE_URL) throw new Error(`EntityTitle.toUrl (${this.name}): "settings.BASE_URL" must be set.`);
     }
 
@@ -115,7 +115,7 @@ export default class Title extends Entity {
 
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toUrlExport (${this.name}): "apiBase" property must start with a "/" and end with a "/"`);
-      if (computedParams.some(param => !_isString(param))) throw new Error(`EntityTitle.toUrlExport (${this.name}): every params must be a string or undefined`);
+      if (computedParams.some(param => !_.isString(param))) throw new Error(`EntityTitle.toUrlExport (${this.name}): every params must be a string or undefined`);
       if (!configs.settings?.BASE_API_URL) throw new Error(`EntityTitle.toUrlExport (${this.name}): "settings.BASE_API_URL" must be set.`);
     }
 

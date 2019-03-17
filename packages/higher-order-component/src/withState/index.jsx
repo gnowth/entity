@@ -1,11 +1,11 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 
 import getDisplayName from '../get-display-name';
 
 export default ({ initialState = {}, mapProps = {} }) => (ComposedComponent) => {
   class withState extends React.Component {
-    state = _isFunction(initialState)
+    state = _.isFunction(initialState)
       ? initialState(this.props)
       : initialState;
 

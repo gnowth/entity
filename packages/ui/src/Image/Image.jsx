@@ -1,4 +1,4 @@
-import _flowRight from 'lodash/flowRight';
+import _ from 'lodash';
 import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -22,7 +22,7 @@ UIImage.defaultProps = {
   variant: 'standard',
 };
 
-export default _flowRight(
+export default _.flowRight(
   withTheme,
   withProps(props => ({
     alt: props.name,

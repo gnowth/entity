@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import { fromJS, isImmutable, List, Map } from 'immutable';
 
 import isRequired from '../validator/is-required';
@@ -22,7 +22,7 @@ export default class Field {
       defaults,
       options,
       {
-        validators: _isFunction(options.validators)
+        validators: _.isFunction(options.validators)
           ? options.validators(defaults.validators)
           : (options.validators || defaults.validators),
       },
@@ -125,7 +125,7 @@ export default class Field {
       if (this.many && !List.isList(value)) throw new Error(`Field.validate (${this.constructor.name}-${options.fieldName}): "value" must be an "Immutable List" with field option "many"`);
     }
 
-    const validators = _isFunction(options.validators)
+    const validators = _.isFunction(options.validators)
       ? options.validators(this.validators)
       : (options.validators || this.validators);
 

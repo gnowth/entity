@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 
 import Query from './query';
@@ -13,7 +13,7 @@ export default (configs = {}) => (ComposedComponent) => {
       component={ComposedComponent}
       componentProps={props}
       {...(
-        _isFunction(configs)
+        _.isFunction(configs)
           ? configs(props)
           : configs
       )}

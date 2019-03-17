@@ -1,10 +1,9 @@
-import _flowRight from 'lodash/flowRight';
-import _keyBy from 'lodash/keyBy';
+import _ from 'lodash';
 
-export default _flowRight(
-  colors => _keyBy(colors, color => `palette_${color.name}`),
+export default _.flowRight(
+  colors => _.keyBy(colors, color => `palette_${color.name}`),
   colors => colors.map(cols => ({
     ...cols,
-    colorMap: _keyBy(cols.colors, color => color.name),
+    colorMap: _.keyBy(cols.colors, color => color.name),
   })),
 );

@@ -1,11 +1,11 @@
 import * as d3 from 'd3';
-import _flowRight from 'lodash/flowRight';
+import _ from 'lodash';
 import React from 'react';
 
 export default {
   useGetData(props) {
     return React.useCallback(
-      _flowRight(
+      _.flowRight(
         d3.pie().value(value => props.getSize({ entity: props.entity, value })),
         data => data.toArray(),
       ),

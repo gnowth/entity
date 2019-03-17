@@ -1,4 +1,4 @@
-import _isString from 'lodash/isString';
+import _ from 'lodash';
 import Duck from '@entity/duck';
 import { Map } from 'immutable';
 
@@ -24,7 +24,7 @@ export default {
     if (process.env.NODE_ENV !== 'production') {
       if (!Map.isMap(params)) throw new Error('DuckMiddleware.action.meta: "params" options must be an immutable map');
 
-      const invalidParams = params.filterNot((param = '') => _isString(param)).toKeyedSeq();
+      const invalidParams = params.filterNot((param = '') => _.isString(param)).toKeyedSeq();
       if (invalidParams.size > 0) throw new Error(`DuckMiddleware.action.meta (${invalidParams.join(', ')}): params must be a string or undefined`);
     }
 

@@ -1,4 +1,4 @@
-import _debounce from 'lodash/debounce';
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { is } from 'immutable';
@@ -46,7 +46,7 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
      */
     onChange = event => this.props.onChange && this.props.onChange(event); // eslint-disable-line react/sort-comp
 
-    debouncedChange = _debounce(this.onChange, delay);
+    debouncedChange = _.debounce(this.onChange, delay);
 
     handleChange = ({ target: { name, value } }) => {
       const onChange = this.state.withDebounceDisabled

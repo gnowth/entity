@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import React from 'react';
 import { useDefault } from '@gnowth/default';
 
@@ -51,7 +51,7 @@ export default {
 
     return Object.assign(
       { onClose: handleClose },
-      _isFunction(props.componentProps)
+      _.isFunction(props.componentProps)
         ? props.componentProps()
         : props.componentProps,
     );
@@ -76,7 +76,7 @@ export default {
   usePropsWrapper(props, opened) {
     return Object.assign(
       { visible: opened },
-      _isFunction(props.wrapperComponentProps)
+      _.isFunction(props.wrapperComponentProps)
         ? props.wrapperComponentProps()
         : props.wrapperComponentProps,
     );

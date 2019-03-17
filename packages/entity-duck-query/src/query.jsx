@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -47,7 +47,7 @@ function Query(props) {
       { shouldShow.component && (
         <Component
           {...componentProps}
-          {...(_isFunction(props.componentProps)
+          {...(_.isFunction(props.componentProps)
             ? props.componentProps(componentProps)
             : props.componentProps
           )}
@@ -61,7 +61,7 @@ function Query(props) {
           errors={componentProps.field.getErrorsArray(componentProps.errors, { index })}
           index={index}
           value={value}
-          {...(_isFunction(props.componentProps)
+          {...(_.isFunction(props.componentProps)
             ? props.componentProps(Object.assign({}, componentProps, {
               index,
               value,

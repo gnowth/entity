@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import _flowRight from 'lodash/flowRight';
+import _ from 'lodash';
 import React from 'react';
 import { VisualisationContext } from '@entity/visualisation';
 
@@ -10,7 +10,7 @@ export default {
     const width = props.width || context.width;
 
     return React.useCallback(
-      _flowRight(
+      _.flowRight(
         data => data.filter(d => !d.children),
         data => data.descendants(),
         d3.pack()

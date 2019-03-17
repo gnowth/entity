@@ -1,11 +1,4 @@
-import _flowRight from 'lodash/flowRight';
-import _get from 'lodash/get';
-import _keyBy from 'lodash/keyBy';
-import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/mapValues';
-import _range from 'lodash/range';
-import _sample from 'lodash/sample';
-import _sampleSize from 'lodash/sampleSize';
+import _ from 'lodash';
 import { List, Map } from 'immutable';
 
 import EntityField from '../field/field-entity';
@@ -64,18 +57,18 @@ export default class Entity {
     );
 
     const getDefaultFromField = field => (
-      _isFunction(field.default)
+      _.isFunction(field.default)
         ? field.default({ data })
         : field.default
     );
 
     const values = Map(data)
-      .filter((_, key) => key in this.fields)
+      .filter((value, key) => key in this.fields)
       .filterNot(value => value === undefined)
       .map(fieldDataToValue);
 
     return data && Map(this.fields)
-      .filter((_, key) => data[key] === undefined)
+      .filter((value, key) => data[key] === undefined)
       .map(getDefaultFromField)
       .merge(values);
   }
@@ -120,23 +113,23 @@ export default class Entity {
   }
 
   static mock(faker, index, mockData) {
-    return _flowRight(
+    return _.flowRight(
       record => this.toData(record),
       data => this.dataToRecord(data),
       fields => ({
-        ..._mapValues(
+        ..._.mapValues(
           fields,
           (field) => {
             if (field instanceof EntityField && !field.blank && field.entity.store) {
               return field.many
-                ? _sampleSize(Object.values(field.entity.store))
-                : _sample(Object.values(field.entity.store));
+                ? _.sampleSize(Object.values(field.entity.store))
+                : _.sample(Object.values(field.entity.store));
             }
 
             return field.mock && (
               field.mock === 'index'
                 ? index
-                : _get(faker, field.mock)(...(field.mockConfigs || []))
+                : _.get(faker, field.mock)(...(field.mockConfigs || []))
             );
           },
         ),
@@ -146,8 +139,8 @@ export default class Entity {
   }
 
   static mockMany(faker, configs = {}) {
-    return _keyBy(
-      _range(configs.size).map(index => this.mock(faker, index)),
+    return _.keyBy(
+      _.range(configs.size).map(index => this.mock(faker, index)),
       this.idField,
     );
   }
@@ -164,8 +157,8 @@ export default class Entity {
     );
 
     return record && record
-      .filter((_, key) => key in this.fields)
-      .filterNot((_, key) => this.fields[key].local)
+      .filter((value, key) => key in this.fields)
+      .filterNot((value, key) => this.fields[key].local)
       .map(fieldValueToData)
       .toObject();
   }

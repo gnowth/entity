@@ -24,5 +24,6 @@ module.exports = {
     ['babel-plugin-styled-components', {
       pure: true,
     }],
+    'lodash',
   ],
 };
