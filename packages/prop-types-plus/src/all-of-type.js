@@ -1,5 +1,9 @@
 import withRequired from './with-required';
 
 export default (propTypes = []) => withRequired(
-  (...args) => propTypes.find(propType => propType(...args))?.(...args),
+  (...args) => {
+    const result = propTypes.find(propType => propType(...args));
+
+    return result && result(...args);
+  },
 );
