@@ -2,6 +2,7 @@ import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Fields } from '@entity/core';
 import { mock } from '@entity/duck-mock-drf';
 
+import settings from 'settings';
 import EntityAction from 'apps/activity/entities/Action';
 import EntityActivity from 'apps/activity/entities/Activity';
 
@@ -21,9 +22,9 @@ class Observation extends EntityActivity {
     ));
   }
 
-  static getPaths(configs = {}) {
+  static getPaths() {
     return {
-      apiBase: `/${configs.settings?.NAMESPACE}-observation/v1/observation/`,
+      apiBase: `/${settings.NAMESPACE}-observation/v1/observation/`,
       urlBase: '/observation/',
     };
   }

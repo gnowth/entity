@@ -116,8 +116,10 @@ export default class Field {
     return value?.toString();
   }
 
-  toString(value) {
-    return value?.toString();
+  toString(value = null) {
+    return value === null
+      ? ''
+      : value.toString();
   }
 
   validate(value, options = {}) {

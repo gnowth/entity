@@ -136,23 +136,23 @@ export default class DjangoRestFramework extends Duck {
       !error.response
         && (error.message || 'Unknown Error'),
 
-      error.response?.status === 0
+      _.get(error, 'response.status') === 0
         && 'Error 0: A fatal error occurred.',
 
-      error.response?.status === 401
+      _.get(error, 'response.status') === 401
         && `Error 401: ${error.response.data.detail || error.response.data}`,
 
-      error.response?.status === 403
+      _.get(error, 'response.status') === 403
         && `Error 403: ${error.response.data.detail || error.response.data}`,
 
-      error.response?.status === 404
+      _.get(error, 'response.status') === 404
         && 'Error 404: Not found.',
 
-      error.response?.status >= 500
+      _.get(error, 'response.status') >= 500
         && error.response.status < 600
         && `Error ${error.response.status}: A server error occurred.`,
 
-      error.response?.data
+      _.get(error, 'response.data')
         && error.response.status !== 401
         && error.response.status !== 403
         && fromJS({
