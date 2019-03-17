@@ -24,7 +24,7 @@ module.exports = {
 
   resolve: {
     alias: alias(path.join(process.cwd(), isAnalyze || isBuild || isStart ? '' : 'packages/dev-client')),
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     plugins: [
       new DirectoryNamedPlugin(true),
     ],

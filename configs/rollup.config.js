@@ -33,7 +33,7 @@ export default [
       }),
       json(),
       resolve({
-        extensions: ['.jsx', '.json'],
+        extensions: ['.jsx', '.json', '.ts', '.tsx'],
         main: false,
         module: true,
       }),
@@ -59,7 +59,7 @@ export default [
       }),
       json(),
       resolve({
-        extensions: ['.jsx', 'json'],
+        extensions: ['.jsx', '.json', '.ts', '.tsx'],
         main: false,
         module: true,
       }),

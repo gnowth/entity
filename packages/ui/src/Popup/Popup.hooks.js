@@ -25,7 +25,7 @@ export default {
   },
 
   /**
-   * Hack(thierry): react-onclickoutside use the first instance of the
+   * HACK(thierry): react-onclickoutside use the first instance of the
    * onClose provided. So it is unabled to capture the changing values around it.
    * Hence mutating the staticObject giving it a new onClose
    */
