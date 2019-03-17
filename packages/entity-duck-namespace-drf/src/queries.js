@@ -31,7 +31,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   clear(action = {}, meta = {}) {
     return this.hasSupport('clear', action)
-      ? action.duck?.actions?.clear({
+      ? action.duck?.actions.clear({
         ...action.meta,
         sideEffect: false,
         ...meta,
@@ -50,7 +50,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   onChange(action = {}, payload, meta = {}) {
     return this.hasSupport('onChange', action)
-      ? action.duck?.actions?.save_local(payload, {
+      ? action.duck?.actions.save_local(payload, {
         ...action.meta,
         sideEffect: false,
         ...meta,
@@ -60,7 +60,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   onSubmit(action = {}, payload, meta = {}) {
     return this.hasSupport('onSubmit', action)
-      ? action.duck?.actions?.save(payload, {
+      ? action.duck?.actions.save(payload, {
         ...action.meta,
         sideEffect: true,
         id: action.meta.id || undefined,
