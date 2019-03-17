@@ -66,12 +66,12 @@ function Query(props) {
               index,
               value,
               errors: componentProps.field.getErrorsArray(componentProps.errors, { index }),
-              valueInitial: componentProps.valueInitial?.get(index),
+              valueInitial: componentProps.valueInitial && componentProps.valueInitial.get(index),
               records: componentProps.value,
             }))
             : props.componentProps
           )}
-          valueInitial={componentProps.valueInitial?.get(index)}
+          valueInitial={componentProps.valueInitial && componentProps.valueInitial.get(index)}
         />
       ))}
     </Components.errorBoundaryComponent>

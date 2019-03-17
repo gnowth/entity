@@ -29,7 +29,7 @@ export default class DjangoRestFramework extends Duck {
 
       delete: this.makeAction({
         defaultMeta: { sideEffect: true },
-        metaFromPayload: payload => ({ id: configs.entity?.getId(payload) }),
+        metaFromPayload: payload => ({ id: configs.entity && configs.entity.getId(payload) }),
       }),
       delete_rejected: this.makeAction(),
       delete_resolved: this.makeAction(),
@@ -51,8 +51,8 @@ export default class DjangoRestFramework extends Duck {
       save: this.makeAction({
         defaultMeta: { sideEffect: true },
         metaFromPayload: payload => ({
-          id: configs.entity?.getId(payload) || null,
-          method: configs.entity?.getId(payload) ? 'put' : 'post',
+          id: (configs.entity && configs.entity.getId(payload)) || null,
+          method: configs.entity && configs.entity.getId(payload) ? 'put' : 'post',
         }),
       }),
       save_local: this.makeAction(),
@@ -62,7 +62,8 @@ export default class DjangoRestFramework extends Duck {
   }
 
   static getInitialState(configs = {}) {
-    const initialRecord = configs.entity?.dataToRecord({});
+    const initialRecord = configs.entity
+      && configs.entity.dataToRecord({});
 
     return Map({
       detail: Map({ [configs.ID_NULL]: initialRecord }),

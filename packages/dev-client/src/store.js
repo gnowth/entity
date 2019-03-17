@@ -17,12 +17,13 @@ const rootReducerMap = createDuckReducerFromRequires(reqs, combineReducers);
 
 const composeEnhancers = (
   process.env.NODE_ENV === 'development'
-  && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?.({
-    /**
-     * Specify extension’s options
-     * [https://github.com/zalmoxisus/redux-devtools-extension#13-use-redux-devtools-extension-package-from-npm]
-     */
-  })
+    && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      /**
+       * Specify extension’s options
+       * [https://github.com/zalmoxisus/redux-devtools-extension#13-use-redux-devtools-extension-package-from-npm]
+       */
+    })
 ) || compose;
 
 export const history = createBrowserHistory();

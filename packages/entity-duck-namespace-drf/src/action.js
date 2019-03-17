@@ -30,13 +30,13 @@ export default {
 
     const customAction = this.meta.action ? `${this.meta.action}/` : '';
 
-    const path = this.duck?.entity.getPaths(configs).apiBase;
+    const path = this.duck && this.duck.entity.getPaths(configs).apiBase;
 
     const args = [
       this.meta.id
         ? `${path}${this.meta.id}/${customAction}`
         : `${path}${customAction}`,
-      ...(this.payload ? [this.duck?.entity.toData(this.payload)] : []),
+      ...(this.payload ? [this.duck && this.duck.entity.toData(this.payload)] : []),
       configs.client.mocking
         ? {
           configs,

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import React from 'react';
 
 import useContextInput from './use-context-input';
@@ -14,7 +15,7 @@ export default (configs = {}) => (ComposedComponent) => {
 
     return (
       <ComposedComponent
-        {..._.mapKeys(propsInput, key => configurations.mapProps?.[key] || key)}
+        {..._.mapKeys(propsInput, key => idx(configurations, x => x.mapProps[key]) || key)}
         {...props}
       />
     );

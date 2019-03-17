@@ -14,7 +14,7 @@ function useProcessIfNeeded(redux, configs) {
   React.useEffect(
     () => {
       const shouldProcess = redux.dispatch.process
-        && !configs.action?.duck.queries.processing(configs.action, store.getState())
+        && !(configs.action && configs.action.duck.queries.processing(configs.action, store.getState()))
         && (
           !redux.state.value
           || (!mounted && configs.cached)
@@ -40,8 +40,8 @@ function useClearOnUnmount(redux, configs) {
 function useReduxWithAction(action) {
   return useRedux(...React.useMemo(
     () => [
-      action?.duck.queries.makeMapStateToProps(action),
-      action?.duck.queries.makeMapDispatchToProps(action),
+      action && action.duck.queries.makeMapStateToProps(action),
+      action && action.duck.queries.makeMapDispatchToProps(action),
     ],
     [action],
   ));
@@ -99,7 +99,7 @@ function useQuery(configs = {}) {
   useProcessIfNeeded(redux, configs);
   useClearOnUnmount(redux, configs);
 
-  const field = configs.action?.duck.entity.getEntityField({ many: configs.action.meta.id === undefined });
+  const field = configs.action && configs.action.duck.entity.getEntityField({ many: configs.action.meta.id === undefined });
   const name = 'entity_duck_use_query';
   const { processing, value } = redux.state;
 
