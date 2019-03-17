@@ -9,7 +9,7 @@ import styles, { Popup, Wrapper } from './Tooltip.styles';
 
 function UITooltip(_props) {
   const [hidden, setHidden] = React.useState(true);
-  const props = useEnhanceProps(_props, { hooks, styles });
+  const props = useEnhanceProps(_props);
   const Component = props.component;
 
   return (
@@ -17,7 +17,7 @@ function UITooltip(_props) {
       className={props.className}
       css={props.css}
     >
-      <Component {...props.hooks.usePropsTrigger(props, props.styles, hidden, setHidden)} />
+      <Component {...hooks.usePropsTrigger(props, styles, hidden, setHidden)} />
 
       <Popup hidden={hidden}>
         { props.children }
@@ -32,13 +32,7 @@ UITooltip.propTypes = {
   componentProps: PropTypes.shape({}),
   css: PropTypesPlus.css,
   event: PropTypes.string,
-  hooks: PropTypes.exact({
-    usePropsTrigger: PropTypes.func,
-  }),
   namespace: PropTypesPlus.string,
-  styles: PropTypes.exact({
-    icon: PropTypesPlus.css,
-  }),
 };
 
 UITooltip.defaultProps = {
@@ -46,9 +40,7 @@ UITooltip.defaultProps = {
   componentProps: {},
   css: undefined,
   event: 'onClick',
-  hooks: undefined,
   namespace: 'component_uiTooltip',
-  styles: undefined,
 };
 
 export default React.memo(UITooltip);

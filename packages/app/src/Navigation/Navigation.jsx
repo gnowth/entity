@@ -10,11 +10,11 @@ import { Context } from '../context';
 import hooks from './Navigation.hooks';
 
 function Navigation(_props) {
-  const props = useEnhanceProps(_props, { hooks });
+  const props = useEnhanceProps(_props);
   const context = React.useContext(Context);
   const entity = props.entity || context.entity;
 
-  const { Container, NavLink } = props.hooks.useComponents(props);
+  const { Container, NavLink } = hooks.useComponents(props);
 
   const _navigations = idx(entity, x => x.navigations[props.name]) || [];
   const navigations = _.isFunction(_navigations)
@@ -22,9 +22,9 @@ function Navigation(_props) {
     : _navigations;
 
   return (
-    <Container {...props.hooks.usePropsContainer(props)}>
+    <Container {...hooks.usePropsContainer(props)}>
       { navigations.map(item => (
-        <NavLink {...props.hooks.usePropsNavLink(props, { item })} />
+        <NavLink {...hooks.usePropsNavLink(props, { item })} />
       ))}
     </Container>
   );
@@ -35,11 +35,6 @@ Navigation.propTypes = {
   containerComponentProps: PropTypes.shape({}),
   entity: PropTypesEntity.entity,
   entityConfigs: PropTypes.shape({}),
-  hooks: PropTypes.exact({
-    useComponents: PropTypes.func,
-    usePropsContainer: PropTypes.func,
-    usePropsNavLink: PropTypes.func,
-  }),
   name: PropTypes.string.isRequired,
   namespace: PropTypes.string,
   navLinkComponent: PropTypesPlus.component,
@@ -54,7 +49,6 @@ Navigation.defaultProps = {
   containerComponentProps: undefined,
   entity: undefined,
   entityConfigs: undefined,
-  hooks: undefined,
   namespace: 'app_navigation',
   navLinkComponent: undefined,
   navLinkComponentProps: undefined,

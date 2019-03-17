@@ -21,17 +21,17 @@ const ContainerComponent = styled.div`
  */
 function Popup(_props) {
   const [opened, setOpened] = React.useState(false);
-  const props = useEnhanceProps(_props, { hooks });
-  const { Container, Control, Component, Wrapper } = props.hooks.useComponents(props);
-  const componentProps = props.hooks.usePropsComponent(props, opened, setOpened);
+  const props = useEnhanceProps(_props);
+  const { Container, Control, Component, Wrapper } = hooks.useComponents(props);
+  const componentProps = hooks.usePropsComponent(props, opened, setOpened);
 
-  Popup.handleClickOutside = props.hooks.useGetClickOutside(componentProps);
+  Popup.handleClickOutside = hooks.useGetClickOutside(componentProps);
 
   return (
-    <Container {...props.hooks.usePropsContainer(props)}>
-      <Control {...props.hooks.usePropsControl(props, opened, setOpened)} />
+    <Container {...hooks.usePropsContainer(props)}>
+      <Control {...hooks.usePropsControl(props, opened, setOpened)} />
 
-      <Wrapper {...props.hooks.usePropsWrapper(props, opened)}>
+      <Wrapper {...hooks.usePropsWrapper(props, opened)}>
         <Component {...componentProps} />
       </Wrapper>
     </Container>
@@ -46,14 +46,6 @@ Popup.propTypes = exact({
   controlComponent: PropTypesPlus.component,
   controlComponentProps: PropTypes.shape({}),
   event: PropTypesPlus.string,
-  hooks: PropTypes.exact({
-    useComponents: PropTypes.func,
-    useGetClickOutside: PropTypes.func,
-    usePropsComponent: PropTypes.func,
-    usePropsContainer: PropTypes.func,
-    usePropsControl: PropTypes.func,
-    usePropsWrapper: PropTypes.func,
-  }),
   namespace: PropTypesPlus.string,
   onClose: PropTypes.func,
   type: PropTypesPlus.string,
@@ -80,7 +72,6 @@ Popup.defaultProps = {
   controlComponent: undefined,
   controlComponentProps: {},
   event: 'onClick',
-  hooks: undefined,
   namespace: 'component_uiPopup',
   onClose: () => undefined,
   type: undefined,
