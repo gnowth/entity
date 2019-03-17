@@ -49,7 +49,7 @@ export default class Auth extends DuckDjangoRestFramework {
           ? initialState
           : state.withMutations(
             s => s
-              .set('errors', action.duck?.getErrors(action.payload))
+              .set('errors', action.duck.getErrors(action.payload))
               .setIn(['status', 'authenticating'], false)
               .setIn(['status', 'authenticatingDidFail'], true),
           )

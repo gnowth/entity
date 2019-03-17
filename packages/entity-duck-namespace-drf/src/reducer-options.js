@@ -27,7 +27,7 @@ export default types => ({
 
     return state.withMutations(
       s => s
-        .setIn(['options_errors', identifier], action.duck?.getErrors(action.payload))
+        .setIn(['options_errors', identifier], action.duck.getErrors(action.payload))
         .setIn(['status', 'optioning', identifier], false)
         .setIn(['status', 'optioningDidFail', identifier], true),
     );

@@ -32,7 +32,7 @@ export default (types, initialState) => ({
 
     return state.withMutations(
       s => s
-        .setIn(['detail_errors', id], action.duck?.getErrors(action.payload))
+        .setIn(['detail_errors', id], action.duck.getErrors(action.payload))
         .setIn(['status', 'deleting', identifier], false)
         .setIn(['status', 'deletingDidFail', identifier], true),
     );

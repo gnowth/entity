@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesPlus from '@gnowth/prop-types-plus';
@@ -15,15 +16,16 @@ function Navigation(_props) {
 
   const { Container, NavLink } = props.hooks.useComponents(props);
 
-  const navigations = _.isFunction(entity.navigations?.[props.name])
-    ? entity.navigations[props.name](props.entityConfigs)
-    : entity.navigations?.[props.name];
+  const _navigations = idx(entity, x => x.navigations[props.name]) || [];
+  const navigations = _.isFunction(_navigations)
+    ? _navigations(props.entityConfigs)
+    : _navigations;
 
   return (
     <Container {...props.hooks.usePropsContainer(props)}>
-      { navigations?.map(item => (
+      { navigations.map(item => (
         <NavLink {...props.hooks.usePropsNavLink(props, { item })} />
-      )) || null}
+      ))}
     </Container>
   );
 }

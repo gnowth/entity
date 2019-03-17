@@ -31,7 +31,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   clear(action = {}, meta = {}) {
     return this.hasSupport('clear', action)
-      ? action.duck?.actions.clear({
+      ? action.duck.actions.clear({
         ...action.meta,
         sideEffect: false,
         ...meta,
@@ -41,7 +41,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   errors(action = {}, state, meta = {}) {
     return !this.shouldBypass(action) && this.hasSupport('errors', action)
-      ? action.duck?.selectors?.errors(state, {
+      ? action.duck.selectors?.errors(state, {
         ...action.meta,
         ...meta,
       })
@@ -50,7 +50,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   onChange(action = {}, payload, meta = {}) {
     return this.hasSupport('onChange', action)
-      ? action.duck?.actions.save_local(payload, {
+      ? action.duck.actions.save_local(payload, {
         ...action.meta,
         sideEffect: false,
         ...meta,
@@ -60,7 +60,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   onSubmit(action = {}, payload, meta = {}) {
     return this.hasSupport('onSubmit', action)
-      ? action.duck?.actions.save(payload, {
+      ? action.duck.actions.save(payload, {
         ...action.meta,
         sideEffect: true,
         id: action.meta.id || undefined,
@@ -71,7 +71,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   processing(action = {}, state, meta = {}) {
     const result = !this.shouldBypass(action) && this.hasSupport('processing', action)
-      ? action.duck?.selectors?.status(state, {
+      ? action.duck.selectors?.status(state, {
         ...action.meta,
         status: this.statusMap[action.name] || action.name,
         ...meta,
@@ -85,7 +85,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   processingDidFail(action = {}, state, meta = {}) {
     const result = !this.shouldBypass(action) && this.hasSupport('processingDidFail', action)
-      ? action.duck?.selectors?.status(state, {
+      ? action.duck.selectors?.status(state, {
         ...action.meta,
         status: this.statusMapDidFail[action.name] || `${action.name}DidFail`,
         ...meta,
@@ -99,7 +99,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   pagination(action = {}, state, meta = {}) {
     return this.hasSupport('pagination', action)
-      ? action.duck?.selectors.pagination(state, {
+      ? action.duck.selectors.pagination(state, {
         ...action.meta,
         ...meta,
       })
@@ -116,13 +116,13 @@ export default class DjangoRestFramework extends Duck.Queries {
     }
 
     return action.name === 'get'
-      ? action.duck?.selectors.record(state, { ...action.meta, dirty: true, ...meta })
-      : action.duck?.selectors.meta(state, { ...action.meta, ...meta });
+      ? action.duck.selectors.record(state, { ...action.meta, dirty: true, ...meta })
+      : action.duck.selectors.meta(state, { ...action.meta, ...meta });
   }
 
   valueInitial(action = {}, state, meta = {}) {
     return this.hasSupport('value', action)
-      ? action.duck?.selectors.record(state, {
+      ? action.duck.selectors.record(state, {
         ...action.meta,
         dirty: false,
         ...meta,
