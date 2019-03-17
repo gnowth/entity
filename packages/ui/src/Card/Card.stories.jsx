@@ -1,3 +1,4 @@
+import idx from 'idx';
 import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
 import { select, text } from '@storybook/addon-knobs';
@@ -14,7 +15,7 @@ export default stories => stories
     <ThemeConsumer>
       { theme => (
         <UICard
-          variant={select('variant', Object.keys(theme.components?.uiCard || {}), 'main')}
+          variant={select('variant', Object.keys(idx(theme, x => x.components.uiCard) || {}), 'main')}
         >
           { text('children', 'Hello Well') }
         </UICard>
@@ -24,7 +25,7 @@ export default stories => stories
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.components?.uiCard || {}).map(variant => (
+      { theme => Object.keys(idx(theme, x => x.components.uiCard) || {}).map(variant => (
         <Wrapper key={variant}>
           <UICard variant={variant}>
             { variant }

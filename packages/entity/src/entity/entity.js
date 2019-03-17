@@ -78,7 +78,7 @@ export default class Entity {
   }
 
   static getId(record) {
-    return record?.get(this.idField);
+    return record && record.get(this.idField);
   }
 
   static getPaths() {
@@ -168,7 +168,7 @@ export default class Entity {
       if (record && !Map.isMap(record)) throw new Error(`Entity.toString (${this.name}): record must be either a Map or null or undefined`);
     }
 
-    return record?.get(this.idField) || '';
+    return (record && record.get(this.idField)) || '';
   }
 
   static validate(record, configs = {}) {

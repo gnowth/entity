@@ -1,3 +1,4 @@
+import idx from 'idx';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
@@ -21,7 +22,7 @@ function render(props, intl) {
     return props.field.toString(value);
   }
 
-  if (intl && value?.id) {
+  if (intl && idx(value, x => x.id)) {
     return intl.formatMessage(value, props.values);
   }
 

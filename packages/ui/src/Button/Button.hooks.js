@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import idx from 'idx';
 import { useDefault } from '@gnowth/default';
 import { useCleanProps } from '@gnowth/theme';
 
@@ -71,7 +72,7 @@ export default {
       props.iconComponentProps,
 
       {
-        className: classnames('uiButton-Icon', props.iconComponentProps?.className),
+        className: classnames('uiButton-Icon', idx(props, x => x.iconComponentProps.className)),
       },
     );
   },
@@ -86,7 +87,7 @@ export default {
       value: props.content,
       variant: 'button',
       ...props.contentComponentProps,
-      className: classnames('uiButton-Content', props.contentComponentProps?.className),
+      className: classnames('uiButton-Content', idx(props, x => x.contentComponentProps.className)),
     };
   },
 

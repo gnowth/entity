@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import { Entity } from '@entity/core';
 import Duck from '@entity/duck';
 import { fromJS, List, Map } from 'immutable';
@@ -28,7 +29,7 @@ export default class DjangoRestFramework extends Duck {
 
       delete: this.makeAction({
         defaultMeta: { sideEffect: true },
-        metaFromPayload: payload => ({ id: configs.entity?.getId(payload) }),
+        metaFromPayload: payload => ({ id: configs.entity && configs.entity.getId(payload) }),
       }),
       delete_rejected: this.makeAction(),
       delete_resolved: this.makeAction(),
@@ -50,8 +51,8 @@ export default class DjangoRestFramework extends Duck {
       save: this.makeAction({
         defaultMeta: { sideEffect: true },
         metaFromPayload: payload => ({
-          id: configs.entity?.getId(payload) || null,
-          method: configs.entity?.getId(payload) ? 'put' : 'post',
+          id: (configs.entity && configs.entity.getId(payload)) || null,
+          method: configs.entity && configs.entity.getId(payload) ? 'put' : 'post',
         }),
       }),
       save_local: this.makeAction(),
@@ -61,7 +62,8 @@ export default class DjangoRestFramework extends Duck {
   }
 
   static getInitialState(configs = {}) {
-    const initialRecord = configs.entity?.dataToRecord({});
+    const initialRecord = configs.entity
+      && configs.entity.dataToRecord({});
 
     return Map({
       detail: Map({ [configs.ID_NULL]: initialRecord }),
@@ -97,7 +99,7 @@ export default class DjangoRestFramework extends Duck {
 
   constructor(configs = {}) {
     super({
-      name: configs.entity?.name,
+      name: idx(configs, x => x.entity.name),
       ID_NULL: 'id_null',
       ...configs,
     });
@@ -136,23 +138,23 @@ export default class DjangoRestFramework extends Duck {
       !error.response
         && (error.message || 'Unknown Error'),
 
-      error.response?.status === 0
+      idx(error, x => x.response.status) === 0
         && 'Error 0: A fatal error occurred.',
 
-      error.response?.status === 401
+      idx(error, x => x.response.status) === 401
         && `Error 401: ${error.response.data.detail || error.response.data}`,
 
-      error.response?.status === 403
+      idx(error, x => x.response.status) === 403
         && `Error 403: ${error.response.data.detail || error.response.data}`,
 
-      error.response?.status === 404
+      idx(error, x => x.response.status) === 404
         && 'Error 404: Not found.',
 
-      error.response?.status >= 500
+      idx(error, x => x.response.status) >= 500
         && error.response.status < 600
         && `Error ${error.response.status}: A server error occurred.`,
 
-      error.response?.data
+      idx(error, x => x.response.data)
         && error.response.status !== 401
         && error.response.status !== 403
         && fromJS({

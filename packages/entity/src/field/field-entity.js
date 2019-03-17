@@ -93,8 +93,8 @@ export default class EntityField extends AnyField {
       if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getValue (${this.entity.name}): field "${configs.name}" not found`);
     }
 
-    return configs.name
-      ? value?.get(configs.name)
+    return configs.name && value
+      ? value.get(configs.name)
       : value;
   }
 

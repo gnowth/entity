@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import queryString from 'query-string';
 import { Map } from 'immutable';
 
@@ -32,7 +33,7 @@ export default class Title extends Entity {
 
   static actionArchive(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.actions?.save) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
+      if (!idx(this, x => x.duck.actions.save)) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
     }
 
     return this.duck.actions.save(record, {
@@ -54,7 +55,7 @@ export default class Title extends Entity {
 
   static actionSave(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.actions?.save) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
+      if (!idx(this, x => x.duck.actions.save)) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
     }
 
     return this.duck.actions.save(record, {
@@ -67,7 +68,7 @@ export default class Title extends Entity {
     const computedParams = (configs.params || Map())
       .filterNot(param => param === undefined);
 
-    const path = this.getPaths(configs)?.urlBase;
+    const path = this.getPaths(configs).urlBase;
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toLink (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
       if (computedParams.some(value => !_.isString(value))) throw new Error(`EntityTitle.toLink (${this.name}): every params must be a string or undefined`);
@@ -77,7 +78,7 @@ export default class Title extends Entity {
   }
 
   static toString(record) {
-    return record?.get('title') || '';
+    return (record && record.get('title')) || '';
   }
 
   static toStringOrdered(record) {
@@ -92,12 +93,12 @@ export default class Title extends Entity {
       .remove('page_size')
       .filterNot(param => param === undefined);
 
-    const path = this.getPaths(configs)?.urlBase;
+    const path = this.getPaths(configs).urlBase;
 
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toUrl (${this.name}): "urlBase" property must start with a "/" and end with a "/"`);
       if (computedParams.some(param => !_.isString(param))) throw new Error(`EntityTitle.toUrl (${this.name}): every params must be a string or undefined`);
-      if (!configs.settings?.BASE_URL) throw new Error(`EntityTitle.toUrl (${this.name}): "settings.BASE_URL" must be set.`);
+      if (!(configs.settings && configs.settings.BASE_URL)) throw new Error(`EntityTitle.toUrl (${this.name}): "settings.BASE_URL" must be set.`);
     }
 
     return `${configs.settings.BASE_URL}${path}${this.getId(record, configs)}/?${queryString.stringify(computedParams.toJS())}`;
@@ -111,12 +112,12 @@ export default class Title extends Entity {
         .filterNot(param => param === undefined)
       : Map();
 
-    const path = this.getPaths(configs)?.apiBase;
+    const path = this.getPaths(configs).apiBase;
 
     if (process.env.NODE_ENV !== 'production') {
       if (!/^\/.*\/$/.test(path)) throw new Error(`EntityTitle.toUrlExport (${this.name}): "apiBase" property must start with a "/" and end with a "/"`);
       if (computedParams.some(param => !_.isString(param))) throw new Error(`EntityTitle.toUrlExport (${this.name}): every params must be a string or undefined`);
-      if (!configs.settings?.BASE_API_URL) throw new Error(`EntityTitle.toUrlExport (${this.name}): "settings.BASE_API_URL" must be set.`);
+      if (!(configs.settings && configs.settings.BASE_API_URL)) throw new Error(`EntityTitle.toUrlExport (${this.name}): "settings.BASE_API_URL" must be set.`);
     }
 
     return `${configs.settings.BASE_API_URL}${path}?${queryString.stringify(computedParams.toJS())}&format=xlsx`;

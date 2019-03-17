@@ -19,6 +19,6 @@ export default class Enum extends Entity {
   }
 
   static toString(record) {
-    return record?.get('label') || '';
+    return (record && record.get('label')) || '';
   }
 }

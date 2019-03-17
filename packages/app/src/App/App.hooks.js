@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import React from 'react';
 import { DefaultProvider } from '@gnowth/default';
 
@@ -35,16 +36,16 @@ export default {
             ...context.intlProviderProps,
             ...props.intlProviderProps,
             defaultFormats: {
-              ...context.intlProviderProps?.defaultFormats,
-              ...props.intlProviderProps?.defaultFormats,
+              ...idx(context, x => x.intlProviderProps.defaultFormats),
+              ...idx(props, x => x.intlProviderProps.defaultFormats),
             },
             formats: {
-              ...context.intlProviderProps?.formats,
-              ...props.intlProviderProps?.formats,
+              ...idx(context, x => x.intlProviderProps.formats),
+              ...idx(props, x => x.intlProviderProps.formats),
             },
             messages: {
-              ...context.intlProviderProps?.messages,
-              ...props.intlProviderProps?.messages,
+              ...idx(context, x => x.intlProviderProps.messages),
+              ...idx(props, x => x.intlProviderProps.messages),
             },
           }
       ),

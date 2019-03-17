@@ -1,3 +1,4 @@
+import idx from 'idx';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
@@ -97,5 +98,5 @@ Observation.propTypes = {
 };
 
 export default withQuery(props => ({
-  action: EntityObservation.duck.actions.get({ id: props.match?.params?.uuid || null }),
+  action: EntityObservation.duck.actions.get({ id: idx(props, x => x.match.params.uuid) || null }),
 }))(Observation);

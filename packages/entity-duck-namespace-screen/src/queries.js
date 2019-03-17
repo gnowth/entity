@@ -11,7 +11,7 @@ export default class Screen extends Duck.Queries {
 
   clear(action = {}, meta = {}) {
     return this.hasSupport('clear', action)
-      ? action.duck?.actions?.clear({
+      ? action.duck.actions.clear({
         ...action.meta,
         ...meta,
       })
@@ -20,7 +20,7 @@ export default class Screen extends Duck.Queries {
 
   onChange(action = {}, payload, meta = {}) {
     return this.hasSupport('onChange', action)
-      ? action.duck?.actions?.save_local(payload, {
+      ? action.duck.actions.save_local(payload, {
         ...action.meta,
         ...meta,
       })
@@ -29,7 +29,7 @@ export default class Screen extends Duck.Queries {
 
   onSubmit(action = {}, payload, meta = {}) {
     return this.hasSupport('onSubmit', action)
-      ? action.duck?.actions?.save(payload, {
+      ? action.duck.actions.save(payload, {
         ...action.meta,
         ...meta,
       })
@@ -38,7 +38,7 @@ export default class Screen extends Duck.Queries {
 
   value(action = {}, state, meta = {}) {
     return this.hasSupport('value', action)
-      ? action.duck?.selectors.record(state, {
+      ? action.duck.selectors.record(state, {
         ...action.meta,
         dirty: true,
         ...meta,
@@ -48,7 +48,7 @@ export default class Screen extends Duck.Queries {
 
   valueInitial(action = {}, state, meta = {}) {
     return this.hasSupport('valueInitial', action)
-      ? action.duck?.selectors.record(state, {
+      ? action.duck.selectors.record(state, {
         ...action.meta,
         dirty: false,
         ...meta,

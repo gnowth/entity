@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 
 import Duck from './duck';
 
@@ -26,5 +27,12 @@ export default (reqs, combineReducers) => _.flowRight(
   ducks => _.mapValues(ducks, makeAppReducersFromDucks(combineReducers)),
   ducks => _.groupBy(ducks, duck => duck.app),
   ducks => _.filter(ducks, duck => duck instanceof Duck),
-  requests => _.flatMap(_.flatten(requests), req => req.duck || req.keys?.().map?.(key => req(key).default?.duck)),
+  requests => _.flatMap(
+    _.flatten(requests),
+    req => req.duck || (
+      req.keys && req.keys().map(
+        key => idx(req(key), x => x.default.duck),
+      )
+    ),
+  ),
 )(reqs);

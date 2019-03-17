@@ -79,7 +79,7 @@ export default types => ({
           action.meta.id === undefined
             ? ['list_errors', identifier]
             : ['detail_errors', action.duck.getId(action.meta)],
-          action.duck?.getErrors(action.payload),
+          action.duck.getErrors(action.payload),
         )
         .setIn(['status', 'getting', identifier], false)
         .setIn(['status', 'gettingDidFail', identifier], true),

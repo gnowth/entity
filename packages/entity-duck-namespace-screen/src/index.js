@@ -25,7 +25,7 @@ export default class Screen extends Duck {
   }
 
   static getInitialState(configs = {}) {
-    const defaultValue = configs.entity?.dataToRecord({});
+    const defaultValue = configs.entity && configs.entity.dataToRecord({});
 
     return Map({
       detail: defaultValue,
@@ -43,7 +43,7 @@ export default class Screen extends Duck {
 
       [types.save_local]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save_local (${this.entity.name}): payload must be an Immutable Map`);
+          if (!Map.isMap(action.payload)) throw new Error(`ScreenDuck.save_local (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.set('detail_dirty', action.payload);
@@ -51,7 +51,7 @@ export default class Screen extends Duck {
 
       [types.save]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save (${this.entity.name}): payload must be an Immutable Map`);
+          if (!Map.isMap(action.payload)) throw new Error(`ScreenDuck.save (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.withMutations(
@@ -64,7 +64,7 @@ export default class Screen extends Duck {
   }
 
   constructor(configs = {}) {
-    super({ name: configs.entity?.name, ...configs });
+    super({ name: configs.entity && configs.entity.name, ...configs });
 
     if (process.env.NODE_ENV !== 'production') {
       if (!configs.entity || !Entity.isEntity(configs.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);

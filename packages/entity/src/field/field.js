@@ -113,11 +113,13 @@ export default class Field {
   }
 
   toParams(value) {
-    return value?.toString();
+    return value && value.toString();
   }
 
-  toString(value) {
-    return value?.toString();
+  toString(value = null) {
+    return value === null
+      ? ''
+      : value.toString();
   }
 
   validate(value, options = {}) {

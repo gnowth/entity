@@ -1,3 +1,5 @@
+import idx from 'idx';
+
 export default (configs = {}) => (props) => {
   const { palette } = configs;
   const paletteWeight = configs.paletteWeight || '500';
@@ -10,13 +12,13 @@ export default (configs = {}) => (props) => {
 
   if (configs.paletteAsBackground) {
     return (
-      props.theme?.[`palette_${palette}`]?.colorMap[paletteWeight]?.darkContrast
-        ? props.theme?.palette_black?.base
-        : props.theme?.palette_white?.base
+      idx(props, x => x.theme[`palette_${palette}`].colorMap[paletteWeight].darkContrast)
+        ? idx(props, x => x.theme.palette_black.base)
+        : idx(props, x => x.theme.palette_white.base)
     ) || defaultColor;
   }
 
-  return props.theme?.[`palette_${palette}`]?.colorMap[paletteWeight]?.hex
-    || props.theme?.[`palette_${palette}`]?.base
+  return idx(props, x => x.theme[`palette_${palette}`].colorMap[paletteWeight].hex)
+    || idx(props, x => x.theme[`palette_${palette}`].base)
     || defaultColor;
 };
