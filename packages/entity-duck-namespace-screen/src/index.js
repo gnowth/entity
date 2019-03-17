@@ -43,7 +43,7 @@ export default class Screen extends Duck {
 
       [types.save_local]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save_local (${this.entity.name}): payload must be an Immutable Map`);
+          if (!Map.isMap(action.payload)) throw new Error(`ScreenDuck.save_local (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.set('detail_dirty', action.payload);
@@ -51,7 +51,7 @@ export default class Screen extends Duck {
 
       [types.save]: (state, action) => {
         if (process.env.NODE_ENV !== 'production') {
-          if (!Map.isMap(action?.payload)) throw new Error(`ScreenDuck.save (${this.entity.name}): payload must be an Immutable Map`);
+          if (!Map.isMap(action.payload)) throw new Error(`ScreenDuck.save (${this.entity.name}): payload must be an Immutable Map`);
         }
 
         return state.withMutations(

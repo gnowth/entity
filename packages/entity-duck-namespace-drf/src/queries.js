@@ -41,7 +41,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   errors(action = {}, state, meta = {}) {
     return !this.shouldBypass(action) && this.hasSupport('errors', action)
-      ? action.duck.selectors?.errors(state, {
+      ? action.duck.selectors.errors(state, {
         ...action.meta,
         ...meta,
       })
@@ -71,7 +71,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   processing(action = {}, state, meta = {}) {
     const result = !this.shouldBypass(action) && this.hasSupport('processing', action)
-      ? action.duck.selectors?.status(state, {
+      ? action.duck.selectors.status(state, {
         ...action.meta,
         status: this.statusMap[action.name] || action.name,
         ...meta,
@@ -85,7 +85,7 @@ export default class DjangoRestFramework extends Duck.Queries {
 
   processingDidFail(action = {}, state, meta = {}) {
     const result = !this.shouldBypass(action) && this.hasSupport('processingDidFail', action)
-      ? action.duck.selectors?.status(state, {
+      ? action.duck.selectors.status(state, {
         ...action.meta,
         status: this.statusMapDidFail[action.name] || `${action.name}DidFail`,
         ...meta,
