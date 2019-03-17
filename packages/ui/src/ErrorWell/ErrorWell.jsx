@@ -7,7 +7,7 @@ import UICard from '../Card';
 const UIErrorWell = props => props.errors.size > 0 && (
   <UICard className={props.className} variant="danger">
     { props.errors.map((error, index) => (
-      <UIError key={index}>{ error }</UIError> // eslint-disable-line
+      <UIError key={index}>{ error }</UIError> // eslint-disable-line react/no-array-index-key
     ))}
   </UICard>
 );

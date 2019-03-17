@@ -6,7 +6,7 @@ import { is } from 'immutable';
 import getDisplayName from '../get-display-name';
 
 export default ({ delay = 300 } = {}) => (ComposedComponent) => {
-  class withDebounce extends React.Component {
+  class WithDebounce extends React.Component {
     static propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
       onChange: PropTypes.func.isRequired,
@@ -22,7 +22,7 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
 
     static getDerivedStateFromProps(nextProps, prevState) {
       if (process.env.NODE_ENV !== 'production') {
-        if (prevState.withDebounceDisabled !== nextProps.withDebounceDisabled) throw new Error('withDebounce.getDerivedStateFromProps: props "withDebounceDisabled" cannot be a dynamic props');
+        if (prevState.withDebounceDisabled !== nextProps.withDebounceDisabled) throw new Error('WithDebounce.getDerivedStateFromProps: props "withDebounceDisabled" cannot be a dynamic props');
       }
 
       return {
@@ -68,7 +68,7 @@ export default ({ delay = 300 } = {}) => (ComposedComponent) => {
     }
   }
 
-  withDebounce.displayName = `withDebounce(${getDisplayName(ComposedComponent)})`;
+  WithDebounce.displayName = `WithDebounce(${getDisplayName(ComposedComponent)})`;
 
-  return withDebounce;
+  return WithDebounce;
 };

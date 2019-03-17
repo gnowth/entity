@@ -18,7 +18,7 @@ const FormAction = props => (
 
       { props.records && props.index !== null && (
         <Control
-          action={({ value, field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
+          action={({ field, ...options }) => field.entity.actionArrayDeleteAtIndexOrdered(props.records, { ...options, index: props.index })}
           component={UIIcon}
           componentProps={{ name: 'delete', material: true }}
           array

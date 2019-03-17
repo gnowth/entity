@@ -4,7 +4,7 @@ import React from 'react';
 import getDisplayName from '../get-display-name';
 
 export default ({ initialState = {}, mapProps = {} }) => (ComposedComponent) => {
-  class withState extends React.Component {
+  class WithState extends React.Component {
     state = _.isFunction(initialState)
       ? initialState(this.props)
       : initialState;
@@ -29,7 +29,7 @@ export default ({ initialState = {}, mapProps = {} }) => (ComposedComponent) => 
     }
   }
 
-  withState.displayName = `withState(${getDisplayName(ComposedComponent)})`;
+  WithState.displayName = `WithState(${getDisplayName(ComposedComponent)})`;
 
-  return withState;
+  return WithState;
 };
