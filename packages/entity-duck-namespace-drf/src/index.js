@@ -98,7 +98,7 @@ export default class DjangoRestFramework extends Duck {
 
   constructor(configs = {}) {
     super({
-      name: configs.entity?.name,
+      name: idx(configs, x => x.entity.name),
       ID_NULL: 'id_null',
       ...configs,
     });

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import React from 'react';
 import { css, ThemeContext } from 'styled-components';
 
@@ -40,8 +41,8 @@ export default function (_props, configs = {}) {
 
     hooks: _.mapValues(
       configs.hooks,
-      (hook, key) => (...args) => (_props.hooks?.[key] || defaultHook)(
-        (...themeArgs) => (componentTheme.hooks?.[key] || defaultHook)(hook, ...themeArgs),
+      (hook, key) => (...args) => (idx(_props, x => x.hooks[key]) || defaultHook)(
+        (...themeArgs) => (idx(componentTheme, x => x.hooks[key]) || defaultHook)(hook, ...themeArgs),
         ...args,
       ),
     ),

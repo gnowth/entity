@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import idx from 'idx';
 import queryString from 'query-string';
 import { Map } from 'immutable';
 
@@ -32,7 +33,7 @@ export default class Title extends Entity {
 
   static actionArchive(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.actions.save) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
+      if (!idx(this, x => x.duck.actions.save)) throw new Error(`EntityTitle.actionArchive (${this.name}): "save" action is required in duck`);
     }
 
     return this.duck.actions.save(record, {
@@ -54,7 +55,7 @@ export default class Title extends Entity {
 
   static actionSave(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.actions.save) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
+      if (!idx(this, x => x.duck.actions.save)) throw new Error(`EntityTitle.actionSave (${this.name}): "save" action is required in duck`);
     }
 
     return this.duck.actions.save(record, {

@@ -1,3 +1,4 @@
+import idx from 'idx';
 import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { List, Map } from 'immutable';
 
@@ -44,7 +45,7 @@ export default class Auth extends DuckDjangoRestFramework {
       ),
 
       [types.whoAmI_rejected]: (state, action) => (
-        action.payload.response?.status === 401
+        idx(action, x => x.payload.response.status) === 401
           ? initialState
           : state.withMutations(
             s => s
