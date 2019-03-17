@@ -21,6 +21,7 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
+    "idx": "2.5.5",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0",
     "react-is": "16.8.4"
