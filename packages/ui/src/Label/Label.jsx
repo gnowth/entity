@@ -65,6 +65,7 @@ UILabel.propTypes = {
   marginRight: PropTypes.string,
   marginTop: PropTypes.string,
   namespace: PropTypesPlus.string,
+  variant: PropTypes.string,
 };
 
 UILabel.defaultProps = {
@@ -81,6 +82,7 @@ UILabel.defaultProps = {
   marginRight: undefined,
   marginTop: undefined,
   namespace: 'component_uiLabel',
+  variant: 'standard',
 };
 
 export default React.memo(UILabel);

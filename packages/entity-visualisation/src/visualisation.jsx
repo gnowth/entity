@@ -12,10 +12,10 @@ function Visualisation(props) {
     nodes: hooks.useNodes(props),
   };
 
-  hooks.useRenderVisualisation(visualisationRef);
+  hooks.useRenderVisualisation(props, visualisationRef);
   hooks.useUnmount(visualisationRef);
 
-  return null;
+  return props.children || null;
 }
 
 Visualisation.propTypes = {

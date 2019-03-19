@@ -5,64 +5,15 @@ exports[`renders correctly 1`] = `
   font-size: 1rem;
 }
 
-.c10 {
+.c7 {
   color: #ffffff;
 }
 
-.c10.c10 {
+.c7.c7 {
   font-size: 1rem;
 }
 
-.c5 {
-  -webkit-animation-name: bvvTNa;
-  animation-name: bvvTNa;
-  fill: transparent;
-  stroke: #4caf50;
-  stroke-dasharray: 251.32741228718345px;
-  stroke-width: 20%;
-  -webkit-transition: stroke-dashoffset 225ms linear;
-  transition: stroke-dashoffset 225ms linear;
-  -webkit-transform-box: view-box;
-  -ms-transform-box: view-box;
-  transform-box: view-box;
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-  -webkit-animation-duration: 4s;
-  animation-duration: 4s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.35,0,0.25,1);
-  animation-timing-function: cubic-bezier(0.35,0,0.25,1);
-  -webkit-transition-property: stroke;
-  transition-property: stroke;
-}
-
-.c4 {
-  height: 100%;
-  left: 0;
-  top: 0;
-  overflow: visible;
-  position: absolute;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-  width: 100%;
-  -webkit-animation: eXzyYY 2s linear infinite;
-  animation: eXzyYY 2s linear infinite;
-}
-
 .c3 {
-  display: inline-block;
-  height: 32px;
-  position: relative;
-  width: 32px;
-}
-
-.c6 {
   font-size: 0.875rem;
   font-weight: 500;
   -webkit-letter-spacing: 1.25px;
@@ -72,7 +23,7 @@ exports[`renders correctly 1`] = `
   text-transform: uppercase;
 }
 
-.c11 {
+.c8 {
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -124,7 +75,7 @@ exports[`renders correctly 1`] = `
   color: #e9e9e9;
 }
 
-.c8 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -149,24 +100,24 @@ exports[`renders correctly 1`] = `
   margin-left: 24px;
 }
 
-.c8:hover {
+.c5:hover {
   background-color: #fdfdfd;
 }
 
-.c8:focus {
+.c5:focus {
   background-color: #fbfbfb;
 }
 
-.c8:disabled {
+.c5:disabled {
   background-color: #f8f8f8;
   cursor: auto;
 }
 
-.c8:disabled * {
+.c5:disabled * {
   color: #e9e9e9;
 }
 
-.c9 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -193,41 +144,41 @@ exports[`renders correctly 1`] = `
   margin-left: 24px;
 }
 
-.c9:hover {
+.c6:hover {
   background-color: #fdfdfd;
 }
 
-.c9:focus {
+.c6:focus {
   background-color: #fbfbfb;
 }
 
-.c9:disabled {
+.c6:disabled {
   background-color: #f8f8f8;
   cursor: auto;
 }
 
-.c9:disabled * {
+.c6:disabled * {
   color: #e9e9e9;
 }
 
-.c9:hover {
+.c6:hover {
   background-color: #67bb6a;
 }
 
-.c9:focus {
+.c6:focus {
   background-color: #3c9f40;
 }
 
-.c9:disabled {
+.c6:disabled {
   background-color: #f8f8f8;
   cursor: auto;
 }
 
-.c9:disabled * {
+.c6:disabled * {
   color: #e9e9e9;
 }
 
-.c7 {
+.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -241,13 +192,13 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
-  .c6 {
+  .c3 {
     color: #000000;
   }
 }
 
 @media print {
-  .c11 {
+  .c8 {
     color: #000000;
   }
 }
@@ -259,13 +210,13 @@ exports[`renders correctly 1`] = `
 }
 
 @media print {
-  .c8 {
+  .c5 {
     display: none;
   }
 }
 
 @media print {
-  .c9 {
+  .c6 {
     display: none;
   }
 }
@@ -289,40 +240,18 @@ exports[`renders correctly 1`] = `
       hidden={true}
       name="name"
     />
-    <div
-      className="c3"
-      hidden={true}
-      size="32px"
-      value={null}
-    >
-      <svg
-        className="c4"
-        focusable="false"
-        preserveAspectRatio="xMidYMid meet"
-        value={null}
-        viewBox="0 0 100 100"
-      >
-        <circle
-          className="c5"
-          cx="50%"
-          cy="50%"
-          r="40"
-          value={null}
-        />
-      </svg>
-    </div>
     <span
-      className="uiButton-Content c6"
+      className="uiButton-Content c3"
       hidden={false}
     >
       RESET
     </span>
   </button>
   <div
-    className="c7"
+    className="c4"
   />
   <button
-    className="c8"
+    className="c5"
     content={
       Object {
         "defaultMessage": "SAVE",
@@ -337,37 +266,15 @@ exports[`renders correctly 1`] = `
       hidden={true}
       name="name"
     />
-    <div
-      className="c3"
-      hidden={true}
-      size="32px"
-      value={null}
-    >
-      <svg
-        className="c4"
-        focusable="false"
-        preserveAspectRatio="xMidYMid meet"
-        value={null}
-        viewBox="0 0 100 100"
-      >
-        <circle
-          className="c5"
-          cx="50%"
-          cy="50%"
-          r="40"
-          value={null}
-        />
-      </svg>
-    </div>
     <span
-      className="uiButton-Content c6"
+      className="uiButton-Content c3"
       hidden={false}
     >
       SAVE
     </span>
   </button>
   <button
-    className="c9"
+    className="c6"
     content={
       Object {
         "defaultMessage": "SUBMIT",
@@ -378,34 +285,12 @@ exports[`renders correctly 1`] = `
     onClick={[Function]}
   >
     <i
-      className="uiButton-Icon icon icon-name uiButton-Icon c10"
+      className="uiButton-Icon icon icon-name uiButton-Icon c7"
       hidden={true}
       name="name"
     />
-    <div
-      className="c3"
-      hidden={true}
-      size="32px"
-      value={null}
-    >
-      <svg
-        className="c4"
-        focusable="false"
-        preserveAspectRatio="xMidYMid meet"
-        value={null}
-        viewBox="0 0 100 100"
-      >
-        <circle
-          className="c5"
-          cx="50%"
-          cy="50%"
-          r="40"
-          value={null}
-        />
-      </svg>
-    </div>
     <span
-      className="uiButton-Content c11"
+      className="uiButton-Content c8"
       hidden={false}
     >
       SUBMIT

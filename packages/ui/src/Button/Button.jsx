@@ -10,12 +10,15 @@ import Button from './Button.styles';
 function UIButton(_props) {
   const props = useEnhanceProps(_props);
   const { Content, Icon, Processing } = hooks.useComponents(props);
+  const processingProps = hooks.usePropsProcessing(props);
 
   return (
     <Button {...hooks.useProps(props)}>
       <Icon {...hooks.usePropsIcon(props)} />
 
-      <Processing {...hooks.usePropsProcessing(props)} />
+      { !processingProps.hidden && (
+        <Processing {...processingProps} />
+      )}
 
       <Content {...hooks.usePropsContent(props)} />
     </Button>

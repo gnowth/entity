@@ -113,7 +113,7 @@ export default class Field {
   }
 
   toParams(value) {
-    return value && value.toString();
+    return (value && value.toString()) || '';
   }
 
   toString(value = null) {

@@ -81,6 +81,7 @@ class WidgetOrdering extends React.Component {
           `}
           material
           name={this.nameMap[this.getOrderingState()]}
+          {...this.props.iconComponentProps}
         />
       </span>
     );
@@ -88,15 +89,20 @@ class WidgetOrdering extends React.Component {
 }
 
 WidgetOrdering.propTypes = {
+  field: PropTypesEntity.field.isRequired,
+  iconComponentProps: PropTypes.shape({}),
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
+  orderingKey: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypesImmutable.list,
   ]).isRequired,
-  onChange: PropTypes.func.isRequired,
-  field: PropTypesEntity.field.isRequired,
-  label: PropTypes.node.isRequired,
-  orderingKey: PropTypes.string.isRequired,
+};
+
+WidgetOrdering.defaultProps = {
+  iconComponentProps: undefined,
 };
 
 export default styled(WidgetOrdering)`

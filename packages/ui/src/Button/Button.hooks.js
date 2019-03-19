@@ -57,6 +57,7 @@ export default {
     return Object.assign(
       {
         css: props.iconCss,
+        fontSize: props.iconFontSize,
         hidden: props.processing || props.iconHidden === undefined || props.iconHidden,
         name: props.iconName || 'name',
         palette: props.$palette,
