@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 import { UIIcon } from '@gnowth/ui';
 import { List } from 'immutable';
 
@@ -77,9 +77,11 @@ class WidgetOrdering extends React.Component {
         { this.props.label }
         <UIIcon
           css={css`
-            ${component({ name: 'widgetOrdering', branch: 'icon' })}
+            ${component({ namespace: 'component_widgetOrdering', branch: 'icon' })}
           `}
+          material
           name={this.nameMap[this.getOrderingState()]}
+          {...this.props.iconComponentProps}
         />
       </span>
     );
@@ -87,18 +89,23 @@ class WidgetOrdering extends React.Component {
 }
 
 WidgetOrdering.propTypes = {
+  field: PropTypesEntity.field.isRequired,
+  iconComponentProps: PropTypes.shape({}),
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
+  orderingKey: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypesImmutable.list,
   ]).isRequired,
-  onChange: PropTypes.func.isRequired,
-  field: PropTypesEntity.field.isRequired,
-  label: PropTypes.string.isRequired,
-  orderingKey: PropTypes.string.isRequired,
+};
+
+WidgetOrdering.defaultProps = {
+  iconComponentProps: undefined,
 };
 
 export default styled(WidgetOrdering)`
-  ${component({ name: 'widgetOrdering', branch: 'root' })}
+  ${component({ namespace: 'component_widgetOrdering', branch: 'root' })}
   ${props => props.css}
 `;

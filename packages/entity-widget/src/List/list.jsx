@@ -1,5 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _isString from 'lodash/isString';
+import _ from 'lodash';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesEntity from '@gnowth/prop-types-entity';
@@ -12,6 +11,7 @@ import { is } from 'immutable';
 import OptionText from './option-text';
 
 const ListComponent = styled.ul`
+  list-style-type: none;
   ${props => props.css}
 `;
 
@@ -52,8 +52,8 @@ class WidgetList extends React.Component {
     return Object.assign(
       { onClick: this.handleClickFactory(option) },
       props,
-      _isString(this.props.optionComponent) && { field: undefined },
-      _isFunction(this.props.optionComponentProps)
+      _.isString(this.props.optionComponent) && { field: undefined },
+      _.isFunction(this.props.optionComponentProps)
         ? this.props.optionComponentProps(props)
         : this.props.optionComponentProps,
     );

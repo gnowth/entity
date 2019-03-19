@@ -4,6 +4,12 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb-typescript',
+    'plugin:eslint-comments/recommended',
+    'plugin:jest/recommended',
+    'plugin:promise/recommended',
+    'plugin:unicorn/recommended',
   ],
 
   env: {
@@ -27,8 +33,14 @@ module.exports = {
 
   plugins: [
     'react',
+    'react-hooks',
     'import',
     'jsx-a11y',
+    '@typescript-eslint',
+    'eslint-comments',
+    'jest',
+    'promise',
+    'unicorn',
   ],
 
   rules: {
@@ -45,6 +57,7 @@ module.exports = {
       'error',
       {
         devDependencies: [
+          '**/__mocks__/**',
           '**/*.config.js',
           '**/*.test.js',
           '**/*.test.jsx',
@@ -78,6 +91,8 @@ module.exports = {
 
     // need to reconsider
     'react/destructuring-assignment': 0,
+
+    'react-hooks/rules-of-hooks': 'error',
 
     // disabled until custom PropTypes is fixed
     'react/no-typos': 0,
@@ -132,13 +147,27 @@ module.exports = {
         ],
       },
     }],
+
+    '@typescript-eslint/camelcase': 'off',
+
+    '@typescript-eslint/indent': ['error', 2],
+
+    '@typescript-eslint/no-var-requires': 'off',
+
+    'unicorn/filename-case': 'off',
+
+    'unicorn/new-for-builtins': 'off',
+
+    'unicorn/prefer-node-append': 'off',
+
+    'unicorn/prefer-query-selector': 'off',
   },
   settings: {
     'import/resolver': {
       webpack: {
         config: {
           resolve: {
-            extensions: ['.js', '.jsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
 
             plugins: [
               new DirectoryNamedPlugin(true),
@@ -150,7 +179,7 @@ module.exports = {
 
     react: {
       pragma: 'React',
-      version: '16.7.0',
+      version: '16.8.4',
     },
   },
 };

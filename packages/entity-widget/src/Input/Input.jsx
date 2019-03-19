@@ -1,30 +1,29 @@
-import _flowRight from 'lodash/flowRight';
+import _ from 'lodash';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withProps, withPropsFiltered } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 import { injectIntl } from 'react-intl';
 
 const WidgetInput = styled(withPropsFiltered('input'))`
   width: 100%;
 
-  ${component({ name: 'widgetInput' })}
+  ${component({ branch: 'css' })}
   ${props => props.css}
 `;
 
 WidgetInput.propTypes = {
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  namespace: PropTypes.string,
   variant: PropTypes.string,
 };
 
 WidgetInput.defaultProps = {
-  value: '',
-  variant: 'main',
+  namespace: 'component_widgetInput',
+  variant: 'standard',
 };
 
-export default _flowRight(
+export default _.flowRight(
   injectIntl,
   withProps(props => ({
     placeholder: props.placeholder === undefined && props.placeholderLocale

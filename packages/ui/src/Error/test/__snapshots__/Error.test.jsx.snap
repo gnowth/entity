@@ -1,10 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<pre
-  className=""
-  name="text"
+.c0 {
+  color: black;
+}
+
+@media print {
+  .c0 {
+    color: black;
+  }
+}
+
+<span
+  className="c0"
 >
   Error
-</pre>
+</span>
 `;

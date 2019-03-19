@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import { List, Map } from 'immutable';
 
 import EntityField from '../field/field-entity';
@@ -10,8 +10,10 @@ export default class Entity {
   static idField = 'uuid'
 
   static fields = {
-    uuid: new IdField({ blank: true }),
+    uuid: new IdField({ blank: true, mock: 'random.uuid' }),
   }
+
+  static paths = {}
 
   static actionArrayDeleteAtIndex(records, { index = null } = {}) {
     if (process.env.NODE_ENV !== 'production') {
@@ -32,14 +34,14 @@ export default class Entity {
     return records.delete(index).insert(indexTo, records.get(index));
   }
 
-  static actionReset(record) {
-    return this.dataToRecord({
+  static actionReset(record, configs = {}) {
+    return configs.valueInitial || this.dataToRecord({
       [this.idField]: record.get(this.idField),
     });
   }
 
-  static clean(record, options = {}) {
-    const newOptions = { ...options, entity: this };
+  static clean(record, configs = {}) {
+    const newOptions = { ...configs, entity: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -55,28 +57,38 @@ export default class Entity {
     );
 
     const getDefaultFromField = field => (
-      _isFunction(field.default)
+      _.isFunction(field.default)
         ? field.default({ data })
         : field.default
     );
 
     const values = Map(data)
-      .filter((_, key) => key in this.fields)
+      .filter((value, key) => key in this.fields)
       .filterNot(value => value === undefined)
       .map(fieldDataToValue);
 
     return data && Map(this.fields)
-      .filter((_, key) => data[key] === undefined)
+      .filter((value, key) => data[key] === undefined)
       .map(getDefaultFromField)
       .merge(values);
   }
 
-  static getEntityField(options = {}) {
-    return new EntityField({ entity: this, ...options });
+  static getEntityField(configs = {}) {
+    return new EntityField({ entity: this, ...configs });
   }
 
-  static getId(record) {
-    return record?.get(this.idField);
+  static getId(record = null) {
+    return record === null
+      ? undefined
+      : record.get(this.idField);
+  }
+
+  static getPaths() {
+    return this.paths;
+  }
+
+  static getSize() {
+    return 0;
   }
 
   static isEntity(maybeEntity) {
@@ -87,19 +99,52 @@ export default class Entity {
     return !!maybeDescendant && maybeDescendant.prototype instanceof this;
   }
 
-  static isValid(record, options) {
-    return this.validate(record, options).size === 0;
+  static isValid(record, configs) {
+    return this.validate(record, configs).size === 0;
   }
 
-  static isValidFromErrors(errors, options = {}) {
-    return options.name
-      ? options.name.some(
+  static isValidFromErrors(errors, configs = {}) {
+    return configs.name
+      ? configs.name.some(
         n => errors
           .filter(error => Map.isMap(error) && error.get('detail'))
           .flatMap(error => error.getIn(['errors', n]))
           .filter(error => error).size > 0,
       )
       : !errors || errors.size === 0;
+  }
+
+  static mock(faker, index, mockData) {
+    return _.flowRight(
+      record => this.toData(record),
+      data => this.dataToRecord(data),
+      fields => ({
+        ..._.mapValues(
+          fields,
+          (field) => {
+            if (field instanceof EntityField && !field.blank && field.entity.store) {
+              return field.many
+                ? _.sampleSize(Object.values(field.entity.store))
+                : _.sample(Object.values(field.entity.store));
+            }
+
+            return field.mock && (
+              field.mock === 'index'
+                ? index
+                : _.get(faker, field.mock)(...(field.mockConfigs || []))
+            );
+          },
+        ),
+        ...mockData,
+      }),
+    )(this.fields);
+  }
+
+  static mockMany(faker, configs = {}) {
+    return _.keyBy(
+      _.range(configs.size).map(index => this.mock(faker, index)),
+      this.idField,
+    );
   }
 
   static toData(record) {
@@ -114,8 +159,8 @@ export default class Entity {
     );
 
     return record && record
-      .filter((_, key) => key in this.fields)
-      .filterNot((_, key) => this.fields[key].local)
+      .filter((value, key) => key in this.fields)
+      .filterNot((value, key) => this.fields[key].local)
       .map(fieldValueToData)
       .toObject();
   }
@@ -125,21 +170,21 @@ export default class Entity {
       if (record && !Map.isMap(record)) throw new Error(`Entity.toString (${this.name}): record must be either a Map or null or undefined`);
     }
 
-    return record?.get(this.idField) || '';
+    return (record && record.get(this.idField)) || '';
   }
 
-  static validate(record, options = {}) {
+  static validate(record, configs = {}) {
     if (!record) return record;
 
     const detailErrors = Map(this.fields)
-      .filter((field, key) => !options.fields || options.fields[key])
+      .filter((field, key) => !configs.fields || configs.fields[key])
       .map((field, key) => field.validate(
         record.get(key),
         {
-          ...options,
+          ...configs,
           fieldName: key,
           record,
-          validators: options.fields && options.fields[key],
+          validators: configs.fields && configs.fields[key],
         },
       )).filterNot(errors => errors.size === 0);
 

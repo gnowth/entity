@@ -1,30 +1,10 @@
 import classnames from 'classnames';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
-import { withProps } from '@gnowth/higher-order-component';
 
-const UIIcon = styled.i`
-  && {
-    font-size: 1rem;
-  }
+import { colorFromPalette, mixins, withEnhanceProps } from '@gnowth/theme';
 
-  ${props => props.theme?.components?.uiIcon?.[props.variant]}
-  ${props => props.css}
-`;
-
-UIIcon.propTypes = {
-  css: PropTypesPlus.css,
-  name: PropTypes.string.isRequired,
-  variant: PropTypes.string,
-};
-
-UIIcon.defaultProps = {
-  css: undefined,
-  variant: 'main',
-};
-
-export default withProps(props => ({
+const UIIcon = withEnhanceProps(styled.i.attrs(props => ({
   className: classnames({
     'material-icons': props.material,
     [`fa fa-${props.name}`]: props.fontawesome,
@@ -32,4 +12,47 @@ export default withProps(props => ({
     [props.className]: props.className,
   }),
   children: props.material ? props.name : props.children,
-}))(UIIcon);
+}))`
+  && {
+    font-size: ${props => props.fontSize || '1rem'};
+  }
+
+  ${props => props.$palette && css`
+    color: ${colorFromPalette()};
+  `}
+
+  ${mixins.space}
+
+  ${props => props.css}
+`);
+
+UIIcon.propTypes = {
+  fontawesome: PropTypes.bool,
+  fontSize: PropTypes.string,
+  hidden: PropTypes.bool,
+  material: PropTypes.bool,
+  margin: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  namespace: PropTypes.string,
+  padding: PropTypes.string,
+  palette: PropTypes.string,
+  paletteAsBackground: PropTypes.bool,
+  paletteWeight: PropTypes.string,
+  variant: PropTypes.string,
+};
+
+UIIcon.defaultProps = {
+  fontawesome: false,
+  fontSize: undefined,
+  hidden: undefined,
+  material: false,
+  margin: undefined,
+  namespace: 'component_uiIcon',
+  padding: undefined,
+  palette: undefined,
+  paletteAsBackground: false,
+  paletteWeight: undefined,
+  variant: 'standard',
+};
+
+export default UIIcon;

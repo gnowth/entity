@@ -1,0 +1,36 @@
+{
+  "author": "Thierry Wong",
+  "description": "entity-duck-namespace-auth",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.js",
+  "name": "@entity/duck-namespace-auth",
+  "private": false,
+  "repository": "https://github.com/gnowth/entity.git",
+  "sideEffects": false,
+  "version": "0.5.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rollup -c=../../configs/rollup.config.js",
+    "destroy": "rimraf dist",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
+    "postbuild": "npm run link-main:dist",
+    "postdestroy": "npm run link-main:src",
+    "prebuild": "npm run destroy"
+  },
+  "dependencies": {
+    "@entity/core": "0.5.0",
+    "@entity/duck-namespace-drf": "0.5.0",
+    "idx": "2.5.5",
+    "immutable": "4.0.0-rc.12",
+    "query-string": "6.4.0"
+  },
+  "devDependencies": {
+    "lodash": "4.17.11"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0"
+  }
+}

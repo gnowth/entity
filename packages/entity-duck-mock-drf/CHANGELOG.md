@@ -1,0 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.5.0](https://github.com/gnowth/entity/compare/v0.4.0...v0.5.0) (2019-03-19)
+
+
+### Features
+
+* add applied route ([#110](https://github.com/gnowth/entity/issues/110)) ([d6a8a7b](https://github.com/gnowth/entity/commit/d6a8a7b))
+* add mock get api ([#106](https://github.com/gnowth/entity/issues/106)) ([e27d63b](https://github.com/gnowth/entity/commit/e27d63b))
+* added mock to entity ([#112](https://github.com/gnowth/entity/issues/112)) ([358bdee](https://github.com/gnowth/entity/commit/358bdee))
+* allow action on root api for record by setting id to null ([#109](https://github.com/gnowth/entity/issues/109)) ([dafecab](https://github.com/gnowth/entity/commit/dafecab))
+* entity-duck-mock-drf, entity-table ([#126](https://github.com/gnowth/entity/issues/126)) ([ed3bcbf](https://github.com/gnowth/entity/commit/ed3bcbf))
+* partial app-auth, entity-duck-namespace-auth ([#108](https://github.com/gnowth/entity/issues/108)) ([cc40d76](https://github.com/gnowth/entity/commit/cc40d76))
+
+
+### Performance Improvements
+
+* allow lodash plugin to optimise ([#132](https://github.com/gnowth/entity/issues/132)) ([3c04468](https://github.com/gnowth/entity/commit/3c04468))

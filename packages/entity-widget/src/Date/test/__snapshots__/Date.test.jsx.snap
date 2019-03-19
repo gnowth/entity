@@ -1,8 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c1 {
+  display: block;
+  width: 100%;
+}
+
+.c0 .react-datepicker-wrapper {
+  display: block;
+}
+
+.c0 .react-datepicker__input-container {
+  display: block;
+}
+
 <div
-  className="Datestyles__Wrapper-ety37l-0 sc-bdVaJa ireFhe"
+  className="c0"
 >
   <div
     className="react-datepicker-wrapper"
@@ -11,7 +24,7 @@ exports[`renders correctly 1`] = `
       className="react-datepicker__input-container"
     >
       <input
-        className="Datestyles__DatePicker-ety37l-1 Vphxm"
+        className="c1"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}

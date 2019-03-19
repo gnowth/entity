@@ -1,5 +1,6 @@
-import DuckRest from '@entity/duck-namespace-drf';
+import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Fields } from '@entity/core';
+import { mock } from '@entity/duck-mock-drf';
 
 import settings from 'settings';
 import EntityAction from 'apps/activity/entities/Action';
@@ -13,11 +14,6 @@ class Observation extends EntityActivity {
     }),
   })
 
-  static paths = {
-    apiBase: `/${settings.NAMESPACE}-observation/v1/observation/`,
-    urlBase: '/observation/',
-  }
-
   static actionActionsAdd(record) {
     return record.update('follow_up_actions', actions => actions.push(
       EntityAction.dataToRecord({
@@ -25,8 +21,16 @@ class Observation extends EntityActivity {
       }),
     ));
   }
+
+  static getPaths() {
+    return {
+      apiBase: `/${settings.NAMESPACE}-observation/v1/observation/`,
+      urlBase: '/observation/',
+    };
+  }
 }
 
-Observation.duck = new DuckRest({ app: 'Observation', entity: Observation });
+Observation.duck = new DuckDjangoRestFramework({ app: 'Observation', entity: Observation });
+mock(Observation, { size: 20 });
 
 export default Observation;

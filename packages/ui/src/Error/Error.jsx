@@ -3,19 +3,19 @@ import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import { Map } from 'immutable';
 
-import UITypeSet from '../TypeSet';
+import UIType from '../Type';
 
 const UIError = props => (
-  <UITypeSet
-    name="text"
-    variant="text_danger"
+  <UIType
+    variant="body2"
+    palette="danger"
     {...props}
   >
     { Map.isMap(props.children)
       ? props.children.get('message')
       : props.children
     }
-  </UITypeSet>
+  </UIType>
 );
 
 UIError.propTypes = {
@@ -29,4 +29,4 @@ UIError.defaultProps = {
   children: undefined,
 };
 
-export default UIError;
+export default React.memo(UIError);

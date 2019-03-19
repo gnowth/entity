@@ -1,62 +1,107 @@
-import _flowRight from 'lodash/flowRight';
-import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/mapValues';
-import { Entity } from '@entity/core';
-import { handleActions } from 'redux-actions';
+import _ from 'lodash';
+
+import Action from './action';
+import Queries from './queries';
+import Selectors from './selectors';
 
 export default class Duck {
-  static createAction({
-    defaultMeta,
-    meta = ({ options }) => options,
-    payload: payloadCreator = options => options.payload,
-  } = {}) {
-    return ({ entity, keyAction }) => type => (payload, options = {}) => ({
-      type,
-      meta: Object.assign(
-        { keyAction, entity },
-        _isFunction(defaultMeta) ? defaultMeta({ entity, options, payload }) : defaultMeta,
-        meta({ entity, options, payload }),
-      ),
-      payload: payloadCreator({ entity, options, payload }),
-    });
+  static Action = Action
+
+  static Queries = Queries
+
+  static Selectors = Selectors
+
+  static getActions() {
+    return {};
   }
 
-  static getInitialState({ entity }) {
-    return entity.dataToRecord({});
+  static getInitialState(configs = {}) {
+    return configs.initialState;
   }
 
-  static toKey(app, entity) {
-    return keyAction => `@@${app}/${this.namespace}/${entity.name.toUpperCase()}_${keyAction.toUpperCase()}`;
+  static getReducers() {
+    return {};
   }
 
-  constructor(options = {}) {
+  static makeAction(configs) {
+    return Object.assign(
+      {},
+      this.Action,
+      configs,
+    );
+  }
+
+  static makeActions(duck, configs) {
+    return _.mapValues(
+      this.getActions(configs),
+      (action, name) => (...args) => {
+        const computedAction = {
+          ...action,
+          configs,
+          duck,
+          name,
+          type: this.makeType(name, configs),
+        };
+
+        return computedAction.init(...args);
+      },
+    );
+  }
+
+  static makeQueries(configs) {
+    return new this.Queries(configs);
+  }
+
+  static makeReducers(types, initialState, configs) {
+    const reducerMap = this.getReducers(types, initialState, configs);
+
+    return (state = initialState, action) => (
+      _.isFunction(reducerMap[action.type])
+        ? reducerMap[action.type](state, action)
+        : state
+    );
+  }
+
+  static makeSelectors(duck, configs = {}) {
+    return new this.Selectors({ duck, ...configs });
+  }
+
+  static makeType(name, configs = {}) {
+    return `@@${configs.app}/${configs.namespace}/${configs.name.toUpperCase()}_${name.toUpperCase()}`;
+  }
+
+  static makeTypes(configs = {}) {
+    return _.mapValues(
+      this.getActions(configs),
+      (action, name) => this.makeType(name, configs),
+    );
+  }
+
+  constructor(configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity || !Entity.isEntity(options.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
-      if (!/^[A-Z]/.exec(options.app)) throw new Error(`${this.constructor.name}.constructor (${options.entity.name}): "app" option must start with a capital letter`);
+      if (!this.constructor.namespace) throw new Error(`@entity-duck Duck [name: ${this.constructor.name}]: static namespace is required`);
+      if (!/^[A-Z]/.exec(configs.app)) throw new Error(`${this.constructor.name}.constructor (${configs.name}): "app" option must start with a capital letter`);
     }
 
-    const actions = _mapValues(
-      this.constructor.actions,
-      (actionFactory, action) => _flowRight(
-        actionFactory({ entity: options.entity, keyAction: action }),
-        this.constructor.toKey(options.app, options.entity),
-      )(action),
-    );
+    const computedConfigs = {
+      namespace: this.constructor.namespace,
+      ...configs,
+    };
 
-    Object.assign(this, actions, options);
+    this.initialState = this.constructor.getInitialState(computedConfigs);
+    this.queries = this.constructor.makeQueries(computedConfigs);
+    this.selectors = this.constructor.makeSelectors(this, computedConfigs);
+    this.types = this.constructor.makeTypes(computedConfigs);
+    this.reducer = this.constructor.makeReducers(this.types, this.initialState, computedConfigs);
+    this.actions = this.constructor.makeActions(this, computedConfigs);
+
+    Object.assign(this, computedConfigs);
   }
 
-  createReducer() {
-    const duck = this.constructor;
-    const initialState = duck.getInitialState({ entity: this.entity });
-
-    return _flowRight(
-      reducerMap => handleActions(reducerMap, initialState),
-      types => duck.getReducers(types, initialState),
-      actions => _mapValues(
-        actions,
-        (_, keyAction) => duck.toKey(this.app, this.entity)(keyAction),
-      ),
-    )(duck.actions);
+  makeActions(dispatch) {
+    return _.mapValues(
+      this.actions,
+      action => (...args) => dispatch(action(...args)),
+    );
   }
 }

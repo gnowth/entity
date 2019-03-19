@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "name": "@gnowth/higher-order-component",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -22,10 +22,14 @@
   },
   "dependencies": {
     "immutable": "4.0.0-rc.12",
+    "prop-types": "15.7.2"
+  },
+  "devDependencies": {
     "lodash": "4.17.11",
-    "prop-types": "15.6.2"
+    "react": "16.8.4"
   },
   "peerDependencies": {
-    "react": "16.7.0"
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0"
   }
 }

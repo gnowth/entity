@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color } from '@gnowth/theme';
 
 export const Wrapper = styled.div`
   display: inline-block;
@@ -21,6 +21,6 @@ export const Popup = styled.div`
 
 export default {
   icon: css`
-    color: ${color({ name: 'danger' })};
+    color: ${color({ palette: 'danger' })};
   `,
 };

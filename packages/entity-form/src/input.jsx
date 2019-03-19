@@ -1,162 +1,83 @@
-import _flowRight from 'lodash/flowRight';
-import _isFunction from 'lodash/isFunction';
-import _isString from 'lodash/isString';
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
-import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withDefault } from '@gnowth/default';
-import { withPropTypes } from '@gnowth/higher-order-component';
+import { List } from 'immutable';
 
-import withInput from './withInput';
+import defaultHooks from './input.hooks';
+import useContextInput from './use-context-input';
 
-class Input extends React.Component {
-  getProps() {
-    return Object.assign(
-      {
-        name: this.props.name,
-        onChange: this.props.onChange,
-        value: this.props.value,
-      },
+function Input(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
+  const input = useContextInput(props);
+  const Components = hooks.useComponents(props, input);
+  const componentProps = hooks.useProps(props, input, Components);
+  const shouldShow = hooks.useShouldShow(props, componentProps, Components);
 
-      !_isString(this.props.component) && {
-        errors: this.props.errors,
-        field: this.props.field,
-        initialValue: this.props.initialValue,
-        onInputChange: this.props.onInputChange,
-        options: this.props.options,
-        processing: this.props.processing,
-        processingDidFail: this.props.processingDidFail,
-      },
+  return (
+    <Components.errorBoundary {...hooks.usePropsErrorBoundary(props, Components)}>
+      <Components.wrapper {...hooks.useWrapperComponentProps(props, componentProps, shouldShow)}>
+        { shouldShow.children && props.children(componentProps) }
 
-      _isFunction(this.props.componentProps)
-        ? this.props.componentProps(this.props)
-        : this.props.componentProps,
-    );
-  }
+        { shouldShow.component && (
+          <Components.component {...componentProps} />
+        )}
 
-  renderAsComponent(props) {
-    const WrapperComponent = this.props.wrapperComponent || React.Fragment;
-    const wrapperProps = this.props.wrapperComponent
-      ? Object.assign({}, props, this.props.wrapperComponentProps)
-      : {};
-
-    return (
-      <WrapperComponent {...wrapperProps}>
-        { this.props.many
-          ? this.renderComponentArray(props)
-          : this.renderComponent(props)
-        }
-      </WrapperComponent>
-    );
-  }
-
-  renderComponent(props) {
-    const Component = this.props.component;
-
-    return (
-      <Component {...props} />
-    );
-  }
-
-  renderComponentArray(props) {
-    const Component = this.props.component;
-
-    return props.value.map((val, index) => (
-      <Component
-        {...props}
-        errors={props.field.getErrorsArray(props.errors, { index })}
-        index={index}
-        key={props.field.getId(val) || index}
-        value={val}
-      />
-    ));
-  }
-
-  render() {
-    return this.props.children
-      ? this.props.children(this.getProps())
-      : this.renderAsComponent(this.getProps());
-  }
+        { shouldShow.componentArray && componentProps.value.map((val, index) => (
+          <Components.component
+            {...componentProps}
+            errors={componentProps.field.getErrorsArray(componentProps.errors, { index })}
+            index={index}
+            key={componentProps.field.getId(val) || index}
+            value={val}
+            valueInitial={(componentProps.valueInitial || List()).get(index)}
+          />
+        ))}
+      </Components.wrapper>
+    </Components.errorBoundary>
+  );
 }
 
-Input.propTypes = {
+Input.propTypes = exact({
   children: PropTypes.func,
-  component: PropTypesPlus.isRequiredIfNot('children', PropTypesPlus.component),
-  componentProps: PropTypes.oneOfType([
-    PropTypes.shape({}),
-    PropTypes.func,
-  ]),
-  errors: PropTypesImmutable.list.isRequired,
-  field: PropTypesEntity.field.isRequired,
-  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  component: PropTypesPlus.notRequiredIf('children', PropTypesPlus.component),
+  componentProps: PropTypesPlus.componentProps,
+  errorBoundaryComponent: PropTypesPlus.component,
+  errorBoundaryComponentProps: PropTypes.shape({}),
+  hooks: PropTypes.exact({
+    useComponents: PropTypes.func,
+    useProps: PropTypes.func,
+    usePropsErrorBoundary: PropTypes.func,
+    useShouldShow: PropTypes.func,
+    useWrapperComponentProps: PropTypes.func,
+  }),
+  loadOptionsFromAPI: PropTypes.bool,
+  loadValueFromAPI: PropTypes.bool,
   many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
   name: PropTypesPlus.string,
-  onChange: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func,
-  options: PropTypesImmutable.list,
-  processing: PropTypes.bool,
-  processingDidFail: PropTypes.bool,
-  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  wrapperComponent: PropTypesPlus.isRequiredIf('wrapperComponentProps', PropTypesPlus.component),
-  wrapperComponentProps: PropTypes.shape({}),
-};
+  type: PropTypesPlus.string,
+  willChangeRecord: PropTypes.func,
+  wrapperComponent: PropTypesPlus.notRequiredIf('children', PropTypesPlus.component),
+  wrapperComponentProps: PropTypesPlus.componentProps,
+  wrapperComponentVariant: PropTypesPlus.string,
+});
 
 Input.defaultProps = {
   children: undefined,
   component: undefined,
   componentProps: {},
-  initialValue: undefined,
+  errorBoundaryComponent: undefined,
+  errorBoundaryComponentProps: {},
+  hooks: undefined,
+  loadOptionsFromAPI: false,
+  loadValueFromAPI: false,
   many: undefined,
   name: undefined,
-  onInputChange: undefined,
-  options: undefined,
-  processing: false,
-  processingDidFail: false,
-  value: undefined,
+  type: undefined,
+  willChangeRecord: ({ nextRecord }) => nextRecord,
   wrapperComponent: undefined,
   wrapperComponentProps: undefined,
+  wrapperComponentVariant: undefined,
 };
 
-export default _flowRight(
-  withPropTypes({
-    propTypes: exact({
-      apiOptions: PropTypes.bool,
-      apiValue: PropTypes.bool,
-      children: PropTypes.func,
-      component: PropTypesPlus.component,
-      componentProps: PropTypes.oneOfType([
-        PropTypes.shape({}),
-        PropTypes.func,
-      ]),
-      many: PropTypesPlus.notRequiredIf('children', PropTypes.bool),
-      name: PropTypesPlus.string,
-      type: PropTypes.string,
-      willChangeRecord: PropTypes.func,
-      wrapperComponent: PropTypesPlus.component,
-      wrapperComponentProps: PropTypes.shape({}),
-    }),
-
-    defaultProps: {
-      apiOptions: false,
-      apiValue: false,
-      children: undefined,
-      component: undefined,
-      componentProps: {},
-      many: undefined,
-      name: undefined,
-      type: undefined,
-      willChangeRecord: ({ nextRecord }) => nextRecord,
-      wrapperComponentProps: undefined,
-    },
-  }),
-
-  withInput,
-
-  withDefault(props => ({
-    component: `widget_${props.type || props.field.type}`,
-    wrapperComponent: ['entityForm_label', 'component_label'],
-  })),
-)(Input);
+export default React.memo(Input);

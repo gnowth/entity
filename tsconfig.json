@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "target": "esnext"
+  },
+  "include": [
+    "packages"
+  ]
+}

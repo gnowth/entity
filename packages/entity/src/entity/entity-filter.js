@@ -9,10 +9,10 @@ export default class Filter extends Entity {
   static fields = {
     page: new IntegerField({ default: 1 }),
     page_size: new IntegerField({ default: 20 }),
-    uuid: new IdField({ blank: true }),
+    uuid: new IdField({ blank: true, mock: 'random.uuid' }),
   }
 
-  // Note(thierry): returning a map from field.toParams will flatten the output
+  // NOTE(thierry): returning a map from field.toParams will flatten the output
   static toParams(record, options = {}) {
     const fieldValueToParams = (value, key) => (
       List.isList(value)

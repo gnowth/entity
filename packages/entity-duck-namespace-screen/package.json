@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "name": "@entity/duck-namespace-screen",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -21,7 +21,8 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/duck": "0.4.0",
+    "@entity/core": "0.5.0",
+    "@entity/duck": "0.5.0",
     "immutable": "4.0.0-rc.12"
   }
 }

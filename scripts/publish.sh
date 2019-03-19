@@ -10,15 +10,15 @@ current=$(git symbolic-ref --short HEAD)
 git config --global user.email "$CIRCLE_USERNAME@circleci.com"
 git config --global user.name "$CIRCLE_USERNAME"
 
-# copy package.json to packages/react to get updated by lerna
-mkdir -p packages/react
-cp package.json packages/react
+# copy package.json to packages/root to get updated by lerna
+mkdir -p packages/root
+cp package.json packages/root
 
 lerna version --exact --amend --convertional-commits --yes --no-commit-hooks --no-git-tag-version --no-push
 
-# get updated package.json from packages/react
-cp -f packages/react/package.json .
-rm -r packages/react
+# get updated package.json from packages/root
+cp -f packages/root/package.json .
+rm -r packages/root
 
 # Commiting changes
 version="v$(npx -c 'echo "$npm_package_version"')"

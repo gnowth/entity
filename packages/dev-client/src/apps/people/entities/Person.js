@@ -1,5 +1,6 @@
-import DuckRest from '@entity/duck-namespace-drf';
+import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
 import { Entity, Fields } from '@entity/core';
+import { mock } from '@entity/duck-mock-drf';
 
 class Person extends Entity {
   static idField = 'id';
@@ -7,10 +8,11 @@ class Person extends Entity {
   static paginated = true;
 
   static fields = {
-    id: new Fields.IdField(),
-    username: new Fields.CharField(),
-    first_name: new Fields.CharField(),
-    last_name: new Fields.CharField(),
+    avatar: new Fields.CharField({ mock: 'image.avatar' }),
+    first_name: new Fields.CharField({ mock: 'name.firstName' }),
+    id: new Fields.IdField({ mock: 'random.uuid' }),
+    last_name: new Fields.CharField({ mock: 'name.lastName' }),
+    username: new Fields.CharField({ mock: 'internet.userName' }),
   };
 
   static paths = {
@@ -28,6 +30,7 @@ class Person extends Entity {
   }
 }
 
-Person.duck = new DuckRest({ app: 'People', entity: Person });
+Person.duck = new DuckDjangoRestFramework({ app: 'People', entity: Person });
+mock(Person, { size: 20 });
 
 export default Person;

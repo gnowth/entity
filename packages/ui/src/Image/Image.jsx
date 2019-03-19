@@ -1,31 +1,31 @@
-import _flowRight from 'lodash/flowRight';
+import _ from 'lodash';
 import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import { withProps } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/style';
+import { component, image } from '@gnowth/theme';
 
 const UIImage = styled.img`
-  ${component({ name: 'uiImage' })}
+  ${component()}
   ${props => props.css}
 `;
 
 UIImage.propTypes = {
   alt: PropTypes.string.isRequired,
-  css: PropTypesPlus.css,
+  namespace: PropTypesPlus.string,
   src: PropTypes.string.isRequired,
   variant: PropTypes.string,
 };
 
 UIImage.defaultProps = {
-  css: undefined,
-  variant: 'main',
+  namespace: 'component_uiImage',
+  variant: 'standard',
 };
 
-export default _flowRight(
+export default _.flowRight(
   withTheme,
   withProps(props => ({
     alt: props.name,
-    src: props.theme?.images?.[props.name],
+    src: image(props),
   })),
 )(UIImage);

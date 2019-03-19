@@ -1,42 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppRoot } from '@gnowth/app';
 import { ConnectedRouter } from 'connected-react-router/immutable';
-import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import { HashRouter } from 'react-router-dom';
 
-import * as theme from 'styles';
 import settings from 'settings';
 import store, { history } from 'store';
-import GlobalStyles from 'styles/global';
 
+import App from './app';
 import Routes from './routes';
-import defaults from './defaults';
 import setup from './setup';
 
-setup({ settings });
+setup(settings);
 
 function render() {
   ReactDOM.render(
-    <AppRoot
-      defaults={defaults}
-      intlProvider={IntlProvider}
-      intlProviderProps={{ locale: 'en', messages: {} }}
-      themeProvider={ThemeProvider}
-      themeProviderProps={{ theme }}
-    >
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Router>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <HashRouter>
+          <App>
             <Routes />
-          </Router>
-        </ConnectedRouter>
-      </Provider>
-
-      <GlobalStyles />
-    </AppRoot>,
+          </App>
+        </HashRouter>
+      </ConnectedRouter>
+    </Provider>,
     document.getElementById('root'),
   );
 }

@@ -1,20 +1,17 @@
-import _flowRight from 'lodash/flowRight';
-import _omit from 'lodash/omit';
-import _omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 import React from 'react';
 
-export const filterProps = props => _flowRight(
-  modifiedProps => _omitBy(modifiedProps, p => p === undefined),
-  modifiedProps => _omit(modifiedProps, [
-    'defaultValue',
+export const filterProps = props => _.flowRight(
+  modifiedProps => _.omitBy(modifiedProps, p => p === undefined),
+  modifiedProps => _.omit(modifiedProps, [
     'field',
-    'initialValue',
     'inputValue',
     'mapProps',
-    'onInputChange',
+    'onChangeInput',
     'options',
     'processing',
     'processingDidFail',
+    'valueInitial',
     'willChangeRecord',
   ]),
 )(props);

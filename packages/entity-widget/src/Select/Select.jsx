@@ -4,7 +4,7 @@ import PropTypesEntity from '@gnowth/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import Select from 'react-select';
-import { component } from '@gnowth/style';
+import { component } from '@gnowth/theme';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 
@@ -37,12 +37,13 @@ class WidgetSelect extends React.Component {
         {...this.props}
         getOptionLabel={this.props.getOptionLabel || this.handleGetOptionLabel}
         getOptionValue={this.props.getOptionValue || this.handleGetOptionValue}
-        isClearable={!this.props.field.blank}
+        isClearable={this.props.field.blank}
         isLoading={this.props.processing}
         isMulti={this.props.field.many}
         onChange={this.handleChange}
+        onInputChange={this.props.onChangeInput}
         options={this.selectOptions(this.props.options)}
-        styles={Object.assign({}, component({ name: 'widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
+        styles={Object.assign({}, component({ namespace: 'component_widgetSelect', branch: 'styles' })(this.props), this.props.styles)}
         value={this.selectValue(this.props.value)}
       />
     );
@@ -56,6 +57,7 @@ WidgetSelect.propTypes = {
   index: PropTypes.number,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func,
   options: PropTypesImmutable.list,
   processing: PropTypes.bool,
   styles: PropTypes.shape({}),
@@ -73,6 +75,7 @@ WidgetSelect.defaultProps = {
   getOptionLabel: undefined,
   getOptionValue: undefined,
   index: undefined,
+  onChangeInput: undefined,
   options: undefined,
   processing: false,
   styles: {},
@@ -81,6 +84,6 @@ WidgetSelect.defaultProps = {
 };
 
 export default styled(WidgetSelect)`
-  ${component({ name: 'widgetSelect', branch: 'root' })}
+  ${component({ namespace: 'component_widgetSelect', branch: 'root' })}
   ${props => props.css}
 `;

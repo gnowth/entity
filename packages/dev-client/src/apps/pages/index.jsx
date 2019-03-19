@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
-import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
 import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
 import { App } from '@gnowth/app';
-import { UITypeSet, UIWell } from '@gnowth/ui';
+import { UIType, UICard } from '@gnowth/ui';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import changelog from 'root/CHANGELOG.md';
@@ -20,32 +18,32 @@ const Screen = styled.div`
   justify-content: center;
 `;
 
-const AppPage = props => (
+const AppPages = props => (
   <App {...props}>
     <Switch>
       <Route
         path={`${props.match.url}/changelog`}
-        component={() => (
-          <UIWell ratio={3} variant="page_flat">
+        render={() => (
+          <UICard variant="page_flat">
             <Markdown className="markdown-body" source={changelog} />
-          </UIWell>
+          </UICard>
         )}
       />
 
       <Route
         path={`${props.match.url}/readme`}
-        component={() => (
-          <UIWell ratio={3} variant="page_flat">
+        render={() => (
+          <UICard variant="page_flat">
             <Markdown className="markdown-body" source={readme} />
-          </UIWell>
+          </UICard>
         )}
       />
 
       <Route
         path={`${props.match.url}/notfound`}
-        component={() => (
+        render={() => (
           <Screen>
-            <UITypeSet locale={locales.not_found} variant="header" />
+            <UIType value={locales.not_found} variant="h1" />
           </Screen>
         )}
       />
@@ -55,15 +53,8 @@ const AppPage = props => (
   </App>
 );
 
-AppPage.propTypes = {
-  locales: PropTypes.exact({
-    not_found: PropTypesPlus.locale.isRequired,
-  }),
+AppPages.propTypes = {
   match: PropTypesRouter.match.isRequired,
 };
 
-AppPage.defaultProps = {
-  locales,
-};
-
-export default AppPage;
+export default React.memo(AppPages);

@@ -13,6 +13,7 @@ module.exports = {
       },
     ],
     '@babel/preset-react',
+    '@babel/preset-typescript',
   ],
   plugins: [
     '@babel/plugin-proposal-class-properties',
@@ -20,8 +21,9 @@ module.exports = {
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-syntax-dynamic-import',
-    ['babel-plugin-styled-components', {
-      pure: true,
-    }],
+    'babel-plugin-idx',
+    'babel-plugin-react-intl-auto',
+    ['babel-plugin-styled-components', { pure: true }],
+    'lodash',
   ],
 };

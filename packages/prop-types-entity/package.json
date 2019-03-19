@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "name": "@gnowth/prop-types-entity",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -21,8 +21,8 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.4.0",
-    "@gnowth/prop-types-plus": "0.4.0",
-    "prop-types": "15.6.2"
+    "@entity/core": "0.5.0",
+    "@gnowth/prop-types-plus": "0.5.0",
+    "prop-types": "15.7.2"
   }
 }

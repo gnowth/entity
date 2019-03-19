@@ -2,7 +2,16 @@
 
 exports[`renders correctly 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 4px;
+  min-width: 2rem;
   overflow: hidden;
   position: relative;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.6,1) 0ms;
@@ -10,32 +19,42 @@ exports[`renders correctly 1`] = `
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  width: 100%;
+}
+
+.c2 {
+  height: 4px;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .c1 {
   background-color: black;
   height: 100%;
   position: absolute;
-  -webkit-transition: -webkit-transform 0.25ms cubic-bezier(0.4,0,0.6,1) 0ms;
-  -webkit-transition: transform 0.25ms cubic-bezier(0.4,0,0.6,1) 0ms;
-  transition: transform 0.25ms cubic-bezier(0.4,0,0.6,1) 0ms;
-  -webkit-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
+  -webkit-transition: -webkit-transform 225ms;
+  -webkit-transition: transform 225ms;
+  transition: transform 225ms;
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
   width: 100%;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
 }
 
-.c2 {
+.c3 {
   height: 100%;
   position: absolute;
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  width: 100%;
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);
-  -webkit-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
-  width: 100%;
   -webkit-animation: jSYKOo 2s infinite linear;
   animation: jSYKOo 2s infinite linear;
   left: -145.166611%;
@@ -43,7 +62,7 @@ exports[`renders correctly 1`] = `
   transition: none;
 }
 
-.c3 {
+.c4 {
   background-color: black;
   display: inline-block;
   height: 100%;
@@ -53,7 +72,7 @@ exports[`renders correctly 1`] = `
   animation: hvVyfP 2s infinite linear;
 }
 
-.c4 {
+.c5 {
   -webkit-animation: hgPsqz 2s infinite linear;
   animation: hgPsqz 2s infinite linear;
   height: 100%;
@@ -61,14 +80,14 @@ exports[`renders correctly 1`] = `
   position: absolute;
   -webkit-transition: none;
   transition: none;
-  -webkit-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
   visibility: visible;
   width: 100%;
 }
 
-.c5 {
+.c6 {
   -webkit-animation: dkIHsc 2s infinite linear;
   animation: dkIHsc 2s infinite linear;
   background-color: black;
@@ -85,22 +104,27 @@ exports[`renders correctly 1`] = `
 >
   <div
     className="c1"
+    value={100}
   />
   <div
     className="c2"
-    value={null}
   >
-    <span
+    <div
       className="c3"
       value={null}
-    />
-  </div>
-  <div
-    className="c4"
-  >
-    <span
+    >
+      <span
+        className="c4"
+        value={null}
+      />
+    </div>
+    <div
       className="c5"
-    />
+    >
+      <span
+        className="c6"
+      />
+    </div>
   </div>
 </div>
 `;

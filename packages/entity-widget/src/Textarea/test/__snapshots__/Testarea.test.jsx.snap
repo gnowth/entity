@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
+.c0 {
+  width: 100%;
+}
+
 <textarea
-  className="Textarea__WidgetTextarea-sc-11zi4lv-0 iQaKUz"
+  className="c0"
   name="test"
+  namespace="component_widgetTextarea"
   onChange={[Function]}
   value=""
-  variant="main"
+  variant="standard"
 />
 `;

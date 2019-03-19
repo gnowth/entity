@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
@@ -23,7 +24,7 @@ module.exports = {
 
   resolve: {
     alias: alias(path.join(process.cwd(), isAnalyze || isBuild || isStart ? '' : 'packages/dev-client')),
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     plugins: [
       new DirectoryNamedPlugin(true),
     ],
@@ -85,6 +86,8 @@ module.exports = {
 
     // Build plugins
     (isBuild || isAnalyze) && [
+      new LodashModuleReplacementPlugin(),
+
       new webpack.optimize.AggressiveMergingPlugin(),
 
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -103,7 +106,7 @@ module.exports = {
 
         runtimeCaching: [{
           urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-          handler: 'cacheFirst',
+          handler: 'CacheFirst',
           options: {
             cacheName: 'images',
             expiration: { maxEntries: 10 },

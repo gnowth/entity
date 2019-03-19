@@ -1,118 +1,53 @@
-import _flowRight from 'lodash/flowRight';
-import _isFunction from 'lodash/isFunction';
-import _isObjectLike from 'lodash/isObjectLike';
-import _isString from 'lodash/isString';
+import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
-import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
-import { withDefault } from '@gnowth/default';
-import { withState } from '@gnowth/higher-order-component';
-import { connect } from 'react-redux';
+import { useDefault } from '@gnowth/default';
 
-import withInput from './withInput';
+import defaultHooks from './control.hooks';
 
-class Control extends React.Component {
-  handleEvent = () => {
-    const action = this.props.action({ ...this.getPropsContext() });
+const mapDefault = {
+  component: ['entityForm_button', 'component_button'],
+  errorBoundaryComponent: ['entityForm_errorBoundary', 'component_errorBoundary'],
+};
 
-    return _isObjectLike(action) && 'meta' in action && 'type' in action
-      ? this.props.setState({ action: this.props.dispatch(action) })
-      : this.props.onChange({
-        target: {
-          name: this.props.name,
-          value: action,
-        },
-      });
-  }
+function Control(props) {
+  const hooks = { ...defaultHooks, ...props.hooks };
+  const Components = useDefault(mapDefault, props);
 
-  getProps() {
-    return Object.assign(
-      {
-        [this.props.event]: this.handleEvent,
-        disabled: this.props.disabled || this.props.readOnly,
-      },
-
-      !_isString(this.props.component) && {
-        processing: this.props.processing,
-        processingDidFail: this.props.processingDidFail,
-      },
-
-      _isFunction(this.props.componentProps)
-        ? this.props.componentProps(this.getPropsContext())
-        : this.props.componentProps,
-    );
-  }
-
-  getPropsContext() {
-    return {
-      errors: this.props.errors,
-      field: this.props.field,
-      initialValue: this.props.initialValue,
-      processing: this.props.processing,
-      processingDidFail: this.props.processingDidFail,
-      value: this.props.value,
-    };
-  }
-
-  render() {
-    const Component = this.props.component;
-
-    return (
-      <Component {...this.getProps()} />
-    );
-  }
+  return (
+    <Components.errorBoundaryComponent {...hooks.usePropsErrorBoundary(props, Components)}>
+      <Components.component {...hooks.usePropsComponent(props, Components.component)} />
+    </Components.errorBoundaryComponent>
+  );
 }
 
-Control.propTypes = {
+Control.propTypes = exact({
   action: PropTypes.func.isRequired,
-  component: PropTypesPlus.component.isRequired,
+  array: PropTypes.bool,
+  component: PropTypesPlus.component,
   componentProps: PropTypes.shape({}),
-  disabled: PropTypes.bool,
-  dispatch: PropTypes.func.isRequired,
-  errors: PropTypesImmutable.list.isRequired,
-  event: PropTypes.string,
-  field: PropTypesEntity.entityField.isRequired,
-  initialValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  errorBoundaryComponent: PropTypesPlus.component,
+  errorBoundaryComponentProps: PropTypes.shape({}),
+  event: PropTypesPlus.string,
+  hooks: PropTypes.exact({
+    usePropsComponent: PropTypes.func,
+    usePropsErrorBoundary: PropTypes.func,
+  }),
   name: PropTypesPlus.string,
-  onChange: PropTypes.func.isRequired,
-  processing: PropTypes.bool.isRequired,
-  processingDidFail: PropTypes.bool.isRequired,
-  readOnly: PropTypes.bool,
-  setState: PropTypes.func.isRequired,
-  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-};
-
-Control.defaultProps = {
-  componentProps: {},
-  disabled: undefined,
-  event: 'onClick',
-  initialValue: undefined,
-  name: undefined,
-  readOnly: undefined,
-  value: undefined,
-};
-
-const mapStateToProps = (state, props) => ({
-  processing: !!props.state.action
-    && props.state.action.meta.entity.duck.status(state, {
-      ...props.state.action.meta,
-      status: props.state.action.meta.keyProcessing,
-    }),
-
-  processingDidFail: !!props.state.action
-    && props.state.action.meta.entity.duck.status(state, {
-      ...props.state.action.meta,
-      status: props.state.action.meta.keyProcessingDidFail,
-    }),
+  submit: PropTypes.bool,
 });
 
-export default _flowRight(
-  withInput,
-  withDefault({
-    component: ['entityForm_button', 'component_button'],
-  }),
-  withState({ initialState: { action: undefined } }),
-  connect(mapStateToProps),
-)(Control);
+Control.defaultProps = {
+  array: false,
+  component: undefined,
+  componentProps: {},
+  errorBoundaryComponent: undefined,
+  errorBoundaryComponentProps: {},
+  event: 'onClick',
+  hooks: undefined,
+  name: undefined,
+  submit: false,
+};
+
+export default React.memo(Control);

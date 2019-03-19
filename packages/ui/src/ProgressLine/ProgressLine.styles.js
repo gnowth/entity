@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color, mixins } from '@gnowth/theme';
 
 const primaryScale = keyframes`
   0% {
@@ -84,44 +84,53 @@ const secondaryTranslate = keyframes`
 `;
 
 export const Block = styled.div`
+  display: flex;
+  align-items: center;
   height: ${props => props.height};
+  min-width: 2rem;
   overflow: hidden;
   position: relative;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   transform: translateZ(0);
-  width: 100%;
+
+  ${mixins.margin}
+`;
+
+export const BarWrapper = styled.div`
+  height: ${props => props.thickness};
+  position: relative;
+  flex: 1;
 `;
 
 export const Buffer = styled.div`
-  background-color: ${props => props.color || color({ name: 'gray' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'gray', paletteWeight: props.paletteWeight })(props)};
   height: 100%;
   position: absolute;
-  transition: transform 0.25ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-  transform-origin: top left;
+  transition: transform ${props => props.transitionDuration || '225ms'};
+  transform-origin: left top;
   width: 100%;
+
+  ${props => props.value !== null && css`
+    transform: translateX(${props.value - 100}%);
+  `}
 `;
 
 export const BarPrimary = styled.div`
   height: 100%;
   position: absolute;
-  transform: scaleX(0);
-  transform-origin: top left;
+  transform-origin: left top;
   width: 100%;
 
   ${props => props.value === null && css`
+    transform: scaleX(0);
     animation: ${primaryTranslate} 2s infinite linear;
     left: -145.166611%;
     transition: none;
   `}
-
-  ${props => props.value !== null && css`
-    transition: transform 225ms;
-    transform: translateX(-${50 - props.value / 2}%);
-  `}
 `;
 
 export const BarPrimaryInner = styled.span`
-  background-color: ${props => props.color || color({ name: 'primary' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'primary', paletteWeight: props.paletteWeight })(props)};
   display: inline-block;
   height: 100%;
   position: absolute;
@@ -132,8 +141,8 @@ export const BarPrimaryInner = styled.span`
   `}
 
   ${props => props.value !== null && css`
-    transform: scaleX(${props.value / 100});
-    transition: transform 225ms;
+    transform: translateX(${props.value - 100}%);
+    transition: transform ${props.transitionDuration || '225ms'} cubic-bezier(0.4, 0, 0.6, 1) 0ms;
   `}
 `;
 
@@ -143,14 +152,14 @@ export const BarSecondary = styled.div`
   left: -54.888891%;
   position: absolute;
   transition: none;
-  transform-origin: top left;
+  transform-origin: left top;
   visibility: visible;
   width: 100%;
 `;
 
 export const BarSecondaryInner = styled.span`
   animation: ${secondaryScale} 2s infinite linear;
-  background-color: ${props => props.color || color({ name: 'primary' })(props)};
+  background-color: ${props => color({ palette: props.palette || 'primary', paletteWeight: props.paletteWeight })(props)};
   display: inline-block;
   height: 100%;
   position: absolute;

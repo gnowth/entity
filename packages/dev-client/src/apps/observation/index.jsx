@@ -1,39 +1,23 @@
 import PropTypes from 'prop-types';
 import PropTypesRouter from 'react-router-prop-types';
 import React from 'react';
-import { ViewScreen } from '@entity/view';
-import { App } from '@gnowth/app';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { App, RouteAuthenticated } from '@gnowth/app';
+import { Redirect, Switch } from 'react-router-dom';
 
-import EntityObservation from 'apps/observation/entities/Observation';
-import FormObservation from 'apps/observation/forms/Observation';
-import ViewObservations from 'apps/observation/views/Observations';
+import ScreenObservation from 'apps/observation/screens/Observation';
+import ScreenObservations from 'apps/observation/screens/Observations';
 
 const AppObservation = props => (
   <App>
     <Switch>
-      <Route
+      <RouteAuthenticated
         path={`${props.match.url}/list`}
-        component={() => (
-          <ViewScreen
-            queryComponentProps={{
-              action: () => EntityObservation.duck.get(),
-              component: ViewObservations,
-            }}
-          />
-        )}
+        component={ScreenObservations}
       />
 
-      <Route
+      <RouteAuthenticated
         path={`${props.match.url}/:uuid?`}
-        component={routeProps => (
-          <ViewScreen
-            queryComponentProps={{
-              action: () => EntityObservation.duck.get({ id: routeProps.match.params.uuid || null }),
-              component: FormObservation,
-            }}
-          />
-        )}
+        component={ScreenObservation}
         exact
       />
 

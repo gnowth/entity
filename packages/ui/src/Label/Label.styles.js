@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color, mixins } from '@gnowth/theme';
 
 export const UILabelRoot = styled.div`
+  ${mixins.margin}
   ${props => props.css}
 `;
 
@@ -11,7 +12,7 @@ export const Label = styled.label`
 
 export default {
   icon: css`
-    color: ${color({ name: 'danger' })};
+    color: ${color({ palette: 'danger' })};
 
     && {
       font-size: 0.8rem;

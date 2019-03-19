@@ -1,5 +1,6 @@
 import styled, { css, ThemeConsumer } from 'styled-components';
 import React from 'react';
+import { variant } from '@gnowth/theme';
 import { boolean, select } from '@storybook/addon-knobs';
 
 import UIIcon from '.';
@@ -35,7 +36,7 @@ export default stories => stories
           fontawesome={boolean('fontawesome', false)}
           material={boolean('material', false)}
           name={select('name', ['apple', 'delete', 'plus'], 'apple')}
-          variant={select('variant', Object.keys(theme.components?.uiIcon || {}), 'main')}
+          variant={select('variant', variant({ name: 'component_uiIcon_' })({ theme }), 'main')}
         />
       )}
     </ThemeConsumer>
@@ -43,14 +44,11 @@ export default stories => stories
 
   .add('variants', () => (
     <ThemeConsumer>
-      { theme => Object.keys(theme.components?.uiIcon || {}).map(variant => (
-        <Wrapper key={variant}>
-          <UIIcon
-            name="apple"
-            variant={variant}
-          />
+      { theme => variant({ name: 'component_uiIcon_' })({ theme }).map(name => (
+        <Wrapper key={name}>
+          <UIIcon name="apple" variant={name} />
 
-          { variant }
+          { name }
         </Wrapper>
       ))}
     </ThemeConsumer>

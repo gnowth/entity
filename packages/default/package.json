@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "name": "@gnowth/default",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
@@ -18,11 +18,14 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@gnowth/prop-types-plus": "0.4.0",
+    "prop-types": "15.7.2"
+  },
+  "devDependencies": {
     "lodash": "4.17.11",
-    "prop-types": "15.6.2"
+    "react": "16.8.4"
   },
   "peerDependencies": {
-    "react": "16.7.0"
+    "lodash": ">=4.12.0",
+    "react": ">=16.8.0"
   }
 }

@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color } from '@gnowth/style';
+import { color, mixins } from '@gnowth/theme';
 
 const spinnerRotateLinear = keyframes`
   0% {
@@ -96,10 +96,10 @@ const spinnerStrokeRotate = props => keyframes`
 export const Circle = styled.circle`
   animation-name: ${props => spinnerStrokeRotate(props)};
   fill: transparent;
-  stroke: ${props => props.color || color({ name: 'primary' })(props)};
+  stroke: ${props => color({ palette: props.palette || 'primary', paletteWeight: props.paletteWeight })(props)};
   stroke-dasharray: ${props => `${(100 - props.thickness) * Math.PI}px`};
   stroke-width: ${props => `${props.thickness}%`};
-  transition: stroke-dashoffset 225ms linear;
+  transition: stroke-dashoffset ${props => props.transitionDuration || '225ms'} linear;
   transform-box: view-box;
   transform-origin: center;
 
@@ -121,9 +121,8 @@ export const Container = styled.div`
   position: relative;
   width: ${props => props.size};
 
-  ${props => props.value === null && css`
-    animation: ${spinnerRotateLinear} 2s linear infinite;
-  `}
+  ${mixins.margin}
+  ${mixins.padding}
 `;
 
 export const SVG = styled.svg`
@@ -135,4 +134,8 @@ export const SVG = styled.svg`
   transform: rotate(-90deg);
   transform-origin: center;
   width: 100%;
+
+  ${props => props.value === null && css`
+    animation: ${spinnerRotateLinear} 2s linear infinite;
+  `}
 `;

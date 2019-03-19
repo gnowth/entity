@@ -1,4 +1,4 @@
-import _isFunction from 'lodash/isFunction';
+import _ from 'lodash';
 import { fromJS, isImmutable, List, Map } from 'immutable';
 
 import isRequired from '../validator/is-required';
@@ -22,15 +22,15 @@ export default class Field {
       defaults,
       options,
       {
-        validators: _isFunction(options.validators)
+        validators: _.isFunction(options.validators)
           ? options.validators(defaults.validators)
           : (options.validators || defaults.validators),
       },
     );
   }
 
-  clean(record, options = {}) {
-    const newOptions = { ...options, field: this };
+  clean(record, configs = {}) {
+    const newOptions = { ...configs, field: this };
 
     return this.cleaners.reduce(
       (prev, cleaner) => cleaner(prev, newOptions),
@@ -46,15 +46,9 @@ export default class Field {
     return this.many ? List() : null;
   }
 
-  getEntity() {
+  getErrors(errors, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      throw new Error(`Field.getEntity (${this.constructor.name}): method is not supported.`);
-    }
-  }
-
-  getErrors(errors, options = {}) {
-    if (process.env.NODE_ENV !== 'production') {
-      if (options.name) throw new Error(`Field.getErrors (${this.constructor.name}): option "name" is not supported.`);
+      if (configs.name) throw new Error(`Field.getErrors (${this.constructor.name}): option "name" is not supported.`);
     }
 
     return errors;
@@ -119,11 +113,13 @@ export default class Field {
   }
 
   toParams(value) {
-    return value?.toString();
+    return (value && value.toString()) || '';
   }
 
-  toString(value) {
-    return value?.toString();
+  toString(value = null) {
+    return value === null
+      ? ''
+      : value.toString();
   }
 
   validate(value, options = {}) {
@@ -131,7 +127,7 @@ export default class Field {
       if (this.many && !List.isList(value)) throw new Error(`Field.validate (${this.constructor.name}-${options.fieldName}): "value" must be an "Immutable List" with field option "many"`);
     }
 
-    const validators = _isFunction(options.validators)
+    const validators = _.isFunction(options.validators)
       ? options.validators(this.validators)
       : (options.validators || this.validators);
 

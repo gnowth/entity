@@ -1,3 +1,4 @@
+import idx from 'idx';
 import moment from 'moment';
 import { EntityTitle, Fields } from '@entity/core';
 
@@ -24,30 +25,30 @@ export default class Activity extends EntityTitle {
     }),
     title: new Fields.CharField(),
     title_short: new Fields.CharField({ blank: true }),
-    uuid: new Fields.IdField({ blank: true }),
+    uuid: new Fields.IdField({ blank: true, mock: 'random.uuid' }),
   }
 
-  static actionComplete(record, options = {}) {
+  static actionComplete(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityActivity.actionComplete (${this.name}): "save" action is required in duck`);
+      if (!idx(this, x => x.duck.actions.save)) throw new Error(`EntityActivity.actionComplete (${this.name}): "save" action is required in duck`);
     }
 
-    return this.duck.save(record, {
+    return this.duck.actions.save(record, {
       action: 'complete',
       method: 'post',
-      ...options,
+      ...configs,
     });
   }
 
-  static actionSubmit(record, options = {}) {
+  static actionSubmit(record, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (!this.duck?.save) throw new Error(`EntityActivity.actionSubmit (${this.name}): "save" action is required in duck`);
+      if (!idx(this, x => x.duck.actions.save)) throw new Error(`EntityActivity.actionSubmit (${this.name}): "save" action is required in duck`);
     }
 
-    return this.duck.save(record, {
+    return this.duck.actions.save(record, {
       action: 'submit',
       method: 'post',
-      ...options,
+      ...configs,
     });
   }
 

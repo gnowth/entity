@@ -1,45 +1,23 @@
-import _isFunction from 'lodash/isFunction';
-import _mapValues from 'lodash/mapValues';
-import _omitBy from 'lodash/omitBy';
+import _ from 'lodash';
 import React from 'react';
 
-import { Consumer } from './context';
-
-const getProps = (context, props, mapProps) => {
-  if (!mapProps) {
-    return { defaults: context };
-  }
-
-  const computedMapProps = _isFunction(mapProps)
-    ? mapProps(props)
-    : mapProps;
-
-  return _mapValues(
-    computedMapProps,
-    (value) => {
-      const computedValues = Array.isArray(value) ? value : [value];
-      const computedValue = computedValues.find(val => context[val]);
-
-      return computedValue ? context[computedValue] : undefined;
-    },
-  );
-};
+import useDefault from './use-default';
 
 const getDisplayName = ComposedComponent => ComposedComponent.displayName
   || ComposedComponent.name
   || 'Component';
 
-export default options => (ComposedComponent) => {
-  const withDefault = props => (
-    <Consumer>
-      { context => (
-        <ComposedComponent
-          {...getProps(context, props, options)}
-          {..._omitBy(props, prop => prop === undefined)}
-        />
-      )}
-    </Consumer>
-  );
+export default configs => (ComposedComponent) => {
+  function withDefault(props) {
+    const defaults = useDefault(_.isFunction(configs) ? configs(props) : configs, props); // eslint-disable-line react-hooks/rules-of-hooks
+
+    return (
+      <ComposedComponent
+        {...props}
+        {...(configs ? defaults : { defaults })}
+      />
+    );
+  }
 
   withDefault.displayName = `withDefault(${getDisplayName(ComposedComponent)})`;
 

@@ -1,3 +1,4 @@
+import action from './action';
 import allOfType from './all-of-type';
 import component from './component';
 import componentProps from './component-props';
@@ -12,10 +13,12 @@ import notRequiredIf from './not-required-if';
 import notRequiredIfNot from './not-required-if-not';
 import store from './store';
 import string from './string';
+import typography from './typography';
 import value from './value';
 import withRequired from './with-required';
 
 export default {
+  action,
   allOfType,
   component,
   componentProps,
@@ -30,6 +33,7 @@ export default {
   notRequiredIfNot,
   store,
   string,
+  typography,
   value,
   withRequired,
 };

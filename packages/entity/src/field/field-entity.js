@@ -1,5 +1,4 @@
-import _isFunction from 'lodash/isFunction';
-import _isString from 'lodash/isString';
+import _ from 'lodash';
 import { List, Map } from 'immutable';
 
 import AnyField from './field-any';
@@ -7,35 +6,35 @@ import entityValid from '../validator/entity-valid';
 import list from '../validator/list';
 
 export default class EntityField extends AnyField {
-  constructor(options = {}) {
+  constructor(configs = {}) {
     const defaults = {
       nested: true,
       type: 'entity',
     };
 
-    const entityValidators = options.many
+    const entityValidators = configs.many
       ? [list([entityValid])]
       : [entityValid];
 
     super(Object.assign(
       defaults,
-      options,
+      configs,
       {
         validators: defaultValidators => (
-          _isFunction(options.validators)
-            ? options.validators(defaultValidators.concat(entityValidators))
-            : options.validators || defaultValidators.concat(entityValidators)
+          _.isFunction(configs.validators)
+            ? configs.validators(defaultValidators.concat(entityValidators))
+            : configs.validators || defaultValidators.concat(entityValidators)
         ),
       },
     ));
 
     if (process.env.NODE_ENV !== 'production') {
-      if (!options.entity) throw new Error(`${this.constructor.name}.constructor: "entity" option is required`);
+      if (!configs.entity) throw new Error(`${this.constructor.name}.constructor: "entity" option is required`);
     }
   }
 
   dataToValue(data) {
-    return this.getEntity({ data }).dataToRecord(data);
+    return this.entity.dataToRecord(data);
   }
 
   default() {
@@ -44,44 +43,40 @@ export default class EntityField extends AnyField {
     return this.blank ? null : this.entity.dataToRecord({});
   }
 
-  getEntity() {
-    return this.entity;
-  }
-
-  getErrors(errors, options = {}) {
+  getErrors(errors, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getErrors (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getErrors (${this.entity.name}): field "${options.name}" not found`);
+      if (configs.name && !_.isString(configs.name)) throw new Error(`EntityField.getErrors (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getErrors (${this.entity.name}): field "${configs.name}" not found`);
     }
 
-    return options.name
+    return configs.name
       ? errors
         .filter(error => Map.isMap(error) && error.get('detail'))
-        .flatMap(error => error.getIn(['errors', options.name]))
+        .flatMap(error => error.getIn(['errors', configs.name]))
         .filter(error => error)
       : errors;
   }
 
-  getField(options = {}) {
+  getField(configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getField (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getField (${this.entity.name}): field "${options.name}" not found`);
+      if (configs.name && !_.isString(configs.name)) throw new Error(`EntityField.getField (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getField (${this.entity.name}): field "${configs.name}" not found`);
     }
 
-    return options.name
-      ? this.getEntity(options).fields[options.name]
+    return configs.name
+      ? this.entity.fields[configs.name]
       : this;
   }
 
-  getId(value, options = {}) {
+  getId(value, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getId (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getId (${this.entity.name}): field "${options.name}" not found`);
+      if (configs.name && !_.isString(configs.name)) throw new Error(`EntityField.getId (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getId (${this.entity.name}): field "${configs.name}" not found`);
     }
 
-    return this.getField({ value, ...options })
-      .getEntity({ value, ...options })
-      .getId(this.getValue(value, options));
+    return this.getField({ value, ...configs })
+      .entity
+      .getId(this.getValue(value, configs));
   }
 
   getKey(value) {
@@ -92,21 +87,21 @@ export default class EntityField extends AnyField {
     return this.options || this.entity.options || List();
   }
 
-  getValue(value, options = {}) {
+  getValue(value, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`EntityField.getValue (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.getValue (${this.entity.name}): field "${options.name}" not found`);
+      if (configs.name && !_.isString(configs.name)) throw new Error(`EntityField.getValue (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.getValue (${this.entity.name}): field "${configs.name}" not found`);
     }
 
-    return options.name
-      ? value?.get(options.name)
+    return configs.name && value
+      ? value.get(configs.name)
       : value;
   }
 
-  isBlank(value = null, options = {}) {
+  isBlank(value = null, configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
-      if (options.name && !_isString(options.name)) throw new Error(`EntityField.isBlank (${this.entity.name}): "name" option must be either a string or undefined`);
-      if (options.name && !this.getEntity(options).fields[options.name]) throw new Error(`EntityField.isBlank (${this.entity.name}): field "${options.name}" not found`);
+      if (configs.name && !_.isString(configs.name)) throw new Error(`EntityField.isBlank (${this.entity.name}): "name" option must be either a string or undefined`);
+      if (configs.name && !this.entity.fields[configs.name]) throw new Error(`EntityField.isBlank (${this.entity.name}): field "${configs.name}" not found`);
     }
 
     return value === null || (
@@ -116,8 +111,8 @@ export default class EntityField extends AnyField {
     );
   }
 
-  toData(value, options = {}) {
-    return this.getEntity({ value, ...options }).toData(value, options);
+  toData(value, configs = {}) {
+    return this.entity.toData(value, configs);
   }
 
   valueToParam(value = null) {
@@ -126,11 +121,11 @@ export default class EntityField extends AnyField {
       : value.get(this.entity.idField);
   }
 
-  toParams(value, options) {
-    return this.getId(value, options);
+  toParams(value, configs) {
+    return this.getId(value, configs);
   }
 
-  toString(value, options = {}) {
-    return this.getEntity({ value, ...options }).toString(value, options);
+  toString(value, configs = {}) {
+    return this.entity.toString(value, configs);
   }
 }

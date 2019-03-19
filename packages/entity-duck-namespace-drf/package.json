@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "name": "@entity/duck-namespace-drf",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -21,9 +21,16 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/duck": "0.4.0",
+    "@entity/core": "0.5.0",
+    "@entity/duck": "0.5.0",
+    "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
-    "lodash": "4.17.11",
-    "query-string": "6.2.0"
+    "query-string": "6.4.0"
+  },
+  "devDependencies": {
+    "lodash": "4.17.11"
+  },
+  "peerDependencies": {
+    "lodash": ">=4.12.0"
   }
 }

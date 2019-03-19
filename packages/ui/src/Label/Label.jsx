@@ -2,66 +2,87 @@ import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import PropTypesPlus from '@gnowth/prop-types-plus';
 import React from 'react';
+import { useEnhanceProps } from '@gnowth/theme';
 
 import UIError from '../Error';
 import UITooltip from '../Tooltip';
-import UITypeSet from '../TypeSet';
+import UIType from '../Type';
 
+import hooks from './Label.hooks';
 import styles, { Label, UILabelRoot } from './Label.styles';
 
-const UILabel = props => (
-  <UILabelRoot className={props.className} css={props.css}>
-    { (props.label || props.labelLocale) && (
-      <UITypeSet
-        component={Label}
-        locale={props.labelLocale}
-        variant="label"
-        {...props.labelComponentProps}
-      >
-        { props.label }
-      </UITypeSet>
-    )}
+function UILabel(_props) {
+  const props = useEnhanceProps(_props);
+  const propsTooltip = hooks.usePropsTooltip(props, styles);
 
-    { (props.label || props.labelLocale) && props.errors && props.errors.size > 0 && (
-      <UITooltip
-        componentProps={{
-          css: props.styles.icon,
-          name: 'error',
-          material: true,
-        }}
-        css={props.styles.tooltip}
-      >
-        { props.errors.map((error, index) => (
-          <UIError key={index}>{ error }</UIError> // eslint-disable-line
-        ))}
-      </UITooltip>
-    )}
+  return (
+    <UILabelRoot
+      className={props.className}
+      css={props.css}
+      $margin={props.$margin} // eslint-disable-line react/prop-types
+      $marginBottom={props.$marginBottom} // eslint-disable-line react/prop-types
+      $marginLeft={props.$marginLeft} // eslint-disable-line react/prop-types
+      $marginRight={props.$marginRight} // eslint-disable-line react/prop-types
+      $marginTop={props.$marginTop} // eslint-disable-line react/prop-types
+    >
+      { props.label && (
+        <UIType
+          as={Label}
+          palette={props.labelComponentPalette}
+          variant={props.labelComponentVariant || 'label'}
+          value={props.label}
+          {...props.labelComponentProps}
+        />
+      )}
 
-    { props.children }
-  </UILabelRoot>
-);
+      { props.label && !props.errorComponentHidden && props.inputProps.errors && props.inputProps.errors.size > 0 && (
+        <UITooltip {...propsTooltip}>
+          { props.inputProps.errors.map((error, index) => (
+            <UIError key={index}>{ error }</UIError> // eslint-disable-line react/no-array-index-key
+          ))}
+        </UITooltip>
+      )}
+
+      { props.children }
+    </UILabelRoot>
+  );
+}
 
 UILabel.propTypes = {
   children: PropTypes.node,
   css: PropTypesPlus.css,
-  errors: PropTypesImmutable.list,
-  label: PropTypes.string,
+  errorComponentHidden: PropTypes.bool,
+  inputProps: PropTypes.shape({
+    errors: PropTypesImmutable.list,
+  }).isRequired,
+  label: PropTypesPlus.typography,
+  labelComponentPalette: PropTypes.string,
   labelComponentProps: PropTypes.shape({}),
-  labelLocale: PropTypesPlus.locale,
-  styles: PropTypes.exact({
-    icon: PropTypesPlus.css,
-    tooltip: PropTypesPlus.css,
-  }),
+  labelComponentVariant: PropTypes.string,
+  margin: PropTypes.string,
+  marginBottom: PropTypes.string,
+  marginLeft: PropTypes.string,
+  marginRight: PropTypes.string,
+  marginTop: PropTypes.string,
+  namespace: PropTypesPlus.string,
+  variant: PropTypes.string,
 };
 
 UILabel.defaultProps = {
-  styles,
   children: undefined,
   css: undefined,
-  errors: undefined,
+  errorComponentHidden: undefined,
   label: undefined,
+  labelComponentPalette: undefined,
   labelComponentProps: {},
-  labelLocale: undefined,
+  labelComponentVariant: undefined,
+  margin: undefined,
+  marginBottom: undefined,
+  marginLeft: undefined,
+  marginRight: undefined,
+  marginTop: undefined,
+  namespace: 'component_uiLabel',
+  variant: 'standard',
 };
 
-export default UILabel;
+export default React.memo(UILabel);

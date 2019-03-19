@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "name": "@gnowth/prop-types-duck",
   "private": false,
-  "repository": "https://github.com/gnowth/react.git",
+  "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -21,8 +21,8 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/duck": "0.4.0",
-    "@gnowth/prop-types-entity": "0.4.0",
-    "@gnowth/prop-types-plus": "0.4.0"
+    "@entity/duck": "0.5.0",
+    "@gnowth/prop-types-entity": "0.5.0",
+    "@gnowth/prop-types-plus": "0.5.0"
   }
 }

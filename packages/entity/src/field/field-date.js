@@ -3,12 +3,12 @@ import moment from 'moment';
 import AnyField from './field-any';
 
 export default class DateField extends AnyField {
-  constructor(options = {}) {
+  constructor(configs = {}) {
     super({
       allowTime: false,
       dateFormat: 'YYYY-MM-DD',
       type: 'date',
-      ...options,
+      ...configs,
     });
   }
 
@@ -17,14 +17,14 @@ export default class DateField extends AnyField {
   }
 
   toData(value) {
-    return value?.format(this.dateFormat);
+    return value && value.format(this.dateFormat);
   }
 
   toParams(value) {
-    return value?.format(this.dateFormat) || '';
+    return (value && value.format(this.dateFormat)) || '';
   }
 
-  toString(value = null) {
-    return value?.format(this.dateFormat) || '';
+  toString(value) {
+    return (value && value.format(this.dateFormat)) || '';
   }
 }

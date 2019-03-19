@@ -9,74 +9,65 @@ import { UIButton, UISpacer } from '@gnowth/ui';
 import locales from './Controls.locales';
 import styles, { Controls } from './Controls.styles';
 
-const FormControls = (props) => {
-  const ExtraControlsComponent = props.extraControlsComponent;
+const FormControls = ({ extraControlsComponent: ExtraControlsComponent, ...props }) => (
+  <Form {...props} css={props.css}>
+    { !props.resetHidden && (
+      <Control
+        action={props.resetAction}
+        component={props.buttonComponent}
+        componentProps={{
+          content: locales.reset,
+          ...props.resetButtonComponentProps,
+        }}
+      />
+    )}
 
-  return (
-    <Form {...props}>
-      { !props.resetHidden && (
-        <Control
-          action={props.resetAction}
-          component={props.buttonComponent}
-          componentProps={{
-            locale: props.locales.reset,
-            ...props.resetButtonComponentProps,
-          }}
-        />
-      )}
+    <ExtraControlsComponent />
 
-      <ExtraControlsComponent />
+    { !props.saveHidden && (
+      <Control
+        action={props.saveAction}
+        component={props.buttonComponent}
+        componentProps={{
+          content: locales.save,
+          css: styles.buttons,
+          ...props.saveButtonComponentProps,
+        }}
+      />
+    )}
 
-      { !props.saveHidden && (
-        <Control
-          action={props.saveAction}
-          component={props.buttonComponent}
-          componentProps={{
-            css: props.styles.buttons,
-            locale: props.locales.save,
-            ...props.saveButtonComponentProps,
-          }}
-        />
-      )}
-
-      { !props.submitHidden && (
-        <Control
-          action={props.submitAction}
-          component={props.buttonComponent}
-          componentProps={{
-            css: props.styles.buttons,
-            locale: props.locales.submit,
-            ...props.submitButtonComponentProps,
-          }}
-        />
-      )}
-    </Form>
-  );
-};
+    { !props.submitHidden && (
+      <Control
+        action={props.submitAction}
+        component={props.buttonComponent}
+        componentProps={{
+          content: locales.submit,
+          css: styles.buttons,
+          palette: 'primary',
+          variant: 'contained',
+          ...props.submitButtonComponentProps,
+        }}
+      />
+    )}
+  </Form>
+);
 
 FormControls.propTypes = {
   buttonComponent: PropTypesPlus.component,
   component: PropTypesPlus.component,
+  css: PropTypesPlus.css,
   extraControlsComponent: PropTypesPlus.component,
   field: PropTypesEntity.entityFieldWithInterface({
     actionReset: PropTypes.func.isRequired,
     actionSave: PropTypes.func.isRequired,
     actionSubmit: PropTypes.func.isRequired,
   }).isRequired,
-  locales: PropTypes.exact({
-    reset: PropTypesPlus.locale.isRequired,
-    save: PropTypesPlus.locale.isRequired,
-    submit: PropTypesPlus.locale.isRequired,
-  }),
   resetAction: PropTypes.func,
   resetButtonComponentProps: PropTypes.shape({}),
   resetHidden: PropTypes.bool,
   saveAction: PropTypes.func,
   saveButtonComponentProps: PropTypes.shape({}),
   saveHidden: PropTypes.bool,
-  styles: PropTypes.exact({
-    buttons: PropTypesPlus.css,
-  }),
   submitAction: PropTypes.func,
   submitButtonComponentProps: PropTypes.shape({}),
   submitHidden: PropTypes.bool,
@@ -84,20 +75,19 @@ FormControls.propTypes = {
 };
 
 FormControls.defaultProps = {
-  locales,
-  styles,
   buttonComponent: UIButton,
   component: Controls,
+  css: undefined,
   extraControlsComponent: UISpacer,
-  resetAction: ({ value, field, ...options }) => field.entity.actionReset(value, options),
+  resetAction: ({ value, field, ...configs }) => field.entity.actionReset(value, configs),
   resetButtonComponentProps: {},
   resetHidden: false,
-  saveAction: ({ value, field, ...options }) => field.entity.actionSave(value, options),
+  saveAction: ({ value, field, ...configs }) => field.entity.actionSave(value, configs),
   saveButtonComponentProps: {},
   saveHidden: false,
-  submitAction: ({ value, field, ...options }) => field.entity.actionSubmit(value, options),
+  submitAction: ({ value, field, ...configs }) => field.entity.actionSubmit(value, configs),
   submitButtonComponentProps: {},
   submitHidden: false,
 };
 
-export default FormControls;
+export default React.memo(FormControls);
