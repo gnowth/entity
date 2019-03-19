@@ -77,8 +77,10 @@ export default class Entity {
     return new EntityField({ entity: this, ...configs });
   }
 
-  static getId(record) {
-    return record && record.get(this.idField);
+  static getId(record = null) {
+    return record === null
+      ? undefined
+      : record.get(this.idField);
   }
 
   static getPaths() {

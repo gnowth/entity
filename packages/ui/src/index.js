@@ -22,6 +22,8 @@ export { default as UILine } from './Line';
 
 export { default as UIPopup } from './Popup';
 
+export { default as UIPortal } from './Portal';
+
 export { default as UIProgressCircle } from './ProgressCircle';
 
 export { default as UIProgressLine } from './ProgressLine';

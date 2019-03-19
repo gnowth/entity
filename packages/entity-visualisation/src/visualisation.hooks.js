@@ -17,7 +17,7 @@ export default {
     );
   },
 
-  useRenderVisualisation(visualisationRef) {
+  useRenderVisualisation(props, visualisationRef) {
     const context = React.useContext(VisualisationContext);
 
     React.useEffect(
@@ -32,7 +32,7 @@ export default {
 
         visualisationRef.current.onNodeExit(visualisationRef.current.nodes.exit());
       },
-      [context.data],
+      [context.data, props.getData],
     );
   },
 

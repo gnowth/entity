@@ -37,7 +37,7 @@ class WidgetSelect extends React.Component {
         {...this.props}
         getOptionLabel={this.props.getOptionLabel || this.handleGetOptionLabel}
         getOptionValue={this.props.getOptionValue || this.handleGetOptionValue}
-        isClearable={!this.props.field.blank}
+        isClearable={this.props.field.blank}
         isLoading={this.props.processing}
         isMulti={this.props.field.many}
         onChange={this.handleChange}
