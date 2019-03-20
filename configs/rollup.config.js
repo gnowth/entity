@@ -1,5 +1,4 @@
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
 import namedDirectory from 'rollup-plugin-named-directory';
@@ -15,24 +14,18 @@ const packageFile = require(path.join(rootPath, 'package.json'));
 const dependencies = []
   .concat(packageFile.dependencies ? Object.keys(packageFile.dependencies) : [])
   .concat(packageFile.devDependencies ? Object.keys(packageFile.devDependencies) : [])
-  .concat(packageFile.peerDependencies ? Object.keys(packageFile.peerDependencies) : []);
+  .concat(packageFile.peerDependencies ? Object.keys(packageFile.peerDependencies) : [])
+  .filter(dependency => !dependency.startsWith('@private/'));
 
 export default [
   {
     external: dependencies,
     input: path.join(rootPath, 'src/index.js'),
-    output: [
-      {
-        file: path.join(rootPath, 'dist/development.cjs.js'),
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: path.join(rootPath, 'dist/development.esm.js'),
-        format: 'es',
-        sourcemap: true,
-      },
-    ],
+    output: {
+      file: path.join(rootPath, 'dist/development.js'),
+      format: 'es',
+      sourcemap: true,
+    },
     plugins: [
       babel({
         configFile: path.join(__dirname, '../babel.config.js'),
@@ -45,29 +38,19 @@ export default [
         module: true,
       }),
       namedDirectory({
-        matchers: ['<dir>/<dir>.jsx', '<dir>/<dir>.js'],
+        matchers: ['<dir>/index.js', '<dir>/index.jsx', '<dir>/<dir>.js', '<dir>/<dir>.jsx'],
       }),
-      commonjs(),
-      copy({
-        [path.join(__dirname, 'rollup-index.cjs.js')]: 'dist/index.cjs.js',
-        [path.join(__dirname, 'rollup-index.esm.js')]: 'dist/index.esm.js',
-      }),
+      copy({ [path.join(__dirname, 'rollup-index.js')]: 'dist/index.js' }),
     ],
   },
 
   {
     external: dependencies,
     input: path.join(rootPath, 'src/index.js'),
-    output: [
-      {
-        file: path.join(rootPath, 'dist/production.cjs.min.js'),
-        format: 'cjs',
-      },
-      {
-        file: path.join(rootPath, 'dist/production.esm.min.js'),
-        format: 'es',
-      },
-    ],
+    output: {
+      file: path.join(rootPath, 'dist/production.min.js'),
+      format: 'es',
+    },
     plugins: [
       babel({
         configFile: path.join(__dirname, '../babel.config.js'),
@@ -80,9 +63,8 @@ export default [
         module: true,
       }),
       namedDirectory({
-        matchers: ['<dir>/<dir>.jsx', '<dir>/<dir>.js'],
+        matchers: ['<dir>/index.js', '<dir>/index.jsx', '<dir>/<dir>.js', '<dir>/<dir>.jsx'],
       }),
-      commonjs(),
       replace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
       terser(),
     ],
