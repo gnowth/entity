@@ -14,7 +14,7 @@
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
-    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
+    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.cjs.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
     "postbuild": "npm run link-main:dist",
     "postdestroy": "npm run link-main:src",

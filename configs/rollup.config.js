@@ -21,11 +21,18 @@ export default [
   {
     external: dependencies,
     input: path.join(rootPath, 'src/index.js'),
-    output: {
-      file: path.join(rootPath, 'dist/development.js'),
-      format: 'es',
-      sourcemap: true,
-    },
+    output: [
+      {
+        file: path.join(rootPath, 'dist/development.cjs.js'),
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: path.join(rootPath, 'dist/development.esm.js'),
+        format: 'es',
+        sourcemap: true,
+      },
+    ],
     plugins: [
       babel({
         configFile: path.join(__dirname, '../babel.config.js'),
@@ -41,17 +48,26 @@ export default [
         matchers: ['<dir>/<dir>.jsx', '<dir>/<dir>.js'],
       }),
       commonjs(),
-      copy({ [path.join(__dirname, 'rollup-index.js')]: 'dist/index.js' }),
+      copy({
+        [path.join(__dirname, 'rollup-index.cjs.js')]: 'dist/index.cjs.js',
+        [path.join(__dirname, 'rollup-index.esm.js')]: 'dist/index.esm.js',
+      }),
     ],
   },
 
   {
     external: dependencies,
     input: path.join(rootPath, 'src/index.js'),
-    output: {
-      file: path.join(rootPath, 'dist/production.min.js'),
-      format: 'es',
-    },
+    output: [
+      {
+        file: path.join(rootPath, 'dist/production.cjs.min.js'),
+        format: 'cjs',
+      },
+      {
+        file: path.join(rootPath, 'dist/production.esm.min.js'),
+        format: 'es',
+      },
+    ],
     plugins: [
       babel({
         configFile: path.join(__dirname, '../babel.config.js'),
