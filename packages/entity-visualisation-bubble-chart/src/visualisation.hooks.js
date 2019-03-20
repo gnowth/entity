@@ -25,7 +25,7 @@ export default {
     const width = props.width || context.width;
 
     return React.useCallback(
-      _.flowRight(
+      _.flowRight([
         data => data.filter(d => !d.children),
         data => data.descendants(),
         d3.pack()
@@ -34,7 +34,7 @@ export default {
         data => d3.hierarchy(data)
           .sum(value => (!value.children && props.getSize({ entity: props.entity, value })) || 0),
         data => ({ children: data.toArray() }),
-      ),
+      ]),
       [props.margin, props.padding, height, width, props.getSize, props.entity],
     );
   },

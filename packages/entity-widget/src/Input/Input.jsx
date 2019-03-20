@@ -23,7 +23,7 @@ WidgetInput.defaultProps = {
   variant: 'standard',
 };
 
-export default _.flowRight(
+export default _.flowRight([
   injectIntl,
   withProps(props => ({
     placeholder: props.placeholder === undefined && props.placeholderLocale
@@ -31,4 +31,4 @@ export default _.flowRight(
       : props.placeholder,
     placeholderLocale: undefined,
   })),
-)(WidgetInput);
+])(WidgetInput);

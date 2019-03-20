@@ -7,7 +7,7 @@ import { List } from 'immutable';
 import App from 'components/App';
 import EntityObservation from 'apps/observation/entities/Observation';
 
-import { Observation } from '..';
+import { Observation } from '../Observation';
 
 jest.mock('store');
 

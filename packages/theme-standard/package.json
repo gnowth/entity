@@ -3,11 +3,12 @@
   "description": "theme",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
+  "module": "src/index.js",
   "name": "@gnowth/theme-standard",
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "publishConfig": {
     "access": "public"
   },
@@ -16,12 +17,14 @@
     "destroy": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "postbuild": "npm run link-main:dist",
-    "postdestroy": "npm run link-main:src",
+    "link-module:dist": "json -I -f package.json -e 'this.module=\"dist/index.js\"'",
+    "link-module:src": "json -I -f package.json -e 'this.module=\"src/index.js\"'",
+    "postbuild": "npm run link-main:dist && npm run link-module:dist",
+    "postdestroy": "npm run link-main:src && npm run link-module:src",
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@gnowth/theme": "0.5.0"
+    "@gnowth/theme": "0.5.1"
   },
   "devDependencies": {
     "styled-components": "4.1.3"

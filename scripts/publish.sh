@@ -10,18 +10,11 @@ current=$(git symbolic-ref --short HEAD)
 git config --global user.email "$CIRCLE_USERNAME@circleci.com"
 git config --global user.name "$CIRCLE_USERNAME"
 
-# copy package.json to packages/root to get updated by lerna
-mkdir -p packages/root
-cp package.json packages/root
-
 lerna version --exact --amend --convertional-commits --yes --no-commit-hooks --no-git-tag-version --no-push
 
-# get updated package.json from packages/root
-cp -f packages/root/package.json .
-rm -r packages/root
-
 # Commiting changes
-version="v$(npx -c 'echo "$npm_package_version"')"
+version="v$(npx -c 'json -f lerna.json version')"
+npx -c 'json -I -f package.json -e "this.version=\"$version\""'
 
 # publishing
 npm run packages-build
@@ -32,6 +25,7 @@ git tag -a $version -m $version
 lerna publish from-git --yes
 
 npm run packages-link-main:src
+npm run packages-link-module:src
 git tag -d $version
 
 # Updating branch

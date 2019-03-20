@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/gnowth/entity/compare/v0.5.0...v0.5.1) (2019-03-20)
+
+
+### Bug Fixes
+
+* build for non changing root ([#142](https://github.com/gnowth/entity/issues/142)) ([abf55e6](https://github.com/gnowth/entity/commit/abf55e6))
+* build import and lodash replacement ([#139](https://github.com/gnowth/entity/issues/139)) ([0f937b7](https://github.com/gnowth/entity/commit/0f937b7))
+* build not publishing ([#147](https://github.com/gnowth/entity/issues/147)) ([5d7bf5b](https://github.com/gnowth/entity/commit/5d7bf5b))
+* build to commit before publish ([#145](https://github.com/gnowth/entity/issues/145)) ([d6af213](https://github.com/gnowth/entity/commit/d6af213))
+* duck use name as minify will mangle entity ([#141](https://github.com/gnowth/entity/issues/141)) ([6d2cdf9](https://github.com/gnowth/entity/commit/6d2cdf9))
+
+
+
+
+
 # [0.5.0](https://github.com/gnowth/entity/compare/v0.4.0...v0.5.0) (2019-03-19)
 
 

@@ -80,6 +80,7 @@ export default class Duck {
   constructor(configs = {}) {
     if (process.env.NODE_ENV !== 'production') {
       if (!this.constructor.namespace) throw new Error(`@entity-duck Duck [name: ${this.constructor.name}]: static namespace is required`);
+      if (!/^[A-Z]/.exec(configs.name)) throw new Error(`${this.constructor.name}.constructor: "name" option must start with a capital letter`);
       if (!/^[A-Z]/.exec(configs.app)) throw new Error(`${this.constructor.name}.constructor (${configs.name}): "app" option must start with a capital letter`);
     }
 

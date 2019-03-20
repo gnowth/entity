@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { Fields } from '@entity/core';
 
-import WidgetOrdering from '..';
+import WidgetOrdering from '../Ordering';
 
 it('renders correctly', () => {
   const tree = renderer.create(

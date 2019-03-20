@@ -3,11 +3,12 @@
   "description": "prop-types-entity",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
+  "module": "src/index.js",
   "name": "@gnowth/prop-types-entity",
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "publishConfig": {
     "access": "public"
   },
@@ -16,13 +17,15 @@
     "destroy": "rimraf dist",
     "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "postbuild": "npm run link-main:dist",
-    "postdestroy": "npm run link-main:src",
+    "link-module:dist": "json -I -f package.json -e 'this.module=\"dist/index.js\"'",
+    "link-module:src": "json -I -f package.json -e 'this.module=\"src/index.js\"'",
+    "postbuild": "npm run link-main:dist && npm run link-module:dist",
+    "postdestroy": "npm run link-main:src && npm run link-module:src",
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.5.0",
-    "@gnowth/prop-types-plus": "0.5.0",
+    "@entity/core": "0.5.1",
+    "@gnowth/prop-types-plus": "0.5.1",
     "prop-types": "15.7.2"
   }
 }

@@ -115,7 +115,7 @@ export default class Entity {
   }
 
   static mock(faker, index, mockData) {
-    return _.flowRight(
+    return _.flowRight([
       record => this.toData(record),
       data => this.dataToRecord(data),
       fields => ({
@@ -137,7 +137,7 @@ export default class Entity {
         ),
         ...mockData,
       }),
-    )(this.fields);
+    ])(this.fields);
   }
 
   static mockMany(faker, configs = {}) {
