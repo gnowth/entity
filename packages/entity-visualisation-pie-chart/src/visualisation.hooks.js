@@ -5,10 +5,10 @@ import React from 'react';
 export default {
   useGetData(props) {
     return React.useCallback(
-      _.flowRight(
+      _.flowRight([
         d3.pie().value(value => props.getSize({ entity: props.entity, value })),
         data => data.toArray(),
-      ),
+      ]),
       [props.getSize, props.entity],
     );
   },

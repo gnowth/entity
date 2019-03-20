@@ -22,10 +22,10 @@ UIImage.defaultProps = {
   variant: 'standard',
 };
 
-export default _.flowRight(
+export default _.flowRight([
   withTheme,
   withProps(props => ({
     alt: props.name,
     src: image(props),
   })),
-)(UIImage);
+])(UIImage);

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 
-export const filterProps = props => _.flowRight(
+export const filterProps = props => _.flowRight([
   modifiedProps => _.omitBy(modifiedProps, p => p === undefined),
   modifiedProps => _.omit(modifiedProps, [
     'field',
@@ -14,7 +14,7 @@ export const filterProps = props => _.flowRight(
     'valueInitial',
     'willChangeRecord',
   ]),
-)(props);
+])(props);
 
 export default ComposedComponent => function withPropsFiltered(props) {
   return <ComposedComponent {...filterProps(props)} />;
