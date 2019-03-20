@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import UIError from '..';
+import UIError from '../Error';
 
 it('renders correctly', () => {
   const tree = renderer.create(

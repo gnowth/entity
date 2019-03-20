@@ -3,7 +3,7 @@ import styled, { ThemeConsumer } from 'styled-components';
 import React from 'react';
 import { select, text } from '@storybook/addon-knobs';
 
-import UICard from '.';
+import UICard from './Card';
 
 const Wrapper = styled.div`
   text-align: center;

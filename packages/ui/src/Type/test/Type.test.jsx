@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import UIType from '..';
+import UIType from '../Type';
 
 it('renders correctly', () => {
   const tree = renderer.create(

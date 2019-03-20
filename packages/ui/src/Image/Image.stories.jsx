@@ -3,7 +3,7 @@ import React from 'react';
 import { variant } from '@gnowth/theme';
 import { select } from '@storybook/addon-knobs';
 
-import UIImage from '.';
+import UIImage from './Image';
 
 const imageCss = css`
   margin-right: 0.5rem;

@@ -7,7 +7,7 @@ import { List } from 'immutable';
 import App from 'components/App';
 import EntityAction from 'apps/activity/entities/Action';
 
-import FormAction from '..';
+import FormAction from '../Action';
 
 jest.mock('store');
 

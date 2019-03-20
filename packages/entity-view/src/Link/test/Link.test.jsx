@@ -3,7 +3,7 @@ import React from 'react';
 import { EntityTitle, Fields } from '@entity/core';
 import { HashRouter as Router } from 'react-router-dom';
 
-import ViewLink from '..';
+import ViewLink from '../Link';
 
 class EntityTest extends EntityTitle {
   static paths = {
