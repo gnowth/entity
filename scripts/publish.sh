@@ -25,6 +25,8 @@ git push origin $current --force
 
 # publishing
 npm run packages-build
+git add -A
+git commit --amend -m "$version [skip ci]"
 lerna publish from-git --yes
 
 echo "Finished Branch Update!"
