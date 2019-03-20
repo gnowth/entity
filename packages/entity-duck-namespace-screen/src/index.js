@@ -64,7 +64,7 @@ export default class Screen extends Duck {
   }
 
   constructor(configs = {}) {
-    super({ name: configs.entity && configs.entity.name, ...configs });
+    super(configs);
 
     if (process.env.NODE_ENV !== 'production') {
       if (!configs.entity || !Entity.isEntity(configs.entity)) throw new Error(`${this.constructor.name}.constructor: "entity" option must be child of "Entity"`);
