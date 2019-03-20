@@ -3,6 +3,7 @@
   "description": "higher-order-component",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
+  "module": "dist/index.esm.js",
   "name": "@gnowth/higher-order-component",
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",

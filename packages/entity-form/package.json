@@ -3,6 +3,7 @@
   "description": "entity-form",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
+  "module": "dist/index.esm.js",
   "name": "@entity/form",
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",

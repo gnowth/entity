@@ -3,6 +3,7 @@
   "description": "entity-duck-namespace-drf",
   "license": "AGPL-3.0-only",
   "main": "src/index.js",
+  "module": "dist/index.esm.js",
   "name": "@entity/duck-namespace-drf",
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
