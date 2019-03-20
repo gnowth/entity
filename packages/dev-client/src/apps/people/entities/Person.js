@@ -30,7 +30,12 @@ class Person extends Entity {
   }
 }
 
-Person.duck = new DuckDjangoRestFramework({ app: 'People', entity: Person });
+Person.duck = new DuckDjangoRestFramework({
+  app: 'People',
+  entity: Person,
+  name: 'Person',
+});
+
 mock(Person, { size: 20 });
 
 export default Person;

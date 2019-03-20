@@ -30,7 +30,11 @@ class Observation extends EntityActivity {
   }
 }
 
-Observation.duck = new DuckDjangoRestFramework({ app: 'Observation', entity: Observation });
+Observation.duck = new DuckDjangoRestFramework({
+  app: 'Observation',
+  entity: Observation,
+  name: 'Observation',
+});
 mock(Observation, { size: 20 });
 
 export default Observation;

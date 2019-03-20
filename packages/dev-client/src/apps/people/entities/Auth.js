@@ -8,6 +8,10 @@ class Auth extends EntityPerson {
   }
 }
 
-Auth.duck = new DuckAuth({ app: 'Auth', entity: Auth });
+Auth.duck = new DuckAuth({
+  app: 'Auth',
+  entity: Auth,
+  name: 'Auth',
+});
 
 export default Auth;
