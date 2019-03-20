@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
 
-import UIProgressLine from '.';
+import UIProgressLine from './ProgressLine';
 
 const Block = styled.div`
   width: 300px;

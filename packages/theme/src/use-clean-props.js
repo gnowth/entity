@@ -23,8 +23,8 @@ export default function (props, configs = {}) {
     ? configs.local(defaultLocal)
     : defaultLocal.concat(configs.local || []);
 
-  return _.flowRight(
+  return _.flowRight([
     obj => _.omitBy(obj, _.isUndefined),
     obj => _.omit(obj, local),
-  )(props);
+  ])(props);
 }

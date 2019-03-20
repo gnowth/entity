@@ -70,10 +70,10 @@ export default class Client {
     if (!configs.entity.store) return this.getError(404);
 
     if (configs.id === null) {
-      return _.flowRight(
+      return _.flowRight([
         _.sample,
         Object.values,
-      )(configs.entity.store) || this.getError(404);
+      ])(configs.entity.store) || this.getError(404);
     }
 
     if (configs.id === undefined) {

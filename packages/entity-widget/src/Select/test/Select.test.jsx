@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { Fields } from '@entity/core';
 
-import WidgetSelect from '..';
+import WidgetSelect from '../Select';
 
 it('renders correctly', () => {
   const tree = renderer.create(

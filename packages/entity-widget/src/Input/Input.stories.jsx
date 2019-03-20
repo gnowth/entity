@@ -4,7 +4,7 @@ import { variant } from '@gnowth/theme';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 
-import WidgetInput from '.';
+import WidgetInput from './Input';
 
 const Wrapper = styled.div`
   text-align: center;

@@ -4,7 +4,7 @@ import { variant } from '@gnowth/theme';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 
-import WidgetTextarea from '.';
+import WidgetTextarea from './Textarea';
 
 const Wrapper = styled.div`
   text-align: center;

@@ -11,19 +11,19 @@ const makeReducer = (ducks) => {
   return ducks[0].reducer;
 };
 
-const makeReducersFromDucks = combineReducers => _.flowRight(
+const makeReducersFromDucks = combineReducers => _.flowRight([
   combineReducers,
   ducks => _.mapValues(ducks, makeReducer),
   ducks => _.groupBy(ducks, duck => duck.name),
-);
+]);
 
-const makeAppReducersFromDucks = combineReducers => _.flowRight(
+const makeAppReducersFromDucks = combineReducers => _.flowRight([
   combineReducers,
   ducks => _.mapValues(ducks, makeReducersFromDucks(combineReducers)),
   ducks => _.groupBy(ducks, duck => duck.namespace),
-);
+]);
 
-export default (reqs, combineReducers) => _.flowRight(
+export default (reqs, combineReducers) => _.flowRight([
   ducks => _.mapValues(ducks, makeAppReducersFromDucks(combineReducers)),
   ducks => _.groupBy(ducks, duck => duck.app),
   ducks => _.filter(ducks, duck => duck instanceof Duck),
@@ -35,4 +35,4 @@ export default (reqs, combineReducers) => _.flowRight(
       )
     ),
   ),
-)(reqs);
+])(reqs);
