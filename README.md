@@ -4,7 +4,7 @@
 
 ### Project setup
 
-Make sure to use node v10.15.1 and npm v6.4.1 or above
+Make sure to use node v10.15.3 and npm v6.4.1 or above
 
 Install project dependencies:
 
