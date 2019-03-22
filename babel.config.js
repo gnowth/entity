@@ -1,4 +1,15 @@
 module.exports = {
+  env: {
+    production: {
+      plugins: [
+        ['transform-react-remove-prop-types', {
+          mode: 'wrap',
+          ignoreFilenames: ['node_modules'],
+        }],
+      ],
+    },
+  },
+
   presets: [
     [
       '@babel/env',
@@ -16,6 +27,7 @@ module.exports = {
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],
+
   plugins: [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-export-default-from',
