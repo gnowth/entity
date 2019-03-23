@@ -19,9 +19,8 @@
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
     "link-module:dist": "json -I -f package.json -e 'this.module=\"dist/index.js\"'",
     "link-module:src": "json -I -f package.json -e 'this.module=\"src/index.js\"'",
-    "postbuild": "npm run link-main:dist && npm run link-module:dist",
     "postdestroy": "npm run link-main:src && npm run link-module:src",
-    "prebuild": "npm run destroy"
+    "prebuild": "npm run destroy && npm run link-main:dist && npm run link-module:dist"
   },
   "dependencies": {
     "@gnowth/default": "0.5.1",
@@ -29,11 +28,11 @@
     "@gnowth/prop-types-plus": "0.5.1",
     "@gnowth/theme": "0.5.1",
     "@private/use-redux": "0.5.1",
-    "idx": "2.5.5",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0"
   },
   "devDependencies": {
+    "idx": "2.5.5",
     "lodash": "4.17.11",
     "react": "16.8.4",
     "react-router-dom": "4.3.1",

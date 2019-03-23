@@ -31,7 +31,7 @@ module.exports = {
   },
 
   entry: {
-    index: './src/index.jsx',
+    es: './src/index.jsx',
   },
 
   output: {
@@ -47,6 +47,14 @@ module.exports = {
           test: /node_modules/,
           chunks: 'initial',
           name: 'vendor',
+          priority: 10,
+          enforce: true,
+        },
+
+        packages: {
+          test: /packages\/(?!(dev|private)).*/,
+          chunks: 'initial',
+          name: 'packages',
           priority: 10,
           enforce: true,
         },

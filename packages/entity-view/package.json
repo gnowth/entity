@@ -19,9 +19,8 @@
     "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
     "link-module:dist": "json -I -f package.json -e 'this.module=\"dist/index.js\"'",
     "link-module:src": "json -I -f package.json -e 'this.module=\"src/index.js\"'",
-    "postbuild": "npm run link-main:dist && npm run link-module:dist",
     "postdestroy": "npm run link-main:src && npm run link-module:src",
-    "prebuild": "npm run destroy"
+    "prebuild": "npm run destroy && npm run link-main:dist && npm run link-module:dist"
   },
   "dependencies": {
     "@gnowth/default": "0.5.1",

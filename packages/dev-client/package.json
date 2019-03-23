@@ -4,6 +4,7 @@
   "name": "@serve/client-react",
   "private": true,
   "repository": "https://github.com/gnowth/entity.git",
+  "sideEffects": false,
   "version": "0.5.1",
   "scripts": {
     "analyze": "webpack --mode production --progress --config ../../configs/webpack.config.js",
@@ -47,7 +48,6 @@
     "font-awesome": "4.7.0",
     "github-markdown-css": "3.0.1",
     "history": "4.9.0",
-    "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
     "intl": "1.2.5",
     "lodash": "4.17.11",
@@ -76,6 +76,7 @@
     "@types/react-redux": "7.0.5",
     "@types/react-router": "4.4.5",
     "directory-named-webpack-plugin": "4.0.1",
+    "idx": "2.5.5",
     "jest-styled-components": "6.3.1",
     "react-test-renderer": "16.8.4",
     "redux-mock-store": "1.5.3"

@@ -14,13 +14,14 @@ const extract = loaders => (
 
 module.exports = [
   {
-    test: /\.(js|jsx|ts|tsx)$/,
     exclude: [
       /node_modules/,
       // /packages\/(?!(dev|private)).*/,
     ],
     loader: 'babel-loader',
     options: babelConfig,
+    test: /\.(js|jsx|ts|tsx)$/,
+    // type: 'javascript/esm',
   },
 
   {
@@ -37,8 +38,8 @@ module.exports = [
   },
 
   {
-    test: /\.(png|gif|jpg|woff|svg|woff2|ttf|eot)(\?.*)?$/,
     loader: 'file-loader',
+    test: /\.(png|gif|jpg|woff|svg|woff2|ttf|eot)(\?.*)?$/,
   },
 
   {
