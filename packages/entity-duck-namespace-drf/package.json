@@ -24,13 +24,10 @@
     "@entity/core": "0.5.1",
     "@entity/duck": "0.5.1",
     "immutable": "3.8.2",
+    "lodash": "4.17.11",
     "query-string": "6.4.0"
   },
   "devDependencies": {
-    "idx": "2.5.5",
-    "lodash": "4.17.11"
-  },
-  "peerDependencies": {
-    "lodash": ">=4.12.0"
+    "idx": "2.5.5"
   }
 }

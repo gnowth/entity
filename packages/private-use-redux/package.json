@@ -8,14 +8,13 @@
   "sideEffects": false,
   "version": "0.5.1",
   "dependencies": {
-    "@gnowth/default": "0.5.1"
+    "@gnowth/default": "0.5.1",
+    "lodash": "4.17.11"
   },
   "devDependencies": {
-    "lodash": "4.17.11",
     "react": "16.8.4"
   },
   "peerDependencies": {
-    "lodash": ">=4.12.0",
     "react": ">=16.8.0"
   }
 }

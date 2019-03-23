@@ -22,12 +22,7 @@
   },
   "dependencies": {
     "faker": "4.1.0",
+    "lodash": "4.17.11",
     "query-string": "6.4.0"
-  },
-  "devDependencies": {
-    "lodash": "4.17.11"
-  },
-  "peerDependencies": {
-    "lodash": ">=4.12.0"
   }
 }
