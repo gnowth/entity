@@ -23,7 +23,7 @@
   "dependencies": {
     "@entity/core": "0.5.1",
     "@entity/duck": "0.5.1",
-    "immutable": "4.0.0-rc.12",
+    "immutable": "3.8.2",
     "query-string": "6.4.0"
   },
   "devDependencies": {

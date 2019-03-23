@@ -21,7 +21,7 @@
     "prebuild": "npm run destroy && npm run link-index:dist"
   },
   "dependencies": {
-    "immutable": "4.0.0-rc.12",
+    "immutable": "3.8.2",
     "query-string": "6.4.0"
   },
   "devDependencies": {

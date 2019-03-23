@@ -23,7 +23,7 @@
   "dependencies": {
     "@entity/visualisation": "0.5.1",
     "@gnowth/prop-types-entity": "0.5.1",
-    "immutable": "4.0.0-rc.12",
+    "immutable": "3.8.2",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0"
   },
