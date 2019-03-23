@@ -23,13 +23,10 @@
   "dependencies": {
     "immutable": "3.8.2",
     "lodash": "4.17.11",
+    "moment": "2.24.0",
     "query-string": "6.4.0"
   },
   "devDependencies": {
-    "idx": "2.5.5",
-    "moment": "2.24.0"
-  },
-  "peerDependencies": {
-    "moment": ">=2.0.0"
+    "idx": "2.5.5"
   }
 }

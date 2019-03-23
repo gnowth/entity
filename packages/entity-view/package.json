@@ -27,19 +27,17 @@
     "@gnowth/prop-types-plus": "0.5.1",
     "@gnowth/theme": "0.5.1",
     "prop-types": "15.7.2",
-    "react-immutable-proptypes": "2.1.0"
+    "react-immutable-proptypes": "2.1.0",
+    "react-router-dom": "4.3.1"
   },
   "devDependencies": {
     "@entity/core": "0.5.1",
     "react": "16.8.4",
-    "react-router-dom": "4.3.1",
     "react-test-renderer": "16.8.4",
     "styled-components": "4.1.3"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-router-dom": ">=4.0.0",
-    "react-test-renderer": ">=16.8.0",
     "styled-components": ">=4.0.0"
   }
 }
