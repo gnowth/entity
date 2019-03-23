@@ -15,12 +15,10 @@
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
-    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
-    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "link-module:dist": "json -I -f package.json -e 'this.module=\"dist/index.js\"'",
-    "link-module:src": "json -I -f package.json -e 'this.module=\"src/index.js\"'",
-    "postdestroy": "npm run link-main:src && npm run link-module:src",
-    "prebuild": "npm run destroy && npm run link-main:dist && npm run link-module:dist"
+    "link-index:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"; this.module=\"dist/index.js\"'",
+    "link-index:src": "json -I -f package.json -e 'this.main=\"src/index.js\"; this.module=\"src/index.js\"'",
+    "postdestroy": "npm run link-index:src",
+    "prebuild": "npm run destroy && npm run link-index:dist"
   },
   "dependencies": {
     "@entity/visualisation": "0.5.1",
