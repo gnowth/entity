@@ -15,7 +15,10 @@ const extract = loaders => (
 module.exports = [
   {
     test: /\.(js|jsx|ts|tsx)$/,
-    exclude: /node_modules\/(?!(@entity|@gnowth|@private)\/).*/,
+    exclude: [
+      /node_modules/,
+      // /packages\/(?!(dev|private)).*/,
+    ],
     loader: 'babel-loader',
     options: babelConfig,
   },
