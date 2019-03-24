@@ -1,8 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const babelConfig = require('../babel.config');
 
-const isBuild = process.env.npm_lifecycle_event === 'analyze'
-  || process.env.npm_lifecycle_event === 'build'
+const isBuild = process.env.npm_lifecycle_event.startsWith('build')
   || process.env.npm_lifecycle_event === 'deploy'
   || process.env.npm_lifecycle_event === 'storybook:build';
 

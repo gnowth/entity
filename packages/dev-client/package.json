@@ -7,8 +7,9 @@
   "sideEffects": false,
   "version": "0.5.1",
   "scripts": {
-    "analyze": "webpack --mode production --progress --config ../../configs/webpack.config.js",
     "build": "webpack --mode production --progress --config ../../configs/webpack.config.js",
+    "build:analyze": "webpack --mode production --progress --config ../../configs/webpack.config.js",
+    "build:stats": "webpack --env production --config ../../configs/webpack.config.js --json > stats.json",
     "serve-dist": "browser-sync start --server ../../dist",
     "start": "webpack-dev-server --mode development --progress --inline --hot --content-base dist --config ../../configs/webpack.config.js",
     "storybook": "start-storybook -c .storybook -p 6006",

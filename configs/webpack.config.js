@@ -12,9 +12,9 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const rules = require('./webpack-rules.config');
 const alias = require('./webpack-alias.config');
 
-const isAnalyze = process.env.npm_lifecycle_event === 'analyze';
+const isAnalyze = process.env.npm_lifecycle_event === 'build:analyze';
 const isDeploy = process.env.npm_lifecycle_event === 'deploy';
-const isBuild = process.env.npm_lifecycle_event === 'build' || isAnalyze || isDeploy;
+const isBuild = process.env.npm_lifecycle_event.startsWith('build') || isAnalyze || isDeploy;
 const isStart = process.env.npm_lifecycle_event === 'start';
 
 module.exports = {

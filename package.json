@@ -17,8 +17,9 @@
     "webpackConfig": "./configs/webpack.config.js"
   },
   "scripts": {
-    "analyze": "yarn workspace @serve/client-react analyze",
     "build": "yarn workspace @serve/client-react build",
+    "build:analyze": "yarn workspace @serve/client-react build:analyze",
+    "build:stats": "yarn workspace @serve/client-react build:stats",
     "check": "npm run check:types",
     "check:types": "tsc",
     "clean": "lerna clean",
