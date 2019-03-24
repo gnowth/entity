@@ -18,11 +18,18 @@ const dependencies = []
 export default {
   external: dependencies,
   input: path.join(rootPath, 'src/index.js'),
-  output: {
-    file: pkg.module,
-    format: 'es',
-    sourcemap: true,
-  },
+  output: [
+    {
+      file: pkg.main,
+      format: 'es',
+      sourcemap: true,
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+    },
+  ],
   plugins: [
     babel({
       configFile: path.join(__dirname, '../babel.config.js'),
