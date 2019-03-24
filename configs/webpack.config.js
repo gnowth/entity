@@ -7,6 +7,7 @@ const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const rules = require('./webpack-rules.config');
@@ -90,6 +91,7 @@ module.exports = {
     // Analyze plugins
     isAnalyze && [
       new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+      new Visualizer(),
     ],
 
     // Build plugins
