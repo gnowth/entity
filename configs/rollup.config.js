@@ -21,12 +21,12 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'es',
+      format: 'cjs',
       sourcemap: true,
     },
     {
       file: pkg.module,
-      format: 'es',
+      format: 'esm',
       sourcemap: true,
     },
   ],
