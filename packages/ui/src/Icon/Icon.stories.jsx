@@ -3,7 +3,7 @@ import React from 'react';
 import { variant } from '@gnowth/theme';
 import { boolean, select } from '@storybook/addon-knobs';
 
-import UIIcon from './Icon';
+import UIIcon from '.';
 
 const iconCss = css`
   margin-right: 0.5rem;

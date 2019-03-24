@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { List } from 'immutable';
 
-import UIErrorWell from '../ErrorWell';
+import UIErrorWell from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(

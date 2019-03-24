@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <a
-  className="Link-sc-1hs1rmw-0 jfsnLe"
+  className=""
   href="#/test/undefined/"
   onClick={[Function]}
   value={
