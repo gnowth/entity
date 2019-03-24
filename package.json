@@ -37,6 +37,7 @@
     "packages-link-index:dist": "lerna run --scope '@@(gnowth|entity)/*' link-index:dist",
     "packages-link-index:src": "lerna run --scope '@@(gnowth|entity)/*' link-index:src",
     "packages-publish": "./scripts/publish.sh",
+    "prebuild:analyze": "npm run build:stats",
     "serve-dist": "yarn workspace @serve/client-react serve-dist",
     "start": "yarn workspace @serve/client-react start",
     "storybook": "yarn workspace @serve/client-react storybook",
