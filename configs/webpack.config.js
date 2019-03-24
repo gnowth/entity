@@ -32,7 +32,7 @@ module.exports = {
   },
 
   entry: {
-    es: './src/index.jsx',
+    index: './src/index.jsx',
   },
 
   output: {
