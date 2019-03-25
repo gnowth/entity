@@ -4,7 +4,6 @@ import json from 'rollup-plugin-json';
 // import namedDirectory from 'rollup-plugin-named-directory';
 import path from 'path';
 import resolve from 'rollup-plugin-node-resolve';
-// import { terser } from 'rollup-plugin-terser';
 
 const rootPath = process.cwd();
 
@@ -42,9 +41,9 @@ export default {
       module: true,
     }),
     commonjs(),
+    // NOTE(thierry): typescript does not support named directory
     // namedDirectory({
     //   matchers: ['<dir>/index.js', '<dir>/index.jsx', '<dir>/<dir>.js', '<dir>/<dir>.jsx'],
     // }),
-    // terser(),
   ],
 };
