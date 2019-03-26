@@ -30,7 +30,7 @@
     "prop-types-exact": "1.2.0"
   },
   "devDependencies": {
-    "react": "16.8.4"
+    "react": "16.8.5"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "idx": "2.5.5",
-    "react": "16.8.4"
+    "react": "16.8.5"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
