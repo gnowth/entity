@@ -3,7 +3,7 @@ import React from 'react';
 import { variant } from '@gnowth/theme';
 import { select, text } from '@storybook/addon-knobs';
 
-import UIType from './Type';
+import UIType from '.';
 
 const Wrapper = styled.div`
   text-align: center;

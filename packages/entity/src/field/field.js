@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { fromJS, isImmutable, List, Map } from 'immutable';
+import { fromJS, Iterable, List, Map } from 'immutable';
 
 import isRequired from '../validator/is-required';
 
@@ -107,7 +107,7 @@ export default class Field {
   }
 
   toData(value) {
-    return isImmutable(value)
+    return Iterable.isIterable(value)
       ? value.toJS()
       : value;
   }

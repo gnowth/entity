@@ -7,13 +7,15 @@ const DirectoryNamedPlugin = require('directory-named-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const rules = require('./webpack-rules.config');
 const alias = require('./webpack-alias.config');
 
-const isAnalyze = process.env.npm_lifecycle_event === 'analyze';
-const isBuild = process.env.npm_lifecycle_event === 'build';
+const isAnalyze = process.env.npm_lifecycle_event === 'build:analyze';
+const isDeploy = process.env.npm_lifecycle_event === 'deploy';
+const isBuild = process.env.npm_lifecycle_event === 'build' || isAnalyze || isDeploy;
 const isStart = process.env.npm_lifecycle_event === 'start';
 
 module.exports = {
@@ -22,7 +24,7 @@ module.exports = {
   devtool: 'cheap-source-map',
 
   resolve: {
-    alias: alias(path.join(process.cwd(), isAnalyze || isBuild || isStart ? '' : 'packages/dev-client')),
+    alias: alias(path.join(process.cwd(), isBuild || isStart ? '' : 'packages/dev-client')),
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     plugins: [
       new DirectoryNamedPlugin(true),
@@ -46,6 +48,14 @@ module.exports = {
           test: /node_modules/,
           chunks: 'initial',
           name: 'vendor',
+          priority: 10,
+          enforce: true,
+        },
+
+        packages: {
+          test: /packages\/(?!(dev|private)).*/,
+          chunks: 'initial',
+          name: 'packages',
           priority: 10,
           enforce: true,
         },
@@ -81,10 +91,11 @@ module.exports = {
     // Analyze plugins
     isAnalyze && [
       new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+      new Visualizer(),
     ],
 
     // Build plugins
-    (isBuild || isAnalyze) && [
+    isBuild && [
       new webpack.optimize.AggressiveMergingPlugin(),
 
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -97,7 +108,10 @@ module.exports = {
           }],
         },
       }),
+    ],
 
+    // Deploy plugins
+    isDeploy && [
       new WorkboxPlugin.GenerateSW({
         exclude: [/\.(?:png|jpg|jpeg|svg)$/],
 

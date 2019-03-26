@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import { EntityTitle, Fields } from '@entity/core';
 
-import ViewRedirectOnCreate from '../RedirectOnCreate';
+import ViewRedirectOnCreate from '..';
 
 const Redirect = () => <div>Redirected</div>;
 

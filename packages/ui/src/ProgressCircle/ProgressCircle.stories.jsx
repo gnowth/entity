@@ -1,7 +1,7 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
 
-import UIProgressCircle from './ProgressCircle';
+import UIProgressCircle from '.';
 
 export default stories => stories
   .add('dynamic story', () => (

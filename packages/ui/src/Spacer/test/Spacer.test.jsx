@@ -2,7 +2,7 @@ import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import React from 'react';
 
-import UISpacer from '../Spacer';
+import UISpacer from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(

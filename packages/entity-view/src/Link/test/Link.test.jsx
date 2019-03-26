@@ -1,9 +1,10 @@
+import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { EntityTitle, Fields } from '@entity/core';
 import { HashRouter as Router } from 'react-router-dom';
 
-import ViewLink from '../Link';
+import ViewLink from '..';
 
 class EntityTest extends EntityTitle {
   static paths = {

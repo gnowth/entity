@@ -2,7 +2,7 @@ import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import React from 'react';
 
-import WidgetBoolean from '../Boolean';
+import WidgetBoolean from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(

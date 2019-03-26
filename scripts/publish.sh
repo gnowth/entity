@@ -24,8 +24,7 @@ git tag -a $version -m $version
 
 lerna publish from-git --yes
 
-npm run packages-link-main:src
-npm run packages-link-module:src
+npm run packages-link-index:src
 git tag -d $version
 
 # Updating branch

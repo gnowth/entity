@@ -4,7 +4,7 @@ import { variant } from '@gnowth/theme';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
-import UIButton from './Button';
+import UIButton from '.';
 
 const Wrapper = styled.div`
   text-align: center;

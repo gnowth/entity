@@ -4,7 +4,7 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
 
-import UIButton from '../Button';
+import UIButton from '..';
 
 it('renders correctly', () => {
   const tree = renderer.create(

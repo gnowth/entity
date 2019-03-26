@@ -15,17 +15,14 @@
   "scripts": {
     "build": "rollup -c=../../configs/rollup.config.js",
     "destroy": "rimraf dist",
-    "link-main:dist": "json -I -f package.json -e 'this.main=\"dist/index.js\"'",
-    "link-main:src": "json -I -f package.json -e 'this.main=\"src/index.js\"'",
-    "link-module:dist": "json -I -f package.json -e 'this.module=\"dist/index.js\"'",
-    "link-module:src": "json -I -f package.json -e 'this.module=\"src/index.js\"'",
-    "postbuild": "npm run link-main:dist && npm run link-module:dist",
-    "postdestroy": "npm run link-main:src && npm run link-module:src",
-    "prebuild": "npm run destroy"
+    "link-index:dist": "json -I -f package.json -e 'this.main=\"dist/index.cjs.js\"; this.module=\"dist/index.esm.js\"'",
+    "link-index:src": "json -I -f package.json -e 'this.main=\"src/index.js\"; this.module=\"src/index.js\"'",
+    "postdestroy": "npm run link-index:src",
+    "prebuild": "npm run link-index:dist"
   },
   "dependencies": {
     "@entity/core": "0.5.1",
     "@entity/duck": "0.5.1",
-    "immutable": "4.0.0-rc.12"
+    "immutable": "3.8.2"
   }
 }

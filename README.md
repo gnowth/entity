@@ -4,7 +4,7 @@
 
 ### Project setup
 
-Make sure to use node v10.15.1 and npm v6.4.1 or above
+Make sure to use node v10.15.3 and npm v6.4.1 or above
 
 Install project dependencies:
 
@@ -51,3 +51,18 @@ npm run storybook
 ### Storybook
 
 An example of stories is found at `.storybook/stories.jsx`
+
+
+## Analysis
+
+```
+npm run build:stats
+```
+
+stats file will be located in dist/stats.json
+
+### Webpack deps tree (restrry)
+https://restrry.github.io/webpack-deps-tree/static/
+
+### Webpack visualizer
+http://chrisbateman.github.io/webpack-visualizer/
