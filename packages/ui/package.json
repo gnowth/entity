@@ -26,6 +26,7 @@
     "@gnowth/prop-types-plus": "0.5.1",
     "@gnowth/theme": "0.5.1",
     "classnames": "2.2.6",
+    "idx": "2.5.5",
     "immutable": "3.8.2",
     "lodash": "4.17.11",
     "prop-types": "15.7.2",
@@ -38,7 +39,6 @@
   "devDependencies": {
     "@storybook/addon-actions": "4.1.16",
     "@storybook/addon-knobs": "4.1.16",
-    "idx": "2.5.5",
     "jest-styled-components": "6.3.1",
     "react": "16.8.5",
     "react-dom": "16.8.5",

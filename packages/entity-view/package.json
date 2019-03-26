@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@entity/core": "0.5.1",
+    "jest-styled-components": "6.3.1",
     "react": "16.8.5",
     "react-test-renderer": "16.8.5",
     "styled-components": "4.2.0"

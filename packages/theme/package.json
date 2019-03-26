@@ -21,11 +21,11 @@
     "prebuild": "npm run link-index:dist"
   },
   "dependencies": {
+    "idx": "2.5.5",
     "lodash": "4.17.11"
   },
   "devDependencies": {
     "@types/lodash": "4.14.123",
-    "idx": "2.5.5",
     "react": "16.8.5",
     "styled-components": "4.2.0"
   },

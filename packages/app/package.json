@@ -26,13 +26,13 @@
     "@gnowth/prop-types-plus": "0.5.1",
     "@gnowth/theme": "0.5.1",
     "@private/use-redux": "0.5.1",
+    "idx": "2.5.5",
     "lodash": "4.17.11",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
     "react-router-dom": "4.3.1"
   },
   "devDependencies": {
-    "idx": "2.5.5",
     "react": "16.8.5",
     "styled-components": "4.2.0"
   },

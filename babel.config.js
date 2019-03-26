@@ -1,9 +1,17 @@
 module.exports = {
   env: {
-    production: {
+    library: {
       plugins: [
         ['transform-react-remove-prop-types', {
           mode: 'wrap',
+          ignoreFilenames: ['node_modules'],
+        }],
+      ],
+    },
+
+    production: {
+      plugins: [
+        ['transform-react-remove-prop-types', {
           ignoreFilenames: ['node_modules'],
         }],
       ],

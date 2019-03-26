@@ -21,10 +21,8 @@
     "prebuild": "npm run link-index:dist"
   },
   "dependencies": {
+    "idx": "2.5.5",
     "immutable": "3.8.2",
     "lodash": "4.17.11"
-  },
-  "devDependencies": {
-    "idx": "2.5.5"
   }
 }

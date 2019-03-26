@@ -32,7 +32,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint '**/*.{js,jsx,ts,tsx}'",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "packages-build": "cross-env NODE_ENV=production lerna run --scope '@@(gnowth|entity)/*' build",
+    "packages-build": "cross-env NODE_ENV=library lerna run --scope '@@(gnowth|entity)/*' build",
     "packages-destroy": "lerna run --scope '@@(gnowth|entity)/*' destroy",
     "packages-link-index:dist": "lerna run --scope '@@(gnowth|entity)/*' link-index:dist",
     "packages-link-index:src": "lerna run --scope '@@(gnowth|entity)/*' link-index:src",
