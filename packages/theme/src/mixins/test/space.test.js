@@ -1,7 +1,8 @@
 import space from '../space';
 
-describe('mixin space', () => {
-  test('mixin is applied for padding, margin and their sub styles', () => {
+test(
+  'mxin space: mixin is applied for padding, margin and their sub styles',
+  () => {
     const styleObject = space({
       $margin: '16rem',
       $marginBottom: '16rem',
@@ -25,5 +26,5 @@ describe('mixin space', () => {
     expect(styleObject.paddingLeft).toBe('16rem');
     expect(styleObject.paddingRight).toBe('16rem');
     expect(styleObject.paddingTop).toBe('16rem');
-  });
-});
+  },
+);
