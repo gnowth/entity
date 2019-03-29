@@ -1,0 +1,10 @@
+{
+  "author": "Thierry Wong",
+  "description": "shallow equal",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.js",
+  "name": "@private/shallow-equal",
+  "private": true,
+  "sideEffects": false,
+  "version": "0.5.1"
+}
