@@ -4,6 +4,7 @@ import { css, ThemeContext } from 'styled-components';
 
 import { component } from '../selectors';
 import cleanProps from '../use-clean-props';
+import utils from './use-enhance-props.utils';
 
 const defaultTransient = [
   'margin',
@@ -25,28 +26,19 @@ const defaultTransient = [
 
 export default function (_component, _props, configs = {}) {
   const theme = React.useContext(ThemeContext) || {};
-  const componentTheme = component(configs)({ theme, ..._props }) || {};
+  const componentProps = _.omitBy(_props, _.isUndefined);
+  const themeProps = component(configs)({ theme, ...componentProps }) || {};
 
   const props = {
-    ...componentTheme,
+    ...themeProps,
 
     theme,
 
-    ..._.omitBy(_props, _.isUndefined),
+    ...componentProps,
 
-    css: css`${componentTheme.css} ${_props.css}`,
+    css: css`${themeProps.css} ${componentProps.css}`,
 
-    locales: {
-      ...configs.locales,
-      ...componentTheme.locales,
-      ..._props.locales,
-    },
-
-    names: {
-      ...configs.names,
-      ...componentTheme.names,
-      ..._props.names,
-    },
+    ...utils.mergeProps(_component.mergeProps, themeProps, componentProps),
   };
 
   const transient = _.isFunction(configs.transient)
