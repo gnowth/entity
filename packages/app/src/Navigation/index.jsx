@@ -10,7 +10,7 @@ import { Context } from '../context';
 import hooks from './Navigation.hooks';
 
 function Navigation(_props) {
-  const props = useEnhanceProps(_props);
+  const props = useEnhanceProps(Navigation, _props);
   const context = React.useContext(Context);
   const entity = props.entity || context.entity;
 

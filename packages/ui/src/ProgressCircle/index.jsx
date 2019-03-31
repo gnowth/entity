@@ -5,8 +5,8 @@ import { useCleanProps, useEnhanceProps } from '@gnowth/theme';
 
 import { Circle, Container, SVG } from './ProgressCircle.styles';
 
-function ProgressCircle(_props) {
-  const props = useEnhanceProps(_props);
+function UIProgressCircle(_props) {
+  const props = useEnhanceProps(UIProgressCircle, _props);
   const [value, setValue] = React.useState(props.valueInitial === undefined ? props.value : props.valueInitial);
 
   React.useEffect(
@@ -50,7 +50,7 @@ function ProgressCircle(_props) {
   );
 }
 
-ProgressCircle.propTypes = {
+UIProgressCircle.propTypes = {
   bufferPalette: PropTypesPlus.string,
   bufferPaletteWeight: PropTypes.string,
   css: PropTypesPlus.css,
@@ -64,7 +64,7 @@ ProgressCircle.propTypes = {
   thickness: PropTypes.number,
 };
 
-ProgressCircle.defaultProps = {
+UIProgressCircle.defaultProps = {
   bufferPalette: undefined,
   bufferPaletteWeight: undefined,
   css: undefined,
@@ -78,4 +78,4 @@ ProgressCircle.defaultProps = {
   thickness: 20,
 };
 
-export default ProgressCircle;
+export default UIProgressCircle;

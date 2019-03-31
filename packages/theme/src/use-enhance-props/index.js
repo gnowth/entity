@@ -23,7 +23,7 @@ const defaultTransient = [
   'paletteWeight',
 ];
 
-export default function (_props, configs = {}) {
+export default function (_component, _props, configs = {}) {
   const theme = React.useContext(ThemeContext) || {};
   const componentTheme = component(configs)({ theme, ..._props }) || {};
 

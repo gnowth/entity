@@ -1,4 +1,4 @@
-export default (defaultProp) => (themeProp, componentProp) => Object.assign(
+export default defaultProp => (themeProp, componentProp) => Object.assign(
   {},
   defaultProp,
   themeProp,

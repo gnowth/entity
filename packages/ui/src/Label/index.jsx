@@ -12,7 +12,7 @@ import hooks from './Label.hooks';
 import styles, { Label, UILabelRoot } from './Label.styles';
 
 function UILabel(_props) {
-  const props = useEnhanceProps(_props);
+  const props = useEnhanceProps(UILabel, _props);
   const propsTooltip = hooks.usePropsTooltip(props, styles);
 
   return (
