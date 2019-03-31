@@ -1,5 +1,5 @@
-import enhancePropsUtils from '../enhance-props.utils';
-import mergeProp from '../merge-prop';
+import mergeProp from '../../utils/merge-prop';
+import utils from '../use-enhance-props.utils';
 
 describe('enhance props utils', () => {
   test(
@@ -19,7 +19,7 @@ describe('enhance props utils', () => {
         b: mergeProp(),
       };
 
-      expect(enhancePropsUtils.mergeProps(transformMap, themeProps, componentProps))
+      expect(utils.mergeProps(transformMap, themeProps, componentProps))
         .toEqual({
           a: { a: 3, b: 2, c: 4 },
           b: { a: 1 },

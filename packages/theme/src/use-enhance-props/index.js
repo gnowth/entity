@@ -2,8 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import { css, ThemeContext } from 'styled-components';
 
-import { component } from './selectors';
-import cleanProps from './use-clean-props';
+import { component } from '../selectors';
+import cleanProps from '../use-clean-props';
 
 const defaultTransient = [
   'margin',
