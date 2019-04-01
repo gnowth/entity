@@ -9,7 +9,7 @@ import styles, { Popup, Wrapper } from './Tooltip.styles';
 
 function UITooltip(_props) {
   const [hidden, setHidden] = React.useState(true);
-  const props = useEnhanceProps(_props);
+  const props = useEnhanceProps(UITooltip, _props);
   const Component = props.component;
 
   return (

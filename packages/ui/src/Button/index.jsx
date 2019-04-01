@@ -8,7 +8,7 @@ import hooks from './Button.hooks';
 import Button from './Button.styles';
 
 function UIButton(_props) {
-  const props = useEnhanceProps(_props);
+  const props = useEnhanceProps(UIButton, _props);
   const { Content, Icon, Processing } = hooks.useComponents(props);
   const processingProps = hooks.usePropsProcessing(props);
 

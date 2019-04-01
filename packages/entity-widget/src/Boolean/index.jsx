@@ -9,7 +9,7 @@ import hooks from './Boolean.hooks';
 
 function WidgetBoolean(_props) {
   const ref = React.useRef();
-  const props = useEnhanceProps(_props, { inputComponentProps: { ref } });
+  const props = useEnhanceProps(WidgetBoolean, _props, { inputComponentProps: { ref } });
   const containerProps = hooks.usePropsContainer(props);
   const iconProps = hooks.usePropsIcon(props);
   const inputProps = { ref, ...hooks.usePropsInput(props) };

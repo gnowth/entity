@@ -1,6 +1,6 @@
 import React from 'react';
 
-import enhanceProp from './use-enhance-props';
+import useEnhanceProp from './use-enhance-props';
 
 const getDisplayName = ComposedComponent => ComposedComponent.displayName
   || ComposedComponent.name
@@ -8,7 +8,7 @@ const getDisplayName = ComposedComponent => ComposedComponent.displayName
 
 export default (ComposedComponent) => {
   const withEnhanceProps = props => (
-    <ComposedComponent {...enhanceProp(props, { clean: true })} />
+    <ComposedComponent {...useEnhanceProp(ComposedComponent, props, { clean: true })} /> // eslint-disable-line react-hooks/rules-of-hooks
   );
 
   withEnhanceProps.displayName = `withEnhanceProps(${getDisplayName(ComposedComponent)})`;

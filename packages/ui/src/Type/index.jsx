@@ -35,7 +35,7 @@ const mapDefault = {
 };
 
 function UIType(_props) {
-  const props = useEnhanceProps(_props);
+  const props = useEnhanceProps(UIType, _props);
   const Component = hooks.useComponent(props);
   const { intlContext = DummyContext } = useDefault(mapDefault, props);
   const intl = React.useContext(intlContext);

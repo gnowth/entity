@@ -21,7 +21,7 @@ const ContainerComponent = styled.div`
  */
 function Popup(_props) {
   const [opened, setOpened] = React.useState(false);
-  const props = useEnhanceProps(_props);
+  const props = useEnhanceProps(Popup, _props);
   const { Container, Control, Component, Wrapper } = hooks.useComponents(props);
   const componentProps = hooks.usePropsComponent(props, opened, setOpened);
 
