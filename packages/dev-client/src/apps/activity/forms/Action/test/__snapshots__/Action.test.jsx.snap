@@ -188,11 +188,11 @@ exports[`renders correctly 1`] = `
       Person Responsible
     </label>
     <div
-      className="css-10nd86i "
+      className="css-1pcexqc-container "
       onKeyDown={[Function]}
     >
       <div
-        className="css-vj8t7z"
+        className="css-bg1rzq-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -200,7 +200,7 @@ exports[`renders correctly 1`] = `
           className="css-1hwfws3"
         >
           <div
-            className="css-1492t68"
+            className="css-151xaom-placeholder"
           >
             Select...
           </div>
@@ -233,6 +233,7 @@ exports[`renders correctly 1`] = `
                     "boxSizing": "content-box",
                     "color": "inherit",
                     "fontSize": "inherit",
+                    "label": "input",
                     "opacity": 1,
                     "outline": 0,
                     "padding": 0,
@@ -265,11 +266,11 @@ exports[`renders correctly 1`] = `
           className="css-1wy0on6"
         >
           <span
-            className="css-d8oujb"
+            className="css-bgvzuu-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-1ep9fjw"
+            className="css-16pqwjk-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
@@ -337,11 +338,11 @@ exports[`renders correctly 1`] = `
       Completed by
     </label>
     <div
-      className="css-10nd86i "
+      className="css-1pcexqc-container "
       onKeyDown={[Function]}
     >
       <div
-        className="css-vj8t7z"
+        className="css-bg1rzq-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -349,7 +350,7 @@ exports[`renders correctly 1`] = `
           className="css-1hwfws3"
         >
           <div
-            className="css-1492t68"
+            className="css-151xaom-placeholder"
           >
             Select...
           </div>
@@ -382,6 +383,7 @@ exports[`renders correctly 1`] = `
                     "boxSizing": "content-box",
                     "color": "inherit",
                     "fontSize": "inherit",
+                    "label": "input",
                     "opacity": 1,
                     "outline": 0,
                     "padding": 0,
@@ -414,11 +416,11 @@ exports[`renders correctly 1`] = `
           className="css-1wy0on6"
         >
           <span
-            className="css-d8oujb"
+            className="css-bgvzuu-indicatorSeparator"
           />
           <div
             aria-hidden="true"
-            className="css-1ep9fjw"
+            className="css-16pqwjk-indicatorContainer"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >

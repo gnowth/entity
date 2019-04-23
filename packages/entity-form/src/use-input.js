@@ -109,7 +109,7 @@ function useInput(props, configs) {
     processing: query.processing,
     processingDidFail: query.processingDidFail,
     readOnly: computedConfigs.readOnly,
-    options: computedConfigs.loadOptionsFromAPI
+    options: computedConfigs.loadOptionsFromAPI // TODO allow options from input
       ? query.value
       : field.getOptions(),
     value: props.field.getValue(props.value, { name: computedConfigs.name }),

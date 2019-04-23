@@ -28,13 +28,13 @@
     "@gnowth/theme": "0.5.1",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0",
-    "react-router-dom": "4.3.1"
+    "react-router-dom": "5.0.0"
   },
   "devDependencies": {
     "@entity/core": "0.5.1",
     "jest-styled-components": "6.3.1",
-    "react": "16.8.5",
-    "react-test-renderer": "16.8.5",
+    "react": "16.8.6",
+    "react-test-renderer": "16.8.6",
     "styled-components": "4.2.0"
   },
   "peerDependencies": {

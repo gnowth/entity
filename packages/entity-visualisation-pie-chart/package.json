@@ -30,7 +30,7 @@
     "react-immutable-proptypes": "2.1.0"
   },
   "devDependencies": {
-    "react": "16.8.5"
+    "react": "16.8.6"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
