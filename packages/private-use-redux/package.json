@@ -13,7 +13,7 @@
     "lodash": "4.17.11"
   },
   "devDependencies": {
-    "react": "16.8.5"
+    "react": "16.8.6"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

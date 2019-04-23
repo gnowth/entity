@@ -1,7 +1,6 @@
 import React from 'react';
 import { withNotes } from '@storybook/addon-notes';
-import { withOptions } from '@storybook/addon-options';
-import { addDecorator, configure } from '@storybook/react';
+import { addDecorator, addParameters, configure } from '@storybook/react';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { Provider } from 'react-redux';
 
@@ -16,9 +15,9 @@ const componentReq = require.context('src', true, /stories\.jsx$/);
 
 addDecorator(withNotes);
 
-addDecorator(withOptions({
-  sortStoriesByKind: true,
-}));
+addParameters({
+  options: { sortStoriesByKind: true },
+});
 
 addDecorator(story => (
   <Provider store={store}>
