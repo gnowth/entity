@@ -9,7 +9,6 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
-    'plugin:unicorn/recommended',
   ],
 
   env: {
@@ -40,7 +39,6 @@ module.exports = {
     'eslint-comments',
     'jest',
     'promise',
-    'unicorn',
   ],
 
   rules: {
@@ -153,14 +151,6 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2],
 
     '@typescript-eslint/no-var-requires': 'off',
-
-    'unicorn/filename-case': 'off',
-
-    'unicorn/new-for-builtins': 'off',
-
-    'unicorn/prefer-node-append': 'off',
-
-    'unicorn/prefer-query-selector': 'off',
   },
   settings: {
     'import/resolver': {
