@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import Duck from '@entity/duck';
+import Duck from '@burnsred/entity-duck';
 import React from 'react';
-import { useDefault } from '@gnowth/default';
+import { useDefault } from '@burnsred/default';
 import { useRedux } from '@private/use-redux';
 
 import useContextInput from './use-context-input';

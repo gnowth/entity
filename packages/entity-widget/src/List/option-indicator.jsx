@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
-import { color } from '@gnowth/theme';
-import { UIIcon } from '@gnowth/ui';
+import PropTypesPlus from '@burnsred/prop-types-plus';
+import { color } from '@burnsred/theme';
+import { UIIcon } from '@burnsred/ui';
 
 const OptionIndicator = styled(UIIcon)`
   color: ${props => (props.selected ? color({ palette: 'primary' })(props) : color({ palette: 'gray' })(props))};

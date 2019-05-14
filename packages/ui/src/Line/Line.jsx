@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { colorFromPalette, mixins, withEnhanceProps } from '@gnowth/theme';
+import { colorFromPalette, mixins, withEnhanceProps } from '@burnsred/theme';
 
 const UILine = withEnhanceProps(styled.hr`
   border: 0;

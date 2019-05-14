@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import React from 'react';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import PropTypes from 'prop-types';
-import { UIType } from '@gnowth/ui';
+import { UIType } from '@burnsred/ui';
 
 import { Consumer } from './base';
 

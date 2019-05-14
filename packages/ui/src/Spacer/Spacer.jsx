@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { mixins, withEnhanceProps } from '@gnowth/theme';
+import { mixins, withEnhanceProps } from '@burnsred/theme';
 
 const UISpacer = withEnhanceProps(styled.div`
   flex: ${props => (props.flex === undefined ? 1 : props.flex)};

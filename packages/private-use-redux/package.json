@@ -1,14 +1,14 @@
 {
-  "author": "Thierry Wong",
+  "author": "Thierry Wong and Burnsred",
   "description": "useredux",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "main": "src/index.js",
   "name": "@private/use-redux",
   "private": true,
   "sideEffects": false,
-  "version": "0.5.2",
+  "version": "0.0.1",
   "dependencies": {
-    "@gnowth/default": "0.5.2"
+    "@burnsred/default": "0.0.1"
   },
   "devDependencies": {
     "lodash": "4.17.11",

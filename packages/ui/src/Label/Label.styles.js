@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, mixins } from '@gnowth/theme';
+import { color, mixins } from '@burnsred/theme';
 
 export const UILabelRoot = styled.div`
   ${mixins.margin}

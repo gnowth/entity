@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { useDefault } from '@gnowth/default';
-import { colorFromPalette } from '@gnowth/theme';
+import { useDefault } from '@burnsred/default';
+import { colorFromPalette } from '@burnsred/theme';
 
 const mapDefault = {
   buttonComponent: ['app_component_button', 'component_button'],

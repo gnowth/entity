@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/theme';
+import { useEnhanceProps } from '@burnsred/theme';
 
 import UIError from '../Error';
 import UITooltip from '../Tooltip';

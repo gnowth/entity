@@ -1,14 +1,14 @@
 {
-  "author": "Thierry Wong",
+  "author": "Thierry Wong and Burnsred",
   "description": "entity-duck-namespace-auth",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "main": "src/index.js",
   "module": "src/index.js",
-  "name": "@entity/duck-namespace-auth",
+  "name": "@burnsred/entity-duck-namespace-auth",
   "private": false,
-  "repository": "https://github.com/gnowth/entity.git",
+  "repository": "https://github.com/burnsred/burnsred-entity-library.git",
   "sideEffects": false,
-  "version": "0.5.2",
+  "version": "0.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -24,8 +24,8 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.5.2",
-    "@entity/duck-namespace-drf": "0.5.2",
+    "@burnsred/entity": "0.0.1",
+    "@burnsred/entity-duck-namespace-drf": "0.0.1",
     "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
     "query-string": "6.4.0"

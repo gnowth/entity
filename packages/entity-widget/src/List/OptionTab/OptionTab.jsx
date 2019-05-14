@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesEntity from '@burnsred/prop-types-entity';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { UIType } from '@gnowth/ui';
+import { UIType } from '@burnsred/ui';
 import { css } from 'styled-components';
 
 const textStyle = css`

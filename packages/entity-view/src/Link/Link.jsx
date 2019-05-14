@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { filterProps } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/theme';
+import { filterProps } from '@burnsred/higher-order-component';
+import { component } from '@burnsred/theme';
 import { Link } from 'react-router-dom';
 
 const ViewLink = props => (

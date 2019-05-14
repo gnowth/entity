@@ -1,1 +1,1 @@
-# @entity/duck-mock-drf
+# @burnsred/entity-duck-mock-drf

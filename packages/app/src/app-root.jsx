@@ -1,9 +1,9 @@
 import exact from 'prop-types-exact';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesEntity from '@burnsred/prop-types-entity';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { DefaultProvider } from '@gnowth/default';
+import { DefaultProvider } from '@burnsred/default';
 
 import { AppProvider } from './context';
 

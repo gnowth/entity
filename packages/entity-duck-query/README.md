@@ -1,1 +1,1 @@
-# @entity/duck-query
+# @burnsred/entity-duck-query

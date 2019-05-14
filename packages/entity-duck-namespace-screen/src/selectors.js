@@ -1,4 +1,4 @@
-import Duck from '@entity/duck';
+import Duck from '@burnsred/entity-duck';
 
 export default class Screen extends Duck.Selectors {
   record(state, meta = {}) {

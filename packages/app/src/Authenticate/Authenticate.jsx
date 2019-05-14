@@ -1,6 +1,6 @@
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import React from 'react';
-import { useDefault } from '@gnowth/default';
+import { useDefault } from '@burnsred/default';
 
 import { Context } from '../context';
 

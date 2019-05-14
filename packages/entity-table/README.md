@@ -1,1 +1,1 @@
-# @entity/table
+# @burnsred/entity-table

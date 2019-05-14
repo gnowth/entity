@@ -1,1 +1,1 @@
-# @entity/visualisation-pie-chart
+# @burnsred/entity-visualisation-pie-chart

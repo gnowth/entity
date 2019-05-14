@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/theme';
-import { UIIcon } from '@gnowth/ui';
+import { useEnhanceProps } from '@burnsred/theme';
+import { UIIcon } from '@burnsred/ui';
 
 import { Container, Input } from './Checkbox.styles';
 import hooks from './Checkbox.hooks';

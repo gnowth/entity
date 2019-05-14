@@ -1,4 +1,4 @@
-import Duck from '@entity/duck';
+import Duck from '@burnsred/entity-duck';
 import { List } from 'immutable';
 
 export default class DjangoRestFramework extends Duck.Selectors {

@@ -1,6 +1,6 @@
 import styled, { css, ThemeConsumer } from 'styled-components';
 import React from 'react';
-import { variant } from '@gnowth/theme';
+import { variant } from '@burnsred/theme';
 import { boolean, select } from '@storybook/addon-knobs';
 
 import UIIcon from './Icon';

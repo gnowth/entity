@@ -1,7 +1,7 @@
 {
-  "author": "Thierry Wong",
+  "author": "Thierry Wong and Burnsred",
   "description": "react-intl",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "main": "src/index.js",
   "name": "@private/react-intl",
   "private": true,

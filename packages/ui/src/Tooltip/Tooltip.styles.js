@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color } from '@gnowth/theme';
+import { color } from '@burnsred/theme';
 
 export const Wrapper = styled.div`
   display: inline-block;

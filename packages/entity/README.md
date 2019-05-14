@@ -1,1 +1,1 @@
-# @entity/core
+# @burnsred/entity

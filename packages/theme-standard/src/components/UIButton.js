@@ -1,4 +1,4 @@
-import { color, colorFromPalette, boxshadow } from '@gnowth/theme';
+import { color, colorFromPalette, boxshadow } from '@burnsred/theme';
 import { css } from 'styled-components';
 
 export const component_uiButton_contained = {

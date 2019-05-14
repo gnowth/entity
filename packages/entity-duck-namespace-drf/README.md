@@ -1,1 +1,1 @@
-# @entity/duck-namespace-drf
+# @burnsred/entity-duck-namespace-drf

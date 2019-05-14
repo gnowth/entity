@@ -1,5 +1,5 @@
 import idx from 'idx';
-import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
+import DuckDjangoRestFramework from '@burnsred/entity-duck-namespace-drf';
 import { List, Map } from 'immutable';
 
 import Queries from './queries';

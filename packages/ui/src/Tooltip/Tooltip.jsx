@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/theme';
+import { useEnhanceProps } from '@burnsred/theme';
 
 import UIIcon from '../Icon';
 import hooks from './Tooltip.hooks';

@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import React from 'react';
-import { Graph } from '@entity/visualisation';
+import { Graph } from '@burnsred/entity-visualisation';
 import { List, Map } from 'immutable';
 
 import VisualisationPieChart from './visualisation';

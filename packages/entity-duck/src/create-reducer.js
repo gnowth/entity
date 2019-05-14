@@ -5,7 +5,7 @@ import Duck from './duck';
 
 const makeReducer = (ducks) => {
   if (process.env.NODE_ENV !== 'production') {
-    if (ducks.length > 1) throw new Error(`@entity/duck createDuckReducerFromRequires [app: ${ducks[0].app}, namespace: ${ducks[0].namespace}, name: ${ducks[0].name}]: can only have 1 duck for (app|namespace|name) combination`);
+    if (ducks.length > 1) throw new Error(`@burnsred/entity-duck createDuckReducerFromRequires [app: ${ducks[0].app}, namespace: ${ducks[0].namespace}, name: ${ducks[0].name}]: can only have 1 duck for (app|namespace|name) combination`);
   }
 
   return ducks[0].reducer;

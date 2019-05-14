@@ -1,14 +1,14 @@
 {
-  "author": "Thierry Wong",
+  "author": "Thierry Wong and Burnsred",
   "description": "entity-view",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "main": "src/index.js",
   "module": "src/index.js",
-  "name": "@entity/view",
+  "name": "@burnsred/entity-view",
   "private": false,
-  "repository": "https://github.com/gnowth/entity.git",
+  "repository": "https://github.com/burnsred/burnsred-entity-library.git",
   "sideEffects": false,
-  "version": "0.5.2",
+  "version": "0.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -24,16 +24,16 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@gnowth/default": "0.5.2",
-    "@gnowth/higher-order-component": "0.5.2",
-    "@gnowth/prop-types-entity": "0.5.2",
-    "@gnowth/prop-types-plus": "0.5.2",
-    "@gnowth/theme": "0.5.2",
+    "@burnsred/default": "0.0.1",
+    "@burnsred/higher-order-component": "0.0.1",
+    "@burnsred/prop-types-entity": "0.0.1",
+    "@burnsred/prop-types-plus": "0.0.1",
+    "@burnsred/theme": "0.0.1",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0"
   },
   "devDependencies": {
-    "@entity/core": "0.5.2",
+    "@burnsred/entity": "0.0.1",
     "react": "16.8.4",
     "react-router-dom": "4.3.1",
     "react-test-renderer": "16.8.4",

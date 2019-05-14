@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import idx from 'idx';
-import { useDefault } from '@gnowth/default';
-import { useCleanProps } from '@gnowth/theme';
+import { useDefault } from '@burnsred/default';
+import { useCleanProps } from '@burnsred/theme';
 
 import UIIcon from '../Icon';
 import UIProgressCircle from '../ProgressCircle';

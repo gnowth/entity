@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { color, component } from '@gnowth/theme';
+import { color, component } from '@burnsred/theme';
 
 const Overlay = styled.div`
   background-color: ${color({ palette: 'white' })};

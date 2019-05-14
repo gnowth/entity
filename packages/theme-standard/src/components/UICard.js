@@ -1,4 +1,4 @@
-import { boxshadow, color, sizeGridBase, variable } from '@gnowth/theme';
+import { boxshadow, color, sizeGridBase, variable } from '@burnsred/theme';
 import { css } from 'styled-components';
 
 export const component_uiCard_danger = {

@@ -1,4 +1,4 @@
-import DuckDjangoRestFramework from '@entity/duck-namespace-drf';
+import DuckDjangoRestFramework from '@burnsred/entity-duck-namespace-drf';
 
 export default class Auth extends DuckDjangoRestFramework.Selectors {
   authenticating(state) {

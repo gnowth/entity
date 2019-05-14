@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import React from 'react';
 
 import hooks from './visualisation.hooks';

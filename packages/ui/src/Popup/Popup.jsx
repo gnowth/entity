@@ -2,9 +2,9 @@ import exact from 'prop-types-exact';
 import styled from 'styled-components';
 import withOnClickOutside from 'react-onclickoutside';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useEnhanceProps } from '@gnowth/theme';
+import { useEnhanceProps } from '@burnsred/theme';
 
 import Overlay from './components/Overlay';
 import Portal from './components/Portal';

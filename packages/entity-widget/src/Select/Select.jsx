@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
 import React from 'react';
 import Select from 'react-select';
-import { component } from '@gnowth/theme';
+import { component } from '@burnsred/theme';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 

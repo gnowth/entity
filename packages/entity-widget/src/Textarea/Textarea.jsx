@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { withPropsFiltered } from '@gnowth/higher-order-component';
-import { component } from '@gnowth/theme';
+import { withPropsFiltered } from '@burnsred/higher-order-component';
+import { component } from '@burnsred/theme';
 
 const WidgetTextarea = styled(withPropsFiltered('textarea'))`
   width: 100%;

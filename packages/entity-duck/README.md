@@ -1,4 +1,4 @@
-# @entity/duck
+# @burnsred/entity-duck
 
 ```javascript
   const action = {

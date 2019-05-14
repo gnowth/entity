@@ -1,4 +1,4 @@
-import { getPalettes } from '@gnowth/theme';
+import { getPalettes } from '@burnsred/theme';
 
 import palettes from './palettes.json';
 

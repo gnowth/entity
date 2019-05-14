@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import { component } from '@gnowth/theme';
-import { UIIcon } from '@gnowth/ui';
+import { component } from '@burnsred/theme';
+import { UIIcon } from '@burnsred/ui';
 import { List } from 'immutable';
 
 class WidgetOrdering extends React.Component {

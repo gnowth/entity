@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import _ from 'lodash';
 import React from 'react';
-import { VisualisationContext } from '@entity/visualisation';
+import { VisualisationContext } from '@burnsred/entity-visualisation';
 
 export default {
   useClearHoverOnScroll(setHover) {

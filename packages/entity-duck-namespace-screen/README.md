@@ -1,1 +1,1 @@
-# @entity/duck-namespace-screen
+# @burnsred/entity-duck-namespace-screen

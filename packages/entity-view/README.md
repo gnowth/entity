@@ -1,1 +1,1 @@
-# @entity/view
+# @burnsred/entity-view

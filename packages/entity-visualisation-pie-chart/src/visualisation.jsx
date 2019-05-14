@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import React from 'react';
-import { Graph, Visualisation, VisualisationContext } from '@entity/visualisation';
+import { Graph, Visualisation, VisualisationContext } from '@burnsred/entity-visualisation';
 
 import hooks from './visualisation.hooks';
 

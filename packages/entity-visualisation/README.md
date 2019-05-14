@@ -1,1 +1,1 @@
-# @entity/visualisation
+# @burnsred/entity-visualisation

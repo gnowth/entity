@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import idx from 'idx';
-import { Entity } from '@entity/core';
-import Duck from '@entity/duck';
+import { Entity } from '@burnsred/entity';
+import Duck from '@burnsred/entity-duck';
 import { fromJS, List, Map } from 'immutable';
 import { stringify } from 'query-string';
 

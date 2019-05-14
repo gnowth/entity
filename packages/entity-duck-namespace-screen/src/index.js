@@ -1,5 +1,5 @@
-import { Entity } from '@entity/core';
-import Duck from '@entity/duck';
+import { Entity } from '@burnsred/entity';
+import Duck from '@burnsred/entity-duck';
 import { Map } from 'immutable';
 
 import Queries from './queries';

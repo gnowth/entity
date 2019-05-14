@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
-import { Entity, Fields } from '@entity/core';
+import PropTypesPlus from '@burnsred/prop-types-plus';
+import { Entity, Fields } from '@burnsred/entity';
 
 const isEntity = (props, propName, componentName) => (
   !props[propName] || Entity.isEntity(props[propName])

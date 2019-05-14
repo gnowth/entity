@@ -1,9 +1,9 @@
 import idx from 'idx';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useDefault } from '@gnowth/default';
-import { useEnhanceProps } from '@gnowth/theme';
+import { useDefault } from '@burnsred/default';
+import { useEnhanceProps } from '@burnsred/theme';
 
 import hooks from './Type.hooks';
 

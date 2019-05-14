@@ -1,4 +1,4 @@
-import { color } from '@gnowth/theme';
+import { color } from '@burnsred/theme';
 import { css } from 'styled-components';
 
 export default css`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ReactDatePicker from 'react-datepicker';
-import { component } from '@gnowth/theme';
+import { component } from '@burnsred/theme';
 
 export const Wrapper = styled.div`
   .react-datepicker-wrapper {

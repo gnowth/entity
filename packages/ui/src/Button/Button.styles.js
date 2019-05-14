@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, colorFromPalette, media, mixins } from '@gnowth/theme';
+import { color, colorFromPalette, media, mixins } from '@burnsred/theme';
 
 export default styled.button`
   align-items: center;

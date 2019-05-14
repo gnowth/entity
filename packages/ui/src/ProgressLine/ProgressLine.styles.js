@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { color, mixins } from '@gnowth/theme';
+import { color, mixins } from '@burnsred/theme';
 
 const primaryScale = keyframes`
   0% {

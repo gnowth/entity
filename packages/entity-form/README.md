@@ -1,1 +1,1 @@
-# @entity/form
+# @burnsred/entity-form

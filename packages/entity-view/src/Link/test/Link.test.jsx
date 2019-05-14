@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import { EntityTitle, Fields } from '@entity/core';
+import { EntityTitle, Fields } from '@burnsred/entity';
 import { HashRouter as Router } from 'react-router-dom';
 
 import ViewLink from '../Link';

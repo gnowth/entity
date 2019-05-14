@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { boxshadow, mixins } from '@gnowth/theme';
+import { boxshadow, mixins } from '@burnsred/theme';
 
 export default {
   bubble_tooltip: css`

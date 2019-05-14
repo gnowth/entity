@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
-import { colorFromPalette, mixins, withEnhanceProps } from '@gnowth/theme';
+import PropTypesPlus from '@burnsred/prop-types-plus';
+import { colorFromPalette, mixins, withEnhanceProps } from '@burnsred/theme';
 
 const UICard = withEnhanceProps(styled.div`
   background-color: ${props => props.$palette && colorFromPalette({ paletteAsBackground: props.$paletteAsBackground !== undefined && !props.$paletteAsBackground })(props)};

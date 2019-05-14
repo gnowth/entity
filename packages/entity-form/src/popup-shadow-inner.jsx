@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useDefault } from '@gnowth/default';
+import { useDefault } from '@burnsred/default';
 
 import useContextInput from './use-context-input';
 

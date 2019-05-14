@@ -1,9 +1,9 @@
 {
-  "author": "Thierry Wong",
-  "license": "AGPL-3.0-only",
-  "name": "@gnowth/root",
+  "author": "Thierry Wong and Burnsred",
+  "license": "MIT",
+  "name": "burnsred-entity-library",
   "private": true,
-  "repository": "https://github.com/gnowth/entity.git",
+  "repository": "https://github.com/burnsred/burnsred-entity-library.git",
   "version": "",
   "workspaces": [
     "packages/*"
@@ -29,12 +29,12 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint '**/*.{js,jsx,ts,tsx}'",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "packages-build": "lerna run --scope '@@(gnowth|entity)/*' build",
-    "packages-destroy": "lerna run --scope '@@(gnowth|entity)/*' destroy",
-    "packages-link-main:dist": "lerna run --scope '@@(gnowth|entity)/*' link-main:dist",
-    "packages-link-main:src": "lerna run --scope '@@(gnowth|entity)/*' link-main:src",
-    "packages-link-module:dist": "lerna run --scope '@@(gnowth|entity)/*' link-module:dist",
-    "packages-link-module:src": "lerna run --scope '@@(gnowth|entity)/*' link-module:src",
+    "packages-build": "lerna run --scope '@burnsred/*' build",
+    "packages-destroy": "lerna run --scope '@burnsred/*' destroy",
+    "packages-link-main:dist": "lerna run --scope '@burnsred/*' link-main:dist",
+    "packages-link-main:src": "lerna run --scope '@burnsred/*' link-main:src",
+    "packages-link-module:dist": "lerna run --scope '@burnsred/*' link-module:dist",
+    "packages-link-module:src": "lerna run --scope '@burnsred/*' link-module:src",
     "packages-publish": "./scripts/publish.sh",
     "test": "jest --config configs/jest.config.js",
     "yarn": "yarn"

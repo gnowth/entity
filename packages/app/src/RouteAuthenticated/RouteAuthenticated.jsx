@@ -1,4 +1,4 @@
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import React from 'react';
 import { Route } from 'react-router-dom';
 

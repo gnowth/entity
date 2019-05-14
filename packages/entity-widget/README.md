@@ -1,1 +1,1 @@
-# @entity/widget
+# @burnsred/entity-widget

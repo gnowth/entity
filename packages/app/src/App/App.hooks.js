@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import idx from 'idx';
 import React from 'react';
-import { DefaultProvider } from '@gnowth/default';
+import { DefaultProvider } from '@burnsred/default';
 
 export default {
   useComponents(props, context) {

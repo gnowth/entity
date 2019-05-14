@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, colorFromPalette, media, mixins, useCleanProps } from '@gnowth/theme';
+import { color, colorFromPalette, media, mixins, useCleanProps } from '@burnsred/theme';
 
 const local = [
   'onChangeInput',

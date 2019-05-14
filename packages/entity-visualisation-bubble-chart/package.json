@@ -1,14 +1,14 @@
 {
-  "author": "Thierry Wong",
+  "author": "Thierry Wong and Burnsred",
   "description": "entity-visualisation-bubble-chart",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "main": "src/index.js",
   "module": "src/index.js",
-  "name": "@entity/visualisation-bubble-chart",
+  "name": "@burnsred/entity-visualisation-bubble-chart",
   "private": false,
-  "repository": "https://github.com/gnowth/entity.git",
+  "repository": "https://github.com/burnsred/burnsred-entity-library.git",
   "sideEffects": false,
-  "version": "0.5.2",
+  "version": "0.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -24,10 +24,10 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/visualisation": "0.5.2",
-    "@gnowth/prop-types-entity": "0.5.2",
-    "@gnowth/theme": "0.5.2",
-    "@gnowth/ui": "0.5.2",
+    "@burnsred/entity-visualisation": "0.0.1",
+    "@burnsred/prop-types-entity": "0.0.1",
+    "@burnsred/theme": "0.0.1",
+    "@burnsred/ui": "0.0.1",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0"

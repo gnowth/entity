@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import Duck from '@entity/duck';
+import Duck from '@burnsred/entity-duck';
 import { Map } from 'immutable';
 
 export default {

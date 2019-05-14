@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins } from '@gnowth/theme';
+import { mixins } from '@burnsred/theme';
 
 export const Container = styled.div`
   display: inline-block;

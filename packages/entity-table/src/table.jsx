@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import PropTypesImmutable from 'react-immutable-proptypes';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
 
 import { Provider } from './base';

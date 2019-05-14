@@ -1,6 +1,6 @@
-import PropTypesEntity from '@gnowth/prop-types-entity';
-import PropTypesPlus from '@gnowth/prop-types-plus';
-import Duck from '@entity/duck';
+import PropTypesEntity from '@burnsred/prop-types-entity';
+import PropTypesPlus from '@burnsred/prop-types-plus';
+import Duck from '@burnsred/entity-duck';
 
 const hasDuck = (props, propName, componentName) => (
   !props[propName].duck

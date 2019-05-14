@@ -1,1 +1,1 @@
-# @gnowth/higher-order-component
+# @burnsred/higher-order-component

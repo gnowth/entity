@@ -1,4 +1,4 @@
-import { mixins } from '@gnowth/theme';
+import { mixins } from '@burnsred/theme';
 import { css } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export

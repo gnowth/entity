@@ -1,1 +1,1 @@
-# @entity/visualisation-bubble-chart
+# @burnsred/entity-visualisation-bubble-chart

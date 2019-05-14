@@ -1,1 +1,1 @@
-# @gnowth/prop-types-entity
+# @burnsred/prop-types-entity

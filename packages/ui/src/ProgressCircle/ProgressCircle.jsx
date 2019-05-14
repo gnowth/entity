@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import PropTypesPlus from '@gnowth/prop-types-plus';
+import PropTypesPlus from '@burnsred/prop-types-plus';
 import React from 'react';
-import { useCleanProps, useEnhanceProps } from '@gnowth/theme';
+import { useCleanProps, useEnhanceProps } from '@burnsred/theme';
 
 import { Circle, Container, SVG } from './ProgressCircle.styles';
 

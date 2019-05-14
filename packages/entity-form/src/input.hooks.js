@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { useDefault } from '@gnowth/default';
+import { useDefault } from '@burnsred/default';
 
 export default {
   useComponents(props, input) {

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PropTypesEntity from '@gnowth/prop-types-entity';
+import PropTypesEntity from '@burnsred/prop-types-entity';
 import React from 'react';
-import { Visualisation } from '@entity/visualisation';
-import { color } from '@gnowth/theme';
-import { UIPortal } from '@gnowth/ui';
+import { Visualisation } from '@burnsred/entity-visualisation';
+import { color } from '@burnsred/theme';
+import { UIPortal } from '@burnsred/ui';
 
 import hooks from './visualisation.hooks';
 import styles from './visualisation.styles';
