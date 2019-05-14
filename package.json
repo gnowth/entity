@@ -17,8 +17,6 @@
     "webpackConfig": "./configs/webpack.config.js"
   },
   "scripts": {
-    "analyze": "yarn workspace @serve/client-react analyze",
-    "build": "yarn workspace @serve/client-react build",
     "check": "npm run check:types",
     "check:types": "tsc",
     "clean": "lerna clean",
@@ -38,10 +36,6 @@
     "packages-link-module:dist": "lerna run --scope '@@(gnowth|entity)/*' link-module:dist",
     "packages-link-module:src": "lerna run --scope '@@(gnowth|entity)/*' link-module:src",
     "packages-publish": "./scripts/publish.sh",
-    "serve-dist": "yarn workspace @serve/client-react serve-dist",
-    "start": "yarn workspace @serve/client-react start",
-    "storybook": "yarn workspace @serve/client-react storybook",
-    "storybook:build": "yarn workspace @serve/client-react storybook:build",
     "test": "jest --config configs/jest.config.js",
     "yarn": "yarn"
   },
