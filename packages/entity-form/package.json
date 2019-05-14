@@ -29,7 +29,6 @@
     "@burnsred/higher-order-component": "0.6.0",
     "@burnsred/prop-types-entity": "0.6.0",
     "@burnsred/prop-types-plus": "0.6.0",
-    "@private/use-redux": "0.6.0",
     "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",

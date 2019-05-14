@@ -26,7 +26,6 @@
   "dependencies": {
     "@burnsred/default": "0.6.0",
     "@burnsred/prop-types-plus": "0.6.0",
-    "@private/use-redux": "0.6.0",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0"

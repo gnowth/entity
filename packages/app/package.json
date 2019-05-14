@@ -28,7 +28,6 @@
     "@burnsred/prop-types-entity": "0.6.0",
     "@burnsred/prop-types-plus": "0.6.0",
     "@burnsred/theme": "0.6.0",
-    "@private/use-redux": "0.6.0",
     "idx": "2.5.5",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0"

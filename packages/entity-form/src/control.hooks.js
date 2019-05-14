@@ -2,8 +2,8 @@ import _ from 'lodash';
 import Duck from '@burnsred/entity-duck';
 import React from 'react';
 import { useDefault } from '@burnsred/default';
-import { useRedux } from '@private/use-redux';
 
+import { useRedux } from '../../../src/private-use-redux';
 import useContextInput from './use-context-input';
 
 const mapDefault = {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDefault } from '@burnsred/default';
-import { useRedux } from '@private/use-redux';
 import { List } from 'immutable';
+
+import { useRedux } from '../../../src/private-use-redux';
 
 const mapDefault = {
   store: 'store',
