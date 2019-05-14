@@ -8,7 +8,7 @@
   "private": false,
   "repository": "https://github.com/burnsred/burnsred-entity-library.git",
   "sideEffects": false,
-  "version": "0.0.1",
+  "version": "0.6.0",
   "publishConfig": {
     "access": "public"
   },
@@ -24,12 +24,12 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@burnsred/entity-duck": "0.0.1",
-    "@burnsred/default": "0.0.1",
-    "@burnsred/higher-order-component": "0.0.1",
-    "@burnsred/prop-types-entity": "0.0.1",
-    "@burnsred/prop-types-plus": "0.0.1",
-    "@private/use-redux": "0.0.1",
+    "@burnsred/entity-duck": "0.6.0",
+    "@burnsred/default": "0.6.0",
+    "@burnsred/higher-order-component": "0.6.0",
+    "@burnsred/prop-types-entity": "0.6.0",
+    "@burnsred/prop-types-plus": "0.6.0",
+    "@private/use-redux": "0.6.0",
     "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",

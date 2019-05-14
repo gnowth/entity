@@ -6,9 +6,9 @@
   "name": "@private/use-redux",
   "private": true,
   "sideEffects": false,
-  "version": "0.0.1",
+  "version": "0.6.0",
   "dependencies": {
-    "@burnsred/default": "0.0.1"
+    "@burnsred/default": "0.6.0"
   },
   "devDependencies": {
     "lodash": "4.17.11",
