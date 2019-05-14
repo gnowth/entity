@@ -6,9 +6,9 @@
   "name": "@private/use-redux",
   "private": true,
   "sideEffects": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "dependencies": {
-    "@gnowth/default": "0.5.1"
+    "@gnowth/default": "0.5.2"
   },
   "devDependencies": {
     "lodash": "4.17.11",

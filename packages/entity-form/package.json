@@ -8,7 +8,7 @@
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "publishConfig": {
     "access": "public"
   },
@@ -24,12 +24,12 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/duck": "0.5.1",
-    "@gnowth/default": "0.5.1",
-    "@gnowth/higher-order-component": "0.5.1",
-    "@gnowth/prop-types-entity": "0.5.1",
-    "@gnowth/prop-types-plus": "0.5.1",
-    "@private/use-redux": "0.5.1",
+    "@entity/duck": "0.5.2",
+    "@gnowth/default": "0.5.2",
+    "@gnowth/higher-order-component": "0.5.2",
+    "@gnowth/prop-types-entity": "0.5.2",
+    "@gnowth/prop-types-plus": "0.5.2",
+    "@private/use-redux": "0.5.2",
     "idx": "2.5.5",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",

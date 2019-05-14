@@ -8,7 +8,7 @@
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "publishConfig": {
     "access": "public"
   },
@@ -24,13 +24,13 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.5.1",
-    "@gnowth/default": "0.5.1",
-    "@gnowth/higher-order-component": "0.5.1",
-    "@gnowth/prop-types-entity": "0.5.1",
-    "@gnowth/prop-types-plus": "0.5.1",
-    "@gnowth/theme": "0.5.1",
-    "@gnowth/ui": "0.5.1",
+    "@entity/core": "0.5.2",
+    "@gnowth/default": "0.5.2",
+    "@gnowth/higher-order-component": "0.5.2",
+    "@gnowth/prop-types-entity": "0.5.2",
+    "@gnowth/prop-types-plus": "0.5.2",
+    "@gnowth/theme": "0.5.2",
+    "@gnowth/ui": "0.5.2",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0",

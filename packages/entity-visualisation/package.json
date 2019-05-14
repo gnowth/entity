@@ -8,7 +8,7 @@
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "publishConfig": {
     "access": "public"
   },
@@ -24,7 +24,7 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@gnowth/prop-types-entity": "0.5.1",
+    "@gnowth/prop-types-entity": "0.5.2",
     "prop-types": "15.7.2",
     "react-immutable-proptypes": "2.1.0"
   },

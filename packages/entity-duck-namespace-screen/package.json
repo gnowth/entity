@@ -8,7 +8,7 @@
   "private": false,
   "repository": "https://github.com/gnowth/entity.git",
   "sideEffects": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "publishConfig": {
     "access": "public"
   },
@@ -24,8 +24,8 @@
     "prebuild": "npm run destroy"
   },
   "dependencies": {
-    "@entity/core": "0.5.1",
-    "@entity/duck": "0.5.1",
+    "@entity/core": "0.5.2",
+    "@entity/duck": "0.5.2",
     "immutable": "4.0.0-rc.12"
   }
 }
