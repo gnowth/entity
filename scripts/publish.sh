@@ -6,9 +6,16 @@ pwd
 # get current branch
 current=$(git symbolic-ref --short HEAD)
 
+# not strick check for github
+mkdir -p ~/.ssh/
+ssh-keyscan -Ht rsa github.com >> ~/.ssh/known_hosts
+
+# add npm token
+echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
+
 # configure git
-git config --global user.email "$CIRCLE_USERNAME@circleci.com"
-git config --global user.name "$CIRCLE_USERNAME"
+git config --global user.email "accounts@burnsred.com.au"
+git config --global user.name "Codeship CI"
 
 lerna version --exact --amend --convertional-commits --yes --no-commit-hooks --no-git-tag-version --no-push
 
